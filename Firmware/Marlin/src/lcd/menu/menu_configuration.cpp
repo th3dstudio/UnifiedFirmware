@@ -403,17 +403,22 @@ void menu_configuration() {
   #endif
 
   // Preheat configurations
-  #if PREHEAT_COUNT && DISABLED(SLIM_LCD_MENUS)
+  #if PREHEAT_COUNT && DISABLED(SLIM_LCD_MENUS) && DISABLED(SPACE_SAVER)
     LOOP_L_N(m, PREHEAT_COUNT)
       SUBMENU_N_S(m, ui.get_preheat_label(m), MSG_PREHEAT_M_SETTINGS, _menu_configuration_preheat_settings);
   #endif
 
   #if ENABLED(EEPROM_SETTINGS)
     ACTION_ITEM(MSG_STORE_EEPROM, ui.store_settings);
-    if (!busy) ACTION_ITEM(MSG_LOAD_EEPROM, ui.load_settings);
   #endif
 
-  if (!busy) ACTION_ITEM(MSG_RESTORE_DEFAULTS, ui.reset_settings);
+  #if ENABLED(EEPROM_SETTINGS) && DISABLED(SLIM_LCD_MENUS)
+    CONFIRM_ITEM(MSG_INIT_EEPROM,
+      MSG_BUTTON_INIT, MSG_BUTTON_CANCEL,
+      ui.init_eeprom, nullptr,
+      GET_TEXT(MSG_INIT_EEPROM), (const char *)nullptr, PSTR("?")
+    );
+  #endif
 
   END_MENU();
 }

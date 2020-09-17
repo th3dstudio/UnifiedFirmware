@@ -100,7 +100,7 @@ void menu_backlash();
 
 #endif
 
-#if DISABLED(NO_VOLUMETRICS) || ENABLED(ADVANCED_PAUSE_FEATURE)
+#if (DISABLED(NO_VOLUMETRICS) || ENABLED(ADVANCED_PAUSE_FEATURE)) && DISABLED(SPACE_SAVER)
   //
   // Advanced Settings > Filament
   //
@@ -478,16 +478,18 @@ void menu_backlash();
 
   // M851 - Z Probe Offsets
   #if HAS_BED_PROBE
-    void menu_probe_offsets() {
-      START_MENU();
-      BACK_ITEM(MSG_ADVANCED_SETTINGS);
-      #if HAS_PROBE_XY_OFFSET
-        EDIT_ITEM(float31sign, MSG_ZPROBE_XOFFSET, &probe.offset.x, -(X_BED_SIZE), X_BED_SIZE);
-        EDIT_ITEM(float31sign, MSG_ZPROBE_YOFFSET, &probe.offset.y, -(Y_BED_SIZE), Y_BED_SIZE);
-      #endif
-      EDIT_ITEM(LCD_Z_OFFSET_TYPE, MSG_ZPROBE_ZOFFSET, &probe.offset.z, Z_PROBE_OFFSET_RANGE_MIN, Z_PROBE_OFFSET_RANGE_MAX);
-      END_MENU();
-    }
+    #if DISABLED(SPACE_SAVER)
+      void menu_probe_offsets() {
+        START_MENU();
+        BACK_ITEM(MSG_ADVANCED_SETTINGS);
+        #if HAS_PROBE_XY_OFFSET
+          EDIT_ITEM(float31sign, MSG_ZPROBE_XOFFSET, &probe.offset.x, -(X_BED_SIZE), X_BED_SIZE);
+          EDIT_ITEM(float31sign, MSG_ZPROBE_YOFFSET, &probe.offset.y, -(Y_BED_SIZE), Y_BED_SIZE);
+        #endif
+        EDIT_ITEM(LCD_Z_OFFSET_TYPE, MSG_ZPROBE_ZOFFSET, &probe.offset.z, Z_PROBE_OFFSET_RANGE_MIN, Z_PROBE_OFFSET_RANGE_MAX);
+        END_MENU();
+      }
+    #endif
   #endif
 
 #endif // !SLIM_LCD_MENUS
@@ -550,7 +552,9 @@ void menu_advanced_settings() {
 
     // M851 - Z Probe Offsets
     #if HAS_BED_PROBE
-      if (!is_busy) SUBMENU(MSG_ZPROBE_OFFSETS, menu_probe_offsets);
+      #if DISABLED(SPACE_SAVER)
+        if (!is_busy) SUBMENU(MSG_ZPROBE_OFFSETS, menu_probe_offsets);
+      #endif
     #endif
 
   #endif // !SLIM_LCD_MENUS
@@ -578,7 +582,7 @@ void menu_advanced_settings() {
     SUBMENU(MSG_TEMPERATURE, menu_advanced_temperature);
   #endif
 
-  #if DISABLED(NO_VOLUMETRICS) || ENABLED(ADVANCED_PAUSE_FEATURE)
+  #if (DISABLED(NO_VOLUMETRICS) || ENABLED(ADVANCED_PAUSE_FEATURE)) && DISABLED(SPACE_SAVER)
     SUBMENU(MSG_FILAMENT, menu_advanced_filament);
   #elif ENABLED(LIN_ADVANCE)
     #if EXTRUDERS == 1
@@ -609,14 +613,6 @@ void menu_advanced_settings() {
 
   #if ENABLED(PASSWORD_FEATURE)
     SUBMENU(MSG_PASSWORD_SETTINGS, password.access_menu_password);
-  #endif
-
-  #if ENABLED(EEPROM_SETTINGS) && DISABLED(SLIM_LCD_MENUS)
-    CONFIRM_ITEM(MSG_INIT_EEPROM,
-      MSG_BUTTON_INIT, MSG_BUTTON_CANCEL,
-      ui.init_eeprom, nullptr,
-      GET_TEXT(MSG_INIT_EEPROM), (const char *)nullptr, PSTR("?")
-    );
   #endif
 
   END_MENU();

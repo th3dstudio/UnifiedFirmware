@@ -478,18 +478,18 @@ void menu_backlash();
 
   // M851 - Z Probe Offsets
   #if HAS_BED_PROBE
-    #if DISABLED(SPACE_SAVER)
-      void menu_probe_offsets() {
-        START_MENU();
-        BACK_ITEM(MSG_ADVANCED_SETTINGS);
+    void menu_probe_offsets() {
+      START_MENU();
+      BACK_ITEM(MSG_ADVANCED_SETTINGS);
+      #if DISABLED(SPACE_SAVER)
         #if HAS_PROBE_XY_OFFSET
           EDIT_ITEM(float31sign, MSG_ZPROBE_XOFFSET, &probe.offset.x, -(X_BED_SIZE), X_BED_SIZE);
           EDIT_ITEM(float31sign, MSG_ZPROBE_YOFFSET, &probe.offset.y, -(Y_BED_SIZE), Y_BED_SIZE);
         #endif
-        EDIT_ITEM(LCD_Z_OFFSET_TYPE, MSG_ZPROBE_ZOFFSET, &probe.offset.z, Z_PROBE_OFFSET_RANGE_MIN, Z_PROBE_OFFSET_RANGE_MAX);
-        END_MENU();
-      }
-    #endif
+      #endif
+      EDIT_ITEM(LCD_Z_OFFSET_TYPE, MSG_ZPROBE_ZOFFSET, &probe.offset.z, Z_PROBE_OFFSET_RANGE_MIN, Z_PROBE_OFFSET_RANGE_MAX);
+      END_MENU();
+    }
   #endif
 
 #endif // !SLIM_LCD_MENUS

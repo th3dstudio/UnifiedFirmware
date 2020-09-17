@@ -144,6 +144,10 @@
   #define NOZZLE_TO_PROBE_OFFSET { -35, -2, 0 }
   #define ABL_ENABLE
 #endif
+#if ENABLED(CR10V2_OEM)
+  #define NOZZLE_TO_PROBE_OFFSET { 52, 5, 0 }
+  #define ABL_ENABLE
+#endif
 
 #if ENABLED(ABL_ENABLE)
   //#define ENABLE_LEVELING_FADE_HEIGHT // Disable for release. Can cause issues.
@@ -296,7 +300,7 @@
 #define EEPROM_CHITCHAT
 #define EEPROM_BOOT_SILENT
 
-#if DISABLED(SPACE_SAVER)
+#if DISABLED(SPACE_SAVER) && DISABLED(SPACE_SAVER_2560)
   #define EEPROM_AUTO_INIT
 #endif
 

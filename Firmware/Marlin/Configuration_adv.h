@@ -1056,7 +1056,7 @@
   #endif
 
   // BACK menu items keep the highlight at the top
-  #if DISABLED(SPACE_SAVER) && DISABLED(KINGROON_KP3)
+  #if DISABLED(SPACE_SAVER) && DISABLED(KINGROON_KP3) && DISABLED(SPACE_SAVER_2560)
     #define TURBO_BACK_MENU_ITEM
   #endif
 
@@ -1094,7 +1094,7 @@
 #endif
 
 // On the Info Screen, display XY with one decimal place when possible
-#if DISABLED(SPACE_SAVER)
+#if DISABLED(SPACE_SAVER) && DISABLED(SPACE_SAVER_2560)
   #define LCD_DECIMAL_SMALL_XY
 #endif
 
@@ -1152,7 +1152,7 @@
   // Since the FAT gets out of order with usage, SDCARD_SORT_ALPHA is recommended.
   //#define SDCARD_RATHERRECENTFIRST
 
-  #if DISABLED(SPACE_SAVER)
+  #if DISABLED(SPACE_SAVER) && DISABLED(SPACE_SAVER_2560)
     #define SD_MENU_CONFIRM_START             // Confirm the selected SD file before printing
   #endif
 
@@ -1211,7 +1211,7 @@
    *  - SDSORT_CACHE_NAMES will retain the sorted file listing in RAM. (Expensive!)
    *  - SDSORT_DYNAMIC_RAM only uses RAM when the SD menu is visible. (Use with caution!)
    */
-  //#define SDCARD_SORT_ALPHA
+  #define SDCARD_SORT_ALPHA
 
   // SD Card Sorting options
   #if ENABLED(SDCARD_SORT_ALPHA)
@@ -1219,9 +1219,9 @@
     #define FOLDER_SORTING     -1     // -1=above  0=none  1=below
     #define SDSORT_GCODE       false  // Allow turning sorting on/off with LCD and M34 G-code.
     #define SDSORT_USES_RAM    true  // Pre-allocate a static array for faster pre-sorting.
-    #define SDSORT_USES_STACK  false  // Prefer the stack for pre-sorting to give back some SRAM. (Negated by next 2 options.)
-    #define SDSORT_CACHE_NAMES true  // Keep sorted items in RAM longer for speedy performance. Most expensive option.
-    #define SDSORT_DYNAMIC_RAM true  // Use dynamic allocation (within SD menus). Least expensive option. Set SDSORT_LIMIT before use!
+    #define SDSORT_USES_STACK  true  // Prefer the stack for pre-sorting to give back some SRAM. (Negated by next 2 options.)
+    #define SDSORT_CACHE_NAMES false  // Keep sorted items in RAM longer for speedy performance. Most expensive option.
+    #define SDSORT_DYNAMIC_RAM false  // Use dynamic allocation (within SD menus). Least expensive option. Set SDSORT_LIMIT before use!
     #define SDSORT_CACHE_VFATS 2      // Maximum number of 13-byte VFAT entries to use for sorting.
                                       // Note: Only affects SCROLL_LONG_FILENAMES with SDSORT_CACHE_NAMES but not SDSORT_DYNAMIC_RAM.
   #endif
@@ -1230,7 +1230,7 @@
   //#define LONG_FILENAME_HOST_SUPPORT
 
   // Enable this option to scroll long filenames in the SD card menu
-  #if DISABLED(SPACE_SAVER) && DISABLED (DWIN_CREALITY_LCD)
+  #if DISABLED(SPACE_SAVER) && DISABLED (DWIN_CREALITY_LCD) && DISABLED(SPACE_SAVER_2560)
     #define SCROLL_LONG_FILENAMES
   #endif
 
@@ -1254,7 +1254,7 @@
   /**
    * Auto-report SdCard status with M27 S<seconds>
    */
-  #if DISABLED(SPACE_SAVER)
+  #if DISABLED(SPACE_SAVER) && DISABLED(SPACE_SAVER_2560)
     #define AUTO_REPORT_SD_STATUS
   #endif
 
@@ -1394,7 +1394,7 @@
    */
   //#define STATUS_COMBINE_HEATERS    // Use combined heater images instead of separate ones
   //#define STATUS_HOTEND_NUMBERLESS  // Use plain hotend icons instead of numbered ones (with 2+ hotends)
-  #if DISABLED(SPACE_SAVER)
+  #if DISABLED(SPACE_SAVER) && DISABLED(SPACE_SAVER_2560)
     #define STATUS_HOTEND_INVERTED      // Show solid nozzle bitmaps when heating (Requires STATUS_HOTEND_ANIM)
     #define STATUS_HOTEND_ANIM          // Use a second bitmap to indicate hotend heating
     #define STATUS_BED_ANIM             // Use a second bitmap to indicate bed heating
@@ -1407,7 +1407,7 @@
   #endif
   //#define BOOT_MARLIN_LOGO_SMALL    // Show a smaller Marlin logo on the Boot Screen (saving 399 bytes of flash)
   
-  #if DISABLED(SPACE_SAVER) && DISABLED(KINGROON_KP3)
+  #if DISABLED(SPACE_SAVER) && DISABLED(KINGROON_KP3) && DISABLED(SPACE_SAVER_2560)
     #define BOOT_MARLIN_LOGO_ANIMATED // Animated Marlin logo. Costs ~‭3260 (or ~940) bytes of PROGMEM.
   #endif
 
@@ -1899,7 +1899,9 @@
 // The ASCII buffer for serial input
 #define MAX_CMD_SIZE 96
 
-#if ENABLED(SPACE_SAVER) || ENABLED(SKR_E3_MINI_BOARD) || ENABLED(KINGROON_KP3)
+#if ENABLED(SPACE_SAVER) || ENABLED(SPACE_SAVER_2560)
+  #define BUFSIZE 8
+#elif ENABLED(SKR_E3_MINI_BOARD) || ENABLED(KINGROON_KP3) 
   #define BUFSIZE 16
 #else
   #define BUFSIZE 32

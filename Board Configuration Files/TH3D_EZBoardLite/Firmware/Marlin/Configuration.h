@@ -1,11 +1,11 @@
 /**
  * For directions on how to use this firmware visit http://uf2.th3dstudio.com
- * THIS VERSION IS NOT FOR PRODUCTION USE AT THIS TIME AND ONLY AVAILABLE FOR TESTING PURPOSES
- * NO IMPLIED SUPPORT OR WARRANTY IS PROVIDED WITH THIS FIRMWARE RELEASE
  */
-//#@CONFIGURATION_START_FLAG
+
 #pragma once
 #define CONFIGURATION_H_VERSION 020006
+
+//#@CONFIGURATION_START_FLAG
 
 //===========================================================================
 //============================ TH3D Configuration ===========================
@@ -36,8 +36,9 @@
 //#define ENDER5_PLUS
 
 // Other Machines -----------------------------------------------------------
-//#define CR20 // The CR-20 Needs special LCD wiring with dupont jumper wires until we can release an adapter PCB.
-               // The diagram for wiring is in the firmware source folder called "CR20EZBoardLCDWiring.png". Dupont jumper wires will work to make the connections.
+//#define CR20
+// The CR-20 Needs special LCD wiring with dupont jumper wires until we can release an adapter PCB.
+// The diagram for wiring is in the firmware source folder called "CR20EZBoardLCDWiring.png". Dupont jumper wires will work to make the connections.
 
 // Sovol Machines -----------------------------------------------------------
 //#define SOVOL_SV01
@@ -275,6 +276,8 @@
 //===========================================================================
 // **********************  END CONFIGURATION SETTINGS   *********************
 //===========================================================================
+
+//#@CONFIGURATION_END_FLAG
 
 /**
  * ****************************DO NOT TOUCH ANYTHING BELOW THIS COMMENT**************************
@@ -643,4 +646,3 @@
  */
  
 #include "Configuration_backend.h"
-//#@CONFIGURATION_END_FLAG

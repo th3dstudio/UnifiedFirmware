@@ -552,9 +552,7 @@ void menu_advanced_settings() {
 
     // M851 - Z Probe Offsets
     #if HAS_BED_PROBE
-      #if DISABLED(SPACE_SAVER)
-        if (!is_busy) SUBMENU(MSG_ZPROBE_OFFSETS, menu_probe_offsets);
-      #endif
+      if (!is_busy) SUBMENU(MSG_ZPROBE_OFFSETS, menu_probe_offsets);
     #endif
 
   #endif // !SLIM_LCD_MENUS

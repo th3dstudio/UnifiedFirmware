@@ -6,7 +6,7 @@
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-#define UNIFIED_VERSION "TH3D UFW 2.07"
+#define UNIFIED_VERSION "TH3D UFW 2.10"
 
 /**
  * Temp Settings
@@ -226,7 +226,7 @@
 #endif
 
 #if DISABLED(SPACE_SAVER)
-  #define S_CURVE_ACCELERATION
+  //#define S_CURVE_ACCELERATION
 #endif
 
 #define DEFAULT_NOMINAL_FILAMENT_DIA 1.75
@@ -371,8 +371,12 @@
 
 #if ENABLED(MANUAL_MESH_LEVELING) && DISABLED(ABL_ENABLE)
   #define LCD_BED_LEVELING
+  #define MESH_BED_LEVELING
   #define MESH_EDIT_Z_STEP  0.025
   #define LCD_PROBE_Z_RANGE 4
+
+  #define GRID_MAX_POINTS_X 3
+  #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
   
   #if DISABLED(SPACE_SAVER)
     #define MESH_EDIT_MENU

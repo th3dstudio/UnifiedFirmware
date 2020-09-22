@@ -225,8 +225,6 @@
 
   #define DEFAULT_EJERK    5.0
 
-  #define SHOW_BOOTSCREEN
-
   #define EXTRUDERS 1
 
   #define X_BED_SIZE 300

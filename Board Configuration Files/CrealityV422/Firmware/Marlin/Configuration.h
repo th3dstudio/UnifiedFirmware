@@ -2,7 +2,7 @@
  * For directions on how to use this firmware visit http://uf2.th3dstudio.com
  */
 #pragma once
-#define CONFIGURATION_H_VERSION 020006
+#define CONFIGURATION_H_VERSION 020007
 
 //===========================================================================
 //============================ TH3D Configuration ===========================
@@ -271,8 +271,8 @@
   #endif
   
   #if ENABLED(HOME_ADJUST)
-    #define X_MIN_POS X_HOME_ADJUST_LOCATION
-    #define Y_MIN_POS Y_HOME_ADJUST_LOCATION
+    #define X_MIN_POS X_HOME_LOCATION
+    #define Y_MIN_POS Y_HOME_LOCATION
   #else
     #define X_MIN_POS 0
     #define Y_MIN_POS 0
@@ -400,6 +400,9 @@
 
   #define ENCODER_PULSES_PER_STEP 4
   #define ENCODER_STEPS_PER_MENU_ITEM 1
+
+  #define Z_PROBE_OFFSET_RANGE_MIN -10
+  #define Z_PROBE_OFFSET_RANGE_MAX 10
 
 #endif
 // End Ender 3/5 V422 Board Settings

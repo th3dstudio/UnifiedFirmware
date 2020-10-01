@@ -60,7 +60,9 @@ void menu_advanced_settings();
     static int8_t bar_percent = 0;
     if (ui.use_click()) {
       ui.goto_previous_screen();
-      ui.set_custom_characters(CHARSET_MENU);
+      #if HAS_MARLINUI_HD44780
+        ui.set_custom_characters(CHARSET_MENU);
+      #endif
       return;
     }
     bar_percent += (int8_t)ui.encoderPosition;
@@ -73,7 +75,9 @@ void menu_advanced_settings();
 
   void _progress_bar_test() {
     ui.goto_screen(progress_bar_test);
-    ui.set_custom_characters(CHARSET_INFO);
+    #if HAS_MARLINUI_HD44780
+      ui.set_custom_characters(CHARSET_INFO);
+    #endif
   }
 
 #endif // LCD_PROGRESS_BAR_TEST
@@ -94,7 +98,7 @@ void menu_advanced_settings();
 
 #endif
 
-#if EXTRUDERS > 1
+#if HAS_MULTI_EXTRUDER
 
   #include "../../module/tool_change.h"
 
@@ -280,17 +284,17 @@ void menu_advanced_settings();
       EDIT_ITEM(bool, MSG_AUTORETRACT, &fwretract.autoretract_enabled, fwretract.refresh_autoretract);
     #endif
     EDIT_ITEM(float52sign, MSG_CONTROL_RETRACT, &fwretract.settings.retract_length, 0, 100);
-    #if EXTRUDERS > 1
+    #if HAS_MULTI_EXTRUDER
       EDIT_ITEM(float52sign, MSG_CONTROL_RETRACT_SWAP, &fwretract.settings.swap_retract_length, 0, 100);
     #endif
     EDIT_ITEM(float3, MSG_CONTROL_RETRACTF, &fwretract.settings.retract_feedrate_mm_s, 1, 999);
     EDIT_ITEM(float52sign, MSG_CONTROL_RETRACT_ZHOP, &fwretract.settings.retract_zraise, 0, 999);
     EDIT_ITEM(float52sign, MSG_CONTROL_RETRACT_RECOVER, &fwretract.settings.retract_recover_extra, -100, 100);
-    #if EXTRUDERS > 1
+    #if HAS_MULTI_EXTRUDER
       EDIT_ITEM(float52sign, MSG_CONTROL_RETRACT_RECOVER_SWAP, &fwretract.settings.swap_retract_recover_extra, -100, 100);
     #endif
     EDIT_ITEM(float3, MSG_CONTROL_RETRACT_RECOVERF, &fwretract.settings.retract_recover_feedrate_mm_s, 1, 999);
-    #if EXTRUDERS > 1
+    #if HAS_MULTI_EXTRUDER
       EDIT_ITEM(float3, MSG_CONTROL_RETRACT_RECOVER_SWAPF, &fwretract.settings.swap_retract_recover_feedrate_mm_s, 1, 999);
     #endif
     END_MENU();
@@ -380,7 +384,7 @@ void menu_configuration() {
   //
   // Set single nozzle filament retract and prime length
   //
-  #if EXTRUDERS > 1
+  #if HAS_MULTI_EXTRUDER
     SUBMENU(MSG_TOOL_CHANGE, menu_tool_change);
     #if ENABLED(TOOLCHANGE_MIGRATION_FEATURE)
       SUBMENU(MSG_TOOL_MIGRATION, menu_toolchange_migration);
@@ -403,7 +407,7 @@ void menu_configuration() {
   #endif
 
   // Preheat configurations
-  #if PREHEAT_COUNT && DISABLED(SLIM_LCD_MENUS) && DISABLED(SPACE_SAVER)
+  #if PREHEAT_COUNT && DISABLED(SLIM_LCD_MENUS)
     LOOP_L_N(m, PREHEAT_COUNT)
       SUBMENU_N_S(m, ui.get_preheat_label(m), MSG_PREHEAT_M_SETTINGS, _menu_configuration_preheat_settings);
   #endif
@@ -414,7 +418,7 @@ void menu_configuration() {
 
   #if ENABLED(EEPROM_SETTINGS) && DISABLED(SLIM_LCD_MENUS)
     CONFIRM_ITEM(MSG_INIT_EEPROM,
-      MSG_BUTTON_INIT, MSG_BUTTON_CANCEL,
+      MSG_BUTTON_RESET, MSG_BUTTON_CANCEL,
       ui.init_eeprom, nullptr,
       GET_TEXT(MSG_INIT_EEPROM), (const char *)nullptr, PSTR("?")
     );

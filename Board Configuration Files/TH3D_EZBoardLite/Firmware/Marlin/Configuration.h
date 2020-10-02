@@ -64,12 +64,6 @@
 //#define PETSFANG                 //This is the RIGHT mounted version
 //#define CUSTOM_PROBE             //For any other probe mount (also used for BL Touch), Enter offsets below
 
-// Ender 5 Plus ONLY ABL Settings -------------------------------------------
-// By default the Ender 5 Plus comes with a BL Touch. Enabling the ENDER5_PLUS_EZABL or ENDER5_PLUS_NOABL will override the BL Touch setting
-// If you are using the stock BL Touch with a non-stock mount enable the CUSTOM_PROBE line above and enter the offsets below for the new mount.
-//#define ENDER5_PLUS_EZABL
-//#define ENDER5_PLUS_NOABL
-
 // Advanced Settings --------------------------------------------------------
 // These settings do not typically need to be adjusted except for machines that do not follow stock configs
 
@@ -609,22 +603,22 @@
   #define ENCODER_STEPS_PER_MENU_ITEM 1
   
   #if ENABLED(ENDER5_PLUS)
-    #if DISABLED(ENDER5_PLUS_NOABL) && DISABLED(ENDER5_PLUS_EZABL)
-      #define BLTOUCH
-    #define SERVO0_PIN P2_04
-    #ifndef EZABL_PROBE_EDGE
-      #define EZABL_PROBE_EDGE 35
-    #endif
-    #ifndef EZABL_POINTS
-      #define EZABL_POINTS 5
-    #endif
-    #if DISABLED(CUSTOM_PROBE)
-        #define NOZZLE_TO_PROBE_OFFSET { -44, -9, 0}
+    #if ENABLED(BLTOUCH)
+      #define SERVO0_PIN P2_04
+      #ifndef EZABL_PROBE_EDGE
+        #define EZABL_PROBE_EDGE 35
       #endif
-    #endif  
-    #if DISABLED(ENDER5_PLUS_NOABL)
-      #define ABL_ENABLE
-    #endif
+      #ifndef EZABL_POINTS
+        #define EZABL_POINTS 5
+      #endif
+      #if DISABLED(CUSTOM_PROBE)
+          #define NOZZLE_TO_PROBE_OFFSET { -44, -9, 0}
+        #endif
+      #endif
+      // enable ABL is bltouch or any probe mount is selected 
+      #if ENABLED(BLTOUCH) || ENABLED(CR10_OEM) || ENABLED(ENDER2_OEM) || ENABLED(ENDER2_V6) || ENABLED(SV01_OEM_MOUNT) || ENABLED(CR10_VOLCANO) || ENABLED(CR10_V6HEAVYDUTY) || ENABLED(TM3DAERO) || ENABLED(TM3DAERO_EXTENDED) || ENABLED(PETSFANG) || ENABLED(CUSTOM_PROBE)
+        #define ABL_ENABLE
+      #endif
   #endif
 
   #define EZBOARD

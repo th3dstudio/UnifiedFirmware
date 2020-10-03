@@ -1395,17 +1395,15 @@
    */
   //#define STATUS_COMBINE_HEATERS    // Use combined heater images instead of separate ones
   //#define STATUS_HOTEND_NUMBERLESS  // Use plain hotend icons instead of numbered ones (with 2+ hotends)
-  #if DISABLED(SPACE_SAVER) && DISABLED(SPACE_SAVER_2560)
-    #define STATUS_HOTEND_INVERTED      // Show solid nozzle bitmaps when heating (Requires STATUS_HOTEND_ANIM)
-    #define STATUS_HOTEND_ANIM          // Use a second bitmap to indicate hotend heating
-    #define STATUS_BED_ANIM             // Use a second bitmap to indicate bed heating
-    //#define STATUS_CHAMBER_ANIM         // Use a second bitmap to indicate chamber heating
-    //#define STATUS_CUTTER_ANIM        // Use a second bitmap to indicate spindle / laser active
-    //#define STATUS_ALT_BED_BITMAP     // Use the alternative bed bitmap
-    //#define STATUS_ALT_FAN_BITMAP     // Use the alternative fan bitmap
-    //#define STATUS_FAN_FRAMES 3       // :[0,1,2,3,4] Number of fan animation frames
-    //#define STATUS_HEAT_PERCENT       // Show heating in a progress bar
-  #endif
+  #define STATUS_HOTEND_INVERTED      // Show solid nozzle bitmaps when heating (Requires STATUS_HOTEND_ANIM)
+  #define STATUS_HOTEND_ANIM          // Use a second bitmap to indicate hotend heating
+  #define STATUS_BED_ANIM             // Use a second bitmap to indicate bed heating
+  //#define STATUS_CHAMBER_ANIM         // Use a second bitmap to indicate chamber heating
+  //#define STATUS_CUTTER_ANIM        // Use a second bitmap to indicate spindle / laser active
+  //#define STATUS_ALT_BED_BITMAP     // Use the alternative bed bitmap
+  //#define STATUS_ALT_FAN_BITMAP     // Use the alternative fan bitmap
+  //#define STATUS_FAN_FRAMES 3       // :[0,1,2,3,4] Number of fan animation frames
+  //#define STATUS_HEAT_PERCENT       // Show heating in a progress bar
   //#define BOOT_MARLIN_LOGO_SMALL    // Show a smaller Marlin logo on the Boot Screen (saving 399 bytes of flash)
   
   #if DISABLED(SPACE_SAVER) && DISABLED(KINGROON_KP3) && DISABLED(SPACE_SAVER_2560)
@@ -1901,7 +1899,7 @@
 #define MAX_CMD_SIZE 96
 
 #if ENABLED(SPACE_SAVER) || ENABLED(SPACE_SAVER_2560)
-  #define BUFSIZE 8
+  #define BUFSIZE 16
 #elif ENABLED(SKR_E3_MINI_BOARD) || ENABLED(KINGROON_KP3) 
   #define BUFSIZE 16
 #else

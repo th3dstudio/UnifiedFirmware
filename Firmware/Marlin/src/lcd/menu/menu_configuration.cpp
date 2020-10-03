@@ -398,7 +398,7 @@ void menu_configuration() {
     SUBMENU(MSG_RETRACT, menu_config_retract);
   #endif
 
-  #if HAS_FILAMENT_SENSOR
+  #if HAS_FILAMENT_SENSOR && DISABLED(SPACE_SAVER)
     EDIT_ITEM(bool, MSG_RUNOUT_SENSOR, &runout.enabled, runout.reset);
   #endif
 
@@ -416,7 +416,7 @@ void menu_configuration() {
     ACTION_ITEM(MSG_STORE_EEPROM, ui.store_settings);
   #endif
 
-  #if ENABLED(EEPROM_SETTINGS) && DISABLED(SLIM_LCD_MENUS)
+  #if ENABLED(EEPROM_SETTINGS)
     CONFIRM_ITEM(MSG_INIT_EEPROM,
       MSG_BUTTON_RESET, MSG_BUTTON_CANCEL,
       ui.init_eeprom, nullptr,

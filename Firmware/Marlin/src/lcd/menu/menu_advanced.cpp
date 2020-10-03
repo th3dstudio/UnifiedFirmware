@@ -476,19 +476,19 @@ void menu_backlash();
 
   #endif
 
-  // M851 - Z Probe Offsets
-  #if HAS_BED_PROBE
-    void menu_probe_offsets() {
-      START_MENU();
-      BACK_ITEM(MSG_ADVANCED_SETTINGS);
-      #if HAS_PROBE_XY_OFFSET
-        EDIT_ITEM(float31sign, MSG_ZPROBE_XOFFSET, &probe.offset.x, -(X_BED_SIZE), X_BED_SIZE);
-        EDIT_ITEM(float31sign, MSG_ZPROBE_YOFFSET, &probe.offset.y, -(Y_BED_SIZE), Y_BED_SIZE);
-      #endif
-      EDIT_ITEM(LCD_Z_OFFSET_TYPE, MSG_ZPROBE_ZOFFSET, &probe.offset.z, Z_PROBE_OFFSET_RANGE_MIN, Z_PROBE_OFFSET_RANGE_MAX);
-      END_MENU();
-    }
-  #endif
+  // M851 - Z Probe Offsets - Redundant - Disabled by TH3D
+  //#if HAS_BED_PROBE
+    //void menu_probe_offsets() {
+      //START_MENU();
+      //BACK_ITEM(MSG_ADVANCED_SETTINGS);
+      //#if HAS_PROBE_XY_OFFSET
+        //EDIT_ITEM(float31sign, MSG_ZPROBE_XOFFSET, &probe.offset.x, -(X_BED_SIZE), X_BED_SIZE);
+        //EDIT_ITEM(float31sign, MSG_ZPROBE_YOFFSET, &probe.offset.y, -(Y_BED_SIZE), Y_BED_SIZE);
+      //#endif
+      //EDIT_ITEM(LCD_Z_OFFSET_TYPE, MSG_ZPROBE_ZOFFSET, &probe.offset.z, Z_PROBE_OFFSET_RANGE_MIN, Z_PROBE_OFFSET_RANGE_MAX);
+      //END_MENU();
+    //}
+  //#endif
 
 #endif // !SLIM_LCD_MENUS
 
@@ -548,10 +548,10 @@ void menu_advanced_settings() {
       );
     #endif
 
-    // M851 - Z Probe Offsets
-    #if HAS_BED_PROBE
-      if (!is_busy) SUBMENU(MSG_ZPROBE_OFFSETS, menu_probe_offsets);
-    #endif
+    // M851 - Z Probe Offsets - Redundant - Disabled by TH3D
+    //#if HAS_BED_PROBE
+      //if (!is_busy) SUBMENU(MSG_ZPROBE_OFFSETS, menu_probe_offsets);
+    //#endif
 
   #endif // !SLIM_LCD_MENUS
 

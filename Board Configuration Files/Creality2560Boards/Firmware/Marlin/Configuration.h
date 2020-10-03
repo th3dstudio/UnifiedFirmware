@@ -4,7 +4,7 @@
  * NO IMPLIED SUPPORT OR WARRANTY IS PROVIDED WITH THIS FIRMWARE RELEASE
  */
 #pragma once
-#define CONFIGURATION_H_VERSION 020006
+#define CONFIGURATION_H_VERSION 020007
 
 //===========================================================================
 //============================ TH3D Configuration ===========================

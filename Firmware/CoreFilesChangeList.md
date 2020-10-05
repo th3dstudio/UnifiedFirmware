@@ -21,7 +21,9 @@ This does not include machine configs.
 			- **menu**
 				- `menu_advanced.cpp`
 				- `menu_configuration.cpp`
+				- `menu_main.cpp'
 				- `menu_motion.cpp`
+				- `menu_tune.cpp`
 			- **language**
 				- `language_en.h`
 		- **pins**

@@ -107,6 +107,18 @@ void menu_main() {
   BACK_ITEM(MSG_INFO_SCREEN);
 
   if (busy) {
+    //Move flow to main menu when tune is disabled. Change by TH3D.
+    #if DISABLED(TUNE_MENU_RESTORE)
+      #if EXTRUDERS
+        EDIT_ITEM(int3, MSG_FLOW, &planner.flow_percentage[active_extruder], 10, 999, []{ planner.refresh_e_factor(active_extruder); });
+        // Flow En:
+        #if HAS_MULTI_EXTRUDER
+          LOOP_L_N(n, EXTRUDERS)
+            EDIT_ITEM_N(int3, n, MSG_FLOW_N, &planner.flow_percentage[n], 10, 999, []{ planner.refresh_e_factor(MenuItemBase::itemIndex); });
+        #endif
+      #endif
+    #endif
+
     #if MACHINE_CAN_PAUSE
       ACTION_ITEM(MSG_PAUSE_PRINT, ui.pause_print);
     #endif
@@ -120,7 +132,10 @@ void menu_main() {
       });
     #endif
 
-    SUBMENU(MSG_TUNE, menu_tune);
+    // Disabled to save space and reduce user confusion, redundant. Disabled by TH3D
+    #if ENABLED(TUNE_MENU_RESTORE)
+      SUBMENU(MSG_TUNE, menu_tune);
+    #endif
 
     #if ENABLED(CANCEL_OBJECTS) && DISABLED(SLIM_LCD_MENUS)
       SUBMENU(MSG_CANCEL_OBJECT, []{ editable.int8 = -1; ui.goto_screen(menu_cancelobject); });

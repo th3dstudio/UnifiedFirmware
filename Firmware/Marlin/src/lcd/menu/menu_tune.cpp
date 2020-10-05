@@ -26,7 +26,7 @@
 
 #include "../../inc/MarlinConfigPre.h"
 
-#if HAS_LCD_MENU
+#if HAS_LCD_MENU && ENABLED(TUNE_MENU_RESTORE)
 
 #include "menu_item.h"
 #include "../../module/motion.h"

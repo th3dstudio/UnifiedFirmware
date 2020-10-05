@@ -281,8 +281,13 @@
 
   #define EXTRUDERS 1
 
-  #define X_BED_SIZE 220
-  #define Y_BED_SIZE 220
+  #if ENABLED(ENDER5_SKR_E3_MINI)
+    #define X_BED_SIZE 220
+    #define Y_BED_SIZE 220
+  #else
+    #define X_BED_SIZE 235
+    #define Y_BED_SIZE 235
+  #endif
   
   #if ENABLED(ENDER5_SKR_E3_MINI)
     #define Z_MAX_POS 300

@@ -193,6 +193,12 @@
 // Here is where you set your servo pin. For V4.2.X Boards use PB0
 //#define SERVO0_PIN PB0
 
+// MANUAL MESH LEVELING ----------------------------
+// If you want to use manual mesh leveling you can enable the below option. This is for generating a MANUAL mesh WITHOUT a probe.
+// Mesh Bed Leveling Documentation: http://marlinfw.org/docs/gcode/G029-mbl.html 
+// NOTE: If you want to automate the leveling process our EZABL kits do this for you. Check them out here: http://EZABL.TH3DStudio.com
+//#define MANUAL_MESH_LEVELING
+
 //===========================================================================
 // **********************  END CONFIGURATION SETTINGS   *********************
 //===========================================================================

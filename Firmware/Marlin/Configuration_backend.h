@@ -361,7 +361,7 @@
 #define DISABLE_REDUCED_ACCURACY_WARNING
 #if DISABLED(DWIN_CREALITY_LCD)
   #if ENABLED(SPACE_SAVER) && ENABLED(LINEAR_ADVANCE)
-    #warning "To save space the bootscreen has been disabled."    
+    // To save space the bootscreen has been disabled.
   #else 
     #define SHOW_BOOTSCREEN
     #define SHOW_CUSTOM_BOOTSCREEN

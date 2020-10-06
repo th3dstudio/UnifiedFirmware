@@ -95,6 +95,64 @@ void menu_configuration();
 
 extern const char M21_STR[];
 
+//added by TH3D
+#if ENABLED(BABYSTEPPING) && DISABLED(TUNE_MENU_RESTORE)
+
+  #include "../../feature/babystep.h"
+  #include "../lcdprint.h"
+  #if HAS_MARLINUI_U8GLIB
+    #include "../dogm/ultralcd_DOGM.h"
+  #endif
+
+  void _lcd_babystep(const AxisEnum axis, PGM_P const msg) {
+    if (ui.use_click()) return ui.goto_previous_screen_no_defer();
+    if (ui.encoderPosition) {
+      const int16_t steps = int16_t(ui.encoderPosition) * (
+        #if ENABLED(BABYSTEP_XY)
+          axis == X_AXIS ? BABYSTEP_SIZE_X :
+          axis == Y_AXIS ? BABYSTEP_SIZE_Y :
+        #endif
+        BABYSTEP_SIZE_Z
+      );
+      ui.encoderPosition = 0;
+      ui.refresh(LCDVIEW_REDRAW_NOW);
+      babystep.add_steps(axis, steps);
+    }
+    if (ui.should_draw()) {
+      const float spm = planner.steps_to_mm[axis];
+      MenuEditItemBase::draw_edit_screen(msg, BABYSTEP_TO_STR(spm * babystep.accum));
+      #if ENABLED(BABYSTEP_DISPLAY_TOTAL)
+        const bool in_view = TERN1(HAS_MARLINUI_U8GLIB, PAGE_CONTAINS(LCD_PIXEL_HEIGHT - MENU_FONT_HEIGHT, LCD_PIXEL_HEIGHT - 1));
+        if (in_view) {
+          TERN_(HAS_MARLINUI_U8GLIB, ui.set_font(FONT_MENU));
+          lcd_moveto(0, TERN(HAS_MARLINUI_U8GLIB, LCD_PIXEL_HEIGHT - MENU_FONT_DESCENT, LCD_HEIGHT - 1));
+          lcd_put_u8str_P(GET_TEXT(MSG_BABYSTEP_TOTAL));
+          lcd_put_wchar(':');
+          lcd_put_u8str(BABYSTEP_TO_STR(spm * babystep.axis_total[BS_TOTAL_IND(axis)]));
+        }
+      #endif
+    }
+  }
+
+  inline void _lcd_babystep_go(const screenFunc_t screen) {
+    ui.goto_screen(screen);
+    ui.defer_status_screen();
+    babystep.accum = 0;
+  }
+
+  #if ENABLED(BABYSTEP_XY)
+    void _lcd_babystep_x() { _lcd_babystep(X_AXIS, GET_TEXT(MSG_BABYSTEP_X)); }
+    void _lcd_babystep_y() { _lcd_babystep(Y_AXIS, GET_TEXT(MSG_BABYSTEP_Y)); }
+  #endif
+
+  #if DISABLED(BABYSTEP_ZPROBE_OFFSET)
+    void _lcd_babystep_z() { _lcd_babystep(Z_AXIS, GET_TEXT(MSG_BABYSTEP_Z)); }
+    void lcd_babystep_z()  { _lcd_babystep_go(_lcd_babystep_z); }
+  #endif
+
+#endif
+//added by TH3D
+
 void menu_main() {
   const bool busy = printingIsActive()
     #if ENABLED(SDSUPPORT)

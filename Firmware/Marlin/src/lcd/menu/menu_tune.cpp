@@ -26,7 +26,7 @@
 
 #include "../../inc/MarlinConfigPre.h"
 
-#if HAS_LCD_MENU && ENABLED(TUNE_MENU_RESTORE) //disabled to optimize and save space. Disabled by TH3D
+#if HAS_LCD_MENU
 
 #include "menu_item.h"
 #include "../../module/motion.h"

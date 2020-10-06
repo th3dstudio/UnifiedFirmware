@@ -95,64 +95,6 @@ void menu_configuration();
 
 extern const char M21_STR[];
 
-//added by TH3D
-#if ENABLED(BABYSTEPPING) && DISABLED(TUNE_MENU_RESTORE)
-
-  #include "../../feature/babystep.h"
-  #include "../lcdprint.h"
-  #if HAS_MARLINUI_U8GLIB
-    #include "../dogm/ultralcd_DOGM.h"
-  #endif
-
-  void _lcd_babystep(const AxisEnum axis, PGM_P const msg) {
-    if (ui.use_click()) return ui.goto_previous_screen_no_defer();
-    if (ui.encoderPosition) {
-      const int16_t steps = int16_t(ui.encoderPosition) * (
-        #if ENABLED(BABYSTEP_XY)
-          axis == X_AXIS ? BABYSTEP_SIZE_X :
-          axis == Y_AXIS ? BABYSTEP_SIZE_Y :
-        #endif
-        BABYSTEP_SIZE_Z
-      );
-      ui.encoderPosition = 0;
-      ui.refresh(LCDVIEW_REDRAW_NOW);
-      babystep.add_steps(axis, steps);
-    }
-    if (ui.should_draw()) {
-      const float spm = planner.steps_to_mm[axis];
-      MenuEditItemBase::draw_edit_screen(msg, BABYSTEP_TO_STR(spm * babystep.accum));
-      #if ENABLED(BABYSTEP_DISPLAY_TOTAL)
-        const bool in_view = TERN1(HAS_MARLINUI_U8GLIB, PAGE_CONTAINS(LCD_PIXEL_HEIGHT - MENU_FONT_HEIGHT, LCD_PIXEL_HEIGHT - 1));
-        if (in_view) {
-          TERN_(HAS_MARLINUI_U8GLIB, ui.set_font(FONT_MENU));
-          lcd_moveto(0, TERN(HAS_MARLINUI_U8GLIB, LCD_PIXEL_HEIGHT - MENU_FONT_DESCENT, LCD_HEIGHT - 1));
-          lcd_put_u8str_P(GET_TEXT(MSG_BABYSTEP_TOTAL));
-          lcd_put_wchar(':');
-          lcd_put_u8str(BABYSTEP_TO_STR(spm * babystep.axis_total[BS_TOTAL_IND(axis)]));
-        }
-      #endif
-    }
-  }
-
-  inline void _lcd_babystep_go(const screenFunc_t screen) {
-    ui.goto_screen(screen);
-    ui.defer_status_screen();
-    babystep.accum = 0;
-  }
-
-  #if ENABLED(BABYSTEP_XY)
-    void _lcd_babystep_x() { _lcd_babystep(X_AXIS, GET_TEXT(MSG_BABYSTEP_X)); }
-    void _lcd_babystep_y() { _lcd_babystep(Y_AXIS, GET_TEXT(MSG_BABYSTEP_Y)); }
-  #endif
-
-  #if DISABLED(BABYSTEP_ZPROBE_OFFSET)
-    void _lcd_babystep_z() { _lcd_babystep(Z_AXIS, GET_TEXT(MSG_BABYSTEP_Z)); }
-    void lcd_babystep_z()  { _lcd_babystep_go(_lcd_babystep_z); }
-  #endif
-
-#endif
-//added by TH3D
-
 void menu_main() {
   const bool busy = printingIsActive()
     #if ENABLED(SDSUPPORT)
@@ -165,18 +107,6 @@ void menu_main() {
   BACK_ITEM(MSG_INFO_SCREEN);
 
   if (busy) {
-    //Move flow to main menu when tune is disabled. Change by TH3D.
-    #if DISABLED(TUNE_MENU_RESTORE)
-      #if EXTRUDERS
-        EDIT_ITEM(int3, MSG_FLOW, &planner.flow_percentage[active_extruder], 10, 999, []{ planner.refresh_e_factor(active_extruder); });
-        // Flow En:
-        #if HAS_MULTI_EXTRUDER
-          LOOP_L_N(n, EXTRUDERS)
-            EDIT_ITEM_N(int3, n, MSG_FLOW_N, &planner.flow_percentage[n], 10, 999, []{ planner.refresh_e_factor(MenuItemBase::itemIndex); });
-        #endif
-      #endif
-    #endif
-
     #if MACHINE_CAN_PAUSE
       ACTION_ITEM(MSG_PAUSE_PRINT, ui.pause_print);
     #endif
@@ -190,10 +120,7 @@ void menu_main() {
       });
     #endif
 
-    // Disabled to save space and reduce user confusion, redundant. Disabled by TH3D
-    #if ENABLED(TUNE_MENU_RESTORE)
-      SUBMENU(MSG_TUNE, menu_tune);
-    #endif
+    SUBMENU(MSG_TUNE, menu_tune);
 
     #if ENABLED(CANCEL_OBJECTS) && DISABLED(SLIM_LCD_MENUS)
       SUBMENU(MSG_CANCEL_OBJECT, []{ editable.int8 = -1; ui.goto_screen(menu_cancelobject); });
@@ -240,14 +167,14 @@ void menu_main() {
     #endif
 
     SUBMENU(MSG_MOTION, menu_motion);
+
+    #if HAS_TEMPERATURE
+      SUBMENU(MSG_TEMPERATURE, menu_temperature);
+    #endif
   }
 
   #if HAS_CUTTER
     SUBMENU(MSG_CUTTER(MENU), menu_spindle_laser);
-  #endif
-
-  #if HAS_TEMPERATURE
-    SUBMENU(MSG_TEMPERATURE, menu_temperature);
   #endif
 
   #if HAS_POWER_MONITOR

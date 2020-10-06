@@ -280,10 +280,6 @@
   // Sanity Checks for V11X boards
   #if ENABLED(EZOUT_ENABLE) && ENABLED(BLTOUCH)
     #error "You cannot use the BL Touch and EZOut Filament sensor together on this board."
-  #elif ENABLED(BLTOUCH) && ENABLED(LINEAR_ADVANCE)
-    #error "Due to space limitations on this board the BL Touch and Linear Advance cannot be used together. Disable Linear Advance or install non-BLTouch type sensor."
-    // Since BL Touch type probes require additional code to stow and deploy the pin this requires much more additional code than a proximity sensor (like the EZABL)
-    // Due to the V11X board having a Atmel 1284P with only 128K of memory we are not able to run both the BL Touch type sensor and Linear Advance together
   #endif
 
   #if ENABLED(ENDER5_NEW_LEADSCREW)

@@ -55,11 +55,11 @@
   #define BED_MAXTEMP 120
 #endif
 
-#define TEMP_RESIDENCY_TIME      5
+#define TEMP_RESIDENCY_TIME      3
 #define TEMP_WINDOW              1
 #define TEMP_HYSTERESIS          3
 
-#define TEMP_BED_RESIDENCY_TIME  5
+#define TEMP_BED_RESIDENCY_TIME  3
 #define TEMP_BED_WINDOW          1
 #define TEMP_BED_HYSTERESIS      3
 
@@ -302,7 +302,7 @@
 #define EEPROM_SETTINGS
 
 #if ENABLED(SPACE_SAVER)
-  #define DISABLE_M503
+  //#define DISABLE_M503
 #endif
 
 #define EEPROM_CHITCHAT

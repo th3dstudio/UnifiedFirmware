@@ -32,6 +32,12 @@
 //#define ENDER3_OEM
 //#define CUSTOM_PROBE
 
+// Ender Xtender Kit Options
+//#define ENDER_XTENDER_300
+//#define ENDER_XTENDER_400
+//#define ENDER_XTENDER_400XL
+//#define ENDER_XTENDER_XL
+
 //===========================================================================
 // Creality Ender 5/5 Pro Options - SKR E3 Mini Boards
 //===========================================================================
@@ -287,19 +293,33 @@
   #define SHOW_BOOTSCREEN
 
   #define EXTRUDERS 1
-
+  
   #if ENABLED(ENDER5_SKR_E3_MINI)
     #define X_BED_SIZE 220
     #define Y_BED_SIZE 220
-  #else
-    #define X_BED_SIZE 235
-    #define Y_BED_SIZE 235
-  #endif
-  
-  #if ENABLED(ENDER5_SKR_E3_MINI)
     #define Z_MAX_POS 300
   #else
-    #define Z_MAX_POS 250
+    #if ENABLED(ENDER_XTENDER_400)
+      #define X_BED_SIZE 400
+      #define Y_BED_SIZE 400
+      #define Z_MAX_POS 250
+    #elif ENABLED(ENDER_XTENDER_300)
+      #define X_BED_SIZE 300
+      #define Y_BED_SIZE 300
+      #define Z_MAX_POS 250
+    #elif ENABLED(ENDER_XTENDER_400XL)
+      #define X_BED_SIZE 400
+      #define Y_BED_SIZE 400
+      #define Z_MAX_POS 500
+    #elif ENABLED(ENDER_XTENDER_XL)
+      #define X_BED_SIZE 235
+      #define Y_BED_SIZE 235
+      #define Z_MAX_POS 500
+    #else
+      #define X_BED_SIZE 235
+      #define Y_BED_SIZE 235
+      #define Z_MAX_POS 250
+    #endif
   #endif
   
   #if ENABLED(HOME_ADJUST)

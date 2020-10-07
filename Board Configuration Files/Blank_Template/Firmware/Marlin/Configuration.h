@@ -212,7 +212,7 @@
   #else
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
   #endif
-  #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 25 }
+  #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 50 }
   #define DEFAULT_MAX_ACCELERATION      { 500, 500, 100, 1000 }
 
   #define DEFAULT_ACCELERATION          500

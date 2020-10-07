@@ -310,8 +310,8 @@
   #else
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, CREALITY_Z_STEPS, 95 }
   #endif
-  #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 25 }
-  #define DEFAULT_MAX_ACCELERATION      { 500, 500, 100, 1000 }
+  #define DEFAULT_MAX_FEEDRATE          { 200, 200, 15, 25 }
+  #define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 500, 5000 }
 
   #define DEFAULT_ACCELERATION          500
   #define DEFAULT_RETRACT_ACCELERATION  500

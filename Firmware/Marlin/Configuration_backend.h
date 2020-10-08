@@ -69,9 +69,10 @@
 #define PID_MAX BANG_MAX
 #define PID_K1 0.95
 
+#define PID_AUTOTUNE_MENU
+
 #if DISABLED(SPACE_SAVER) && DISABLED(SKR_E3_MINI_BOARD)
   #define PID_EDIT_MENU
-  #define PID_AUTOTUNE_MENU
 #endif
 
 #ifndef DEFAULT_Kp
@@ -80,7 +81,7 @@
   #define DEFAULT_Kd 114
 #endif
 
-#if DISABLED(SPACE_SAVER) && ENABLED(ENABLE_PIDBED)
+#if DISABLED(SPACE_SAVER) && ENABLED(ENABLE_PIDBED) // PID Bed is not needed. Bang Bang loop is set to 500ms
   #define PIDTEMPBED
   #define MAX_BED_POWER 255
   #if ENABLED(PIDTEMPBED)
@@ -158,13 +159,12 @@
 #endif
 
 #if ENABLED(ABL_ENABLE)
-  //#define ENABLE_LEVELING_FADE_HEIGHT // Disable for release. Can cause issues.
   #define SEGMENT_LEVELED_MOVES
   #define LEVELED_SEGMENT_LENGTH 5.0
   
-  #undef Z_PROBE_OFFSET_RANGE_MIN //Some machines define these even with no probe. Override when a probe is used to ensure correct settings.
+  #undef Z_PROBE_OFFSET_RANGE_MIN
   #define Z_PROBE_OFFSET_RANGE_MIN    -5
-  #undef Z_PROBE_OFFSET_RANGE_MAX //Some machines define these even with no probe. Override when a probe is used to ensure correct settings.
+  #undef Z_PROBE_OFFSET_RANGE_MAX
   #define Z_PROBE_OFFSET_RANGE_MAX     1
   
   #define Z_MIN_PROBE_REPEATABILITY_TEST
@@ -231,10 +231,6 @@
   #else
     #define CUSTOM_MACHINE_NAME SHORT_BUILD_VERSION
   #endif
-#endif
-
-#if DISABLED(SPACE_SAVER)
-  //#define S_CURVE_ACCELERATION
 #endif
 
 #define DEFAULT_NOMINAL_FILAMENT_DIA 1.75
@@ -375,15 +371,15 @@
   #define INDIVIDUAL_AXIS_HOMING_MENU
 #endif
 
-#if DISABLED(SPACE_SAVER)
+//#if DISABLED(SPACE_SAVER) //testing if space is available on all configs 10082020 TDH
   #define LEVEL_BED_CORNERS
   #if ENABLED(LEVEL_BED_CORNERS)
     #define LEVEL_CORNERS_INSET_LFRB { 30, 30, 30, 30 }
     #define LEVEL_CORNERS_HEIGHT      0.0
-    #define LEVEL_CORNERS_Z_HOP       4.0
+    #define LEVEL_CORNERS_Z_HOP       5.0
     #define LEVEL_CENTER_TOO
   #endif
-#endif
+//#endif
 
 #if ENABLED(MANUAL_MESH_LEVELING) && DISABLED(ABL_ENABLE)
   #define LCD_BED_LEVELING

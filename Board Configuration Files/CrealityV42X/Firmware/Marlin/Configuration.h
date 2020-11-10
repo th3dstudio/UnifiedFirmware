@@ -15,11 +15,13 @@
 //===========================================================================
 
 //===========================================================================
-// Creality Ender 3/3 Pro Options - with V4.2.X Board
-// Uncomment the define for what board you have (V4.2.2 or V4.2.7)
+// Uncomment the define line for what board you have (V4.2.2 or V4.2.7)
 //===========================================================================
 //#define ENDER3_V422_BOARD //Ender 3 with V4.2.2 Board
 //#define ENDER3_V427_BOARD //Ender 3 with V4.2.7 Board
+//#define ENDER3_V2 //Only has the V4.2.2 Board
+//#define ENDER5_V422_BOARD //Ender 5 with V4.2.2 Board
+//#define ENDER5_V427_BOARD //Ender 5 with V4.2.7 Board
 
 // If your V4.2.2 board has TMC2208 (silent) drivers on it uncomment the below line
 //#define V422_TMC2208_BOARD
@@ -31,7 +33,11 @@
 
 // EZABL Probe Mounts
 //#define ENDER3_OEM
+//#define ENDER3_V2_OEM
+//#define ENDER5_OEM
 //#define CUSTOM_PROBE
+
+// Ender 3 Specific Options
 
 // Ender Xtender Kit Options
 //#define ENDER_XTENDER_300
@@ -39,41 +45,10 @@
 //#define ENDER_XTENDER_400XL
 //#define ENDER_XTENDER_XL
 
-//===========================================================================
-// Creality Ender 3 V2 Options
-//===========================================================================
-//#define ENDER3_V2
-
-// If you are using our EZOut V1/V2 (connected to LCD header) filament sensor kit please follow the install guide
-// and then uncomment the #define EZOUT_ENABLE line below.
-// Do NOT ever connect our filament sensor without the supplied adapter board.
-//#define EZOUT_ENABLE
-
-// EZABL Probe Mounts
-//#define ENDER3_V2_OEM
-//#define CUSTOM_PROBE
-
-//===========================================================================
-// Creality Ender 5/5 Pro Options - with V4.2.X Board
-// Uncomment the define for what board you have (V4.2.2 or V4.2.7)
-//===========================================================================
-//#define ENDER5_V422_BOARD //Ender 5 with V4.2.2 Board
-//#define ENDER5_V427_BOARD //Ender 5 with V4.2.7 Board
-
-// If your V4.2.2 board has TMC2208 (silent) drivers on it uncomment the below line
-//#define V422_TMC2208_BOARD
+// Ender 5 Specific Options
 
 // If you have the new Ender 5/5 Pro Model that has the new 800steps/mm Z leadscrew uncomment the below option to set the correct steps/mm
 //#define ENDER5_NEW_LEADSCREW
-
-// If you are using our EZOut V1/V2 (connected to LCD header) filament sensor kit please follow the install guide
-// and then uncomment the #define EZOUT_ENABLE line below.
-// Do NOT ever connect our filament sensor without the supplied adapter board.
-//#define EZOUT_ENABLE
-
-// EZABL Probe Mounts
-//#define ENDER5_OEM
-//#define CUSTOM_PROBE
 
 //===========================================================================
 // *************************  END PRINTER SECTION   *************************

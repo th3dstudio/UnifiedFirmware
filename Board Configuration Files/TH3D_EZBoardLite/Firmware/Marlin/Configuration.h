@@ -14,7 +14,7 @@
 // ONLY UNCOMMENT THINGS IN ONE PRINTER SECTION!!! IF YOU HAVE MULTIPLE MACHINES FLASH THEM ONE AT A TIME.
 
 //===========================================================================
-// ****************    EZBoard Lite Printer Configuration    ****************
+// ****************    EZBOARD LITE BOARD POWERED PRINTERS   ****************
 //===========================================================================
 
 // CR-10 Series -------------------------------------------------------------
@@ -53,7 +53,7 @@
 //#define CR10S_STOCKFILAMENTSENSOR
 
 // EZABL Probe Mounts -------------------------------------------------------
-//#define CR10_OEM                 //OEM Mount for Creality Machines (Ender3/5/CR-10/CR-10S/CR-20)
+//#define CR10_OEM                 //OEM Mount for Creality Machines (Ender3/Ender5/CR-10/CR-10S/CR-20)
 //#define ENDER2_OEM               //Ender 2 Specific OEM Mount
 //#define ENDER2_V6                //Ender 2 Specific V6 Mount
 //#define SV01_OEM_MOUNT           //Sovol SV01 OEM Mount

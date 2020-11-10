@@ -13,16 +13,16 @@
 // ONLY UNCOMMENT THINGS IN ONE PRINTER SECTION!!! IF YOU HAVE MULTIPLE MACHINES FLASH THEM ONE AT A TIME.
 
 //===========================================================================
-// ************************   CREALITY PRINTERS    **************************
+// *************   CREALITY PRINTERS W/MELZI BOARD (1284P)    ***************
 //===========================================================================
 
-//===========================================================================
-// Creality CR-10 Options - Melzi (1284p Based) Board
-//===========================================================================
 //#define CR10
 //#define CR10_MINI
 //#define CR10_S4
 //#define CR10_S5
+//#define ENDER2
+//#define ENDER3
+//#define ENDER5
 
 // If you are using our EZOut V1/V2 (connects to LCD header) filament sensor kit please follow the install guide
 // and then uncomment the #define EZOUT_ENABLE line below.
@@ -34,71 +34,24 @@
 //#define CR10_VOLCANO
 //#define CR10_V6HEAVYDUTY
 //#define CR10_FANG
+//#define ENDER2_OEM
+//#define ENDER2_V6
+//#define ENDER3_OEM
+//#define ENDER5_OEM
 //#define TM3DAERO
 //#define TM3DAERO_EXTENDED
 //#define PETSFANG //This is the RIGHT mounted version - if using the left mount please use the CUSTOM_PROBE option.
 //#define CUSTOM_PROBE
 
-//===========================================================================
-// Creality Ender 2 Options - Select 'Sanguino 1284p' from Tools > Board
-//===========================================================================
-//#define ENDER2
+// Ender 3 Specific Options
 
-// If you are using our EZOut V2 (connects to the LCD header & connect the 2 pin connector to the "Check" header to the right of the LCD connection) filament sensor kit please follow the install guide
-// and then uncomment the #define EZOUTV2_ENABLE line below. Do NOT ever connect our filament sensor without the supplied adapter board.
-//#define EZOUTV2_ENABLE
-
-// EZABL Probe Mounts (Ender 2 can use the same mounts as CR-10, Ender 2 Specific mounts minimize distance from probe to nozzle for max probing area)
-// If you have issues with the non-Ender 2 mounts then please print them off and switch to one of them before contacting support. 
-// This is because the probeable area on the non-Ender 2 mounts is too small typically to get a good result.
-//#define ENDER2_OEM
-//#define ENDER2_V6
-//#define CR10_OEM
-//#define CR10_VOLCANO
-//#define CR10_V6HEAVYDUTY
-//#define TM3DAERO
-//#define TM3DAERO_EXTENDED
-//#define PETSFANG  //This is the RIGHT mounted version - if using the left mount please use the CUSTOM_PROBE option.
-//#define CUSTOM_PROBE
-
-//===========================================================================
-// Creality Ender 3/3 Pro Options - Select 'Sanguino 1284p' from Tools > Board
-//===========================================================================
-#define ENDER3
-
-// If you are using our EZOut V1/V2 (connected to LCD header) filament sensor kit please follow the install guide
-// and then uncomment the #define EZOUT_ENABLE line below.
-// Do NOT ever connect our filament sensor without the supplied adapter board.
-//#define EZOUT_ENABLE
-
-// EZABL Probe Mounts (Ender 3 uses the same mounts as CR-10)
-#define ENDER3_OEM
-//#define CR10_VOLCANO
-//#define CR10_V6HEAVYDUTY
-//#define TM3DAERO
-//#define TM3DAERO_EXTENDED
-//#define PETSFANG  //This is the RIGHT mounted version - if using the left mount please use the CUSTOM_PROBE option.
-//#define CUSTOM_PROBE
-
-// Ender Xtender Kit Options
+// Ender 3 Xtender Kit Options
 //#define ENDER_XTENDER_300
 //#define ENDER_XTENDER_400
 //#define ENDER_XTENDER_400XL
 //#define ENDER_XTENDER_XL
 
-//===========================================================================
-// Creality Ender 5 Options - Select 'Sanguino 1284p' from Tools > Board
-//===========================================================================
-//#define ENDER5
-
-// If you are using our EZOut V1/V2 (connected to LCD header) filament sensor kit please follow the install guide
-// and then uncomment the #define EZOUT_ENABLE line below.
-// Do NOT ever connect our filament sensor without the supplied adapter board.
-//#define EZOUT_ENABLE
-
-// EZABL Probe Mounts
-//#define ENDER5_OEM
-//#define CUSTOM_PROBE
+// Ender 5 Specific Options
 
 // If you have the new Ender 5 or Ender 5 Pro Model that has the new 800steps/mm Z leadscrew uncomment the below option to set the correct steps/mm
 //#define ENDER5_NEW_LEADSCREW
@@ -276,7 +229,7 @@
  */
  
  // PRINTER Settings
-#if ENABLED(CR10) || ENABLED(CR10_MINI) || ENABLED(CR10_S4) || ENABLED(CR10_S5) || ENABLED(ENDER3) || ENABLED(ENDER5)
+#if ENABLED(CR10) || ENABLED(CR10_MINI) || ENABLED(CR10_S4) || ENABLED(CR10_S5) || ENABLED(ENDER2)  || ENABLED(ENDER3) || ENABLED(ENDER5)
   // Sanity Checks for V11X boards
   #if ENABLED(EZOUT_ENABLE) && ENABLED(BLTOUCH)
     #error "You cannot use the BL Touch and EZOut Filament sensor together on this board."
@@ -295,7 +248,11 @@
 
   #define BAUDRATE 115200
   
-  #define CR10_STOCKDISPLAY
+  #if ENABLED(ENDER2)
+    #define MINIPANEL
+  #else
+    #define CR10_STOCKDISPLAY
+  #endif
 
   #ifndef MOTHERBOARD
     #define MOTHERBOARD BOARD_MELZI_CREALITY
@@ -355,6 +312,12 @@
     #define X_BED_SIZE 500
     #define Y_BED_SIZE 500
     #define Z_MAX_POS 500
+  #endif
+
+  #if ENABLED(ENDER2)
+    #define X_BED_SIZE 160
+    #define Y_BED_SIZE 150
+    #define Z_MAX_POS 220
   #endif
   
   #if ENABLED(ENDER3)

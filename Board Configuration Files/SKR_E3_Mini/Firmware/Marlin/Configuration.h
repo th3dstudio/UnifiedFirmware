@@ -19,10 +19,8 @@
 // *************   CREALITY PRINTERS W/SKR E3 MINI BOARD    *****************
 //===========================================================================
 
-//===========================================================================
-// Creality Ender 3/3 Pro Options - SKR E3 Mini Boards
-//===========================================================================
 //#define ENDER3_SKR_E3_MINI
+//#define ENDER5_SKR_E3_MINI
 
 // Uncomment what SKR E3 Mini Board Version you are using
 //#define SKR_E3_MINI_V1
@@ -31,7 +29,10 @@
 
 // EZABL Probe Mounts
 //#define ENDER3_OEM
+//#define ENDER5_OEM
 //#define CUSTOM_PROBE
+
+// Ender 3 Specific Options
 
 // Ender Xtender Kit Options
 //#define ENDER_XTENDER_300
@@ -39,22 +40,10 @@
 //#define ENDER_XTENDER_400XL
 //#define ENDER_XTENDER_XL
 
-//===========================================================================
-// Creality Ender 5/5 Pro Options - SKR E3 Mini Boards
-//===========================================================================
-//#define ENDER5_SKR_E3_MINI
-
-// Uncomment what SKR E3 Mini Board Version you are using
-//#define SKR_E3_MINI_V1
-//#define SKR_E3_MINI_V1_2
-//#define SKR_E3_MINI_V2_0
+// Ender 5 Specific Options
 
 // If you have the new Ender 5/5 Pro Model that has the new 800steps/mm Z leadscrew uncomment the below option to set the correct steps/mm
 //#define ENDER5_NEW_LEADSCREW
-
-// EZABL Probe Mounts
-//#define ENDER5_OEM
-//#define CUSTOM_PROBE
 
 //===========================================================================
 // *************************  END PRINTER SECTION   *************************

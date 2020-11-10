@@ -27,5 +27,7 @@ This does not include machine configs or PlatformIO files.
 		- **pins**
 			- **lpc1769**
 				- `pins_TH3D_EZBOARD.h`
+			- **sanguino**
+				- `pins_MELZI_CREALITY.h`
 	- `Configuration_adv.h`
 	- `Version.h`

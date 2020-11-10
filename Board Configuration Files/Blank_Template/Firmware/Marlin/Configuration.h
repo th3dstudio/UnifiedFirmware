@@ -183,6 +183,13 @@
 // NOTE: If you want to automate the leveling process our EZABL kits do this for you. Check them out here: http://EZABL.TH3DStudio.com
 //#define MANUAL_MESH_LEVELING
 
+// POWER LOSS RECOVERY -----------------------------
+// Continue after Power-Loss feature will store the current state to the SD Card at the start of each layer
+// during SD printing. If this is found at bootup it will ask you if you want to resume the print.
+//
+// NOTE: This feature causes excessive wear on your SD card.
+//#define POWER_LOSS_RECOVERY
+
 //===========================================================================
 // **********************  END CONFIGURATION SETTINGS   *********************
 //===========================================================================

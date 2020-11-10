@@ -151,7 +151,6 @@
 #define ONBOARD_SD_CS_PIN                  P0_06
 #define SS_PIN                 ONBOARD_SD_CS_PIN
 
-
 //
 // LCD / Controller
 //

@@ -58,16 +58,16 @@
 void menu_tmc();
 void menu_backlash();
 
-#if ENABLED(DAC_STEPPER_CURRENT)
+#if ENABLED(HAS_MOTOR_CURRENT_DAC)
 
   #include "../../feature/dac/stepper_dac.h"
 
   void menu_dac() {
     static xyze_uint8_t driverPercent;
-    LOOP_XYZE(i) driverPercent[i] = dac_current_get_percent((AxisEnum)i);
+    LOOP_XYZE(i) driverPercent[i] = stepper_dac.get_current_percent((AxisEnum)i);
     START_MENU();
     BACK_ITEM(MSG_ADVANCED_SETTINGS);
-    #define EDIT_DAC_PERCENT(A) EDIT_ITEM(uint8, MSG_DAC_PERCENT_##A, &driverPercent[_AXIS(A)], 0, 100, []{ dac_current_set_percents(driverPercent); })
+    #define EDIT_DAC_PERCENT(A) EDIT_ITEM(uint8, MSG_DAC_PERCENT_##A, &driverPercent[_AXIS(A)], 0, 100, []{ stepper_dac.set_current_percents(driverPercent); })
     EDIT_DAC_PERCENT(X);
     EDIT_DAC_PERCENT(Y);
     EDIT_DAC_PERCENT(Z);
@@ -476,6 +476,25 @@ void menu_backlash();
 
   #endif
 
+  // M851 - Z Probe Offsets - Disabled by TH3D to save space and prevent user confusion. Offsets should be set in firmware, not EEPROM.
+  //#if HAS_BED_PROBE
+    //void menu_probe_offsets() {
+      //START_MENU();
+      //BACK_ITEM(MSG_ADVANCED_SETTINGS);
+      //#if HAS_PROBE_XY_OFFSET
+        //EDIT_ITEM(float31sign, MSG_ZPROBE_XOFFSET, &probe.offset.x, -(X_BED_SIZE), X_BED_SIZE);
+        //EDIT_ITEM(float31sign, MSG_ZPROBE_YOFFSET, &probe.offset.y, -(Y_BED_SIZE), Y_BED_SIZE);
+      //#endif
+      //EDIT_ITEM(LCD_Z_OFFSET_TYPE, MSG_ZPROBE_ZOFFSET, &probe.offset.z, Z_PROBE_OFFSET_RANGE_MIN, Z_PROBE_OFFSET_RANGE_MAX);
+
+      //#if ENABLED(PROBE_OFFSET_WIZARD)
+        //SUBMENU(MSG_PROBE_WIZARD, goto_probe_offset_wizard);
+      //#endif
+
+      //END_MENU();
+    //}
+  //#endif
+
 #endif // !SLIM_LCD_MENUS
 
 // M92 Steps-per-mm
@@ -549,7 +568,7 @@ void menu_advanced_settings() {
     SUBMENU(MSG_BACKLASH, menu_backlash);
   #endif
 
-  #if ENABLED(DAC_STEPPER_CURRENT)
+  #if ENABLED(HAS_MOTOR_CURRENT_DAC)
     SUBMENU(MSG_DRIVE_STRENGTH, menu_dac);
   #endif
   #if HAS_MOTOR_CURRENT_PWM
@@ -596,6 +615,14 @@ void menu_advanced_settings() {
   #if ENABLED(PASSWORD_FEATURE)
     SUBMENU(MSG_PASSWORD_SETTINGS, password.access_menu_password);
   #endif
+
+  //#if ENABLED(EEPROM_SETTINGS) && DISABLED(SLIM_LCD_MENUS) - Moved to Config Menu by TH3D
+    //CONFIRM_ITEM(MSG_INIT_EEPROM,
+      //MSG_BUTTON_INIT, MSG_BUTTON_CANCEL,
+      //ui.init_eeprom, nullptr,
+      //GET_TEXT(MSG_INIT_EEPROM), (const char *)nullptr, PSTR("?")
+    //);
+  //#endif
 
   END_MENU();
 }

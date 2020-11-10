@@ -346,9 +346,6 @@ void menu_configuration() {
 
   SUBMENU(MSG_ADVANCED_SETTINGS, menu_advanced_settings);
 
-  //
-  // Moved here by TH3D
-  //
   #if ENABLED(BABYSTEP_ZPROBE_OFFSET)
     SUBMENU(MSG_ZPROBE_ZOFFSET, lcd_babystep_zoffset);
   #elif HAS_BED_PROBE
@@ -417,7 +414,10 @@ void menu_configuration() {
 
   #if ENABLED(EEPROM_SETTINGS)
     ACTION_ITEM(MSG_STORE_EEPROM, ui.store_settings);
+    //if (!busy) ACTION_ITEM(MSG_LOAD_EEPROM, ui.load_settings); //Disabled by TH3D
   #endif
+  
+  //if (!busy) ACTION_ITEM(MSG_RESTORE_DEFAULTS, ui.reset_settings); //Disabled by TH3D
 
   #if ENABLED(EEPROM_SETTINGS)
     CONFIRM_ITEM(MSG_INIT_EEPROM,

@@ -204,7 +204,8 @@
 #define LINEAR_ADVANCE_K 0
 
 // BL TOUCH ----------------------------------------
-// If you want to use the BL-Touch uncomment the 2 lines below and set your servo pin.
+// If you want to use the BL-Touch with our EZOut board uncomment the 2 lines below and set your servo pin (27 for all machines except Ender 2, Ender 2 uses 29).
+// You also need to uncomment #define CUSTOM_PROBE above and then enter in your offsets above in the CUSTOM PROBE section.
 //#define BLTOUCH
 // Here is where you set your servo pin.
 //#define SERVO0_PIN 27

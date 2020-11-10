@@ -199,6 +199,7 @@
 
 // BL TOUCH ----------------------------------------
 // If you want to use the BL-Touch uncomment the 2 lines below and refer to the V42X BLTouch Picture in the Marlin Folder for wiring.
+// You also need to uncomment #define CUSTOM_PROBE above and then enter in your offsets above in the CUSTOM PROBE section.
 // Video guide from Teaching Tech: https://youtu.be/neS7lB7fCww?t=790
 //#define BLTOUCH
 // Here is where you set your servo pin. For V4.2.X Boards use PB0

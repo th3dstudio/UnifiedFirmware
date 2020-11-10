@@ -262,8 +262,8 @@
 #define LINEAR_ADVANCE_K 0
 
 // BL TOUCH ----------------------------------------
-// If you want to use the BL-Touch uncomment the 2 lines below and refer to the installation
-// guide for the EZBoard to connect the probe
+// If you want to use the BL-Touch uncomment the 2 lines below and refer to the installation guide for the EZBoard to connect the probe.
+// You also need to uncomment #define CUSTOM_PROBE above and then enter in your offsets above in the CUSTOM PROBE section.
 //#define BLTOUCH
 // Here is where you set your servo pin. For EZBoard use P2_04
 //#define SERVO0_PIN P2_04

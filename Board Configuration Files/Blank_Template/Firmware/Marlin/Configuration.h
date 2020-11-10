@@ -172,6 +172,7 @@
 
 // BL TOUCH ----------------------------------------
 // If you want to use the BL-Touch uncomment the 2 lines below and set your servo pin.
+// You also need to uncomment #define CUSTOM_PROBE above and then enter in your offsets above in the CUSTOM PROBE section.
 //#define BLTOUCH
 // Here is where you set your servo pin.
 //#define SERVO0_PIN 0

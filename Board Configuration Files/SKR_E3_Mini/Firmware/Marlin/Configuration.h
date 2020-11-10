@@ -197,8 +197,9 @@
 #define LINEAR_ADVANCE_K 0
 
 // BL TOUCH ----------------------------------------
-// If you want to use the BL-Touch uncomment the 2 lines below. Refer to BTT documentation for connecting the BL Touch
+// If you want to use the BL-Touch uncomment the 2 lines below. Refer to BTT documentation for connecting the BL Touch.
 // Use the Z endstop port for the black/white wires from the BL Touch.
+// You also need to uncomment #define CUSTOM_PROBE above and then enter in your offsets above in the CUSTOM PROBE section.
 //#define BLTOUCH
 // Here is where you set your servo pin. For SKR E3 Mini use PA1
 //#define SERVO0_PIN PA1

@@ -305,9 +305,9 @@
     #endif
   #endif
 
-  #define DEFAULT_Kp 22.2 // Sidewinder X1
-  #define DEFAULT_Ki 1.08
-  #define DEFAULT_Kd 114
+  #define DEFAULT_Kp 14.67 // Sidewinder X1
+  #define DEFAULT_Ki 1.38
+  #define DEFAULT_Kd 39.06
   
   #define TEMP_SENSOR_1 0 
   #define TEMP_SENSOR_2 0

@@ -155,9 +155,9 @@
   *
   *     +-- BACK ---+
   *     |           |
-  *   L |    (+) P  | R <-- probe (20,20)
+  *   L |    (+) P  | R <-- probe (10,10)
   *   E |           | I
-  *   F | (-) N (+) | G <-- nozzle (10,10)
+  *   F | (-) N (+) | G <-- nozzle (0,0)
   *   T |           | H
   *     |    (-)    | T
   *     |           |
@@ -166,6 +166,14 @@
   *
   * Specify a Probe position as { X, Y, Z }
   * Do NOT enter an number for the Z position in here. Store your offset in EEPROM.
+  *
+  * When is the offset POSITIVE?
+  * If the probe is right of the nozzle the offset on X is POSITIVE
+  * If the probe is behind of the nozzle the offset on Y is POSITIVE
+  * 
+  * When is the offset NEGATIVE?
+  * If the probe is left of the nozzle the offset on X is NEGATIVE
+  * If the probe is in front of the nozzle the offset on Y is NEGATIVE
   */
   #define NOZZLE_TO_PROBE_OFFSET { 10, 10, 0 }
 #endif

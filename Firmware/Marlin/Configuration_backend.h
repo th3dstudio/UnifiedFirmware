@@ -157,6 +157,10 @@
   #define NOZZLE_TO_PROBE_OFFSET { 52, 5, 0 }
   #define ABL_ENABLE
 #endif
+#if ENABLED(SIDEWINDER_X1_OEM)
+  #define NOZZLE_TO_PROBE_OFFSET { 33, -39, 0 }
+  #define ABL_ENABLE
+#endif
 
 #if ENABLED(ABL_ENABLE)
   #define SEGMENT_LEVELED_MOVES

@@ -173,6 +173,7 @@
   
   #define Z_MIN_PROBE_REPEATABILITY_TEST
   #define Z_AFTER_PROBING              5
+  #define Z_AFTER_HOMING               5
   #define Z_PROBE_LOW_POINT           -2
   #if DISABLED(BLTOUCH)
     #define FIX_MOUNTED_PROBE

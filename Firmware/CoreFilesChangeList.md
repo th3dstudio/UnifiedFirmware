@@ -14,6 +14,8 @@ This does not include machine configs or PlatformIO files.
 		- **gcode**
 			- **calibrate**
 				- `M48.cpp`
+			- **temp**
+				- `M303.cpp`
 		- **lcd**
 			- **dwin**
 				- **e3v2**

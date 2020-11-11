@@ -305,9 +305,9 @@
     #endif
   #endif
 
-  #define DEFAULT_Kp 15.42 // Sidewinder X1 225C Tune Stock Hotend, Layer Fan On 100%, No silicone sock
-  #define DEFAULT_Ki 1.38
-  #define DEFAULT_Kd 42.95
+  #define DEFAULT_Kp 22.2 // Sidewinder X1
+  #define DEFAULT_Ki 1.08
+  #define DEFAULT_Kd 114
   
   #define TEMP_SENSOR_1 0 
   #define TEMP_SENSOR_2 0

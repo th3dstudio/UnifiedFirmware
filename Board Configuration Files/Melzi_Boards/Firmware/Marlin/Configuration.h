@@ -160,11 +160,11 @@
   *
   * Specify a Probe position as { X, Y, Z }
   * Do NOT enter an number for the Z position in here. Store your offset in EEPROM.
-  * 
+  *
   * When is the offset POSITIVE?
   * If the probe is right of the nozzle the offset on X is POSITIVE
   * If the probe is behind of the nozzle the offset on Y is POSITIVE
-  * 
+  *
   * When is the offset NEGATIVE?
   * If the probe is left of the nozzle the offset on X is NEGATIVE
   * If the probe is in front of the nozzle the offset on Y is NEGATIVE
@@ -191,7 +191,7 @@
 //#define REVERSE_E_MOTOR_DIRECTION
 
 // FILAMENT SENSOR UNLOAD SETTINGS -----------------
-// If you have a filament sensor that is physically mounted to the machine you can enable MOUNTED_FILAMENT_SENSOR to set the unload length to 0 to prevent filament from backing up in the sensor by uncommenting MOUNTED_FILAMENT_SENSOR 
+// If you have a filament sensor that is physically mounted to the machine you can enable MOUNTED_FILAMENT_SENSOR to set the unload length to 0 to prevent filament from backing up in the sensor by uncommenting MOUNTED_FILAMENT_SENSOR
 //#define MOUNTED_FILAMENT_SENSOR
 
 // If you have a direct drive machine with a filament sensor uncomment DIRECT_DRIVE_PRINTER to decrease the unload length from 100mm to 20mm
@@ -284,7 +284,7 @@
 
 // MANUAL MESH LEVELING ----------------------------
 // If you want to use manual mesh leveling you can enable the below option. This is for generating a MANUAL mesh WITHOUT a probe. To change the mesh inset value change the EZABL_PROBE_EDGE setting above.
-// Mesh Bed Leveling Documentation: http://marlinfw.org/docs/gcode/G029-mbl.html 
+// Mesh Bed Leveling Documentation: http://marlinfw.org/docs/gcode/G029-mbl.html
 // NOTE: If you want to automate the leveling process our EZABL kits do this for you. Check them out here: http://EZABL.TH3DStudio.com
 //#define MANUAL_MESH_LEVELING
 
@@ -339,7 +339,7 @@
   #define SLIM_LCD_MENUS
 
   #define BAUDRATE 115200
-  
+
   #if ENABLED(ANET_LCD2004) || ENABLED(ANET_LCD12864)
     #if ENABLED(ANET_LCD2004)
       #define ZONESTAR_LCD
@@ -409,11 +409,11 @@
       #define INVERT_E0_DIR true
     #else
       #define INVERT_E0_DIR false
-    #endif 
+    #endif
     #define DIRECT_DRIVE_PRINTER
     #if ENABLED(HOME_ADJUST)
-      #define X_MIN_POS X_HOME_ADJUST_LOCATION
-      #define Y_MIN_POS Y_HOME_ADJUST_LOCATION
+      #define X_MIN_POS X_HOME_LOCATION
+      #define Y_MIN_POS Y_HOME_LOCATION
     #else
       #define X_MIN_POS 0
       #define Y_MIN_POS 0
@@ -438,8 +438,8 @@
     #endif
     #define DIRECT_DRIVE_PRINTER
     #if ENABLED(HOME_ADJUST)
-      #define X_MIN_POS X_HOME_ADJUST_LOCATION
-      #define Y_MIN_POS Y_HOME_ADJUST_LOCATION
+      #define X_MIN_POS X_HOME_LOCATION
+      #define Y_MIN_POS Y_HOME_LOCATION
     #else
       #define X_MIN_POS 0
       #define Y_MIN_POS 0
@@ -455,11 +455,11 @@
       #define INVERT_E0_DIR true
     #else
       #define INVERT_E0_DIR false
-    #endif 
+    #endif
     #define DIRECT_DRIVE_PRINTER
     #if ENABLED(HOME_ADJUST)
-      #define X_MIN_POS X_HOME_ADJUST_LOCATION
-      #define Y_MIN_POS Y_HOME_ADJUST_LOCATION
+      #define X_MIN_POS X_HOME_LOCATION
+      #define Y_MIN_POS Y_HOME_LOCATION
     #else
       #define X_MIN_POS -33
       #define Y_MIN_POS -10
@@ -475,11 +475,11 @@
       #define INVERT_E0_DIR true
     #else
       #define INVERT_E0_DIR false
-    #endif 
+    #endif
     #define DIRECT_DRIVE_PRINTER
     #if ENABLED(HOME_ADJUST)
-      #define X_MIN_POS X_HOME_ADJUST_LOCATION
-      #define Y_MIN_POS Y_HOME_ADJUST_LOCATION
+      #define X_MIN_POS X_HOME_LOCATION
+      #define Y_MIN_POS Y_HOME_LOCATION
     #else
       #define X_MIN_POS -21
       #define Y_MIN_POS -7
@@ -495,11 +495,11 @@
       #define INVERT_E0_DIR false
     #else
       #define INVERT_E0_DIR true
-    #endif 
+    #endif
     #define DIRECT_DRIVE_PRINTER
     #if ENABLED(HOME_ADJUST)
-      #define X_MIN_POS X_HOME_ADJUST_LOCATION
-      #define Y_MIN_POS Y_HOME_ADJUST_LOCATION
+      #define X_MIN_POS X_HOME_LOCATION
+      #define Y_MIN_POS Y_HOME_LOCATION
     #else
       #define X_MIN_POS -2
       #define Y_MIN_POS -8
@@ -515,11 +515,11 @@
       #define INVERT_E0_DIR false
     #else
       #define INVERT_E0_DIR true
-    #endif 
+    #endif
     #define DIRECT_DRIVE_PRINTER
     #if ENABLED(HOME_ADJUST)
-      #define X_MIN_POS X_HOME_ADJUST_LOCATION
-      #define Y_MIN_POS Y_HOME_ADJUST_LOCATION
+      #define X_MIN_POS X_HOME_LOCATION
+      #define Y_MIN_POS Y_HOME_LOCATION
     #else
       #define X_MIN_POS -2
       #define Y_MIN_POS -8
@@ -535,11 +535,11 @@
       #define INVERT_E0_DIR false
     #else
       #define INVERT_E0_DIR true
-    #endif 
+    #endif
     #define DIRECT_DRIVE_PRINTER
     #if ENABLED(HOME_ADJUST)
-      #define X_MIN_POS X_HOME_ADJUST_LOCATION
-      #define Y_MIN_POS Y_HOME_ADJUST_LOCATION
+      #define X_MIN_POS X_HOME_LOCATION
+      #define Y_MIN_POS Y_HOME_LOCATION
     #else
       #define X_MIN_POS -7
       #define Y_MIN_POS -23
@@ -552,11 +552,11 @@
   #define USE_XMIN_PLUG
   #define USE_YMIN_PLUG
   #define USE_ZMIN_PLUG
-  
+
   #define X_HOME_DIR -1
   #define Y_HOME_DIR -1
   #define Z_HOME_DIR -1
-  
+
   #if NONE(V6_HOTEND, TH3D_HOTEND_THERMISTOR, KNOWN_HOTEND_THERMISTOR)
     #define TEMP_SENSOR_0 1
   #else
@@ -570,15 +570,15 @@
       #define TEMP_SENSOR_0 1
     #endif
   #endif
-  
-  #define TEMP_SENSOR_1 0 
+
+  #define TEMP_SENSOR_1 0
   #define TEMP_SENSOR_2 0
   #define TEMP_SENSOR_3 0
   #define TEMP_SENSOR_4 0
   #define TEMP_SENSOR_5 0
   #define TEMP_SENSOR_6 0
   #define TEMP_SENSOR_7 0
-  
+
   #if NONE(TH3D_BED_THERMISTOR, KEENOVO_TEMPSENSOR, KNOWN_BED_THERMISTOR, AC_BED)
     #define TEMP_SENSOR_BED 1
   #else
@@ -611,14 +611,14 @@
   #define Y_DRIVER_TYPE A4988
   #define Z_DRIVER_TYPE A4988
   #define E0_DRIVER_TYPE A4988
-  
+
   #define ENDSTOP_INTERRUPTS_FEATURE
 
   #define X_ENABLE_ON 0
   #define Y_ENABLE_ON 0
   #define Z_ENABLE_ON 0
   #define E_ENABLE_ON 0
-  
+
   #define INVERT_E1_DIR false
   #define INVERT_E2_DIR false
   #define INVERT_E3_DIR false
@@ -655,7 +655,7 @@
     #endif
   #endif
 #endif
-// End Anet Printer Settings 
+// End Anet Printer Settings
 
 // AnyCubic Printer Settings
 #if ENABLED(AC_MEGA_ZERO) || ENABLED(AC_MEGA_ZERO_V2)
@@ -670,9 +670,9 @@
   #define SLIM_LCD_MENUS
 
   #define BAUDRATE 115200
-  
+
   #define CR10_STOCKDISPLAY
-  
+
   #if ENABLED(REVERSE_KNOB_DIRECTION)
     #define REVERSE_ENCODER_DIRECTION
   #endif
@@ -711,7 +711,7 @@
   #define X_BED_SIZE 220
   #define Y_BED_SIZE 220
   #define Z_MAX_POS 300
-  
+
   #if ENABLED(HOME_ADJUST)
     #define X_MIN_POS X_HOME_LOCATION
     #define Y_MIN_POS Y_HOME_LOCATION
@@ -723,11 +723,11 @@
   #define USE_XMIN_PLUG
   #define USE_YMIN_PLUG
   #define USE_ZMIN_PLUG
-  
+
   #define X_HOME_DIR -1
   #define Y_HOME_DIR -1
   #define Z_HOME_DIR -1
-  
+
   #if NONE(V6_HOTEND, TH3D_HOTEND_THERMISTOR, KNOWN_HOTEND_THERMISTOR)
     #define TEMP_SENSOR_0 1
   #else
@@ -741,15 +741,15 @@
       #define TEMP_SENSOR_0 1
     #endif
   #endif
-  
-  #define TEMP_SENSOR_1 0 
+
+  #define TEMP_SENSOR_1 0
   #define TEMP_SENSOR_2 0
   #define TEMP_SENSOR_3 0
   #define TEMP_SENSOR_4 0
   #define TEMP_SENSOR_5 0
   #define TEMP_SENSOR_6 0
   #define TEMP_SENSOR_7 0
-  
+
   #if ENABLED(AC_MEGA_ZERO_V2)
     #if NONE(TH3D_BED_THERMISTOR, KEENOVO_TEMPSENSOR, KNOWN_BED_THERMISTOR, AC_BED)
       #define TEMP_SENSOR_BED 1
@@ -786,7 +786,7 @@
   #define Y_DRIVER_TYPE A4988
   #define Z_DRIVER_TYPE A4988
   #define E0_DRIVER_TYPE A4988
-  
+
   #define ENDSTOP_INTERRUPTS_FEATURE
 
   #define X_ENABLE_ON 0
@@ -797,13 +797,13 @@
   #define INVERT_X_DIR true
   #define INVERT_Y_DIR true
   #define INVERT_Z_DIR false
-  
+
   #if ENABLED(REVERSE_E_MOTOR_DIRECTION)
     #define INVERT_E0_DIR true
   #else
     #define INVERT_E0_DIR false
   #endif
-  
+
   #define INVERT_E1_DIR false
   #define INVERT_E2_DIR false
   #define INVERT_E3_DIR false
@@ -840,7 +840,7 @@
     #endif
   #endif
 #endif
-// End Anycubic Printer Settings 
+// End Anycubic Printer Settings
 
 // Creality Printer Settings
 #if ENABLED(CR10) || ENABLED(CR10_MINI) || ENABLED(CR10_S4) || ENABLED(CR10_S5) || ENABLED(ENDER2)  || ENABLED(ENDER3) || ENABLED(ENDER5)
@@ -854,14 +854,14 @@
   #else
     #define CREALITY_Z_STEPS 400
   #endif
-  
+
   #define SERIAL_PORT 0
 
   #define SPACE_SAVER
   #define SLIM_LCD_MENUS
 
   #define BAUDRATE 115200
-  
+
   #if ENABLED(ENDER2)
     #define MINIPANEL
     #if ENABLED(REVERSE_KNOB_DIRECTION)
@@ -939,7 +939,7 @@
     #define Y_BED_SIZE 150
     #define Z_MAX_POS 220
   #endif
-  
+
   #if ENABLED(ENDER3)
     #if ENABLED(ENDER_XTENDER_400)
       #define X_BED_SIZE 400
@@ -963,13 +963,13 @@
       #define Z_MAX_POS 250
     #endif
   #endif
-  
+
   #if ENABLED(ENDER5)
     #define X_BED_SIZE 220
     #define Y_BED_SIZE 220
     #define Z_MAX_POS 300
   #endif
-  
+
   #if ENABLED(HOME_ADJUST)
     #define X_MIN_POS X_HOME_LOCATION
     #define Y_MIN_POS Y_HOME_LOCATION
@@ -997,7 +997,7 @@
     #define Y_HOME_DIR -1
     #define Z_HOME_DIR -1
   #endif
-  
+
   #if NONE(V6_HOTEND, TH3D_HOTEND_THERMISTOR, KNOWN_HOTEND_THERMISTOR)
     #define TEMP_SENSOR_0 1
   #else
@@ -1011,15 +1011,15 @@
       #define TEMP_SENSOR_0 1
     #endif
   #endif
-  
-  #define TEMP_SENSOR_1 0 
+
+  #define TEMP_SENSOR_1 0
   #define TEMP_SENSOR_2 0
   #define TEMP_SENSOR_3 0
   #define TEMP_SENSOR_4 0
   #define TEMP_SENSOR_5 0
   #define TEMP_SENSOR_6 0
   #define TEMP_SENSOR_7 0
-  
+
   #if NONE(TH3D_BED_THERMISTOR, KEENOVO_TEMPSENSOR, KNOWN_BED_THERMISTOR, AC_BED)
     #define TEMP_SENSOR_BED 1
   #else
@@ -1033,7 +1033,7 @@
       #define TEMP_SENSOR_BED 11
     #endif
   #endif
-  
+
   #define TEMP_SENSOR_PROBE 0
   #define TEMP_SENSOR_CHAMBER 0
 
@@ -1052,7 +1052,7 @@
   #define Y_DRIVER_TYPE A4988
   #define Z_DRIVER_TYPE A4988
   #define E0_DRIVER_TYPE A4988
-  
+
   #define ENDSTOP_INTERRUPTS_FEATURE
 
   #define X_ENABLE_ON 0
@@ -1062,19 +1062,19 @@
 
   #define INVERT_X_DIR true
   #define INVERT_Y_DIR true
-  
+
   #if ENABLED(ENDER5)
     #define INVERT_Z_DIR true
   #else
     #define INVERT_Z_DIR false
-  #endif  
-  
+  #endif
+
   #if ENABLED(REVERSE_E_MOTOR_DIRECTION)
     #define INVERT_E0_DIR false
   #else
     #define INVERT_E0_DIR true
   #endif
-  
+
   #define INVERT_E1_DIR false
   #define INVERT_E2_DIR false
   #define INVERT_E3_DIR false
@@ -1116,5 +1116,5 @@
 /*
  * All other settings are stored in the Configuration_backend.h file. Do not change unless you know what you are doing.
  */
- 
+
 #include "Configuration_backend.h"

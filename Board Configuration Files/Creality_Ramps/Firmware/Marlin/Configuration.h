@@ -78,6 +78,15 @@
 // CR-10S Pro - If you are using the stock Creality ABL probe on the CR-10S Pro uncomment the below line
 //#define CR10S_PRO_STOCK_ABL
 
+// EZNeo Settings -----------------------------------------------------------
+// If you are using an EZNeo strip on your printer, uncomment the line for what strip you are using.
+// Specify your IO pin below as well as this board does not have a dedicated NEOPIXEL header on it.
+//#define EZNEO_220
+
+// EZNeo Manual IO Pin Setting ----------------------------------------------
+// If you have the EZNeo wired with your own 5V power provided, specify the pin used below.
+//#define NEOPIXEL_PIN 12
+
 //===========================================================================
 // Ender 3 - Xtender Kit Options
 //#define ENDER_XTENDER_300
@@ -99,9 +108,10 @@
 
 //===========================================================================
 /**
- * Dual Extruder Board Options - The below options are for use with the TH3D CR-10S Board with dual extruder support.
+ * Dual Extruder Board Options - The below options are for use with the TH3D CR-10S Board with dual extruder support and the CRX.
  * Make sure to uncomment your printer model and other options above first.
- * Supports the following models: CR-10(all sizes), CR-10S(all sizes), CR-20, Ender 3, Ender 5, Ender 5 Plus
+ * Supports the following models: CR-10(all sizes), CR-10S(all sizes), CR-20, CRX, Ender 3, Ender 5, Ender 5 Plus
+ * CRX also needs to have the LCD conversion kit from TH3D installed: https://www.th3dstudio.com/product/cr-x-12864-lcd-upgrade-kit/
  * Ender 5 Plus also needs to have the LCD conversion kit from TH3D installed: https://www.th3dstudio.com/product/ender-5-plus-12864-lcd-upgrade-kit/
  */
 
@@ -125,15 +135,6 @@
 // E0 is for your 1st hotend/extruder, E1 is for your 2nd hotend/extruder
 //#define REVERSE_E0_MOTOR_DIRECTION
 //#define REVERSE_E1_MOTOR_DIRECTION
-
-// EZNeo Settings -----------------------------------------------------------
-// If you are using an EZNeo strip on your printer, uncomment the line for what strip you are using.
-// Specify your IO pin below as well as this board does not have a dedicated NEOPIXEL header on it.
-//#define EZNEO_220
-
-// EZNeo Manual IO Pin Setting ----------------------------------------------
-// If you have the EZNeo wired with your own 5V power provided, specify the pin used below.
-//#define NEOPIXEL_PIN 12
 
 //===========================================================================
 // *************************  END PRINTER SECTION   *************************

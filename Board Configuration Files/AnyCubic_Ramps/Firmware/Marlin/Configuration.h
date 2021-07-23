@@ -254,8 +254,9 @@
     #define MOTHERBOARD BOARD_TRIGORILLA_14
   #endif
 
-  #define OUTAGECON_PIN   58
-  #define X_MAX_PIN       43
+  //#define OUTAGECON_PIN   58
+  #define Y_STOP_PIN                          42
+  #define Z2_MIN_PIN                          43
 
   #if ENABLED(CUSTOM_ESTEPS)
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 100, 400, CUSTOM_ESTEPS_VALUE }
@@ -296,7 +297,6 @@
   #define USE_XMIN_PLUG
   #define USE_YMIN_PLUG
   #define USE_ZMIN_PLUG
-  #define USE_XMAX_PLUG
 
   #define X_HOME_DIR -1
   #define Y_HOME_DIR -1
@@ -346,9 +346,15 @@
   #define X_MIN_ENDSTOP_INVERTING true
   #define Y_MIN_ENDSTOP_INVERTING true
   #define Z_MIN_ENDSTOP_INVERTING false
-  #define X_MAX_ENDSTOP_INVERTING true
-  #define Y_MAX_ENDSTOP_INVERTING true
-  #define Z_MAX_ENDSTOP_INVERTING true
+  #define I_MIN_ENDSTOP_INVERTING false
+  #define J_MIN_ENDSTOP_INVERTING false
+  #define K_MIN_ENDSTOP_INVERTING false
+  #define X_MAX_ENDSTOP_INVERTING false
+  #define Y_MAX_ENDSTOP_INVERTING false
+  #define Z_MAX_ENDSTOP_INVERTING false
+  #define I_MAX_ENDSTOP_INVERTING false
+  #define J_MAX_ENDSTOP_INVERTING false
+  #define K_MAX_ENDSTOP_INVERTING false
   #define Z_MIN_PROBE_ENDSTOP_INVERTING true
   #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
 
@@ -389,7 +395,7 @@
     #define FIL_RUNOUT_STATE     HIGH       // Pin state indicating that filament is NOT present.
     #define FIL_RUNOUT_PULLUP               // Use internal pullup for filament runout pins.
     //#define FIL_RUNOUT_PULLDOWN           // Use internal pulldown for filament runout pins.
-    #define FIL_RUNOUT_PIN 2                // Sidewinder X1 stock sensor on X+
+    #define FIL_RUNOUT_PIN       2          // Chiron sensor on Pin 2 (X+)
 
     // Set one or more commands to execute on filament runout.
     // (After 'M412 H' Marlin will ask the host to handle the process.)

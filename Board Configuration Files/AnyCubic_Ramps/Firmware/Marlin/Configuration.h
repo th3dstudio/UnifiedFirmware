@@ -242,8 +242,6 @@
   #define SERIAL_PORT 0
   #define SPACE_SAVER_2560
 
-  #define STOCK_MKS_PRINTER
-
   #define BAUDRATE 250000
   
   #define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
@@ -253,16 +251,19 @@
   #endif
 
   #ifndef MOTHERBOARD
-    #define MOTHERBOARD BOARD_CHANGEME
+    #define MOTHERBOARD BOARD_TRIGORILLA_14
   #endif
+
+  #define OUTAGECON_PIN   58
+  #define X_MAX_PIN       43
 
   #if ENABLED(CUSTOM_ESTEPS)
-    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS_VALUE }
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 100, 400, CUSTOM_ESTEPS_VALUE }
   #else
-    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 463 }
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 100, 400, 405 }
   #endif
 
-  #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 50 }
+  #define DEFAULT_MAX_FEEDRATE          { 200, 200, 15, 50 }
   #define DEFAULT_MAX_ACCELERATION      { 2000, 2000, 1000, 5000 }
 
   #define DEFAULT_ACCELERATION          1000
@@ -282,7 +283,7 @@
 
   #define X_BED_SIZE 400
   #define Y_BED_SIZE 400
-  #define Z_MAX_POS 500
+  #define Z_MAX_POS 450
   
   #if ENABLED(HOME_ADJUST)
     #define X_MIN_POS X_HOME_LOCATION
@@ -295,6 +296,7 @@
   #define USE_XMIN_PLUG
   #define USE_YMIN_PLUG
   #define USE_ZMIN_PLUG
+  #define USE_XMAX_PLUG
 
   #define X_HOME_DIR -1
   #define Y_HOME_DIR -1
@@ -343,7 +345,7 @@
 
   #define X_MIN_ENDSTOP_INVERTING true
   #define Y_MIN_ENDSTOP_INVERTING true
-  #define Z_MIN_ENDSTOP_INVERTING true
+  #define Z_MIN_ENDSTOP_INVERTING false
   #define X_MAX_ENDSTOP_INVERTING true
   #define Y_MAX_ENDSTOP_INVERTING true
   #define Z_MAX_ENDSTOP_INVERTING true
@@ -353,16 +355,17 @@
   #define X_DRIVER_TYPE A4988
   #define Y_DRIVER_TYPE A4988
   #define Z_DRIVER_TYPE A4988
+  #define Z2_DRIVER_TYPE A4988
   #define E0_DRIVER_TYPE A4988
 
-  #define ENDSTOP_INTERRUPTS_FEATURE
+  //#define ENDSTOP_INTERRUPTS_FEATURE
 
   #define X_ENABLE_ON 0
   #define Y_ENABLE_ON 0
   #define Z_ENABLE_ON 0
   #define E_ENABLE_ON 0
 
-  #define INVERT_X_DIR false
+  #define INVERT_X_DIR true
   #define INVERT_Y_DIR true
   #define INVERT_Z_DIR true
   #define INVERT_E0_DIR false
@@ -383,7 +386,7 @@
   #if ENABLED(FILAMENT_RUNOUT_SENSOR)
     #define FIL_RUNOUT_ENABLED_DEFAULT true // Enable the sensor on startup. Override with M412 followed by M500.
     #define NUM_RUNOUT_SENSORS   1          // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
-    #define FIL_RUNOUT_STATE     LOW       // Pin state indicating that filament is NOT present.
+    #define FIL_RUNOUT_STATE     HIGH       // Pin state indicating that filament is NOT present.
     #define FIL_RUNOUT_PULLUP               // Use internal pullup for filament runout pins.
     //#define FIL_RUNOUT_PULLDOWN           // Use internal pulldown for filament runout pins.
     #define FIL_RUNOUT_PIN 2                // Sidewinder X1 stock sensor on X+

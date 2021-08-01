@@ -20,8 +20,12 @@
 //#define CHIRON
 
 // EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable it in the firmware.
+// NOTE - Connect the EZABL Z Endstop connection to the Z+ on the Chiron board, do NOT replace the stock endstops.
 //#define CHIRON_OEM
 //#define CUSTOM_PROBE
+
+// Z Homing Option - Use EZABL to home Z instead of endstops
+//#define USE_EZABL_HOMEZ
 
 //===========================================================================
 // *************************  END PRINTER SECTION   *************************
@@ -303,7 +307,7 @@
   #define Z_HOME_DIR -1
   
   #if NONE(V6_HOTEND, TH3D_HOTEND_THERMISTOR, KNOWN_HOTEND_THERMISTOR)
-    #define TEMP_SENSOR_0 1
+    #define TEMP_SENSOR_0 5
   #else
     #if ENABLED(EZBOARD_PT100)
       #define TEMP_SENSOR_0 20
@@ -356,6 +360,9 @@
   #define J_MAX_ENDSTOP_INVERTING false
   #define K_MAX_ENDSTOP_INVERTING false
   #define Z_MIN_PROBE_ENDSTOP_INVERTING false
+  #if ENABLED(USE_EZABL_HOMEZ)
+    #define USE_PROBE_FOR_Z_HOMING
+  #endif
   //#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
   #if ENABLED(CHIRON_OEM) || ENABLED(CUSTOM_PROBE)
     #define Z_MIN_PROBE_PIN 19 // Z+ Header on Chiron Board

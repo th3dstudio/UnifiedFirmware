@@ -362,16 +362,19 @@
 
   #if ENABLED(ENDER5_PLUS)
     #if DISABLED(ENDER5_PLUS_NOABL) && DISABLED(ENDER5_PLUS_EZABL)
-      #define BLTOUCH
-      #define SERVO0_PIN 11
+      #if DISABLED(BLTOUCH)
+        #define BLTOUCH
+      #endif
+      
+      #ifndef SERVO0_PIN
+        #define SERVO0_PIN 11
+      #endif
+      
       #if DISABLED(CUSTOM_PROBE)
         #define CUSTOM_PROBE
         #define NOZZLE_TO_PROBE_OFFSET { -44, -9, 0 }
       #endif
     #endif  
-    #if DISABLED(ENDER5_PLUS_NOABL)
-      #define ABL_ENABLE
-    #endif
   #endif
 
   #if ENABLED(ENDER5_NEW_LEADSCREW) || ENABLED(ENDER5_PLUS)

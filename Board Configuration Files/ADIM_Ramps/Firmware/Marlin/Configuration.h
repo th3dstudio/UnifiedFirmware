@@ -357,7 +357,7 @@
   #define Z_DRIVER_TYPE A4988
   #define E0_DRIVER_TYPE A4988
     
-  //#define ENDSTOP_INTERRUPTS_FEATURE - doesnt work on this board
+  //#define ENDSTOP_INTERRUPTS_FEATURE
 
   #define X_ENABLE_ON 0
   #define Y_ENABLE_ON 0

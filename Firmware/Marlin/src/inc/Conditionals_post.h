@@ -142,9 +142,9 @@
   #define _K_HALF_KMAX ((K_BED_SIZE) / 2)
 #endif
 
-#define X_CENTER ((X_BED_SIZE) / 2)
+#define X_CENTER TERN(BED_CENTER_AT_0_0, 0, _X_HALF_BED)
 #if HAS_Y_AXIS
-  #define Y_CENTER ((Y_BED_SIZE) / 2)
+  #define Y_CENTER TERN(BED_CENTER_AT_0_0, 0, _Y_HALF_BED)
   #define XY_CENTER { X_CENTER, Y_CENTER }
 #endif
 #if LINEAR_AXES >= 4

@@ -16,8 +16,6 @@ This does not include machine configs or PlatformIO files.
 		- **gcode**
 			- **calibrate**
 				- `M48.cpp`
-		- **inc**
-			-  `Conditionals_post.h`
 		- **lcd**
 			- **dwin**
 				- **e3v2**

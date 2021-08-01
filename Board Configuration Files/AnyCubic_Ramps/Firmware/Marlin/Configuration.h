@@ -290,7 +290,7 @@
     #define X_MIN_POS X_HOME_LOCATION
     #define Y_MIN_POS Y_HOME_LOCATION
   #else
-    #define X_MIN_POS 0
+    #define X_MIN_POS -10
     #define Y_MIN_POS 0
   #endif
 
@@ -355,8 +355,12 @@
   #define I_MAX_ENDSTOP_INVERTING false
   #define J_MAX_ENDSTOP_INVERTING false
   #define K_MAX_ENDSTOP_INVERTING false
-  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
-  #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+  #define Z_MIN_PROBE_ENDSTOP_INVERTING false
+  //#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+  #if ENABLED(CHIRON_OEM) || ENABLED(CUSTOM_PROBE)
+    #define Z_MIN_PROBE_PIN 19 // Z+ Header on Chiron Board
+    #define Z_MAX_PIN -1
+  #endif
 
   #define X_DRIVER_TYPE A4988
   #define Y_DRIVER_TYPE A4988

@@ -15,6 +15,10 @@
 #if ENABLED(CUSTOM_PROBE)
   #define ABL_ENABLE
 #endif
+#if ENABLED(CHIRON_OEM)
+  #define ABL_ENABLE
+  #define NOZZLE_TO_PROBE_OFFSET { 40, 0, 0 }
+#endif
 #if ENABLED(ENDER6_OEM)
   #define ABL_ENABLE
   #define NOZZLE_TO_PROBE_OFFSET { -40, -14, 0 }
@@ -322,8 +326,10 @@
   #else                // EZABL uses true
     #undef Z_MIN_PROBE_ENDSTOP_INVERTING
     #define Z_MIN_PROBE_ENDSTOP_INVERTING true
+    #if DISABLED(CHIRON)
     #undef Z_MIN_ENDSTOP_INVERTING
     #define Z_MIN_ENDSTOP_INVERTING true
+    #endif
   #endif
 
 #endif

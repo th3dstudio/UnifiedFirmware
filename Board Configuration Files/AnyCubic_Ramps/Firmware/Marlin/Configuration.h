@@ -375,8 +375,6 @@
   #define Z2_DRIVER_TYPE A4988
   #define E0_DRIVER_TYPE A4988
 
-  //#define ENDSTOP_INTERRUPTS_FEATURE
-
   #define X_ENABLE_ON 0
   #define Y_ENABLE_ON 0
   #define Z_ENABLE_ON 0

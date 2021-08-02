@@ -15,38 +15,17 @@
 // UNCOMMENT MEANS REMOVING THE // IN FRONT OF A #define XXXXXX LINE.
 
 //===========================================================================
-// ****************   ARTILLERY PRINTERS 2560 CPU BOARD   *******************
+// ****************   ANYCUBIC PRINTERS 2560 CPU BOARD   ********************
 //===========================================================================
-//#define ARTILLERY_AL4
-//#define SIDEWINDER_X1
+//#define CHIRON
 
 // EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable it in the firmware.
-//#define SIDEWINDER_X1_OEM
-// The AL4 Printer Carriage is 100% compatible with the Creality printer mounts.
-//#define CR10_OEM
-//#define CR10_VOLCANO
-//#define CR10_V6HEAVYDUTY
-//#define TM3DAERO
-//#define TM3DAERO_EXTENDED
-//#define PETSFANG  //This is the RIGHT mounted version - if using the left mount please use the CUSTOM_PROBE option.
-//#define EZ300_OEM_MOUNT //Enabling this will set other options for the EZ300 Prototype Printer
+// NOTE - Connect the EZABL Z Endstop connection to the Z+ on the Chiron board, do NOT replace the stock endstops.
+//#define CHIRON_OEM
 //#define CUSTOM_PROBE
 
-// Sidewinder X1 Notes
-// NOTE: The Sidewinder X1 is ONLY compatible with our firmware once you have installed the LCD conversion kit
-// the stock LCD is not supported due to closed source firmware limitations on it.
-// You can get the LCD conversion kit here: https://www.th3dstudio.com/product/evonvo-artillery-sidewinder-x1-lcd-conversion-kit/
-
-// Artillery AL4 - TMC2208 Driver Settings
-// If you swapped the X, Y, or Z drivers with the TMC2208s you may need to reverse your axis. Uncomment the line for each axis that needs reversing.
-// Enabling these options will also set the driver delays/modes to the TMC2208_STANDALONE mode for whatever axis you uncomment it for.
-//#define ARTILLERY_AL4_X_AXIS_TMC2208
-//#define ARTILLERY_AL4_Y_AXIS_TMC2208
-//#define ARTILLERY_AL4_Z_AXIS_TMC2208
-
-// Filament Sensor - EZOut Kit
-// If you are using our EZOut filament sensor kit on your machine uncomment the below line.
-//#define EZOUT_ENABLE
+// Z Homing Option - Use EZABL to home Z instead of endstops
+//#define USE_EZABL_HOMEZ
 
 //===========================================================================
 // *************************  END PRINTER SECTION   *************************
@@ -262,90 +241,34 @@
  * Machine Configuration Settings
  */
 
-// Artillery Printers Settings
-#if ENABLED(SIDEWINDER_X1) || ENABLED(ARTILLERY_AL4)
-  #if ENABLED(EZ300_OEM_MOUNT) && ENABLED(ARTILLERY_AL4)
-    #define ARTILLERY_AL4_X_AXIS_TMC2208
-    #define ARTILLERY_AL4_Y_AXIS_TMC2208
-    #define EZOUT_ENABLE
-    #define CUSTOM_ESTEPS
-    #define CUSTOM_ESTEPS_VALUE 410
-    #define REVERSE_E_MOTOR_DIRECTION
-    #define CUSTOM_PRINTER_NAME
-    #define USER_PRINTER_NAME "TH3D EZ300"
-  #endif
-
+// AnyCubic Printers Settings
+#if ENABLED(CHIRON)
   #define SERIAL_PORT 0
   #define SPACE_SAVER_2560
 
-  #define STOCK_MKS_PRINTER
-  #define DIRECT_DRIVE_PRINTER
-
-  #if ENABLED(SIDEWINDER_X1)
-    #define RGB_LIGHTS
-    #define RGB_LED
-    #define RGB_LED_R_PIN 5
-    #define RGB_LED_G_PIN 4
-    #define RGB_LED_B_PIN 6
-    #define PRINTER_EVENT_LEDS
-  #endif
-
-  #if ENABLED(EZ300_OEM_MOUNT) && ENABLED(ARTILLERY_AL4)
-    #define RGB_LIGHTS
-    #define NEOPIXEL_LED
-    #define NEOPIXEL_TYPE   NEO_GRB
-    #define NEOPIXEL_PIN    19
-    #define NEOPIXEL_PIXELS 3
-    #define NEOPIXEL_IS_SEQUENTIAL
-    #define NEOPIXEL_BRIGHTNESS 255
-    #define PRINTER_EVENT_LEDS
-  #endif
-
   #define BAUDRATE 250000
   
-  #if ENABLED(SIDEWINDER_X1)
-    #define MKS_MINI_12864
+  #define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
     
-    #define DEFAULT_LCD_CONTRAST 200
-    
-    #if ENABLED(REVERSE_KNOB_DIRECTION)
-      #define REVERSE_ENCODER_DIRECTION
-    #endif
-  #endif
-
-  #if ENABLED(ARTILLERY_AL4)
-    #define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
-    
-    #define ST7920_DELAY_1 DELAY_NS(200)
-    #define ST7920_DELAY_2 DELAY_NS(200)
-    #define ST7920_DELAY_3 DELAY_NS(200)
-    
-    #if DISABLED(REVERSE_KNOB_DIRECTION)
-      #define REVERSE_ENCODER_DIRECTION
-    #endif
+  #if DISABLED(REVERSE_KNOB_DIRECTION)
+    #define REVERSE_ENCODER_DIRECTION
   #endif
 
   #ifndef MOTHERBOARD
-    #define MOTHERBOARD BOARD_MKS_GEN_L
+    #define MOTHERBOARD BOARD_TRIGORILLA_14
   #endif
 
-  #if ENABLED(SIDEWINDER_X1)
-    #if ENABLED(CUSTOM_ESTEPS)
-      #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS_VALUE }
-    #else
-      #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 463 }
-    #endif
+  //#define OUTAGECON_PIN   58
+  #define Y_STOP_PIN                          42
+  #define Z2_MIN_PIN                          43
+
+  #if ENABLED(CUSTOM_ESTEPS)
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 100, 400, CUSTOM_ESTEPS_VALUE }
+  #else
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 100, 400, 405 }
   #endif
 
-  #if ENABLED(ARTILLERY_AL4)
-    #if ENABLED(CUSTOM_ESTEPS)
-      #define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 400, CUSTOM_ESTEPS_VALUE }
-    #else
-      #define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 400, 95 }
-    #endif
-  #endif
-
-  #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 50 }
+  #define DEFAULT_MAX_FEEDRATE          { 200, 200, 15, 50 }
   #define DEFAULT_MAX_ACCELERATION      { 2000, 2000, 1000, 5000 }
 
   #define DEFAULT_ACCELERATION          1000
@@ -363,19 +286,15 @@
 
   #define EXTRUDERS 1
 
-  #define X_BED_SIZE 300
-  #define Y_BED_SIZE 300
-  #if ENABLED(ARTILLERY_AL4)
-    #define Z_MAX_POS 300
-  #else
-    #define Z_MAX_POS 400
-  #endif
+  #define X_BED_SIZE 400
+  #define Y_BED_SIZE 400
+  #define Z_MAX_POS 450
   
   #if ENABLED(HOME_ADJUST)
     #define X_MIN_POS X_HOME_LOCATION
     #define Y_MIN_POS Y_HOME_LOCATION
   #else
-    #define X_MIN_POS 0
+    #define X_MIN_POS -10
     #define Y_MIN_POS 0
   #endif
 
@@ -388,7 +307,7 @@
   #define Z_HOME_DIR -1
   
   #if NONE(V6_HOTEND, TH3D_HOTEND_THERMISTOR, KNOWN_HOTEND_THERMISTOR)
-    #define TEMP_SENSOR_0 1
+    #define TEMP_SENSOR_0 5
   #else
     #if ENABLED(EZBOARD_PT100)
       #define TEMP_SENSOR_0 20
@@ -430,69 +349,41 @@
 
   #define X_MIN_ENDSTOP_INVERTING true
   #define Y_MIN_ENDSTOP_INVERTING true
-  #define Z_MIN_ENDSTOP_INVERTING true
-  #define X_MAX_ENDSTOP_INVERTING true
-  #define Y_MAX_ENDSTOP_INVERTING true
-  #define Z_MAX_ENDSTOP_INVERTING true
-  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
-  #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
-
-  #if ENABLED(SIDEWINDER_X1)
-    #define X_DRIVER_TYPE TMC2130_STANDALONE
-    #define Y_DRIVER_TYPE TMC2130_STANDALONE
-    #define Z_DRIVER_TYPE TMC2130_STANDALONE
-    #define E0_DRIVER_TYPE TMC2130_STANDALONE
+  #define Z_MIN_ENDSTOP_INVERTING false
+  #define I_MIN_ENDSTOP_INVERTING false
+  #define J_MIN_ENDSTOP_INVERTING false
+  #define K_MIN_ENDSTOP_INVERTING false
+  #define X_MAX_ENDSTOP_INVERTING false
+  #define Y_MAX_ENDSTOP_INVERTING false
+  #define Z_MAX_ENDSTOP_INVERTING false
+  #define I_MAX_ENDSTOP_INVERTING false
+  #define J_MAX_ENDSTOP_INVERTING false
+  #define K_MAX_ENDSTOP_INVERTING false
+  #define Z_MIN_PROBE_ENDSTOP_INVERTING false
+  #if ENABLED(USE_EZABL_HOMEZ)
+    #define USE_PROBE_FOR_Z_HOMING
+  #endif
+  //#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+  #if ENABLED(CHIRON_OEM) || ENABLED(CUSTOM_PROBE)
+    #define Z_MIN_PROBE_PIN 19 // Z+ Header on Chiron Board
+    #define Z_MAX_PIN -1
   #endif
 
-  #if ENABLED(ARTILLERY_AL4)
-    #if ENABLED(ARTILLERY_AL4_X_AXIS_TMC2208)
-      #define X_DRIVER_TYPE  TMC2208_STANDALONE
-    #else
-      #define X_DRIVER_TYPE  A4988
-    #endif
-    
-    #if ENABLED(ARTILLERY_AL4_Y_AXIS_TMC2208)
-      #define Y_DRIVER_TYPE  TMC2208_STANDALONE
-    #else
-      #define Y_DRIVER_TYPE  A4988
-    #endif
-    
-    #if ENABLED(ARTILLERY_AL4_Z_AXIS_TMC2208)
-      #define Z_DRIVER_TYPE  TMC2208_STANDALONE
-    #else
-      #define Z_DRIVER_TYPE  A4988
-    #endif
-    #define E0_DRIVER_TYPE A4988
-  #endif
+  #define X_DRIVER_TYPE A4988
+  #define Y_DRIVER_TYPE A4988
+  #define Z_DRIVER_TYPE A4988
+  #define Z2_DRIVER_TYPE A4988
+  #define E0_DRIVER_TYPE A4988
 
   #define X_ENABLE_ON 0
   #define Y_ENABLE_ON 0
   #define Z_ENABLE_ON 0
   #define E_ENABLE_ON 0
 
-  #if ENABLED(ARTILLERY_AL4_X_AXIS_TMC2208)
-    #define INVERT_X_DIR true
-  #else
-    #define INVERT_X_DIR false
-  #endif
-  
-  #if ENABLED(ARTILLERY_AL4_Y_AXIS_TMC2208)
-    #define INVERT_Y_DIR true
-  #else
-    #define INVERT_Y_DIR false
-  #endif
-  
-  #if ENABLED(ARTILLERY_AL4_Z_AXIS_TMC2208)
-    #define INVERT_Z_DIR false
-  #else
-    #define INVERT_Z_DIR true
-  #endif
-  
-  #if ENABLED(REVERSE_E_MOTOR_DIRECTION)
-    #define INVERT_E0_DIR true
-  #else
-    #define INVERT_E0_DIR false
-  #endif
+  #define INVERT_X_DIR true
+  #define INVERT_Y_DIR true
+  #define INVERT_Z_DIR true
+  #define INVERT_E0_DIR false
   
   #define INVERT_E1_DIR false
   #define INVERT_E2_DIR false
@@ -505,17 +396,15 @@
   #define ENCODER_PULSES_PER_STEP 4
   #define ENCODER_STEPS_PER_MENU_ITEM 1
 
-  #if ENABLED(SIDEWINDER_X1) || ENABLED(EZOUT_ENABLE)
-    #define FILAMENT_RUNOUT_SENSOR
-  #endif
+  #define FILAMENT_RUNOUT_SENSOR //sensor?
 
   #if ENABLED(FILAMENT_RUNOUT_SENSOR)
     #define FIL_RUNOUT_ENABLED_DEFAULT true // Enable the sensor on startup. Override with M412 followed by M500.
     #define NUM_RUNOUT_SENSORS   1          // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
-    #define FIL_RUNOUT_STATE     LOW       // Pin state indicating that filament is NOT present.
+    #define FIL_RUNOUT_STATE     HIGH       // Pin state indicating that filament is NOT present.
     #define FIL_RUNOUT_PULLUP               // Use internal pullup for filament runout pins.
     //#define FIL_RUNOUT_PULLDOWN           // Use internal pulldown for filament runout pins.
-    #define FIL_RUNOUT_PIN 2                // Sidewinder X1 stock sensor on X+
+    #define FIL_RUNOUT_PIN       2          // Chiron sensor on Pin 2 (X+)
 
     // Set one or more commands to execute on filament runout.
     // (After 'M412 H' Marlin will ask the host to handle the process.)
@@ -535,7 +424,7 @@
   #endif
 
 #endif
-// End Artillery Printer Settings 
+// End AnyCubic Printer Settings 
 
 /*
  * All other settings are stored in the Configuration_backend.h file. Do not change unless you know what you are doing.

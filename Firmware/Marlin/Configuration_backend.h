@@ -6,7 +6,7 @@
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-#define UNIFIED_VERSION "TH3D UFW 2.31"
+#define UNIFIED_VERSION "TH3D UFW 2.32"
 
 /**
  * ABL Probe Settings
@@ -14,6 +14,10 @@
 
 #if ENABLED(CUSTOM_PROBE)
   #define ABL_ENABLE
+#endif
+#if ENABLED(CHIRON_OEM)
+  #define ABL_ENABLE
+  #define NOZZLE_TO_PROBE_OFFSET { 40, 0, 0 }
 #endif
 #if ENABLED(ENDER6_OEM)
   #define ABL_ENABLE
@@ -221,48 +225,10 @@
 #endif
 
 #if ENABLED(ABL_ENABLE)
-  // **************NEW FEATURES FROM 2.0.8.1 UPDATE - NOT SURE IF USING YET OR NOT*******
-  
-  // Require minimum nozzle and/or bed temperature for probing
-  //#define PREHEAT_BEFORE_PROBING
-  #if ENABLED(PREHEAT_BEFORE_PROBING)
-    #define PROBING_NOZZLE_TEMP 120   // (°C) Only applies to E0 at this time
-    #define PROBING_BED_TEMP     50
-  #endif
-  
-  /**
-   * Normally G28 leaves leveling disabled on completion. Enable one of
-   * these options to restore the prior leveling state or to always enable
-   * leveling immediately after G28.
-   */
-  //#define RESTORE_LEVELING_AFTER_G28
-  //#define ENABLE_LEVELING_AFTER_G28
-
-  /**
-   * Auto-leveling needs preheating
-   */
-  //#define PREHEAT_BEFORE_LEVELING
-  #if ENABLED(PREHEAT_BEFORE_LEVELING)
-    #define LEVELING_NOZZLE_TEMP 120   // (°C) Only applies to E0 at this time
-    #define LEVELING_BED_TEMP     60
-  #endif
-  
-  // Gradually reduce leveling correction until a set height is reached,
-  // at which point movement will be level to the machine's XY plane.
-  // The height can be set with M420 Z<height>
   #define ENABLE_LEVELING_FADE_HEIGHT
   #if ENABLED(ENABLE_LEVELING_FADE_HEIGHT)
     #define DEFAULT_LEVELING_FADE_HEIGHT 10.0 // (mm) Default fade height.
   #endif
-  
-  // Require minimum nozzle and/or bed temperature for probing
-  //#define PREHEAT_BEFORE_PROBING
-  #if ENABLED(PREHEAT_BEFORE_PROBING)
-    #define PROBING_NOZZLE_TEMP 120   // (°C) Only applies to E0 at this time
-    #define PROBING_BED_TEMP     60
-  #endif
-  
-  // **************************END NEW FEATURES FROM 2.0.8.1 UPDATE**********************
   
   #define SEGMENT_LEVELED_MOVES
   #define LEVELED_SEGMENT_LENGTH 5.0
@@ -322,8 +288,10 @@
   #else                // EZABL uses true
     #undef Z_MIN_PROBE_ENDSTOP_INVERTING
     #define Z_MIN_PROBE_ENDSTOP_INVERTING true
-    #undef Z_MIN_ENDSTOP_INVERTING
-    #define Z_MIN_ENDSTOP_INVERTING true
+    #if DISABLED(CHIRON)
+      #undef Z_MIN_ENDSTOP_INVERTING
+      #define Z_MIN_ENDSTOP_INVERTING true
+    #endif
   #endif
 
 #endif

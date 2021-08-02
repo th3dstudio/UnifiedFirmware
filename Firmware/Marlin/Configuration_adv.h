@@ -482,6 +482,18 @@
   #endif
 #endif
 
+#if ENABLED(CHIRON)
+  #define USE_CONTROLLER_FAN
+  #define CONTROLLER_FAN_PIN TG_FAN1_PIN
+  #define CONTROLLERFAN_IDLE_TIME     60
+  #define CONTROLLERFAN_SPEED_MIN      0
+  #define CONTROLLERFAN_SPEED_ACTIVE 255
+  #define CONTROLLER_FAN_EDITABLE
+  #if ENABLED(CONTROLLER_FAN_EDITABLE)
+    #define CONTROLLER_FAN_MENU
+  #endif
+#endif
+
 #if ENABLED(EZBOARD)
   #define USE_CONTROLLER_FAN
   #define CONTROLLER_FAN_PIN       P1_22
@@ -607,6 +619,8 @@
   #define E0_AUTO_FAN_PIN P1_04
 #elif (ENABLED(WANHAO_I3MINI) || ENABLED(WANHAO_I3MINI_V2)) && ENABLED(WANHAO_I3MINI_E0_FAN)
   #define E0_AUTO_FAN_PIN 12
+#elif ENABLED(CHIRON)
+  #define E0_AUTO_FAN_PIN 44
 #else
   #define E0_AUTO_FAN_PIN -1
 #endif
@@ -717,7 +731,7 @@
 //
 // For Z set the number of stepper drivers
 //
-#if ENABLED(SIDEWINDER_X1)
+#if ENABLED(SIDEWINDER_X1) || ENABLED(CHIRON)
   #define NUM_Z_STEPPER_DRIVERS 2   // (1-4) Z options change based on how many
 #else
   #define NUM_Z_STEPPER_DRIVERS 1   // (1-4) Z options change based on how many
@@ -729,7 +743,9 @@
   //#define INVERT_Z3_VS_Z_DIR
   //#define INVERT_Z4_VS_Z_DIR
 
-  //#define Z_MULTI_ENDSTOPS
+  #if ENABLED(CHIRON) && DISABLED(USE_EZABL_HOMEZ)
+    #define Z_MULTI_ENDSTOPS
+  #endif
   #if ENABLED(Z_MULTI_ENDSTOPS)
     #define Z2_USE_ENDSTOP          _XMAX_
     #define Z2_ENDSTOP_ADJUSTMENT   0
@@ -900,7 +916,9 @@
  * Z Steppers Auto-Alignment
  * Add the G34 command to align multiple Z steppers using a bed probe.
  */
-//#define Z_STEPPER_AUTO_ALIGN
+#if ENABLED(CHIRON) && ENABLED(ABL_ENABLE)
+  #define Z_STEPPER_AUTO_ALIGN
+#endif
 #if ENABLED(Z_STEPPER_AUTO_ALIGN)
   // Define probe X and Y positions for Z1, Z2 [, Z3 [, Z4]]
   // If not defined, probe limits will be used.

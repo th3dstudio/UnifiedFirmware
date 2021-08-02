@@ -53,6 +53,13 @@
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_AnyCubic_Melzi.zip" "D:\Work\GitHub\UnifiedFirmware\STL File Download.txt"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_AnyCubic_Melzi.zip" "D:\Work\GitHub\UnifiedFirmware\Board Configuration Files\AnyCubic_Melzi\Firmware"
 
+"C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\Unified2Zips\TH3D_Unified2_AnyCubic_Ramps.zip"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_AnyCubic_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_AnyCubic_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\TH3D Installation Guides"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_AnyCubic_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_AnyCubic_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\STL File Download.txt"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_AnyCubic_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Board Configuration Files\AnyCubic_Ramps\Firmware"
+
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Creality_Melzi.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Creality_Melzi.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Creality_Melzi.zip" "D:\Work\GitHub\UnifiedFirmware\TH3D Installation Guides"

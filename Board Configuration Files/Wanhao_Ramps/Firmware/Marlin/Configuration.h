@@ -369,8 +369,6 @@
   #define Y_DRIVER_TYPE  A4988
   #define Z_DRIVER_TYPE  A4988
   #define E0_DRIVER_TYPE A4988
-    
-  //#define ENDSTOP_INTERRUPTS_FEATURE //Wanhao Uses IO pin on Z that is not interrupt capable
 
   #define X_ENABLE_ON 0
   #define Y_ENABLE_ON 0

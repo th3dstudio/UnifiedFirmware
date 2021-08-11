@@ -22,6 +22,7 @@
 //#define CR10S_S4
 //#define CR10S_S5
 //#define CR10_V2
+//#define CR10_V3
 //#define CR10S_PRO
 //#define CR20 
 //#define CRX
@@ -352,8 +353,17 @@
  */
 
 // Creality 2560 Printer Settings
-#if ENABLED(CR10S) || ENABLED(CR10_V2) || ENABLED(CR10S_MINI) || ENABLED(CR10S_S4) || ENABLED(CR10S_S5) || ENABLED(ENDER3_DUAL_EXTRUDER_BOARD) || ENABLED(CR20) || ENABLED(ENDER5_DUAL_EXTRUDER_BOARD) || ENABLED(CRX) || ENABLED(CR10S_PRO) || ENABLED(CRX) || ENABLED(ENDER5_PLUS)
+#if ENABLED(CR10S) || ENABLED(CR10_V2) || ENABLED(CR10_V3) || ENABLED(CR10S_MINI) || ENABLED(CR10S_S4) || ENABLED(CR10S_S5) || ENABLED(ENDER3_DUAL_EXTRUDER_BOARD) || ENABLED(CR20) || ENABLED(ENDER5_DUAL_EXTRUDER_BOARD) || ENABLED(CRX) || ENABLED(CR10S_PRO) || ENABLED(CRX) || ENABLED(ENDER5_PLUS)
 
+  #if ENABLED(CR10_V3)
+    //CR-10 V3 is same as V2 but with Direct Drive Titan installed.
+    #define CR10_V2
+    #ifndef CUSTOM_ESTEPS
+      #define CUSTOM_ESTEPS
+      #define CUSTOM_ESTEPS_VALUE 410
+    #endif
+  #endif
+  
   #if ENABLED(DUAL_EXTRUDER_DUAL_NOZZLES)
     #define HOTEND_OFFSET_X { 0.0, DUAL_HOTEND_X_DISTANCE } // (mm) relative X-offset for each nozzle
     #define HOTEND_OFFSET_Y { 0.0, 0.00 }  // (mm) relative Y-offset for each nozzle

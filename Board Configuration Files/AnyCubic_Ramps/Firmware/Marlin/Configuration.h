@@ -18,6 +18,7 @@
 // ****************   ANYCUBIC PRINTERS 2560 CPU BOARD   ********************
 //===========================================================================
 //#define CHIRON
+// NOTE: This firmware ONLY works when using our Chiron LCD Upgrade kit. You can purchase it from our website here: https://www.th3dstudio.com/product/anycubic-chiron-lcd-upgrade-kit/
 
 // EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable it in the firmware.
 // NOTE - Connect the EZABL Z Endstop connection to the Z+ on the Chiron board, do NOT replace the stock endstops.
@@ -173,6 +174,7 @@
 
 //===========================================================================
 //****************** COMMUNITY REQUESTED FEATURES ***************************
+//*** COMMUNITY REQUESTED FEATURES ARE ALL NOT SUPPORTED BY TH3D SUPPORT ****
 //===========================================================================
 
 // HOME OFFSET ADJUSTMENT --------------------------

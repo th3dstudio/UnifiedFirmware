@@ -292,6 +292,11 @@
 // Because of the low end, limited memory chip BTT uses you cannot have both enabled at the same time.
 //#define DISABLE_ARC_SUPPORT
 
+// Action Commands Override ------------------------
+// Action commands support is enabled by default on all builds but this takes up extra space. If you get compile errors due to the size being too large when enabling other options, then disable HOST_ACTION_COMMANDS
+// by uncommenting the DISABLE_ACTION_COMMANDS_SUPPORT line below. This feature is primiarly used for OctoPrint/EZPi setups.
+//#define DISABLE_ACTION_COMMANDS_SUPPORT
+
 //===========================================================================
 // **********************  END CONFIGURATION SETTINGS   *********************
 //===========================================================================

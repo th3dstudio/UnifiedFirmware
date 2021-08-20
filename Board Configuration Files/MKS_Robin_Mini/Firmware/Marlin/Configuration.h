@@ -259,6 +259,8 @@
   
   #define SPEAKER_KILL
   
+  #define MOUNTED_FILAMENT_SENSOR
+  
   #define SDIO_SUPPORT
   #define SPI_SPEED SPI_HALF_SPEED
   //#define SPI_SPEED SPI_QUARTER_SPEED

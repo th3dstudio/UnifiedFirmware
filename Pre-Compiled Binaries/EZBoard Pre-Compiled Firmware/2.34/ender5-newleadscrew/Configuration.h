@@ -34,7 +34,7 @@
 //#define ENDER2
 //#define ENDER3
 //#define ENDER3_MAX
-//#define ENDER5
+#define ENDER5
 //#define ENDER5_PLUS
 
 // Other Machines -----------------------------------------------------------
@@ -88,7 +88,7 @@
 //#define CUSTOM_ZHEIGHT 400
 
 // If you have the new Ender 5 or Ender 5 Pro Model that has the new leadscrew uncomment the below option to set the correct stepping mode for the Z driver
-//#define ENDER5_NEW_LEADSCREW
+#define ENDER5_NEW_LEADSCREW
 
 // Dual Z Motor Settings
 // When running dual Z motors uncomment the below line. This will increase the Z motor driver current for 2x motors.

@@ -41,7 +41,7 @@
 //#define CR20
 
 // Sovol Machines -----------------------------------------------------------
-//#define SOVOL_SV01
+#define SOVOL_SV01
 
 // Filament Sensor Options --------------------------------------------------
 // If your machine came stock with a filament sensor it will be enabled automatically. If you replaced your stock sensor with our EZOut or you added an EZOut enabling the EZOUTV2_ENABLE will override the Creality sensor if your machine had one
@@ -110,7 +110,7 @@
 // Fix for Older EZABL Kits
 // If you are having issues with the EZABL not triggering when connected to the Z-Stop header you can use the servo header pins.
 // See here for details: https://www.th3dstudio.com/knowledgebase/ezabl-ezboard-not-triggering-fix/
-//#define V3_EZABL_ON_SERVO
+#define V3_EZABL_ON_SERVO
 
 // E3D PT100 Thermocouple Support
 // Refer to the EZBoard installation documentation for connecting the PT100 to the EZBoard Expansion Header

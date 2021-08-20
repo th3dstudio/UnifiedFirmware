@@ -557,6 +557,7 @@
   #define SERIAL_PORT 1
 
   #define BAUDRATE 115200
+  #define MOUNTED_FILAMENT_SENSOR
   
   #define CR10_STOCKDISPLAY
   #define RET6_12864_LCD
@@ -772,6 +773,10 @@
   //V42X with TMC Driver Sanity Checks
   #if (ENABLED(V422_TMC220X_DRIVERS) || ENABLED(ENDER3_V427_BOARD) || ENABLED(ENDER5_V427_BOARD) || ENABLED(ENDER3_MAX_V427_BOARD)) && ENABLED(LINEAR_ADVANCE)
     #error "Linear Advance does NOT work on the V4.2.X boards with the TMC drivers due to how Creality has them setup. Disable Linear Advance to continue."
+  #endif
+  
+  #if ENABLED(ENDER3_MAX_V422_BOARD) || ENABLED(ENDER3_MAX_V427_BOARD)
+    #define MOUNTED_FILAMENT_SENSOR
   #endif
 
   #define SERIAL_PORT 1

@@ -38,7 +38,7 @@
 //#define ENDER5_PLUS
 
 // Other Machines -----------------------------------------------------------
-//#define CR20
+#define CR20
 
 // Sovol Machines -----------------------------------------------------------
 //#define SOVOL_SV01

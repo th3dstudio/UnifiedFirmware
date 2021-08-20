@@ -41,7 +41,7 @@
 //#define CR20
 
 // Sovol Machines -----------------------------------------------------------
-//#define SOVOL_SV01
+#define SOVOL_SV01
 
 // Filament Sensor Options --------------------------------------------------
 // If your machine came stock with a filament sensor it will be enabled automatically. If you replaced your stock sensor with our EZOut or you added an EZOut enabling the EZOUTV2_ENABLE will override the Creality sensor if your machine had one

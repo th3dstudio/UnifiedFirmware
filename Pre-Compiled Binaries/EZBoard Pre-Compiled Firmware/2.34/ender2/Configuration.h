@@ -31,7 +31,7 @@
 //#define CR10S_S5
 
 // Ender Series -------------------------------------------------------------
-//#define ENDER2
+#define ENDER2
 //#define ENDER3
 //#define ENDER3_MAX
 //#define ENDER5

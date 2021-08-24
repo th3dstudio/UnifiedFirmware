@@ -75,7 +75,7 @@
   
   #if ENABLED(V3_EZABL_ON_SERVO)
     #define Z_STOP_PIN                      PA2
-  #elif
+  #else
     #define Z_STOP_PIN                      PC3
   #endif
   
@@ -86,7 +86,7 @@
   #define Y_STOP_PIN                        PC2
   #if ENABLED(V3_EZABL_ON_SERVO)
     #define Z_STOP_PIN                      PA2
-  #elif
+  #else
     #define Z_STOP_PIN                      PC3
   #endif
 #endif

@@ -192,8 +192,8 @@
  *                  ______
  *              5V | 1  2 | GND
  *   (LCD_EN) PB15 | 3  4 | PB12 (LCD_RS)
- *   (LCD_D4) PB13 | 5  6   PC5  (BTN_EN2)
- *    (RESET) ---- | 7  8 | PC4  (BTN_EN1)
+ *   (LCD_D4) PB13 | 5  6   PC5  (BTN_EN1)
+ *    (RESET) ---- | 7  8 | PC4  (BTN_EN2)
  *  (BTN_ENC) PB0  | 9 10 | PA14 (BEEPER)
  *                  ------
  *                   EXP1
@@ -217,8 +217,8 @@
   #ifdef DISABLE_JTAGSWD
     #define BEEPER_PIN               EXP1_10_PIN  // Not connected in dev board
   #endif
-  #define BTN_EN1                    EXP1_08_PIN
-  #define BTN_EN2                    EXP1_06_PIN
+  #define BTN_EN1                    EXP1_06_PIN
+  #define BTN_EN2                    EXP1_08_PIN
   #define BTN_ENC                    EXP1_09_PIN
   #define LCD_PINS_RS                EXP1_04_PIN
   #define LCD_PINS_ENABLE            EXP1_03_PIN

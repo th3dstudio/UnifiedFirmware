@@ -352,7 +352,8 @@
 
   #define SERIAL_PORT -1
   #define BAUDRATE 115200
-  #define SERIAL_PORT_2 2
+  #define SERIAL_PORT_2 1
+  #define BAUDRATE_2 BAUDRATE
   
   #if ENABLED(CR20) || ENABLED(ENDER2)
     #define MKS_MINI_12864

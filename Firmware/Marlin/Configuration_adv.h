@@ -2849,11 +2849,11 @@
 
   #if AXIS_IS_TMC(E0) || ENABLED(SKR_E3_MINI_BOARD) || ENABLED(DIY_TMCBOARD)
     #if ENABLED(PANCAKE_STEPPER)
-      #define E0_CURRENT    600
+      #define E0_CURRENT    550
     #elif E0_MOTOR_CURRENT > 0
       #define E0_CURRENT E0_MOTOR_CURRENT
     #else
-      #define E0_CURRENT    800
+      #define E0_CURRENT    700
     #endif
     
     #define E0_MICROSTEPS    16

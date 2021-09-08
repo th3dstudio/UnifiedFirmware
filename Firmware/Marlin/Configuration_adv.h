@@ -2853,7 +2853,7 @@
     #elif E0_MOTOR_CURRENT > 0
       #define E0_CURRENT E0_MOTOR_CURRENT
     #else
-      #define E0_CURRENT    700
+      #define E0_CURRENT    650
     #endif
     
     #define E0_MICROSTEPS    16

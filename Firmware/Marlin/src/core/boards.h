@@ -387,7 +387,7 @@
 #define BOARD_ANET_ET4                4227  // ANET ET4 V1.x (STM32F407VGT6)
 #define BOARD_ANET_ET4P               4228  // ANET ET4P V1.x (STM32F407VGT6)
 #define BOARD_FYSETC_CHEETAH_V20      4229  // FYSETC Cheetah V2.0
-
+#define BOARD_TH3D_EZBOARD_V2         4230  // TH3D EZBoard v2.0
 
 //
 // ARM Cortex M7

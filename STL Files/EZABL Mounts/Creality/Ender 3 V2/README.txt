@@ -1,0 +1,1 @@
+If your Ender 3 V2 has the 2 mounting holes to the left of the shroud there is a mount in this pack to mount it to there. Early Ender 3 V2s did NOT have these holes, which is why our official V2 mount bolts to the Vslot wheel bolt.

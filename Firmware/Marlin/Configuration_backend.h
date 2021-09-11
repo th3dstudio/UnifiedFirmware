@@ -6,7 +6,7 @@
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-#define UNIFIED_VERSION "TH3D UFW 2.34a"
+#define UNIFIED_VERSION "TH3D UFW 2.35"
 
 /**
  * ABL Probe Settings
@@ -227,7 +227,7 @@
 #if ENABLED(ABL_ENABLE)
   #define ENABLE_LEVELING_FADE_HEIGHT
   #if ENABLED(ENABLE_LEVELING_FADE_HEIGHT)
-    #define DEFAULT_LEVELING_FADE_HEIGHT 10.0 // (mm) Default fade height.
+    #define DEFAULT_LEVELING_FADE_HEIGHT 2.0 // (mm) Default fade height.
   #endif
   
   #define SEGMENT_LEVELED_MOVES

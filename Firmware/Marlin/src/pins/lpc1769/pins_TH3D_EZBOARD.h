@@ -152,13 +152,13 @@
 //
 
 /**
- *                  _____
- *              5V | · · | GND
- *  (LCD_EN) P0_18 | · · | P0_16 (LCD_RS)
- *  (LCD_D4) P0_15 | · ·   P3_25 (BTN_EN2)
- *   (RESET) P2_11 | · · | P3_26 (BTN_EN1)
- * (BTN_ENC) P1_30 | · · | P1_31 (BEEPER)
- *                  -----
+ *                  ______
+ *              5V | 1  2 | GND
+ *  (LCD_EN) P0_18 | 3  4 | P0_16 (LCD_RS)
+ *  (LCD_D4) P0_15 | 5  6   P3_25 (BTN_EN2)
+ *   (RESET) P2_11 | 7  8 | P3_26 (BTN_EN1)
+ * (BTN_ENC) P1_30 | 9 10 | P1_31 (BEEPER)
+ *                  ------
  *                  EXP1
  *
  * LCD_PINS_D5, D6, and D7 are not present in the EXP1 connector, and will need to be
@@ -167,24 +167,32 @@
  * A remote SD card is currently not supported because the pins routed to the EXP2
  * connector are shared with the onboard SD card.
  */
+#define EXP1_03_PIN                         P0_18
+#define EXP1_04_PIN                         P0_16
+#define EXP1_05_PIN                         P0_15
+#define EXP1_06_PIN                         P3_25
+#define EXP1_07_PIN                         P2_11
+#define EXP1_08_PIN                         P3_26
+#define EXP1_09_PIN                         P1_30
+#define EXP1_10_PIN                         P1_31
 
 #if ENABLED(CR10_STOCKDISPLAY)
-  #define BEEPER_PIN                       P1_31
-  #define BTN_EN1                          P3_26
-  #define BTN_EN2                          P3_25
-  #define BTN_ENC                          P1_30
-  #define LCD_PINS_RS                      P0_16
-  #define LCD_PINS_ENABLE                  P0_18
-  #define LCD_PINS_D4                      P0_15
-  #define KILL_PIN                         P2_11
+  #define BEEPER_PIN                       EXP1_10_PIN
+  #define BTN_EN1                          EXP1_08_PIN
+  #define BTN_EN2                          EXP1_06_PIN
+  #define BTN_ENC                          EXP1_09_PIN
+  #define LCD_PINS_RS                      EXP1_04_PIN
+  #define LCD_PINS_ENABLE                  EXP1_03_PIN
+  #define LCD_PINS_D4                      EXP1_05_PIN
+  #define KILL_PIN                         EXP1_07_PIN
 #elif ENABLED(MKS_MINI_12864)
-  #define DOGLCD_CS                        P0_16
-  #define DOGLCD_A0                        P0_15
-  #define DOGLCD_SCK                       P1_31
-  #define DOGLCD_MOSI                      P0_18
-  #define BTN_ENC                          P1_30
-  #define BTN_EN1                          P3_26
-  #define BTN_EN2                          P3_25
+  #define DOGLCD_CS                        EXP1_04_PIN
+  #define DOGLCD_A0                        EXP1_05_PIN
+  #define DOGLCD_SCK                       EXP1_10_PIN
+  #define DOGLCD_MOSI                      EXP1_03_PIN
+  #define BTN_ENC                          EXP1_09_PIN
+  #define BTN_EN1                          EXP1_08_PIN
+  #define BTN_EN2                          EXP1_06_PIN
   #define LCD_CONTRAST_INIT                160
   #define LCD_CONTRAST_MIN                 120
   #define LCD_CONTRAST_MAX                 180 

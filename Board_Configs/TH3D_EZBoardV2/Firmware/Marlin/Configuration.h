@@ -78,7 +78,7 @@
 
 // EZNeo Manual IO Pin Setting ----------------------------------------------
 // If you have the EZNeo wired to a different IO pin and/or you are using your own 5V power provided, specify the pin used below.
-// P0_03 is the default and located on the NeoPixel header.
+// PA8 is the default and located on the NeoPixel header.
 //#define NEOPIXEL_PIN PA8
 
 // Advanced Settings --------------------------------------------------------

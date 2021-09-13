@@ -26,7 +26,7 @@
 
 // CR-10S Series ------------------------------------------------------------
 //#define CR10S
-//#define CR10S_MINI
+#define CR10S_MINI
 //#define CR10S_S4
 //#define CR10S_S5
 

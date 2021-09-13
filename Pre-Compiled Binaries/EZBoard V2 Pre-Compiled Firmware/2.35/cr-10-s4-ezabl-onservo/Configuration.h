@@ -21,7 +21,7 @@
 // CR-10 Series -------------------------------------------------------------
 //#define CR10
 //#define CR10_MINI
-//#define CR10_S4
+#define CR10_S4
 //#define CR10_S5
 
 // CR-10S Series ------------------------------------------------------------
@@ -110,7 +110,7 @@
 // Fix for Older EZABL Kits
 // If you are having issues with the EZABL not triggering when connected to the Z-Stop header you can use the servo header pins.
 // See here for details: https://www.th3dstudio.com/knowledgebase/ezabl-ezboard-not-triggering-fix/
-//#define V3_EZABL_ON_SERVO
+#define V3_EZABL_ON_SERVO
 
 // E3D PT100 Thermocouple Support
 // Refer to the EZBoard installation documentation for connecting the PT100 to the EZBoard Expansion Header

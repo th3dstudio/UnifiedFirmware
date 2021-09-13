@@ -34,7 +34,7 @@
 //#define ENDER2
 //#define ENDER3
 //#define ENDER3_MAX
-//#define ENDER5
+#define ENDER5
 //#define ENDER5_PLUS
 
 // Other Machines -----------------------------------------------------------

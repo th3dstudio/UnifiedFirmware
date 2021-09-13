@@ -20,7 +20,7 @@
 
 // CR-10 Series -------------------------------------------------------------
 //#define CR10
-//#define CR10_MINI
+#define CR10_MINI
 //#define CR10_S4
 //#define CR10_S5
 

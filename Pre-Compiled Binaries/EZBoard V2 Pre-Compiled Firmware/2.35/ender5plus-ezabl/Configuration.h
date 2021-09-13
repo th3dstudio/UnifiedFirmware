@@ -35,7 +35,7 @@
 //#define ENDER3
 //#define ENDER3_MAX
 //#define ENDER5
-//#define ENDER5_PLUS
+#define ENDER5_PLUS
 
 // Other Machines -----------------------------------------------------------
 //#define CR20
@@ -69,7 +69,7 @@
 // Ender 5 Plus ONLY ABL Settings -------------------------------------------
 // By default the Ender 5 Plus comes with a BL Touch. Enabling the ENDER5_PLUS_EZABL or ENDER5_PLUS_NOABL will override the BL Touch setting
 // If you are using the stock BL Touch with a non-stock mount enable the CUSTOM_PROBE line above and enter the offsets below for the new mount.
-//#define ENDER5_PLUS_EZABL
+#define ENDER5_PLUS_EZABL
 //#define ENDER5_PLUS_NOABL
 
 // EZNeo Settings -----------------------------------------------------------

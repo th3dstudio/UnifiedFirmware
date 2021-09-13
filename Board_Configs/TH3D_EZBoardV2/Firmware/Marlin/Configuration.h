@@ -316,8 +316,8 @@
 // If you want to use the BL-Touch uncomment the 2 lines below and refer to the installation guide for the EZBoard to connect the probe.
 // You also need to uncomment #define CUSTOM_PROBE above and then enter in your offsets above in the CUSTOM PROBE section.
 //#define BLTOUCH
-// Here is where you set your servo pin. For EZBoard use P2_04
-//#define SERVO0_PIN P2_04
+// Here is where you set your servo pin. For EZBoard V2 use PA2
+//#define SERVO0_PIN PA2
 
 // MANUAL MESH LEVELING ----------------------------
 // If you want to use manual mesh leveling you can enable the below option. This is for generating a MANUAL mesh WITHOUT a probe. To change the mesh inset value change the EZABL_PROBE_EDGE setting above.
@@ -687,7 +687,7 @@
   #if ENABLED(ENDER5_PLUS)
     #if DISABLED(ENDER5_PLUS_NOABL) && DISABLED(ENDER5_PLUS_EZABL)
       #define BLTOUCH
-    #define SERVO0_PIN P2_04
+    #define SERVO0_PIN PA2
     #ifndef EZABL_PROBE_EDGE
       #define EZABL_PROBE_EDGE 35
     #endif

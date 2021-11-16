@@ -42,6 +42,7 @@
 
 // Sovol Machines -----------------------------------------------------------
 //#define SOVOL_SV01
+//#define SOVOL_SV03
 
 // Filament Sensor Options --------------------------------------------------
 // If your machine came stock with a filament sensor it will be enabled automatically. If you replaced your stock sensor with our EZOut or you added an EZOut enabling the EZOUTV2_ENABLE will override the Creality sensor if your machine had one
@@ -71,6 +72,13 @@
 // If you are using the stock BL Touch with a non-stock mount enable the CUSTOM_PROBE line above and enter the offsets below for the new mount.
 //#define ENDER5_PLUS_EZABL
 //#define ENDER5_PLUS_NOABL
+
+//===========================================================================
+// Sovol SV03 - ABL Settings
+// By default the Sovol SV03 comes with a BL Touch. Enabling the SV03_EZABL or SV03_NOABL will override the BL Touch setting
+// If you are using the stock BL Touch with a non-stock mount enable the CUSTOM_PROBE line above and enter the offsets below for the new mount.
+//#define SV03_EZABL
+//#define SV03_NOABL
 
 // EZNeo Settings -----------------------------------------------------------
 // If you are using an EZNeo strip on your printer, uncomment the line for what strip you are using.
@@ -348,7 +356,7 @@
  */
  
 //EZBoard V2 based Machine Settings
-#if ENABLED(CR10) || ENABLED(CR10_MINI) || ENABLED(CR10_S4) || ENABLED(CR10_S5) || ENABLED(CR10S) || ENABLED(CR10S_MINI) || ENABLED(CR10S_S4) || ENABLED(CR10S_S5) || ENABLED(ENDER2) || ENABLED(ENDER3) || ENABLED(ENDER5) || ENABLED(ENDER5_PLUS) || ENABLED(SOVOL_SV01) || ENABLED(CR20) || ENABLED(ENDER3_MAX)
+#if ENABLED(CR10) || ENABLED(CR10_MINI) || ENABLED(CR10_S4) || ENABLED(CR10_S5) || ENABLED(CR10S) || ENABLED(CR10S_MINI) || ENABLED(CR10S_S4) || ENABLED(CR10S_S5) || ENABLED(ENDER2) || ENABLED(ENDER3) || ENABLED(ENDER5) || ENABLED(ENDER5_PLUS) || ENABLED(SOVOL_SV01) || ENABLED(SOVOL_SV03) || ENABLED(CR20) || ENABLED(ENDER3_MAX)
 
   #define SERIAL_PORT -1
   #define BAUDRATE 115200
@@ -365,11 +373,11 @@
     #define REVERSE_ENCODER_DIRECTION
   #endif
   
-  #if ENABLED(CR10S) || ENABLED(CR10S_S4) || ENABLED(CR10S_S5) || ENABLED(SOVOL_SV01) || ENABLED(ENDER3_MAX)
+  #if ENABLED(CR10S) || ENABLED(CR10S_S4) || ENABLED(CR10S_S5) || ENABLED(SOVOL_SV01) || ENABLED(SOVOL_SV03) || ENABLED(ENDER3_MAX)
     //S models + SV01 assume that you have 2x motors, filament sensor, and are using the dual adapter.
     //So lets up the VREF on Z and reverse the Z axis when using the dual motor adapter and enable the filament sensor
 	
-    #if ENABLED(CR10S) || ENABLED(CR10S_S4) || ENABLED(CR10S_S5) || ENABLED(SOVOL_SV01)
+    #if ENABLED(CR10S) || ENABLED(CR10S_S4) || ENABLED(CR10S_S5) || ENABLED(SOVOL_SV01) || ENABLED(SOVOL_SV03)
       #define DUAL_Z_MOTORS
     #endif
 
@@ -379,7 +387,7 @@
       #define REVERSE_Z_MOTOR
     #endif
   
-    #if ENABLED(SOVOL_SV01) || ENABLED(ENDER3_MAX) //Have sensors that use same logic as EZOUT Sensors
+    #if ENABLED(SOVOL_SV01) || ENABLED(SOVOL_SV03) || ENABLED(ENDER3_MAX) //Have sensors that use same logic as EZOUT Sensors
       #define EZOUTV2_ENABLE
     #endif
   
@@ -403,7 +411,7 @@
   
   #if ENABLED(CUSTOM_ESTEPS)
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS_VALUE }
-  #elif ENABLED(SOVOL_SV01)
+  #elif ENABLED(SOVOL_SV01) || ENABLED(SOVOL_SV03)
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 402 }
   #else
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
@@ -530,6 +538,13 @@
     #define Y_BED_SIZE 240
     #define Z_MAX_POS 300
     #define PRINTER_VOLTAGE_24
+  #endif
+  
+  #if ENABLED(SOVOL_SV03)
+    #define X_BED_SIZE 350
+    #define Y_BED_SIZE 350
+    #define Z_MAX_POS 400
+	#define PRINTER_VOLTAGE_24
   #endif
 
   #if ENABLED(CR20)
@@ -702,6 +717,23 @@
     #if DISABLED(ENDER5_PLUS_NOABL)
       #define ABL_ENABLE
     #endif
+  #endif
+  
+  #if ENABLED(SOVOL_SV03)
+    #if DISABLED(SV03_NOABL) && DISABLED(SV03_EZABL)
+      #if DISABLED(BLTOUCH)
+        #define BLTOUCH
+      #endif
+      
+      #ifndef SERVO0_PIN
+        #define SERVO0_PIN PA2
+      #endif
+      
+      #if DISABLED(CUSTOM_PROBE)
+        #define CUSTOM_PROBE
+        #define NOZZLE_TO_PROBE_OFFSET { -34, -13, 0 }
+      #endif
+    #endif  
   #endif
 
   #define EZBOARD_V2

@@ -18,9 +18,11 @@
 // ******************   SOVOL PRINTERS 2560 CPU BOARD   *********************
 //===========================================================================
 //#define SOVOL_SV01
+//#define SOVOL_SV03
 
 // EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable it in the firmware.
 //#define SV01_OEM_MOUNT
+//#define SV03_OEM_MOUNT
 //#define CUSTOM_PROBE
 
 // Creality/Sovol 2560 Silent Board
@@ -35,6 +37,13 @@
 // EZNeo Manual IO Pin Setting ----------------------------------------------
 // If you have the EZNeo wired with your own 5V power provided, specify the pin used below.
 //#define NEOPIXEL_PIN 12
+
+//===========================================================================
+// Sovol SV03 - ABL Settings
+// By default the Sovol SV03 comes with a BL Touch. Enabling the SV03_EZABL or SV03_NOABL will override the BL Touch setting
+// If you are using the stock BL Touch with a non-stock mount enable the CUSTOM_PROBE line above and enter the offsets below for the new mount.
+//#define SV03_EZABL
+//#define SV03_NOABL
 
 //===========================================================================
 // *************************  END PRINTER SECTION   *************************
@@ -252,7 +261,26 @@
  */
 
 // Sovol Printer Settings
-#if ENABLED(SOVOL_SV01)
+#if ENABLED(SOVOL_SV01) || ENABLED(SOVOL_SV03)
+  
+  #if ENABLED(SOVOL_SV03)
+    #define CREALITY_SILENT_BOARD
+    #if DISABLED(SV03_NOABL) && DISABLED(SV03_EZABL)
+      #if DISABLED(BLTOUCH)
+        #define BLTOUCH
+      #endif
+      
+      #ifndef SERVO0_PIN
+        #define SERVO0_PIN 11
+      #endif
+      
+      #if DISABLED(CUSTOM_PROBE)
+        #define CUSTOM_PROBE
+        #define NOZZLE_TO_PROBE_OFFSET { -34, -13, 0 }
+      #endif
+    #endif  
+  #endif
+  
   #define SERIAL_PORT 0
   #define SPACE_SAVER_2560
 
@@ -299,9 +327,17 @@
 
   #define EXTRUDERS 1
 
+  #if ENABLED(SOVOL_SV01)
   #define X_BED_SIZE 280
   #define Y_BED_SIZE 240
   #define Z_MAX_POS 300
+  #endif
+
+  #if ENABLED(SOVOL_SV03)
+    #define X_BED_SIZE 350
+    #define Y_BED_SIZE 350
+    #define Z_MAX_POS 400
+  #endif
   
   #if ENABLED(HOME_ADJUST)
     #define X_MIN_POS X_HOME_LOCATION

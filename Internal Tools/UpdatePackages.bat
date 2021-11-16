@@ -41,6 +41,14 @@
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_TH3D_EZBoardLite_DIY.zip" "D:\Work\GitHub\UnifiedFirmware\STL File Download.txt"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_TH3D_EZBoardLite_DIY.zip" "D:\Work\GitHub\UnifiedFirmware\Board_Configs\TH3D_EZBoardLite_DIY\Firmware"
 
+"C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\Unified2Zips\TH3D_Unified2_TH3D_EZBoardV2_DIY.zip"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_TH3D_EZBoardV2_DIY.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_TH3D_EZBoardV2_DIY.zip" "D:\Work\GitHub\UnifiedFirmware\TH3D Installation Guides"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_TH3D_EZBoardV2_DIY.zip" "D:\Work\GitHub\UnifiedFirmware\EZBoard V2 Installation Guide"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_TH3D_EZBoardV2_DIY.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_TH3D_EZBoardV2_DIY.zip" "D:\Work\GitHub\UnifiedFirmware\STL File Download.txt"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_TH3D_EZBoardV2_DIY.zip" "D:\Work\GitHub\UnifiedFirmware\Board_Configs\TH3D_EZBoardV2_DIY\Firmware"
+
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\Unified2Zips\TH3D_Unified2_MKS_Robin_Mini.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_MKS_Robin_Mini.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_MKS_Robin_Mini.zip" "D:\Work\GitHub\UnifiedFirmware\TH3D Installation Guides"

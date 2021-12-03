@@ -20,7 +20,7 @@
 //#define SOVOL_SV01
 //#define SOVOL_SV03
 
-// EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable it in the firmware.
+// EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
 //#define SV01_OEM_MOUNT
 //#define SV03_OEM_MOUNT
 //#define CUSTOM_PROBE

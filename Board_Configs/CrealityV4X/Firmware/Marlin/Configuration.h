@@ -41,6 +41,7 @@
 //------------------------------ V4.3.1 Board -------------------------------
 //#define ENDER6_V431_BOARD
 
+//------------------------------ Upgrade Settings -------------------------------
 // If you are using our EZOut V1/V2 (connected to LCD header) filament sensor kit please follow the install guide
 // and then uncomment the #define EZOUT_ENABLE line below.
 // Do NOT ever connect our filament sensor without the supplied adapter board.
@@ -51,7 +52,7 @@
 // Connect the stock sensor to the "J1" port and uncomment the below line to enable the filament sensor.
 //#define CR10S_STOCKFILAMENTSENSOR
 
-// EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable it in the firmware.
+// EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
 //#define CR10_OEM
 //#define ENDER3_OEM
 //#define ENDER3_V2_OEM

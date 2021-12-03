@@ -19,7 +19,7 @@
 //===========================================================================
 //#define ALFAWISE_U10
 
-// EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable it in the firmware.
+// EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
 //#define ALFAWISEU10_OEM
 //#define ALFAWISEU10_PETSFANG
 //#define CUSTOM_PROBE

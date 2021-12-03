@@ -43,7 +43,7 @@
 //#define ENDER3_DUAL_EXTRUDER_BOARD
 //#define ENDER5_DUAL_EXTRUDER_BOARD
 
-// EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable it in the firmware.
+// EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
 //#define CR10S_OEM
 //#define CR10S_PRO_OEM
 //#define CR10V2_OEM

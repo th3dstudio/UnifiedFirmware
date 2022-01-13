@@ -30,7 +30,7 @@
 // Do NOT ever connect our filament sensor without the supplied adapter board
 //#define EZOUT_ENABLE
 
-// EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable it in the firmware. Bootscreen will be disabled when enabling EZABL on the Anet Boards due to space issues
+// EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware. Bootscreen will be disabled when enabling EZABL on the Anet Boards due to space issues
 //#define ANET_A2_OEM_MOUNT
 //#define ANET_A6_OEM_MOUNT
 //#define ANET_A8_OEM_MOUNT
@@ -209,7 +209,7 @@
 
 // PID BED TEMPERATURE CONTROL ---------------------
 // If you want PID Bed Temperature control enable the below line. You will need to tune it for your machine.
-// See the PID Bed setup guide here: https://support.th3dstudio.com/hc/guides/diy-guides/p-i-d-bed-calibration-guide/
+// See the PID Bed setup guide here: https://www.th3dstudio.com/hc/guides/diy-guides/p-i-d-bed-calibration-guide/
 //#define ENABLE_PIDBED
 
 // Z PROBE OFFSET WIZARD ---------------------------

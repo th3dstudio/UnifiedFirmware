@@ -54,7 +54,7 @@
 //#define CR10S_STOCKFILAMENTSENSOR
 
 // EZABL Probe Mounts -------------------------------------------------------
-// Uncomment the mount you are using for your EZABL to enable it in the firmware.
+// Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
 //#define CR10_OEM                 //OEM Mount for Creality Machines (Ender3/Ender5/CR-10/CR-10S/CR-20)
 //#define ENDER2_OEM               //Ender 2 Specific OEM Mount
 //#define ENDER2_V6                //Ender 2 Specific V6 Mount
@@ -117,10 +117,10 @@
 
 // Fix for Older EZABL Kits
 // If you are having issues with the EZABL not triggering when connected to the Z-Stop header you can use the servo header pins.
-// See here for details: https://www.th3dstudio.com/knowledgebase/ezabl-ezboard-not-triggering-fix/
+// See here for details: https://www.th3dstudio.com/hc/product-information/ezboard/ezboard-lite-v1x/ezboard-lite-v1-x-ezabl-not-triggering-fix/
 //#define V3_EZABL_ON_SERVO
 
-// E3D PT100 Thermocouple Support
+// E3D PT100 Thermocouple Support - COMING SOON - NOT WORKING OR DOCUMENTED CURRENTLY
 // Refer to the EZBoard installation documentation for connecting the PT100 to the EZBoard Expansion Header
 //#define EZBOARD_PT100
 
@@ -303,7 +303,7 @@
 
 // PID BED TEMPERATURE CONTROL ---------------------
 // If you want PID Bed Temperature control enable the below line. You will need to tune it for your machine.
-// See the PID Bed setup guide here: https://support.th3dstudio.com/hc/guides/diy-guides/p-i-d-bed-calibration-guide/
+// See the PID Bed setup guide here: https://www.th3dstudio.com/hc/guides/diy-guides/p-i-d-bed-calibration-guide/
 //#define ENABLE_PIDBED
 
 // Z PROBE OFFSET WIZARD ---------------------------

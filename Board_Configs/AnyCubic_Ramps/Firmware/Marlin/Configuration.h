@@ -20,7 +20,7 @@
 //#define CHIRON
 // NOTE: This firmware ONLY works when using our Chiron LCD Upgrade kit. You can purchase it from our website here: https://www.th3dstudio.com/product/anycubic-chiron-lcd-upgrade-kit/
 
-// EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable it in the firmware.
+// EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
 // NOTE - Connect the EZABL Z Endstop connection to the Z+ on the Chiron board, do NOT replace the stock endstops.
 //#define CHIRON_OEM
 //#define CUSTOM_PROBE
@@ -188,7 +188,7 @@
 
 // PID BED TEMPERATURE CONTROL ---------------------
 // If you want PID Bed Temperature control enable the below line. You will need to tune it for your machine.
-// See the PID Bed setup guide here: https://support.th3dstudio.com/hc/guides/diy-guides/p-i-d-bed-calibration-guide/
+// See the PID Bed setup guide here: https://www.th3dstudio.com/hc/guides/diy-guides/p-i-d-bed-calibration-guide/
 //#define ENABLE_PIDBED
 
 // Z PROBE OFFSET WIZARD ---------------------------

@@ -41,17 +41,18 @@
 //------------------------------ V4.3.1 Board -------------------------------
 //#define ENDER6_V431_BOARD
 
+//------------------------------ Upgrade Settings -------------------------------
 // If you are using our EZOut V1/V2 (connected to LCD header) filament sensor kit please follow the install guide
 // and then uncomment the #define EZOUT_ENABLE line below.
 // Do NOT ever connect our filament sensor without the supplied adapter board.
-// Ender 3 V2 needs LCD converted to use an EZOut: https://support.th3dstudio.com/hc/guides/upgrades-printer-information/ender-3-v2-swapping-to-the-12864-creality-lcd-for-more-features/
+// Ender 3 V2 needs LCD converted to use an EZOut: https://www.th3dstudio.com/hc/guides/upgrades-printer-information/ender-3-v2-swapping-to-the-12864-creality-lcd-for-more-features/
 //#define EZOUT_ENABLE
 
 // Creality CR-10S Series Filament Sensor
 // Connect the stock sensor to the "J1" port and uncomment the below line to enable the filament sensor.
 //#define CR10S_STOCKFILAMENTSENSOR
 
-// EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable it in the firmware.
+// EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
 //#define CR10_OEM
 //#define ENDER3_OEM
 //#define ENDER3_V2_OEM
@@ -245,7 +246,7 @@
 
 // PID BED TEMPERATURE CONTROL ---------------------
 // If you want PID Bed Temperature control enable the below line. You will need to tune it for your machine.
-// See the PID Bed setup guide here: https://support.th3dstudio.com/hc/guides/diy-guides/p-i-d-bed-calibration-guide/
+// See the PID Bed setup guide here: https://www.th3dstudio.com/hc/guides/diy-guides/p-i-d-bed-calibration-guide/
 //#define ENABLE_PIDBED
 
 // Z PROBE OFFSET WIZARD ---------------------------
@@ -264,7 +265,7 @@
 
 // BL TOUCH ----------------------------------------
 // There are 2 ways to connect the BL Touch to the V4.2.X boards - All on the 5 pin header or using 3 pins on the 5 pin header + Z Endstop port
-// For details on these 2 types of connections refer to our help center article here: https://support.th3dstudio.com/hc/product-information/3rd-party-control-boards/creality-boards/creality-v4-2-2-v4-2-7-board-bl-touch-wiring-options/
+// For details on these 2 types of connections refer to our help center article here: https://www.th3dstudio.com/hc/product-information/3rd-party-control-boards/creality-boards/creality-v4-2-2-v4-2-7-board-bl-touch-wiring-options/
 // If you want to use the BL-Touch uncomment the BLTOUCH line below and uncomment #define CUSTOM_PROBE above and then enter in your offsets above in the CUSTOM PROBE section.
 //#define BLTOUCH
 // If you are using the 5 pin header for all the BL Touch connections, uncomment the below line

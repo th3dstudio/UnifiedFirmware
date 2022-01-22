@@ -2772,7 +2772,7 @@
       
       #define Z_CURRENT_HOME  Z_CURRENT
       
-      #if ENABLED(ENDER5_NEW_LEADSCREW)
+      #if ENABLED(ENDER5_NEW_LEADSCREW) && (ENABLED(EZBOARD) || ENABLED(EZBOARD_V2))
         #define Z_MICROSTEPS 8
       #else
         #define Z_MICROSTEPS 16

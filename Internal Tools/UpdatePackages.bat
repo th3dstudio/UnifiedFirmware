@@ -1,12 +1,12 @@
 @echo off
 
-"C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\Unified2Zips\TH3D_Unified2_CrealityV4X.zip"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_CrealityV4X.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_CrealityV4X.zip" "D:\Work\GitHub\UnifiedFirmware\LCD Firmware"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_CrealityV4X.zip" "D:\Work\GitHub\UnifiedFirmware\TH3D Installation Guides"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_CrealityV4X.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_CrealityV4X.zip" "D:\Work\GitHub\UnifiedFirmware\STL File Download.txt"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_CrealityV4X.zip" "D:\Work\GitHub\UnifiedFirmware\Board_Configs\CrealityV4X\Firmware"
+"C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\Unified2Zips\TH3D_Unified2_CrealityV4X_512K.zip"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_CrealityV4X_512K.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_CrealityV4X_512K.zip" "D:\Work\GitHub\UnifiedFirmware\LCD Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_CrealityV4X_512K.zip" "D:\Work\GitHub\UnifiedFirmware\TH3D Installation Guides"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_CrealityV4X_512K.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_CrealityV4X_512K.zip" "D:\Work\GitHub\UnifiedFirmware\STL File Download.txt"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_CrealityV4X_512K.zip" "D:\Work\GitHub\UnifiedFirmware\Board_Configs\CrealityV4X_512K\Firmware"
 
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\Unified2Zips\TH3D_Unified2_CrealityV4X_256K.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_CrealityV4X_256K.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"

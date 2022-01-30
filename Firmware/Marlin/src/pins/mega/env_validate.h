@@ -25,7 +25,7 @@
   #if DISABLED(ALLOW_MEGA1280)
     #error "Oops! Select 'Arduino/Genuino Mega or Mega 2560' in 'Tools > Board.'"
   #elif NOT_TARGET(__AVR_ATmega1280__)
-  #error "Oops! Select 'Arduino/Genuino Mega or Mega 2560 or 1280' in 'Tools > Board.'"
+    #error "Oops! Select 'Arduino/Genuino Mega or Mega 2560 or 1280' in 'Tools > Board.'"
   #endif
 #endif
 

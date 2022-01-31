@@ -102,7 +102,7 @@ extern "C" {
 #endif
 
 // Timer Definitions
-// Use TIM6/TIM7 when possible as servo and tone don't need GPIO output pin
+// Use TIM5/TIM4 on the EZBoard V2 or compile will fail due to timer conflicts.
 #define TIMER_TONE              TIM5
 #define TIMER_SERVO             TIM4
 

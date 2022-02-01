@@ -1,21 +1,5 @@
 @echo off
 
-rmdir "D:\Work\Printer Firmware\UF2TestBuilds\SKR_E3_Mini" /s /q
-xcopy /E /I /F "D:\Work\GitHub\UnifiedFirmware\Firmware" "D:\Work\Printer Firmware\UF2TestBuilds\SKR_E3_Mini"
-xcopy /E /I /F "D:\Work\GitHub\UnifiedFirmware\Board_Configs\SKR_E3_Mini\Firmware" "D:\Work\Printer Firmware\UF2TestBuilds\SKR_E3_Mini"
-xcopy /E /I /F "D:\Work\GitHub\UnifiedFirmware\Internal Tools\Compile Scripts\SKR_E3_Mini" "D:\Work\Printer Firmware\UF2TestBuilds\SKR_E3_Mini"
-D:
-cd "D:\Work\Printer Firmware\UF2TestBuilds\SKR_E3_Mini\"
-start python "D:\Work\Printer Firmware\UF2TestBuilds\SKR_E3_Mini\auto-compile.py"
-cd "D:\Work\GitHub\UnifiedFirmware\Internal Tools\Compile Scripts"
-echo .
-echo ..
-echo ...
-echo ....
-echo ......
-echo Press any key to continue once the firmware compile finishes...
-pause > nul
-
 rmdir "D:\Work\Printer Firmware\UF2TestBuilds\ADIM_Ramps" /s /q
 xcopy /E /I /F "D:\Work\GitHub\UnifiedFirmware\Firmware" "D:\Work\Printer Firmware\UF2TestBuilds\ADIM_Ramps"
 xcopy /E /I /F "D:\Work\GitHub\UnifiedFirmware\Board_Configs\ADIM_Ramps\Firmware" "D:\Work\Printer Firmware\UF2TestBuilds\ADIM_Ramps"
@@ -199,6 +183,70 @@ xcopy /E /I /F "D:\Work\GitHub\UnifiedFirmware\Internal Tools\Compile Scripts\MK
 D:
 cd "D:\Work\Printer Firmware\UF2TestBuilds\MKS_SGen_L_V2_DIY\"
 start python "D:\Work\Printer Firmware\UF2TestBuilds\MKS_SGen_L_V2_DIY\auto-compile.py"
+cd "D:\Work\GitHub\UnifiedFirmware\Internal Tools\Compile Scripts"
+echo .
+echo ..
+echo ...
+echo ....
+echo ......
+echo Press any key to continue once the firmware compile finishes...
+pause > nul
+
+rmdir "D:\Work\Printer Firmware\UF2TestBuilds\SKR_E3_Mini" /s /q
+xcopy /E /I /F "D:\Work\GitHub\UnifiedFirmware\Firmware" "D:\Work\Printer Firmware\UF2TestBuilds\SKR_E3_Mini"
+xcopy /E /I /F "D:\Work\GitHub\UnifiedFirmware\Board_Configs\SKR_E3_Mini\Firmware" "D:\Work\Printer Firmware\UF2TestBuilds\SKR_E3_Mini"
+xcopy /E /I /F "D:\Work\GitHub\UnifiedFirmware\Internal Tools\Compile Scripts\SKR_E3_Mini" "D:\Work\Printer Firmware\UF2TestBuilds\SKR_E3_Mini"
+D:
+cd "D:\Work\Printer Firmware\UF2TestBuilds\SKR_E3_Mini\"
+start python "D:\Work\Printer Firmware\UF2TestBuilds\SKR_E3_Mini\auto-compile.py"
+cd "D:\Work\GitHub\UnifiedFirmware\Internal Tools\Compile Scripts"
+echo .
+echo ..
+echo ...
+echo ....
+echo ......
+echo Press any key to continue once the firmware compile finishes...
+pause > nul
+
+rmdir "D:\Work\Printer Firmware\UF2TestBuilds\Sovol_Ramps" /s /q
+xcopy /E /I /F "D:\Work\GitHub\UnifiedFirmware\Firmware" "D:\Work\Printer Firmware\UF2TestBuilds\Sovol_Ramps"
+xcopy /E /I /F "D:\Work\GitHub\UnifiedFirmware\Board_Configs\Sovol_Ramps\Firmware" "D:\Work\Printer Firmware\UF2TestBuilds\Sovol_Ramps"
+xcopy /E /I /F "D:\Work\GitHub\UnifiedFirmware\Internal Tools\Compile Scripts\Sovol_Ramps" "D:\Work\Printer Firmware\UF2TestBuilds\Sovol_Ramps"
+D:
+cd "D:\Work\Printer Firmware\UF2TestBuilds\Sovol_Ramps\"
+start python "D:\Work\Printer Firmware\UF2TestBuilds\Sovol_Ramps\auto-compile.py"
+cd "D:\Work\GitHub\UnifiedFirmware\Internal Tools\Compile Scripts"
+echo .
+echo ..
+echo ...
+echo ....
+echo ......
+echo Press any key to continue once the firmware compile finishes...
+pause > nul
+
+rmdir "D:\Work\Printer Firmware\UF2TestBuilds\Sunlu_Ramps" /s /q
+xcopy /E /I /F "D:\Work\GitHub\UnifiedFirmware\Firmware" "D:\Work\Printer Firmware\UF2TestBuilds\Sunlu_Ramps"
+xcopy /E /I /F "D:\Work\GitHub\UnifiedFirmware\Board_Configs\Sunlu_Ramps\Firmware" "D:\Work\Printer Firmware\UF2TestBuilds\Sunlu_Ramps"
+xcopy /E /I /F "D:\Work\GitHub\UnifiedFirmware\Internal Tools\Compile Scripts\Sunlu_Ramps" "D:\Work\Printer Firmware\UF2TestBuilds\Sunlu_Ramps"
+D:
+cd "D:\Work\Printer Firmware\UF2TestBuilds\Sunlu_Ramps\"
+start python "D:\Work\Printer Firmware\UF2TestBuilds\Sunlu_Ramps\auto-compile.py"
+cd "D:\Work\GitHub\UnifiedFirmware\Internal Tools\Compile Scripts"
+echo .
+echo ..
+echo ...
+echo ....
+echo ......
+echo Press any key to continue once the firmware compile finishes...
+pause > nul
+
+rmdir "D:\Work\Printer Firmware\UF2TestBuilds\Wanhao_Ramps" /s /q
+xcopy /E /I /F "D:\Work\GitHub\UnifiedFirmware\Firmware" "D:\Work\Printer Firmware\UF2TestBuilds\Wanhao_Ramps"
+xcopy /E /I /F "D:\Work\GitHub\UnifiedFirmware\Board_Configs\Wanhao_Ramps\Firmware" "D:\Work\Printer Firmware\UF2TestBuilds\Wanhao_Ramps"
+xcopy /E /I /F "D:\Work\GitHub\UnifiedFirmware\Internal Tools\Compile Scripts\Wanhao_Ramps" "D:\Work\Printer Firmware\UF2TestBuilds\Wanhao_Ramps"
+D:
+cd "D:\Work\Printer Firmware\UF2TestBuilds\Wanhao_Ramps\"
+start python "D:\Work\Printer Firmware\UF2TestBuilds\Wanhao_Ramps\auto-compile.py"
 cd "D:\Work\GitHub\UnifiedFirmware\Internal Tools\Compile Scripts"
 echo .
 echo ..

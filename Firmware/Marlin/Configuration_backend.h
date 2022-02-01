@@ -379,9 +379,11 @@
 #define PID_MAX BANG_MAX
 #define PID_K1 0.95
 
-#define PID_AUTOTUNE_MENU
+#if DISABLED(DWIN_CREALITY_LCD)
+  #define PID_AUTOTUNE_MENU
+#endif
 
-#if DISABLED(SPACE_SAVER) && DISABLED(SKR_E3_MINI_BOARD)
+#if DISABLED(SPACE_SAVER) && DISABLED(SKR_E3_MINI_BOARD) && DISABLED(DWIN_CREALITY_LCD)
   #define PID_EDIT_MENU
 #endif
 
@@ -580,9 +582,9 @@
   #define INDIVIDUAL_AXIS_HOMING_MENU
 #endif
 
-// NEW OPTIONS WITH 2.0.8.1 UPDATE
-// Add a menu item to move between bed corners for manual bed adjustment
-#define LEVEL_BED_CORNERS
+#if DISABLED(DWIN_CREALITY_LCD)
+  #define LEVEL_BED_CORNERS
+#endif
 
 #if ENABLED(LEVEL_BED_CORNERS)
   #define LEVEL_CORNERS_INSET_LFRB { 30, 30, 30, 30 } // (mm) Left, Front, Right, Back insets

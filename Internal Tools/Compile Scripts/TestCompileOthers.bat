@@ -79,3 +79,51 @@ echo ....
 echo ......
 echo Press any key to continue once the firmware compile finishes...
 pause > nul
+
+rmdir "D:\Work\Printer Firmware\UF2TestBuilds\AnyCubic_Ramps" /s /q
+xcopy /E /I /F "D:\Work\GitHub\UnifiedFirmware\Firmware" "D:\Work\Printer Firmware\UF2TestBuilds\AnyCubic_Ramps"
+xcopy /E /I /F "D:\Work\GitHub\UnifiedFirmware\Board_Configs\AnyCubic_Ramps\Firmware" "D:\Work\Printer Firmware\UF2TestBuilds\AnyCubic_Ramps"
+xcopy /E /I /F "D:\Work\GitHub\UnifiedFirmware\Internal Tools\Compile Scripts\AnyCubic_Ramps" "D:\Work\Printer Firmware\UF2TestBuilds\AnyCubic_Ramps"
+D:
+cd "D:\Work\Printer Firmware\UF2TestBuilds\AnyCubic_Ramps\"
+start python "D:\Work\Printer Firmware\UF2TestBuilds\AnyCubic_Ramps\auto-compile.py"
+cd "D:\Work\GitHub\UnifiedFirmware\Internal Tools\Compile Scripts"
+echo .
+echo ..
+echo ...
+echo ....
+echo ......
+echo Press any key to continue once the firmware compile finishes...
+pause > nul
+
+rmdir "D:\Work\Printer Firmware\UF2TestBuilds\Artillery_Ramps" /s /q
+xcopy /E /I /F "D:\Work\GitHub\UnifiedFirmware\Firmware" "D:\Work\Printer Firmware\UF2TestBuilds\Artillery_Ramps"
+xcopy /E /I /F "D:\Work\GitHub\UnifiedFirmware\Board_Configs\Artillery_Ramps\Firmware" "D:\Work\Printer Firmware\UF2TestBuilds\Artillery_Ramps"
+xcopy /E /I /F "D:\Work\GitHub\UnifiedFirmware\Internal Tools\Compile Scripts\Artillery_Ramps" "D:\Work\Printer Firmware\UF2TestBuilds\Artillery_Ramps"
+D:
+cd "D:\Work\Printer Firmware\UF2TestBuilds\Artillery_Ramps\"
+start python "D:\Work\Printer Firmware\UF2TestBuilds\Artillery_Ramps\auto-compile.py"
+cd "D:\Work\GitHub\UnifiedFirmware\Internal Tools\Compile Scripts"
+echo .
+echo ..
+echo ...
+echo ....
+echo ......
+echo Press any key to continue once the firmware compile finishes...
+pause > nul
+
+rmdir "D:\Work\Printer Firmware\UF2TestBuilds\Creality_Ramps" /s /q
+xcopy /E /I /F "D:\Work\GitHub\UnifiedFirmware\Firmware" "D:\Work\Printer Firmware\UF2TestBuilds\Creality_Ramps"
+xcopy /E /I /F "D:\Work\GitHub\UnifiedFirmware\Board_Configs\Creality_Ramps\Firmware" "D:\Work\Printer Firmware\UF2TestBuilds\Creality_Ramps"
+xcopy /E /I /F "D:\Work\GitHub\UnifiedFirmware\Internal Tools\Compile Scripts\Creality_Ramps" "D:\Work\Printer Firmware\UF2TestBuilds\Creality_Ramps"
+D:
+cd "D:\Work\Printer Firmware\UF2TestBuilds\Creality_Ramps\"
+start python "D:\Work\Printer Firmware\UF2TestBuilds\Creality_Ramps\auto-compile.py"
+cd "D:\Work\GitHub\UnifiedFirmware\Internal Tools\Compile Scripts"
+echo .
+echo ..
+echo ...
+echo ....
+echo ......
+echo Press any key to continue once the firmware compile finishes...
+pause > nul

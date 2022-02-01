@@ -1,0 +1,13 @@
+{
+    "config-file":"Configuration.h",
+    "compile-profile":
+    [
+        {
+            "profile-name": "kingroon-kp3s",
+            "keyword": 
+            [
+                {"find":"//#define KINGROON_KP3S","replace":"#define KINGROON_KP3S"}
+            ]
+        }
+    ]
+}

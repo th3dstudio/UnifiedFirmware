@@ -24,7 +24,7 @@
 //#define CR10_V2
 //#define CR10_V3
 //#define CR10S_PRO
-//#define CR20 
+//#define CR20
 //#define CRX
 //#define ENDER4
 //#define ENDER5_PLUS

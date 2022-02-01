@@ -1,0 +1,13 @@
+{
+    "config-file":"Configuration.h",
+    "compile-profile":
+    [
+        {
+            "profile-name": "adim-gantry-i3-plus",
+            "keyword": 
+            [
+                {"find":"//#define ADIM_GANTRY_I3_PLUS","replace":"#define ADIM_GANTRY_I3_PLUS"}
+            ]
+        }
+    ]
+}

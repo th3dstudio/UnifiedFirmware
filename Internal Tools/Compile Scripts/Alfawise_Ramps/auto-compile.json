@@ -1,0 +1,13 @@
+{
+    "config-file":"Configuration.h",
+    "compile-profile":
+    [
+        {
+            "profile-name": "alfawise-u10",
+            "keyword": 
+            [
+                {"find":"//#define ALFAWISE_U10","replace":"#define ALFAWISE_U10"}
+            ]
+        }
+    ]
+}

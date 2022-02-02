@@ -3,6 +3,7 @@
 rmdir "D:\Work\Printer Firmware\UF2TestBuilds\TH3D_EZBoardLite" /s /q
 xcopy /E /I /F "D:\Work\GitHub\UnifiedFirmware\Firmware" "D:\Work\Printer Firmware\UF2TestBuilds\TH3D_EZBoardLite"
 xcopy /E /I /F "D:\Work\GitHub\UnifiedFirmware\Board_Configs\TH3D_EZBoardLite\Firmware" "D:\Work\Printer Firmware\UF2TestBuilds\TH3D_EZBoardLite"
+xcopy /E /I /F "D:\Work\GitHub\UnifiedFirmware\Internal Tools\Compile Scripts\TH3D_EZBoardLite" "D:\Work\Printer Firmware\UF2TestBuilds\TH3D_EZBoardLite"
 
 rmdir "D:\Work\Printer Firmware\UF2TestBuilds\TH3D_EZBoardLite_DIY" /s /q
 xcopy /E /I /F "D:\Work\GitHub\UnifiedFirmware\Firmware" "D:\Work\Printer Firmware\UF2TestBuilds\TH3D_EZBoardLite_DIY"
@@ -11,6 +12,7 @@ xcopy /E /I /F "D:\Work\GitHub\UnifiedFirmware\Board_Configs\TH3D_EZBoardLite_DI
 rmdir "D:\Work\Printer Firmware\UF2TestBuilds\TH3D_EZBoardV2" /s /q
 xcopy /E /I /F "D:\Work\GitHub\UnifiedFirmware\Firmware" "D:\Work\Printer Firmware\UF2TestBuilds\TH3D_EZBoardV2"
 xcopy /E /I /F "D:\Work\GitHub\UnifiedFirmware\Board_Configs\TH3D_EZBoardV2\Firmware" "D:\Work\Printer Firmware\UF2TestBuilds\TH3D_EZBoardV2"
+xcopy /E /I /F "D:\Work\GitHub\UnifiedFirmware\Internal Tools\Compile Scripts\TH3D_EZBoardV2" "D:\Work\Printer Firmware\UF2TestBuilds\TH3D_EZBoardV2"
 
 rmdir "D:\Work\Printer Firmware\UF2TestBuilds\TH3D_EZBoardV2_DIY" /s /q
 xcopy /E /I /F "D:\Work\GitHub\UnifiedFirmware\Firmware" "D:\Work\Printer Firmware\UF2TestBuilds\TH3D_EZBoardV2_DIY"

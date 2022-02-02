@@ -836,7 +836,7 @@
     #define X_MIN_POS X_HOME_LOCATION
     #define Y_MIN_POS Y_HOME_LOCATION
   #elif ENABLED(ENDER2_PRO_OEM)
-    #define X_MIN_POS -11
+    #define X_MIN_POS -9
     #define Y_MIN_POS -4
   #else
     #define X_MIN_POS -20

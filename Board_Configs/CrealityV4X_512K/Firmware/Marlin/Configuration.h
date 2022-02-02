@@ -57,6 +57,7 @@
 
 // EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
 //#define CR10_OEM
+//#define ENDER2_PRO_OEM
 //#define ENDER3_OEM
 //#define ENDER3_V2_OEM
 //#define ENDER3_MAX_OEM
@@ -834,6 +835,9 @@
   #if ENABLED(HOME_ADJUST)
     #define X_MIN_POS X_HOME_LOCATION
     #define Y_MIN_POS Y_HOME_LOCATION
+  #elif ENABLED(ENDER2_PRO_OEM)
+    #define X_MIN_POS -11
+    #define Y_MIN_POS -4
   #else
     #define X_MIN_POS -20
     #define Y_MIN_POS -4

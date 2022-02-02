@@ -15,6 +15,10 @@
 #if ENABLED(CUSTOM_PROBE)
   #define ABL_ENABLE
 #endif
+#if ENABLED(ENDER2_PRO_OEM)
+  #define ABL_ENABLE
+  #define NOZZLE_TO_PROBE_OFFSET { 0, 0, 0 }
+#endif
 #if ENABLED(CHIRON_OEM)
   #define ABL_ENABLE
   #define NOZZLE_TO_PROBE_OFFSET { 40, 0, 0 }

@@ -3,6 +3,13 @@
     "compile-profile":
     [
         {
+            "profile-name": "ender2-423",
+            "keyword": 
+            [
+                {"find":"//#define ENDER2_PRO_V423_BOARD","replace":"#define ENDER2_PRO_V423_BOARD"}
+            ]
+        },
+		{
             "profile-name": "ender3-422",
             "keyword": 
             [

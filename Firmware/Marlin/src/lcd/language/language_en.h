@@ -43,7 +43,7 @@
 #endif
 #undef en
 
-#define MEDIA_TYPE_EN "Media"
+#define MEDIA_TYPE_EN "SD"
 
 namespace Language_en {
   constexpr uint8_t CHARSIZE              = 2;

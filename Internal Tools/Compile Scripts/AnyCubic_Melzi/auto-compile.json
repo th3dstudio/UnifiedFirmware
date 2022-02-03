@@ -1,0 +1,20 @@
+{
+    "config-file":"Configuration.h",
+    "compile-profile":
+    [
+        {
+            "profile-name": "ac-mega-zero-v1",
+            "keyword": 
+            [
+                {"find":"//#define AC_MEGA_ZERO","replace":"#define AC_MEGA_ZERO"}
+            ]
+        },
+		{
+            "profile-name": "ac-mega-zero-v2",
+            "keyword": 
+            [
+                {"find":"//#define AC_MEGA_ZERO_V2","replace":"#define AC_MEGA_ZERO_V2"}
+            ]
+        }
+    ]
+}

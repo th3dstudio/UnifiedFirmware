@@ -1,0 +1,13 @@
+{
+    "config-file":"Configuration.h",
+    "compile-profile":
+    [
+        {
+            "profile-name": "ac-chiron",
+            "keyword": 
+            [
+                {"find":"//#define CHIRON","replace":"#define CHIRON"}
+            ]
+        }
+    ]
+}

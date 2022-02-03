@@ -17,9 +17,6 @@ This does not include machine configs or PlatformIO files.
 			- **calibrate**
 				- `M48.cpp`
 		- **lcd**
-			- **dwin**
-				- **e3v2**
-					- `dwin.cpp`
 			- **language**
 				- `language_en.h`
 			- **menu**
@@ -30,7 +27,6 @@ This does not include machine configs or PlatformIO files.
 			- `pins.h`
 			- **lpc1769**
 				- `pins_MKS_SGEN_L_V2.h`
-				- `pins_TH3D_EZBOARD.h`
 			- **mega**
 				- `pins_WANHAO_ONEPLUS.h`
 			- **ramps**
@@ -43,6 +39,6 @@ This does not include machine configs or PlatformIO files.
 				- `pins_BTT_SKR_MINI_E3_common.h`
 				- `pins_CREALITY_V4.h`
 				- `pins_MKS_ROBIN_MINI.h`
-				- `pins_MKS_ROBIN_NANO.h`
+				- `pins_MKS_ROBIN_NANO_common.h`
 	- `Configuration_adv.h`
 	- `Version.h`

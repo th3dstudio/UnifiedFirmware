@@ -1,6 +1,6 @@
 /**
  * Marlin 3D Printer Firmware
- * Copyright (c) 2020 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
+ * Copyright (c) 2021 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
  *
  * Based on Sprinter and grbl.
  * Copyright (c) 2011 Camiel Gubbels / Erik van der Zalm
@@ -21,24 +21,24 @@
  */
 #pragma once
 
-#if NOT_TARGET(STM32F4)
-  #error "Oops! Select an STM32F4 board in 'Tools > Board.'"
-#endif
+#define ALLOW_STM32DUINO
+#include "env_validate.h"
 
-// Disabling J-tag and Debug via SWD
-#define DISABLE_JTAGSWD
+#define BOARD_INFO_NAME   "TH3D EZBoard V2"
+#define BOARD_WEBSITE_URL "th3dstudio.com"
+
+//#define V3_EZABL_ON_SERVO                       // As in TH3D Firmware Config
+
+#define DISABLE_JTAGSWD                           // Disabling J-tag and Debug via SWD
 
 // Onboard I2C EEPROM
 #if NO_EEPROM_SELECTED
   #define I2C_EEPROM
-  #define MARLIN_EEPROM_SIZE 0x1000                 // 4KB
-  #define I2C_SCL_PIN                         PB6
-  #define I2C_SDA_PIN                         PB7
+  #define MARLIN_EEPROM_SIZE              0x1000  // 4KB
+  #define I2C_SCL_PIN                       PB6
+  #define I2C_SDA_PIN                       PB7
   #undef NO_EEPROM_SELECTED
 #endif
-
-#define BOARD_INFO_NAME   "TH3D EZBoard Lite V2"
-#define BOARD_WEBSITE_URL "th3dstudio.com"
 
 //
 // Neopixels
@@ -60,35 +60,30 @@
 #if EITHER(SENSORLESS_HOMING, SENSORLESS_PROBING)
   // Sensorless homing pins
   #if ENABLED(X_AXIS_SENSORLESS_HOMING)
-    #define X_STOP_PIN                        PB4
+    #define X_STOP_PIN                      PB4
   #else
-    #define X_STOP_PIN                        PC1
+    #define X_STOP_PIN                      PC1
   #endif
-  
+
   #if ENABLED(Y_AXIS_SENSORLESS_HOMING)
-    #define Y_STOP_PIN                        PB9
+    #define Y_STOP_PIN                      PB9
   #else
-    #define Y_STOP_PIN                        PC2
+    #define Y_STOP_PIN                      PC2
   #endif
-  
-  //#define Z_STOP_PIN                      PC15 //dont use sensorless homing on Z.
-  
-  #if ENABLED(V3_EZABL_ON_SERVO)
-    #define Z_STOP_PIN                      PA2
-  #else
-    #define Z_STOP_PIN                      PC3
-  #endif
-  
+
+  //#define Z_STOP_PIN                      PC15  // Don't use sensorless homing on Z!
+
   #define E_STOP_PIN                        PB10
 #else
   // Standard Endstop Pins
   #define X_STOP_PIN                        PC1
   #define Y_STOP_PIN                        PC2
-  #if ENABLED(V3_EZABL_ON_SERVO)
-    #define Z_STOP_PIN                      PA2
-  #else
-    #define Z_STOP_PIN                      PC3
-  #endif
+#endif
+
+#if ENABLED(V3_EZABL_ON_SERVO)
+  #define Z_STOP_PIN                        PA2
+#else
+  #define Z_STOP_PIN                        PC3
 #endif
 
 //
@@ -181,22 +176,22 @@
 #define SD_MISO_PIN                         PA6
 #define SD_MOSI_PIN                         PA7
 #define SD_SS_PIN                           SDSS
-//#define SD_DETECT_PIN                       -1
-//#define ONBOARD_SD_CS_PIN                   SDSS
+//#define SD_DETECT_PIN                     -1
+//#define ONBOARD_SD_CS_PIN                 SDSS
 
 //
 // LCD / Controller
 //
 
 /**
- *                  ______
- *              5V | 1  2 | GND
- *   (LCD_EN) PB15 | 3  4 | PB12 (LCD_RS)
- *   (LCD_D4) PB13 | 5  6   PC5  (BTN_EN1)
- *    (RESET) ---- | 7  8 | PC4  (BTN_EN2)
- *  (BTN_ENC) PB0  | 9 10 | PA14 (BEEPER)
- *                  ------
- *                   EXP1
+ *        ______
+ *    5V | 1  2 | GND
+ *  PB15 | 3  4 | PB12
+ *  PB13 | 5  6   PC5
+ *  ---- | 7  8 | PC4
+ *  PB0  | 9 10 | PA14
+ *        ------
+ *         EXP1
  *
  * LCD_PINS_D5, D6, and D7 are not present in the EXP1 connector, and will need to be
  * defined to use the REPRAP_DISCOUNT_SMART_CONTROLLER.
@@ -214,39 +209,53 @@
 #define EXP1_10_PIN                         PA14
 
 #if ENABLED(CR10_STOCKDISPLAY)
+  /**          ______
+   *       5V | 1  2 | GND
+   *   LCD_EN | 3  4 | LCD_RS
+   *   LCD_D4 | 5  6   EN2
+   *    RESET | 7  8 | EN1
+   *      ENC | 9 10 | BEEPER
+   *           ------
+   */
   #ifdef DISABLE_JTAGSWD
     #define BEEPER_PIN               EXP1_10_PIN  // Not connected in dev board
   #endif
-  #define BTN_EN1                    EXP1_06_PIN
-  #define BTN_EN2                    EXP1_08_PIN
-  #define BTN_ENC                    EXP1_09_PIN
   #define LCD_PINS_RS                EXP1_04_PIN
   #define LCD_PINS_ENABLE            EXP1_03_PIN
   #define LCD_PINS_D4                EXP1_05_PIN
   //#define KILL_PIN                        -1
 
-  #ifndef ST7920_DELAY_1
-    #define ST7920_DELAY_1 DELAY_NS(600)
-  #endif
-  #ifndef ST7920_DELAY_2
-    #define ST7920_DELAY_2 DELAY_NS(750)
-  #endif
-  #ifndef ST7920_DELAY_3
-    #define ST7920_DELAY_3 DELAY_NS(750)
-  #endif
+  #define BOARD_ST7920_DELAY_1           600
+  #define BOARD_ST7920_DELAY_2           750
+  #define BOARD_ST7920_DELAY_3           750
+
 #elif ENABLED(MKS_MINI_12864)
-  #define DOGLCD_CS                        EXP1_04_PIN
-  #define DOGLCD_A0                        EXP1_05_PIN
-  #define DOGLCD_SCK                       EXP1_10_PIN
-  #define DOGLCD_MOSI                      EXP1_03_PIN
-  #define BTN_ENC                          EXP1_09_PIN
-  #define BTN_EN1                          EXP1_08_PIN
-  #define BTN_EN2                          EXP1_06_PIN
-  #define LCD_CONTRAST_INIT                160
-  #define LCD_CONTRAST_MIN                 120
-  #define LCD_CONTRAST_MAX                 180 
+  /**          ______
+   *       5V | 1  2 | GND
+   * SPI-MOSI | 3  4 | SPI-CS
+   *       A0 | 5  6   EN2
+   *       -- | 7  8 | EN1
+   *      ENC | 9 10 | SPI-SCK
+   *           ------
+   */
+  #define DOGLCD_CS                  EXP1_04_PIN
+  #define DOGLCD_A0                  EXP1_05_PIN
+  #define DOGLCD_SCK                 EXP1_10_PIN
+  #define DOGLCD_MOSI                EXP1_03_PIN
+  #define LCD_CONTRAST_INIT                  160
+  #define LCD_CONTRAST_MIN                   120
+  #define LCD_CONTRAST_MAX                   180
   #define FORCE_SOFT_SPI
-  #define LCD_BACKLIGHT_PIN                -1
+  #define LCD_BACKLIGHT_PIN                 -1
+
 #elif HAS_WIRED_LCD
+
   #error "Only CR10_STOCKDISPLAY or MKS_MINI_12864 are supported with TH3D EZBoard V2."
+
+#endif
+
+#if EITHER(CR10_STOCKDISPLAY, MKS_MINI_12864)
+  #define BTN_EN1                    EXP1_08_PIN
+  #define BTN_EN2                    EXP1_06_PIN
+  #define BTN_ENC                    EXP1_09_PIN
 #endif

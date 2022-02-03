@@ -1,12 +1,12 @@
 #pragma once
 
-#define CONFIGURATION_BACKEND_H_VERSION 02000901
+#define CONFIGURATION_BACKEND_H_VERSION 02000903
 
 //===========================================================================
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-#define UNIFIED_VERSION "TH3D UFW 2.37"
+#define UNIFIED_VERSION "TH3D UFW 2.38"
 
 /**
  * ABL Probe Settings
@@ -14,6 +14,10 @@
 
 #if ENABLED(CUSTOM_PROBE)
   #define ABL_ENABLE
+#endif
+#if ENABLED(ENDER2_PRO_OEM)
+  #define ABL_ENABLE
+  #define NOZZLE_TO_PROBE_OFFSET { -40, -13, 0 }
 #endif
 #if ENABLED(CHIRON_OEM)
   #define ABL_ENABLE
@@ -379,9 +383,11 @@
 #define PID_MAX BANG_MAX
 #define PID_K1 0.95
 
-#define PID_AUTOTUNE_MENU
+#if DISABLED(DWIN_CREALITY_LCD)
+  #define PID_AUTOTUNE_MENU
+#endif
 
-#if DISABLED(SPACE_SAVER) && DISABLED(SKR_E3_MINI_BOARD)
+#if DISABLED(SPACE_SAVER) && DISABLED(SKR_E3_MINI_BOARD) && DISABLED(DWIN_CREALITY_LCD)
   #define PID_EDIT_MENU
 #endif
 
@@ -580,9 +586,9 @@
   #define INDIVIDUAL_AXIS_HOMING_MENU
 #endif
 
-// NEW OPTIONS WITH 2.0.8.1 UPDATE
-// Add a menu item to move between bed corners for manual bed adjustment
-#define LEVEL_BED_CORNERS
+#if DISABLED(DWIN_CREALITY_LCD)
+  #define LEVEL_BED_CORNERS
+#endif
 
 #if ENABLED(LEVEL_BED_CORNERS)
   #define LEVEL_CORNERS_INSET_LFRB { 30, 30, 30, 30 } // (mm) Left, Front, Right, Back insets

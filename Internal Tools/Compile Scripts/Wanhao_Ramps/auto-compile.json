@@ -1,0 +1,20 @@
+{
+    "config-file":"Configuration.h",
+    "compile-profile":
+    [
+        {
+            "profile-name": "i3mini-v1",
+            "keyword": 
+            [
+                {"find":"//#define WANHAO_I3MINI","replace":"#define WANHAO_I3MINI"}
+            ]
+        },
+		{
+            "profile-name": "i3mini-v2",
+            "keyword": 
+            [
+                {"find":"//#define WANHAO_I3MINI_V2","replace":"#define WANHAO_I3MINI_V2"}
+            ]
+        }
+    ]
+}

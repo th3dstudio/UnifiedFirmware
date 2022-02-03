@@ -79,29 +79,29 @@ void GcodeSuite::M48() {
   };
 
   if (!probe.can_reach(test_position)) {
-    ui.set_status_P(GET_TEXT(MSG_M48_OUT_OF_BOUNDS), 99);
+    ui.set_status(GET_TEXT_F(MSG_M48_OUT_OF_BOUNDS), 99);
     SERIAL_ECHOLNPGM("? (X,Y) out of bounds.");
     return;
   }
 
   #if DISABLED(SPACE_SAVER)
-    // Get the number of leg moves per test-point
-    bool seen_L = parser.seen('L');
-    uint8_t n_legs = seen_L ? parser.value_byte() : 0;
-    if (n_legs > 15) {
-      SERIAL_ECHOLNPGM("?Legs of movement implausible (0-15).");
-      return;
-    }
-    if (n_legs == 1) n_legs = 2;
+  // Get the number of leg moves per test-point
+  bool seen_L = parser.seen('L');
+  uint8_t n_legs = seen_L ? parser.value_byte() : 0;
+  if (n_legs > 15) {
+    SERIAL_ECHOLNPGM("?Legs of movement implausible (0-15).");
+    return;
+  }
+  if (n_legs == 1) n_legs = 2;
 
-    // Schizoid motion as an optional stress-test
-    const bool schizoid_flag = parser.boolval('S');
-    if (schizoid_flag && !seen_L) n_legs = 7;
+  // Schizoid motion as an optional stress-test
+  const bool schizoid_flag = parser.boolval('S');
+  if (schizoid_flag && !seen_L) n_legs = 7;
 
-    if (verbose_level > 2)
-      SERIAL_ECHOLNPGM("Positioning the probe...");
+  if (verbose_level > 2)
+    SERIAL_ECHOLNPGM("Positioning the probe...");
 
-    // Always disable Bed Level correction before probing...
+  // Always disable Bed Level correction before probing...
   #endif
 
   #if HAS_LEVELING
@@ -120,27 +120,27 @@ void GcodeSuite::M48() {
         sample_set[n_samples];  // Storage for sampled values
 
   #if DISABLED(SPACE_SAVER) //Save space for lower end boards. Disabled/added by TH3D.
-    auto dev_report = [](const bool verbose, const_float_t mean, const_float_t sigma, const_float_t min, const_float_t max, const bool final=false) {
-      if (verbose) {
-        SERIAL_ECHOPAIR_F("Mean: ", mean, 6);
-        if (!final) SERIAL_ECHOPAIR_F(" Sigma: ", sigma, 6);
-        SERIAL_ECHOPAIR_F(" Min: ", min, 3);
-        SERIAL_ECHOPAIR_F(" Max: ", max, 3);
-        SERIAL_ECHOPAIR_F(" Range: ", max-min, 3);
-        if (final) SERIAL_EOL();
-      }
-      if (final) {
-        SERIAL_ECHOLNPAIR_F("Standard Deviation: ", sigma, 6);
-        SERIAL_EOL();
-      }
-    };
+  auto dev_report = [](const bool verbose, const_float_t mean, const_float_t sigma, const_float_t min, const_float_t max, const bool final=false) {
+    if (verbose) {
+      SERIAL_ECHOPAIR_F("Mean: ", mean, 6);
+      if (!final) SERIAL_ECHOPAIR_F(" Sigma: ", sigma, 6);
+      SERIAL_ECHOPAIR_F(" Min: ", min, 3);
+      SERIAL_ECHOPAIR_F(" Max: ", max, 3);
+      SERIAL_ECHOPAIR_F(" Range: ", max-min, 3);
+      if (final) SERIAL_EOL();
+    }
+    if (final) {
+      SERIAL_ECHOLNPAIR_F("Standard Deviation: ", sigma, 6);
+      SERIAL_EOL();
+    }
+  };
   #else
-    auto dev_report = [](const bool verbose, const_float_t mean, const_float_t sigma, const_float_t min, const_float_t max, const bool final=false) {
-      if (final) {
-        SERIAL_ECHOLNPAIR_F("Standard Deviation: ", sigma, 6);
-        SERIAL_EOL();
-      }
-    };
+  auto dev_report = [](const bool verbose, const_float_t mean, const_float_t sigma, const_float_t min, const_float_t max, const bool final=false) {
+  	if (final) {
+      SERIAL_ECHOLNPAIR_F("Standard Deviation: ", sigma, 6);
+      SERIAL_EOL();
+    }
+  };
   #endif
 
   // Move to the first point, deploy, and probe
@@ -155,77 +155,77 @@ void GcodeSuite::M48() {
     LOOP_L_N(n, n_samples) {
       #if HAS_STATUS_MESSAGE
         // Display M48 progress in the status bar
-        ui.status_printf_P(0, PSTR(S_FMT ": %d/%d"), GET_TEXT(MSG_M48_POINT), int(n + 1), int(n_samples));
+        ui.status_printf(0, F(S_FMT ": %d/%d"), GET_TEXT(MSG_M48_POINT), int(n + 1), int(n_samples));
       #endif
 
       #if DISABLED(SPACE_SAVER) //Not needed for non-delta machines. Disabled by TH3D for some boards to save space.
-        // When there are "legs" of movement move around the point before probing
-        if (n_legs) {
+      // When there are "legs" of movement move around the point before probing
+      if (n_legs) {
 
-          // Pick a random direction, starting angle, and radius
-          const int dir = (random(0, 10) > 5.0) ? -1 : 1;  // clockwise or counter clockwise
-          float angle = random(0, 360);
-          const float radius = random(
-            #if ENABLED(DELTA)
-              int(0.1250000000 * (DELTA_PRINTABLE_RADIUS)),
-              int(0.3333333333 * (DELTA_PRINTABLE_RADIUS))
-            #else
-              int(5), int(0.125 * _MIN(X_BED_SIZE, Y_BED_SIZE))
-            #endif
-          );
-          if (verbose_level > 3) {
-            SERIAL_ECHOPAIR("Start radius:", radius, " angle:", angle, " dir:");
-            if (dir > 0) SERIAL_CHAR('C');
-            SERIAL_ECHOLNPGM("CW");
+        // Pick a random direction, starting angle, and radius
+        const int dir = (random(0, 10) > 5.0) ? -1 : 1;  // clockwise or counter clockwise
+        float angle = random(0, 360);
+        const float radius = random(
+          #if ENABLED(DELTA)
+            int(0.1250000000 * (DELTA_PRINTABLE_RADIUS)),
+            int(0.3333333333 * (DELTA_PRINTABLE_RADIUS))
+          #else
+            int(5), int(0.125 * _MIN(X_BED_SIZE, Y_BED_SIZE))
+          #endif
+        );
+        if (verbose_level > 3) {
+          SERIAL_ECHOPGM("Start radius:", radius, " angle:", angle, " dir:");
+          if (dir > 0) SERIAL_CHAR('C');
+          SERIAL_ECHOLNPGM("CW");
+        }
+
+        // Move from leg to leg in rapid succession
+        LOOP_L_N(l, n_legs - 1) {
+
+          // Move some distance around the perimeter
+          float delta_angle;
+          if (schizoid_flag) {
+            // The points of a 5 point star are 72 degrees apart.
+            // Skip a point and go to the next one on the star.
+            delta_angle = dir * 2.0 * 72.0;
           }
+          else {
+            // Just move further along the perimeter.
+            delta_angle = dir * (float)random(25, 45);
+          }
+          angle += delta_angle;
 
-          // Move from leg to leg in rapid succession
-          LOOP_L_N(l, n_legs - 1) {
+          // Trig functions work without clamping, but just to be safe...
+          while (angle > 360.0) angle -= 360.0;
+          while (angle < 0.0) angle += 360.0;
 
-            // Move some distance around the perimeter
-            float delta_angle;
-            if (schizoid_flag) {
-              // The points of a 5 point star are 72 degrees apart.
-              // Skip a point and go to the next one on the star.
-              delta_angle = dir * 2.0 * 72.0;
+          // Choose the next position as an offset to chosen test position
+          const xy_pos_t noz_pos = test_position - probe.offset_xy;
+          xy_pos_t next_pos = {
+            noz_pos.x + float(cos(RADIANS(angle))) * radius,
+            noz_pos.y + float(sin(RADIANS(angle))) * radius
+          };
+
+          #if ENABLED(DELTA)
+            // If the probe can't reach the point on a round bed...
+            // Simply scale the numbers to bring them closer to origin.
+            while (!probe.can_reach(next_pos)) {
+              next_pos *= 0.8f;
+              if (verbose_level > 3)
+                SERIAL_ECHOLNPGM_P(PSTR("Moving inward: X"), next_pos.x, SP_Y_STR, next_pos.y);
             }
-            else {
-              // Just move further along the perimeter.
-              delta_angle = dir * (float)random(25, 45);
-            }
-            angle += delta_angle;
-
-            // Trig functions work without clamping, but just to be safe...
-            while (angle > 360.0) angle -= 360.0;
-            while (angle < 0.0) angle += 360.0;
-
-            // Choose the next position as an offset to chosen test position
-            const xy_pos_t noz_pos = test_position - probe.offset_xy;
-            xy_pos_t next_pos = {
-              noz_pos.x + float(cos(RADIANS(angle))) * radius,
-              noz_pos.y + float(sin(RADIANS(angle))) * radius
-            };
-
-            #if ENABLED(DELTA)
-              // If the probe can't reach the point on a round bed...
-              // Simply scale the numbers to bring them closer to origin.
-              while (!probe.can_reach(next_pos)) {
-                next_pos *= 0.8f;
-                if (verbose_level > 3)
-                  SERIAL_ECHOLNPAIR_P(PSTR("Moving inward: X"), next_pos.x, SP_Y_STR, next_pos.y);
-              }
           #elif HAS_ENDSTOPS
-              // For a rectangular bed just keep the probe in bounds
-              LIMIT(next_pos.x, X_MIN_POS, X_MAX_POS);
-              LIMIT(next_pos.y, Y_MIN_POS, Y_MAX_POS);
-            #endif
+            // For a rectangular bed just keep the probe in bounds
+            LIMIT(next_pos.x, X_MIN_POS, X_MAX_POS);
+            LIMIT(next_pos.y, Y_MIN_POS, Y_MAX_POS);
+          #endif
 
-            if (verbose_level > 3)
-              SERIAL_ECHOLNPAIR_P(PSTR("Going to: X"), next_pos.x, SP_Y_STR, next_pos.y);
+          if (verbose_level > 3)
+            SERIAL_ECHOLNPGM_P(PSTR("Going to: X"), next_pos.x, SP_Y_STR, next_pos.y);
 
-            do_blocking_move_to_xy(next_pos);
-          } // n_legs loop
-        } // n_legs
+          do_blocking_move_to_xy(next_pos);
+        } // n_legs loop
+      } // n_legs
       #endif
 
       // Probe a single point
@@ -254,7 +254,7 @@ void GcodeSuite::M48() {
 
       if (verbose_level > 1) {
         SERIAL_ECHO(n + 1);
-        SERIAL_ECHOPAIR(" of ", n_samples);
+        SERIAL_ECHOPGM(" of ", n_samples);
         SERIAL_ECHOPAIR_F(": z: ", pz, 3);
         SERIAL_CHAR(' ');
         dev_report(verbose_level > 2, mean, sigma, min, max);
@@ -273,7 +273,7 @@ void GcodeSuite::M48() {
     #if HAS_STATUS_MESSAGE
       // Display M48 results in the status bar
       char sigma_str[8];
-      ui.status_printf_P(0, PSTR(S_FMT ": %s"), GET_TEXT(MSG_M48_DEVIATION), dtostrf(sigma, 2, 6, sigma_str));
+      ui.status_printf(0, F(S_FMT ": %s"), GET_TEXT(MSG_M48_DEVIATION), dtostrf(sigma, 2, 6, sigma_str));
     #endif
   }
 

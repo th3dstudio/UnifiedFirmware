@@ -1,0 +1,83 @@
+{
+    "config-file":"Configuration.h",
+    "compile-profile":
+    [
+        {
+            "profile-name": "cr10s",
+            "keyword": 
+            [
+                {"find":"//#define CR10S","replace":"#define CR10S"}
+            ]
+        },
+		{
+            "profile-name": "cr10s-mini",
+            "keyword": 
+            [
+                {"find":"//#define CR10S_MINI","replace":"#define CR10S_MINI"}
+            ]
+        },
+		{
+            "profile-name": "cr10s-s4",
+            "keyword": 
+            [
+                {"find":"//#define CR10S_S4","replace":"#define CR10S_S4"}
+            ]
+        },
+		{
+            "profile-name": "cr10s-s5",
+            "keyword": 
+            [
+                {"find":"//#define CR10S_S5","replace":"#define CR10S_S5"}
+            ]
+        },
+		{
+            "profile-name": "cr10-v2",
+            "keyword": 
+            [
+                {"find":"//#define CR10_V2","replace":"#define CR10_V2"}
+            ]
+        },
+		{
+            "profile-name": "cr10-v3",
+            "keyword": 
+            [
+                {"find":"//#define CR10_V3","replace":"#define CR10_V3"}
+            ]
+        },
+		{
+            "profile-name": "cr10s-pro",
+            "keyword": 
+            [
+                {"find":"//#define CR10S_PRO","replace":"#define CR10S_PRO"}
+            ]
+        },
+		{
+            "profile-name": "cr20",
+            "keyword": 
+            [
+                {"find":"//#define CR20","replace":"#define CR20"}
+            ]
+        },
+		{
+            "profile-name": "crx",
+            "keyword": 
+            [
+                {"find":"//#define CRX","replace":"#define CRX"}
+            ]
+        },
+		{
+            "profile-name": "ender4",
+            "keyword": 
+            [
+                {"find":"//#define ENDER4","replace":"#define ENDER4"}
+            ]
+        },
+		{
+            "profile-name": "ender5-plus",
+            "keyword": 
+            [
+                {"find":"//#define ENDER5_PLUS","replace":"#define ENDER5_PLUS"}
+            ]
+        }
+    ]
+}

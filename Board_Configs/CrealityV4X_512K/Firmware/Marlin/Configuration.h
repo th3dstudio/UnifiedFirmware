@@ -1474,7 +1474,16 @@
   #define INVERT_E6_DIR false
   #define INVERT_E7_DIR false
 
-  #define DWIN_CREALITY_LCD
+  //Different Ender 2 V2 LCD Display Options - Change at your own risk!!!
+  //#define DWIN_CREALITY_LCD           // Creality UI
+  //#define DWIN_CREALITY_LCD_ENHANCED  // Enhanced UI
+  //#define DWIN_CREALITY_LCD_JYERSUI   // Jyers UI by Jacob Myers
+  #define DWIN_MARLINUI_PORTRAIT      // MarlinUI (portrait orientation)
+  //#define DWIN_MARLINUI_LANDSCAPE     // MarlinUI (landscape orientation)
+
+  #if ANY(DWIN_CREALITY_LCD_JYERSUI, DWIN_CREALITY_LCD_ENHANCED)
+    #define ENABLE_PIDBED
+  #endif
 
   #define ENCODER_PULSES_PER_STEP 4
   #define ENCODER_STEPS_PER_MENU_ITEM 1

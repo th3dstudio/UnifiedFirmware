@@ -1443,7 +1443,7 @@
 
 #endif // HAS_LCD_MENU
 
-#if ANY(HAS_DISPLAY, DWIN_CREALITY_LCD_ENHANCED, DWIN_CREALITY_LCD_JYERSUI)
+#if ANY(HAS_DISPLAY, DWIN_CREALITY_LCD_ENHANCED, DWIN_CREALITY_LCD_JYERSUI, DWIN_CREALITY_LCD_JYERSUI, DWIN_MARLINUI_PORTRAIT, DWIN_MARLINUI_LANDSCAPE)
   //#define SOUND_MENU_ITEM   // Add a mute option to the LCD menu
 #endif
 
@@ -1459,12 +1459,12 @@
   #endif
 
   // Scroll a longer status message into view
-  #if DISABLED(DWIN_CREALITY_LCD) && DISABLED(SPACE_SAVER)
+  #if NONE(DWIN_CREALITY_LCD, SPACE_SAVER)
     #define STATUS_MESSAGE_SCROLLING
   #endif
 
   // On the Info Screen, display XY with one decimal place when possible
-  #if DISABLED(SPACE_SAVER) && DISABLED(SPACE_SAVER_2560)
+  #if NONE(SPACE_SAVER, SPACE_SAVER_2560)
     #define LCD_DECIMAL_SMALL_XY
   #endif
   // Add an 'M73' G-code to set the current percentage
@@ -1630,7 +1630,7 @@
   //#define LONG_FILENAME_HOST_SUPPORT
 
   // Enable this option to scroll long filenames in the SD card menu
-  #if DISABLED(SPACE_SAVER) && DISABLED (DWIN_CREALITY_LCD) && DISABLED(SPACE_SAVER_2560)
+  #if NONE(SPACE_SAVER, DWIN_CREALITY_LCD, SPACE_SAVER_2560)
     #define SCROLL_LONG_FILENAMES
   #endif
 
@@ -2089,7 +2089,7 @@
   #if ENABLED(ABL_ENABLE)
     #define BABYSTEP_ZPROBE_OFFSET          // Combine M851 Z and Babystepping
     #if ENABLED(BABYSTEP_ZPROBE_OFFSET)
-      #if DISABLED(SPACE_SAVER) && DISABLED(DWIN_CREALITY_LCD)
+      #if NONE(SPACE_SAVER, DWIN_CREALITY_LCD, DWIN_CREALITY_LCD_ENHANCED, DWIN_CREALITY_LCD_JYERSUI, DWIN_MARLINUI_PORTRAIT, DWIN_MARLINUI_LANDSCAPE)
         //#define BABYSTEP_HOTEND_Z_OFFSET      // For multiple hotends, babystep relative Z offsets
         #if DISABLED(LCD2004)
           #define BABYSTEP_ZPROBE_GFX_OVERLAY   // Enable graphical overlay on Z-offset editor
@@ -2118,6 +2118,8 @@
  */
 #if ENABLED(LINEAR_ADVANCE)
   #define LIN_ADVANCE
+  #undef DEFAULT_EJERK      //undefine any EJERK set already in the machine config
+  #define DEFAULT_EJERK 10  //set to 10 for LA to work effectively and bypass Marlin error
 #endif
 
 #if ENABLED(LIN_ADVANCE)
@@ -4053,7 +4055,9 @@
  *  - M206 and M428 are disabled.
  *  - G92 will revert to its behavior from Marlin 1.0.
  */
-#define NO_WORKSPACE_OFFSETS
+#if DISABLED(DWIN_CREALITY_LCD_JYERSUI)
+  #define NO_WORKSPACE_OFFSETS
+#endif
 
 // Extra options for the M114 "Current Position" report
 //#define M114_DETAIL         // Use 'M114` for details to check planner calculations

@@ -2118,6 +2118,8 @@
  */
 #if ENABLED(LINEAR_ADVANCE)
   #define LIN_ADVANCE
+  #undef DEFAULT_EJERK      //undefine any EJERK set already in the machine config
+  #define DEFAULT_EJERK 10  //set to 10 for LA to work effectively and bypass Marlin error
 #endif
 
 #if ENABLED(LIN_ADVANCE)

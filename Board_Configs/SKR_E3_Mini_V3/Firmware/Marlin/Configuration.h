@@ -18,7 +18,7 @@
 // YOU MUST UNCOMMENT THE PRINTER LINE AND YOUR BOARD VERSION LINE TO COMPILE.
 
 //===========================================================================
-// *************   CREALITY PRINTERS W/SKR E3 MINI BOARD    *****************
+// ***********   CREALITY PRINTERS W/SKR E3 MINI V3 BOARD    ****************
 //===========================================================================
 
 //#define ENDER3
@@ -32,11 +32,6 @@
 // NOTE: It is HIGHLY recommended to use an external bed MOSFET with the CR-10 series machines due to the high load the beds have.
 // While these boards work on 12V machines, they are designed for 24V printers that pull less current (specifically on the bed).
 // If you need a MOSFET, we carry one here: https://www.th3dstudio.com/product/high-amp-12v-24v-mosfet-heated-bed-or-hotend/
-
-// Uncomment what SKR E3 Mini Board Version you are using
-//#define SKR_E3_MINI_V1
-//#define SKR_E3_MINI_V1_2
-//#define SKR_E3_MINI_V2_0
 
 // EZOut Filament Sensor
 // This board only works with this version of our sensor kit: https://www.th3dstudio.com/product/ezout-filament-sensor-kit-standard/
@@ -57,12 +52,6 @@
 //#define ENDER5_OEM
 //#define CUSTOM_PROBE
 
-// EZABL on Z-Probe Port Wiring Option
-// If your BTT board is making the EZABL work unreliably then connect to the Z-Probe port on pins GND and PC14.
-// This will bypass the endstop filtering and allow the sensor to work correctly.
-// See the "EZABL_SKRE3_AlternateWiring.png" file in the Firmware folder for a picture.
-//#define EZABL_ON_ZPROBE
-
 // Ender 3 Specific Options
 
 // Ender Xtender Kit Options
@@ -77,12 +66,7 @@
 
 // EZNeo Settings -----------------------------------------------------------
 // If you are using an EZNeo strip on your printer, uncomment the line for what strip you are using.
-// Supported on V1.2 and V2.0 Boards on the NEOPIXEL header, no pin setting needed for V1.2 and V2.0 when using the NEOPIXEL header.
 //#define EZNEO_220
-
-// EZNeo Manual IO Pin Setting ----------------------------------------------
-// If you have the EZNeo wired to a different IO pin or on the V1.0 board with your own 5V power provided, specify the pin used below.
-//#define NEOPIXEL_PIN PC7
 
 //===========================================================================
 // *************************  END PRINTER SECTION   *************************
@@ -289,7 +273,6 @@
 // Arc support is enabled by default on all builds but this takes up extra space. If you get compile errors due to the size being too large when enabling other options, then disable ARC_SUPPORT
 // by uncommenting the DISABLE_ARC_SUPPORT line below.
 // Disabling ARC_SUPPORT will restore additional menus to the LCD on this board.
-// Because of the low end, limited memory chip BTT uses you cannot have both enabled at the same time.
 //#define DISABLE_ARC_SUPPORT
 
 // Action Commands Override ------------------------
@@ -309,20 +292,11 @@
 /**
  * Machine Configuration Settings
  */
-
-/**
- * BTT SKR E3 Mini Sanity Checks
- */
-
-#if DISABLED(DISABLE_ARC_SUPPORT)
-  #define SPACE_SAVER //with ARC_SUPPORT enabled we need to slim down menus to save space.
-#endif
  
- //Creality SKR E3 Mini Board Settings
-#if ENABLED(ENDER3) || ENABLED(ENDER3_MAX) || ENABLED(ENDER5) || ENABLED(CR10) || ENABLED(CR10MINI) || ENABLED(CR10S4) || ENABLED(CR10S5)
-  #define SERIAL_PORT -1
-  #define SERIAL_PORT_2 2
-  #define SKR_E3_MINI_BOARD
+ //Creality SKR E3 Mini V3 Board Settings
+#if ENABLED(ENDER3) || ENABLED(ENDER3_MAX) || ENABLED(ENDER5) || ENABLED(CR10) || ENABLED(CR10MINI) || ENABLED(CR10S4I) || ENABLED(CR10S5)
+  #define SERIAL_PORT 2
+  #define SERIAL_PORT_2 -1
 
   #if ENABLED(FASTER_BAUDRATE)
     #define BAUDRATE 250000
@@ -335,21 +309,11 @@
   #if ENABLED(REVERSE_KNOB_DIRECTION)
     #define REVERSE_ENCODER_DIRECTION
   #endif
+
+  #define SKR_E3_MINI_V3_0
   
-  #if ENABLED(SKR_E3_MINI_V1)
-    #ifndef MOTHERBOARD
-      #define MOTHERBOARD BOARD_BTT_SKR_MINI_E3_V1_0
-    #endif
-  #elif ENABLED(SKR_E3_MINI_V1_2)
-    #ifndef MOTHERBOARD
-      #define MOTHERBOARD BOARD_BTT_SKR_MINI_E3_V1_2
-    #endif
-  #elif ENABLED(SKR_E3_MINI_V2_0)  
-    #ifndef MOTHERBOARD
-      #define MOTHERBOARD BOARD_BTT_SKR_MINI_E3_V2_0
-    #endif
-  #else
-    #error "UNCOMMENT YOUR BOARD VERSION AND TRY AGAIN."
+  #ifndef MOTHERBOARD
+    #define MOTHERBOARD BOARD_BTT_SKR_MINI_E3_V3_0
   #endif
   
   #if ENABLED(ENDER5_NEW_LEADSCREW)
@@ -373,7 +337,7 @@
 
   #define CLASSIC_JERK
   #if ENABLED(CLASSIC_JERK)
-    #if ENABLED(CR10S4) || ENABLED(CR10S5)
+    #if ENABLED(CR10S4_SKR_E3_MINI) || ENABLED(CR10S5_SKR_E3_MINI)
       #define DEFAULT_XJERK                 5.0
       #define DEFAULT_YJERK                 5.0
     #else
@@ -585,10 +549,6 @@
   #define Z_PROBE_OFFSET_RANGE_MIN -10
   #define Z_PROBE_OFFSET_RANGE_MAX 10
 
-  #if ENABLED(CUSTOM_PROBE) || ENABLED(ENDER5_OEM) || ENABLED(ENDER3_OEM) || ENABLED(CR10_OEM) || ENABLED(ENDER3_MAX_OEM) || ENABLED(POWER_LOSS_RECOVERY)
-    #define SPACE_SAVER
-  #endif
-
   #if ENABLED(EZOUTV2_ENABLE) || ENABLED(CR10S_STOCKFILAMENTSENSOR)
     #define FILAMENT_RUNOUT_SENSOR
   #endif
@@ -646,11 +606,8 @@
       #define PRINTER_EVENT_LEDS
     #endif
   #endif
-
-#else
-  #error "UNCOMMENT YOUR PRINTER MODEL. BOTH PRINTER AND BOARD VERSION ARE REQUIRED TO COMPILE."
 #endif
-// End Ender 3/5 SKR E3 Mini Board Settings
+// End SKR E3 Mini V3 Board Settings
  
 /*
  * All other settings are stored in the Configuration_backend.h file. Do not change unless you know what you are doing.

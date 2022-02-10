@@ -144,6 +144,12 @@
 //#define HIGH_TEMP_THERMISTOR
 #define HIGH_TEMP_THERMISTOR_TEMP 350
 
+// E3D PT100 Thermocouple Support
+// Refer to the EZBoard installation documentation for connecting the PT100 to the EZBoard V2
+// You will use the SWD Header for 3.3V power to the amplifier board and use the SIG pin from the SERVO header for the signal.
+//#define EZBOARD_PT100
+// NOTE - Due this uses the SIGNAL pin from the SERVO header so you cannot use the PT100 and a BLTouch at the same time on this board.
+
 // Bed Thermistor Settings --------------------------------------------------
 
 // If you are using a thermistor TH3D sells for your bed uncomment the below line.
@@ -404,6 +410,10 @@
 #if DISABLED(PRINTER_VOLTAGE_12) && DISABLED(PRINTER_VOLTAGE_24)
   #error "Uncomment the PRINTER_VOLTAGE_## line for the DC (Power supply output) voltage that your printer runs on."
 #endif
+
+#if ENABLED(BLTOUCH) && ENABLED(EZBOARD_PT100)
+  #error "The BLTouch and PT100 cannot be used at the same time. Please choose one or the other. You can use an EZABL and PT100 at the same time as the EZABL does not use the SERVO header."
+#endif 
 
 #if BAUDRATE == 115200
   //Do Nothing

@@ -21,14 +21,14 @@
 // *************   CREALITY PRINTERS W/SKR E3 MINI BOARD    *****************
 //===========================================================================
 
-//#define ENDER3_SKR_E3_MINI
-//#define ENDER3_MAX_SKR_E3_MINI
-//#define ENDER5_SKR_E3_MINI
+//#define ENDER3
+//#define ENDER3_MAX
+//#define ENDER5
 
-//#define CR10_SKR_E3_MINI
-//#define CR10MINI_SKR_E3_MINI
-//#define CR10S4_SKR_E3_MINI
-//#define CR10S5_SKR_E3_MINI
+//#define CR10
+//#define CR10MINI
+//#define CR10S4
+//#define CR10S5
 // NOTE: It is HIGHLY recommended to use an external bed MOSFET with the CR-10 series machines due to the high load the beds have.
 // While these boards work on 12V machines, they are designed for 24V printers that pull less current (specifically on the bed).
 // If you need a MOSFET, we carry one here: https://www.th3dstudio.com/product/high-amp-12v-24v-mosfet-heated-bed-or-hotend/
@@ -319,7 +319,7 @@
 #endif
  
  //Creality SKR E3 Mini Board Settings
-#if ENABLED(ENDER3_SKR_E3_MINI) || ENABLED(ENDER3_MAX_SKR_E3_MINI) || ENABLED(ENDER5_SKR_E3_MINI) || ENABLED(CR10_SKR_E3_MINI) || ENABLED(CR10MINI_SKR_E3_MINI) || ENABLED(CR10S4_SKR_E3_MINI) || ENABLED(CR10S5_SKR_E3_MINI)
+#if ENABLED(ENDER3) || ENABLED(ENDER3_MAX) || ENABLED(ENDER5) || ENABLED(CR10) || ENABLED(CR10MINI) || ENABLED(CR10S4) || ENABLED(CR10S5)
   #define SERIAL_PORT -1
   #define SERIAL_PORT_2 2
   #define SKR_E3_MINI_BOARD
@@ -373,7 +373,7 @@
 
   #define CLASSIC_JERK
   #if ENABLED(CLASSIC_JERK)
-    #if ENABLED(CR10S4_SKR_E3_MINI) || ENABLED(CR10S5_SKR_E3_MINI)
+    #if ENABLED(CR10S4) || ENABLED(CR10S5)
       #define DEFAULT_XJERK                 5.0
       #define DEFAULT_YJERK                 5.0
     #else
@@ -389,13 +389,13 @@
 
   #define EXTRUDERS 1
   
-  #if ENABLED(ENDER5_SKR_E3_MINI)
+  #if ENABLED(ENDER5)
     #define X_BED_SIZE 220
     #define Y_BED_SIZE 220
     #define Z_MAX_POS 300
   #endif
   
-  #if ENABLED(ENDER3_SKR_E3_MINI)
+  #if ENABLED(ENDER3)
     #if ENABLED(ENDER_XTENDER_400)
       #define X_BED_SIZE 400
       #define Y_BED_SIZE 400
@@ -419,13 +419,13 @@
     #endif
   #endif
   
-  #if ENABLED(ENDER3_MAX_SKR_E3_MINI)
+  #if ENABLED(ENDER3_MAX)
     #define X_BED_SIZE 300
     #define Y_BED_SIZE 300
     #define Z_MAX_POS 340
   #endif
   
-  #if ENABLED(CR10_SKR_E3_MINI)
+  #if ENABLED(CR10)
     #define DUAL_Z_MOTORS
     #define X_BED_SIZE 300
     #define Y_BED_SIZE 300
@@ -433,14 +433,14 @@
     #define PRINTER_VOLTAGE_12
   #endif
 
-  #if ENABLED(CR10MINI_SKR_E3_MINI)
+  #if ENABLED(CR10MINI)
     #define X_BED_SIZE 300
     #define Y_BED_SIZE 220
     #define Z_MAX_POS 300
     #define PRINTER_VOLTAGE_12
   #endif
 
-  #if ENABLED(CR10S4_SKR_E3_MINI)
+  #if ENABLED(CR10S4)
     #define DUAL_Z_MOTORS
     #define CR10_S4
     #define X_BED_SIZE 400
@@ -450,7 +450,7 @@
     #define SLOWER_PROBE_MOVES
   #endif
 
-  #if ENABLED(CR10S5_SKR_E3_MINI)
+  #if ENABLED(CR10S5)
     #define DUAL_Z_MOTORS
     #define CR10_S5
     #define X_BED_SIZE 500
@@ -468,7 +468,7 @@
     #define Y_MIN_POS 0
   #endif
 
-  #if ENABLED(ENDER5_SKR_E3_MINI)
+  #if ENABLED(ENDER5)
     #define USE_XMAX_PLUG
     #define USE_YMAX_PLUG
     #define USE_ZMIN_PLUG
@@ -478,7 +478,7 @@
     #define USE_ZMIN_PLUG
   #endif
 
-  #if ENABLED(ENDER5_SKR_E3_MINI)
+  #if ENABLED(ENDER5)
     #define X_HOME_DIR 1
     #define Y_HOME_DIR 1
     #define Z_HOME_DIR -1
@@ -559,7 +559,7 @@
   #define INVERT_X_DIR true
   #define INVERT_Y_DIR true
   
-  #if ENABLED(ENDER5_SKR_E3_MINI)
+  #if ENABLED(ENDER5)
     #define INVERT_Z_DIR true
   #else  
     #define INVERT_Z_DIR false

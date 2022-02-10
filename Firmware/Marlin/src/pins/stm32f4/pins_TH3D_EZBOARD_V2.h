@@ -48,7 +48,7 @@
 //
 // Servos
 //
-#if ENABLED(V3_EZABL_ON_SERVO)
+#if ENABLED(V3_EZABL_ON_SERVO) || ENABLED(EZBOARD_PT100)
   #define SERVO0_PIN                        -1
 #else
   #define SERVO0_PIN                        PA2
@@ -136,7 +136,11 @@
 // Temp Sensors
 //  3.3V max when defined as an Analog Input!
 //
-#define TEMP_0_PIN                          PA1   // Analog Input PA1
+#if ENABLED(EZBOARD_PT100)
+  #define TEMP_0_PIN                        PA2   // Analog Input PA2 - Shared with SERVO
+#else
+  #define TEMP_0_PIN                        PA1   // Analog Input PA1
+#endif
 #define TEMP_BED_PIN                        PA0   // Analog Input PA0
 
 //

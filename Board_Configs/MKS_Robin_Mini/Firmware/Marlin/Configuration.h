@@ -266,28 +266,50 @@
   //#define SPI_SPEED SPI_QUARTER_SPEED
   //#define SPI_SPEED SPI_EIGHTH_SPEED
   #define SD_CHECK_AND_RETRY
-  
-  #define FSMC_GRAPHICAL_TFT
+    
+  #define TFT_GENERIC
+  #if ENABLED(TFT_GENERIC)
+    // :[ 'AUTO', 'ST7735', 'ST7789', 'ST7796', 'R61505', 'ILI9328', 'ILI9341', 'ILI9488' ]
+    #define TFT_DRIVER AUTO
+
+    // Interface. Enable one of the following options:
+    #define TFT_INTERFACE_FSMC
+    //#define TFT_INTERFACE_SPI
+
+    // TFT Resolution. Enable one of the following options:
+    #define TFT_RES_320x240
+    //#define TFT_RES_480x272
+    //#define TFT_RES_480x320
+    //#define TFT_RES_1024x600
+  #endif
+
+  #define TFT_CLASSIC_UI
+
   #define TOUCH_SCREEN
   #if ENABLED(TOUCH_SCREEN)
     #define BUTTON_DELAY_EDIT  75 // (ms) Button repeat delay for edit screens
     #define BUTTON_DELAY_MENU 100 // (ms) Button repeat delay for menus
 
-    #define TOUCH_SCREEN_CALIBRATION
+    //#define TOUCH_IDLE_SLEEP 300 // (secs) Turn off the TFT backlight if set (5mn)
+
     #define TFT_ROTATION TFT_ROTATE_180_MIRROR_X
+    #define TOUCH_SCREEN_CALIBRATION
 
     /* MKS Robin TFT v2.0 */
-    #define XPT2046_X_CALIBRATION  12013
-    #define XPT2046_Y_CALIBRATION  -8711
-    #define XPT2046_X_OFFSET         -32
-    #define XPT2046_Y_OFFSET         256
+    #define TOUCH_CALIBRATION_X  12013
+    #define TOUCH_CALIBRATION_Y  -8711
+    #define TOUCH_OFFSET_X         -32
+    #define TOUCH_OFFSET_Y         256
 
     /* MKS Robin TFT v1.1 */
-    //#define XPT2046_X_CALIBRATION -11792
-    //#define XPT2046_Y_CALIBRATION   8947
-    //#define XPT2046_X_OFFSET         342
-    //#define XPT2046_Y_OFFSET         -19
-  #endif 
+    //#define TOUCH_CALIBRATION_X -11792
+    //#define TOUCH_CALIBRATION_Y   8947
+    //#define TOUCH_OFFSET_X         342
+    //#define TOUCH_OFFSET_Y         -19
+    //#define TOUCH_ORIENTATION TOUCH_LANDSCAPE
+
+    #define TOUCH_CALIBRATION_AUTO_SAVE // Auto save successful calibration values to EEPROM
+  #endif
 
   #ifndef MOTHERBOARD
     #define MOTHERBOARD BOARD_MKS_ROBIN_MINI

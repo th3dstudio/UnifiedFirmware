@@ -36,7 +36,7 @@ except:
     pass
 
 try:
-    with open('auto-compile-v2.json', 'r') as f:
+    with open('auto-compile.json', 'r') as f:
         config = json.load(f)
 except IOError as err:
     print(err)

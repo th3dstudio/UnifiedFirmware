@@ -152,7 +152,9 @@
 #if EITHER(HAS_FSMC_GRAPHICAL_TFT, TFT_320x240)
   #define FSMC_CS_PIN                       PD7   // NE4
   #define FSMC_RS_PIN                       PD11  // A0
-
+  #define TFT_CS_PIN                 FSMC_CS_PIN  // Needed to compile - Marlin Bug - Fixed by TH3D
+  #define TFT_RS_PIN                 FSMC_RS_PIN  // Needed to compile - Marlin Bug - Fixed by TH3D
+  
   #define LCD_USE_DMA_FSMC                        // Use DMA transfers to send data to the TFT
   #define FSMC_DMA_DEV                      DMA2
   #define FSMC_DMA_CHANNEL               DMA_CH5

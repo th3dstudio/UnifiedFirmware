@@ -354,13 +354,18 @@
  */
 
 /**
- * Machine Configuration Settings
+ * TH3D EZBoard V2 Config Sanity Checks
  */
 
 #if ENABLED(BLTOUCH) && ENABLED(EZBOARD_PT100)
   #error "The BLTouch and PT100 cannot be used at the same time. Please choose one or the other. You can use an EZABL and PT100 at the same time as the EZABL does not use the SERVO header."
 #endif 
 
+
+/**
+ * Machine Configuration Settings
+ */
+ 
 //EZBoard V2 based Machine Settings
 #if ENABLED(CR10) || ENABLED(CR10_MINI) || ENABLED(CR10_S4) || ENABLED(CR10_S5) || ENABLED(CR10S) || ENABLED(CR10S_MINI) || ENABLED(CR10S_S4) || ENABLED(CR10S_S5) || ENABLED(ENDER2) || ENABLED(ENDER3) || ENABLED(ENDER5) || ENABLED(ENDER5_PLUS) || ENABLED(SOVOL_SV01) || ENABLED(SOVOL_SV03) || ENABLED(CR20) || ENABLED(ENDER3_MAX)
 
@@ -708,7 +713,10 @@
   #if ENABLED(ENDER5_PLUS)
     #if DISABLED(ENDER5_PLUS_NOABL) && DISABLED(ENDER5_PLUS_EZABL)
       #define BLTOUCH
-    #define SERVO0_PIN PA2
+      #define SERVO0_PIN PA2
+      #if ENABLED(BLTOUCH) && ENABLED(EZBOARD_PT100)
+        #error "The BLTouch and PT100 cannot be used at the same time. Please choose one or the other. You can use an EZABL and PT100 at the same time as the EZABL does not use the SERVO header."
+      #endif 
     #ifndef EZABL_PROBE_EDGE
       #define EZABL_PROBE_EDGE 35
     #endif

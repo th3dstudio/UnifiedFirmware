@@ -120,9 +120,11 @@
 // See here for details: https://www.th3dstudio.com/hc/product-information/ezboard/ezboard-lite-v1x/ezboard-lite-v1-x-ezabl-not-triggering-fix/
 //#define V3_EZABL_ON_SERVO
 
-// E3D PT100 Thermocouple Support - COMING SOON - NOT WORKING OR DOCUMENTED CURRENTLY
-// Refer to the EZBoard installation documentation for connecting the PT100 to the EZBoard Expansion Header
+// E3D PT100 Thermocouple Support
+// Refer to the EZBoard installation documentation for connecting the PT100 to the EZBoard V2
+// You will use the SWD Header for 3.3V power to the amplifier board and use the SIG pin from the SERVO header for the signal.
 //#define EZBOARD_PT100
+// NOTE - Due this uses the SIGNAL pin from the SERVO header so you cannot use the PT100 and a BLTouch at the same time on this board.
 
 // Ender Xtender Kit Options
 //#define ENDER_XTENDER_300
@@ -354,7 +356,11 @@
 /**
  * Machine Configuration Settings
  */
- 
+
+#if ENABLED(BLTOUCH) && ENABLED(EZBOARD_PT100)
+  #error "The BLTouch and PT100 cannot be used at the same time. Please choose one or the other. You can use an EZABL and PT100 at the same time as the EZABL does not use the SERVO header."
+#endif 
+
 //EZBoard V2 based Machine Settings
 #if ENABLED(CR10) || ENABLED(CR10_MINI) || ENABLED(CR10_S4) || ENABLED(CR10_S5) || ENABLED(CR10S) || ENABLED(CR10S_MINI) || ENABLED(CR10S_S4) || ENABLED(CR10S_S5) || ENABLED(ENDER2) || ENABLED(ENDER3) || ENABLED(ENDER5) || ENABLED(ENDER5_PLUS) || ENABLED(SOVOL_SV01) || ENABLED(SOVOL_SV03) || ENABLED(CR20) || ENABLED(ENDER3_MAX)
 

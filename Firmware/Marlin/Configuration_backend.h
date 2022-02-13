@@ -6,7 +6,7 @@
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-#define UNIFIED_VERSION "TH3D UFW 2.40"
+#define UNIFIED_VERSION "TH3D UFW 2.41"
 
 /**
  * ABL Probe Settings
@@ -18,6 +18,10 @@
 #if ENABLED(ENDER2_PRO_OEM)
   #define ABL_ENABLE
   #define NOZZLE_TO_PROBE_OFFSET { -40, -13, 0 }
+#endif
+#if ENABLED(ENDER2_PRO_OEM_MICRO)
+  #define ABL_ENABLE
+  #define NOZZLE_TO_PROBE_OFFSET { -35, -9, 0 }
 #endif
 #if ENABLED(CHIRON_OEM)
   #define ABL_ENABLE

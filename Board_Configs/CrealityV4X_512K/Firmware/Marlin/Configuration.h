@@ -45,11 +45,17 @@
 //#define ENDER6_V431_BOARD
 
 //------------------------------ Upgrade Settings -------------------------------
-// If you are using our EZOut V1/V2 (connected to LCD header) filament sensor kit please follow the install guide
+// EZOut Filament Sensor Kit - LCD Header Connection
+// If you are using our EZOut V1/V2 filament sensor kit please follow the install guide
 // and then uncomment the #define EZOUT_ENABLE line below.
 // Do NOT ever connect our filament sensor without the supplied adapter board.
-// Ender 3 V2 needs LCD converted to use an EZOut: https://www.th3dstudio.com/hc/guides/upgrades-printer-information/ender-3-v2-swapping-to-the-12864-creality-lcd-for-more-features/
 //#define EZOUT_ENABLE
+
+// EZOut Filament Sensor Kit - J1 Plug Connection
+// If you are using our EZOut V2 filament sensor kit please follow the install guide
+// and then uncomment the #define EZOUT_ENABLE_J1 line below.
+// Do NOT ever connect our filament sensor without the supplied adapter board.
+//#define EZOUT_ENABLE_J1
 
 // Creality CR-10S Series Filament Sensor
 // Connect the stock sensor to the "J1" port and uncomment the below line to enable the filament sensor.
@@ -58,6 +64,7 @@
 // EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
 //#define CR10_OEM
 //#define ENDER2_PRO_OEM
+//#define ENDER2_PRO_OEM_MICRO
 //#define ENDER3_OEM
 //#define ENDER3_V2_OEM
 //#define ENDER3_MAX_OEM
@@ -305,7 +312,11 @@
 /**
  * Machine Configuration Settings
  */
- 
+
+#if ENABLED(EZOUT_ENABLE_J1)
+  #define EZOUT_ENABLE
+#endif
+
 //CR-10 Series V427 Settings
 #if ENABLED(CR10_V427_BOARD) || ENABLED(CR10MINI_V427_BOARD) || ENABLED(CR10S4_V427_BOARD) || ENABLED(CR10S5_V427_BOARD)
   //V42X with TMC Driver Sanity Checks
@@ -491,7 +502,9 @@
   
   #if ENABLED(EZOUT_ENABLE)
     #define FILAMENT_RUNOUT_SENSOR
-    #define SPEAKER_KILL
+    #if DISABLED(EZOUT_ENABLE_J1)
+      #define SPEAKER_KILL
+    #endif
   #endif
 
   #if ENABLED(EZOUT_ENABLE) || ENABLED(CR10S_STOCKFILAMENTSENSOR)
@@ -838,6 +851,9 @@
   #elif ENABLED(ENDER2_PRO_OEM)
     #define X_MIN_POS -9
     #define Y_MIN_POS -4
+  #elif ENABLED(ENDER2_PRO_OEM_MICRO)
+    #define X_MIN_POS -9
+    #define Y_MIN_POS -4
   #else
     #define X_MIN_POS -20
     #define Y_MIN_POS -4
@@ -939,7 +955,9 @@
   
   #if ENABLED(EZOUT_ENABLE)
     #define FILAMENT_RUNOUT_SENSOR
-    #define SPEAKER_KILL
+    #if DISABLED(EZOUT_ENABLE_J1)
+      #define SPEAKER_KILL
+    #endif
   #endif
 
   #if ENABLED(FILAMENT_RUNOUT_SENSOR)
@@ -1232,7 +1250,9 @@
   
   #if ENABLED(EZOUT_ENABLE)
     #define FILAMENT_RUNOUT_SENSOR
-    #define SPEAKER_KILL
+    #if DISABLED(EZOUT_ENABLE_J1)
+      #define SPEAKER_KILL
+    #endif
   #endif
 
   #if ENABLED(ENDER3_MAX_V422_BOARD) || ENABLED(ENDER3_MAX_V427_BOARD)
@@ -1496,7 +1516,9 @@
   
   #if ENABLED(EZOUT_ENABLE)
     #define FILAMENT_RUNOUT_SENSOR
-    #define SPEAKER_KILL
+    #if DISABLED(EZOUT_ENABLE_J1)
+      #define SPEAKER_KILL
+    #endif
   #endif
 
   #if ENABLED(FILAMENT_RUNOUT_SENSOR)

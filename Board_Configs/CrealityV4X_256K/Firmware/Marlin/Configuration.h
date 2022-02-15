@@ -44,6 +44,10 @@
 //------------------------------ V4.3.1 Board -------------------------------
 //#define ENDER6_V431_BOARD
 
+// Ender 6 - Filament Sensor Override
+// If you have issues with your filament sensor on the Ender 6 uncomment the below option to disable it.
+//#define ENDER6_NOFILAMENT_SENSOR
+
 //------------------------------ Upgrade Settings -------------------------------
 // EZOut Filament Sensor Kit - LCD Header Connection
 // If you are using our EZOut V1/V2 filament sensor kit please follow the install guide
@@ -742,7 +746,11 @@
   #define ENCODER_PULSES_PER_STEP 4
   #define ENCODER_STEPS_PER_MENU_ITEM 1
 
-  #define FILAMENT_RUNOUT_SENSOR
+  #if ANY(EZOUT_ENABLE, EZOUT_ENABLE_J1)
+    #define FILAMENT_RUNOUT_SENSOR
+  #elif DISABLED(ENDER6_NOFILAMENT_SENSOR)
+    #define FILAMENT_RUNOUT_SENSOR
+  #endif
 
   #if ENABLED(FILAMENT_RUNOUT_SENSOR)
     #define FIL_RUNOUT_ENABLED_DEFAULT true // Enable the sensor on startup. Override with M412 followed by M500.

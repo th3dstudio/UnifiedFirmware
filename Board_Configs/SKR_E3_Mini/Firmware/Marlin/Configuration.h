@@ -271,6 +271,9 @@
 //#define BLTOUCH
 // Here is where you set your servo pin. For SKR E3 Mini use PA1
 //#define SERVO0_PIN PA1
+// If you are using the 5 pin header for all the BL Touch connections, uncomment the below line
+// On the V1.0 and V1.2 boards this would be the 3 pin SERVO header and the 2 pin PROBE header.
+//#define BLTOUCH_ON_5PIN
 
 // MANUAL MESH LEVELING ----------------------------
 // If you want to use manual mesh leveling you can enable the below option. This is for generating a MANUAL mesh WITHOUT a probe. To change the mesh inset value change the EZABL_PROBE_EDGE setting above.
@@ -544,7 +547,12 @@
   #define Y_MAX_ENDSTOP_INVERTING false
   #define Z_MAX_ENDSTOP_INVERTING false
   #define Z_MIN_PROBE_ENDSTOP_INVERTING false
-  #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+
+  #if ENABLED(BLTOUCH_ON_5PIN)
+    #define USE_PROBE_FOR_Z_HOMING
+  #else
+    #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+  #endif
 
   #define X_DRIVER_TYPE TMC2209
   #define Y_DRIVER_TYPE TMC2209

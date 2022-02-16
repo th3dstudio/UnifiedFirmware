@@ -155,6 +155,20 @@
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_MKS_SGen_L_V2_DIY.zip" "D:\Work\GitHub\UnifiedFirmware\STL File Download.txt"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_MKS_SGen_L_V2_DIY.zip" "D:\Work\GitHub\UnifiedFirmware\Board_Configs\MKS_SGen_L_V2_DIY\Firmware"
 
+"C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\Unified2Zips\TH3D_Unified2_BTT_SKR_2_DIY.zip"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_BTT_SKR_2_DIY.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_BTT_SKR_2_DIY.zip" "D:\Work\GitHub\UnifiedFirmware\TH3D Installation Guides"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_BTT_SKR_2_DIY.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_BTT_SKR_2_DIY.zip" "D:\Work\GitHub\UnifiedFirmware\STL File Download.txt"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_BTT_SKR_2_DIY.zip" "D:\Work\GitHub\UnifiedFirmware\Board_Configs\BTT_SKR_2_DIY\Firmware"
+
+"C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\Unified2Zips\TH3D_Unified2_BTT_SKR_2_F429_DIY.zip"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_BTT_SKR_2_F429_DIY.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_BTT_SKR_2_F429_DIY.zip" "D:\Work\GitHub\UnifiedFirmware\TH3D Installation Guides"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_BTT_SKR_2_F429_DIY.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_BTT_SKR_2_F429_DIY.zip" "D:\Work\GitHub\UnifiedFirmware\STL File Download.txt"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_BTT_SKR_2_F429_DIY.zip" "D:\Work\GitHub\UnifiedFirmware\Board_Configs\BTT_SKR_2_F429_DIY\Firmware"
+
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Kingroon_V1_2.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Kingroon_V1_2.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Kingroon_V1_2.zip" "D:\Work\GitHub\UnifiedFirmware\TH3D Installation Guides"

@@ -37,13 +37,7 @@
  */
 
 // RepRap 12864 Type LCD/TH3D 12864 LCD
-//#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
-
-// MKS Mini 12864 LCD
-//#define MKS_MINI_12864
-
-// Single Cable Creality 12864 LCD - Put in EXP1 and rotate 180 Degrees
-//#define CR10_STOCKDISPLAY
+#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
 
 // SD Slot Selection - LCD for LCD Slot, ONBOARD for slot on MKS board - Only select one
 //#define SDCARD_CONNECTION LCD

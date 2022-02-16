@@ -16,21 +16,14 @@
 // UNCOMMENT MEANS REMOVING THE // IN FRONT OF A #define XXXXXX LINE.
 
 //===========================================================================
-// ******************   MKS SGEN L V2 BOARD DIY CONFIG   ********************
+// *******************   BTT SKR V2 BOARD DIY CONFIG   **********************
 //===========================================================================
 
 /**
  * !!!Important Information!!!
- * This firmware is being put out as a courtesy for people who want to use the MKS SGen L V2 in their custom printer.
+ * This firmware is being put out as a courtesy for people who want to use the BTT SKR V2 in their custom printer.
  * Setup and usage of this firmware is *not* covered under the technical support included with the MKS SGen L V2.
- * Using the MKS SGen L V2 in a custom printer is an advanced setup for users who know what they are doing.
- * 
- * Stepper Drivers - This firmware is setup to work with the MKS TMC2209 V2 or Watterott TMC2209 drivers in UART Mode.
- * Jumper Config
- * O O O  M0
- * O O O  M1
- * O=O O  M2
- * O O  
+ * Using the BTT SKR V2 in a custom printer is an advanced setup for users who know what they are doing. 
  * 
  * Hotends - This firmware currently only supports using one hotend and extruder at this time.
  * 
@@ -87,6 +80,26 @@
 #define INVERT_Z_DIR false
 #define INVERT_E0_DIR false
 #define INVERT_E1_DIR false
+
+/**
+ * Driver Type Settings
+ * Set the type of driver you have installed in each axis. Valid types are listed below. Firmware default is TMC2209.
+ * 
+ * Use TMC2208/TMC2208_STANDALONE for TMC2225 drivers and TMC2209/TMC2209_STANDALONE for TMC2226 drivers.
+ *
+ * Options: A4988, A5984, DRV8825, LV8729, L6470, L6474, POWERSTEP01,
+ *          TB6560, TB6600, TMC2100,
+ *          TMC2130, TMC2130_STANDALONE, TMC2160, TMC2160_STANDALONE,
+ *          TMC2208, TMC2208_STANDALONE, TMC2209, TMC2209_STANDALONE,
+ *          TMC26X,  TMC26X_STANDALONE,  TMC2660, TMC2660_STANDALONE,
+ *          TMC5130, TMC5130_STANDALONE, TMC5160, TMC5160_STANDALONE
+ */
+
+#define X_DRIVER_MODEL TMC2209
+#define Y_DRIVER_MODEL TMC2209
+#define Z_DRIVER_MODEL TMC2209
+#define E0_DRIVER_MODEL TMC2209
+#define E1_DRIVER_MODEL TMC2209
 
 /**
  * Endstop Logic Settings
@@ -200,13 +213,11 @@
 //#define Z_SPREADCYCLE
 
 // Filament Sensor Options --------------------------------------------------
-// If you are using our EZOut Sensor connect to the X+ header with the RED wire lined up with the "5V" marking by the header and uncomment the below line.
-// If you have 2, uncomment the EZOUTV2_DUAL_ENABLE instead of EZOUTV2_ENABLE. The 2nd sensor connects like the 1st, but to the Y+ header.
+// If you are using our EZOut Sensor connect to the E0 Fildetect header and uncomment the below line.
+// If you have 2, uncomment the EZOUTV2_DUAL_ENABLE instead of EZOUTV2_ENABLE. The 2nd sensor connects like the 1st, but to the E1 Fildetect header.
+// WARNING: When using our EZOut sensors with this board they either need to be re-wired or you need to use the Standard kit versions with the adapter PCBs.
 //#define EZOUTV2_ENABLE
 //#define EZOUTV2_DUAL_ENABLE
-
-// If you are using the Creality CR-10S Sensor connect to the FIL SENSOR header with the RED wire lined up with the "5V" marking by the header and uncomment the below line.
-//#define CR10S_STOCKFILAMENTSENSOR
 
 // Sample EZABL Probe Mounts ------------------------------------------------
 // Uncomment the mount you are using for your EZABL to enable it in the firmware.
@@ -238,15 +249,6 @@
 // If you are using the board in a CoreXY printer, uncomment the below line and make sure you have your motors connected and mounted to the correct locations
 //#define COREXY
 
-// Extra Fan Outputs --------------------------------------------------------
-// If you want to use the 2nd hotend output (HE1) for your controller fan, uncomment the below line
-// This fan will turn on based on if your stepper drivers are enabled or not - not available if using 2 hotends
-#define MKS_SGENL_V2_HE1_FAN
-
-// If you want to use the FAN2 output for your hotend fan, uncomment the below line.
-// This fan will turn on when your hotend temperature is at 50C or higher
-#define MKS_SGENL_V2_FAN2
-
 // Dual Extrusion Settings --------------------------------------------------
 // Set your 2nd E Motor steps and uncommend the below line
 //#define E1_STEPS_MM 95
@@ -262,12 +264,12 @@
 
 // EZNeo Settings -----------------------------------------------------------
 // If you are using an EZNeo strip on your printer, uncomment the line for what strip you are using.
-// Specify your IO pin below as well as this board does not have a dedicated NEOPIXEL header on it.
+// If connecting to the RGB header no pin setting is needed.
 //#define EZNEO_220
 
 // EZNeo Manual IO Pin Setting ----------------------------------------------
 // If you have the EZNeo wired with your own 5V power provided, specify the pin used below.
-//#define NEOPIXEL_PIN P1_18
+//#define NEOPIXEL_PIN PE6
 
 //===========================================================================
 // *************************  END PRINTER SECTION   *************************
@@ -406,7 +408,7 @@
 // You also need to uncomment #define CUSTOM_PROBE above and then enter in your offsets above in the CUSTOM PROBE section.
 //#define BLTOUCH
 // Here is where you set your servo pin.
-//#define SERVO0_PIN P2_04
+//#define SERVO0_PIN PE5
 
 // MANUAL MESH LEVELING ----------------------------
 // If you want to use manual mesh leveling you can enable the below option. This is for generating a MANUAL mesh WITHOUT a probe. To change the mesh inset value change the EZABL_PROBE_EDGE setting above.
@@ -460,12 +462,12 @@
   #error "Printer BAUDRATE is not correct. Valid settings are 115200 and 250000. Change to a valid setting (115200 is recommended)"
 #endif
 
-//MKS SGEN L V2 DIY based Machine Settings
-#define SERIAL_PORT -1
-#define SERIAL_PORT_2 0
+//BTT SKR 2 V2 DIY based Machine Settings
+#define SERIAL_PORT 1
+#define SERIAL_PORT_2 -1
 
 #ifndef MOTHERBOARD
-  #define MOTHERBOARD BOARD_MKS_SGEN_L_V2
+  #define MOTHERBOARD BOARD_BTT_SKR_V2_0_REV_B
 #endif
 
 #define DIY_TMCBOARD
@@ -557,12 +559,12 @@
 #define Z_MIN_PROBE_ENDSTOP_INVERTING Z_ENDSTOP_LOGIC
 #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
 
-#define X_DRIVER_TYPE  TMC2209
-#define Y_DRIVER_TYPE  TMC2209
-#define Z_DRIVER_TYPE  TMC2209
-#define E0_DRIVER_TYPE TMC2209
+#define X_DRIVER_TYPE  X_DRIVER_MODEL
+#define Y_DRIVER_TYPE  Y_DRIVER_MODEL
+#define Z_DRIVER_TYPE  Z_DRIVER_MODEL
+#define E0_DRIVER_TYPE E0_DRIVER_MODEL
 #ifdef E1_STEPS_MM
-  #define E1_DRIVER_TYPE TMC2209
+  #define E1_DRIVER_TYPE E1_DRIVER_MODEL
 #endif
 
 #define X_ENABLE_ON 0
@@ -609,20 +611,13 @@
   #define FIL_RUNOUT_ENABLED_DEFAULT true // Enable the sensor on startup. Override with M412 followed by M500.
   #if ENABLED(EZOUTV2_DUAL_ENABLE)
     #define NUM_RUNOUT_SENSORS   2          // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
-    #define FIL_RUNOUT_PIN P1_28
-    #define FIL_RUNOUT2_PIN P1_26
   #else
     #define NUM_RUNOUT_SENSORS   1          // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
-    #define FIL_RUNOUT_PIN P1_28
   #endif
   
-  #if ENABLED(EZOUTV2_ENABLE)
-    #define FIL_RUNOUT_STATE LOW  // Pin state indicating that filament is NOT present.
-  #else
-    #define FIL_RUNOUT_STATE HIGH // Pin state indicating that filament is NOT present.
-  #endif
+  #define FIL_RUNOUT_STATE LOW  // Pin state indicating that filament is NOT present.
   
-  #define FIL_RUNOUT_PULLUP               // Use internal pullup for filament runout pins.
+  //#define FIL_RUNOUT_PULLUP               // Use internal pullup for filament runout pins.
   //#define FIL_RUNOUT_PULLDOWN           // Use internal pulldown for filament runout pins.
 
   // Set one or more commands to execute on filament runout.
@@ -669,7 +664,7 @@
   #endif
 #endif
 
-//End MKS SGEN L V2 DIY Config
+//End BTT SKR 2 DIY Config
 
 /*
  * All other settings are stored in the Configuration_backend.h file. Do not change unless you know what you are doing.

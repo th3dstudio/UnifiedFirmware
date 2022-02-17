@@ -58,7 +58,9 @@
 //
 
 // Power outputs EFBF or EFBE
-#define MOSFET_D_PIN                           7
+#define MOSFET_B_PIN                           7  //Fix for Dual extruder boards - TH3D
+#define MOSFET_D_PIN                           9  //Fix for Dual extruder boards - TH3D
+#define FAN_PIN                     MOSFET_D_PIN  //Fix for Dual extruder boards - TH3D
 
 #define FIL_RUNOUT_PIN                         2
 #if NUM_RUNOUT_SENSORS >= 2

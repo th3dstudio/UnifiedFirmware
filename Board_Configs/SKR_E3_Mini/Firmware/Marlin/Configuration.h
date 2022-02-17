@@ -51,7 +51,7 @@
 //#define CR10S_STOCKFILAMENTSENSOR
 
 // EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
-//#degine CR10_OEM
+//#define CR10_OEM
 //#define ENDER3_OEM
 //#define ENDER3_MAX_OEM
 //#define ENDER5_OEM

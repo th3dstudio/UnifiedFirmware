@@ -35,6 +35,7 @@ This does not include machine configs or PlatformIO files.
 			- **sanguino**
 				- `pins_ANET_10.h`
 				- `pins_MELZI_CREALITY.h`
+				- `pins_SANGUINOLOLU_11.h`
 			- **stm32f1**
 				- `pins_BTT_SKR_MINI_E3_common.h`
 				- `pins_CREALITY_V4.h`

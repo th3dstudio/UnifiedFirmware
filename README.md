@@ -28,7 +28,7 @@ Test builds will have a capital letter after the number to note that it is a tes
 
 ## Bug Reporting
 
-If you find bugs, report them to the TH3D Studio team here:  [Contact Us](https://contactus.th3dstudio.com).
+If you find bugs, report them to the TH3D Studio team here:  [Contact Us](https://www.th3dstudio.com/unified-2-firmware-bug-report-form/).
 
 Issue queue is disabled because some people do not understand what a proper issue is. We have our own internal issue tracking system we use for our repo.
 

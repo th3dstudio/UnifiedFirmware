@@ -569,6 +569,8 @@
 
 #define SERVO_DELAY { 300 }
 
+#define FILAMENT_RUNOUT_THRESHOLD 100 //Prevent false sensor triggers
+
 /**
  * LCD General Settings
  */

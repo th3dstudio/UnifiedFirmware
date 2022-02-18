@@ -215,6 +215,10 @@
   #define NOZZLE_TO_PROBE_OFFSET { -52, 0, 0 }
   #define ABL_ENABLE
 #endif
+#if ENABLED(GEE_A20_OEM)
+  #define NOZZLE_TO_PROBE_OFFSET { -52, 0, 0 }
+  #define ABL_ENABLE
+#endif
 #if ENABLED(EZ300_OEM_MOUNT)
   #define NOZZLE_TO_PROBE_OFFSET { -32, -8, 0 }
   #define ABL_ENABLE

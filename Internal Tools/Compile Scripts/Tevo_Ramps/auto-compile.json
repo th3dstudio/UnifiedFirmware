@@ -1,0 +1,20 @@
+{
+    "config-file":"Configuration.h",
+    "compile-profile":
+    [
+        {
+            "profile-name": "tornado",
+            "keyword": 
+            [
+                {"find":"//#define TORNADO","replace":"#define TORNADO"}
+            ]
+        },
+		{
+            "profile-name": "tarantula-pro",
+            "keyword": 
+            [
+                {"find":"//#define TARANTULA_PRO","replace":"#define TARANTULA_PRO"}
+            ]
+        }
+    ]
+}

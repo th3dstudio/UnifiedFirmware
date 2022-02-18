@@ -167,10 +167,6 @@
   #define NOZZLE_TO_PROBE_OFFSET { -5, -48, 0 }
   #define ABL_ENABLE
 #endif
-#if ENABLED(ZONESTAR_Z5F_STOCK_ABL)
-  #define NOZZLE_TO_PROBE_OFFSET { 35, 0, 0 }
-  #define ABL_ENABLE
-#endif
 #if ENABLED(TARANTULA_PRO_OEM)
   #define NOZZLE_TO_PROBE_OFFSET { -65, 0, 0 }
   #define ABL_ENABLE
@@ -179,16 +175,8 @@
   #define NOZZLE_TO_PROBE_OFFSET { -37, -10, 0 }
   #define ABL_ENABLE
 #endif
-#if ENABLED(TAZ5_OEM)
-  #define NOZZLE_TO_PROBE_OFFSET { -52, 15, 0 }
-  #define ABL_ENABLE
-#endif
 #if ENABLED(WANHAO_I3_OEM)
   #define NOZZLE_TO_PROBE_OFFSET { -25, -38, 0 }
-  #define ABL_ENABLE
-#endif
-#if ENABLED(WANHAO_D6_OEM)
-  #define NOZZLE_TO_PROBE_OFFSET { 24, -16, 0 }
   #define ABL_ENABLE
 #endif
 #if ENABLED(WANHAO_I3_DIIICOOLER)

@@ -25,7 +25,7 @@
   #error "Creality3D RAMPS supports only 2 hotends / E-steppers. Comment out this line to continue."
 #endif
 
-#define BOARD_INFO_NAME "Creality3D RAMPS"
+#define BOARD_INFO_NAME "Creality3D V2.X"
 
 //
 // Pins for Ender 5 Plus - Uses Physical XY MIN headers for XY MAX Homing
@@ -37,6 +37,10 @@
   #define Y_MIN_PIN                          -1
   #define Y_MAX_PIN                          14
 #endif
+
+//
+// Pins for CR-20 - Uses a Creality "Mini-Panel" Type 12864 LCD
+//
 
 #if ENABLED(CR20)
   #define BEEPER_PIN 37

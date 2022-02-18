@@ -480,6 +480,20 @@
   #define SPEAKER
 #endif
 
+#if MOTHERBOARD == BOARD_MELZI_CREALITY
+  // Leave this on until 2.0.9.3 bug with fan control not working is resolved
+  // Once 2.0.9.3 Melzi Fan bug is fixed remove from future releases
+  // Details: https://github.com/MarlinFirmware/Marlin/issues/23418
+  #define FAN_FIX
+#endif
+
+#if MOTHERBOARD == BOARD_ANET_10
+  // Leave this on until 2.0.9.3 bug with fan control not working is resolved
+  // Once 2.0.9.3 Melzi Fan bug is fixed remove from future releases
+  // Details: https://github.com/MarlinFirmware/Marlin/issues/23418
+  #define FAN_FIX
+#endif
+
 #if ENABLED(FAN_FIX)
   #define FAN_SOFT_PWM
   #define SOFT_PWM_SCALE 1

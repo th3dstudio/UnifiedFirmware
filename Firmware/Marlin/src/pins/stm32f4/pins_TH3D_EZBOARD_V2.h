@@ -259,7 +259,7 @@
 #endif
 
 #if EITHER(CR10_STOCKDISPLAY, MKS_MINI_12864)
-  #define BTN_EN1                    EXP1_08_PIN
-  #define BTN_EN2                    EXP1_06_PIN
+  #define BTN_EN1                    EXP1_06_PIN
+  #define BTN_EN2                    EXP1_08_PIN
   #define BTN_ENC                    EXP1_09_PIN
 #endif

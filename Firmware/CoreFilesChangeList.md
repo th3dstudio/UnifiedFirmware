@@ -42,6 +42,8 @@ This does not include machine configs or PlatformIO files.
 				- `pins_CREALITY_V4.h`
 				- `pins_MKS_ROBIN_MINI.h`
 				- `pins_MKS_ROBIN_NANO_common.h`
+			- **stm32f4**
+				- `pins_TH3D_EZBOARD_V2.h`
 			- **stm32g0**
 				- `pins_BTT_SKR_MINI_E3_V3_0.h`
 	- `Configuration_adv.h`

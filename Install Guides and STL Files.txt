@@ -1,0 +1,20 @@
+// ********** EZABL Installation Guide **********
+To making reading and updating our guide easier we have moved it to our help center as an article. See the latest EZABL installation guide here: https://www.th3dstudio.com/hc/product-information/ezabl/ezabl-pro-installation-guide/
+
+// ********** EZBoard Installation Guides **********
+The EZBoard installation guides can be found in our Help Center
+
+EZBoard Lite V1.X: https://www.th3dstudio.com/hc/product-information/ezboard/ezboard-lite-v1x/ezboard-lite-v1-x-installation-guide/
+
+EZBoard V2.X: https://www.th3dstudio.com/hc/product-information/ezboard/ezboard-v2-x/ezboard-v2-installation-guide/
+
+// ********** EZBoard Binary Files **********
+Due to lack of use the pre-compiled binaries are no longer being built. Please use our EZFirmware site for a quick firmware build for your EZBoard. 
+
+Visit https://ezfirmware.th3dstudio.com to build your EZBoard firmware.
+
+// ********** EZOut Installation Guide **********
+To making reading and updating our info easier we have moved it to our help center as an article. See the latest EZOut installation info here: https://www.th3dstudio.com/hc/product-information/ezout/ezout-installation-guide/
+
+// ********** STL Download Information **********
+To make the firmware packages smaller, we have moved the STL files to a separate download. You can download them here: https://support.th3dstudio.com/hc/downloads/unified-2-firmware/information/unified-2-stl-pack-mounts-leveling-guides-more/

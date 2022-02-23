@@ -1,0 +1,13 @@
+{
+    "config-file":"Configuration.h",
+    "compile-profile":
+    [
+        {
+            "profile-name": "wanhao-i3",
+            "keyword": 
+            [
+                {"find":"//#define WANHAO_I3","replace":"#define WANHAO_I3"}
+            ]
+        }
+    ]
+}

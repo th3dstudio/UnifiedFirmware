@@ -683,7 +683,7 @@
  * Multiple extruders can be assigned to the same pin in which case
  * the fan will turn on when any selected extruder is above the threshold.
  */
-#if ENABLED(SIDEWINDER_X1) || (ENABLED(EZ300_OEM_MOUNT) && ENABLED(ARTILLERY_AL4)) || ENABLED(SUNLU_S8_SH_2560_BOARD)
+#if ANY(TORNADO, TARANTULA_PRO, SIDEWINDER_X1, SUNLU_S8_SH_2560_BOARD) || (ENABLED(EZ300_OEM_MOUNT) && ENABLED(ARTILLERY_AL4))
   #define E0_AUTO_FAN_PIN 7
 #elif ENABLED(MKS_SGENL_V2_FAN2)
   #define E0_AUTO_FAN_PIN P1_04

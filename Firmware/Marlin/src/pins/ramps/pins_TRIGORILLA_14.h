@@ -51,7 +51,9 @@
 #if FET_ORDER_EEB
   #define MOSFET_C_PIN                         8  // BED
 #elif FET_ORDER_EFB
-  #if DISABLED(ANYCUBIC_LCD_CHIRON)
+  #if BOTH(CHIRON, REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER) // Needed for TH3D LCD Conversion Kit
+  	#define MOSFET_C_PIN                      45
+  #elif DISABLED(ANYCUBIC_LCD_CHIRON)
     #define MOSFET_C_PIN                       8
   #else
     #define MOSFET_C_PIN                      45

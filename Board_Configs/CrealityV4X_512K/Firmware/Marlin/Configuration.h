@@ -284,7 +284,7 @@
 // If you want to use the BL-Touch uncomment the BLTOUCH line below and uncomment #define CUSTOM_PROBE above and then enter in your offsets above in the CUSTOM PROBE section.
 //#define BLTOUCH
 // If you are using the 5 pin header for all the BL Touch connections, uncomment the below line
-//#define CREALITY_V42X_BLTOUCH_ON_5PIN
+//#define BLTOUCH_ON_5PIN
 
 // MANUAL MESH LEVELING ----------------------------
 // If you want to use manual mesh leveling you can enable the below option. This is for generating a MANUAL mesh WITHOUT a probe.
@@ -467,7 +467,7 @@
   #define Z_MAX_ENDSTOP_INVERTING false
   #define Z_MIN_PROBE_ENDSTOP_INVERTING false
 
-  #if ENABLED(CREALITY_V42X_BLTOUCH_ON_5PIN)
+  #if ENABLED(BLTOUCH_ON_5PIN)
     #define USE_PROBE_FOR_Z_HOMING
   #else
     #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
@@ -924,7 +924,7 @@
   #define Z_MAX_ENDSTOP_INVERTING false
   #define Z_MIN_PROBE_ENDSTOP_INVERTING false
 
-  #if ENABLED(CREALITY_V42X_BLTOUCH_ON_5PIN)
+  #if ENABLED(BLTOUCH_ON_5PIN)
     #define USE_PROBE_FOR_Z_HOMING
   #else
     #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
@@ -1202,7 +1202,7 @@
   #define Z_MAX_ENDSTOP_INVERTING false
   #define Z_MIN_PROBE_ENDSTOP_INVERTING false
 
-  #if ENABLED(CREALITY_V42X_BLTOUCH_ON_5PIN)
+  #if ENABLED(BLTOUCH_ON_5PIN)
     #define USE_PROBE_FOR_Z_HOMING
   #else
     #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
@@ -1468,7 +1468,7 @@
   #define Z_MAX_ENDSTOP_INVERTING false
   #define Z_MIN_PROBE_ENDSTOP_INVERTING false
 
-  #if ENABLED(CREALITY_V42X_BLTOUCH_ON_5PIN)
+  #if ENABLED(BLTOUCH_ON_5PIN)
     #define USE_PROBE_FOR_Z_HOMING
   #else
     #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN

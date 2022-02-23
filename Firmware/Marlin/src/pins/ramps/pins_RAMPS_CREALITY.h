@@ -25,7 +25,7 @@
   #error "Creality3D RAMPS supports only 2 hotends / E-steppers. Comment out this line to continue."
 #endif
 
-#define BOARD_INFO_NAME "Creality3D RAMPS"
+#define BOARD_INFO_NAME "Creality3D V2.X"
 
 //
 // Pins for Ender 5 Plus - Uses Physical XY MIN headers for XY MAX Homing
@@ -37,6 +37,10 @@
   #define Y_MIN_PIN                          -1
   #define Y_MAX_PIN                          14
 #endif
+
+//
+// Pins for CR-20 - Uses a Creality "Mini-Panel" Type 12864 LCD
+//
 
 #if ENABLED(CR20)
   #define BEEPER_PIN 37
@@ -58,7 +62,12 @@
 //
 
 // Power outputs EFBF or EFBE
-#define MOSFET_D_PIN                           7
+// Added all 4 outputs here as they never change on this board - TH3D
+#define MOSFET_A_PIN                          10 //E0 Hotend MOSFET
+#define MOSFET_B_PIN                           7 //E1 Hotend MOSFET
+#define MOSFET_C_PIN                           8 //Heated Bed MOSFET
+#define MOSFET_D_PIN                           9 //Layer Fan MOSFET
+#define FAN_PIN                     MOSFET_D_PIN
 
 #define FIL_RUNOUT_PIN                         2
 #if NUM_RUNOUT_SENSORS >= 2

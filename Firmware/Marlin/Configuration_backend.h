@@ -6,7 +6,7 @@
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-#define UNIFIED_VERSION "TH3D UFW 2.41"
+#define UNIFIED_VERSION "TH3D UFW 2.42"
 
 /**
  * ABL Probe Settings
@@ -167,10 +167,6 @@
   #define NOZZLE_TO_PROBE_OFFSET { -5, -48, 0 }
   #define ABL_ENABLE
 #endif
-#if ENABLED(ZONESTAR_Z5F_STOCK_ABL)
-  #define NOZZLE_TO_PROBE_OFFSET { 35, 0, 0 }
-  #define ABL_ENABLE
-#endif
 #if ENABLED(TARANTULA_PRO_OEM)
   #define NOZZLE_TO_PROBE_OFFSET { -65, 0, 0 }
   #define ABL_ENABLE
@@ -179,16 +175,8 @@
   #define NOZZLE_TO_PROBE_OFFSET { -37, -10, 0 }
   #define ABL_ENABLE
 #endif
-#if ENABLED(TAZ5_OEM)
-  #define NOZZLE_TO_PROBE_OFFSET { -52, 15, 0 }
-  #define ABL_ENABLE
-#endif
 #if ENABLED(WANHAO_I3_OEM)
   #define NOZZLE_TO_PROBE_OFFSET { -25, -38, 0 }
-  #define ABL_ENABLE
-#endif
-#if ENABLED(WANHAO_D6_OEM)
-  #define NOZZLE_TO_PROBE_OFFSET { 24, -16, 0 }
   #define ABL_ENABLE
 #endif
 #if ENABLED(WANHAO_I3_DIIICOOLER)
@@ -224,6 +212,10 @@
   #define ABL_ENABLE
 #endif
 #if ENABLED(GEE_A10_V2_OEM)
+  #define NOZZLE_TO_PROBE_OFFSET { -52, 0, 0 }
+  #define ABL_ENABLE
+#endif
+#if ENABLED(GEE_A20_OEM)
   #define NOZZLE_TO_PROBE_OFFSET { -52, 0, 0 }
   #define ABL_ENABLE
 #endif
@@ -480,6 +472,20 @@
   #define SPEAKER
 #endif
 
+#if MOTHERBOARD == BOARD_MELZI_CREALITY
+  // Leave this on until 2.0.9.3 bug with fan control not working is resolved
+  // Once 2.0.9.3 Melzi Fan bug is fixed remove from future releases
+  // Details: https://github.com/MarlinFirmware/Marlin/issues/23418
+  #define FAN_FIX
+#endif
+
+#if MOTHERBOARD == BOARD_ANET_10
+  // Leave this on until 2.0.9.3 bug with fan control not working is resolved
+  // Once 2.0.9.3 Melzi Fan bug is fixed remove from future releases
+  // Details: https://github.com/MarlinFirmware/Marlin/issues/23418
+  #define FAN_FIX
+#endif
+
 #if ENABLED(FAN_FIX)
   #define FAN_SOFT_PWM
   #define SOFT_PWM_SCALE 1
@@ -568,6 +574,8 @@
 #define ENDSTOP_NOISE_THRESHOLD 2
 
 #define SERVO_DELAY { 300 }
+
+#define FILAMENT_RUNOUT_THRESHOLD 100 //Prevent false sensor triggers
 
 /**
  * LCD General Settings

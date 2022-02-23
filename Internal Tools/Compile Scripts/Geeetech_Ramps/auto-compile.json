@@ -1,0 +1,27 @@
+{
+    "config-file":"Configuration.h",
+    "compile-profile":
+    [
+        {
+            "profile-name": "a10-v1",
+            "keyword": 
+            [
+                {"find":"//#define GEEETECH_A10_V1","replace":"#define GEEETECH_A10_V1"}
+            ]
+        },
+		{
+            "profile-name": "a10-v2",
+            "keyword": 
+            [
+                {"find":"//#define GEEETECH_A10_V2","replace":"#define GEEETECH_A10_V2"}
+            ]
+        },
+		{
+            "profile-name": "a20",
+            "keyword": 
+            [
+                {"find":"//#define GEEETECH_A20","replace":"#define GEEETECH_A20"}
+            ]
+        }
+    ]
+}

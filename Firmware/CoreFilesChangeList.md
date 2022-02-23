@@ -32,6 +32,7 @@ This does not include machine configs or PlatformIO files.
 			- **ramps**
 				- `pins_RAMPS.h`
 				- `pins_RAMPS_CREALITY.h`
+				- `pins_TRIGORILLA_14.h`
 			- **sanguino**
 				- `pins_ANET_10.h`
 				- `pins_MELZI_CREALITY.h`

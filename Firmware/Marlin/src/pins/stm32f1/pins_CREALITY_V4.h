@@ -61,7 +61,7 @@
 //
 #ifndef SERVO0_PIN
   #ifndef HAS_PIN_27_BOARD
-    #define SERVO0_PIN                      PB0   // BLTouch OUT
+    #define SERVO0_PIN                      PB0   // BLTouch IN - Fixed by TH3D
   #else
     #define SERVO0_PIN                      PC6
   #endif
@@ -75,7 +75,7 @@
 #define Z_STOP_PIN                          PA7
 
 #ifndef Z_MIN_PROBE_PIN
-  #define Z_MIN_PROBE_PIN                   PB1   // BLTouch IN
+  #define Z_MIN_PROBE_PIN                   PB1   // BLTouch OUT - Fixed by TH3D
 #endif
 
 //

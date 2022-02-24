@@ -6,7 +6,7 @@
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-#define UNIFIED_VERSION "TH3D UFW 2.42"
+#define UNIFIED_VERSION "TH3D UFW 2.42a"
 
 /**
  * ABL Probe Settings
@@ -472,18 +472,28 @@
   #define SPEAKER
 #endif
 
-#if MOTHERBOARD == BOARD_MELZI_CREALITY
+#if defined(__AVR_ATmega1284__)
   // Leave this on until 2.0.9.3 bug with fan control not working is resolved
-  // Once 2.0.9.3 Melzi Fan bug is fixed remove from future releases
+  // Once 2.0.9.3 Fan bug is fixed remove from future releases
   // Details: https://github.com/MarlinFirmware/Marlin/issues/23418
   #define FAN_FIX
-#endif
-
-#if MOTHERBOARD == BOARD_ANET_10
+#elif defined(__AVR_ATmega1284P__)
   // Leave this on until 2.0.9.3 bug with fan control not working is resolved
-  // Once 2.0.9.3 Melzi Fan bug is fixed remove from future releases
+  // Once 2.0.9.3 Fan bug is fixed remove from future releases
   // Details: https://github.com/MarlinFirmware/Marlin/issues/23418
   #define FAN_FIX
+#elif defined(__AVR_ATmega1280__)
+  // Leave this on until 2.0.9.3 bug with fan control not working is resolved
+  // Once 2.0.9.3 Fan bug is fixed remove from future releases
+  // Details: https://github.com/MarlinFirmware/Marlin/issues/23418
+  #define FAN_FIX
+#elif defined(__AVR_ATmega2560__)
+  // Leave this on until 2.0.9.3 bug with fan control not working is resolved
+  // Once 2.0.9.3 Fan bug is fixed remove from future releases
+  // Details: https://github.com/MarlinFirmware/Marlin/issues/23418
+  #define FAN_FIX
+#else
+  // do nothing
 #endif
 
 #if ENABLED(FAN_FIX)

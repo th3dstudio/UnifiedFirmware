@@ -694,7 +694,9 @@
 #elif ENABLED(SKR_E3_MINI_V3_0)
   #define E0_AUTO_FAN_PIN PB15
 #else
-  #define E0_AUTO_FAN_PIN -1
+  #ifndef E0_AUTO_FAN_PIN
+    #define E0_AUTO_FAN_PIN -1
+  #endif
 #endif
 #define E1_AUTO_FAN_PIN -1
 #define E2_AUTO_FAN_PIN -1

@@ -357,11 +357,11 @@
   #define CLASSIC_JERK
   #if ENABLED(CLASSIC_JERK)
     #if ENABLED(CR10S4_V427_BOARD) || ENABLED(CR10S5_V427_BOARD)
-      #define DEFAULT_XJERK                 5.0
-      #define DEFAULT_YJERK                 5.0
+      #define DEFAULT_XJERK                 4.0
+      #define DEFAULT_YJERK                 4.0
     #else
-      #define DEFAULT_XJERK                 7.0
-      #define DEFAULT_YJERK                 7.0
+      #define DEFAULT_XJERK                 6.0
+      #define DEFAULT_YJERK                 6.0
     #endif
     #define DEFAULT_ZJERK  0.3
   #endif

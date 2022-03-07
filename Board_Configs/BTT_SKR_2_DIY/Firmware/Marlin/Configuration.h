@@ -462,7 +462,9 @@
 #define DIY_TMCBOARD
 
 #if ENABLED(CUSTOM_PROBE)
-  #define SKRV2_BOARD_EZABL
+  #if DISABLED(BLTOUCH)
+    #define SKRV2_BOARD_EZABL
+  #endif
   #define USE_PROBE_FOR_Z_HOMING
 #endif
   

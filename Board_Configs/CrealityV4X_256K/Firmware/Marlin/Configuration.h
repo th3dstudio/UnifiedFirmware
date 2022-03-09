@@ -22,7 +22,7 @@
 //#define ENDER5_V422_BOARD
 
 // V4.2.2 TMC Driver Settings - Uncomment if you have TMC drivers on a 4.2.2 Board to set driver timings
-//#define V422_TMC220X_DRIVERS //"A" or "B" Code on SD Slot
+//#define V42X_TMC220X_DRIVERS //"A" or "B" Code on SD Slot
 
 //------------------------------ V4.2.3 Board -------------------------------
 //#define ENDER2_PRO_V423_BOARD
@@ -32,6 +32,7 @@
 //#define ENDER3_MAX_V427_BOARD
 //#define ENDER3_V2_V427_BOARD
 //#define ENDER5_V427_BOARD
+//#define ENDER5_PLUS_V427_BOARD
 
 //#define CR10_V427_BOARD
 //#define CR10MINI_V427_BOARD
@@ -73,6 +74,7 @@
 //#define ENDER3_V2_OEM
 //#define ENDER3_MAX_OEM
 //#define ENDER5_OEM
+//#define ENDER5_PLUS_OEM
 //#define ENDER6_OEM
 //#define CUSTOM_PROBE
 
@@ -87,6 +89,12 @@
 // Ender 5 - Leadscrew Setting
 // If you have the new Ender 5/5 Pro Model that has the new 800steps/mm Z leadscrew uncomment the below option to set the correct steps/mm
 //#define ENDER5_NEW_LEADSCREW
+
+// Ender 5 Plus ONLY ABL Settings -------------------------------------------
+// By default the Ender 5 Plus comes with a BL Touch. Enabling the ENDER5_PLUS_EZABL or ENDER5_PLUS_NOABL will override the BL Touch setting
+// If you are using the stock BL Touch with a non-stock mount enable the CUSTOM_PROBE line above and enter the offsets below for the new mount.
+//#define ENDER5_PLUS_EZABL
+//#define ENDER5_PLUS_NOABL
 
 // Ender 6 - LDO 0.9 Motor Kit Settings
 // If you have upgraded to the 0.9 degree LDO motor kit for your Ender 6, uncomment the below line to set the XY steps needed.
@@ -312,6 +320,19 @@
  * ****************************DO NOT TOUCH ANYTHING BELOW THIS COMMENT**************************
  * Core machine settings are below. Do NOT modify these unless you understand what you are doing.
  */
+ 
+/**
+ * Sanity Checks
+ */
+ 
+//V42X with TMC Driver Sanity Checks
+#if ANY(ENDER5_V427_BOARD, ENDER5_V427_BOARD, ENDER5_PLUS_V427_BOARD, ENDER2_PRO_V423_BOARD, CR10_V427_BOARD, CR10MINI_V427_BOARD, CR10S4_V427_BOARD, CR10S4_V427_BOARD, CR10S5_V427_BOARD, ENDER6_V431_BOARD)
+  #define V42X_TMC220X_DRIVERS
+#endif
+
+#if BOTH(V42X_TMC220X_DRIVERS, LINEAR_ADVANCE)
+  #error "Linear Advance does NOT work on the V4.2.X boards with the TMC drivers due to how Creality has them setup. Disable Linear Advance to continue or comment this line out to continue compile at your own risk."
+#endif
 
 /**
  * Machine Configuration Settings
@@ -323,11 +344,6 @@
 
 //CR-10 Series V427 Settings
 #if ENABLED(CR10_V427_BOARD) || ENABLED(CR10MINI_V427_BOARD) || ENABLED(CR10S4_V427_BOARD) || ENABLED(CR10S5_V427_BOARD)
-  //V42X with TMC Driver Sanity Checks
-  #if ENABLED(LINEAR_ADVANCE)
-    #error "Linear Advance does NOT work on the V4.2.7 boards with the TMC drivers due to how Creality has them setup. Disable Linear Advance to continue."
-  #endif
-
   #define SERIAL_PORT 1
 
   #define BAUDRATE 115200
@@ -575,12 +591,7 @@
  
 //Ender 6 V431 Board Settings
 #if ENABLED(ENDER6_V431_BOARD)
-  //V431 with TMC Driver Sanity Checks
-  #if ENABLED(LINEAR_ADVANCE)
-    #error "Linear Advance does NOT work on the V4.3.1 boards with the TMC drivers due to how Creality has them setup. Disable Linear Advance to continue."
-  #endif
-
-  #define SERIAL_PORT 1
+	#define SERIAL_PORT 1
 
   #define BAUDRATE 115200
   #define MOUNTED_FILAMENT_SENSOR
@@ -1021,14 +1032,9 @@
 #endif
 //End Ender 2 Pro Board Settings
  
-//Ender 3/3 MAX/5 V42X Board Settings
-#if ENABLED(ENDER3_V422_BOARD) || ENABLED(ENDER5_V422_BOARD) || ENABLED(ENDER3_V427_BOARD) || ENABLED(ENDER5_V427_BOARD) || ENABLED(ENDER3_MAX_V422_BOARD) || ENABLED(ENDER3_MAX_V427_BOARD)
-  //V42X with TMC Driver Sanity Checks
-  #if (ENABLED(V422_TMC220X_DRIVERS) || ENABLED(ENDER3_V427_BOARD) || ENABLED(ENDER5_V427_BOARD) || ENABLED(ENDER3_MAX_V427_BOARD)) && ENABLED(LINEAR_ADVANCE)
-    #error "Linear Advance does NOT work on the V4.2.X boards with the TMC drivers due to how Creality has them setup. Disable Linear Advance to continue."
-  #endif
-  
-  #if ENABLED(ENDER3_MAX_V422_BOARD) || ENABLED(ENDER3_MAX_V427_BOARD)
+//Ender 3/3 MAX/5/5 Plus V42X Board Settings
+#if ANY(ENDER3_V422_BOARD, ENDER5_V422_BOARD, ENDER3_V427_BOARD, ENDER5_V427_BOARD, ENDER3_MAX_V422_BOARD, ENDER3_MAX_V427_BOARD, ENDER5_PLUS_V427_BOARD)
+  #if ANY(ENDER3_MAX_V422_BOARD, ENDER3_MAX_V427_BOARD, ENDER5_PLUS_V427_BOARD)
     #define MOUNTED_FILAMENT_SENSOR
   #endif
 
@@ -1208,7 +1214,7 @@
     #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
   #endif
 
-  #if ENABLED(ENDER3_V427_BOARD) || ENABLED(ENDER5_V427_BOARD) || ENABLED(V422_TMC220X_DRIVERS) || ENABLED(ENDER3_MAX_V427_BOARD) 
+  #if ENABLED(V42X_TMC220X_DRIVERS)
     #define X_DRIVER_TYPE TMC2208_STANDALONE
     #define Y_DRIVER_TYPE TMC2208_STANDALONE
     #define Z_DRIVER_TYPE TMC2208_STANDALONE
@@ -1263,7 +1269,7 @@
     #endif
   #endif
 
-  #if ENABLED(ENDER3_MAX_V422_BOARD) || ENABLED(ENDER3_MAX_V427_BOARD)
+  #if ANY(ENDER3_MAX_V422_BOARD, ENDER3_MAX_V427_BOARD, ENDER5_PLUS_V427_BOARD)
     #define FILAMENT_RUNOUT_SENSOR
   #endif
 
@@ -1319,7 +1325,7 @@
   #endif
   
 #endif
-// End Ender 3/3 MAX/5 V42X Board Settings
+// End Ender 3/3 MAX/5/5 Plus V42X Board Settings
  
 // Ender 3 V2 Settings
 #if ENABLED(ENDER3_V2_V422_BOARD) || ENABLED(ENDER3_V2_V427_BOARD)
@@ -1332,7 +1338,7 @@
 
   #define BAUDRATE 115200
 
-  #if ENABLED(ENDER3_V2_V422_BOARD) || ENABLED(ENDER3_V2_V422_BOARD)
+  #if ENABLED(ENDER3_V2_V422_BOARD)
     #ifndef MOTHERBOARD
       #define MOTHERBOARD BOARD_CREALITY_V4
     #endif

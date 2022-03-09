@@ -24,6 +24,7 @@
 //#define ENDER3
 //#define ENDER3_MAX
 //#define ENDER5
+//#define ENDER5_PLUS
 
 //#define CR10
 //#define CR10MINI
@@ -53,8 +54,10 @@
 // EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
 //#define CR10_OEM
 //#define ENDER3_OEM
+//#define ENDER3_V2_OEM
 //#define ENDER3_MAX_OEM
 //#define ENDER5_OEM
+//#define ENDER5_PLUS_OEM
 //#define CUSTOM_PROBE
 
 // EZABL on Z-Probe Port Wiring Option
@@ -74,6 +77,12 @@
 // Ender 5 - Leadscrew Setting
 // If you have the new Ender 5/5 Pro Model that has the new 800steps/mm Z leadscrew uncomment the below option to set the correct steps/mm
 //#define ENDER5_NEW_LEADSCREW
+
+// Ender 5 Plus ONLY ABL Settings -------------------------------------------
+// By default the Ender 5 Plus comes with a BL Touch. Enabling the ENDER5_PLUS_EZABL or ENDER5_PLUS_NOABL will override the BL Touch setting
+// If you are using the stock BL Touch with a non-stock mount enable the CUSTOM_PROBE line above and enter the offsets below for the new mount.
+//#define ENDER5_PLUS_EZABL
+//#define ENDER5_PLUS_NOABL
 
 // EZNeo Settings -----------------------------------------------------------
 // If you are using an EZNeo strip on your printer, uncomment the line for what strip you are using.
@@ -322,7 +331,7 @@
 #endif
  
  //Creality SKR E3 Mini Board Settings
-#if ENABLED(ENDER3) || ENABLED(ENDER3_MAX) || ENABLED(ENDER5) || ENABLED(CR10) || ENABLED(CR10MINI) || ENABLED(CR10S4) || ENABLED(CR10S5)
+#if ANY(ENDER3, ENDER3_MAX ,ENDER5, ENDER5_PLUS, CR10, CR10MINI, CR10S4, CR10S5)
   #define SERIAL_PORT -1
   #define SERIAL_PORT_2 2
   #define SKR_E3_MINI_BOARD
@@ -335,7 +344,7 @@
   
   #define CR10_STOCKDISPLAY
   
-  #if ENABLED(REVERSE_KNOB_DIRECTION)
+  #if ENABLED(REVERSE_KNOB_DIRECTION) && DISABLED(ENDER5_PLUS)
     #define REVERSE_ENCODER_DIRECTION
   #endif
   
@@ -396,6 +405,16 @@
     #define X_BED_SIZE 220
     #define Y_BED_SIZE 220
     #define Z_MAX_POS 300
+  #endif
+  
+  #if ENABLED(ENDER5_PLUS)
+    #define X_BED_SIZE 350
+    #define Y_BED_SIZE 350
+    #define Z_MAX_POS 400
+    #if DISABLED(REVERSE_KNOB_DIRECTION)
+      #define REVERSE_ENCODER_DIRECTION
+    #endif
+    #define ENDER5_NEW_LEADSCREW
   #endif
   
   #if ENABLED(ENDER3)
@@ -471,7 +490,7 @@
     #define Y_MIN_POS 0
   #endif
 
-  #if ENABLED(ENDER5)
+  #if ENABLED(ENDER5) || ENABLED(ENDER5_PLUS)
     #define USE_XMAX_PLUG
     #define USE_YMAX_PLUG
     #define USE_ZMIN_PLUG
@@ -481,7 +500,7 @@
     #define USE_ZMIN_PLUG
   #endif
 
-  #if ENABLED(ENDER5)
+  #if ENABLED(ENDER5) || ENABLED(ENDER5_PLUS)
     #define X_HOME_DIR 1
     #define Y_HOME_DIR 1
     #define Z_HOME_DIR -1
@@ -595,6 +614,25 @@
 
   #if ENABLED(CUSTOM_PROBE) || ENABLED(ENDER5_OEM) || ENABLED(ENDER3_OEM) || ENABLED(CR10_OEM) || ENABLED(ENDER3_MAX_OEM) || ENABLED(POWER_LOSS_RECOVERY)
     #define SPACE_SAVER
+  #endif
+  
+  #if ENABLED(ENDER5_PLUS)
+    #if DISABLED(ENDER5_PLUS_NOABL) && DISABLED(ENDER5_PLUS_EZABL)
+      #define BLTOUCH
+    #ifndef EZABL_PROBE_EDGE
+      #define EZABL_PROBE_EDGE 35
+    #endif
+    #ifndef EZABL_POINTS
+      #define EZABL_POINTS 5
+    #endif
+    #if DISABLED(CUSTOM_PROBE)
+        #define CUSTOM_PROBE
+        #define NOZZLE_TO_PROBE_OFFSET { -44, -9, 0}
+      #endif
+    #endif  
+    #if DISABLED(ENDER5_PLUS_NOABL)
+      #define ABL_ENABLE
+    #endif
   #endif
 
   #if ENABLED(EZOUTV2_ENABLE) || ENABLED(CR10S_STOCKFILAMENTSENSOR)

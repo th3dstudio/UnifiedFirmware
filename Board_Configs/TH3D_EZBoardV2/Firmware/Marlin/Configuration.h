@@ -55,7 +55,7 @@
 
 // EZABL Probe Mounts -------------------------------------------------------
 // Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
-//#define CR10_OEM                 //OEM Mount for Creality Machines (Ender3/Ender5/CR-10/CR-10S/CR-20)
+//#define CR10_OEM                 //OEM Mount for Creality Machines (Ender3/Ender5/Ender5Plus/CR-10/CR-10S/CR-20)
 //#define ENDER2_OEM               //Ender 2 Specific OEM Mount
 //#define ENDER2_V6                //Ender 2 Specific V6 Mount
 //#define ENDER3_MAX_OEM           //Ender 3 MAX Specific OEM Mount

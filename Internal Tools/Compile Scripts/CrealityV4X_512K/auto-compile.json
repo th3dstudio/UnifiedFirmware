@@ -66,6 +66,13 @@
             ]
         },
 		{
+            "profile-name": "ender5-plus-427",
+            "keyword": 
+            [
+                {"find":"//#define ENDER5_PLUS_V427_BOARD","replace":"#define ENDER5_PLUS_V427_BOARD"}
+            ]
+        },
+		{
             "profile-name": "cr10-427",
             "keyword": 
             [

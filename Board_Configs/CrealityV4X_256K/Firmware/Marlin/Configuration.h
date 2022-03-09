@@ -345,6 +345,8 @@
 //CR-10 Series V427 Settings
 #if ENABLED(CR10_V427_BOARD) || ENABLED(CR10MINI_V427_BOARD) || ENABLED(CR10S4_V427_BOARD) || ENABLED(CR10S5_V427_BOARD)
   #define SERIAL_PORT 1
+  
+  #define PRINTER_VOLTAGE_12
 
   #define BAUDRATE 115200
   
@@ -592,6 +594,8 @@
 //Ender 6 V431 Board Settings
 #if ENABLED(ENDER6_V431_BOARD)
 	#define SERIAL_PORT 1
+  
+  #define PRINTER_VOLTAGE_24
 
   #define BAUDRATE 115200
   #define MOUNTED_FILAMENT_SENSOR
@@ -826,6 +830,8 @@
   #define CR10_STOCKDISPLAY
   #define RET6_12864_LCD
   
+  #define PRINTER_VOLTAGE_24
+  
   #if ENABLED(REVERSE_KNOB_DIRECTION)
     #define REVERSE_ENCODER_DIRECTION
   #endif
@@ -1037,6 +1043,8 @@
   #if ANY(ENDER3_MAX_V422_BOARD, ENDER3_MAX_V427_BOARD, ENDER5_PLUS_V427_BOARD)
     #define MOUNTED_FILAMENT_SENSOR
   #endif
+  
+  #define PRINTER_VOLTAGE_24
 
   #define SERIAL_PORT 1
 
@@ -1045,7 +1053,7 @@
   #define CR10_STOCKDISPLAY
   #define RET6_12864_LCD
   
-  #if ENABLED(REVERSE_KNOB_DIRECTION)
+  #if ENABLED(REVERSE_KNOB_DIRECTION) && DISABLED(ENDER5_PLUS_V427_BOARD)
     #define REVERSE_ENCODER_DIRECTION
   #endif
   
@@ -1091,15 +1099,7 @@
 
   #define EXTRUDERS 1
 
-  #if ENABLED(ENDER5_V422_BOARD) || ENABLED(ENDER5_V427_BOARD)
-    #define X_BED_SIZE 220
-    #define Y_BED_SIZE 220
-    #define Z_MAX_POS 300
-  #elif ENABLED(ENDER3_MAX_V422_BOARD) || ENABLED(ENDER3_MAX_V427_BOARD)
-    #define X_BED_SIZE 300
-    #define Y_BED_SIZE 300
-    #define Z_MAX_POS 340
-  #else
+  #if ANY(ENDER3_V422_BOARD, ENDER3_V427_BOARD)
     #if ENABLED(ENDER_XTENDER_400)
       #define X_BED_SIZE 400
       #define Y_BED_SIZE 400
@@ -1123,6 +1123,28 @@
     #endif
   #endif
   
+  #if ANY(ENDER3_MAX_V422_BOARD, ENDER3_MAX_V427_BOARD)
+    #define X_BED_SIZE 300
+    #define Y_BED_SIZE 300
+    #define Z_MAX_POS 340
+  #endif
+  
+  #if ANY(ENDER5_V422_BOARD, ENDER5_V427_BOARD)
+    #define X_BED_SIZE 220
+    #define Y_BED_SIZE 220
+    #define Z_MAX_POS 300
+  #endif
+  
+  #if ENABLED(ENDER5_PLUS_V427_BOARD)
+    #define X_BED_SIZE 350
+    #define Y_BED_SIZE 350
+    #define Z_MAX_POS 400
+    #if DISABLED(REVERSE_KNOB_DIRECTION)
+      #define REVERSE_ENCODER_DIRECTION
+    #endif
+    #define ENDER5_NEW_LEADSCREW
+  #endif
+  
   #if ENABLED(HOME_ADJUST)
     #define X_MIN_POS X_HOME_LOCATION
     #define Y_MIN_POS Y_HOME_LOCATION
@@ -1131,7 +1153,7 @@
     #define Y_MIN_POS 0
   #endif
 
-  #if ENABLED(ENDER5_V422_BOARD) || ENABLED(ENDER5_V427_BOARD)
+  #if ANY(ENDER5_V422_BOARD, ENDER5_V427_BOARD, ENDER5_PLUS_V427_BOARD)
     #define USE_XMAX_PLUG
     #define USE_YMAX_PLUG
     #define USE_ZMIN_PLUG
@@ -1141,7 +1163,7 @@
     #define USE_ZMIN_PLUG
   #endif
 
-  #if ENABLED(ENDER5_V422_BOARD) || ENABLED(ENDER5_V427_BOARD)
+  #if ANY(ENDER5_V422_BOARD, ENDER5_V427_BOARD, ENDER5_PLUS_V427_BOARD)
     #define X_HOME_DIR 1
     #define Y_HOME_DIR 1
     #define Z_HOME_DIR -1
@@ -1261,6 +1283,25 @@
 
   #define ENCODER_PULSES_PER_STEP 4
   #define ENCODER_STEPS_PER_MENU_ITEM 1
+  
+  #if ENABLED(ENDER5_PLUS_V427_BOARD)
+    #if DISABLED(ENDER5_PLUS_NOABL) && DISABLED(ENDER5_PLUS_EZABL)
+      #define BLTOUCH
+    #ifndef EZABL_PROBE_EDGE
+      #define EZABL_PROBE_EDGE 35
+    #endif
+    #ifndef EZABL_POINTS
+      #define EZABL_POINTS 5
+    #endif
+    #if DISABLED(CUSTOM_PROBE)
+        #define CUSTOM_PROBE
+        #define NOZZLE_TO_PROBE_OFFSET { -44, -9, 0}
+      #endif
+    #endif  
+    #if DISABLED(ENDER5_PLUS_NOABL)
+      #define ABL_ENABLE
+    #endif
+  #endif
   
   #if ENABLED(EZOUT_ENABLE)
     #define FILAMENT_RUNOUT_SENSOR

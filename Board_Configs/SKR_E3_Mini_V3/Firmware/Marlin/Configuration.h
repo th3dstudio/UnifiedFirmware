@@ -305,7 +305,7 @@
  */
  
  //Creality SKR E3 Mini V3 Board Settings
-#if ANY(ENDER3, ENDER3_MAX ,ENDER5, ENDER5_PLUS, CR10, CR10MINI, CR10S4, CR10S5)
+#if ANY(ENDER3, ENDER3_MAX, ENDER5, ENDER5_PLUS, CR10, CR10MINI, CR10S4, CR10S5)
   #define SERIAL_PORT 2
   #define SERIAL_PORT_2 -1
   
@@ -354,7 +354,7 @@
 
   #define CLASSIC_JERK
   #if ENABLED(CLASSIC_JERK)
-    #if ENABLED(CR10S4_SKR_E3_MINI) || ENABLED(CR10S5_SKR_E3_MINI)
+    #if ANY(CR10S4, CR10S5)
       #define DEFAULT_XJERK                 5.0
       #define DEFAULT_YJERK                 5.0
     #else

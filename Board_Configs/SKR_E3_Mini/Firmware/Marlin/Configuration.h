@@ -301,7 +301,7 @@
 // Arc support is enabled by default on all builds but this takes up extra space. If you get compile errors due to the size being too large when enabling other options, then disable ARC_SUPPORT
 // by uncommenting the DISABLE_ARC_SUPPORT line below.
 // Disabling ARC_SUPPORT will restore additional menus to the LCD on this board.
-// Because of the low end, limited memory chip BTT uses you cannot have both enabled at the same time.
+// Because of the limited memory chip BTT uses you cannot have both enabled at the same time.
 //#define DISABLE_ARC_SUPPORT
 
 // Action Commands Override ------------------------
@@ -331,10 +331,16 @@
 #endif
  
  //Creality SKR E3 Mini Board Settings
-#if ANY(ENDER3, ENDER3_MAX ,ENDER5, ENDER5_PLUS, CR10, CR10MINI, CR10S4, CR10S5)
+#if ANY(ENDER3, ENDER3_MAX, ENDER5, ENDER5_PLUS, CR10, CR10MINI, CR10S4, CR10S5)
   #define SERIAL_PORT -1
   #define SERIAL_PORT_2 2
   #define SKR_E3_MINI_BOARD
+  
+  #if ANY(CR10, CR10MINI, CR10S4, CR10S5)
+    #define PRINTER_VOLTAGE_12
+  #else
+    #define PRINTER_VOLTAGE_24
+  #endif
 
   #if ENABLED(FASTER_BAUDRATE)
     #define BAUDRATE 250000
@@ -385,7 +391,7 @@
 
   #define CLASSIC_JERK
   #if ENABLED(CLASSIC_JERK)
-    #if ENABLED(CR10S4) || ENABLED(CR10S5)
+    #if ANY(CR10S4, CR10S5)
       #define DEFAULT_XJERK                 5.0
       #define DEFAULT_YJERK                 5.0
     #else
@@ -696,7 +702,7 @@
 #else
   #error "UNCOMMENT YOUR PRINTER MODEL. BOTH PRINTER AND BOARD VERSION ARE REQUIRED TO COMPILE."
 #endif
-// End Ender 3/5 SKR E3 Mini Board Settings
+// End SKR E3 Mini Board Settings
  
 /*
  * All other settings are stored in the Configuration_backend.h file. Do not change unless you know what you are doing.

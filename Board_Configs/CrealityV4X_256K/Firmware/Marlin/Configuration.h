@@ -1549,7 +1549,7 @@
   #define INVERT_E6_DIR false
   #define INVERT_E7_DIR false
 
-  //Different Ender 2 V2 LCD Display Options - Change at your own risk!!!
+  //Different Ender 3 V2 LCD Display Options - Change at your own risk!!!
   //#define DWIN_CREALITY_LCD           // Creality UI
   //#define DWIN_CREALITY_LCD_ENHANCED  // Enhanced UI
   //#define DWIN_CREALITY_LCD_JYERSUI   // Jyers UI by Jacob Myers

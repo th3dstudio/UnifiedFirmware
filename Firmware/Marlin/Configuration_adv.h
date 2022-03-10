@@ -2645,12 +2645,14 @@
   #define FILAMENT_CHANGE_UNLOAD_FEEDRATE     20  // (mm/s) Unload filament feedrate. This can be pretty fast.
   #define FILAMENT_CHANGE_UNLOAD_ACCEL        25  // (mm/s^2) Lower acceleration may allow a faster feedrate.
   
-  #if ENABLED(DIRECT_DRIVE_PRINTER)
-    #define FILAMENT_CHANGE_UNLOAD_LENGTH      20
-  #elif ENABLED(MOUNTED_FILAMENT_SENSOR)
-    #define FILAMENT_CHANGE_UNLOAD_LENGTH      10
-  #else
-    #define FILAMENT_CHANGE_UNLOAD_LENGTH      100
+  #ifndef FILAMENT_CHANGE_UNLOAD_LENGTH           // Do not set an unload length if one is set by user in Configuration.h
+    #if ENABLED(DIRECT_DRIVE_PRINTER)
+      #define FILAMENT_CHANGE_UNLOAD_LENGTH      20
+    #elif ENABLED(MOUNTED_FILAMENT_SENSOR)
+      #define FILAMENT_CHANGE_UNLOAD_LENGTH      10
+    #else
+      #define FILAMENT_CHANGE_UNLOAD_LENGTH      100
+    #endif
   #endif
   
   #define FILAMENT_CHANGE_SLOW_LOAD_FEEDRATE   8  // (mm/s) Slow move when starting load.

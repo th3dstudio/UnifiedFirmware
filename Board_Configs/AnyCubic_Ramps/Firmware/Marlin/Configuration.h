@@ -270,7 +270,7 @@
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 100, 400, 405 }
   #endif
 
-  #define DEFAULT_MAX_FEEDRATE          { 200, 200, 15, 50 }
+  #define DEFAULT_MAX_FEEDRATE          { 200, 200, 15, 100 }
   #define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 500, 5000 }
 
   #define DEFAULT_ACCELERATION          500

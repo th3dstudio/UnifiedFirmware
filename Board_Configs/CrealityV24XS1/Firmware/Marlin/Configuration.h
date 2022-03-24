@@ -32,6 +32,15 @@
 // If you are having issues with the stock filament sensor uncomment the below line to disable it.
 //#define ENDER3_S1_NOFILAMENT_SENSOR
 
+// EZNeo Settings -----------------------------------------------------------
+// If you are using an EZNeo strip on your printer, uncomment the line for what strip you are using.
+// Specify your IO pin below as well as this board does not have a dedicated NEOPIXEL header on it.
+//#define EZNEO_220
+
+// EZNeo Manual IO Pin Setting ----------------------------------------------
+// If you have the EZNeo wired with your own 5V power provided, specify the pin used below. PC0 is the "PWM" pin on the 3 Pin JST at the rear of the printer.
+//#define NEOPIXEL_PIN PC0
+
 //===========================================================================
 // *************************  END PRINTER SECTION   *************************
 //===========================================================================

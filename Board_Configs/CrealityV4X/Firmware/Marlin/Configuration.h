@@ -13,7 +13,7 @@
 // UNCOMMENT MEANS REMOVING THE // IN FRONT OF A #define XXXXXX LINE.
 
 //===========================================================================
-// ************   CREALITY PRINTERS W/V4.X BOARD - 256K CPU   ***************
+// ************   CREALITY PRINTERS W/V4.X BOARD - F103 CPU   ***************
 //===========================================================================
 //------------------------------ V4.2.2 Board -------------------------------
 //#define ENDER3_V422_BOARD
@@ -1059,7 +1059,7 @@
   
   #if ENABLED(ENDER3_V422_BOARD) || ENABLED(ENDER5_V422_BOARD) || ENABLED(ENDER3_MAX_V422_BOARD)
     #ifndef MOTHERBOARD
-      #define MOTHERBOARD BOARD_CREALITY_V4
+      #define MOTHERBOARD BOARD_CREALITY_V422
     #endif
   #else
     #ifndef MOTHERBOARD
@@ -1372,16 +1372,12 @@
 #if ENABLED(ENDER3_V2_V422_BOARD) || ENABLED(ENDER3_V2_V427_BOARD)
   #define SERIAL_PORT 1
   #define LCD_SERIAL_PORT 3
-  
-  #if ENABLED(MANUAL_MESH_LEVELING)
-    #error "Due to closed source LCD firmware, Manual Mesh Leveling is not available on the Ender 3 V2."
-  #endif
 
   #define BAUDRATE 115200
 
   #if ENABLED(ENDER3_V2_V422_BOARD)
     #ifndef MOTHERBOARD
-      #define MOTHERBOARD BOARD_CREALITY_V4
+      #define MOTHERBOARD BOARD_CREALITY_V422
     #endif
   #else
     #ifndef MOTHERBOARD

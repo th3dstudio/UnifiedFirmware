@@ -1,6 +1,6 @@
 /**
  * Marlin 3D Printer Firmware
- * Copyright (C) 2016 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
+ * Copyright (C) 2021 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
  *
  * Based on Sprinter and grbl.
  * Copyright (C) 2011 Camiel Gubbels / Erik van der Zalm
@@ -22,7 +22,7 @@
 #pragma once
 
 /**
- * CREALITY 4.2.10 (STM32F103) board pin assignments
+ * CREALITY 4.2.10 (STM32F103RE / STM32F103RC) board pin assignments
  */
 
 #include "env_validate.h"
@@ -167,7 +167,7 @@
      *  PB10 | 8  7 | PE8
      *  PB14   6  5 | PB13
      *  PB12 | 4  3 | PB15
-     *  GND  | 2  1 | 5V
+     *   GND | 2  1 | 5V
      *        ------
      *         EXP1
      */
@@ -191,7 +191,7 @@
      *  PB10 | 8  7 | ?
      *  PA6    6  5 | PA5
      *  PA4  | 4  3 | PA7
-     *  GND  | 2  1 | 5V
+     *   GND | 2  1 | 5V
      *        ------
      *         EXP1
      */

@@ -693,6 +693,8 @@
   #define E0_AUTO_FAN_PIN 44
 #elif ENABLED(SKR_E3_MINI_V3_0)
   #define E0_AUTO_FAN_PIN PB15
+#elif ENABLED(ENDER3_S1)
+  #define E0_AUTO_FAN_PIN PC0
 #else
   #ifndef E0_AUTO_FAN_PIN
     #define E0_AUTO_FAN_PIN -1

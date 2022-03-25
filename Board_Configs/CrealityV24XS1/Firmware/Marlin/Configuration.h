@@ -23,10 +23,8 @@
 //#define ENDER3_S1_OEM //TODO STILL 3/24/2022
 //#define CUSTOM_PROBE
 
-// Ender 3 S1 LCD Settings
-// This firmware currently only supports using thee 12864 LCD at this time.
+// Ender 3 S1 LCD Settings - This firmware currently only supports using thee 12864 LCD at this time.
 // Get the conversion kit here: https://www.th3dstudio.com/product/creality-ender-3-s1-12864-lcd-conversion-upgrade-kit/
-// If Marlin adds full support for the Color LCD we will add another option to use it below.
 #define ENDER3_S1_12864_LCD
 
 // If you are having issues with the stock filament sensor uncomment the below line to disable it.

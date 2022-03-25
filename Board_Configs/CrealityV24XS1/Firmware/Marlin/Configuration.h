@@ -423,8 +423,9 @@
     #define CR10_STOCKDISPLAY
     #define RET6_12864_LCD
   #else
-  	//Not working yet.
-    #define LCD_SERIAL_PORT 3
+  	//Not working yet - Buggy with the DACAI LCD - Background Issues
+    #define NO_LCD_REINIT 1
+    #define LCD_SERIAL_PORT 2
     //Different Ender 3 V2 LCD Display Options - Change at your own risk!!!
     //#define DWIN_CREALITY_LCD           // Creality UI
     //#define DWIN_CREALITY_LCD_ENHANCED  // Enhanced UI

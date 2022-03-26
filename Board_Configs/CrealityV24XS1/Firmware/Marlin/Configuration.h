@@ -23,7 +23,8 @@
 //#define ENDER3_S1_OEM //TODO STILL 3/24/2022
 //#define CUSTOM_PROBE
 
-// Ender 3 S1 LCD Settings - This firmware currently only supports using thee 12864 LCD at this time.
+// Ender 3 S1 LCD Settings - This firmware currently only supports using the 12864 LCD at this time.
+// The DACAI LCD is currently buggy with display artifacts and its current firmware.
 // Get the conversion kit here: https://www.th3dstudio.com/product/creality-ender-3-s1-12864-lcd-conversion-upgrade-kit/
 #define ENDER3_S1_12864_LCD
 
@@ -421,7 +422,7 @@
     #define CR10_STOCKDISPLAY
     #define RET6_12864_LCD
   #else
-  	//Not working yet - Buggy with the DACAI LCD, Seems OK with the DWIN LCD - Background Issues
+  	//Not working yet - Buggy with the DACAI LCD, OK with the DWIN LCD - Background Issues
     #define NO_LCD_REINIT 1
     #define LCD_SERIAL_PORT 2
     //Different Ender 3 S1 LCD Display Options - Change at your own risk!!!

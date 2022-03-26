@@ -78,13 +78,17 @@
 //#define ENDER6_OEM
 //#define CUSTOM_PROBE
 
-// Ender 3/3 V2 Specific Options
-
-// Ender Xtender Kit Options
+// Ender 3/3 V2 - Xtender Kit Options
 //#define ENDER_XTENDER_300
 //#define ENDER_XTENDER_400
 //#define ENDER_XTENDER_400XL
 //#define ENDER_XTENDER_XL
+
+// Ender 3 V2 - LCD Setting
+// If you converted your Ender 3 V2 LCD to the 12864 Version, Uncomment the below line.
+// The DACAI LCD is currently buggy with display artifacts and its current firmware.
+// Get the conversion kit here: https://www.th3dstudio.com/product/creality-ender-3-v2-12864-lcd-conversion-upgrade-kit/
+//#define ENDER3_V2_12864_LCD
 
 // Ender 5 - Leadscrew Setting
 // If you have the new Ender 5/5 Pro Model that has the new 800steps/mm Z leadscrew uncomment the below option to set the correct steps/mm
@@ -1371,8 +1375,6 @@
 // Ender 3 V2 Settings
 #if ENABLED(ENDER3_V2_V422_BOARD) || ENABLED(ENDER3_V2_V427_BOARD)
   #define SERIAL_PORT 1
-  #define LCD_SERIAL_PORT 3
-  #define NO_LCD_REINIT 1
 
   #define BAUDRATE 115200
 
@@ -1546,12 +1548,20 @@
   #define INVERT_E6_DIR false
   #define INVERT_E7_DIR false
 
-  //Different Ender 3 V2 LCD Display Options - Change at your own risk!!!
-  //#define DWIN_CREALITY_LCD           // Creality UI
-  //#define DWIN_CREALITY_LCD_ENHANCED  // Enhanced UI
-  //#define DWIN_CREALITY_LCD_JYERSUI   // Jyers UI by Jacob Myers
-  #define DWIN_MARLINUI_PORTRAIT      // MarlinUI (portrait orientation)
-  //#define DWIN_MARLINUI_LANDSCAPE     // MarlinUI (landscape orientation)
+  #if ENABLED(ENDER3_V2_12864_LCD)
+    #define CR10_STOCKDISPLAY
+    #define RET6_12864_LCD
+  #else
+    //Not working yet with the DACAI LCD, OK with the DWIN LCD - Background Issues
+    #define LCD_SERIAL_PORT 3
+    #define NO_LCD_REINIT 1
+    //Different Ender 3 V2 LCD Display Options - Change at your own risk!!!
+    //#define DWIN_CREALITY_LCD           // Creality UI
+    //#define DWIN_CREALITY_LCD_ENHANCED  // Enhanced UI
+    //#define DWIN_CREALITY_LCD_JYERSUI   // Jyers UI by Jacob Myers
+    #define DWIN_MARLINUI_PORTRAIT      // MarlinUI (portrait orientation)
+    //#define DWIN_MARLINUI_LANDSCAPE     // MarlinUI (landscape orientation)
+  #endif
 
   #if ANY(DWIN_CREALITY_LCD_JYERSUI, DWIN_CREALITY_LCD_ENHANCED)
     #define ENABLE_PIDBED

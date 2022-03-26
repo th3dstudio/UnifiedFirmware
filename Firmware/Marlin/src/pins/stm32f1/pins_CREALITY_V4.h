@@ -22,7 +22,7 @@
 #pragma once
 
 /**
- * Creality 4.2.x (STM32F103RET6) board pin assignments
+ * Creality 4.2.x (STM32F103RE / STM32F103RC) board pin assignments
  */
 
 #include "env_validate.h"
@@ -61,7 +61,7 @@
 //
 #ifndef SERVO0_PIN
   #ifndef HAS_PIN_27_BOARD
-    #define SERVO0_PIN                      PB0   // BLTouch OUT
+    #define SERVO0_PIN                      PB0   // BLTouch IN - Fixed by TH3D
   #else
     #define SERVO0_PIN                      PC6
   #endif
@@ -72,10 +72,12 @@
 //
 #define X_STOP_PIN                          PA5
 #define Y_STOP_PIN                          PA6
-#define Z_STOP_PIN                          PA7
+#ifndef Z_STOP_PIN
+  #define Z_STOP_PIN                        PA7
+#endif
 
 #ifndef Z_MIN_PROBE_PIN
-  #define Z_MIN_PROBE_PIN                   PB1   // BLTouch IN
+  #define Z_MIN_PROBE_PIN                   PB1   // BLTouch OUT - Fixed by TH3D
 #endif
 
 //
@@ -173,8 +175,13 @@
     #define LCD_PINS_D4                     PB13
 
     #define BTN_ENC                         PB2
-    #define BTN_EN1                         PB10
-    #define BTN_EN2                         PB14
+    #if ENABLED(ENDER3_S1_12864_LCD)
+      #define BTN_EN1                         PA2
+      #define BTN_EN2                         PB14
+    #else
+      #define BTN_EN1                         PB10
+      #define BTN_EN2                         PB14
+    #endif
 
   #if ENABLED(EZOUT_ENABLE) && DISABLED(EZOUT_ENABLE_J1)
     #define BEEPER_PIN                      -1

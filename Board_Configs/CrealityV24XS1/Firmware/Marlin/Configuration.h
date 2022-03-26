@@ -1,8 +1,6 @@
 /**
  * For directions on how to use this firmware visit http://uf2.th3dstudio.com and click on your printer/board link
  * NO IMPLIED SUPPORT OR WARRANTY IS PROVIDED WITH THIS FIRMWARE AND IS PROVIDED AS-IS
- *
- * MAKE SURE ALL SLICERS AND OTHER PROGRAMS THAT CONNECT TO YOUR PRINTER COM PORT ARE CLOSED BEFORE FLASHING.
  */
 #pragma once
 #define CONFIGURATION_H_VERSION 02000903
@@ -15,14 +13,32 @@
 // UNCOMMENT MEANS REMOVING THE // IN FRONT OF A #define XXXXXX LINE.
 
 //===========================================================================
-// *****************  ALFAWISE PRINTERS 2560 CPU BOARD   *******************
+// **************   CREALITY PRINTERS S1 BOARD - F103 CPU   *****************
 //===========================================================================
-//#define ALFAWISE_U10
+//#define ENDER3_S1
+
+// NOTE: Enabling EZABL mounts and/or BLTouch settings will disable the pre-setup settings for the stock CRTouch with its stock mount.
 
 // EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
-//#define ALFAWISEU10_OEM
-//#define ALFAWISEU10_PETSFANG
+//#define ENDER3_S1_OEM //TODO STILL 3/24/2022
 //#define CUSTOM_PROBE
+
+// Ender 3 S1 LCD Settings - This firmware currently only supports using the 12864 LCD at this time.
+// The DACAI LCD is currently buggy with display artifacts and its current firmware.
+// Get the conversion kit here: https://www.th3dstudio.com/product/creality-ender-3-s1-12864-lcd-conversion-upgrade-kit/
+#define ENDER3_S1_12864_LCD
+
+// If you are having issues with the stock filament sensor uncomment the below line to disable it.
+//#define ENDER3_S1_NOFILAMENT_SENSOR
+
+// EZNeo Settings -----------------------------------------------------------
+// If you are using an EZNeo strip on your printer, uncomment the line for what strip you are using.
+// Specify your IO pin below as well as this board does not have a dedicated NEOPIXEL header on it.
+//#define EZNEO_220
+
+// EZNeo Manual IO Pin Setting ----------------------------------------------
+// If you have the EZNeo wired with your own 5V power provided, specify the pin used below. PC0 is the "PWM" pin on the 3 Pin JST at the rear of the printer.
+//#define NEOPIXEL_PIN PC0
 
 //===========================================================================
 // *************************  END PRINTER SECTION   *************************
@@ -201,15 +217,8 @@
 // Change the K Value here or use M900 KX.XX in your starting code (recommended).
 #define LINEAR_ADVANCE_K 0
 
-// BL TOUCH ----------------------------------------
-// If you want to use the BL-Touch uncomment the 2 lines below and set your servo pin.
-// You also need to uncomment #define CUSTOM_PROBE above and then enter in your offsets above in the CUSTOM PROBE section.
-//#define BLTOUCH
-// Here is where you set your servo pin.
-//#define SERVO0_PIN 11
-
 // MANUAL MESH LEVELING ----------------------------
-// If you want to use manual mesh leveling you can enable the below option. This is for generating a MANUAL mesh WITHOUT a probe. To change the mesh inset value change the EZABL_PROBE_EDGE setting above.
+// If you want to use manual mesh leveling you can enable the below option. This is for generating a MANUAL mesh WITHOUT a probe.
 // Mesh Bed Leveling Documentation: http://marlinfw.org/docs/gcode/G029-mbl.html 
 // NOTE: If you want to automate the leveling process our EZABL kits do this for you. Check them out here: http://EZABL.TH3DStudio.com
 //#define MANUAL_MESH_LEVELING
@@ -234,43 +243,66 @@
  * ****************************DO NOT TOUCH ANYTHING BELOW THIS COMMENT**************************
  * Core machine settings are below. Do NOT modify these unless you understand what you are doing.
  */
+ 
+/**
+ * Sanity Checks
+ */
+
+#if ENABLED(LINEAR_ADVANCE)
+  #error "Linear Advance does NOT work on the S1 boards with the TMC drivers due to how Creality has them setup. Disable Linear Advance to continue or comment this line out to continue compile at your own risk."
+#endif
 
 /**
  * Machine Configuration Settings
  */
-
-// Alfawise Printer Settings
-#if ENABLED(ALFAWISE_U10)
-  #define SERIAL_PORT 0
-  #define SPACE_SAVER_2560
-
-  #define BAUDRATE 250000
-  
-  #define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
-    
-  #if ENABLED(REVERSE_KNOB_DIRECTION)
-    #define REVERSE_ENCODER_DIRECTION
+ 
+//Ender 3 S1 Settings
+#if ENABLED(ENDER3_S1)
+  #if NONE(ENDER3_S1_OEM, CUSTOM_PROBE)
+    #ifndef CUSTOM_PRINTER_NAME
+      #define CUSTOM_PRINTER_NAME
+      #define USER_PRINTER_NAME "TH3D E3S1"
+    #endif
+    #ifndef BLTOUCH
+      #define CRTOUCH_PROBE_NAMING
+    #endif
+    #define BLTOUCH
+    #define CUSTOM_PROBE
+    #define NOZZLE_TO_PROBE_OFFSET { -32, -41, 0 }
+    #define BLTOUCH_HS_MODE true
   #endif
-  
-  #define ENCODER_PULSES_PER_STEP 4
-  #define ENCODER_STEPS_PER_MENU_ITEM 1
+
+  #define DIRECT_DRIVE_PRINTER
+
+  #define SERIAL_PORT 1
+
+  #define DEFAULT_Kp 28.72
+  #define DEFAULT_Ki 2.62
+  #define DEFAULT_Kd 78.81
+
+  #define DEFAULT_bedKp 462.10
+  #define DEFAULT_bedKi 85.47
+  #define DEFAULT_bedKd 624.59
+
+  #define BAUDRATE 115200
 
   #ifndef MOTHERBOARD
-    #define MOTHERBOARD BOARD_RAMPS_14_EFB
+    #define MOTHERBOARD BOARD_CREALITY_V24S1_301
   #endif
+
 
   #if ENABLED(CUSTOM_ESTEPS)
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS_VALUE }
   #else
-    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 425 }
   #endif
-
-  #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 100 }
-  #define DEFAULT_MAX_ACCELERATION      { 2000, 2000, 1000, 5000 }
+  
+  #define DEFAULT_MAX_FEEDRATE          { 200, 200, 15, 100 }
+  #define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 500, 5000 }
 
   #define DEFAULT_ACCELERATION          500
   #define DEFAULT_RETRACT_ACCELERATION  500
-  #define DEFAULT_TRAVEL_ACCELERATION   500
+  #define DEFAULT_TRAVEL_ACCELERATION   1000
 
   #define CLASSIC_JERK
   #if ENABLED(CLASSIC_JERK)
@@ -281,18 +313,21 @@
 
   #define DEFAULT_EJERK    5.0
 
+  #define SHOW_BOOTSCREEN
+
   #define EXTRUDERS 1
 
-  #define X_BED_SIZE 400
-  #define Y_BED_SIZE 400
-  #define Z_MAX_POS 500
-  
+  #define X_BED_SIZE 220
+  #define Y_BED_SIZE 220
+  #define Z_MAX_POS 270
+  #define MACHINE_SIZE "220x220x270"
+
   #if ENABLED(HOME_ADJUST)
     #define X_MIN_POS X_HOME_LOCATION
     #define Y_MIN_POS Y_HOME_LOCATION
   #else
-    #define X_MIN_POS 0
-    #define Y_MIN_POS 0
+    #define X_MIN_POS -10
+    #define Y_MIN_POS -8
   #endif
 
   #define USE_XMIN_PLUG
@@ -302,7 +337,7 @@
   #define X_HOME_DIR -1
   #define Y_HOME_DIR -1
   #define Z_HOME_DIR -1
-  
+
   #if NONE(V6_HOTEND, TH3D_HOTEND_THERMISTOR, KNOWN_HOTEND_THERMISTOR)
     #define TEMP_SENSOR_0 1
   #else
@@ -347,30 +382,32 @@
   #define X_MIN_ENDSTOP_INVERTING true
   #define Y_MIN_ENDSTOP_INVERTING true
   #define Z_MIN_ENDSTOP_INVERTING true
-  #define X_MAX_ENDSTOP_INVERTING true
-  #define Y_MAX_ENDSTOP_INVERTING true
-  #define Z_MAX_ENDSTOP_INVERTING true
-  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
-  #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+  #define X_MAX_ENDSTOP_INVERTING false
+  #define Y_MAX_ENDSTOP_INVERTING false
+  #define Z_MAX_ENDSTOP_INVERTING false
+  #define Z_MIN_PROBE_ENDSTOP_INVERTING false
 
-  #define X_DRIVER_TYPE A4988
-  #define Y_DRIVER_TYPE A4988
-  #define Z_DRIVER_TYPE A4988
-  #define E0_DRIVER_TYPE A4988
+  //#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+  #define USE_PROBE_FOR_Z_HOMING
+
+  #define X_DRIVER_TYPE TMC2208_STANDALONE
+  #define Y_DRIVER_TYPE TMC2208_STANDALONE
+  #define Z_DRIVER_TYPE TMC2208_STANDALONE
+  #define E0_DRIVER_TYPE TMC2208_STANDALONE
 
   #define X_ENABLE_ON 0
   #define Y_ENABLE_ON 0
   #define Z_ENABLE_ON 0
   #define E_ENABLE_ON 0
 
-  #define INVERT_X_DIR true
-  #define INVERT_Y_DIR true
+  #define INVERT_X_DIR false
+  #define INVERT_Y_DIR false
   #define INVERT_Z_DIR true
-  
+
   #if ENABLED(REVERSE_E_MOTOR_DIRECTION)
-    #define INVERT_E0_DIR false
-  #else
     #define INVERT_E0_DIR true
+  #else
+    #define INVERT_E0_DIR false
   #endif
   
   #define INVERT_E1_DIR false
@@ -381,15 +418,46 @@
   #define INVERT_E6_DIR false
   #define INVERT_E7_DIR false
 
-  #define FILAMENT_RUNOUT_SENSOR
+  #if ENABLED(ENDER3_S1_12864_LCD)
+    #define CR10_STOCKDISPLAY
+    #define RET6_12864_LCD
+  #else
+  	//Not working yet - Buggy with the DACAI LCD, OK with the DWIN LCD - Background Issues
+    #define NO_LCD_REINIT 1
+    #define LCD_SERIAL_PORT 2
+    //Different Ender 3 S1 LCD Display Options - Change at your own risk!!!
+    //#define DWIN_CREALITY_LCD           // Creality UI
+    //#define DWIN_CREALITY_LCD_ENHANCED  // Enhanced UI
+    //#define DWIN_CREALITY_LCD_JYERSUI   // Jyers UI by Jacob Myers
+    #define DWIN_MARLINUI_PORTRAIT      // MarlinUI (portrait orientation)
+    //#define DWIN_MARLINUI_LANDSCAPE     // MarlinUI (landscape orientation)
+  #endif
+  
+  #if ANY(DWIN_CREALITY_LCD_JYERSUI, DWIN_CREALITY_LCD_ENHANCED)
+    #define ENABLE_PIDBED
+  #endif
+
+  #define ENCODER_PULSES_PER_STEP 4
+  #define ENCODER_STEPS_PER_MENU_ITEM 1
+
+  #define Z_PROBE_OFFSET_RANGE_MIN -10
+  #define Z_PROBE_OFFSET_RANGE_MAX 10
+  #define EXTRUDE_MAXLENGTH 1000
+
+  #if DISABLED(ENDER3_S1_12864_LCD)
+    #define POWER_LOSS_RECOVERY
+  #endif
+
+  #if DISABLED(ENDER3_S1_NOFILAMENT_SENSOR)
+    #define FILAMENT_RUNOUT_SENSOR
+  #endif
 
   #if ENABLED(FILAMENT_RUNOUT_SENSOR)
     #define FIL_RUNOUT_ENABLED_DEFAULT true // Enable the sensor on startup. Override with M412 followed by M500.
     #define NUM_RUNOUT_SENSORS   1          // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
-    #define FIL_RUNOUT_STATE     LOW       // Pin state indicating that filament is NOT present.
+    #define FIL_RUNOUT_STATE     HIGH       // Pin state indicating that filament is NOT present.
     #define FIL_RUNOUT_PULLUP               // Use internal pullup for filament runout pins.
     //#define FIL_RUNOUT_PULLDOWN           // Use internal pulldown for filament runout pins.
-    #define FIL_RUNOUT_PIN 2                // Sunlu stock sensor on MT_DET
 
     // Set one or more commands to execute on filament runout.
     // (After 'M412 H' Marlin will ask the host to handle the process.)
@@ -407,9 +475,36 @@
       //#define FILAMENT_MOTION_SENSOR
     #endif
   #endif
+  
+  #if ENABLED(EZNEO_220)
+    #define RGB_LIGHTS
+    #define NEOPIXEL_LED
+    #if ENABLED(NEOPIXEL_LED)
+      #define NEOPIXEL_TYPE   NEO_GRB // NEO_GRBW / NEO_GRB - four/three channel driver type (defined in Adafruit_NeoPixel.h)
+      #define NEOPIXEL_PIXELS 15       // Number of LEDs in the strip. (Longest strip when NEOPIXEL2_SEPARATE is disabled.)
+      #define NEOPIXEL_IS_SEQUENTIAL   // Sequential display for temperature change - LED by LED. Disable to change all LEDs at once.
+      #define NEOPIXEL_BRIGHTNESS 127  // Initial brightness (0-255)
+      #define NEOPIXEL_STARTUP_TEST  // Cycle through colors at startup
+    #endif
+
+    /**
+     * Printer Event LEDs
+     *
+     * During printing, the LEDs will reflect the printer status:
+     *
+     *  - Gradually change from blue to violet as the heated bed gets to target temp
+     *  - Gradually change from violet to red as the hotend gets to temperature
+     *  - Change to white to illuminate work surface
+     *  - Change to green once print has finished
+     *  - Turn off after the print has finished and the user has pushed a button
+     */
+    #if ANY(BLINKM, RGB_LED, RGBW_LED, PCA9632, PCA9533, NEOPIXEL_LED)
+      #define PRINTER_EVENT_LEDS
+    #endif
+  #endif
 
 #endif
-// End Alfawise Printer Settings
+// End Ender 3 S1 Settings
 
 /*
  * All other settings are stored in the Configuration_backend.h file. Do not change unless you know what you are doing.

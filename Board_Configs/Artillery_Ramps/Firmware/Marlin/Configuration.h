@@ -137,7 +137,7 @@
 //#define REVERSE_E_MOTOR_DIRECTION
 
 // FILAMENT SENSOR UNLOAD SETTINGS -----------------
-// If you have a filament sensor that is physically mounted to the machine you can enable MOUNTED_FILAMENT_SENSOR to set the unload length to 0 to prevent filament from backing up in the sensor by uncommenting MOUNTED_FILAMENT_SENSOR 
+// If you have a filament sensor that is physically mounted to the machine you can enable MOUNTED_FILAMENT_SENSOR to set the unload length to 5mm to prevent filament from backing up in the sensor by uncommenting MOUNTED_FILAMENT_SENSOR 
 //#define MOUNTED_FILAMENT_SENSOR
 
 // If you have a direct drive machine with a filament sensor uncomment DIRECT_DRIVE_PRINTER to decrease the unload length from 100mm to 20mm
@@ -346,12 +346,12 @@
     #endif
   #endif
 
-  #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 50 }
-  #define DEFAULT_MAX_ACCELERATION      { 2000, 2000, 1000, 5000 }
+  #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 100 }
+  #define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 1000, 5000 }
 
-  #define DEFAULT_ACCELERATION          1000
+  #define DEFAULT_ACCELERATION          500
   #define DEFAULT_RETRACT_ACCELERATION  1000
-  #define DEFAULT_TRAVEL_ACCELERATION   1000
+  #define DEFAULT_TRAVEL_ACCELERATION   500
 
   #define CLASSIC_JERK
   #if ENABLED(CLASSIC_JERK)
@@ -506,7 +506,7 @@
   #define ENCODER_PULSES_PER_STEP 4
   #define ENCODER_STEPS_PER_MENU_ITEM 1
 
-  #if ENABLED(SIDEWINDER_X1) || ENABLED(EZOUT_ENABLE)
+  #if ANY(EZOUT_ENABLE, SIDEWINDER_X1)
     #define FILAMENT_RUNOUT_SENSOR
   #endif
 

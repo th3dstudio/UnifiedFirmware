@@ -525,7 +525,7 @@
   #endif
 #endif
 
-#if ENABLED(CHIRON)
+#if ENABLED(CHIRON) && DISABLED(USE_CONTROLLER_FAN)
   #define USE_CONTROLLER_FAN
   #define CONTROLLER_FAN_PIN 7
   #define CONTROLLERFAN_IDLE_TIME     60
@@ -537,7 +537,7 @@
   #endif
 #endif
 
-#if ENABLED(SKR_E3_MINI_V3_0)
+#if ENABLED(SKR_E3_MINI_V3_0) && DISABLED(USE_CONTROLLER_FAN)
   #define USE_CONTROLLER_FAN
   #define CONTROLLER_FAN_PIN PC7
   #define CONTROLLERFAN_IDLE_TIME     60
@@ -549,7 +549,7 @@
   #endif
 #endif
 
-#if ENABLED(EZBOARD) || ENABLED(EZBOARD_V2)
+#if (ENABLED(EZBOARD) || ENABLED(EZBOARD_V2)) && DISABLED(USE_CONTROLLER_FAN)
   #define USE_CONTROLLER_FAN
   #if ENABLED(EZBOARD_V2)
     #define CONTROLLER_FAN_PIN       PC7
@@ -565,7 +565,7 @@
   #endif
 #endif
 
-#if ENABLED(MKS_SGENL_V2_HE1_FAN)
+#if ENABLED(MKS_SGENL_V2_HE1_FAN) && DISABLED(USE_CONTROLLER_FAN)
   #ifdef E1_STEPS_MM
     #if ENABLED(SINGLENOZZLE)
       #define USE_CONTROLLER_FAN
@@ -591,7 +591,7 @@
   #endif
 #endif
 
-#if ENABLED(EZ300_OEM_MOUNT) && ENABLED(ARTILLERY_AL4)
+#if ENABLED(EZ300_OEM_MOUNT) && ENABLED(ARTILLERY_AL4) && DISABLED(USE_CONTROLLER_FAN)
   #define USE_CONTROLLER_FAN
   #define CONTROLLER_FAN_PIN           5
   #define CONTROLLERFAN_IDLE_TIME     60
@@ -683,20 +683,26 @@
  * Multiple extruders can be assigned to the same pin in which case
  * the fan will turn on when any selected extruder is above the threshold.
  */
-#if ANY(TORNADO, TARANTULA_PRO, SIDEWINDER_X1, SUNLU_S8_SH_2560_BOARD) || (ENABLED(EZ300_OEM_MOUNT) && ENABLED(ARTILLERY_AL4))
-  #define E0_AUTO_FAN_PIN 7
-#elif ENABLED(MKS_SGENL_V2_FAN2)
-  #define E0_AUTO_FAN_PIN P1_04
-#elif (ENABLED(WANHAO_I3MINI) || ENABLED(WANHAO_I3MINI_V2)) && ENABLED(WANHAO_I3MINI_E0_FAN)
-  #define E0_AUTO_FAN_PIN 12
-#elif ENABLED(CHIRON)
-  #define E0_AUTO_FAN_PIN 44
-#elif ENABLED(SKR_E3_MINI_V3_0)
-  #define E0_AUTO_FAN_PIN PB15
-#else
-  #define E0_AUTO_FAN_PIN -1
+#ifndef E0_AUTO_FAN_PIN
+  #if ANY(TORNADO, TARANTULA_PRO, SIDEWINDER_X1, SUNLU_S8_SH_2560_BOARD) || (ENABLED(EZ300_OEM_MOUNT) && ENABLED(ARTILLERY_AL4))
+    #define E0_AUTO_FAN_PIN 7
+  #elif ENABLED(MKS_SGENL_V2_FAN2)
+    #define E0_AUTO_FAN_PIN P1_04
+  #elif (ENABLED(WANHAO_I3MINI) || ENABLED(WANHAO_I3MINI_V2)) && ENABLED(WANHAO_I3MINI_E0_FAN)
+    #define E0_AUTO_FAN_PIN 12
+  #elif ENABLED(CHIRON)
+    #define E0_AUTO_FAN_PIN 44
+  #elif ENABLED(SKR_E3_MINI_V3_0)
+    #define E0_AUTO_FAN_PIN PB15
+  #elif ENABLED(ENDER3_S1)
+    #define E0_AUTO_FAN_PIN PC0
+  #else
+    #define E0_AUTO_FAN_PIN -1
+  #endif
 #endif
-#define E1_AUTO_FAN_PIN -1
+#ifndef E1_AUTO_FAN_PIN
+  #define E1_AUTO_FAN_PIN -1
+#endif
 #define E2_AUTO_FAN_PIN -1
 #define E3_AUTO_FAN_PIN -1
 #define E4_AUTO_FAN_PIN -1
@@ -2643,12 +2649,14 @@
   #define FILAMENT_CHANGE_UNLOAD_FEEDRATE     20  // (mm/s) Unload filament feedrate. This can be pretty fast.
   #define FILAMENT_CHANGE_UNLOAD_ACCEL        25  // (mm/s^2) Lower acceleration may allow a faster feedrate.
   
-  #if ENABLED(DIRECT_DRIVE_PRINTER)
-    #define FILAMENT_CHANGE_UNLOAD_LENGTH      20
-  #elif ENABLED(MOUNTED_FILAMENT_SENSOR)
-    #define FILAMENT_CHANGE_UNLOAD_LENGTH      10
-  #else
-    #define FILAMENT_CHANGE_UNLOAD_LENGTH      100
+  #ifndef FILAMENT_CHANGE_UNLOAD_LENGTH           // Do not set an unload length if one is set by user in Configuration.h
+    #if ENABLED(DIRECT_DRIVE_PRINTER)
+      #define FILAMENT_CHANGE_UNLOAD_LENGTH      20
+    #elif ENABLED(MOUNTED_FILAMENT_SENSOR)
+      #define FILAMENT_CHANGE_UNLOAD_LENGTH      5
+    #else
+      #define FILAMENT_CHANGE_UNLOAD_LENGTH      100
+    #endif
   #endif
   
   #define FILAMENT_CHANGE_SLOW_LOAD_FEEDRATE   8  // (mm/s) Slow move when starting load.

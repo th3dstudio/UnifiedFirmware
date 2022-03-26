@@ -298,7 +298,7 @@
 //===========================================================================
 
 // FILAMENT SENSOR UNLOAD SETTINGS -----------------
-// If you have a filament sensor that is physically mounted to the machine you can enable MOUNTED_FILAMENT_SENSOR to set the unload length to 0 to prevent filament from backing up in the sensor by uncommenting MOUNTED_FILAMENT_SENSOR 
+// If you have a filament sensor that is physically mounted to the machine you can enable MOUNTED_FILAMENT_SENSOR to set the unload length to 5mm to prevent filament from backing up in the sensor by uncommenting MOUNTED_FILAMENT_SENSOR 
 //#define MOUNTED_FILAMENT_SENSOR
 
 // If you have a direct drive machine with a filament sensor uncomment DIRECT_DRIVE_PRINTER to decrease the unload length from 100mm to 20mm
@@ -427,7 +427,7 @@
   
 #define DEFAULT_AXIS_STEPS_PER_UNIT   { X_STEPS_MM, Y_STEPS_MM, Z_STEPS_MM, E_STEPS_MM }
   
-#define DEFAULT_MAX_FEEDRATE          { 200, 200, 15, 50 }
+#define DEFAULT_MAX_FEEDRATE          { 200, 200, 15, 100 }
 #define DEFAULT_MAX_ACCELERATION      { MAX_X_ACCEL, MAX_Y_ACCEL, 500, 5000 }
 
 #define CLASSIC_JERK

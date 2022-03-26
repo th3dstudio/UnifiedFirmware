@@ -82,10 +82,6 @@
 
 #define MACHINE_SIZE STRINGIFY(X_BED_SIZE) "x" STRINGIFY(Y_BED_SIZE) "x" STRINGIFY(Z_MAX_POS)
 
-#ifndef CORP_WEBSITE
-   #define CORP_WEBSITE WEBSITE_URL
- #endif
-
 #define DWIN_FONT_MENU font8x16
 #define DWIN_FONT_STAT font10x20
 #define DWIN_FONT_HEAD font10x20
@@ -4988,11 +4984,13 @@ void MarlinUI::init() {
   DWIN_UpdateLCD();     // Show bootscreen (first image)
   Encoder_Configuration();
   for (uint16_t t = 0; t <= 100; t += 2) {
-    DWIN_ICON_Show(ICON, ICON_Bar, 15, 260);
-    DWIN_Draw_Rectangle(1, Color_Bg_Black, 15 + t * 242 / 100, 260, 257, 280);
+    DWIN_ICON_Show(ICON, ICON_Bar, 15, 450);
+    DWIN_Draw_Rectangle(1, Color_Bg_Black, 15 + t * 242 / 100, 450, 257, 470);
     DWIN_UpdateLCD();
     delay(20);
   }
+
+  DWIN_JPG_ShowAndCache(3);
   DWIN_JPG_CacheTo1(Language_English);
   CrealityDWIN.Redraw_Screen();
 }

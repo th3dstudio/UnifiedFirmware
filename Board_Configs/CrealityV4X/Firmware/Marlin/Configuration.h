@@ -13,7 +13,7 @@
 // UNCOMMENT MEANS REMOVING THE // IN FRONT OF A #define XXXXXX LINE.
 
 //===========================================================================
-// ************   CREALITY PRINTERS W/V4.X BOARD - 512K CPU   ***************
+// ************   CREALITY PRINTERS W/V4.X BOARD - F103 CPU   ***************
 //===========================================================================
 //------------------------------ V4.2.2 Board -------------------------------
 //#define ENDER3_V422_BOARD
@@ -22,7 +22,7 @@
 //#define ENDER5_V422_BOARD
 
 // V4.2.2 TMC Driver Settings - Uncomment if you have TMC drivers on a 4.2.2 Board to set driver timings
-//#define V422_TMC220X_DRIVERS //"A" or "B" Code on SD Slot
+//#define V42X_TMC220X_DRIVERS //"A" or "B" Code on SD Slot
 
 //------------------------------ V4.2.3 Board -------------------------------
 //#define ENDER2_PRO_V423_BOARD
@@ -32,6 +32,7 @@
 //#define ENDER3_MAX_V427_BOARD
 //#define ENDER3_V2_V427_BOARD
 //#define ENDER5_V427_BOARD
+//#define ENDER5_PLUS_V427_BOARD
 
 //#define CR10_V427_BOARD
 //#define CR10MINI_V427_BOARD
@@ -73,20 +74,31 @@
 //#define ENDER3_V2_OEM
 //#define ENDER3_MAX_OEM
 //#define ENDER5_OEM
+//#define ENDER5_PLUS_OEM
 //#define ENDER6_OEM
 //#define CUSTOM_PROBE
 
-// Ender 3/3 V2 Specific Options
-
-// Ender Xtender Kit Options
+// Ender 3/3 V2 - Xtender Kit Options
 //#define ENDER_XTENDER_300
 //#define ENDER_XTENDER_400
 //#define ENDER_XTENDER_400XL
 //#define ENDER_XTENDER_XL
 
+// Ender 3 V2 - LCD Setting
+// If you converted your Ender 3 V2 LCD to the 12864 Version, Uncomment the below line.
+// The DACAI LCD is currently buggy with display artifacts and its current firmware.
+// Get the conversion kit here: https://www.th3dstudio.com/product/creality-ender-3-v2-12864-lcd-conversion-upgrade-kit/
+//#define ENDER3_V2_12864_LCD
+
 // Ender 5 - Leadscrew Setting
 // If you have the new Ender 5/5 Pro Model that has the new 800steps/mm Z leadscrew uncomment the below option to set the correct steps/mm
 //#define ENDER5_NEW_LEADSCREW
+
+// Ender 5 Plus ONLY ABL Settings -------------------------------------------
+// By default the Ender 5 Plus comes with a BL Touch. Enabling the ENDER5_PLUS_EZABL or ENDER5_PLUS_NOABL will override the BL Touch setting
+// If you are using the stock BL Touch with a non-stock mount enable the CUSTOM_PROBE line above and enter the offsets below for the new mount.
+//#define ENDER5_PLUS_EZABL
+//#define ENDER5_PLUS_NOABL
 
 // Ender 6 - LDO 0.9 Motor Kit Settings
 // If you have upgraded to the 0.9 degree LDO motor kit for your Ender 6, uncomment the below line to set the XY steps needed.
@@ -190,7 +202,7 @@
 //#define REVERSE_E_MOTOR_DIRECTION
 
 // FILAMENT SENSOR UNLOAD SETTINGS -----------------
-// If you have a filament sensor that is physically mounted to the machine you can enable MOUNTED_FILAMENT_SENSOR to set the unload length to 0 to prevent filament from backing up in the sensor by uncommenting MOUNTED_FILAMENT_SENSOR 
+// If you have a filament sensor that is physically mounted to the machine you can enable MOUNTED_FILAMENT_SENSOR to set the unload length to 5mm to prevent filament from backing up in the sensor by uncommenting MOUNTED_FILAMENT_SENSOR 
 //#define MOUNTED_FILAMENT_SENSOR
 
 // If you have a direct drive machine with a filament sensor uncomment DIRECT_DRIVE_PRINTER to decrease the unload length from 100mm to 20mm
@@ -312,6 +324,19 @@
  * ****************************DO NOT TOUCH ANYTHING BELOW THIS COMMENT**************************
  * Core machine settings are below. Do NOT modify these unless you understand what you are doing.
  */
+ 
+/**
+ * Sanity Checks
+ */
+ 
+//V42X with TMC Driver Sanity Checks
+#if ANY(ENDER5_V427_BOARD, ENDER5_V427_BOARD, ENDER5_PLUS_V427_BOARD, ENDER2_PRO_V423_BOARD, ENDER3_V2_V422_BOARD, CR10_V427_BOARD, CR10MINI_V427_BOARD, CR10S4_V427_BOARD, CR10S4_V427_BOARD, CR10S5_V427_BOARD, ENDER6_V431_BOARD)
+  #define V42X_TMC220X_DRIVERS
+#endif
+
+#if BOTH(V42X_TMC220X_DRIVERS, LINEAR_ADVANCE)
+  #error "Linear Advance does NOT work on the V4.2.X boards with the TMC drivers due to how Creality has them setup. Disable Linear Advance to continue or comment this line out to continue compile at your own risk."
+#endif
 
 /**
  * Machine Configuration Settings
@@ -323,12 +348,9 @@
 
 //CR-10 Series V427 Settings
 #if ENABLED(CR10_V427_BOARD) || ENABLED(CR10MINI_V427_BOARD) || ENABLED(CR10S4_V427_BOARD) || ENABLED(CR10S5_V427_BOARD)
-  //V42X with TMC Driver Sanity Checks
-  #if ENABLED(LINEAR_ADVANCE)
-    #error "Linear Advance does NOT work on the V4.2.7 boards with the TMC drivers due to how Creality has them setup. Disable Linear Advance to continue."
-  #endif
-
   #define SERIAL_PORT 1
+  
+  #define PRINTER_VOLTAGE_12
 
   #define BAUDRATE 115200
   
@@ -347,7 +369,7 @@
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
   #endif
   
-  #define DEFAULT_MAX_FEEDRATE          { 200, 200, 15, 50 }
+  #define DEFAULT_MAX_FEEDRATE          { 200, 200, 15, 100 }
   #define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 500, 5000 }
 
   #define DEFAULT_ACCELERATION          500
@@ -357,11 +379,11 @@
   #define CLASSIC_JERK
   #if ENABLED(CLASSIC_JERK)
     #if ENABLED(CR10S4_V427_BOARD) || ENABLED(CR10S5_V427_BOARD)
-      #define DEFAULT_XJERK                 5.0
-      #define DEFAULT_YJERK                 5.0
+      #define DEFAULT_XJERK                 4.0
+      #define DEFAULT_YJERK                 4.0
     #else
-      #define DEFAULT_XJERK                 7.0
-      #define DEFAULT_YJERK                 7.0
+      #define DEFAULT_XJERK                 6.0
+      #define DEFAULT_YJERK                 6.0
     #endif
     #define DEFAULT_ZJERK  0.3
   #endif
@@ -575,12 +597,9 @@
  
 //Ender 6 V431 Board Settings
 #if ENABLED(ENDER6_V431_BOARD)
-  //V431 with TMC Driver Sanity Checks
-  #if ENABLED(LINEAR_ADVANCE)
-    #error "Linear Advance does NOT work on the V4.3.1 boards with the TMC drivers due to how Creality has them setup. Disable Linear Advance to continue."
-  #endif
-
-  #define SERIAL_PORT 1
+	#define SERIAL_PORT 1
+  
+  #define PRINTER_VOLTAGE_24
 
   #define BAUDRATE 115200
   #define MOUNTED_FILAMENT_SENSOR
@@ -610,7 +629,7 @@
     #endif
   #endif  
   
-  #define DEFAULT_MAX_FEEDRATE          { 200, 200, 15, 50 }
+  #define DEFAULT_MAX_FEEDRATE          { 200, 200, 15, 100 }
   #define DEFAULT_MAX_ACCELERATION      { 3000, 3000, 500, 5000 }
 
   #define DEFAULT_ACCELERATION          1500
@@ -815,6 +834,8 @@
   #define CR10_STOCKDISPLAY
   #define RET6_12864_LCD
   
+  #define PRINTER_VOLTAGE_24
+  
   #if ENABLED(REVERSE_KNOB_DIRECTION)
     #define REVERSE_ENCODER_DIRECTION
   #endif
@@ -829,7 +850,7 @@
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
   #endif
   
-  #define DEFAULT_MAX_FEEDRATE          { 200, 200, 15, 50 }
+  #define DEFAULT_MAX_FEEDRATE          { 200, 200, 15, 100 }
   #define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 500, 5000 }
 
   #define DEFAULT_ACCELERATION          500
@@ -1021,16 +1042,13 @@
 #endif
 //End Ender 2 Pro Board Settings
  
-//Ender 3/3 MAX/5 V42X Board Settings
-#if ENABLED(ENDER3_V422_BOARD) || ENABLED(ENDER5_V422_BOARD) || ENABLED(ENDER3_V427_BOARD) || ENABLED(ENDER5_V427_BOARD) || ENABLED(ENDER3_MAX_V422_BOARD) || ENABLED(ENDER3_MAX_V427_BOARD)
-  //V42X with TMC Driver Sanity Checks
-  #if (ENABLED(V422_TMC220X_DRIVERS) || ENABLED(ENDER3_V427_BOARD) || ENABLED(ENDER5_V427_BOARD) || ENABLED(ENDER3_MAX_V427_BOARD)) && ENABLED(LINEAR_ADVANCE)
-    #error "Linear Advance does NOT work on the V4.2.X boards with the TMC drivers due to how Creality has them setup. Disable Linear Advance to continue."
-  #endif
-  
-  #if ENABLED(ENDER3_MAX_V422_BOARD) || ENABLED(ENDER3_MAX_V427_BOARD)
+//Ender 3/3 MAX/5/5 Plus V42X Board Settings
+#if ANY(ENDER3_V422_BOARD, ENDER5_V422_BOARD, ENDER3_V427_BOARD, ENDER5_V427_BOARD, ENDER3_MAX_V422_BOARD, ENDER3_MAX_V427_BOARD, ENDER5_PLUS_V427_BOARD)
+  #if ANY(ENDER3_MAX_V422_BOARD, ENDER3_MAX_V427_BOARD, ENDER5_PLUS_V427_BOARD)
     #define MOUNTED_FILAMENT_SENSOR
   #endif
+  
+  #define PRINTER_VOLTAGE_24
 
   #define SERIAL_PORT 1
 
@@ -1039,13 +1057,13 @@
   #define CR10_STOCKDISPLAY
   #define RET6_12864_LCD
   
-  #if ENABLED(REVERSE_KNOB_DIRECTION)
+  #if ENABLED(REVERSE_KNOB_DIRECTION) && DISABLED(ENDER5_PLUS_V427_BOARD)
     #define REVERSE_ENCODER_DIRECTION
   #endif
   
   #if ENABLED(ENDER3_V422_BOARD) || ENABLED(ENDER5_V422_BOARD) || ENABLED(ENDER3_MAX_V422_BOARD)
     #ifndef MOTHERBOARD
-      #define MOTHERBOARD BOARD_CREALITY_V4
+      #define MOTHERBOARD BOARD_CREALITY_V422
     #endif
   #else
     #ifndef MOTHERBOARD
@@ -1065,7 +1083,7 @@
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, CREALITY_Z_STEPS, 95 }
   #endif
   
-  #define DEFAULT_MAX_FEEDRATE          { 200, 200, 15, 50 }
+  #define DEFAULT_MAX_FEEDRATE          { 200, 200, 15, 100 }
   #define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 500, 5000 }
 
   #define DEFAULT_ACCELERATION          500
@@ -1085,15 +1103,7 @@
 
   #define EXTRUDERS 1
 
-  #if ENABLED(ENDER5_V422_BOARD) || ENABLED(ENDER5_V427_BOARD)
-    #define X_BED_SIZE 220
-    #define Y_BED_SIZE 220
-    #define Z_MAX_POS 300
-  #elif ENABLED(ENDER3_MAX_V422_BOARD) || ENABLED(ENDER3_MAX_V427_BOARD)
-    #define X_BED_SIZE 300
-    #define Y_BED_SIZE 300
-    #define Z_MAX_POS 340
-  #else
+  #if ANY(ENDER3_V422_BOARD, ENDER3_V427_BOARD)
     #if ENABLED(ENDER_XTENDER_400)
       #define X_BED_SIZE 400
       #define Y_BED_SIZE 400
@@ -1117,6 +1127,28 @@
     #endif
   #endif
   
+  #if ANY(ENDER3_MAX_V422_BOARD, ENDER3_MAX_V427_BOARD)
+    #define X_BED_SIZE 300
+    #define Y_BED_SIZE 300
+    #define Z_MAX_POS 340
+  #endif
+  
+  #if ANY(ENDER5_V422_BOARD, ENDER5_V427_BOARD)
+    #define X_BED_SIZE 220
+    #define Y_BED_SIZE 220
+    #define Z_MAX_POS 300
+  #endif
+  
+  #if ENABLED(ENDER5_PLUS_V427_BOARD)
+    #define X_BED_SIZE 350
+    #define Y_BED_SIZE 350
+    #define Z_MAX_POS 400
+    #if DISABLED(REVERSE_KNOB_DIRECTION)
+      #define REVERSE_ENCODER_DIRECTION
+    #endif
+    #define ENDER5_NEW_LEADSCREW
+  #endif
+  
   #if ENABLED(HOME_ADJUST)
     #define X_MIN_POS X_HOME_LOCATION
     #define Y_MIN_POS Y_HOME_LOCATION
@@ -1125,7 +1157,7 @@
     #define Y_MIN_POS 0
   #endif
 
-  #if ENABLED(ENDER5_V422_BOARD) || ENABLED(ENDER5_V427_BOARD)
+  #if ANY(ENDER5_V422_BOARD, ENDER5_V427_BOARD, ENDER5_PLUS_V427_BOARD)
     #define USE_XMAX_PLUG
     #define USE_YMAX_PLUG
     #define USE_ZMIN_PLUG
@@ -1135,7 +1167,7 @@
     #define USE_ZMIN_PLUG
   #endif
 
-  #if ENABLED(ENDER5_V422_BOARD) || ENABLED(ENDER5_V427_BOARD)
+  #if ANY(ENDER5_V422_BOARD, ENDER5_V427_BOARD, ENDER5_PLUS_V427_BOARD)
     #define X_HOME_DIR 1
     #define Y_HOME_DIR 1
     #define Z_HOME_DIR -1
@@ -1208,7 +1240,7 @@
     #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
   #endif
 
-  #if ENABLED(ENDER3_V427_BOARD) || ENABLED(ENDER5_V427_BOARD) || ENABLED(V422_TMC220X_DRIVERS) || ENABLED(ENDER3_MAX_V427_BOARD) 
+  #if ENABLED(V42X_TMC220X_DRIVERS)
     #define X_DRIVER_TYPE TMC2208_STANDALONE
     #define Y_DRIVER_TYPE TMC2208_STANDALONE
     #define Z_DRIVER_TYPE TMC2208_STANDALONE
@@ -1256,6 +1288,25 @@
   #define ENCODER_PULSES_PER_STEP 4
   #define ENCODER_STEPS_PER_MENU_ITEM 1
   
+  #if ENABLED(ENDER5_PLUS_V427_BOARD)
+    #if DISABLED(ENDER5_PLUS_NOABL) && DISABLED(ENDER5_PLUS_EZABL)
+      #define BLTOUCH
+    #ifndef EZABL_PROBE_EDGE
+      #define EZABL_PROBE_EDGE 35
+    #endif
+    #ifndef EZABL_POINTS
+      #define EZABL_POINTS 5
+    #endif
+    #if DISABLED(CUSTOM_PROBE)
+        #define CUSTOM_PROBE
+        #define NOZZLE_TO_PROBE_OFFSET { -44, -9, 0}
+      #endif
+    #endif  
+    #if DISABLED(ENDER5_PLUS_NOABL)
+      #define ABL_ENABLE
+    #endif
+  #endif
+  
   #if ENABLED(EZOUT_ENABLE)
     #define FILAMENT_RUNOUT_SENSOR
     #if DISABLED(EZOUT_ENABLE_J1)
@@ -1263,7 +1314,7 @@
     #endif
   #endif
 
-  #if ENABLED(ENDER3_MAX_V422_BOARD) || ENABLED(ENDER3_MAX_V427_BOARD)
+  #if ANY(ENDER3_MAX_V422_BOARD, ENDER3_MAX_V427_BOARD, ENDER5_PLUS_V427_BOARD)
     #define FILAMENT_RUNOUT_SENSOR
   #endif
 
@@ -1319,22 +1370,17 @@
   #endif
   
 #endif
-// End Ender 3/3 MAX/5 V42X Board Settings
+// End Ender 3/3 MAX/5/5 Plus V42X Board Settings
  
 // Ender 3 V2 Settings
 #if ENABLED(ENDER3_V2_V422_BOARD) || ENABLED(ENDER3_V2_V427_BOARD)
   #define SERIAL_PORT 1
-  #define LCD_SERIAL_PORT 3
-  
-  #if ENABLED(MANUAL_MESH_LEVELING)
-    #error "Due to closed source LCD firmware, Manual Mesh Leveling is not available on the Ender 3 V2."
-  #endif
 
   #define BAUDRATE 115200
 
-  #if ENABLED(ENDER3_V2_V422_BOARD) || ENABLED(ENDER3_V2_V422_BOARD)
+  #if ENABLED(ENDER3_V2_V422_BOARD)
     #ifndef MOTHERBOARD
-      #define MOTHERBOARD BOARD_CREALITY_V4
+      #define MOTHERBOARD BOARD_CREALITY_V422
     #endif
   #else
     #ifndef MOTHERBOARD
@@ -1348,7 +1394,7 @@
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
   #endif
   
-  #define DEFAULT_MAX_FEEDRATE          { 200, 200, 15, 50 }
+  #define DEFAULT_MAX_FEEDRATE          { 200, 200, 15, 100 }
   #define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 500, 5000 }
 
   #define DEFAULT_ACCELERATION          500
@@ -1502,12 +1548,20 @@
   #define INVERT_E6_DIR false
   #define INVERT_E7_DIR false
 
-  //Different Ender 2 V2 LCD Display Options - Change at your own risk!!!
-  //#define DWIN_CREALITY_LCD           // Creality UI
-  //#define DWIN_CREALITY_LCD_ENHANCED  // Enhanced UI
-  //#define DWIN_CREALITY_LCD_JYERSUI   // Jyers UI by Jacob Myers
-  #define DWIN_MARLINUI_PORTRAIT      // MarlinUI (portrait orientation)
-  //#define DWIN_MARLINUI_LANDSCAPE     // MarlinUI (landscape orientation)
+  #if ENABLED(ENDER3_V2_12864_LCD)
+    #define CR10_STOCKDISPLAY
+    #define RET6_12864_LCD
+  #else
+    //Not working yet with the DACAI LCD, OK with the DWIN LCD - Background Issues
+    #define LCD_SERIAL_PORT 3
+    #define NO_LCD_REINIT 1
+    //Different Ender 3 V2 LCD Display Options - Change at your own risk!!!
+    //#define DWIN_CREALITY_LCD           // Creality UI
+    //#define DWIN_CREALITY_LCD_ENHANCED  // Enhanced UI
+    //#define DWIN_CREALITY_LCD_JYERSUI   // Jyers UI by Jacob Myers
+    #define DWIN_MARLINUI_PORTRAIT      // MarlinUI (portrait orientation)
+    //#define DWIN_MARLINUI_LANDSCAPE     // MarlinUI (landscape orientation)
+  #endif
 
   #if ANY(DWIN_CREALITY_LCD_JYERSUI, DWIN_CREALITY_LCD_ENHANCED)
     #define ENABLE_PIDBED

@@ -213,18 +213,13 @@
 //#define EZOUTV2_ENABLE
 //#define EZOUTV2_DUAL_ENABLE
 
-// Sample EZABL Probe Mounts ------------------------------------------------
-// Uncomment the mount you are using for your EZABL to enable it in the firmware.
-//#define CR10_OEM                 //OEM Mount for Creality Machines (Ender3/Ender5/CR-10/CR-10S/CR-20)
-//#define ENDER2_OEM               //Ender 2 Specific OEM Mount
-//#define ENDER2_V6                //Ender 2 Specific V6 Mount
-//#define SV01_OEM_MOUNT           //Sovol SV01 OEM Mount
-//#define CR10_VOLCANO             //TH3D CR-10 Volcano Mount 
-//#define CR10_V6HEAVYDUTY         //V6 Heavy Duty Mount
-//#define TM3DAERO                 //TM3D Aero Mount for V6
-//#define TM3DAERO_EXTENDED        //TM3D Arto Mount for Volcano
-//#define PETSFANG                 //This is the RIGHT mounted version
-//#define CUSTOM_PROBE             //For any other probe mount (also used for BL Touch), Enter offsets below
+// EZABL Probe Settings ------------------------------------------------
+// Uncomment CUSTOM_PROBE below to enable the EZABL settings and then enter in your sensor offsets in the CUSTOM_PROBE section below. 
+// For example offsets check the Configuration_backend.h file.
+//
+// NOTE: The EZABL signal lines need to connect to the "PROBE" header, not the "Z-STOP" header.
+// See here: https://www.th3dstudio.com/hc/guides/wiring-information/ezabl-skr-v2-connection/
+//#define CUSTOM_PROBE
 
 // PID Settings -------------------------------------------------------------
 // If you want to put your PID settings in at the firmware level uncomment the 3 lines for each PID value setting
@@ -341,7 +336,7 @@
 //===========================================================================
 
 // FILAMENT SENSOR UNLOAD SETTINGS -----------------
-// If you have a filament sensor that is physically mounted to the machine you can enable MOUNTED_FILAMENT_SENSOR to set the unload length to 0 to prevent filament from backing up in the sensor by uncommenting MOUNTED_FILAMENT_SENSOR 
+// If you have a filament sensor that is physically mounted to the machine you can enable MOUNTED_FILAMENT_SENSOR to set the unload length to 5mm to prevent filament from backing up in the sensor by uncommenting MOUNTED_FILAMENT_SENSOR 
 //#define MOUNTED_FILAMENT_SENSOR
 
 // If you have a direct drive machine with a filament sensor uncomment DIRECT_DRIVE_PRINTER to decrease the unload length from 100mm to 20mm
@@ -465,6 +460,13 @@
 #endif
 
 #define DIY_TMCBOARD
+
+#if ENABLED(CUSTOM_PROBE)
+  #if DISABLED(BLTOUCH)
+    #define SKRV2_BOARD_EZABL
+  #endif
+  #define USE_PROBE_FOR_Z_HOMING
+#endif
   
 #ifdef E1_STEPS_MM
   #define Z_PROBE_LOW_POINT -10
@@ -480,7 +482,7 @@
   #define DEFAULT_AXIS_STEPS_PER_UNIT   { X_STEPS_MM, Y_STEPS_MM, Z_STEPS_MM, E0_STEPS_MM }
 #endif
   
-#define DEFAULT_MAX_FEEDRATE          { 200, 200, 15, 50 }
+#define DEFAULT_MAX_FEEDRATE          { 200, 200, 15, 100 }
 #define DEFAULT_MAX_ACCELERATION      { MAX_X_ACCEL, MAX_Y_ACCEL, 500, 5000 }
 
 #define CLASSIC_JERK
@@ -495,7 +497,9 @@
   #define Y_MIN_POS 0
 #endif
   
-#define USE_ZMIN_PLUG
+#if NONE(SKRV2_BOARD_EZABL, BLTOUCH)
+  #define USE_ZMIN_PLUG
+#endif
  
 #if NONE(V6_HOTEND, TH3D_HOTEND_THERMISTOR, KNOWN_HOTEND_THERMISTOR, EZBOARD_PT100)
   #define TEMP_SENSOR_0 1
@@ -551,7 +555,6 @@
 #define Y_MAX_ENDSTOP_INVERTING Y_ENDSTOP_LOGIC
 #define Z_MAX_ENDSTOP_INVERTING Z_ENDSTOP_LOGIC
 #define Z_MIN_PROBE_ENDSTOP_INVERTING Z_ENDSTOP_LOGIC
-#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
 
 #define X_DRIVER_TYPE  X_DRIVER_MODEL
 #define Y_DRIVER_TYPE  Y_DRIVER_MODEL
@@ -584,6 +587,9 @@
 #endif
 
 #define Z_HOME_DIR -1
+
+#define DISABLE_ENDSTOP_NOISE_FILTERING
+#define ENDSTOPPULLUPS
 
 #if ENABLED(REVERSE_KNOB_DIRECTION)
   #define REVERSE_ENCODER_DIRECTION

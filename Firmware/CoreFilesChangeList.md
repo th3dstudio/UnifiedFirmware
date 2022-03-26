@@ -16,6 +16,8 @@ This does not include machine configs or PlatformIO files.
 		- **gcode**
 			- **calibrate**
 				- `M48.cpp`
+		- **inc**
+			- `Warnings.cpp`
 		- **lcd**
 			- **language**
 				- `language_en.h`

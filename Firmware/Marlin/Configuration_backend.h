@@ -6,7 +6,7 @@
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-#define UNIFIED_VERSION "TH3D UFW 2.42"
+#define UNIFIED_VERSION "TH3D UFW 2.43"
 
 /**
  * ABL Probe Settings
@@ -14,6 +14,11 @@
 
 #if ENABLED(CUSTOM_PROBE)
   #define ABL_ENABLE
+#endif
+#if ENABLED(ENDER3_S1_OEM)
+  #define ABL_ENABLE
+  #define NOZZLE_TO_PROBE_OFFSET { 0, 0, 0 }
+  //TODO STILL 3/24/2022
 #endif
 #if ENABLED(ENDER2_PRO_OEM)
   #define ABL_ENABLE
@@ -472,18 +477,28 @@
   #define SPEAKER
 #endif
 
-#if MOTHERBOARD == BOARD_MELZI_CREALITY
+#if defined(__AVR_ATmega1284__)
   // Leave this on until 2.0.9.3 bug with fan control not working is resolved
-  // Once 2.0.9.3 Melzi Fan bug is fixed remove from future releases
+  // Once 2.0.9.3 Fan bug is fixed remove from future releases
   // Details: https://github.com/MarlinFirmware/Marlin/issues/23418
   #define FAN_FIX
-#endif
-
-#if MOTHERBOARD == BOARD_ANET_10
+#elif defined(__AVR_ATmega1284P__)
   // Leave this on until 2.0.9.3 bug with fan control not working is resolved
-  // Once 2.0.9.3 Melzi Fan bug is fixed remove from future releases
+  // Once 2.0.9.3 Fan bug is fixed remove from future releases
   // Details: https://github.com/MarlinFirmware/Marlin/issues/23418
   #define FAN_FIX
+#elif defined(__AVR_ATmega1280__)
+  // Leave this on until 2.0.9.3 bug with fan control not working is resolved
+  // Once 2.0.9.3 Fan bug is fixed remove from future releases
+  // Details: https://github.com/MarlinFirmware/Marlin/issues/23418
+  #define FAN_FIX
+#elif defined(__AVR_ATmega2560__)
+  // Leave this on until 2.0.9.3 bug with fan control not working is resolved
+  // Once 2.0.9.3 Fan bug is fixed remove from future releases
+  // Details: https://github.com/MarlinFirmware/Marlin/issues/23418
+  #define FAN_FIX
+#else
+  // do nothing
 #endif
 
 #if ENABLED(FAN_FIX)
@@ -571,7 +586,9 @@
 #define DISABLE_E false
 #define DISABLE_INACTIVE_EXTRUDER
 
-#define ENDSTOP_NOISE_THRESHOLD 2
+#if DISABLED(DISABLE_ENDSTOP_NOISE_FILTERING)
+  #define ENDSTOP_NOISE_THRESHOLD 2
+#endif
 
 #define SERVO_DELAY { 300 }
 

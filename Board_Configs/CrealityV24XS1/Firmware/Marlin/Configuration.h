@@ -37,7 +37,8 @@
 //#define EZNEO_220
 
 // EZNeo Manual IO Pin Setting ----------------------------------------------
-// If you have the EZNeo wired with your own 5V power provided, specify the pin used below. PC0 is the "PWM" pin on the 3 Pin JST at the rear of the printer.
+// If you have the EZNeo wired with your own 5V power provided, specify the pin used below.
+// Currently we do not have extra IO pins documented for this board because Creality has not provided it. PC0 is on the PWM header on the rear of the machine but it is also shared with the E0 hotend fan.
 //#define NEOPIXEL_PIN PC0
 
 //===========================================================================

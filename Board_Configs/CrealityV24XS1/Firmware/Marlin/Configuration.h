@@ -28,6 +28,10 @@
 // Get the conversion kit here: https://www.th3dstudio.com/product/creality-ender-3-s1-12864-lcd-conversion-upgrade-kit/
 #define ENDER3_S1_12864_LCD
 
+// If you are having issues with the CRTouch uncomment the below line to disable it.
+// Connect the included Z Endstop with its cable to the J713 Header on the board and mount to the printer.
+//#define ENDER3_S1_ZENDSTOP_ONLY
+
 // If you are having issues with the stock filament sensor uncomment the below line to disable it.
 //#define ENDER3_S1_NOFILAMENT_SENSOR
 
@@ -259,7 +263,7 @@
  
 //Ender 3 S1 Settings
 #if ENABLED(ENDER3_S1)
-  #if NONE(ENDER3_S1_OEM, CUSTOM_PROBE)
+  #if NONE(ENDER3_S1_OEM, CUSTOM_PROBE, ENDER3_S1_ZENDSTOP_ONLY)
     #ifndef CUSTOM_PRINTER_NAME
       #define CUSTOM_PRINTER_NAME
       #define USER_PRINTER_NAME "TH3D E3S1"
@@ -386,10 +390,16 @@
   #define X_MAX_ENDSTOP_INVERTING false
   #define Y_MAX_ENDSTOP_INVERTING false
   #define Z_MAX_ENDSTOP_INVERTING false
-  #define Z_MIN_PROBE_ENDSTOP_INVERTING false
+  
+  #if DISABLED(BLTOUCH)
+    #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+    #define Z_MIN_PROBE_ENDSTOP_INVERTING true
+  #endif
 
-  //#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
-  #define USE_PROBE_FOR_Z_HOMING
+  #if ENABLED(BLTOUCH)
+    #define Z_MIN_PROBE_ENDSTOP_INVERTING false
+    #define USE_PROBE_FOR_Z_HOMING
+  #endif
 
   #define X_DRIVER_TYPE TMC2208_STANDALONE
   #define Y_DRIVER_TYPE TMC2208_STANDALONE

@@ -38,8 +38,8 @@
 
 // EZNeo Manual IO Pin Setting ----------------------------------------------
 // If you have the EZNeo wired with your own 5V power provided, specify the pin used below.
-// Currently we do not have extra IO pins documented for this board because Creality has not provided it. PC0 is on the PWM header on the rear of the machine but it is also shared with the E0 hotend fan.
-//#define NEOPIXEL_PIN PC0
+// See our helpcenter for pinouts for the V2451_301 Board here: https://www.th3dstudio.com/hc/product-information/ezneo/ezneo-creality-v2451_301-ender-3-s1-board-setup/
+//#define NEOPIXEL_PIN PA13
 
 //===========================================================================
 // *************************  END PRINTER SECTION   *************************

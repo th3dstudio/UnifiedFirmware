@@ -26,7 +26,7 @@
 ////////////////////////////
 
 /**
- * Marlin release version identifier - Based on Marlin 2.0.9.3 code base
+ * Marlin release version identifier - Based on Marlin 2.0.9.3 code base w/custom fixes for machines.
  */
 #define SHORT_BUILD_VERSION UNIFIED_VERSION
 
@@ -41,7 +41,7 @@
  * here we define this default string as the date where the latest release
  * version was tagged.
  */
-#define STRING_DISTRIBUTION_DATE "02-16-2022"
+#define STRING_DISTRIBUTION_DATE "03-28-2022"
 
 /**
  * Defines a generic printer name to be output to the LCD after booting Marlin.

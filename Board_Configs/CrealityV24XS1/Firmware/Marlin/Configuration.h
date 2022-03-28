@@ -13,7 +13,7 @@
 // UNCOMMENT MEANS REMOVING THE // IN FRONT OF A #define XXXXXX LINE.
 
 //===========================================================================
-// **************   CREALITY PRINTERS S1 BOARD - F103 CPU   *****************
+// ***********   CREALITY PRINTERS V2451_301 BOARD - F103 CPU   *************
 //===========================================================================
 //#define ENDER3_S1
 
@@ -23,9 +23,11 @@
 //#define ENDER3_S1_OEM //TODO STILL 3/24/2022
 //#define CUSTOM_PROBE
 
-// Ender 3 S1 LCD Settings - This firmware currently only supports using the 12864 LCD at this time.
-// The DACAI LCD is currently buggy with display artifacts and its current firmware.
+// Ender 3 S1 LCD Settings
 // Get the conversion kit here: https://www.th3dstudio.com/product/creality-ender-3-s1-12864-lcd-conversion-upgrade-kit/
+//
+// The DACAI LCD is currently buggy with display artifacts and its current firmware.
+// NOTE: If you wish to use the DACAI or DWIN LCD, comment out the ENDER3_S1_12864_LCD line below and update the LCD firmware with ours. Use at your own risk.
 #define ENDER3_S1_12864_LCD
 
 // If you are having issues with the CRTouch uncomment the below line to disable it.

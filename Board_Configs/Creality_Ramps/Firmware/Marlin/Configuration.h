@@ -89,13 +89,6 @@
 //#define NEOPIXEL_PIN 12
 
 //===========================================================================
-// Ender 3 - Xtender Kit Options
-//#define ENDER_XTENDER_300
-//#define ENDER_XTENDER_400
-//#define ENDER_XTENDER_400XL
-//#define ENDER_XTENDER_XL
-
-//===========================================================================
 // Ender 5 Plus - ABL Settings
 // By default the Ender 5 Plus comes with a BL Touch. Enabling the ENDER5_PLUS_EZABL or ENDER5_PLUS_NOABL will override the BL Touch setting
 // If you are using the stock BL Touch with a non-stock mount enable the CUSTOM_PROBE line above and enter the offsets below for the new mount.
@@ -286,6 +279,23 @@
 //*** COMMUNITY REQUESTED FEATURES ARE ALL NOT SUPPORTED BY TH3D SUPPORT ****
 //===========================================================================
 
+// ENDER XTENDER KIT SETTINGS ----------------------
+
+// Ender Xtender Kits for Ender 3/3 Pro
+//#define XTENDER_E3_300    //300x300x250 Size
+//#define XTENDER_E3_300XL  //300x300x400 Size
+//#define XTENDER_E3_400    //400x400x250 Size
+//#define XTENDER_E3_400Z   //235x235x400 Size
+//#define XTENDER_E3_400XL  //400x400x500 Size
+//#define XTENDER_E3_500Z   //235x235x500 Size
+
+// Ender Xtender Kits for Ender 5/5 Pro
+//#define XTENDER_E5_5XL    //235x235x500 Size
+
+// Ender Xtender Kits for Ender 5 Plus
+//#define XTENDER_E5P_400   //510x510x400 Size
+//#define XTENDER_E5P_500   //510x510x500 Size
+
 // HOME OFFSET ADJUSTMENT --------------------------
 // If you need to adjust your XY home offsets from defaults then you can uncomment the HOME_ADJUST line below and enter your
 // custom XY offsets. This is provided for convenience and is unsupported with included product support.
@@ -354,6 +364,13 @@
 
 // Creality 2560 Printer Settings
 #if ENABLED(CR10S) || ENABLED(CR10_V2) || ENABLED(CR10_V3) || ENABLED(CR10S_MINI) || ENABLED(CR10S_S4) || ENABLED(CR10S_S5) || ENABLED(ENDER3_DUAL_EXTRUDER_BOARD) || ENABLED(CR20) || ENABLED(ENDER5_DUAL_EXTRUDER_BOARD) || ENABLED(CRX) || ENABLED(CR10S_PRO) || ENABLED(CRX) || ENABLED(ENDER5_PLUS)
+  #if ENABLED(ENDER3_DUAL_EXTRUDER_BOARD)
+    #define ENDER3
+  #endif
+
+  #if ENABLED(ENDER5_DUAL_EXTRUDER_BOARD)
+    #define ENDER5
+  #endif
 
   #if ENABLED(CR10_V3)
     //CR-10 V3 is same as V2 but with Direct Drive Titan installed.
@@ -503,25 +520,43 @@
   #endif
 
   #if ENABLED(ENDER5_PLUS)
-    #define X_BED_SIZE 350
-    #define Y_BED_SIZE 350
-    #define Z_MAX_POS 400
+    #if ENABLED(XTENDER_E5P_400)
+      #define X_BED_SIZE 510
+      #define Y_BED_SIZE 510
+      #define Z_MAX_POS 400
+    #elif ENABLED(XTENDER_E5P_500)
+      #define X_BED_SIZE 510
+      #define Y_BED_SIZE 510
+      #define Z_MAX_POS 500
+    #else
+      #define X_BED_SIZE 350
+      #define Y_BED_SIZE 350
+      #define Z_MAX_POS 400
+    #endif
   #endif
 
-  #if ENABLED(ENDER3_DUAL_EXTRUDER_BOARD)
-    #if ENABLED(ENDER_XTENDER_400)
-      #define X_BED_SIZE 400
-      #define Y_BED_SIZE 400
-      #define Z_MAX_POS 250
-    #elif ENABLED(ENDER_XTENDER_300)
+  #if ENABLED(ENDER3)
+    #if ENABLED(XTENDER_E3_300)
       #define X_BED_SIZE 300
       #define Y_BED_SIZE 300
       #define Z_MAX_POS 250
-    #elif ENABLED(ENDER_XTENDER_400XL)
+    #elif ENABLED(XTENDER_E3_300XL)
+      #define X_BED_SIZE 300
+      #define Y_BED_SIZE 300
+      #define Z_MAX_POS 400
+    #elif ENABLED(XTENDER_E3_400)
+      #define X_BED_SIZE 400
+      #define Y_BED_SIZE 400
+      #define Z_MAX_POS 250
+    #elif ENABLED(XTENDER_E3_400Z)
+      #define X_BED_SIZE 235
+      #define Y_BED_SIZE 235
+      #define Z_MAX_POS 400
+    #elif ENABLED(XTENDER_E3_400XL)
       #define X_BED_SIZE 400
       #define Y_BED_SIZE 400
       #define Z_MAX_POS 500
-    #elif ENABLED(ENDER_XTENDER_XL)
+    #elif ENABLED(XTENDER_E3_500Z)
       #define X_BED_SIZE 235
       #define Y_BED_SIZE 235
       #define Z_MAX_POS 500
@@ -531,11 +566,17 @@
       #define Z_MAX_POS 250
     #endif
   #endif
-  
-  #if ENABLED(ENDER5_DUAL_EXTRUDER_BOARD)
-    #define X_BED_SIZE 220
-    #define Y_BED_SIZE 220
-    #define Z_MAX_POS 300
+
+  #if ENABLED(ENDER5)
+    #if ENABLED(XTENDER_E5_5XL)
+      #define X_BED_SIZE 235
+      #define Y_BED_SIZE 235
+      #define Z_MAX_POS 500
+    #else
+      #define X_BED_SIZE 220
+      #define Y_BED_SIZE 220
+      #define Z_MAX_POS 300
+    #endif
   #endif
 
   #if ENABLED(HOME_ADJUST)

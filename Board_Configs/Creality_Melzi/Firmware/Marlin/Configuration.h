@@ -45,14 +45,6 @@
 //#define PETSFANG //This is the RIGHT mounted version - if using the left mount please use the CUSTOM_PROBE option.
 //#define CUSTOM_PROBE
 
-// Ender 3 Specific Options
-
-// Ender 3 Xtender Kit Options
-//#define ENDER_XTENDER_300
-//#define ENDER_XTENDER_400
-//#define ENDER_XTENDER_400XL
-//#define ENDER_XTENDER_XL
-
 // Ender 5 - Leadscrew Setting
 // If you have the new Ender 5/5 Pro Model that has the new 800steps/mm Z leadscrew uncomment the below option to set the correct steps/mm
 //#define ENDER5_NEW_LEADSCREW
@@ -205,6 +197,19 @@
 //****************** COMMUNITY REQUESTED FEATURES ***************************
 //*** COMMUNITY REQUESTED FEATURES ARE ALL NOT SUPPORTED BY TH3D SUPPORT ****
 //===========================================================================
+
+// ENDER XTENDER KIT SETTINGS ----------------------
+
+// Ender Xtender Kits for Ender 3/3 Pro
+//#define XTENDER_E3_300    //300x300x250 Size
+//#define XTENDER_E3_300XL  //300x300x400 Size
+//#define XTENDER_E3_400    //400x400x250 Size
+//#define XTENDER_E3_400Z   //235x235x400 Size
+//#define XTENDER_E3_400XL  //400x400x500 Size
+//#define XTENDER_E3_500Z   //235x235x500 Size
+
+// Ender Xtender Kits for Ender 5/5 Pro
+//#define XTENDER_E5_5XL    //235x235x500 Size
 
 // HOME OFFSET ADJUSTMENT --------------------------
 // If you need to adjust your XY home offsets from defaults then you can uncomment the HOME_ADJUST line below and enter your
@@ -399,19 +404,27 @@
   #endif
   
   #if ENABLED(ENDER3)
-    #if ENABLED(ENDER_XTENDER_400)
-      #define X_BED_SIZE 400
-      #define Y_BED_SIZE 400
-      #define Z_MAX_POS 250
-    #elif ENABLED(ENDER_XTENDER_300)
+    #if ENABLED(XTENDER_E3_300)
       #define X_BED_SIZE 300
       #define Y_BED_SIZE 300
       #define Z_MAX_POS 250
-    #elif ENABLED(ENDER_XTENDER_400XL)
+    #elif ENABLED(XTENDER_E3_300XL)
+      #define X_BED_SIZE 300
+      #define Y_BED_SIZE 300
+      #define Z_MAX_POS 400
+    #elif ENABLED(XTENDER_E3_400)
+      #define X_BED_SIZE 400
+      #define Y_BED_SIZE 400
+      #define Z_MAX_POS 250
+    #elif ENABLED(XTENDER_E3_400Z)
+      #define X_BED_SIZE 235
+      #define Y_BED_SIZE 235
+      #define Z_MAX_POS 400
+    #elif ENABLED(XTENDER_E3_400XL)
       #define X_BED_SIZE 400
       #define Y_BED_SIZE 400
       #define Z_MAX_POS 500
-    #elif ENABLED(ENDER_XTENDER_XL)
+    #elif ENABLED(XTENDER_E3_500Z)
       #define X_BED_SIZE 235
       #define Y_BED_SIZE 235
       #define Z_MAX_POS 500
@@ -423,9 +436,15 @@
   #endif
   
   #if ENABLED(ENDER5)
-    #define X_BED_SIZE 220
-    #define Y_BED_SIZE 220
-    #define Z_MAX_POS 300
+    #if ENABLED(XTENDER_E5_5XL)
+      #define X_BED_SIZE 235
+      #define Y_BED_SIZE 235
+      #define Z_MAX_POS 500
+    #else
+      #define X_BED_SIZE 220
+      #define Y_BED_SIZE 220
+      #define Z_MAX_POS 300
+    #endif
   #endif
   
   #if ENABLED(HOME_ADJUST)

@@ -82,12 +82,6 @@
 //#define ENDER6_OEM
 //#define CUSTOM_PROBE
 
-// Ender 3/3 V2 - Xtender Kit Options
-//#define ENDER_XTENDER_300
-//#define ENDER_XTENDER_400
-//#define ENDER_XTENDER_400XL
-//#define ENDER_XTENDER_XL
-
 // Ender 3 V2 - LCD Setting
 // If you converted your Ender 3 V2 LCD to the 12864 Version, Uncomment the below line.
 // The DACAI LCD is currently buggy with display artifacts and its current firmware.
@@ -98,7 +92,7 @@
 // If you have the new Ender 5/5 Pro Model that has the new 800steps/mm Z leadscrew uncomment the below option to set the correct steps/mm
 //#define ENDER5_NEW_LEADSCREW
 
-// Ender 5 Plus ONLY ABL Settings -------------------------------------------
+// Ender 5 Plus ONLY ABL Settings 
 // By default the Ender 5 Plus comes with a BL Touch. Enabling the ENDER5_PLUS_EZABL or ENDER5_PLUS_NOABL will override the BL Touch setting
 // If you are using the stock BL Touch with a non-stock mount enable the CUSTOM_PROBE line above and enter the offsets below for the new mount.
 //#define ENDER5_PLUS_EZABL
@@ -108,12 +102,12 @@
 // If you have upgraded to the 0.9 degree LDO motor kit for your Ender 6, uncomment the below line to set the XY steps needed.
 //#define ENDER6_LDO_XY
 
-// EZNeo Settings -----------------------------------------------------------
+// EZNeo Settings
 // If you are using an EZNeo strip on your printer, uncomment the line for what strip you are using.
 // Specify your IO pin below as well as this board does not have a dedicated NEOPIXEL header on it.
 //#define EZNEO_220
 
-// EZNeo Manual IO Pin Setting ----------------------------------------------
+// EZNeo Manual IO Pin Setting 
 // If you have the EZNeo wired with your own 5V power provided, specify the pin used below.
 //#define NEOPIXEL_PIN PA4
 
@@ -266,6 +260,23 @@
 //*** COMMUNITY REQUESTED FEATURES ARE ALL NOT SUPPORTED BY TH3D SUPPORT ****
 //===========================================================================
 
+// ENDER XTENDER KIT SETTINGS ----------------------
+
+// Ender Xtender Kits for Ender 3/3 Pro/3 V2
+//#define XTENDER_E3_300    //300x300x250 Size
+//#define XTENDER_E3_300XL  //300x300x400 Size
+//#define XTENDER_E3_400    //400x400x250 Size
+//#define XTENDER_E3_400Z   //235x235x400 Size
+//#define XTENDER_E3_400XL  //400x400x500 Size
+//#define XTENDER_E3_500Z   //235x235x500 Size
+
+// Ender Xtender Kits for Ender 5/5 Pro
+//#define XTENDER_E5_5XL    //235x235x500 Size
+
+// Ender Xtender Kits for Ender 5 Plus
+//#define XTENDER_E5P_400   //510x510x400 Size
+//#define XTENDER_E5P_500   //510x510x500 Size
+
 // HOME OFFSET ADJUSTMENT --------------------------
 // If you need to adjust your XY home offsets from defaults then you can uncomment the HOME_ADJUST line below and enter your
 // custom XY offsets. This is provided for convenience and is unsupported with included product support.
@@ -340,6 +351,26 @@
 
 #if BOTH(V42X_TMC220X_DRIVERS, LINEAR_ADVANCE)
   #error "Linear Advance does NOT work on the V4.2.X boards with the TMC drivers due to how Creality has them setup. Disable Linear Advance to continue or comment this line out to continue compile at your own risk."
+#endif
+
+#if ANY(ENDER3_V422_BOARD, ENDER3_V427_BOARD)
+  #define ENDER3
+#endif
+
+#if ANY(ENDER3_V2_V422_BOARD, ENDER3_V2_V427_BOARD)
+  #define ENDER3_V2
+#endif
+
+#if ANY(ENDER3_MAX_V422_BOARD, ENDER3_MAX_V427_BOARD)
+  #define ENDER3_MAX
+#endif
+
+#if ANY(ENDER5_V422_BOARD, ENDER5_V427_BOARD)
+  #define ENDER5
+#endif
+
+#if ENABLED(ENDER5_PLUS_V427_BOARD)
+  #define ENDER5_PLUS
 #endif
 
 /**
@@ -1107,20 +1138,28 @@
 
   #define EXTRUDERS 1
 
-  #if ANY(ENDER3_V422_BOARD, ENDER3_V427_BOARD)
-    #if ENABLED(ENDER_XTENDER_400)
-      #define X_BED_SIZE 400
-      #define Y_BED_SIZE 400
-      #define Z_MAX_POS 250
-    #elif ENABLED(ENDER_XTENDER_300)
+  #if ENABLED(ENDER3)
+    #if ENABLED(XTENDER_E3_300)
       #define X_BED_SIZE 300
       #define Y_BED_SIZE 300
       #define Z_MAX_POS 250
-    #elif ENABLED(ENDER_XTENDER_400XL)
+    #elif ENABLED(XTENDER_E3_300XL)
+      #define X_BED_SIZE 300
+      #define Y_BED_SIZE 300
+      #define Z_MAX_POS 400
+    #elif ENABLED(XTENDER_E3_400)
+      #define X_BED_SIZE 400
+      #define Y_BED_SIZE 400
+      #define Z_MAX_POS 250
+    #elif ENABLED(XTENDER_E3_400Z)
+      #define X_BED_SIZE 235
+      #define Y_BED_SIZE 235
+      #define Z_MAX_POS 400
+    #elif ENABLED(XTENDER_E3_400XL)
       #define X_BED_SIZE 400
       #define Y_BED_SIZE 400
       #define Z_MAX_POS 500
-    #elif ENABLED(ENDER_XTENDER_XL)
+    #elif ENABLED(XTENDER_E3_500Z)
       #define X_BED_SIZE 235
       #define Y_BED_SIZE 235
       #define Z_MAX_POS 500
@@ -1131,22 +1170,38 @@
     #endif
   #endif
   
-  #if ANY(ENDER3_MAX_V422_BOARD, ENDER3_MAX_V427_BOARD)
+  #if ENABLED(ENDER3_MAX)
     #define X_BED_SIZE 300
     #define Y_BED_SIZE 300
     #define Z_MAX_POS 340
   #endif
   
-  #if ANY(ENDER5_V422_BOARD, ENDER5_V427_BOARD)
-    #define X_BED_SIZE 220
-    #define Y_BED_SIZE 220
-    #define Z_MAX_POS 300
+  #if ENABLED(ENDER5)
+    #if ENABLED(XTENDER_E5_5XL)
+      #define X_BED_SIZE 235
+      #define Y_BED_SIZE 235
+      #define Z_MAX_POS 500
+    #else
+      #define X_BED_SIZE 220
+      #define Y_BED_SIZE 220
+      #define Z_MAX_POS 300
+    #endif
   #endif
   
-  #if ENABLED(ENDER5_PLUS_V427_BOARD)
-    #define X_BED_SIZE 350
-    #define Y_BED_SIZE 350
-    #define Z_MAX_POS 400
+  #if ENABLED(ENDER5_PLUS)
+    #if ENABLED(XTENDER_E5P_400)
+      #define X_BED_SIZE 510
+      #define Y_BED_SIZE 510
+      #define Z_MAX_POS 400
+    #elif ENABLED(XTENDER_E5P_500)
+      #define X_BED_SIZE 510
+      #define Y_BED_SIZE 510
+      #define Z_MAX_POS 500
+    #else
+      #define X_BED_SIZE 350
+      #define Y_BED_SIZE 350
+      #define Z_MAX_POS 400
+    #endif
     #if DISABLED(REVERSE_KNOB_DIRECTION)
       #define REVERSE_ENCODER_DIRECTION
     #endif
@@ -1161,7 +1216,7 @@
     #define Y_MIN_POS 0
   #endif
 
-  #if ANY(ENDER5_V422_BOARD, ENDER5_V427_BOARD, ENDER5_PLUS_V427_BOARD)
+  #if ANY(ENDER5, ENDER5_PLUS)
     #define USE_XMAX_PLUG
     #define USE_YMAX_PLUG
     #define USE_ZMIN_PLUG
@@ -1418,31 +1473,43 @@
 
   #define EXTRUDERS 1
 
-  #if ENABLED(ENDER_XTENDER_400)
-    #define X_BED_SIZE 400
-    #define Y_BED_SIZE 400
-    #define Z_MAX_POS 250
-    #define MACHINE_SIZE "Xtender 400x400x250"
-  #elif ENABLED(ENDER_XTENDER_300)
-    #define X_BED_SIZE 300
-    #define Y_BED_SIZE 300
-    #define Z_MAX_POS 250
-    #define MACHINE_SIZE "Xtender 300x300x250"
-  #elif ENABLED(ENDER_XTENDER_400XL)
-    #define X_BED_SIZE 400
-    #define Y_BED_SIZE 400
-    #define Z_MAX_POS 500
-    #define MACHINE_SIZE "Xtender 400x400x500"
-  #elif ENABLED(ENDER_XTENDER_XL)
-    #define X_BED_SIZE 235
-    #define Y_BED_SIZE 235
-    #define Z_MAX_POS 500
-    #define MACHINE_SIZE "Xtender 235x235x500"
-  #else
-    #define X_BED_SIZE 235
-    #define Y_BED_SIZE 235
-    #define Z_MAX_POS 250
-    #define MACHINE_SIZE "235x235x250"
+  #if ENABLED(ENDER3_V2)
+    #if ENABLED(XTENDER_E3_300)
+      #define X_BED_SIZE 300
+      #define Y_BED_SIZE 300
+      #define Z_MAX_POS 250
+      #define MACHINE_SIZE "300x300x250"
+    #elif ENABLED(XTENDER_E3_300XL)
+      #define X_BED_SIZE 300
+      #define Y_BED_SIZE 300
+      #define Z_MAX_POS 400
+      #define MACHINE_SIZE "300x300x400"
+    #elif ENABLED(XTENDER_E3_400)
+      #define X_BED_SIZE 400
+      #define Y_BED_SIZE 400
+      #define Z_MAX_POS 250
+      #define MACHINE_SIZE "400x400x250"
+    #elif ENABLED(XTENDER_E3_400Z)
+      #define X_BED_SIZE 235
+      #define Y_BED_SIZE 235
+      #define Z_MAX_POS 400
+      #define MACHINE_SIZE "235x235x400"
+    #elif ENABLED(XTENDER_E3_400XL)
+      #define X_BED_SIZE 400
+      #define Y_BED_SIZE 400
+      #define Z_MAX_POS 500
+      #define MACHINE_SIZE "400x400x500"
+    #elif ENABLED(XTENDER_E3_500Z)
+      #define X_BED_SIZE 235
+      #define Y_BED_SIZE 235
+      #define Z_MAX_POS 500
+      #define MACHINE_SIZE "235x235x500"
+    #else
+      #define X_BED_SIZE 235
+      #define Y_BED_SIZE 235
+      #define Z_MAX_POS 250
+      #define MACHINE_SIZE "235x235x250"
+    #endif
   #endif
 
   #if ENABLED(HOME_ADJUST)

@@ -55,14 +55,6 @@
 //#define ENDER5_PLUS_OEM
 //#define CUSTOM_PROBE
 
-// Ender 3 Specific Options
-
-// Ender Xtender Kit Options
-//#define ENDER_XTENDER_300
-//#define ENDER_XTENDER_400
-//#define ENDER_XTENDER_400XL
-//#define ENDER_XTENDER_XL
-
 // Ender 5 - Leadscrew Setting
 // If you have the new Ender 5/5 Pro Model that has the new 800steps/mm Z leadscrew uncomment the below option to set the correct steps/mm
 //#define ENDER5_NEW_LEADSCREW
@@ -223,7 +215,25 @@
 
 //===========================================================================
 //****************** COMMUNITY REQUESTED FEATURES ***************************
+//*** COMMUNITY REQUESTED FEATURES ARE ALL NOT SUPPORTED BY TH3D SUPPORT ****
 //===========================================================================
+
+// ENDER XTENDER KIT SETTINGS ----------------------
+
+// Ender Xtender Kits for Ender 3/3 Pro
+//#define XTENDER_E3_300    //300x300x250 Size
+//#define XTENDER_E3_300XL  //300x300x400 Size
+//#define XTENDER_E3_400    //400x400x250 Size
+//#define XTENDER_E3_400Z   //235x235x400 Size
+//#define XTENDER_E3_400XL  //400x400x500 Size
+//#define XTENDER_E3_500Z   //235x235x500 Size
+
+// Ender Xtender Kits for Ender 5/5 Pro
+//#define XTENDER_E5_5XL    //235x235x500 Size
+
+// Ender Xtender Kits for Ender 5 Plus
+//#define XTENDER_E5P_400   //510x510x400 Size
+//#define XTENDER_E5P_500   //510x510x500 Size
 
 // BAUDRATE ADJUSTMENT -----------------------------
 // This firmware uses a 115200 default baud rate as that is the most reliable and compatible. If you want to use 250000 uncomment the below line.
@@ -371,15 +381,31 @@
   #define EXTRUDERS 1
   
   #if ENABLED(ENDER5)
-    #define X_BED_SIZE 220
-    #define Y_BED_SIZE 220
-    #define Z_MAX_POS 300
+    #if ENABLED(XTENDER_E5_5XL)
+      #define X_BED_SIZE 235
+      #define Y_BED_SIZE 235
+      #define Z_MAX_POS 500
+    #else
+      #define X_BED_SIZE 220
+      #define Y_BED_SIZE 220
+      #define Z_MAX_POS 300
+    #endif
   #endif
   
   #if ENABLED(ENDER5_PLUS)
-    #define X_BED_SIZE 350
-    #define Y_BED_SIZE 350
-    #define Z_MAX_POS 400
+    #if ENABLED(XTENDER_E5P_400)
+      #define X_BED_SIZE 510
+      #define Y_BED_SIZE 510
+      #define Z_MAX_POS 400
+    #elif ENABLED(XTENDER_E5P_500)
+      #define X_BED_SIZE 510
+      #define Y_BED_SIZE 510
+      #define Z_MAX_POS 500
+    #else
+      #define X_BED_SIZE 350
+      #define Y_BED_SIZE 350
+      #define Z_MAX_POS 400
+    #endif
     #if DISABLED(REVERSE_KNOB_DIRECTION)
       #define REVERSE_ENCODER_DIRECTION
     #endif
@@ -387,19 +413,27 @@
   #endif
   
   #if ENABLED(ENDER3)
-    #if ENABLED(ENDER_XTENDER_400)
-      #define X_BED_SIZE 400
-      #define Y_BED_SIZE 400
-      #define Z_MAX_POS 250
-    #elif ENABLED(ENDER_XTENDER_300)
+    #if ENABLED(XTENDER_E3_300)
       #define X_BED_SIZE 300
       #define Y_BED_SIZE 300
       #define Z_MAX_POS 250
-    #elif ENABLED(ENDER_XTENDER_400XL)
+    #elif ENABLED(XTENDER_E3_300XL)
+      #define X_BED_SIZE 300
+      #define Y_BED_SIZE 300
+      #define Z_MAX_POS 400
+    #elif ENABLED(XTENDER_E3_400)
+      #define X_BED_SIZE 400
+      #define Y_BED_SIZE 400
+      #define Z_MAX_POS 250
+    #elif ENABLED(XTENDER_E3_400Z)
+      #define X_BED_SIZE 235
+      #define Y_BED_SIZE 235
+      #define Z_MAX_POS 400
+    #elif ENABLED(XTENDER_E3_400XL)
       #define X_BED_SIZE 400
       #define Y_BED_SIZE 400
       #define Z_MAX_POS 500
-    #elif ENABLED(ENDER_XTENDER_XL)
+    #elif ENABLED(XTENDER_E3_500Z)
       #define X_BED_SIZE 235
       #define Y_BED_SIZE 235
       #define Z_MAX_POS 500

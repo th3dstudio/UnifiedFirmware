@@ -12,8 +12,12 @@
 // ONLY UNCOMMENT THINGS IN ONE PRINTER SECTION!!! IF YOU HAVE MULTIPLE MACHINES FLASH THEM ONE AT A TIME.
 // UNCOMMENT MEANS REMOVING THE // IN FRONT OF A #define XXXXXX LINE.
 
+// If you have a 512K CPU and/or a GD32 CPU please read the notes in the platformio.ini file for details on
+// compiling for these chips. Most boards regardless of the CPU will work as-is but if you have issues with
+// the board flashing the firmware you may have to change the default_envs value as noted in platformio.ini.
+
 //===========================================================================
-// **************   CREALITY PRINTERS S1 BOARD - F103 CPU   *****************
+// ***********   CREALITY PRINTERS V2451_301 BOARD - F103 CPU   *************
 //===========================================================================
 //#define ENDER3_S1
 
@@ -23,10 +27,16 @@
 //#define ENDER3_S1_OEM //TODO STILL 3/24/2022
 //#define CUSTOM_PROBE
 
-// Ender 3 S1 LCD Settings - This firmware currently only supports using the 12864 LCD at this time.
-// The DACAI LCD is currently buggy with display artifacts and its current firmware.
+// Ender 3 S1 LCD Settings
 // Get the conversion kit here: https://www.th3dstudio.com/product/creality-ender-3-s1-12864-lcd-conversion-upgrade-kit/
+//
+// The DACAI LCD is currently buggy with display artifacts and its current firmware.
+// NOTE: If you wish to use the DACAI or DWIN LCD, comment out the ENDER3_S1_12864_LCD line below and update the LCD firmware with ours. Use at your own risk.
 #define ENDER3_S1_12864_LCD
+
+// If you are having issues with the CRTouch uncomment the below line to disable it.
+// Connect the included Z Endstop with its cable to the J713 Header on the board and mount to the printer.
+//#define ENDER3_S1_ZENDSTOP_ONLY
 
 // If you are having issues with the stock filament sensor uncomment the below line to disable it.
 //#define ENDER3_S1_NOFILAMENT_SENSOR
@@ -37,8 +47,9 @@
 //#define EZNEO_220
 
 // EZNeo Manual IO Pin Setting ----------------------------------------------
-// If you have the EZNeo wired with your own 5V power provided, specify the pin used below. PC0 is the "PWM" pin on the 3 Pin JST at the rear of the printer.
-//#define NEOPIXEL_PIN PC0
+// If you have the EZNeo wired with your own 5V power provided, specify the pin used below.
+// See our helpcenter for pinouts for the V2451_301 Board here: https://www.th3dstudio.com/hc/product-information/ezneo/ezneo-creality-v2451_301-ender-3-s1-board-setup/
+//#define NEOPIXEL_PIN PA13
 
 //===========================================================================
 // *************************  END PRINTER SECTION   *************************
@@ -258,7 +269,7 @@
  
 //Ender 3 S1 Settings
 #if ENABLED(ENDER3_S1)
-  #if NONE(ENDER3_S1_OEM, CUSTOM_PROBE)
+  #if NONE(ENDER3_S1_OEM, CUSTOM_PROBE, ENDER3_S1_ZENDSTOP_ONLY)
     #ifndef CUSTOM_PRINTER_NAME
       #define CUSTOM_PRINTER_NAME
       #define USER_PRINTER_NAME "TH3D E3S1"
@@ -385,10 +396,16 @@
   #define X_MAX_ENDSTOP_INVERTING false
   #define Y_MAX_ENDSTOP_INVERTING false
   #define Z_MAX_ENDSTOP_INVERTING false
-  #define Z_MIN_PROBE_ENDSTOP_INVERTING false
+  
+  #if DISABLED(BLTOUCH)
+    #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+    #define Z_MIN_PROBE_ENDSTOP_INVERTING true
+  #endif
 
-  //#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
-  #define USE_PROBE_FOR_Z_HOMING
+  #if ENABLED(BLTOUCH)
+    #define Z_MIN_PROBE_ENDSTOP_INVERTING false
+    #define USE_PROBE_FOR_Z_HOMING
+  #endif
 
   #define X_DRIVER_TYPE TMC2208_STANDALONE
   #define Y_DRIVER_TYPE TMC2208_STANDALONE

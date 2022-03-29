@@ -9,16 +9,34 @@ This does not include machine configs or PlatformIO files.
 - **ini**
 	- `avr.ini`
 	- `stm32f1.ini`
+	- `stm32f1-maple.ini`
+	- `stm32f4.ini`
 - **Marlin**
 	- **src**
 		- **core**
+			- `boards.h`
 			- `language.h`
 		- **gcode**
 			- **calibrate**
 				- `M48.cpp`
 		- **inc**
+			- `Conditionals_LCD.h`
+			- `SanityCheck.h`
 			- `Warnings.cpp`
 		- **lcd**
+			- **e3v2**
+				- **common**
+					- `dwin_api.cpp`
+					- `dwin_set.cpp`
+				- **creality*
+					- `dwin.cpp`
+					- `dwin_lcd.cpp`
+				- **jyersui*
+					- `dwin.cpp`
+				- **marlinui**
+					- `dwin_lcd.cpp`
+					- `dwin_lcd.h`
+					- `ui_common.cpp`
 			- **language**
 				- `language_en.h`
 			- **menu**
@@ -41,7 +59,16 @@ This does not include machine configs or PlatformIO files.
 				- `pins_SANGUINOLOLU_11.h`
 			- **stm32f1**
 				- `pins_BTT_SKR_MINI_E3_common.h`
+				- `pins_CREALITY_V24S1.h`
+				- `pins_CREALITY_V24S1_301.h`
 				- `pins_CREALITY_V4.h`
+				- `pins_CREALITY_V4210.h`
+				- `pins_CREALITY_V422.h`
+				- `pins_CREALITY_V423.h`
+				- `pins_CREALITY_V427.h`
+				- `pins_CREALITY_V431.h`
+				- `pins_CREALITY_V452.h`
+				- `pins_CREALITY_V453.h`
 				- `pins_MKS_ROBIN_MINI.h`
 				- `pins_MKS_ROBIN_NANO_common.h`
 			- **stm32f4**

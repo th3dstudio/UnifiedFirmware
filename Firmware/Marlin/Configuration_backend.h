@@ -17,11 +17,11 @@
 #endif
 #if ENABLED(ENDER3_S1_OEM_18MM)
   #define ABL_ENABLE
-  #define NOZZLE_TO_PROBE_OFFSET { -40, -40, 0 }
+  #define NOZZLE_TO_PROBE_OFFSET { -44, -42, 0 }
 #endif
 #if ENABLED(ENDER3_S1_OEM_12MM)
   #define ABL_ENABLE
-  #define NOZZLE_TO_PROBE_OFFSET { -37, -40, 0 }
+  #define NOZZLE_TO_PROBE_OFFSET { -42, -42, 0 }
 #endif
 #if ENABLED(ENDER2_PRO_OEM)
   #define ABL_ENABLE

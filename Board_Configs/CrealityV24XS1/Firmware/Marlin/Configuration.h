@@ -24,8 +24,10 @@
 // NOTE: Enabling EZABL mounts and/or BLTouch settings will disable the pre-setup settings for the stock CRTouch with its stock mount.
 
 // EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
-//#define ENDER3_S1_OEM_18MM
-//#define ENDER3_S1_OEM_12MM
+//#define ENDER3_S1_OEM_18MM            // For Standard EZABL Pro Sensor + Mount
+                                        // STL: Ender 3 S1 EZABL OEM Mount - 18mm.stl
+//#define ENDER3_S1_OEM_12MM            // For Mini EZABL Pro Sensor + Mount
+                                        // STL: Ender 3 S1 EZABL OEM Mount - 12mm.stl
 //#define CUSTOM_PROBE
 
 // Ender 3 S1 LCD Settings

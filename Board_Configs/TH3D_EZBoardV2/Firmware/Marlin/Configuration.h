@@ -370,8 +370,19 @@
 
 #if ENABLED(BLTOUCH) && ENABLED(EZBOARD_PT100)
   #error "The BLTouch and PT100 cannot be used at the same time. Please choose one or the other. You can use an EZABL and PT100 at the same time as the EZABL does not use the SERVO header."
-#endif 
+#endif
 
+#if ENABLED(X_AXIS_SENSORLESS_HOMING)
+  #define DISABLE_ENDSTOP_NOISE_FILTERING
+  #define ENDSTOPPULLUP_XMIN
+#endif
+
+#if ENABLED(Y_AXIS_SENSORLESS_HOMING)
+  #if DISABLED(DISABLE_ENDSTOP_NOISE_FILTERING)
+  	#define DISABLE_ENDSTOP_NOISE_FILTERING
+  #endif
+  #define ENDSTOPPULLUP_YMIN
+#endif
 
 /**
  * Machine Configuration Settings

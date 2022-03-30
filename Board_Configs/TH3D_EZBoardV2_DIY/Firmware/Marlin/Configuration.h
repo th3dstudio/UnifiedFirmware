@@ -332,6 +332,16 @@
 //*** COMMUNITY REQUESTED FEATURES ARE ALL NOT SUPPORTED BY TH3D SUPPORT ****
 //===========================================================================
 
+// SENSORLESS HOMING SETTINGS ----------------------
+// If you want to use sensorless homing on your X or Y Axis, uncomment the X_AXIS_SENSORLESS_HOMING or Y_AXIS_SENSORLESS_HOMING to enable it.
+// You will have to change the calibration setting to get it to home correctly. See here for details: https://marlinfw.org/docs/gcode/M914.html
+// Once you find the ideal calue for X and/or Y you can enter the number to the X_SH_CALIBRATION/Y_SH_CALIBRATION below to keep these as defaults.
+//#define X_AXIS_SENSORLESS_HOMING
+#define X_SH_CALIBRATION 75
+
+//#define Y_AXIS_SENSORLESS_HOMING
+#define Y_SH_CALIBRATION 75
+
 // HOME OFFSET ADJUSTMENT --------------------------
 // If you need to adjust your XY home offsets from defaults then you can uncomment the HOME_ADJUST line below and enter your
 // custom XY offsets. This is provided for convenience and is unsupported with included product support.
@@ -421,6 +431,18 @@
   //Do Nothing
 #else
   #error "Printer BAUDRATE is not correct. Valid settings are 115200 and 250000. Change to a valid setting (115200 is recommended)"
+#endif
+
+#if ENABLED(X_AXIS_SENSORLESS_HOMING)
+  #define DISABLE_ENDSTOP_NOISE_FILTERING
+  #define ENDSTOPPULLUP_XMIN
+#endif
+
+#if ENABLED(Y_AXIS_SENSORLESS_HOMING)
+  #if DISABLED(DISABLE_ENDSTOP_NOISE_FILTERING)
+  	#define DISABLE_ENDSTOP_NOISE_FILTERING
+  #endif
+  #define ENDSTOPPULLUP_YMIN
 #endif
 
 //EZBoard V2 DIY based Machine Settings

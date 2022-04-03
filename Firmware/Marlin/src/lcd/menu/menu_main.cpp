@@ -271,6 +271,11 @@ void menu_main() {
     };
 
   #endif
+  
+  //Moved by TH3D
+  #if EITHER(LED_CONTROL_MENU, CASE_LIGHT_MENU)
+    SUBMENU(MSG_LEDS, menu_led);
+  #endif
 
   if (busy) {
     #if MACHINE_CAN_PAUSE
@@ -363,11 +368,9 @@ void menu_main() {
   #if ENABLED(LCD_INFO_MENU)
     SUBMENU(MSG_INFO_MENU, menu_info);
   #endif
-
-  #if EITHER(LED_CONTROL_MENU, CASE_LIGHT_MENU)
-    SUBMENU(MSG_LEDS, menu_led);
-  #endif
-
+  
+  //LED Menu Moved Up by TH3D
+  
   //
   // Switch power on/off
   //

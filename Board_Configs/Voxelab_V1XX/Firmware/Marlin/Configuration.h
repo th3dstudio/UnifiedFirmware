@@ -17,9 +17,9 @@
 // the board flashing the firmware you may have to change the default_envs value as noted in platformio.ini.
 
 //===========================================================================
-// ************   VOXELAB PRINTERS W/V4.X.X BOARD - F103 CPU   **************
+// ************   VOXELAB PRINTERS W/V1.0.1 BOARD - F103 CPU   **************
 //===========================================================================
-//------------------------------ V4.2.2 Board -------------------------------
+
 //#define AQUILA_X1
 
 //------------------------------ Upgrade Settings -------------------------------
@@ -36,13 +36,13 @@
 //#define EZOUT_ENABLE_J1
 
 // EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
-//#define X1_OEM //TODO
+//#define AQUILA_X1_OEM
 //#define CUSTOM_PROBE
 
-// X1 - LCD Setting
-// If you converted your X1 LCD to the 12864 Version, Uncomment the below line.
+// Aquila X1 - LCD Setting
+// If you converted your Aquila X1 LCD to the 12864 Version, Uncomment the below line.
 // Get the conversion kit here: COMING SOON
-//#define X1_12864_LCD
+//#define AQUILA_X1_12864_LCD
 
 // EZNeo Settings
 // If you are using an EZNeo strip on your printer, uncomment the line for what strip you are using.
@@ -286,10 +286,9 @@
   #define EZOUT_ENABLE
 #endif
  
-// X1 Settings
+// Aquila X1 Settings
 #if ENABLED(AQUILA_X1)
   #define SERIAL_PORT 1
-
   #define ADC_RESOLUTION 10
 
   #define BAUDRATE 115200
@@ -324,10 +323,10 @@
 
   #define EXTRUDERS 1
 
-  #define X_BED_SIZE 235
-  #define Y_BED_SIZE 235
+  #define X_BED_SIZE 220
+  #define Y_BED_SIZE 220
   #define Z_MAX_POS 250
-  #define MACHINE_SIZE "235x235x250"
+  #define MACHINE_SIZE "220x220x250"
 
   #if ENABLED(HOME_ADJUST)
     #define X_MIN_POS X_HOME_LOCATION
@@ -436,7 +435,7 @@
   #define INVERT_E6_DIR false
   #define INVERT_E7_DIR false
 
-  #if ENABLED(X1_12864_LCD)
+  #if ENABLED(AQUILA_X1_12864_LCD)
     #define CR10_STOCKDISPLAY
     #define RET6_12864_LCD
   #else
@@ -453,6 +452,7 @@
 
   #if ANY(DWIN_CREALITY_LCD_JYERSUI, DWIN_CREALITY_LCD_ENHANCED)
     #define ENABLE_PIDBED
+    #define POWER_LOSS_RECOVERY
   #endif
 
   #define ENCODER_PULSES_PER_STEP 4
@@ -461,8 +461,6 @@
   #define Z_PROBE_OFFSET_RANGE_MIN -10
   #define Z_PROBE_OFFSET_RANGE_MAX 10
   #define EXTRUDE_MAXLENGTH 1000
-
-  #define POWER_LOSS_RECOVERY
   
   #if ENABLED(EZOUT_ENABLE)
     #define FILAMENT_RUNOUT_SENSOR
@@ -523,7 +521,7 @@
   #endif
   
 #endif
-// End X1 Settings
+// End Aquila X1 Settings
 
 /*
  * All other settings are stored in the Configuration_backend.h file. Do not change unless you know what you are doing.

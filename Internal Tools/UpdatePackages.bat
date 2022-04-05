@@ -7,6 +7,12 @@
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_CrealityV4X.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_CrealityV4X.zip" "D:\Work\GitHub\UnifiedFirmware\Board_Configs\CrealityV4X\Firmware"
 
+"C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Voxelab_V1XX.zip"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Voxelab_V1XX.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Voxelab_V1XX.zip" "D:\Work\GitHub\UnifiedFirmware\LCD Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Voxelab_V1XX.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Voxelab_V1XX.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Voxelab_V1XX.zip" "D:\Work\GitHub\UnifiedFirmware\Board_Configs\Voxelab_V1XX\Firmware"
 
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\Unified2Zips\TH3D_Unified2_CrealityV24XS1.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_CrealityV24XS1.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"

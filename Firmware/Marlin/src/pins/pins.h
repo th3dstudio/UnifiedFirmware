@@ -558,7 +558,7 @@
 #elif MB(CREALITY_V4210)
   #include "stm32f1/pins_CREALITY_V4210.h"      // STM32F1                                env:STM32F103RCT6_creality env:STM32F103RET6_creality env:STM32F103RCT6_creality_maple env:STM32F103RET6_creality_maple env:GD32F303RET6_creality_maple env:GD32F303RCT6_creality_maple
 #elif MB(CREALITY_V422)
-  #include "stm32f1/pins_CREALITY_V422.h"       // STM32F1                                env:STM32F103RCT6_creality env:STM32F103RET6_creality env:STM32F103RCT6_creality_maple env:STM32F103RET6_creality_maple env:GD32F303RET6_creality_maple env:GD32F303RCT6_creality_maple env:STM32F103RCT6_voxelab env:STM32F103RET6_voxelab
+  #include "stm32f1/pins_CREALITY_V422.h"       // STM32F1                                env:STM32F103RCT6_creality env:STM32F103RET6_creality env:STM32F103RCT6_creality_maple env:STM32F103RET6_creality_maple env:GD32F303RET6_creality_maple env:GD32F303RCT6_creality_maple env:STM32F103RET6_voxelab env:STM32F103RCT6_voxelab env:GD32F103RET6_voxelab_maple env:GD32F103RCT6_voxelab_maple env:N32F103RET6_voxelab_maple env:N32F103RCT6_voxelab_maple
 #elif MB(CREALITY_V423)
   #include "stm32f1/pins_CREALITY_V423.h"       // STM32F1                                env:STM32F103RCT6_creality env:STM32F103RET6_creality env:STM32F103RCT6_creality_maple env:STM32F103RET6_creality_maple env:GD32F303RET6_creality_maple env:GD32F303RCT6_creality_maple
 #elif MB(CREALITY_V427)

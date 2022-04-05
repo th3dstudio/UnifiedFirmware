@@ -435,14 +435,13 @@
   #define INVERT_E6_DIR false
   #define INVERT_E7_DIR false
 
-  #if ENABLED(ENDER3_V2_12864_LCD)
+  #if ENABLED(X1_12864_LCD)
     #define CR10_STOCKDISPLAY
     #define RET6_12864_LCD
   #else
-    //Not working yet with the DACAI LCD, OK with the DWIN LCD - Background Issues
     #define LCD_SERIAL_PORT 3
     #define NO_LCD_REINIT 1
-    //Different Ender 3 V2 LCD Display Options - Change at your own risk!!!
+    //Different LCD Display Options - Change at your own risk!!!
     //#define DWIN_CREALITY_LCD           // Creality UI
     //#define DWIN_CREALITY_LCD_ENHANCED  // Enhanced UI
     //#define DWIN_CREALITY_LCD_JYERSUI   // Jyers UI by Jacob Myers

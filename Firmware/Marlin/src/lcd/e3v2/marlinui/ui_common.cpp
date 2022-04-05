@@ -188,7 +188,8 @@ void MarlinUI::draw_status_message(const bool blink) {
   DWIN_Draw_Box(1, Color_Bg_Black, 0, (LCD_PIXEL_HEIGHT - (STAT_FONT_HEIGHT) - 1), 272, STAT_FONT_HEIGHT + 1);
   lcd_moveto_xy(0, LCD_PIXEL_HEIGHT - (STAT_FONT_HEIGHT) - 1);
 
-  constexpr uint8_t max_status_chars = (LCD_PIXEL_WIDTH) / (STAT_FONT_WIDTH);
+  constexpr uint8_t max_status_chars = 19; // (LCD_PIXEL_WIDTH) / (STAT_FONT_WIDTH);
+  // Fix from: https://github.com/InsanityAutomation/Marlin/commit/0d576bb5297e21978d469de9c52bf1e4d0900084
 
   auto status_changed = []{
     static uint16_t old_hash = 0x0000;

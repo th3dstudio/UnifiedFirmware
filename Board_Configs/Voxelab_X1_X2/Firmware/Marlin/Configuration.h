@@ -41,8 +41,7 @@
 
 // X1 - LCD Setting
 // If you converted your X1 LCD to the 12864 Version, Uncomment the below line.
-// The DACAI LCD is currently buggy with display artifacts and its current firmware.
-// Get the conversion kit here: https://www.th3dstudio.com/product/creality-ender-3-v2-12864-lcd-conversion-upgrade-kit/
+// Get the conversion kit here: COMING SOON
 //#define X1_12864_LCD
 
 // EZNeo Settings
@@ -291,6 +290,8 @@
 #if ENABLED(AQUILA_X1)
   #define SERIAL_PORT 1
 
+  #define ADC_RESOLUTION 10
+
   #define BAUDRATE 115200
 
   #ifndef MOTHERBOARD
@@ -441,6 +442,7 @@
   #else
     #define LCD_SERIAL_PORT 3
     #define NO_LCD_REINIT 1
+    #define REVERSE_ENCODER_DIRECTION
     //Different LCD Display Options - Change at your own risk!!!
     //#define DWIN_CREALITY_LCD           // Creality UI
     //#define DWIN_CREALITY_LCD_ENHANCED  // Enhanced UI

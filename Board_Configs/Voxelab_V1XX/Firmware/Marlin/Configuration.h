@@ -12,9 +12,9 @@
 // ONLY UNCOMMENT THINGS IN ONE PRINTER SECTION!!! IF YOU HAVE MULTIPLE MACHINES FLASH THEM ONE AT A TIME.
 // UNCOMMENT MEANS REMOVING THE // IN FRONT OF A #define XXXXXX LINE.
 
-// If you have a 512K CPU and/or a GD32 CPU please read the notes in the platformio.ini file for details on
-// compiling for these chips. Most boards regardless of the CPU will work as-is but if you have issues with
-// the board flashing the firmware you may have to change the default_envs value as noted in platformio.ini.
+// Because Voxelab used MULTIPLE different CPU types you must look at your board and see what one you have. Once you do then change the default_envs
+// value in the platformio.ini to the one that matches your CPU on your board. If you have one of the "H32" CPUs, it will not work with our firmware 
+// as that CPU is not currently supported in PlatformIO at this time.
 
 //===========================================================================
 // ************   VOXELAB PRINTERS W/V1.0.1 BOARD - F103 CPU   **************

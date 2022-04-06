@@ -1,14 +1,16 @@
-This LCD firmware works on both the older and new version of the LCDs Found on the Ender 3 V2 and Ender 3 S1 printers. Both use the same file to update and directions below.
+This LCD firmware works on both the older and new version of the LCDs Found on the Ender 3 V2, Ender 3 S1, and Aquila X1 printers. Both use the same file to update and directions below. On LCDs with a landscape orientation the TH3D bootscreen will be sideways, this is normal.
+
 Credit: Thank you to Dave at Insanity Automation for the LCD firmware for both LCD versions.
 
 1. In the firmware download there is a folder called "LCD Firmware". Open that folder and then open the folder labeled "Ender 3 V2 S1"
 
-2. In there is a ZIP file called "Ender3_V2_S1_LCDUpdate_TH3D_X.X". Extract the DWIN_SET folder to a blank, FAT32 formatted MicroSD card.
+2. In there is a ZIP file called "DWIN_DACAI_LCDUpdate_TH3D_X.X". Extract the DWIN_SET folder to a blank, FAT32 formatted MicroSD card.
+
 NOTE: The files must be in the folders as they are in the ZIP file, including the 拷贝private到SD卡根目录.txt file.
 
 3. Power the printer off and remove the LCD from its snap on bracket.
 
-4. On the rear of the Ender 3 V2/S1 LCD there is a SD slot that you access by removing the 4 screws on the rear of the casing.
+4. On the rear of the LCD there is a SD slot that you access by removing the 4 screws on the rear of the casing.
 
 5. Insert the MicroSD card with the files on it into the LCD.
 NOTE - The MicroSD card MUST be formatted with FAT/FAT32 with a 4096 byte allocation size or it will NOT flash.

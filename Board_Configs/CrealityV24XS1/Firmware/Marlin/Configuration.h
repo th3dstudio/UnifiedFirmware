@@ -312,11 +312,11 @@
   #endif
   
   #define DEFAULT_MAX_FEEDRATE          { 200, 200, 15, 100 }
-  #define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 500, 5000 }
+  #define DEFAULT_MAX_ACCELERATION      { 2000, 2000, 500, 5000 }
 
-  #define DEFAULT_ACCELERATION          500
-  #define DEFAULT_RETRACT_ACCELERATION  500
-  #define DEFAULT_TRAVEL_ACCELERATION   1000
+  #define DEFAULT_ACCELERATION          1000
+  #define DEFAULT_RETRACT_ACCELERATION  1000
+  #define DEFAULT_TRAVEL_ACCELERATION   1500
 
   #define CLASSIC_JERK
   #if ENABLED(CLASSIC_JERK)
@@ -503,7 +503,7 @@
       #define NEOPIXEL_TYPE   NEO_GRB // NEO_GRBW / NEO_GRB - four/three channel driver type (defined in Adafruit_NeoPixel.h)
       #define NEOPIXEL_PIXELS 15       // Number of LEDs in the strip. (Longest strip when NEOPIXEL2_SEPARATE is disabled.)
       #define NEOPIXEL_IS_SEQUENTIAL   // Sequential display for temperature change - LED by LED. Disable to change all LEDs at once.
-      #define NEOPIXEL_BRIGHTNESS 127  // Initial brightness (0-255)
+      #define NEOPIXEL_BRIGHTNESS 255  // Initial brightness (0-255)
       #define NEOPIXEL_STARTUP_TEST  // Cycle through colors at startup
     #endif
 

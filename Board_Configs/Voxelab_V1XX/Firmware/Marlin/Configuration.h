@@ -1,8 +1,6 @@
 /**
  * For directions on how to use this firmware visit http://uf2.th3dstudio.com and click on your printer/board link
  * NO IMPLIED SUPPORT OR WARRANTY IS PROVIDED WITH THIS FIRMWARE AND IS PROVIDED AS-IS
- *
- * MAKE SURE ALL SLICERS AND OTHER PROGRAMS THAT CONNECT TO YOUR PRINTER COM PORT ARE CLOSED BEFORE FLASHING.
  */
 #pragma once
 #define CONFIGURATION_H_VERSION 02000903
@@ -14,20 +12,40 @@
 // ONLY UNCOMMENT THINGS IN ONE PRINTER SECTION!!! IF YOU HAVE MULTIPLE MACHINES FLASH THEM ONE AT A TIME.
 // UNCOMMENT MEANS REMOVING THE // IN FRONT OF A #define XXXXXX LINE.
 
+// If you have a 512K CPU and/or a GD32 CPU please read the notes in the platformio.ini file for details on
+// compiling for these chips. Most boards regardless of the CPU will work as-is but if you have issues with
+// the board flashing the firmware you may have to change the default_envs value as noted in platformio.ini.
+
 //===========================================================================
-// ****************   GEEETECH PRINTERS 2560 CPU BOARD   ********************
+// ************   VOXELAB PRINTERS W/V1.0.1 BOARD - F103 CPU   **************
 //===========================================================================
-// A10 V1 has the 40mm Fan on the left side of the hotend and NO filament sensor
-// A10 V2 has a filament sensor and no 40mm fan on the left side of the hotend
-//#define GEEETECH_A10_V1
-//#define GEEETECH_A10_V2
-//#define GEEETECH_A20
+
+//#define AQUILA_X1
+
+//------------------------------ Upgrade Settings -------------------------------
+// EZOut Filament Sensor Kit - SILK Plug Connection
+// If you are using our EZOut V2 filament sensor kit please follow the install guide. 
+// You connect the cable to the "SILK" header next to the screw terminals and then uncomment the #define EZOUT_ENABLE_SILK line below.
+// Do NOT ever connect our filament sensor without the supplied adapter board.
+//#define EZOUT_ENABLE_SILK
 
 // EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
-//#define GEE_A10_V1_OEM
-//#define GEE_A10_V2_OEM
-//#define GEE_A20_OEM
+//#define AQUILA_X1_OEM
 //#define CUSTOM_PROBE
+
+// Aquila X1 - LCD Setting
+// If you converted your Aquila X1 LCD to the 12864 Version, Uncomment the below line.
+// Get the conversion kit here: https://www.th3dstudio.com/product/voxelab-aquila-x1-12864-lcd-conversion-upgrade-kit/
+//#define AQUILA_X1_12864_LCD
+
+// EZNeo Settings
+// If you are using an EZNeo strip on your printer, uncomment the line for what strip you are using.
+// Specify your IO pin below as well as this board does not have a dedicated NEOPIXEL header on it.
+//#define EZNEO_220
+
+// EZNeo Manual IO Pin Setting 
+// If you have the EZNeo wired with your own 5V power provided, specify the pin used below.
+//#define NEOPIXEL_PIN PA4
 
 //===========================================================================
 // *************************  END PRINTER SECTION   *************************
@@ -207,14 +225,15 @@
 #define LINEAR_ADVANCE_K 0
 
 // BL TOUCH ----------------------------------------
-// If you want to use the BL-Touch uncomment the 2 lines below and set your servo pin.
-// You also need to uncomment #define CUSTOM_PROBE above and then enter in your offsets above in the CUSTOM PROBE section.
+// There are 2 ways to connect the BL Touch to the V4.2.X boards - All on the 5 pin header or using 3 pins on the 5 pin header + Z Endstop port
+// For details on these 2 types of connections refer to our help center article here: https://www.th3dstudio.com/hc/product-information/3rd-party-control-boards/creality-boards/creality-v4-2-2-v4-2-7-board-bl-touch-wiring-options/
+// If you want to use the BL-Touch uncomment the BLTOUCH line below and uncomment #define CUSTOM_PROBE above and then enter in your offsets above in the CUSTOM PROBE section.
 //#define BLTOUCH
-// Here is where you set your servo pin.
-//#define SERVO0_PIN 11
+// If you are using the 5 pin header for all the BL Touch connections, uncomment the below line
+//#define BLTOUCH_ON_5PIN
 
 // MANUAL MESH LEVELING ----------------------------
-// If you want to use manual mesh leveling you can enable the below option. This is for generating a MANUAL mesh WITHOUT a probe. To change the mesh inset value change the EZABL_PROBE_EDGE setting above.
+// If you want to use manual mesh leveling you can enable the below option. This is for generating a MANUAL mesh WITHOUT a probe.
 // Mesh Bed Leveling Documentation: http://marlinfw.org/docs/gcode/G029-mbl.html 
 // NOTE: If you want to automate the leveling process our EZABL kits do this for you. Check them out here: http://EZABL.TH3DStudio.com
 //#define MANUAL_MESH_LEVELING
@@ -239,46 +258,41 @@
  * ****************************DO NOT TOUCH ANYTHING BELOW THIS COMMENT**************************
  * Core machine settings are below. Do NOT modify these unless you understand what you are doing.
  */
+ 
+/**
+ * Sanity Checks
+ */
+ 
+//V101 with TMC Driver Sanity Checks
+#if ANY(AQUILA_X1)
+  #define V1XX_TMC220X_DRIVERS
+#endif
+
+#if BOTH(V1XX_TMC220X_DRIVERS, LINEAR_ADVANCE)
+  #error "Linear Advance does NOT work on the V4.2.X boards with the TMC drivers due to how Creality has them setup. Disable Linear Advance to continue or comment this line out to continue compile at your own risk."
+#endif
+
+#if ENABLED(EZOUT_ENABLE_SILK)
+  #define EZOUT_ENABLE_J1
+#endif
 
 /**
  * Machine Configuration Settings
  */
 
-// A10V1/A10V2/A20 Printer Settings
-#if ENABLED(GEEETECH_A10_V1) || ENABLED(GEEETECH_A10_V2) || ENABLED(GEEETECH_A20)
-  #define SERIAL_PORT 0
-  #define SPACE_SAVER_2560
+#if ENABLED(EZOUT_ENABLE_J1)
+  #define EZOUT_ENABLE
+#endif
+ 
+// Aquila X1 Settings
+#if ENABLED(AQUILA_X1)
+  #define SERIAL_PORT 1
+  #define ADC_RESOLUTION 10
 
-  #define BAUDRATE 250000
-  
-  #if ENABLED(GEEETECH_A10_V1) || ENABLED(GEEETECH_A10_V2)
-	  #define REPRAP_DISCOUNT_SMART_CONTROLLER
-	  #define LCD2004
-  #endif
-  
-  #if ENABLED(GEEETECH_A20)
-	  #define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
-  #endif
-  
-  #if ENABLED(REVERSE_KNOB_DIRECTION)
-    #define REVERSE_ENCODER_DIRECTION
-  #endif
-  
-  #define ENCODER_PULSES_PER_STEP 4
-  #define ENCODER_STEPS_PER_MENU_ITEM 1
+  #define BAUDRATE 115200
 
-  #if ENABLED(GEEETECH_A10_V1)
-	  #ifndef MOTHERBOARD
-  		#define MOTHERBOARD BOARD_GT2560_REV_B
-  	#endif
-  #elif ENABLED(GEEETECH_A10_V2)
-	  #ifndef MOTHERBOARD
-  		#define MOTHERBOARD BOARD_GT2560_V3
-  	#endif
-  #elif ENABLED(GEEETECH_A20)
-	  #ifndef MOTHERBOARD
-  		#define MOTHERBOARD BOARD_GT2560_V3_A20
-  	#endif
+  #ifndef MOTHERBOARD
+    #define MOTHERBOARD BOARD_CREALITY_V422
   #endif
 
   #if ENABLED(CUSTOM_ESTEPS)
@@ -286,43 +300,38 @@
   #else
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
   #endif
+  
+  #define DEFAULT_MAX_FEEDRATE          { 200, 200, 15, 100 }
+  #define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 500, 5000 }
 
-  #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 100 }
-  #define DEFAULT_MAX_ACCELERATION      { 2000, 2000, 1000, 5000 }
-
-  #define DEFAULT_ACCELERATION          1000
-  #define DEFAULT_RETRACT_ACCELERATION  1000
+  #define DEFAULT_ACCELERATION          500
+  #define DEFAULT_RETRACT_ACCELERATION  500
   #define DEFAULT_TRAVEL_ACCELERATION   1000
 
   #define CLASSIC_JERK
   #if ENABLED(CLASSIC_JERK)
-    #define DEFAULT_XJERK 10.0
-    #define DEFAULT_YJERK 10.0
+    #define DEFAULT_XJERK  7.0
+    #define DEFAULT_YJERK  7.0
     #define DEFAULT_ZJERK  0.3
   #endif
 
   #define DEFAULT_EJERK    5.0
 
+  #define SHOW_BOOTSCREEN
+
   #define EXTRUDERS 1
 
-  #if ENABLED(GEEETECH_A20)
-    #define X_BED_SIZE 250
-	  #define Y_BED_SIZE 250
-	  #define Z_MAX_POS 250
-  #endif
+  #define X_BED_SIZE 220
+  #define Y_BED_SIZE 220
+  #define Z_MAX_POS 250
+  #define MACHINE_SIZE "220x220x250"
 
-  #if ENABLED(GEEETECH_A10_V1) || ENABLED(GEEETECH_A10_V2)
-	  #define X_BED_SIZE 220
-	  #define Y_BED_SIZE 220
-	  #define Z_MAX_POS 260
-  #endif
-  
   #if ENABLED(HOME_ADJUST)
     #define X_MIN_POS X_HOME_LOCATION
     #define Y_MIN_POS Y_HOME_LOCATION
   #else
-    #define X_MIN_POS -7
-    #define Y_MIN_POS -5
+    #define X_MIN_POS 0
+    #define Y_MIN_POS 0
   #endif
 
   #define USE_XMIN_PLUG
@@ -332,7 +341,7 @@
   #define X_HOME_DIR -1
   #define Y_HOME_DIR -1
   #define Z_HOME_DIR -1
-  
+
   #if NONE(V6_HOTEND, TH3D_HOTEND_THERMISTOR, KNOWN_HOTEND_THERMISTOR)
     #define TEMP_SENSOR_0 1
   #else
@@ -372,35 +381,48 @@
   #define TEMP_SENSOR_PROBE 0
   #define TEMP_SENSOR_CHAMBER 0
 
+  #define DEFAULT_Kp 28.72
+  #define DEFAULT_Ki 2.62
+  #define DEFAULT_Kd 78.81
+  
+  #define DEFAULT_bedKp 462.10
+  #define DEFAULT_bedKi 85.47
+  #define DEFAULT_bedKd 624.59
+
   #define ENDSTOPPULLUPS
 
-  #define X_MIN_ENDSTOP_INVERTING true
-  #define Y_MIN_ENDSTOP_INVERTING true
-  #define Z_MIN_ENDSTOP_INVERTING true
-  #define X_MAX_ENDSTOP_INVERTING true
-  #define Y_MAX_ENDSTOP_INVERTING true
-  #define Z_MAX_ENDSTOP_INVERTING true
-  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
-  #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+  #define X_MIN_ENDSTOP_INVERTING false
+  #define Y_MIN_ENDSTOP_INVERTING false
+  #define Z_MIN_ENDSTOP_INVERTING false
+  #define X_MAX_ENDSTOP_INVERTING false
+  #define Y_MAX_ENDSTOP_INVERTING false
+  #define Z_MAX_ENDSTOP_INVERTING false
+  #define Z_MIN_PROBE_ENDSTOP_INVERTING false
 
-  #define X_DRIVER_TYPE  A4988
-  #define Y_DRIVER_TYPE  A4988
-  #define Z_DRIVER_TYPE  A4988
-  #define E0_DRIVER_TYPE A4988
+  #if ENABLED(BLTOUCH_ON_5PIN)
+    #define USE_PROBE_FOR_Z_HOMING
+  #else
+    #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+  #endif
+
+  #define X_DRIVER_TYPE TMC2208_STANDALONE
+  #define Y_DRIVER_TYPE TMC2208_STANDALONE
+  #define Z_DRIVER_TYPE TMC2208_STANDALONE
+  #define E0_DRIVER_TYPE TMC2208_STANDALONE
 
   #define X_ENABLE_ON 0
   #define Y_ENABLE_ON 0
   #define Z_ENABLE_ON 0
   #define E_ENABLE_ON 0
 
-  #define INVERT_X_DIR true
-  #define INVERT_Y_DIR true
-  #define INVERT_Z_DIR false
-  
+  #define INVERT_X_DIR false
+  #define INVERT_Y_DIR false
+  #define INVERT_Z_DIR true
+
   #if ENABLED(REVERSE_E_MOTOR_DIRECTION)
-    #define INVERT_E0_DIR false
-  #else
     #define INVERT_E0_DIR true
+  #else
+    #define INVERT_E0_DIR false
   #endif
   
   #define INVERT_E1_DIR false
@@ -411,14 +433,41 @@
   #define INVERT_E6_DIR false
   #define INVERT_E7_DIR false
 
-  #if ANY(GEEETECH_A10_V2, GEEETECH_A20)
+  #if ENABLED(AQUILA_X1_12864_LCD)
+    #define CR10_STOCKDISPLAY
+    #define RET6_12864_LCD
+  #else
+    #define LCD_SERIAL_PORT 3
+    #define NO_LCD_REINIT 1
+    #define REVERSE_ENCODER_DIRECTION
+    //Different LCD Display Options - Change at your own risk!!!
+    //#define DWIN_CREALITY_LCD           // Creality UI
+    //#define DWIN_CREALITY_LCD_ENHANCED  // Enhanced UI
+    //#define DWIN_CREALITY_LCD_JYERSUI   // Jyers UI by Jacob Myers
+    //#define DWIN_MARLINUI_PORTRAIT      // MarlinUI (portrait orientation)
+    #define DWIN_MARLINUI_LANDSCAPE     // MarlinUI (landscape orientation)
+  #endif
+
+  #if ANY(DWIN_CREALITY_LCD_JYERSUI, DWIN_CREALITY_LCD_ENHANCED)
+    #define ENABLE_PIDBED
+    #define POWER_LOSS_RECOVERY
+  #endif
+
+  #define ENCODER_PULSES_PER_STEP 4
+  #define ENCODER_STEPS_PER_MENU_ITEM 1
+
+  #define Z_PROBE_OFFSET_RANGE_MIN -10
+  #define Z_PROBE_OFFSET_RANGE_MAX 10
+  #define EXTRUDE_MAXLENGTH 1000
+  
+  #if ENABLED(EZOUT_ENABLE)
     #define FILAMENT_RUNOUT_SENSOR
   #endif
 
   #if ENABLED(FILAMENT_RUNOUT_SENSOR)
     #define FIL_RUNOUT_ENABLED_DEFAULT true // Enable the sensor on startup. Override with M412 followed by M500.
     #define NUM_RUNOUT_SENSORS   1          // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
-    #define FIL_RUNOUT_STATE     HIGH       // Pin state indicating that filament is NOT present.
+    #define FIL_RUNOUT_STATE     LOW       // Pin state indicating that filament is NOT present.
     #define FIL_RUNOUT_PULLUP               // Use internal pullup for filament runout pins.
     //#define FIL_RUNOUT_PULLDOWN           // Use internal pulldown for filament runout pins.
 
@@ -465,9 +514,9 @@
       #define PRINTER_EVENT_LEDS
     #endif
   #endif
-
+  
 #endif
-// End Sunlu Printer Settings
+// End Aquila X1 Settings
 
 /*
  * All other settings are stored in the Configuration_backend.h file. Do not change unless you know what you are doing.

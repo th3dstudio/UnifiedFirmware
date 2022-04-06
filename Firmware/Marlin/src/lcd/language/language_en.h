@@ -251,8 +251,13 @@ namespace Language_en {
   LSTR MSG_UBL_7_SAVE_MESH                = _UxGT("7. Save Bed Mesh");
 
   LSTR MSG_LED_CONTROL                    = _UxGT("LED Control");
-  LSTR MSG_LEDS                           = _UxGT("Lights");
-  LSTR MSG_LED_PRESETS                    = _UxGT("Light Presets");
+  #if ENABLED(EZNEO_220)
+    LSTR MSG_LEDS                           = _UxGT("EZNeo");
+    LSTR MSG_LED_PRESETS                    = _UxGT("EZNeo Presets");
+  #else
+    LSTR MSG_LEDS                           = _UxGT("Lights");
+    LSTR MSG_LED_PRESETS                    = _UxGT("Light Presets");
+  #endif
   LSTR MSG_SET_LEDS_RED                   = _UxGT("Red");
   LSTR MSG_SET_LEDS_ORANGE                = _UxGT("Orange");
   LSTR MSG_SET_LEDS_YELLOW                = _UxGT("Yellow");
@@ -266,7 +271,7 @@ namespace Language_en {
   LSTR MSG_LEDS2                          = _UxGT("Lights #2");
   LSTR MSG_NEO2_PRESETS                   = _UxGT("Light #2 Presets");
   LSTR MSG_NEO2_BRIGHTNESS                = _UxGT("Brightness");
-  LSTR MSG_CUSTOM_LEDS                    = _UxGT("Custom Lights");
+  LSTR MSG_CUSTOM_LEDS                    = _UxGT("Custom Color");
   LSTR MSG_INTENSITY_R                    = _UxGT("Red Intensity");
   LSTR MSG_INTENSITY_G                    = _UxGT("Green Intensity");
   LSTR MSG_INTENSITY_B                    = _UxGT("Blue Intensity");

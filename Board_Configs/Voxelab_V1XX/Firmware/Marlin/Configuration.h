@@ -23,17 +23,11 @@
 //#define AQUILA_X1
 
 //------------------------------ Upgrade Settings -------------------------------
-// EZOut Filament Sensor Kit - LCD Header Connection
-// If you are using our EZOut V1/V2 filament sensor kit please follow the install guide
-// and then uncomment the #define EZOUT_ENABLE line below.
+// EZOut Filament Sensor Kit - SILK Plug Connection
+// If you are using our EZOut V2 filament sensor kit please follow the install guide. 
+// You connect the cable to the "SILK" header next to the screw terminals and then uncomment the #define EZOUT_ENABLE_SILK line below.
 // Do NOT ever connect our filament sensor without the supplied adapter board.
-//#define EZOUT_ENABLE
-
-// EZOut Filament Sensor Kit - J1 Plug Connection
-// If you are using our EZOut V2 filament sensor kit please follow the install guide
-// and then uncomment the #define EZOUT_ENABLE_J1 line below.
-// Do NOT ever connect our filament sensor without the supplied adapter board.
-//#define EZOUT_ENABLE_J1
+//#define EZOUT_ENABLE_SILK
 
 // EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
 //#define AQUILA_X1_OEM
@@ -41,7 +35,7 @@
 
 // Aquila X1 - LCD Setting
 // If you converted your Aquila X1 LCD to the 12864 Version, Uncomment the below line.
-// Get the conversion kit here: COMING SOON
+// Get the conversion kit here: https://www.th3dstudio.com/product/voxelab-aquila-x1-12864-lcd-conversion-upgrade-kit/
 //#define AQUILA_X1_12864_LCD
 
 // EZNeo Settings
@@ -269,13 +263,17 @@
  * Sanity Checks
  */
  
-//V42X with TMC Driver Sanity Checks
+//V101 with TMC Driver Sanity Checks
 #if ANY(AQUILA_X1)
-  #define V42X_TMC220X_DRIVERS
+  #define V1XX_TMC220X_DRIVERS
 #endif
 
-#if BOTH(V42X_TMC220X_DRIVERS, LINEAR_ADVANCE)
+#if BOTH(V1XX_TMC220X_DRIVERS, LINEAR_ADVANCE)
   #error "Linear Advance does NOT work on the V4.2.X boards with the TMC drivers due to how Creality has them setup. Disable Linear Advance to continue or comment this line out to continue compile at your own risk."
+#endif
+
+#if ENABLED(EZOUT_ENABLE_SILK)
+  #define EZOUT_ENABLE_J1
 #endif
 
 /**
@@ -464,9 +462,6 @@
   
   #if ENABLED(EZOUT_ENABLE)
     #define FILAMENT_RUNOUT_SENSOR
-    #if DISABLED(EZOUT_ENABLE_J1)
-      #define SPEAKER_KILL
-    #endif
   #endif
 
   #if ENABLED(FILAMENT_RUNOUT_SENSOR)

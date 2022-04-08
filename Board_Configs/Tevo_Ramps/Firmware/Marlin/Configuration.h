@@ -11,7 +11,7 @@
 //============================ TH3D Configuration ===========================
 //===========================================================================
 
-// ONLY UNCOMMENT THINGS IN ONE PRINTER SECTION!!! IF YOU HAVE MULTIPLE MACHINES FLASH THEM ONE AT A TIME.
+// ONLY UNCOMMENT ONE PRINTER AT A TIME!!! IF YOU HAVE MULTIPLE MACHINES FLASH THEM ONE AT A TIME.
 // UNCOMMENT MEANS REMOVING THE // IN FRONT OF A #define XXXXXX LINE.
 
 //===========================================================================

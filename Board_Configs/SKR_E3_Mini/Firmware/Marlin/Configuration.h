@@ -229,6 +229,13 @@
 // If your printer is homing to the endstops hard uncomment this to change the homing speed/divisor to make it less aggressive.
 //#define SLOWER_HOMING
 
+// Axis Direction Settings
+// If you need to reverse the direction of a motor uncomment the below option for that axis.
+// E motor settings are below in the Extruder Settings Section
+//#define REVERSE_X_MOTOR
+//#define REVERSE_Y_MOTOR
+//#define REVERSE_Z_MOTOR
+
 //===========================================================================
 //****************** COMMUNITY REQUESTED FEATURES ***************************
 //*** COMMUNITY REQUESTED FEATURES ARE ALL NOT SUPPORTED BY TH3D SUPPORT ****
@@ -623,13 +630,30 @@
   #define Z_ENABLE_ON 0
   #define E_ENABLE_ON 0
 
-  #define INVERT_X_DIR true
-  #define INVERT_Y_DIR true
-  
-  #if ENABLED(ENDER5)
-    #define INVERT_Z_DIR true
-  #else  
-    #define INVERT_Z_DIR false
+  #if ENABLED(REVERSE_X_MOTOR)
+    #define INVERT_X_DIR false
+  #else
+    #define INVERT_X_DIR true
+  #endif
+
+  #if ENABLED(REVERSE_Y_MOTOR)
+    #define INVERT_Y_DIR false
+  #else
+    #define INVERT_Y_DIR true
+  #endif
+
+  #if ENABLED(ENDER5) || ENABLED(ENDER5_PLUS)
+    #if ENABLED(REVERSE_Z_MOTOR)
+      #define INVERT_Z_DIR false
+    #else
+      #define INVERT_Z_DIR true
+    #endif
+  #else
+    #if ENABLED(REVERSE_Z_MOTOR)
+      #define INVERT_Z_DIR true
+    #else
+      #define INVERT_Z_DIR false
+    #endif
   #endif
 
   #if ENABLED(REVERSE_E_MOTOR_DIRECTION)

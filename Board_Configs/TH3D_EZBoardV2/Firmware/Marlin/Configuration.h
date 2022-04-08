@@ -721,7 +721,7 @@
     #define INVERT_Y_DIR true
   #endif
 
-  #if ENABLED(ENDER5)
+  #if ENABLED(ENDER5) || ENABLED(ENDER5_PLUS)
     #if ENABLED(REVERSE_Z_MOTOR)
       #define INVERT_Z_DIR false
     #else

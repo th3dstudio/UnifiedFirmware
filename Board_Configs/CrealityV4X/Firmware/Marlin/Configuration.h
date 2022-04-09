@@ -9,7 +9,7 @@
 //============================ TH3D Configuration ===========================
 //===========================================================================
 
-// ONLY UNCOMMENT THINGS IN ONE PRINTER SECTION!!! IF YOU HAVE MULTIPLE MACHINES FLASH THEM ONE AT A TIME.
+// ONLY UNCOMMENT ONE PRINTER AT A TIME!!! IF YOU HAVE MULTIPLE MACHINES FLASH THEM ONE AT A TIME.
 // UNCOMMENT MEANS REMOVING THE // IN FRONT OF A #define XXXXXX LINE.
 
 // If you have a 512K CPU and/or a GD32 CPU please read the notes in the platformio.ini file for details on
@@ -254,6 +254,13 @@
 
 // If your printer is homing to the endstops hard uncomment this to change the homing speed/divisor to make it less aggressive.
 //#define SLOWER_HOMING
+
+// Axis Direction Settings
+// If you need to reverse the direction of a motor uncomment the below option for that axis.
+// E motor settings are below in the Extruder Settings Section
+//#define REVERSE_X_MOTOR
+//#define REVERSE_Y_MOTOR
+//#define REVERSE_Z_MOTOR
 
 //===========================================================================
 //****************** COMMUNITY REQUESTED FEATURES ***************************
@@ -539,10 +546,24 @@
   #define Y_ENABLE_ON 0
   #define Z_ENABLE_ON 0
   #define E_ENABLE_ON 0
+  
+  #if ENABLED(REVERSE_X_MOTOR)
+    #define INVERT_X_DIR true
+  #else
+    #define INVERT_X_DIR false
+  #endif
 
-  #define INVERT_X_DIR false
-  #define INVERT_Y_DIR false
-  #define INVERT_Z_DIR true
+  #if ENABLED(REVERSE_Y_MOTOR)
+    #define INVERT_Y_DIR true
+  #else
+    #define INVERT_Y_DIR false
+  #endif
+  
+  #if ENABLED(REVERSE_Z_MOTOR)
+    #define INVERT_Z_DIR false
+  #else
+    #define INVERT_Z_DIR true
+  #endif
 
   #if ENABLED(REVERSE_E_MOTOR_DIRECTION)
     #define INVERT_E0_DIR true
@@ -778,10 +799,24 @@
   #define E_ENABLE_ON 0
 
   #define COREYX
+  
+  #if ENABLED(REVERSE_X_MOTOR)
+    #define INVERT_X_DIR true
+  #else
+    #define INVERT_X_DIR false
+  #endif
 
-  #define INVERT_X_DIR false
-  #define INVERT_Y_DIR false 
-  #define INVERT_Z_DIR false
+  #if ENABLED(REVERSE_Y_MOTOR)
+    #define INVERT_Y_DIR true
+  #else
+    #define INVERT_Y_DIR false
+  #endif
+  
+  #if ENABLED(REVERSE_Z_MOTOR)
+    #define INVERT_Z_DIR true
+  #else
+    #define INVERT_Z_DIR false
+  #endif
 
   #if ENABLED(REVERSE_E_MOTOR_DIRECTION)
     #define INVERT_E0_DIR false
@@ -996,9 +1031,23 @@
   #define Z_ENABLE_ON 0
   #define E_ENABLE_ON 0
 
-  #define INVERT_X_DIR false
-  #define INVERT_Y_DIR false
-  #define INVERT_Z_DIR true
+  #if ENABLED(REVERSE_X_MOTOR)
+    #define INVERT_X_DIR true
+  #else
+    #define INVERT_X_DIR false
+  #endif
+
+  #if ENABLED(REVERSE_Y_MOTOR)
+    #define INVERT_Y_DIR true
+  #else
+    #define INVERT_Y_DIR false
+  #endif
+  
+  #if ENABLED(REVERSE_Z_MOTOR)
+    #define INVERT_Z_DIR false
+  #else
+    #define INVERT_Z_DIR true
+  #endif
   
   #if ENABLED(REVERSE_E_MOTOR_DIRECTION)
     #define INVERT_E0_DIR true
@@ -1321,13 +1370,30 @@
   #define Z_ENABLE_ON 0
   #define E_ENABLE_ON 0
 
-  #define INVERT_X_DIR false
-  #define INVERT_Y_DIR false
+  #if ENABLED(REVERSE_X_MOTOR)
+    #define INVERT_X_DIR true
+  #else
+    #define INVERT_X_DIR false
+  #endif
+
+  #if ENABLED(REVERSE_Y_MOTOR)
+    #define INVERT_Y_DIR true
+  #else
+    #define INVERT_Y_DIR false
+  #endif
   
-  #if ENABLED(ENDER5_V422_BOARD) || ENABLED(ENDER5_V427_BOARD)
-    #define INVERT_Z_DIR false
-  #else  
-    #define INVERT_Z_DIR true
+  #if ENABLED(ENDER5) || ENABLED(ENDER5_PLUS)
+    #if ENABLED(REVERSE_Z_MOTOR)
+      #define INVERT_Z_DIR true
+    #else
+      #define INVERT_Z_DIR false
+    #endif
+  #else
+    #if ENABLED(REVERSE_Z_MOTOR)
+      #define INVERT_Z_DIR false
+    #else
+      #define INVERT_Z_DIR true
+    #endif
   #endif
 
   #if ENABLED(REVERSE_E_MOTOR_DIRECTION)
@@ -1601,9 +1667,23 @@
   #define Z_ENABLE_ON 0
   #define E_ENABLE_ON 0
 
-  #define INVERT_X_DIR false
-  #define INVERT_Y_DIR false
-  #define INVERT_Z_DIR true
+  #if ENABLED(REVERSE_X_MOTOR)
+    #define INVERT_X_DIR true
+  #else
+    #define INVERT_X_DIR false
+  #endif
+
+  #if ENABLED(REVERSE_Y_MOTOR)
+    #define INVERT_Y_DIR true
+  #else
+    #define INVERT_Y_DIR false
+  #endif
+  
+  #if ENABLED(REVERSE_Z_MOTOR)
+    #define INVERT_Z_DIR false
+  #else
+    #define INVERT_Z_DIR true
+  #endif
 
   #if ENABLED(REVERSE_E_MOTOR_DIRECTION)
     #define INVERT_E0_DIR true

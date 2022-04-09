@@ -11,7 +11,7 @@
 //============================ TH3D Configuration ===========================
 //===========================================================================
 
-// ONLY UNCOMMENT THINGS IN ONE PRINTER SECTION!!! IF YOU HAVE MULTIPLE MACHINES FLASH THEM ONE AT A TIME.
+// ONLY UNCOMMENT ONE PRINTER AT A TIME!!! IF YOU HAVE MULTIPLE MACHINES FLASH THEM ONE AT A TIME.
 // UNCOMMENT MEANS REMOVING THE // IN FRONT OF A #define XXXXXX LINE.
 
 //===========================================================================
@@ -721,7 +721,7 @@
     #define INVERT_Y_DIR true
   #endif
 
-  #if ENABLED(ENDER5)
+  #if ENABLED(ENDER5) || ENABLED(ENDER5_PLUS)
     #if ENABLED(REVERSE_Z_MOTOR)
       #define INVERT_Z_DIR false
     #else

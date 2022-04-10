@@ -350,26 +350,6 @@
   #else
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, CREALITY_Z_STEPS, 95 }
   #endif
-  #define DEFAULT_MAX_FEEDRATE          { 200, 200, 15, 100 }
-  #define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 500, 5000 }
-
-  #define DEFAULT_ACCELERATION          500
-  #define DEFAULT_RETRACT_ACCELERATION  500
-  #define DEFAULT_TRAVEL_ACCELERATION   1000
-
-  #define CLASSIC_JERK
-  #if ENABLED(CLASSIC_JERK)
-    #if ENABLED(CR10_S4) || ENABLED(CR10_S5)
-      #define DEFAULT_XJERK                 4.0
-      #define DEFAULT_YJERK                 4.0
-    #else
-      #define DEFAULT_XJERK                 6.0
-      #define DEFAULT_YJERK                 6.0
-    #endif
-    #define DEFAULT_ZJERK  0.3
-  #endif
-
-  #define DEFAULT_EJERK    5.0
 
   #define EXTRUDERS 1
 
@@ -589,7 +569,8 @@
 // End Creality Printer Settings
 
 /*
- * All other settings are stored in the Configuration_backend.h file. Do not change unless you know what you are doing.
+ * All other settings are stored in the Configuration_backend.h and Configuration_speed.h files. Do not change unless you know what you are doing.
  */
  
 #include "Configuration_backend.h"
+#include "Configuration_speed.h"

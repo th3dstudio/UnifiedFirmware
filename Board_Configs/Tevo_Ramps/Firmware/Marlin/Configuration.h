@@ -279,22 +279,6 @@
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 400 }
   #endif
 
-  #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 100 }
-  #define DEFAULT_MAX_ACCELERATION      { 2000, 2000, 1000, 5000 }
-
-  #define DEFAULT_ACCELERATION          1000
-  #define DEFAULT_RETRACT_ACCELERATION  1000
-  #define DEFAULT_TRAVEL_ACCELERATION   1000
-
-  #define CLASSIC_JERK
-  #if ENABLED(CLASSIC_JERK)
-    #define DEFAULT_XJERK 10.0
-    #define DEFAULT_YJERK 10.0
-    #define DEFAULT_ZJERK  0.3
-  #endif
-
-  #define DEFAULT_EJERK    5.0
-
   #define EXTRUDERS 1
 
   #define X_BED_SIZE 300
@@ -450,22 +434,6 @@
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 408 }
   #endif
 
-  #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 100 }
-  #define DEFAULT_MAX_ACCELERATION      { 2000, 2000, 1000, 5000 }
-
-  #define DEFAULT_ACCELERATION          1000
-  #define DEFAULT_RETRACT_ACCELERATION  1000
-  #define DEFAULT_TRAVEL_ACCELERATION   1000
-
-  #define CLASSIC_JERK
-  #if ENABLED(CLASSIC_JERK)
-    #define DEFAULT_XJERK 10.0
-    #define DEFAULT_YJERK 10.0
-    #define DEFAULT_ZJERK  0.3
-  #endif
-
-  #define DEFAULT_EJERK    5.0
-
   #define EXTRUDERS 1
 
   #define X_BED_SIZE 240
@@ -599,7 +567,8 @@
 // End Tarantula Pro Printer Settings
 
 /*
- * All other settings are stored in the Configuration_backend.h file. Do not change unless you know what you are doing.
+ * All other settings are stored in the Configuration_backend.h and Configuration_speed.h files. Do not change unless you know what you are doing.
  */
  
 #include "Configuration_backend.h"
+#include "Configuration_speed.h"

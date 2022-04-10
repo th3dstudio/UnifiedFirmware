@@ -461,11 +461,6 @@
 #define CR10_STOCKDISPLAY
   
 #define DEFAULT_AXIS_STEPS_PER_UNIT   { X_STEPS_MM, Y_STEPS_MM, Z_STEPS_MM, E_STEPS_MM }
-  
-#define DEFAULT_MAX_FEEDRATE          { 200, 200, 15, 100 }
-#define DEFAULT_MAX_ACCELERATION      { MAX_X_ACCEL, MAX_Y_ACCEL, 500, 5000 }
-
-#define CLASSIC_JERK
 
 #define SHOW_BOOTSCREEN
   
@@ -644,7 +639,8 @@
 //End EZBoard V2 DIY Config
 
 /*
- * All other settings are stored in the Configuration_backend.h file. Do not change unless you know what you are doing.
+ * All other settings are stored in the Configuration_backend.h and Configuration_speed.h files. Do not change unless you know what you are doing.
  */
  
 #include "Configuration_backend.h"
+#include "Configuration_speed.h"

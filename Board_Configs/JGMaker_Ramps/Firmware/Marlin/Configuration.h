@@ -274,8 +274,8 @@
     #define X_MIN_POS X_HOME_LOCATION
     #define Y_MIN_POS Y_HOME_LOCATION
   #else
-    #define X_MIN_POS -13
-    #define Y_MIN_POS -13
+    #define X_MIN_POS -11
+    #define Y_MIN_POS 0
   #endif
 
   #define USE_XMIN_PLUG
@@ -369,7 +369,7 @@
   #if ENABLED(FILAMENT_RUNOUT_SENSOR)
     #define FIL_RUNOUT_ENABLED_DEFAULT true // Enable the sensor on startup. Override with M412 followed by M500.
     #define NUM_RUNOUT_SENSORS   1          // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
-    #define FIL_RUNOUT_STATE     LOW       // Pin state indicating that filament is NOT present.
+    #define FIL_RUNOUT_STATE     HIGH       // Pin state indicating that filament is NOT present.
     #define FIL_RUNOUT_PULLUP               // Use internal pullup for filament runout pins.
     //#define FIL_RUNOUT_PULLDOWN           // Use internal pulldown for filament runout pins.
     #define FIL_RUNOUT_PIN 2                // Sunlu stock sensor on MT_DET

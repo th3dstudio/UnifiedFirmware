@@ -21,7 +21,7 @@
 #endif
 #if ENABLED(JGM_MAGIC_OEM)
   #define ABL_ENABLE
-  #define NOZZLE_TO_PROBE_OFFSET { 0, 0, 0 } //TODO 4/11/22
+  #define NOZZLE_TO_PROBE_OFFSET { 45, 0, 0 }
 #endif
 #if ENABLED(AQUILA_X1_OEM)
   #define ABL_ENABLE

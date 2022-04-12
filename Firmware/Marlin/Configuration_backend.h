@@ -15,6 +15,14 @@
 #if ENABLED(CUSTOM_PROBE)
   #define ABL_ENABLE
 #endif
+#if ENABLED(ENDER6_PETSFANG)
+  #define ABL_ENABLE
+  #define NOZZLE_TO_PROBE_OFFSET { -45, -2, 0 }
+#endif
+#if ENABLED(JGM_MAGIC_OEM)
+  #define ABL_ENABLE
+  #define NOZZLE_TO_PROBE_OFFSET { 0, 0, 0 } //TODO 4/11/22
+#endif
 #if ENABLED(AQUILA_X1_OEM)
   #define ABL_ENABLE
   #define NOZZLE_TO_PROBE_OFFSET { -45, -11, 0 }

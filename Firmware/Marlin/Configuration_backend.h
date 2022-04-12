@@ -6,7 +6,7 @@
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-#define UNIFIED_VERSION "TH3D UFW 2.45a"
+#define UNIFIED_VERSION "TH3D UFW 2.46"
 
 /**
  * ABL Probe Settings
@@ -14,6 +14,14 @@
 
 #if ENABLED(CUSTOM_PROBE)
   #define ABL_ENABLE
+#endif
+#if ENABLED(ENDER6_PETSFANG)
+  #define ABL_ENABLE
+  #define NOZZLE_TO_PROBE_OFFSET { -45, -2, 0 }
+#endif
+#if ENABLED(JGM_MAGIC_OEM)
+  #define ABL_ENABLE
+  #define NOZZLE_TO_PROBE_OFFSET { 45, 0, 0 }
 #endif
 #if ENABLED(AQUILA_X1_OEM)
   #define ABL_ENABLE

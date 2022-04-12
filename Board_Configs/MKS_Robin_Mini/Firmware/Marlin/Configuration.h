@@ -320,21 +320,6 @@
   #else
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
 	#endif
-  #define DEFAULT_MAX_FEEDRATE          { 300, 300, 15, 100 }
-  #define DEFAULT_MAX_ACCELERATION      { 3000, 3000, 500, 10000 }
-
-  #define DEFAULT_ACCELERATION          500
-  #define DEFAULT_RETRACT_ACCELERATION  500
-  #define DEFAULT_TRAVEL_ACCELERATION   500
-
-  #define CLASSIC_JERK
-  #if ENABLED(CLASSIC_JERK)
-    #define DEFAULT_XJERK 10.0
-    #define DEFAULT_YJERK 10.0
-    #define DEFAULT_ZJERK  0.3
-  #endif
-
-  #define DEFAULT_EJERK    5.0
 
   #define SHOW_BOOTSCREEN
 
@@ -487,7 +472,8 @@
 // End Kingroon KP3 Settings
  
 /*
- * All other settings are stored in the Configuration_backend.h file. Do not change unless you know what you are doing.
+ * All other settings are stored in the Configuration_backend.h and Configuration_speed.h files. Do not change unless you know what you are doing.
  */
  
 #include "Configuration_backend.h"
+#include "Configuration_speed.h"

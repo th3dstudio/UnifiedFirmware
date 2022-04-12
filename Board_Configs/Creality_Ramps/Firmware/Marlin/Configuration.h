@@ -462,27 +462,6 @@
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, CREALITY_Z_STEPS, DUAL_EXTRUDER_E0_STEPS, DUAL_EXTRUDER_E1_STEPS }
   #endif
 
-  #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 100 }
-  #define DEFAULT_MAX_ACCELERATION      { 2000, 2000, 1000, 5000 }
-
-  #define DEFAULT_ACCELERATION          1000
-  #define DEFAULT_RETRACT_ACCELERATION  1000
-  #define DEFAULT_TRAVEL_ACCELERATION   1000
-
-  #define CLASSIC_JERK
-  #if ENABLED(CLASSIC_JERK)
-    #if ENABLED(CR10S_S4) || ENABLED(CR10S_S5)
-      #define DEFAULT_XJERK 4.0
-      #define DEFAULT_YJERK 4.0
-    #else
-      #define DEFAULT_XJERK 6.0
-      #define DEFAULT_YJERK 6.0
-    #endif
-    #define DEFAULT_ZJERK  0.3
-  #endif
-
-  #define DEFAULT_EJERK    5.0
-
   #if ENABLED(CRX) || ENABLED(DUAL_EXTRUDER_SINGLE_NOZZLE) || ENABLED(DUAL_EXTRUDER_DUAL_NOZZLES)
     #define EXTRUDERS 2
   #else
@@ -849,23 +828,7 @@
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
   #endif
 
-  #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 100 }
-  #define DEFAULT_MAX_ACCELERATION      { 2000, 2000, 1000, 5000 }
-
-  #define DEFAULT_ACCELERATION          1000
-  #define DEFAULT_RETRACT_ACCELERATION  1000
-  #define DEFAULT_TRAVEL_ACCELERATION   1000
-
   #define COREXY
-
-  #define CLASSIC_JERK
-  #if ENABLED(CLASSIC_JERK)
-    #define DEFAULT_XJERK 10.0
-    #define DEFAULT_YJERK 10.0
-    #define DEFAULT_ZJERK  0.3
-  #endif
-
-  #define DEFAULT_EJERK    5.0
 
   #define EXTRUDERS 1
 
@@ -1031,7 +994,8 @@
 // End Ender 4 Printer Settings
 
 /*
- * All other settings are stored in the Configuration_backend.h file. Do not change unless you know what you are doing.
+ * All other settings are stored in the Configuration_backend.h and Configuration_speed.h files. Do not change unless you know what you are doing.
  */
  
 #include "Configuration_backend.h"
+#include "Configuration_speed.h"

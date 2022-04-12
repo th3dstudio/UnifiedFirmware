@@ -1,0 +1,13 @@
+{
+    "config-file":"Configuration.h",
+    "compile-profile":
+    [
+        {
+            "profile-name": "jgmaker-magic",
+            "keyword": 
+            [
+                {"find":"//#define JGMAKER_MAGIC","replace":"#define JGMAKER_MAGIC"}
+            ]
+        }
+    ]
+}

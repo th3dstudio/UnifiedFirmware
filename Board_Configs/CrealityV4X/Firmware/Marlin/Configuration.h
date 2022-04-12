@@ -80,6 +80,7 @@
 //#define ENDER5_OEM
 //#define ENDER5_PLUS_OEM
 //#define ENDER6_OEM
+//#define ENDER6_PETSFANG //Source: https://www.makerforum.tech/d/52-ender-6-5015-petsfang-mount
 //#define CUSTOM_PROBE
 
 // Ender 3 V2 - LCD Setting
@@ -410,27 +411,6 @@
   #else
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
   #endif
-  
-  #define DEFAULT_MAX_FEEDRATE          { 200, 200, 15, 100 }
-  #define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 500, 5000 }
-
-  #define DEFAULT_ACCELERATION          500
-  #define DEFAULT_RETRACT_ACCELERATION  500
-  #define DEFAULT_TRAVEL_ACCELERATION   1000
-
-  #define CLASSIC_JERK
-  #if ENABLED(CLASSIC_JERK)
-    #if ENABLED(CR10S4_V427_BOARD) || ENABLED(CR10S5_V427_BOARD)
-      #define DEFAULT_XJERK                 4.0
-      #define DEFAULT_YJERK                 4.0
-    #else
-      #define DEFAULT_XJERK                 6.0
-      #define DEFAULT_YJERK                 6.0
-    #endif
-    #define DEFAULT_ZJERK  0.3
-  #endif
-
-  #define DEFAULT_EJERK    5.0
 
   #define SHOW_BOOTSCREEN
 
@@ -684,22 +664,6 @@
       #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 140 }
     #endif
   #endif  
-  
-  #define DEFAULT_MAX_FEEDRATE          { 200, 200, 15, 100 }
-  #define DEFAULT_MAX_ACCELERATION      { 3000, 3000, 500, 5000 }
-
-  #define DEFAULT_ACCELERATION          1500
-  #define DEFAULT_RETRACT_ACCELERATION  500
-  #define DEFAULT_TRAVEL_ACCELERATION   1500
-
-  #define CLASSIC_JERK
-  #if ENABLED(CLASSIC_JERK)
-    #define DEFAULT_XJERK  10.0
-    #define DEFAULT_YJERK  10.0
-    #define DEFAULT_ZJERK  0.3
-  #endif
-
-  #define DEFAULT_EJERK    5.0
 
   #define SHOW_BOOTSCREEN
 
@@ -919,22 +883,6 @@
   #else
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
   #endif
-  
-  #define DEFAULT_MAX_FEEDRATE          { 200, 200, 15, 100 }
-  #define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 500, 5000 }
-
-  #define DEFAULT_ACCELERATION          500
-  #define DEFAULT_RETRACT_ACCELERATION  500
-  #define DEFAULT_TRAVEL_ACCELERATION   1000
-
-  #define CLASSIC_JERK
-  #if ENABLED(CLASSIC_JERK)
-    #define DEFAULT_XJERK  7.0
-    #define DEFAULT_YJERK  7.0
-    #define DEFAULT_ZJERK  0.3
-  #endif
-
-  #define DEFAULT_EJERK    5.0
 
   #define SHOW_BOOTSCREEN
 
@@ -1166,22 +1114,6 @@
   #else
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, CREALITY_Z_STEPS, 95 }
   #endif
-  
-  #define DEFAULT_MAX_FEEDRATE          { 200, 200, 15, 100 }
-  #define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 500, 5000 }
-
-  #define DEFAULT_ACCELERATION          500
-  #define DEFAULT_RETRACT_ACCELERATION  500
-  #define DEFAULT_TRAVEL_ACCELERATION   1000
-
-  #define CLASSIC_JERK
-  #if ENABLED(CLASSIC_JERK)
-    #define DEFAULT_XJERK  7.0
-    #define DEFAULT_YJERK  7.0
-    #define DEFAULT_ZJERK  0.3
-  #endif
-
-  #define DEFAULT_EJERK    5.0
 
   #define SHOW_BOOTSCREEN
 
@@ -1518,22 +1450,6 @@
   #else
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
   #endif
-  
-  #define DEFAULT_MAX_FEEDRATE          { 200, 200, 15, 100 }
-  #define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 500, 5000 }
-
-  #define DEFAULT_ACCELERATION          500
-  #define DEFAULT_RETRACT_ACCELERATION  500
-  #define DEFAULT_TRAVEL_ACCELERATION   1000
-
-  #define CLASSIC_JERK
-  #if ENABLED(CLASSIC_JERK)
-    #define DEFAULT_XJERK  7.0
-    #define DEFAULT_YJERK  7.0
-    #define DEFAULT_ZJERK  0.3
-  #endif
-
-  #define DEFAULT_EJERK    5.0
 
   #define SHOW_BOOTSCREEN
 
@@ -1789,7 +1705,8 @@
 // End Ender 3 V2 Settings
 
 /*
- * All other settings are stored in the Configuration_backend.h file. Do not change unless you know what you are doing.
+ * All other settings are stored in the Configuration_backend.h and Configuration_speed.h files. Do not change unless you know what you are doing.
  */
  
 #include "Configuration_backend.h"
+#include "Configuration_speed.h"

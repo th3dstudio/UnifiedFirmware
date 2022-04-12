@@ -15,39 +15,13 @@
 // UNCOMMENT MEANS REMOVING THE // IN FRONT OF A #define XXXXXX LINE.
 
 //===========================================================================
-// *************   CREALITY PRINTERS W/MELZI BOARD (1284P)    ***************
+// ******************  JGMAKER PRINTERS 2560 CPU BOARD   ********************
 //===========================================================================
-
-//#define CR10
-//#define CR10_MINI
-//#define CR10_S4
-//#define CR10_S5
-//#define ENDER2
-//#define ENDER3
-//#define ENDER5
-
-// If you are using our EZOut V1/V2 (connects to LCD header) filament sensor kit please follow the install guide
-// and then uncomment the #define EZOUT_ENABLE line below.
-// Do NOT ever connect our filament sensor without the supplied adapter board.
-//#define EZOUT_ENABLE
+//#define JGMAKER_MAGIC
 
 // EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
-//#define CR10_OEM
-//#define CR10_VOLCANO
-//#define CR10_V6HEAVYDUTY
-//#define CR10_FANG
-//#define ENDER2_OEM
-//#define ENDER2_V6
-//#define ENDER3_OEM
-//#define ENDER5_OEM
-//#define TM3DAERO
-//#define TM3DAERO_EXTENDED
-//#define PETSFANG //This is the RIGHT mounted version - if using the left mount please use the CUSTOM_PROBE option.
+//#define JGM_MAGIC_OEM
 //#define CUSTOM_PROBE
-
-// Ender 5 - Leadscrew Setting
-// If you have the new Ender 5/5 Pro Model that has the new 800steps/mm Z leadscrew uncomment the below option to set the correct steps/mm
-//#define ENDER5_NEW_LEADSCREW
 
 //===========================================================================
 // *************************  END PRINTER SECTION   *************************
@@ -198,19 +172,6 @@
 //*** COMMUNITY REQUESTED FEATURES ARE ALL NOT SUPPORTED BY TH3D SUPPORT ****
 //===========================================================================
 
-// ENDER XTENDER KIT SETTINGS ----------------------
-
-// Ender Xtender Kits for Ender 3/3 Pro
-//#define XTENDER_E3_300    //300x300x250 Size
-//#define XTENDER_E3_300XL  //300x300x400 Size
-//#define XTENDER_E3_400    //400x400x250 Size
-//#define XTENDER_E3_400Z   //235x235x400 Size
-//#define XTENDER_E3_400XL  //400x400x500 Size
-//#define XTENDER_E3_500Z   //235x235x500 Size
-
-// Ender Xtender Kits for Ender 5/5 Pro
-//#define XTENDER_E5_5XL    //235x235x500 Size
-
 // HOME OFFSET ADJUSTMENT --------------------------
 // If you need to adjust your XY home offsets from defaults then you can uncomment the HOME_ADJUST line below and enter your
 // custom XY offsets. This is provided for convenience and is unsupported with included product support.
@@ -235,17 +196,16 @@
 
 // LINEAR ADVANCE ----------------------------------
 // See here on how to use Linear Advance: http://marlinfw.org/docs/features/lin_advance.html
-// Due to space constraints on these boards, enabling the LINEAR_ADVANCE will also disable ARC_SUPPORT automatically
 //#define LINEAR_ADVANCE
 // Change the K Value here or use M900 KX.XX in your starting code (recommended).
 #define LINEAR_ADVANCE_K 0
 
 // BL TOUCH ----------------------------------------
-// If you want to use the BL-Touch with our EZOut board uncomment the 2 lines below and set your servo pin (27 for all machines except Ender 2, Ender 2 uses 29).
+// If you want to use the BL-Touch uncomment the 2 lines below and set your servo pin.
 // You also need to uncomment #define CUSTOM_PROBE above and then enter in your offsets above in the CUSTOM PROBE section.
 //#define BLTOUCH
 // Here is where you set your servo pin.
-//#define SERVO0_PIN 27
+//#define SERVO0_PIN 11
 
 // MANUAL MESH LEVELING ----------------------------
 // If you want to use manual mesh leveling you can enable the below option. This is for generating a MANUAL mesh WITHOUT a probe. To change the mesh inset value change the EZABL_PROBE_EDGE setting above.
@@ -256,8 +216,6 @@
 // POWER LOSS RECOVERY -----------------------------
 // Continue after Power-Loss feature will store the current state to the SD Card at the start of each layer
 // during SD printing. If this is found at bootup it will ask you if you want to resume the print.
-// Due to space constraints on these boards, enabling the POWER_LOSS_RECOVERY will also disable ARC_SUPPORT automatically
-// You also cannot use LINEAR_ADVANCE or PROBE_OFFSET_WIZARD with this enabled as well due to space restrictions on the board.
 //
 // NOTE: This feature causes excessive wear on your SD card.
 //#define POWER_LOSS_RECOVERY
@@ -266,11 +224,6 @@
 // Arc support is enabled by default on all builds but this takes up extra space. If you get compile errors due to the size being too large when enabling other options, then disable ARC_SUPPORT
 // by uncommenting the DISABLE_ARC_SUPPORT line below.
 //#define DISABLE_ARC_SUPPORT
-
-// Action Commands Override ------------------------
-// Action commands support is enabled by default on all builds but this takes up extra space. If you get compile errors due to the size being too large when enabling other options, then disable HOST_ACTION_COMMANDS
-// by uncommenting the DISABLE_ACTION_COMMANDS_SUPPORT line below. This feature is primiarly used for OctoPrint/EZPi setups.
-//#define DISABLE_ACTION_COMMANDS_SUPPORT
 
 //===========================================================================
 // **********************  END CONFIGURATION SETTINGS   *********************
@@ -282,178 +235,56 @@
  */
 
 /**
- * Automatic Optimizations
- */
-
-#if ENABLED(LINEAR_ADVANCE)
-  #define DISABLE_ARC_SUPPORT
-#endif
-
-#if ENABLED(POWER_LOSS_RECOVERY)
-  #define DISABLE_ARC_SUPPORT
-#endif
-
-// Sanity Checks for melzi boards
-#if ENABLED(EZOUT_ENABLE) && ENABLED(BLTOUCH)
-  #error "You cannot use the BL Touch and EZOut Filament sensor together on this board."
-#endif
-
-#if ENABLED(POWER_LOSS_RECOVERY) && ENABLED(LINEAR_ADVANCE)
-  #error "Due to space restrictions on this board you cannot use POWER_LOSS_RECOVERY and LINEAR_ADVANCE together."
-#endif
-
-#if ENABLED(POWER_LOSS_RECOVERY) && ENABLED(PROBE_OFFSET_WIZARD)
-  #error "Due to space restrictions on this board you cannot use POWER_LOSS_RECOVERY and PROBE_OFFSET_WIZARD together."
-#endif
-
-/**
  * Machine Configuration Settings
  */
 
-// Creality Printer Settings
-#if ENABLED(CR10) || ENABLED(CR10_MINI) || ENABLED(CR10_S4) || ENABLED(CR10_S5) || ENABLED(ENDER2)  || ENABLED(ENDER3) || ENABLED(ENDER5)
-  #if ENABLED(ENDER5_NEW_LEADSCREW)
-    #define CREALITY_Z_STEPS 800
-  #else
-    #define CREALITY_Z_STEPS 400
-  #endif
-  
+// Alfawise Printer Settings
+#if ENABLED(JGMAKER_MAGIC)
   #define SERIAL_PORT 0
-
-  #define SPACE_SAVER
-  #define SLIM_LCD_MENUS
+  #define SPACE_SAVER_2560
 
   #define BAUDRATE 115200
   
-  #if ENABLED(ENDER2)
-    #define MINIPANEL
-    #if ENABLED(REVERSE_KNOB_DIRECTION)
-      #define REVERSE_ENCODER_DIRECTION
-    #endif
-  #else
-    #define CR10_STOCKDISPLAY
-    #if ENABLED(REVERSE_KNOB_DIRECTION)
-      #define REVERSE_ENCODER_DIRECTION
-    #endif
+  #define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
+    
+  #if DISABLED(REVERSE_KNOB_DIRECTION)
+    #define REVERSE_ENCODER_DIRECTION
   #endif
+  
+  #define ENCODER_PULSES_PER_STEP 4
+  #define ENCODER_STEPS_PER_MENU_ITEM 1
 
   #ifndef MOTHERBOARD
-    #define MOTHERBOARD BOARD_MELZI_CREALITY
-  #endif
-
-  #if ENABLED(EZOUT_ENABLE)
-    #define SPEAKER_KILL
+    #define MOTHERBOARD BOARD_RAMPS_14_EFB
   #endif
 
   #if ENABLED(CUSTOM_ESTEPS)
-    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, CREALITY_Z_STEPS, CUSTOM_ESTEPS_VALUE }
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 800, CUSTOM_ESTEPS_VALUE }
   #else
-    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, CREALITY_Z_STEPS, 95 }
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 800, 88 }
   #endif
 
   #define EXTRUDERS 1
 
-  #if ENABLED(CR10)
-    #define X_BED_SIZE 300
-    #define Y_BED_SIZE 300
-    #define Z_MAX_POS 400
-  #endif
-
-  #if ENABLED(CR10_MINI)
-    #define X_BED_SIZE 300
-    #define Y_BED_SIZE 220
-    #define Z_MAX_POS 300
-  #endif
-
-  #if ENABLED(CR10_S4)
-    #define X_BED_SIZE 400
-    #define Y_BED_SIZE 400
-    #define Z_MAX_POS 400
-  #endif
-
-  #if ENABLED(CR10_S5)
-    #define X_BED_SIZE 500
-    #define Y_BED_SIZE 500
-    #define Z_MAX_POS 500
-  #endif
-
-  #if ENABLED(ENDER2)
-    #define X_BED_SIZE 160
-    #define Y_BED_SIZE 150
-    #define Z_MAX_POS 220
-  #endif
-  
-  #if ENABLED(ENDER3)
-    #if ENABLED(XTENDER_E3_300)
-      #define X_BED_SIZE 300
-      #define Y_BED_SIZE 300
-      #define Z_MAX_POS 250
-    #elif ENABLED(XTENDER_E3_300XL)
-      #define X_BED_SIZE 300
-      #define Y_BED_SIZE 300
-      #define Z_MAX_POS 400
-    #elif ENABLED(XTENDER_E3_400)
-      #define X_BED_SIZE 400
-      #define Y_BED_SIZE 400
-      #define Z_MAX_POS 250
-    #elif ENABLED(XTENDER_E3_400Z)
-      #define X_BED_SIZE 235
-      #define Y_BED_SIZE 235
-      #define Z_MAX_POS 400
-    #elif ENABLED(XTENDER_E3_400XL)
-      #define X_BED_SIZE 400
-      #define Y_BED_SIZE 400
-      #define Z_MAX_POS 500
-    #elif ENABLED(XTENDER_E3_500Z)
-      #define X_BED_SIZE 235
-      #define Y_BED_SIZE 235
-      #define Z_MAX_POS 500
-    #else
-      #define X_BED_SIZE 235
-      #define Y_BED_SIZE 235
-      #define Z_MAX_POS 250
-    #endif
-  #endif
-  
-  #if ENABLED(ENDER5)
-    #if ENABLED(XTENDER_E5_5XL)
-      #define X_BED_SIZE 235
-      #define Y_BED_SIZE 235
-      #define Z_MAX_POS 500
-    #else
-      #define X_BED_SIZE 220
-      #define Y_BED_SIZE 220
-      #define Z_MAX_POS 300
-    #endif
-  #endif
+  #define X_BED_SIZE 220
+  #define Y_BED_SIZE 220
+  #define Z_MAX_POS 250
   
   #if ENABLED(HOME_ADJUST)
     #define X_MIN_POS X_HOME_LOCATION
     #define Y_MIN_POS Y_HOME_LOCATION
   #else
-    #define X_MIN_POS 0
+    #define X_MIN_POS -11
     #define Y_MIN_POS 0
   #endif
 
-  #if ENABLED(ENDER5)
-    #define USE_XMAX_PLUG
-    #define USE_YMAX_PLUG
-    #define USE_ZMIN_PLUG
-  #else
-    #define USE_XMIN_PLUG
-    #define USE_YMIN_PLUG
-    #define USE_ZMIN_PLUG
-  #endif
+  #define USE_XMIN_PLUG
+  #define USE_YMIN_PLUG
+  #define USE_ZMIN_PLUG
 
-  #if ENABLED(ENDER5)
-    #define X_HOME_DIR 1
-    #define Y_HOME_DIR 1
-    #define Z_HOME_DIR -1
-  #else
-    #define X_HOME_DIR -1
-    #define Y_HOME_DIR -1
-    #define Z_HOME_DIR -1
-  #endif
+  #define X_HOME_DIR -1
+  #define Y_HOME_DIR -1
+  #define Z_HOME_DIR -1
   
   #if NONE(V6_HOTEND, TH3D_HOTEND_THERMISTOR, KNOWN_HOTEND_THERMISTOR)
     #define TEMP_SENSOR_0 1
@@ -496,13 +327,13 @@
 
   #define ENDSTOPPULLUPS
 
-  #define X_MIN_ENDSTOP_INVERTING false
-  #define Y_MIN_ENDSTOP_INVERTING false
-  #define Z_MIN_ENDSTOP_INVERTING false
-  #define X_MAX_ENDSTOP_INVERTING false
-  #define Y_MAX_ENDSTOP_INVERTING false
-  #define Z_MAX_ENDSTOP_INVERTING false
-  #define Z_MIN_PROBE_ENDSTOP_INVERTING false
+  #define X_MIN_ENDSTOP_INVERTING true
+  #define Y_MIN_ENDSTOP_INVERTING true
+  #define Z_MIN_ENDSTOP_INVERTING true
+  #define X_MAX_ENDSTOP_INVERTING true
+  #define Y_MAX_ENDSTOP_INVERTING true
+  #define Z_MAX_ENDSTOP_INVERTING true
+  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
   #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
 
   #define X_DRIVER_TYPE A4988
@@ -515,19 +346,14 @@
   #define Z_ENABLE_ON 0
   #define E_ENABLE_ON 0
 
-  #define INVERT_X_DIR true
+  #define INVERT_X_DIR false
   #define INVERT_Y_DIR true
-  
-  #if ENABLED(ENDER5)
-    #define INVERT_Z_DIR true
-  #else
-    #define INVERT_Z_DIR false
-  #endif  
+  #define INVERT_Z_DIR true
   
   #if ENABLED(REVERSE_E_MOTOR_DIRECTION)
-    #define INVERT_E0_DIR false
-  #else
     #define INVERT_E0_DIR true
+  #else
+    #define INVERT_E0_DIR false
   #endif
   
   #define INVERT_E1_DIR false
@@ -538,16 +364,15 @@
   #define INVERT_E6_DIR false
   #define INVERT_E7_DIR false
 
-  #if ENABLED(EZOUT_ENABLE)
-    #define FILAMENT_RUNOUT_SENSOR
-  #endif
+  #define FILAMENT_RUNOUT_SENSOR
 
   #if ENABLED(FILAMENT_RUNOUT_SENSOR)
     #define FIL_RUNOUT_ENABLED_DEFAULT true // Enable the sensor on startup. Override with M412 followed by M500.
     #define NUM_RUNOUT_SENSORS   1          // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
-    #define FIL_RUNOUT_STATE     LOW       // Pin state indicating that filament is NOT present.
+    #define FIL_RUNOUT_STATE     HIGH       // Pin state indicating that filament is NOT present.
     #define FIL_RUNOUT_PULLUP               // Use internal pullup for filament runout pins.
     //#define FIL_RUNOUT_PULLDOWN           // Use internal pulldown for filament runout pins.
+    #define FIL_RUNOUT_PIN 2                // Sunlu stock sensor on MT_DET
 
     // Set one or more commands to execute on filament runout.
     // (After 'M412 H' Marlin will ask the host to handle the process.)
@@ -565,8 +390,9 @@
       //#define FILAMENT_MOTION_SENSOR
     #endif
   #endif
+
 #endif
-// End Creality Printer Settings
+// End Alfawise Printer Settings
 
 /*
  * All other settings are stored in the Configuration_backend.h and Configuration_speed.h files. Do not change unless you know what you are doing.

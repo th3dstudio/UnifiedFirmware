@@ -269,14 +269,13 @@
 
     //#define TOUCH_IDLE_SLEEP 300 // (secs) Turn off the TFT backlight if set (5mn)
 
-    #define TFT_ROTATION TFT_NO_ROTATION
+    #define TFT_ROTATION TFT_MIRROR_X
     #define TOUCH_SCREEN_CALIBRATION
 
-    #define TOUCH_CALIBRATION_X  16789 //Calibrated by TH3D. If this doesn't work send M995 over serial and calibrate for your machine.
-    #define TOUCH_CALIBRATION_Y -11047
-    #define TOUCH_OFFSET_X         -21
-    #define TOUCH_OFFSET_Y         328
-
+    #define TOUCH_CALIBRATION_X  16846 //Calibrated by TH3D. If this doesn't work send M995 over serial and calibrate for your machine.
+    #define TOUCH_CALIBRATION_Y -11137
+    #define TOUCH_OFFSET_X         -27
+    #define TOUCH_OFFSET_Y         329
     #define TOUCH_ORIENTATION TOUCH_LANDSCAPE
 
     #define TOUCH_CALIBRATION_AUTO_SAVE // Auto save successful calibration values to EEPROM

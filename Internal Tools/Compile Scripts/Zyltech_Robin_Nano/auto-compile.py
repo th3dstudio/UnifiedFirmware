@@ -100,12 +100,12 @@ try:
                 except FileExistsError:
                     pass
                 #copy binary file
-                print("Copy binary output file to "+AUTO_COMPILE_DIR + profile['profile-name'] + "/" + "Robin_mini.bin")
+                print("Copy binary output file to "+AUTO_COMPILE_DIR + profile['profile-name'] + "/" + "Robin_nano35.bin")
                 try:
-                    shutil.copy(".pio/build/"+ ENVI_NAME +"/Robin_mini.bin",AUTO_COMPILE_DIR + profile['profile-name'] + "/" + "Robin_mini.bin")
+                    shutil.copy(".pio/build/"+ ENVI_NAME +"/Robin_nano35.bin",AUTO_COMPILE_DIR + profile['profile-name'] + "/" + "Robin_nano35.bin")
                     taskList[taskCount]["status"] = True
                 except:
-                    print("Cannot save Robin_mini.bin")
+                    print("Cannot save Robin_nano35.bin")
                  # also save the config file for preference
                 if SAVE_CONFIG_FILE:
                     try:

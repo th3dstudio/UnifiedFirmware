@@ -10,17 +10,10 @@
             ]
         },
 		{
-            "profile-name": "zyltech-gear-v2",
+            "profile-name": "zyltech-gear-v2-v3",
             "keyword": 
             [
-                {"find":"//#define ZYLTECH_GEAR_V2","replace":"#define ZYLTECH_GEAR_V2"}
-            ]
-        },
-		{
-            "profile-name": "zyltech-gear-v3",
-            "keyword": 
-            [
-                {"find":"//#define ZYLTECH_GEAR_V3","replace":"#define ZYLTECH_GEAR_V3"}
+                {"find":"//#define ZYLTECH_GEAR_V2_V3","replace":"#define ZYLTECH_GEAR_V2_V3"}
             ]
         }
     ]

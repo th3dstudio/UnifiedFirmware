@@ -1,0 +1,27 @@
+{
+    "config-file":"Configuration.h",
+    "compile-profile":
+    [
+        {
+            "profile-name": "zyltech-gear-v1",
+            "keyword": 
+            [
+                {"find":"//#define ZYLTECH_GEAR_V1","replace":"#define ZYLTECH_GEAR_V1"}
+            ]
+        },
+		{
+            "profile-name": "zyltech-gear-v2",
+            "keyword": 
+            [
+                {"find":"//#define ZYLTECH_GEAR_V2","replace":"#define ZYLTECH_GEAR_V2"}
+            ]
+        },
+		{
+            "profile-name": "zyltech-gear-v3",
+            "keyword": 
+            [
+                {"find":"//#define ZYLTECH_GEAR_V3","replace":"#define ZYLTECH_GEAR_V3"}
+            ]
+        }
+    ]
+}

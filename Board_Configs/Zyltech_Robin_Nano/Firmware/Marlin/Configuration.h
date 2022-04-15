@@ -13,32 +13,26 @@
 // UNCOMMENT MEANS REMOVING THE // IN FRONT OF A #define XXXXXX LINE.
 
 //===========================================================================
-// ***************   KINGROON PRINTERS W/ROBIN MINI BOARD   *****************
+// ***************   ZYLTECH PRINTERS W/ROBIN NANO BOARD   ******************
 //===========================================================================
+// V2/V3 printers are the same as the V1 with the exception of different XY Stepper Motors.
 
-//===========================================================================
-// Kingroon KP3 Options
-//===========================================================================
-//#define KINGROON_KP3
+//#define ZYLTECH_GEAR_V1
+//#define ZYLTECH_GEAR_V2_V3
 
 // EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
-//#define KP3_OEM_MOUNT
+// NOTE - Connect the EZABL Z Endstop connection to the Z+ on the Robin Nano board, do NOT replace the stock endstop.
+//#define ZYLTECH_GEAR_OEM
 //#define CUSTOM_PROBE
 
-//===========================================================================
-// Motor Direction Settings
-//===========================================================================
-// Some new KP3 models have their motors wired reverse from the early batches. If your motors move the wrong direction
-// uncomment the option the axis that needs reversal and then re-upload the firmware to the printer.
+// Z Homing Option - Use EZABL to home Z instead of endstop
+//#define USE_EZABL_HOMEZ
 
-// Reverse ALL motor directions
-//#define REVERSE_ALL_MOTOR_DIRECTION
-
-// Reverse specific motor directions (these are all enabled if you uncomment REVERSE_ALL_MOTOR_DIRECTION in the backend).
-//#define REVERSE_X_MOTOR_DIRECTION
-//#define REVERSE_Y_MOTOR_DIRECTION
-//#define REVERSE_Z_MOTOR_DIRECTION
-//#define REVERSE_E_MOTOR_DIRECTION
+// Z Axis Movement Speed Tuning
+// By default the VREF is set to around 0.8V on the Z driver. This limits top speed to about 5mm/s.
+// If you bump the Z VREF up to 1.1V you can go up to 15mm/s. If you adjust your Z VREF to 1.1V uncomment
+// the below line to increase the Z axis Max speed from 5mm/s to 15mm/s. This is useful for running the EZABL quicker.
+//#define GEAR_Z_VREF_TUNED
 
 //===========================================================================
 // *************************  END PRINTER SECTION   *************************
@@ -250,38 +244,32 @@
  * Machine Configuration Settings
  */
  
- // Kingroon KP3 Settings
-#if ENABLED(KINGROON_KP3)
+ // Zyltech Gear Vx Settings
+#if ANY(ZYLTECH_GEAR_V1, ZYLTECH_GEAR_V2_V3)
   #define SERIAL_PORT 3
   #define SERIAL_PORT_2 1
 
   #define BAUDRATE 115200
   
+  #ifndef MOTHERBOARD
+    #define MOTHERBOARD BOARD_MKS_ROBIN_NANO
+  #endif
+  
   #define SPEAKER_KILL
   
   #define MOUNTED_FILAMENT_SENSOR
+
+  #if DISABLED(GEAR_Z_VREF_TUNED)
+    #define LIMIT_Z_SPEED_5
+  #endif
   
   #define SDIO_SUPPORT
-  #define SPI_SPEED SPI_HALF_SPEED
-  //#define SPI_SPEED SPI_QUARTER_SPEED
-  //#define SPI_SPEED SPI_EIGHTH_SPEED
+  #define SD_SPI_SPEED SPI_HALF_SPEED
+  //#define SD_SPI_SPEED SPI_QUARTER_SPEED
+  //#define SD_SPI_SPEED SPI_EIGHTH_SPEED
   #define SD_CHECK_AND_RETRY
-    
-  #define TFT_GENERIC
-  #if ENABLED(TFT_GENERIC)
-    // :[ 'AUTO', 'ST7735', 'ST7789', 'ST7796', 'R61505', 'ILI9328', 'ILI9341', 'ILI9488' ]
-    #define TFT_DRIVER AUTO
 
-    // Interface. Enable one of the following options:
-    #define TFT_INTERFACE_FSMC
-    //#define TFT_INTERFACE_SPI
-
-    // TFT Resolution. Enable one of the following options:
-    #define TFT_RES_320x240
-    //#define TFT_RES_480x272
-    //#define TFT_RES_480x320
-    //#define TFT_RES_1024x600
-  #endif
+  #define MKS_ROBIN_TFT35
 
   #define TFT_CLASSIC_UI
 
@@ -292,42 +280,37 @@
 
     //#define TOUCH_IDLE_SLEEP 300 // (secs) Turn off the TFT backlight if set (5mn)
 
-    #define TFT_ROTATION TFT_ROTATE_180_MIRROR_X
+    #define TFT_ROTATION TFT_MIRROR_X
     #define TOUCH_SCREEN_CALIBRATION
 
-    /* MKS Robin TFT v2.0 */
-    #define TOUCH_CALIBRATION_X  12013
-    #define TOUCH_CALIBRATION_Y  -8711
-    #define TOUCH_OFFSET_X         -32
-    #define TOUCH_OFFSET_Y         256
-
-    /* MKS Robin TFT v1.1 */
-    //#define TOUCH_CALIBRATION_X -11792
-    //#define TOUCH_CALIBRATION_Y   8947
-    //#define TOUCH_OFFSET_X         342
-    //#define TOUCH_OFFSET_Y         -19
-    //#define TOUCH_ORIENTATION TOUCH_LANDSCAPE
+    #define TOUCH_CALIBRATION_X  16846 //Calibrated by TH3D. If this doesn't work send M995 over serial and calibrate for your machine.
+    #define TOUCH_CALIBRATION_Y -11137
+    #define TOUCH_OFFSET_X         -27
+    #define TOUCH_OFFSET_Y         329
+    #define TOUCH_ORIENTATION TOUCH_LANDSCAPE
 
     #define TOUCH_CALIBRATION_AUTO_SAVE // Auto save successful calibration values to EEPROM
   #endif
 
-  #ifndef MOTHERBOARD
-    #define MOTHERBOARD BOARD_MKS_ROBIN_MINI
+  #if ENABLED(ZYLTECH_GEAR_V2_V3)
+    #define XY_STEPS 160
+  #else
+    #define XY_STEPS 80
   #endif
 
   #if ENABLED(CUSTOM_ESTEPS)
-  	#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS_VALUE }
+  	#define DEFAULT_AXIS_STEPS_PER_UNIT   { XY_STEPS, XY_STEPS, 400, CUSTOM_ESTEPS_VALUE }
   #else
-    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { XY_STEPS, XY_STEPS, 400, 95 }
 	#endif
 
   #define SHOW_BOOTSCREEN
 
   #define EXTRUDERS 1
 
-  #define X_BED_SIZE 170
-  #define Y_BED_SIZE 170  
-  #define Z_MAX_POS 180
+  #define X_BED_SIZE 310
+  #define Y_BED_SIZE 310  
+  #define Z_MAX_POS 380
   
   #if ENABLED(HOME_ADJUST)
     #define X_MIN_POS X_HOME_LOCATION
@@ -393,10 +376,16 @@
   #define Y_MAX_ENDSTOP_INVERTING false
   #define Z_MAX_ENDSTOP_INVERTING false
   #define Z_MIN_PROBE_ENDSTOP_INVERTING true
-  #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+  
+  #if ANY(CUSTOM_PROBE, ZYLTECH_GEAR_OEM)
+    #if ENABLED(USE_EZABL_HOMEZ)
+      #define USE_PROBE_FOR_Z_HOMING
+    #endif
+    #define Z_MIN_PROBE_PIN PC4
+  #endif
 
-  #define X_DRIVER_TYPE A4988
-  #define Y_DRIVER_TYPE A4988
+  #define X_DRIVER_TYPE TMC2208_STANDALONE
+  #define Y_DRIVER_TYPE TMC2208_STANDALONE
   #define Z_DRIVER_TYPE A4988
   #define E0_DRIVER_TYPE A4988
 
@@ -405,35 +394,14 @@
   #define Z_ENABLE_ON 0
   #define E_ENABLE_ON 0
 
-  #if ENABLED(REVERSE_ALL_MOTOR_DIRECTION)
-		#define REVERSE_X_MOTOR_DIRECTION
-		#define REVERSE_Y_MOTOR_DIRECTION
-		#define REVERSE_Z_MOTOR_DIRECTION
-		#define REVERSE_E_MOTOR_DIRECTION
-	#endif
-	
-	#if ENABLED(REVERSE_X_MOTOR_DIRECTION)
-    #define INVERT_X_DIR true
-  #else
-    #define INVERT_X_DIR false
-  #endif
-	
-	#if ENABLED(REVERSE_Y_MOTOR_DIRECTION)
-    #define INVERT_Y_DIR true
-  #else
-    #define INVERT_Y_DIR false
-  #endif
-	
-	#if ENABLED(REVERSE_Z_MOTOR_DIRECTION)
-    #define INVERT_Z_DIR false
-  #else
-    #define INVERT_Z_DIR true
-  #endif
+  #define INVERT_X_DIR false
+  #define INVERT_Y_DIR false
+  #define INVERT_Z_DIR true
 
   #if ENABLED(REVERSE_E_MOTOR_DIRECTION)
-    #define INVERT_E0_DIR true
-  #else
     #define INVERT_E0_DIR false
+  #else
+    #define INVERT_E0_DIR true
   #endif
   
   #define INVERT_E1_DIR false
@@ -448,7 +416,7 @@
   #if ENABLED(FILAMENT_RUNOUT_SENSOR)
     #define FIL_RUNOUT_ENABLED_DEFAULT true // Enable the sensor on startup. Override with M412 followed by M500.
     #define NUM_RUNOUT_SENSORS   1          // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
-    #define FIL_RUNOUT_STATE     HIGH       // Pin state indicating that filament is NOT present.
+    #define FIL_RUNOUT_STATE     LOW       // Pin state indicating that filament is NOT present.
     #define FIL_RUNOUT_PULLUP               // Use internal pullup for filament runout pins.
     //#define FIL_RUNOUT_PULLDOWN           // Use internal pulldown for filament runout pins.
 
@@ -469,7 +437,7 @@
     #endif
   #endif
 #endif
-// End Kingroon KP3 Settings
+// End Zyltech Gear Vx Settings
  
 /*
  * All other settings are stored in the Configuration_backend.h and Configuration_speed.h files. Do not change unless you know what you are doing.

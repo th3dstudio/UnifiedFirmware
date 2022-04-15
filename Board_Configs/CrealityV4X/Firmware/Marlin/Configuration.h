@@ -53,6 +53,10 @@
 // If you have issues with your filament sensor on the Ender 6 uncomment the below option to disable it.
 //#define ENDER6_NOFILAMENT_SENSOR
 
+// Ender 6 - Mixed Stepper Drivers
+// If you have the newer revision of the Ender 6 board that uses TMC drivers on the XY and A4988 on the ZE axis, uncomment below to enable correct firmware settings.
+//#ddefine ENDER6_TMCXY_A4988ZE_DRIVERS
+
 //------------------------------ Upgrade Settings -------------------------------
 // EZOut Filament Sensor Kit - LCD Header Connection
 // If you are using our EZOut V1/V2 filament sensor kit please follow the install guide
@@ -752,10 +756,17 @@
     #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
   #endif
 
-  #define X_DRIVER_TYPE TMC2208_STANDALONE
-  #define Y_DRIVER_TYPE TMC2208_STANDALONE
-  #define Z_DRIVER_TYPE TMC2208_STANDALONE
-  #define E0_DRIVER_TYPE TMC2208_STANDALONE
+  #if ENABLED(ENDER6_TMCXY_A4988ZE_DRIVERS)
+    #define X_DRIVER_TYPE TMC2208_STANDALONE
+    #define Y_DRIVER_TYPE TMC2208_STANDALONE
+    #define Z_DRIVER_TYPE A4988
+    #define E0_DRIVER_TYPE A4988
+  #else
+    #define X_DRIVER_TYPE TMC2208_STANDALONE
+    #define Y_DRIVER_TYPE TMC2208_STANDALONE
+    #define Z_DRIVER_TYPE TMC2208_STANDALONE
+    #define E0_DRIVER_TYPE TMC2208_STANDALONE
+  #endif
 
   #define X_ENABLE_ON 0
   #define Y_ENABLE_ON 0

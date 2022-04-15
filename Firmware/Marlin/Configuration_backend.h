@@ -6,7 +6,7 @@
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-#define UNIFIED_VERSION "TH3D UFW 2.46"
+#define UNIFIED_VERSION "TH3D UFW 2.47"
 
 /**
  * ABL Probe Settings
@@ -14,6 +14,10 @@
 
 #if ENABLED(CUSTOM_PROBE)
   #define ABL_ENABLE
+#endif
+#if ENABLED(ZYLTECH_GEAR_OEM)
+  #define ABL_ENABLE
+  #define NOZZLE_TO_PROBE_OFFSET { 0, -42, 0 }
 #endif
 #if ENABLED(ENDER6_PETSFANG)
   #define ABL_ENABLE

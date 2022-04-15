@@ -17,8 +17,7 @@
 //===========================================================================
 
 //#define ZYLTECH_GEAR_V1
-//#define ZYLTECH_GEAR_V2
-//#define ZYLTECH_GEAR_V3
+//#define ZYLTECH_GEAR_V2_V3
 
 // EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
 //#define ZYLTECH_GEAR_OEM
@@ -241,7 +240,7 @@
  */
  
  // Zyltech Gear Vx Settings
-#if ANY(ZYLTECH_GEAR_V1, ZYLTECH_GEAR_V2, ZYLTECH_GEAR_V3)
+#if ANY(ZYLTECH_GEAR_V1, ZYLTECH_GEAR_V2_V3)
   #define SERIAL_PORT 3
   #define SERIAL_PORT_2 1
 
@@ -288,7 +287,7 @@
     #define TOUCH_CALIBRATION_AUTO_SAVE // Auto save successful calibration values to EEPROM
   #endif
 
-  #if ANY(ZYLTECH_GEAR_V2, ZYLTECH_GEAR_V3)
+  #if ENABLED(ZYLTECH_GEAR_V2_V3)
     #define XY_STEPS 160
   #else
     #define XY_STEPS 80

@@ -13,32 +13,16 @@
 // UNCOMMENT MEANS REMOVING THE // IN FRONT OF A #define XXXXXX LINE.
 
 //===========================================================================
-// ***************   KINGROON PRINTERS W/ROBIN MINI BOARD   *****************
+// ***************   ZYLTECH PRINTERS W/ROBIN MINI BOARD   ******************
 //===========================================================================
 
-//===========================================================================
-// Kingroon KP3 Options
-//===========================================================================
-//#define KINGROON_KP3
+//#define ZYLTECH_GEAR_V1
+//#define ZYLTECH_GEAR_V2
+//#define ZYLTECH_GEAR_V3
 
 // EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
-//#define KP3_OEM_MOUNT
+//#define ZYLTECH_GEAR_OEM
 //#define CUSTOM_PROBE
-
-//===========================================================================
-// Motor Direction Settings
-//===========================================================================
-// Some new KP3 models have their motors wired reverse from the early batches. If your motors move the wrong direction
-// uncomment the option the axis that needs reversal and then re-upload the firmware to the printer.
-
-// Reverse ALL motor directions
-//#define REVERSE_ALL_MOTOR_DIRECTION
-
-// Reverse specific motor directions (these are all enabled if you uncomment REVERSE_ALL_MOTOR_DIRECTION in the backend).
-//#define REVERSE_X_MOTOR_DIRECTION
-//#define REVERSE_Y_MOTOR_DIRECTION
-//#define REVERSE_Z_MOTOR_DIRECTION
-//#define REVERSE_E_MOTOR_DIRECTION
 
 //===========================================================================
 // *************************  END PRINTER SECTION   *************************
@@ -250,8 +234,8 @@
  * Machine Configuration Settings
  */
  
- // Kingroon KP3 Settings
-#if ENABLED(KINGROON_KP3)
+ // Zyltech Gear Vx Settings
+#if ANY(ZYLTECH_GEAR_V1, ZYLTECH_GEAR_V2, ZYLTECH_GEAR_V3)
   #define SERIAL_PORT 3
   #define SERIAL_PORT_2 1
 
@@ -315,19 +299,25 @@
     #define MOTHERBOARD BOARD_MKS_ROBIN_MINI
   #endif
 
-  #if ENABLED(CUSTOM_ESTEPS)
-  	#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS_VALUE }
+  #if ANY(ZYLTECH_GEAR_V2, ZYLTECH_GEAR_V3)
+    #define XY_STEPS 160
   #else
-    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
+    #define XY_STEPS 80
+  #endif
+
+  #if ENABLED(CUSTOM_ESTEPS)
+  	#define DEFAULT_AXIS_STEPS_PER_UNIT   { XY_STEPS, XY_STEPS, 400, CUSTOM_ESTEPS_VALUE }
+  #else
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { XY_STEPS, XY_STEPS, 400, 95 }
 	#endif
 
   #define SHOW_BOOTSCREEN
 
   #define EXTRUDERS 1
 
-  #define X_BED_SIZE 170
-  #define Y_BED_SIZE 170  
-  #define Z_MAX_POS 180
+  #define X_BED_SIZE 310
+  #define Y_BED_SIZE 310  
+  #define Z_MAX_POS 380
   
   #if ENABLED(HOME_ADJUST)
     #define X_MIN_POS X_HOME_LOCATION
@@ -395,8 +385,8 @@
   #define Z_MIN_PROBE_ENDSTOP_INVERTING true
   #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
 
-  #define X_DRIVER_TYPE A4988
-  #define Y_DRIVER_TYPE A4988
+  #define X_DRIVER_TYPE TMC2208_STANDALONE
+  #define Y_DRIVER_TYPE TMC2208_STANDALONE
   #define Z_DRIVER_TYPE A4988
   #define E0_DRIVER_TYPE A4988
 
@@ -469,7 +459,7 @@
     #endif
   #endif
 #endif
-// End Kingroon KP3 Settings
+// End Zyltech Gear Vx Settings
  
 /*
  * All other settings are stored in the Configuration_backend.h and Configuration_speed.h files. Do not change unless you know what you are doing.

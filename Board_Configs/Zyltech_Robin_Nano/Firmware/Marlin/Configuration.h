@@ -24,6 +24,12 @@
 //#define ZYLTECH_GEAR_OEM
 //#define CUSTOM_PROBE
 
+// Z Axis Movement Speed Tuning
+// By default the VREF is set to around 0.8V on the Z driver. This limits top speed to about 5mm/s.
+// If you bump the Z VREF up to 1.1V you can go up to 15mm/s. If you adjust your Z VREF to 1.1V uncomment
+// the below line to increase the Z axis Max speed from 5mm/s to 15mm/s. This is useful for running the EZABL quicker.
+//#define GEAR_Z_VREF_TUNED
+
 //===========================================================================
 // *************************  END PRINTER SECTION   *************************
 //===========================================================================
@@ -249,18 +255,19 @@
   
   #define MOUNTED_FILAMENT_SENSOR
 
-  #define LIMIT_Z_SPEED_5
+  #if DISABLED(GEAR_Z_VREF_TUNED)
+    #define LIMIT_Z_SPEED_5
+  #endif
   
   #define SDIO_SUPPORT
-  //#define SPI_SPEED SPI_HALF_SPEED
+  #define SPI_SPEED SPI_HALF_SPEED
   //#define SPI_SPEED SPI_QUARTER_SPEED
   //#define SPI_SPEED SPI_EIGHTH_SPEED
   #define SD_CHECK_AND_RETRY
 
   #define MKS_ROBIN_TFT35
 
-  #define TFT_CLASSIC_UI //Emulated DOGM - 128x64 Upscaled
-  //#define TFT_COLOR_UI //Marlin Default Menus, Touch Friendly, using full TFT capabilities
+  #define TFT_CLASSIC_UI
 
   #define TOUCH_SCREEN
   #if ENABLED(TOUCH_SCREEN)

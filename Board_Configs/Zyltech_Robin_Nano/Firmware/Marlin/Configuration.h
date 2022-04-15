@@ -241,6 +241,10 @@
 
   #define BAUDRATE 115200
   
+  #ifndef MOTHERBOARD
+    #define MOTHERBOARD BOARD_MKS_ROBIN_NANO
+  #endif
+  
   #define SPEAKER_KILL
   
   #define MOUNTED_FILAMENT_SENSOR
@@ -261,9 +265,9 @@
     //#define TFT_INTERFACE_SPI
 
     // TFT Resolution. Enable one of the following options:
-    #define TFT_RES_320x240
+    //#define TFT_RES_320x240
     //#define TFT_RES_480x272
-    //#define TFT_RES_480x320
+    #define TFT_RES_480x320
     //#define TFT_RES_1024x600
   #endif
 
@@ -279,24 +283,12 @@
     #define TFT_ROTATION TFT_ROTATE_180_MIRROR_X
     #define TOUCH_SCREEN_CALIBRATION
 
-    /* MKS Robin TFT v2.0 */
     #define TOUCH_CALIBRATION_X  12013
     #define TOUCH_CALIBRATION_Y  -8711
     #define TOUCH_OFFSET_X         -32
-    #define TOUCH_OFFSET_Y         256
-
-    /* MKS Robin TFT v1.1 */
-    //#define TOUCH_CALIBRATION_X -11792
-    //#define TOUCH_CALIBRATION_Y   8947
-    //#define TOUCH_OFFSET_X         342
-    //#define TOUCH_OFFSET_Y         -19
-    //#define TOUCH_ORIENTATION TOUCH_LANDSCAPE
+    #define TOUCH_OFFSET_Y         25
 
     #define TOUCH_CALIBRATION_AUTO_SAVE // Auto save successful calibration values to EEPROM
-  #endif
-
-  #ifndef MOTHERBOARD
-    #define MOTHERBOARD BOARD_MKS_ROBIN_MINI
   #endif
 
   #if ANY(ZYLTECH_GEAR_V2, ZYLTECH_GEAR_V3)

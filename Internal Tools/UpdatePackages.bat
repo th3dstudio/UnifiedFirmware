@@ -57,11 +57,11 @@
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_TH3D_EZBoardV2_DIY.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_TH3D_EZBoardV2_DIY.zip" "D:\Work\GitHub\UnifiedFirmware\Board_Configs\TH3D_EZBoardV2_DIY\Firmware"
 
-"C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Zyltech_Robin_Mini.zip"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Zyltech_Robin_Mini.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Zyltech_Robin_Mini.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Zyltech_Robin_Mini.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Zyltech_Robin_Mini.zip" "D:\Work\GitHub\UnifiedFirmware\Board_Configs\Zyltech_Robin_Mini\Firmware"
+"C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Zyltech_Robin_Nano.zip"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Zyltech_Robin_Nano.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Zyltech_Robin_Nano.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Zyltech_Robin_Nano.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Zyltech_Robin_Nano.zip" "D:\Work\GitHub\UnifiedFirmware\Board_Configs\Zyltech_Robin_Nano\Firmware"
 
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Kingroon_Robin_Mini.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Kingroon_Robin_Mini.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"

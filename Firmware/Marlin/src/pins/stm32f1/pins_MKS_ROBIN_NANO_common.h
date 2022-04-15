@@ -180,7 +180,9 @@
    * If the screen stays white, disable 'TFT_RESET_PIN'
    * to let the bootloader init the screen.
    */
-  #define TFT_RESET_PIN                     PC6   // FSMC_RST
+  #if NONE(ZYLTECH_GEAR_V1, ZYLTECH_GEAR_V2, ZYLTECH_GEAR_V3)
+    #define TFT_RESET_PIN                   PC6   // FSMC_RST
+  #endif
   #define TFT_BACKLIGHT_PIN                 PD13
 
   #define DOGLCD_MOSI                       -1    // Prevent auto-define by Conditionals_post.h

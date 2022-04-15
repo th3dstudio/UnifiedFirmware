@@ -6,7 +6,13 @@
  * Feedrate Settings
  */
 
-#define DEFAULT_MAX_FEEDRATE { 400, 400, 15, 200 }
+#if ENABLED(LIMIT_Z_SPEED_5)
+  #define DEFAULT_MAX_FEEDRATE { 400, 400, 5, 200 }
+#elif ENABLED(LIMIT_Z_SPEED_10)
+  #define DEFAULT_MAX_FEEDRATE { 400, 400, 10, 200 }
+#else
+  #define DEFAULT_MAX_FEEDRATE { 400, 400, 15, 200 }
+#endif
 
 /**
  * Acceleration Settings

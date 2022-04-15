@@ -13,7 +13,7 @@
 // UNCOMMENT MEANS REMOVING THE // IN FRONT OF A #define XXXXXX LINE.
 
 //===========================================================================
-// ***************   ZYLTECH PRINTERS W/ROBIN MINI BOARD   ******************
+// ***************   ZYLTECH PRINTERS W/ROBIN NANO BOARD   ******************
 //===========================================================================
 
 //#define ZYLTECH_GEAR_V1

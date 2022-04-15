@@ -15,13 +15,18 @@
 //===========================================================================
 // ***************   ZYLTECH PRINTERS W/ROBIN NANO BOARD   ******************
 //===========================================================================
+// V2/V3 printers are the same as the V1 with the exception of different XY Stepper Motors.
 
 //#define ZYLTECH_GEAR_V1
 //#define ZYLTECH_GEAR_V2_V3
 
 // EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
+// NOTE - Connect the EZABL Z Endstop connection to the Z+ on the Robin Nano board, do NOT replace the stock endstop.
 //#define ZYLTECH_GEAR_OEM
 //#define CUSTOM_PROBE
+
+// Z Homing Option - Use EZABL to home Z instead of endstop
+//#define USE_EZABL_HOMEZ
 
 // Z Axis Movement Speed Tuning
 // By default the VREF is set to around 0.8V on the Z driver. This limits top speed to about 5mm/s.
@@ -371,7 +376,13 @@
   #define Y_MAX_ENDSTOP_INVERTING false
   #define Z_MAX_ENDSTOP_INVERTING false
   #define Z_MIN_PROBE_ENDSTOP_INVERTING true
-  #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+  
+  #if ANY(CUSTOM_PROBE, ZYLTECH_GEAR_OEM)
+    #if ENABLED(USE_EZABL_HOMEZ)
+      #define USE_PROBE_FOR_Z_HOMING
+    #endif
+    #define Z_MIN_PROBE_PIN PC4
+  #endif
 
   #define X_DRIVER_TYPE TMC2208_STANDALONE
   #define Y_DRIVER_TYPE TMC2208_STANDALONE

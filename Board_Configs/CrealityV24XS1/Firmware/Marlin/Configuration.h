@@ -12,14 +12,16 @@
 // ONLY UNCOMMENT ONE PRINTER AT A TIME!!! IF YOU HAVE MULTIPLE MACHINES FLASH THEM ONE AT A TIME.
 // UNCOMMENT MEANS REMOVING THE // IN FRONT OF A #define XXXXXX LINE.
 
-// If you have a 512K CPU and/or a GD32 CPU please read the notes in the platformio.ini file for details on
-// compiling for these chips. Most boards regardless of the CPU will work as-is but if you have issues with
-// the board flashing the firmware you may have to change the default_envs value as noted in platformio.ini.
+// THESE BOARDS SHIPPED WITH MULTIPLE CPU TYPES. CHECK YOUR CPU AND READ THE PLATFORMIO.INI FILE FOR DETAILS ON BUILDING FOR
+// THE CORRECT CPU TYPE THAT YOU HAVE ON YOUR PARTICULAR BOARD. FLASHING THE WRONG BUILD ON THE WRONG CPU CAN BRICK YOUR BOARD.
 
 //===========================================================================
-// ***********   CREALITY PRINTERS V2451_301 BOARD - F103 CPU   *************
+// *****************   CREALITY PRINTERS V2451_301 BOARD   ******************
 //===========================================================================
-//#define ENDER3_S1
+#define ENDER3_S1
+
+// If you have the F4 CPU uncomment the below line and change your default_envs in platformio.ini to STM32F401RCT6_creality
+//#define ENDER3S1_F4CPU
 
 // NOTE: Enabling EZABL mounts and/or BLTouch settings will disable the pre-setup settings for the stock CRTouch with its stock mount.
 
@@ -298,8 +300,14 @@
 
   #define BAUDRATE 115200
 
-  #ifndef MOTHERBOARD
-    #define MOTHERBOARD BOARD_CREALITY_V24S1_301
+  #if ENABLED(ENDER3S1_F4CPU)
+    #ifndef MOTHERBOARD
+      #define MOTHERBOARD BOARD_CREALITY_V24S1_301_F4
+    #endif 
+  #else
+    #ifndef MOTHERBOARD
+      #define MOTHERBOARD BOARD_CREALITY_V24S1_301
+    #endif  
   #endif
 
   #if ENABLED(CUSTOM_ESTEPS)

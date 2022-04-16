@@ -51,6 +51,9 @@
 #elif STM32F1
   #define SDA_IN()  SET_INPUT(IIC_EEPROM_SDA)
   #define SDA_OUT() SET_OUTPUT(IIC_EEPROM_SDA)
+#elif ENABLED(ENDER3S1_F4CPU) //added by TH3D
+  #define SDA_IN()  SET_INPUT(IIC_EEPROM_SDA)
+  #define SDA_OUT() SET_OUTPUT(IIC_EEPROM_SDA)
 #endif
 
 // IO ops

@@ -43,6 +43,8 @@ This does not include machine configs or PlatformIO files.
 				- `menu_advanced.cpp`
 				- `menu_configuration.cpp`
 				- `menu_motion.cpp`			
+		- **libs**
+			- `BL24CXX.cpp`
 		- **pins**
 			- `pins.h`
 			- **lpc1769**

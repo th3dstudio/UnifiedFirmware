@@ -24,17 +24,15 @@
 // NOTE: Enabling EZABL mounts and/or BLTouch settings will disable the pre-setup settings for the stock CRTouch with its stock mount.
 
 // EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
+// Connect the EZABL control board with the Z Endstop cable that came with your S1 to the J713 Header on the printer board.
 //#define ENDER3_S1_OEM_18MM            // For Standard EZABL Pro Sensor + Mount
-                                        // STL: Ender 3 S1 EZABL OEM Mount - 18mm.stl
 //#define ENDER3_S1_OEM_12MM            // For Mini EZABL Pro Sensor + Mount
-                                        // STL: Ender 3 S1 EZABL OEM Mount - 12mm.stl
 //#define CUSTOM_PROBE
 
 // Ender 3 S1 LCD Settings
 // Get the conversion kit here: https://www.th3dstudio.com/product/creality-ender-3-s1-12864-lcd-conversion-upgrade-kit/
 //
-// The DACAI LCD is currently buggy with display artifacts and its current firmware.
-// NOTE: If you wish to use the DACAI or DWIN LCD, comment out the ENDER3_S1_12864_LCD line below and update the LCD firmware with ours. Use at your own risk.
+// The DACAI LCD is working but not perfect. If you wish to use the DACAI or DWIN LCD, comment out the ENDER3_S1_12864_LCD line below and update the LCD firmware with ours. Use at your own risk.
 #define ENDER3_S1_12864_LCD
 
 // If you are having issues with the CRTouch uncomment the below line to disable it.

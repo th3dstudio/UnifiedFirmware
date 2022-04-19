@@ -18,9 +18,11 @@
 //===========================================================================
 // *****************   CREALITY PRINTERS V2451_301 BOARD   ******************
 //===========================================================================
-#define ENDER3_S1
+//#define ENDER3_S1
+//#define ENDER3_S1_PRO
 
 // If you have the F4 CPU uncomment the below line and change your default_envs in platformio.ini to STM32F401RCT6_creality
+// THIS IS NOT FLASHING ON MOST F4 BOARDS FOR THE S1. A NEW BOOTLOADER MAY BE REQUIRED. 4/19/22 TDH - WORK IN PROGRESS
 //#define ENDER3S1_F4CPU
 
 // NOTE: Enabling EZABL mounts and/or BLTouch settings will disable the pre-setup settings for the stock CRTouch with its stock mount.
@@ -34,7 +36,7 @@
 // Ender 3 S1 LCD Settings
 // Get the conversion kit here: https://www.th3dstudio.com/product/creality-ender-3-s1-12864-lcd-conversion-upgrade-kit/
 //
-// The DACAI LCD is working but not perfect. If you wish to use the DACAI or DWIN LCD, comment out the ENDER3_S1_12864_LCD line below and update the LCD firmware with ours. Use at your own risk.
+// The DACAI LCD is working but not perfect. If you wish to use a DACAI or DWIN LCD, comment out the ENDER3_S1_12864_LCD line below and update the LCD firmware with ours. Use at your own risk.
 #define ENDER3_S1_12864_LCD
 
 // If you are having issues with the CRTouch uncomment the below line to disable it.
@@ -270,12 +272,25 @@
  * Machine Configuration Settings
  */
  
-//Ender 3 S1 Settings
-#if ENABLED(ENDER3_S1)
+//Ender 3 S1/S1 Pro Settings
+#if ANY(ENDER3_S1, ENDER3_S1_PRO)
+  #if ENABLED(ENDER3_S1_PRO)
+    #define ENDER3_S1
+    #if DISABLED(HIGH_TEMP_THERMISTOR)
+      #define HIGH_TEMP_THERMISTOR
+      #undef HIGH_TEMP_THERMISTOR_TEMP
+      #define HIGH_TEMP_THERMISTOR_TEMP 300
+    #endif
+  #endif
+
   #if NONE(ENDER3_S1_OEM_18MM, ENDER3_S1_OEM_12MM, CUSTOM_PROBE, ENDER3_S1_ZENDSTOP_ONLY)
     #ifndef CUSTOM_PRINTER_NAME
       #define CUSTOM_PRINTER_NAME
-      #define USER_PRINTER_NAME "TH3D E3S1"
+      #if ENABLED(ENDER3_S1_PRO)
+        #define USER_PRINTER_NAME "TH3D E3S1 Pro"
+      #else
+        #define USER_PRINTER_NAME "TH3D E3S1"
+      #endif
     #endif
     #ifndef BLTOUCH
       #define CRTOUCH_PROBE_NAMING
@@ -342,7 +357,11 @@
   #define Z_HOME_DIR -1
 
   #if NONE(V6_HOTEND, TH3D_HOTEND_THERMISTOR, KNOWN_HOTEND_THERMISTOR)
-    #define TEMP_SENSOR_0 1
+    #if ENABLED(ENDER3_S1_PRO)
+      #define TEMP_SENSOR_0 13
+    #else
+      #define TEMP_SENSOR_0 1
+    #endif
   #else
     #if ENABLED(EZBOARD_PT100)
       #define TEMP_SENSOR_0 20
@@ -510,7 +529,7 @@
   #endif
 
 #endif
-// End Ender 3 S1 Settings
+// End Ender 3 S1/S1 Pro Settings
 
 /*
  * All other settings are stored in the Configuration_backend.h and Configuration_speed.h files. Do not change unless you know what you are doing.

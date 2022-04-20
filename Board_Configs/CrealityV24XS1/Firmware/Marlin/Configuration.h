@@ -16,10 +16,11 @@
 // THE CORRECT CPU TYPE THAT YOU HAVE ON YOUR PARTICULAR BOARD. FLASHING THE WRONG BUILD ON THE WRONG CPU CAN BRICK YOUR BOARD.
 
 //===========================================================================
-// *****************   CREALITY PRINTERS V2451_301 BOARD   ******************
+// *****************   CREALITY PRINTERS V24S1_301 BOARD   ******************
 //===========================================================================
 //#define ENDER3_S1
-//#define ENDER3_S1_PRO //Stock touch LCD is NOT supported, requires the 12864 or a DWIN/DACAI.
+//#define ENDER3_S1_PRO
+// The stock touch LCD is NOT supported on the S1 Pro, requires the 12864 upgrade kit linked below.
 
 // If you have the F4 CPU uncomment the below line and change your default_envs in platformio.ini to STM32F401RCT6_creality
 // The firmware BIN file MUST be placed in a folder on your SD called STM32F4_UPDATE AND a different name every time you flash.

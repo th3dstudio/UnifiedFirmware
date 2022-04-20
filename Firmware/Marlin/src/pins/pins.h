@@ -680,7 +680,7 @@
 #elif MB(ARTILLERY_RUBY)
   #include "stm32f4/pins_ARTILLERY_RUBY.h"      // STM32F4                                env:Artillery_Ruby
 #elif MB(CREALITY_V24S1_301_F4)
-  #include "stm32f4/pins_CREALITY_V24S1_301_F4.h" // STM32F4                              env:STM32F401RCT6_creality env:STM32F401RCT6_creality_stlink
+  #include "stm32f4/pins_CREALITY_V24S1_301_F4.h" // STM32F4                              env:STM32F401RCT6_creality
 
 //
 // ARM Cortex M7

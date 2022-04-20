@@ -22,7 +22,7 @@
 //#define ENDER3_S1_PRO //Stock touch LCD is NOT supported, requires the 12864 or a DWIN/DACAI.
 
 // If you have the F4 CPU uncomment the below line and change your default_envs in platformio.ini to STM32F401RCT6_creality
-// THIS IS NOT FLASHING ON MOST F4 BOARDS FOR THE S1. A NEW BOOTLOADER MAY BE REQUIRED. 4/19/22 TDH - WORK IN PROGRESS
+// The firmware BIN file MUST be placed in a folder on your SD called STM32F4_UPDATE AND a different name every time you flash.
 //#define ENDER3S1_F4CPU
 
 // NOTE: Enabling EZABL mounts and/or BLTouch settings will disable the pre-setup settings for the stock CRTouch with its stock mount.

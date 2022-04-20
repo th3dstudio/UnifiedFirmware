@@ -8,6 +8,13 @@
             [
                 {"find":"//#define ENDER3_S1","replace":"#define ENDER3_S1"}
             ]
+        },
+		{
+            "profile-name": "ender3-s1-pro",
+            "keyword": 
+            [
+                {"find":"//#define ENDER3_S1_PRO","replace":"#define ENDER3_S1_PRO"}
+            ]
         }
     ]
 }

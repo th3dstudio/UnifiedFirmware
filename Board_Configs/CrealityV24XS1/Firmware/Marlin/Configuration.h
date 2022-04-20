@@ -12,29 +12,32 @@
 // ONLY UNCOMMENT ONE PRINTER AT A TIME!!! IF YOU HAVE MULTIPLE MACHINES FLASH THEM ONE AT A TIME.
 // UNCOMMENT MEANS REMOVING THE // IN FRONT OF A #define XXXXXX LINE.
 
-// If you have a 512K CPU and/or a GD32 CPU please read the notes in the platformio.ini file for details on
-// compiling for these chips. Most boards regardless of the CPU will work as-is but if you have issues with
-// the board flashing the firmware you may have to change the default_envs value as noted in platformio.ini.
+// THESE BOARDS SHIPPED WITH MULTIPLE CPU TYPES. CHECK YOUR CPU AND READ THE PLATFORMIO.INI FILE FOR DETAILS ON BUILDING FOR
+// THE CORRECT CPU TYPE THAT YOU HAVE ON YOUR PARTICULAR BOARD. FLASHING THE WRONG BUILD ON THE WRONG CPU CAN BRICK YOUR BOARD.
 
 //===========================================================================
-// ***********   CREALITY PRINTERS V2451_301 BOARD - F103 CPU   *************
+// *****************   CREALITY PRINTERS V24S1_301 BOARD   ******************
 //===========================================================================
 //#define ENDER3_S1
+//#define ENDER3_S1_PRO
+// The stock touch LCD is NOT supported on the S1 Pro, requires the 12864 upgrade kit linked below.
+
+// If you have the F4 CPU uncomment the below line and change your default_envs in platformio.ini to STM32F401RCT6_creality
+// The firmware BIN file MUST be placed in a folder on your SD called STM32F4_UPDATE AND a different name every time you flash.
+//#define ENDER3S1_F4CPU
 
 // NOTE: Enabling EZABL mounts and/or BLTouch settings will disable the pre-setup settings for the stock CRTouch with its stock mount.
 
 // EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
+// Connect the EZABL control board with the Z Endstop cable that came with your S1 to the J713 Header on the printer board.
 //#define ENDER3_S1_OEM_18MM            // For Standard EZABL Pro Sensor + Mount
-                                        // STL: Ender 3 S1 EZABL OEM Mount - 18mm.stl
 //#define ENDER3_S1_OEM_12MM            // For Mini EZABL Pro Sensor + Mount
-                                        // STL: Ender 3 S1 EZABL OEM Mount - 12mm.stl
 //#define CUSTOM_PROBE
 
 // Ender 3 S1 LCD Settings
 // Get the conversion kit here: https://www.th3dstudio.com/product/creality-ender-3-s1-12864-lcd-conversion-upgrade-kit/
 //
-// The DACAI LCD is currently buggy with display artifacts and its current firmware.
-// NOTE: If you wish to use the DACAI or DWIN LCD, comment out the ENDER3_S1_12864_LCD line below and update the LCD firmware with ours. Use at your own risk.
+// The DACAI LCD is working but not perfect. If you wish to use a DACAI or DWIN LCD, comment out the ENDER3_S1_12864_LCD line below and update the LCD firmware with ours. Use at your own risk.
 #define ENDER3_S1_12864_LCD
 
 // If you are having issues with the CRTouch uncomment the below line to disable it.
@@ -270,12 +273,25 @@
  * Machine Configuration Settings
  */
  
-//Ender 3 S1 Settings
-#if ENABLED(ENDER3_S1)
+//Ender 3 S1/S1 Pro Settings
+#if ANY(ENDER3_S1, ENDER3_S1_PRO)
+  #if ENABLED(ENDER3_S1_PRO)
+    #define ENDER3_S1
+    #if DISABLED(HIGH_TEMP_THERMISTOR)
+      #define HIGH_TEMP_THERMISTOR
+      #undef HIGH_TEMP_THERMISTOR_TEMP
+      #define HIGH_TEMP_THERMISTOR_TEMP 300
+    #endif
+  #endif
+
   #if NONE(ENDER3_S1_OEM_18MM, ENDER3_S1_OEM_12MM, CUSTOM_PROBE, ENDER3_S1_ZENDSTOP_ONLY)
     #ifndef CUSTOM_PRINTER_NAME
       #define CUSTOM_PRINTER_NAME
-      #define USER_PRINTER_NAME "TH3D E3S1"
+      #if ENABLED(ENDER3_S1_PRO)
+        #define USER_PRINTER_NAME "TH3D E3S1 Pro"
+      #else
+        #define USER_PRINTER_NAME "TH3D E3S1"
+      #endif
     #endif
     #ifndef BLTOUCH
       #define CRTOUCH_PROBE_NAMING
@@ -300,10 +316,15 @@
 
   #define BAUDRATE 115200
 
-  #ifndef MOTHERBOARD
-    #define MOTHERBOARD BOARD_CREALITY_V24S1_301
+  #if ENABLED(ENDER3S1_F4CPU)
+    #ifndef MOTHERBOARD
+      #define MOTHERBOARD BOARD_CREALITY_V24S1_301_F4
+    #endif 
+  #else
+    #ifndef MOTHERBOARD
+      #define MOTHERBOARD BOARD_CREALITY_V24S1_301
+    #endif  
   #endif
-
 
   #if ENABLED(CUSTOM_ESTEPS)
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS_VALUE }
@@ -337,7 +358,11 @@
   #define Z_HOME_DIR -1
 
   #if NONE(V6_HOTEND, TH3D_HOTEND_THERMISTOR, KNOWN_HOTEND_THERMISTOR)
-    #define TEMP_SENSOR_0 1
+    #if ENABLED(ENDER3_S1_PRO)
+      #define TEMP_SENSOR_0 13
+    #else
+      #define TEMP_SENSOR_0 1
+    #endif
   #else
     #if ENABLED(EZBOARD_PT100)
       #define TEMP_SENSOR_0 20
@@ -437,8 +462,9 @@
     //#define DWIN_MARLINUI_LANDSCAPE     // MarlinUI (landscape orientation)
   #endif
   
-  #if ANY(DWIN_CREALITY_LCD_JYERSUI, DWIN_CREALITY_LCD_ENHANCED)
+  #if ANY(DWIN_CREALITY_LCD, DWIN_CREALITY_LCD_JYERSUI, DWIN_CREALITY_LCD_ENHANCED)
     #define ENABLE_PIDBED
+    #define POWER_LOSS_RECOVERY
   #endif
 
   #define ENCODER_PULSES_PER_STEP 4
@@ -447,10 +473,6 @@
   #define Z_PROBE_OFFSET_RANGE_MIN -10
   #define Z_PROBE_OFFSET_RANGE_MAX 10
   #define EXTRUDE_MAXLENGTH 1000
-
-  #if DISABLED(ENDER3_S1_12864_LCD)
-    #define POWER_LOSS_RECOVERY
-  #endif
 
   #if DISABLED(ENDER3_S1_NOFILAMENT_SENSOR)
     #define FILAMENT_RUNOUT_SENSOR
@@ -508,7 +530,7 @@
   #endif
 
 #endif
-// End Ender 3 S1 Settings
+// End Ender 3 S1/S1 Pro Settings
 
 /*
  * All other settings are stored in the Configuration_backend.h and Configuration_speed.h files. Do not change unless you know what you are doing.

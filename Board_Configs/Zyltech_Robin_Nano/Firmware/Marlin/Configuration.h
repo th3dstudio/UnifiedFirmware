@@ -24,9 +24,9 @@
 // NOTE - Connect the EZABL Z Endstop connection to the Z+ on the Robin Nano board, do NOT replace the stock endstop.
 //#define ZYLTECH_GEAR_OEM
 //#define CUSTOM_PROBE
-
-// Z Homing Option - Use EZABL to home Z instead of endstop
-//#define USE_EZABL_HOMEZ
+//
+// WARNING - Make sure to remove the little metal plate that the stock Z endstop touches to home when installing the EZABL. 
+// Failure to remove this will damage the Z endstop switch and/or prevent the EZABL from working correctly.
 
 // Z Axis Movement Speed Tuning
 // By default the VREF is set to around 0.8V on the Z driver. This limits top speed to about 5mm/s.
@@ -378,9 +378,7 @@
   #define Z_MIN_PROBE_ENDSTOP_INVERTING true
   
   #if ANY(CUSTOM_PROBE, ZYLTECH_GEAR_OEM)
-    #if ENABLED(USE_EZABL_HOMEZ)
-      #define USE_PROBE_FOR_Z_HOMING
-    #endif
+    #define USE_PROBE_FOR_Z_HOMING
     #define Z_MIN_PROBE_PIN PC4
   #endif
 

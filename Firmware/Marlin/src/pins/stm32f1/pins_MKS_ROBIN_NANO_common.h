@@ -99,7 +99,7 @@
   #define HEATER_0_PIN                      PC3
 #endif
 #if HOTENDS == 1 && DISABLED(HEATERS_PARALLEL)
-  #if ENABLED(KINGROON_KP3S)
+  #if ANY(KINGROON_KP3S, ZYLTECH_GEAR_V1, ZYLTECH_GEAR_V2_V3)
     #ifndef FAN1_PIN
       #define FAN1_PIN                      -1
     #endif

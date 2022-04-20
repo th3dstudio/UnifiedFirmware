@@ -19,7 +19,7 @@
 // *****************   CREALITY PRINTERS V2451_301 BOARD   ******************
 //===========================================================================
 //#define ENDER3_S1
-//#define ENDER3_S1_PRO
+//#define ENDER3_S1_PRO //Stock touch LCD is NOT supported, requires the 12864 or a DWIN/DACAI.
 
 // If you have the F4 CPU uncomment the below line and change your default_envs in platformio.ini to STM32F401RCT6_creality
 // THIS IS NOT FLASHING ON MOST F4 BOARDS FOR THE S1. A NEW BOOTLOADER MAY BE REQUIRED. 4/19/22 TDH - WORK IN PROGRESS

@@ -55,7 +55,7 @@
 
 // Ender 6 - Mixed Stepper Drivers
 // If you have the newer revision of the Ender 6 board that uses TMC drivers on the XY and A4988 on the ZE axis, uncomment below to enable correct firmware settings.
-//#ddefine ENDER6_TMCXY_A4988ZE_DRIVERS
+//#define ENDER6_TMCXY_A4988ZE_DRIVERS
 
 //------------------------------ Upgrade Settings -------------------------------
 // EZOut Filament Sensor Kit - LCD Header Connection

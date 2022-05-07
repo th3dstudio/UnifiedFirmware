@@ -116,27 +116,30 @@
 /**
  * Motion Settings
  * Below are settings for steps per mm, acceleration, and jerk.
+ * 
+ * Our latest firmware has smart logic to automatically set the best default acceleration and jerk values based on your printer bed size.
+ * If you want to set your own, just uncomment the line you want to manually set yourself.
  * Make sure when setting the acceleration values that the DEFAULT_ACCELERATION is not higher than the MAX_X/Y_ACCEL
  */
 
 // Steps per MM -------------------------------------------------------------
-#define X_STEPS_MM  80
-#define Y_STEPS_MM  80
-#define Z_STEPS_MM  400
-#define E0_STEPS_MM 95
+#define X_STEPS_MM 80
+#define Y_STEPS_MM 80
+#define Z_STEPS_MM 400
+#define E_STEPS_MM 95
 
 // Acceleration Settings ----------------------------------------------------
-#define DEFAULT_ACCELERATION          500
-#define DEFAULT_RETRACT_ACCELERATION  500
-#define DEFAULT_TRAVEL_ACCELERATION   1000
-#define MAX_X_ACCEL 1000
-#define MAX_Y_ACCEL 1000
+//#define DEFAULT_ACCELERATION          500
+//#define DEFAULT_RETRACT_ACCELERATION  500
+//#define DEFAULT_TRAVEL_ACCELERATION   1000
+//#define MAX_X_ACCEL 1000
+//#define MAX_Y_ACCEL 1000
 
 // Jerk Settings ------------------------------------------------------------
-#define DEFAULT_XJERK 5.0
-#define DEFAULT_YJERK 5.0
-#define DEFAULT_ZJERK 0.3
-#define DEFAULT_EJERK 5.0
+//#define DEFAULT_XJERK 5.0
+//#define DEFAULT_YJERK 5.0
+//#define DEFAULT_ZJERK 0.3
+//#define DEFAULT_EJERK 5.0
 
 /**
  * Thermistor Settings

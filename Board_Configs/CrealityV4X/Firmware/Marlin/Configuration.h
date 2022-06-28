@@ -84,7 +84,7 @@
 //#define ENDER5_OEM
 //#define ENDER5_PLUS_OEM
 //#define ENDER6_OEM
-//#define ENDER6_PETSFANG //Source: https://www.makerforum.tech/d/52-ender-6-5015-petsfang-mount
+//#define ENDER6_PETSFANG //Source: https://www.th3dstudio.com/hc/downloads/stl-files/ender-6/ender-6-5015-ezabl-petsfang-mount/
 //#define CUSTOM_PROBE
 
 // Ender 3 V2 - LCD Setting

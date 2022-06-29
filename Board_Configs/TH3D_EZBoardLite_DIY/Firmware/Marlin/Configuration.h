@@ -223,7 +223,9 @@
 
 // CoreXY Printer Setting ---------------------------------------------------
 // If you are using the board in a CoreXY printer, uncomment the below line and make sure you have your motors connected and mounted to the correct locations
+// If movement is incorrect and reversing your X and/or Y direction does not fix it use COREYX instead of COREXY
 //#define COREXY
+//#define COREYX
 
 //===========================================================================
 // *************************  END PRINTER SECTION   *************************

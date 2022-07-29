@@ -1483,25 +1483,25 @@
       #define Z_MAX_POS 250
       #define MACHINE_SIZE "400x400x250"
     #elif ENABLED(XTENDER_E3_400Z)
-      #define X_BED_SIZE 235
-      #define Y_BED_SIZE 235
+      #define X_BED_SIZE 220
+      #define Y_BED_SIZE 220
       #define Z_MAX_POS 400
-      #define MACHINE_SIZE "235x235x400"
+      #define MACHINE_SIZE "220x220x400"
     #elif ENABLED(XTENDER_E3_400XL)
       #define X_BED_SIZE 400
       #define Y_BED_SIZE 400
       #define Z_MAX_POS 500
       #define MACHINE_SIZE "400x400x500"
     #elif ENABLED(XTENDER_E3_500Z)
-      #define X_BED_SIZE 235
-      #define Y_BED_SIZE 235
+      #define X_BED_SIZE 220
+      #define Y_BED_SIZE 220
       #define Z_MAX_POS 500
-      #define MACHINE_SIZE "235x235x500"
+      #define MACHINE_SIZE "220x220x500"
     #else
-      #define X_BED_SIZE 235
-      #define Y_BED_SIZE 235
+      #define X_BED_SIZE 220
+      #define Y_BED_SIZE 220
       #define Z_MAX_POS 250
-      #define MACHINE_SIZE "235x235x250"
+      #define MACHINE_SIZE "220x220x250"
     #endif
   #endif
 

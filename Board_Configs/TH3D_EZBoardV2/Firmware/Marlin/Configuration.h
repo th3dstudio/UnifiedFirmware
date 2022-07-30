@@ -32,6 +32,7 @@
 
 // Ender Series -------------------------------------------------------------
 //#define ENDER2
+//#define ENDER2_PRO     //Requires Motor Adapter Cable from TH3D due to stock connections using 5 pins
 //#define ENDER3
 //#define ENDER3_MAX
 //#define ENDER5
@@ -58,6 +59,8 @@
 //#define CR10_OEM                 //OEM Mount for Creality Machines (Ender3/Ender5/Ender5Plus/CR-10/CR-10S/CR-20)
 //#define ENDER2_OEM               //Ender 2 Specific OEM Mount
 //#define ENDER2_V6                //Ender 2 Specific V6 Mount
+//#define ENDER2_PRO_OEM           //Ender 2 PRO Specific OEM Mount
+//#define ENDER2_PRO_OEM_MICRO     //Ender 2 PRO Specific OEM Mount FOR MICRO SIZE
 //#define ENDER3_MAX_OEM           //Ender 3 MAX Specific OEM Mount
 //#define SV01_OEM_MOUNT           //Sovol SV01 OEM Mount
 //#define CR10_VOLCANO             //TH3D CR-10 Volcano Mount 
@@ -391,7 +394,7 @@
  */
  
 //EZBoard V2 based Machine Settings
-#if ENABLED(CR10) || ENABLED(CR10_MINI) || ENABLED(CR10_S4) || ENABLED(CR10_S5) || ENABLED(CR10S) || ENABLED(CR10S_MINI) || ENABLED(CR10S_S4) || ENABLED(CR10S_S5) || ENABLED(ENDER2) || ENABLED(ENDER3) || ENABLED(ENDER5) || ENABLED(ENDER5_PLUS) || ENABLED(SOVOL_SV01) || ENABLED(SOVOL_SV03) || ENABLED(CR20) || ENABLED(ENDER3_MAX)
+#if ENABLED(CR10) || ENABLED(CR10_MINI) || ENABLED(CR10_S4) || ENABLED(CR10_S5) || ENABLED(CR10S) || ENABLED(CR10S_MINI) || ENABLED(CR10S_S4) || ENABLED(CR10S_S5) || ENABLED(ENDER2) || ENABLED(ENDER2_PRO) || ENABLED(ENDER3) || ENABLED(ENDER5) || ENABLED(ENDER5_PLUS) || ENABLED(SOVOL_SV01) || ENABLED(SOVOL_SV03) || ENABLED(CR20) || ENABLED(ENDER3_MAX)
 
   #define SERIAL_PORT -1
   #define BAUDRATE 115200
@@ -491,6 +494,13 @@
     #define Y_BED_SIZE 150
     #define Z_MAX_POS 220
     #define PRINTER_VOLTAGE_12
+  #endif
+
+  #if ENABLED(ENDER2_PRO)
+    #define X_BED_SIZE 165
+    #define Y_BED_SIZE 168
+    #define Z_MAX_POS 180
+    #define PRINTER_VOLTAGE_24
   #endif
 
   #if ENABLED(ENDER3)
@@ -600,6 +610,15 @@
   #if ENABLED(HOME_ADJUST)
     #define X_MIN_POS X_HOME_LOCATION
     #define Y_MIN_POS Y_HOME_LOCATION
+  #elif ENABLED(ENDER2_PRO_OEM)
+    #define X_MIN_POS -9
+    #define Y_MIN_POS -4
+  #elif ENABLED(ENDER2_PRO_OEM_MICRO)
+    #define X_MIN_POS -9
+    #define Y_MIN_POS -4
+  #elif ENABLED(ENDER2_PRO)
+    #define X_MIN_POS -20
+    #define Y_MIN_POS -4
   #else
     #define X_MIN_POS 0
     #define Y_MIN_POS 0
@@ -688,19 +707,35 @@
   #define Z_ENABLE_ON 0
   #define E_ENABLE_ON 0
 
-  #if ENABLED(REVERSE_X_MOTOR)
-    #define INVERT_X_DIR false
+  #if ENABLED(ENDER2_PRO)
+    #if ENABLED(REVERSE_X_MOTOR)
+      #define INVERT_X_DIR true
+    #else
+      #define INVERT_X_DIR false
+    #endif
   #else
-    #define INVERT_X_DIR true
+    #if ENABLED(REVERSE_X_MOTOR)
+      #define INVERT_X_DIR false
+    #else
+      #define INVERT_X_DIR true
+    #endif
   #endif
 
-  #if ENABLED(REVERSE_Y_MOTOR)
-    #define INVERT_Y_DIR false
+  #if ENABLED(ENDER2_PRO)
+    #if ENABLED(REVERSE_Y_MOTOR)
+      #define INVERT_Y_DIR true
+    #else
+      #define INVERT_Y_DIR false
+    #endif
   #else
-    #define INVERT_Y_DIR true
+    #if ENABLED(REVERSE_Y_MOTOR)
+      #define INVERT_Y_DIR false
+    #else
+      #define INVERT_Y_DIR true
+    #endif
   #endif
 
-  #if ENABLED(ENDER5) || ENABLED(ENDER5_PLUS)
+  #if ANY(ENDER5, ENDER5_PLUS, ENDER2_PRO)
     #if ENABLED(REVERSE_Z_MOTOR)
       #define INVERT_Z_DIR false
     #else
@@ -714,7 +749,7 @@
     #endif
   #endif
   
-  #if ENABLED(SOVOL_SV01)
+  #if ANY(SOVOL_SV01, ENDER2_PRO)
     #if ENABLED(REVERSE_E_MOTOR_DIRECTION)
       #define INVERT_E0_DIR true
     #else

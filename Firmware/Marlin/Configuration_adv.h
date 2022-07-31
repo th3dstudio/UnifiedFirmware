@@ -172,7 +172,7 @@
 // Heated Bed Bang-Bang options
 //
 #if DISABLED(PIDTEMPBED)
-  #define BED_CHECK_INTERVAL 500    // (ms) Interval between checks in bang-bang control
+  #define BED_CHECK_INTERVAL 100    // (ms) Interval between checks in bang-bang control
   #if ENABLED(BED_LIMIT_SWITCHING)
     #define BED_HYSTERESIS 2        // (°C) Only set the relevant heater state when ABS(T-target) > BED_HYSTERESIS
   #endif
@@ -549,7 +549,7 @@
   #endif
 #endif
 
-#if (ENABLED(EZBOARD) || ENABLED(EZBOARD_V2)) && DISABLED(USE_CONTROLLER_FAN)
+#if (ENABLED(EZBOARD) || ENABLED(EZBOARD_V2)) && DISABLED(USE_CONTROLLER_FAN) && DISABLED(EZBOARD_FAN2_HOTEND_MODE)
   #define USE_CONTROLLER_FAN
   #if ENABLED(EZBOARD_V2)
     #define CONTROLLER_FAN_PIN       PC7
@@ -696,6 +696,12 @@
     #define E0_AUTO_FAN_PIN PB15
   #elif ENABLED(ENDER3_S1)
     #define E0_AUTO_FAN_PIN PC0
+  #elif ENABLED(EZBOARD_FAN2_HOTEND_MODE)
+    #if ENABLED(EZBOARD_V2)
+      #define E0_AUTO_FAN_PIN       PC7
+    #else
+      #define E0_AUTO_FAN_PIN       P1_22
+    #endif
   #else
     #define E0_AUTO_FAN_PIN -1
   #endif
@@ -713,8 +719,12 @@
 #define COOLER_AUTO_FAN_PIN -1
 #define COOLER_FAN_PIN -1
 
-#define EXTRUDER_AUTO_FAN_TEMPERATURE 50
-#define EXTRUDER_AUTO_FAN_SPEED 255   // 255 == full speed
+#ifndef EXTRUDER_AUTO_FAN_TEMPERATURE
+  #define EXTRUDER_AUTO_FAN_TEMPERATURE 50
+#endif
+#ifndef EXTRUDER_AUTO_FAN_SPEED
+  #define EXTRUDER_AUTO_FAN_SPEED 255   // 255 == full speed
+#endif
 #define CHAMBER_AUTO_FAN_TEMPERATURE 30
 #define CHAMBER_AUTO_FAN_SPEED 255
 #define COOLER_AUTO_FAN_TEMPERATURE 18

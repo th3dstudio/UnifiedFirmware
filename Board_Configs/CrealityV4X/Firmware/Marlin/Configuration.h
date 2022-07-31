@@ -55,7 +55,7 @@
 
 // Ender 6 - Mixed Stepper Drivers
 // If you have the newer revision of the Ender 6 board that uses TMC drivers on the XY and A4988 on the ZE axis, uncomment below to enable correct firmware settings.
-//#ddefine ENDER6_TMCXY_A4988ZE_DRIVERS
+//#define ENDER6_TMCXY_A4988ZE_DRIVERS
 
 //------------------------------ Upgrade Settings -------------------------------
 // EZOut Filament Sensor Kit - LCD Header Connection
@@ -84,7 +84,7 @@
 //#define ENDER5_OEM
 //#define ENDER5_PLUS_OEM
 //#define ENDER6_OEM
-//#define ENDER6_PETSFANG //Source: https://www.makerforum.tech/d/52-ender-6-5015-petsfang-mount
+//#define ENDER6_PETSFANG //Source: https://www.th3dstudio.com/hc/downloads/stl-files/ender-6/ender-6-5015-ezabl-petsfang-mount/
 //#define CUSTOM_PROBE
 
 // Ender 3 V2 - LCD Setting
@@ -293,7 +293,7 @@
 // If you need to adjust your XY home offsets from defaults then you can uncomment the HOME_ADJUST line below and enter your
 // custom XY offsets. This is provided for convenience and is unsupported with included product support.
 // How to use - measure (home XY then jog using the LCD 1mm at a time) the X and Y distance the nozzle is off
-// the build plate and then put those as NEGATIVE values below, positive values will NOT work (move your endstops to fix a positve offset).
+// the build plate and then put those as NEGATIVE values below, positive values will NOT work (move your endstops to fix a positive offset).
 //#define HOME_ADJUST
 #define X_HOME_LOCATION -10
 #define Y_HOME_LOCATION -10
@@ -1483,25 +1483,25 @@
       #define Z_MAX_POS 250
       #define MACHINE_SIZE "400x400x250"
     #elif ENABLED(XTENDER_E3_400Z)
-      #define X_BED_SIZE 235
-      #define Y_BED_SIZE 235
+      #define X_BED_SIZE 220
+      #define Y_BED_SIZE 220
       #define Z_MAX_POS 400
-      #define MACHINE_SIZE "235x235x400"
+      #define MACHINE_SIZE "220x220x400"
     #elif ENABLED(XTENDER_E3_400XL)
       #define X_BED_SIZE 400
       #define Y_BED_SIZE 400
       #define Z_MAX_POS 500
       #define MACHINE_SIZE "400x400x500"
     #elif ENABLED(XTENDER_E3_500Z)
-      #define X_BED_SIZE 235
-      #define Y_BED_SIZE 235
+      #define X_BED_SIZE 220
+      #define Y_BED_SIZE 220
       #define Z_MAX_POS 500
-      #define MACHINE_SIZE "235x235x500"
+      #define MACHINE_SIZE "220x220x500"
     #else
-      #define X_BED_SIZE 235
-      #define Y_BED_SIZE 235
+      #define X_BED_SIZE 220
+      #define Y_BED_SIZE 220
       #define Z_MAX_POS 250
-      #define MACHINE_SIZE "235x235x250"
+      #define MACHINE_SIZE "220x220x250"
     #endif
   #endif
 

@@ -15,18 +15,23 @@
 // THESE BOARDS SHIPPED WITH MULTIPLE CPU TYPES. CHECK YOUR CPU AND READ THE PLATFORMIO.INI FILE FOR DETAILS ON BUILDING FOR
 // THE CORRECT CPU TYPE THAT YOU HAVE ON YOUR PARTICULAR BOARD. FLASHING THE WRONG BUILD ON THE WRONG CPU CAN BRICK YOUR BOARD.
 
+// !!! STM32 F4 CPU Board Users !!!
+// If you have the F4 CPU uncomment the ENDER3S1_F4CPU line below and change your default_envs in platformio.ini to STM32F401RCT6_creality
+// The firmware BIN file MUST be placed in a folder on your SD called STM32F4_UPDATE AND a different name every time you flash.
+
+// ENDER 3 S1 PRO USERS: The stock touch LCD is NOT supported on the S1 Pro and requires the 12864 upgrade kit here: https://www.th3dstudio.com/product/creality-ender-3-s1-12864-lcd-conversion-upgrade-kit/
+// Due to the closed source firmware on the stock touch LCD, we will never support it in our firmware.
+
+// NOTE: Enabling EZABL mounts and/or BLTouch settings will disable the pre-setup settings for the stock CRTouch with its stock mount.
+
 //===========================================================================
-// *****************   CREALITY PRINTERS V24S1_301 BOARD   ******************
+// ***************   CREALITY ENDER 3 S1 V24S1_301 BOARD   ******************
 //===========================================================================
 //#define ENDER3_S1
 //#define ENDER3_S1_PRO
-// The stock touch LCD is NOT supported on the S1 Pro, requires the 12864 upgrade kit linked below.
 
-// If you have the F4 CPU uncomment the below line and change your default_envs in platformio.ini to STM32F401RCT6_creality
-// The firmware BIN file MUST be placed in a folder on your SD called STM32F4_UPDATE AND a different name every time you flash.
+// F4 CPU Board Setting
 //#define ENDER3S1_F4CPU
-
-// NOTE: Enabling EZABL mounts and/or BLTouch settings will disable the pre-setup settings for the stock CRTouch with its stock mount.
 
 // EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
 // Connect the EZABL control board with the Z Endstop cable that came with your S1 to the J713 Header on the printer board.
@@ -34,11 +39,10 @@
 //#define ENDER3_S1_OEM_12MM            // For Mini EZABL Pro Sensor + Mount
 //#define CUSTOM_PROBE
 
-// Ender 3 S1 LCD Settings
-// Get the conversion kit here: https://www.th3dstudio.com/product/creality-ender-3-s1-12864-lcd-conversion-upgrade-kit/
-//
-// The DACAI LCD is working but not perfect. If you wish to use a DACAI or DWIN LCD, comment out the ENDER3_S1_12864_LCD line below and update the LCD firmware with ours. Use at your own risk.
-#define ENDER3_S1_12864_LCD
+// Ender 3 S1 LCD Settings - There are 2 LCDs supported by this firmware
+// Uncomment the line for the LCD that you are using with your machine. 
+//#define ENDER3_S1_12864_LCD           //TH3D 12864 LCD Kit
+//#define ENDER3_S1_COLOR_LCD           //Ender 3 S1 Color LCD (DWIN/DACAI)
 
 // If you are having issues with the CRTouch uncomment the below line to disable it.
 // Connect the included Z Endstop with its cable to the J713 Header on the board and mount to the printer.
@@ -210,7 +214,7 @@
 // If you need to adjust your XY home offsets from defaults then you can uncomment the HOME_ADJUST line below and enter your
 // custom XY offsets. This is provided for convenience and is unsupported with included product support.
 // How to use - measure (home XY then jog using the LCD 1mm at a time) the X and Y distance the nozzle is off
-// the build plate and then put those as NEGATIVE values below, positive values will NOT work (move your endstops to fix a positve offset).
+// the build plate and then put those as NEGATIVE values below, positive values will NOT work (move your endstops to fix a positive offset).
 //#define HOME_ADJUST
 #define X_HOME_LOCATION -10
 #define Y_HOME_LOCATION -10
@@ -269,6 +273,10 @@
   #error "Linear Advance does NOT work on the S1 boards with the TMC drivers due to how Creality has them setup. Disable Linear Advance to continue or comment this line out to continue compile at your own risk."
 #endif
 
+#if NONE(ENDER3_S1_12864_LCD, ENDER3_S1_COLOR_LCD)
+  #error "You must uncomment what LCD you are using and try again."
+#endif
+
 /**
  * Machine Configuration Settings
  */
@@ -280,7 +288,7 @@
     #if DISABLED(HIGH_TEMP_THERMISTOR)
       #define HIGH_TEMP_THERMISTOR
       #undef HIGH_TEMP_THERMISTOR_TEMP
-      #define HIGH_TEMP_THERMISTOR_TEMP 300
+      #define HIGH_TEMP_THERMISTOR_TEMP 310
     #endif
   #endif
 
@@ -451,7 +459,6 @@
     #define CR10_STOCKDISPLAY
     #define RET6_12864_LCD
   #else
-  	//Not working yet - Buggy with the DACAI LCD, OK with the DWIN LCD - Background Issues
     #define NO_LCD_REINIT 1
     #define LCD_SERIAL_PORT 2
     //Different Ender 3 S1 LCD Display Options - Change at your own risk!!!

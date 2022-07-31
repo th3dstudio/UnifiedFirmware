@@ -116,27 +116,30 @@
 /**
  * Motion Settings
  * Below are settings for steps per mm, acceleration, and jerk.
+ * 
+ * Our latest firmware has smart logic to automatically set the best default acceleration and jerk values based on your printer bed size.
+ * If you want to set your own, just uncomment the line you want to manually set yourself.
  * Make sure when setting the acceleration values that the DEFAULT_ACCELERATION is not higher than the MAX_X/Y_ACCEL
  */
 
 // Steps per MM -------------------------------------------------------------
-#define X_STEPS_MM  80
-#define Y_STEPS_MM  80
-#define Z_STEPS_MM  400
-#define E0_STEPS_MM 95
+#define X_STEPS_MM 80
+#define Y_STEPS_MM 80
+#define Z_STEPS_MM 400
+#define E_STEPS_MM 95
 
 // Acceleration Settings ----------------------------------------------------
-#define DEFAULT_ACCELERATION          500
-#define DEFAULT_RETRACT_ACCELERATION  500
-#define DEFAULT_TRAVEL_ACCELERATION   1000
-#define MAX_X_ACCEL 1000
-#define MAX_Y_ACCEL 1000
+//#define DEFAULT_ACCELERATION          500
+//#define DEFAULT_RETRACT_ACCELERATION  500
+//#define DEFAULT_TRAVEL_ACCELERATION   1000
+//#define MAX_X_ACCEL 1000
+//#define MAX_Y_ACCEL 1000
 
 // Jerk Settings ------------------------------------------------------------
-#define DEFAULT_XJERK 5.0
-#define DEFAULT_YJERK 5.0
-#define DEFAULT_ZJERK 0.3
-#define DEFAULT_EJERK 5.0
+//#define DEFAULT_XJERK 5.0
+//#define DEFAULT_YJERK 5.0
+//#define DEFAULT_ZJERK 0.3
+//#define DEFAULT_EJERK 5.0
 
 /**
  * Thermistor Settings
@@ -377,7 +380,7 @@
 // If you need to adjust your XY home offsets from defaults then you can uncomment the HOME_ADJUST line below and enter your
 // custom XY offsets. This is provided for convenience and is unsupported with included product support.
 // How to use - measure (home XY then jog using the LCD 1mm at a time) the X and Y distance the nozzle is off
-// the build plate and then put those as NEGATIVE values below, positive values will NOT work (move your endstops to fix a positve offset).
+// the build plate and then put those as NEGATIVE values below, positive values will NOT work (move your endstops to fix a positive offset).
 //#define HOME_ADJUST
 #define X_HOME_LOCATION -10
 #define Y_HOME_LOCATION -10

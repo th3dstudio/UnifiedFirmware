@@ -19,8 +19,11 @@
 //===========================================================================
 //#define WANHAO_I3
 
-// If your thermistor temperatures are off please uncomment the 10K option below to fix temps being off
+// If your HOTEND thermistor temperatures are off please uncomment the 10K option below to fix temps being off
 //#define WANHAO_10K_THERMISTOR
+
+// If your BED thermistor temperatures are off please uncomment the 10K option below to fix temps being off
+//#define WANHAO_10K_BED_THERMISTOR
 
 // If you are using our EZOut V2 (connects to LCD header) filament sensor kit please follow the install guide
 // and then uncomment the #define EZOUT_ENABLE line below. Installs the same as an Ender 3 in the guide.
@@ -185,7 +188,7 @@
 // If you need to adjust your XY home offsets from defaults then you can uncomment the HOME_ADJUST line below and enter your
 // custom XY offsets. This is provided for convenience and is unsupported with included product support.
 // How to use - measure (home XY then jog using the LCD 1mm at a time) the X and Y distance the nozzle is off
-// the build plate and then put those as NEGATIVE values below, positive values will NOT work (move your endstops to fix a positve offset).
+// the build plate and then put those as NEGATIVE values below, positive values will NOT work (move your endstops to fix a positive offset).
 //#define HOME_ADJUST
 #define X_HOME_LOCATION -10
 #define Y_HOME_LOCATION -10
@@ -361,11 +364,13 @@
   #define TEMP_SENSOR_6 0
   #define TEMP_SENSOR_7 0
   
-  #if NONE(TH3D_BED_THERMISTOR, KEENOVO_TEMPSENSOR, KNOWN_BED_THERMISTOR, AC_BED)
+  #if NONE(TH3D_BED_THERMISTOR, KEENOVO_TEMPSENSOR, KNOWN_BED_THERMISTOR, AC_BED, WANHAO_10K_BED_THERMISTOR)
     #define TEMP_SENSOR_BED 1
   #else
     #if ENABLED(AC_BED)
       #define TEMP_SENSOR_BED 0
+    #elif ENABLED(WANHAO_10K_BED_THERMISTOR)
+      #define TEMP_SENSOR_BED 99
     #elif ENABLED(KNOWN_BED_THERMISTOR)
       #define TEMP_SENSOR_BED KNOWN_BED_THERMISTOR_VALUE
     #elif ENABLED(TH3D_BED_THERMISTOR)

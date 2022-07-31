@@ -34,6 +34,15 @@
 // the below line to increase the Z axis Max speed from 5mm/s to 15mm/s. This is useful for running the EZABL quicker.
 //#define GEAR_Z_VREF_TUNED
 
+// EZNeo Settings
+// If you are using an EZNeo strip on your printer, uncomment the line for what strip you are using.
+// Specify your IO pin below as well as this board does not have a dedicated NEOPIXEL header on it.
+//#define EZNEO_220
+
+// EZNeo Manual IO Pin Setting 
+// If you have the EZNeo wired with your own 5V power provided, specify the pin used below.
+//#define NEOPIXEL_PIN PB2
+
 //===========================================================================
 // *************************  END PRINTER SECTION   *************************
 //===========================================================================
@@ -182,7 +191,7 @@
 // If you need to adjust your XY home offsets from defaults then you can uncomment the HOME_ADJUST line below and enter your
 // custom XY offsets. This is provided for convenience and is unsupported with included product support.
 // How to use - measure (home XY then jog using the LCD 1mm at a time) the X and Y distance the nozzle is off
-// the build plate and then put those as NEGATIVE values below, positive values will NOT work (move your endstops to fix a positve offset).
+// the build plate and then put those as NEGATIVE values below, positive values will NOT work (move your endstops to fix a positive offset).
 //#define HOME_ADJUST
 #define X_HOME_LOCATION -10
 #define Y_HOME_LOCATION -10
@@ -382,10 +391,21 @@
     #define Z_MIN_PROBE_PIN PC4
   #endif
 
-  #define X_DRIVER_TYPE TMC2208_STANDALONE
-  #define Y_DRIVER_TYPE TMC2208_STANDALONE
-  #define Z_DRIVER_TYPE A4988
-  #define E0_DRIVER_TYPE A4988
+  #ifndef X_DRIVER_TYPE
+    #define X_DRIVER_TYPE TMC2208_STANDALONE
+  #endif
+
+  #ifndef Y_DRIVER_TYPE
+    #define Y_DRIVER_TYPE TMC2208_STANDALONE
+  #endif
+
+  #ifndef Z_DRIVER_TYPE
+    #define Z_DRIVER_TYPE A4988
+  #endif
+
+  #ifndef E0_DRIVER_TYPE
+    #define E0_DRIVER_TYPE A4988
+  #endif
 
   #define X_ENABLE_ON 0
   #define Y_ENABLE_ON 0
@@ -434,6 +454,34 @@
       //#define FILAMENT_MOTION_SENSOR
     #endif
   #endif
+
+  #if ENABLED(EZNEO_220)
+    #define RGB_LIGHTS
+    #define NEOPIXEL_LED
+    #if ENABLED(NEOPIXEL_LED)
+      #define NEOPIXEL_TYPE   NEO_GRB // NEO_GRBW / NEO_GRB - four/three channel driver type (defined in Adafruit_NeoPixel.h)
+      #define NEOPIXEL_PIXELS 15       // Number of LEDs in the strip. (Longest strip when NEOPIXEL2_SEPARATE is disabled.)
+      #define NEOPIXEL_IS_SEQUENTIAL   // Sequential display for temperature change - LED by LED. Disable to change all LEDs at once.
+      #define NEOPIXEL_BRIGHTNESS 255  // Initial brightness (0-255)
+      #define NEOPIXEL_STARTUP_TEST  // Cycle through colors at startup
+    #endif
+
+    /**
+     * Printer Event LEDs
+     *
+     * During printing, the LEDs will reflect the printer status:
+     *
+     *  - Gradually change from blue to violet as the heated bed gets to target temp
+     *  - Gradually change from violet to red as the hotend gets to temperature
+     *  - Change to white to illuminate work surface
+     *  - Change to green once print has finished
+     *  - Turn off after the print has finished and the user has pushed a button
+     */
+    #if ANY(BLINKM, RGB_LED, RGBW_LED, PCA9632, PCA9533, NEOPIXEL_LED)
+      #define PRINTER_EVENT_LEDS
+    #endif
+  #endif
+  
 #endif
 // End Zyltech Gear Vx Settings
  

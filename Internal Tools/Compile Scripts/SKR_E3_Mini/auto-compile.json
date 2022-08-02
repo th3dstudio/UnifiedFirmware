@@ -1,0 +1,54 @@
+{
+    "config-file":"Configuration.h",
+    "compile-profile":
+    [
+        {
+            "profile-name": "ender3-v1.0",
+            "keyword": 
+            [
+                {"find":"//#define ENDER3","replace":"#define ENDER3"},
+                {"find":"//#define SKR_E3_MINI_V1","replace":"#define SKR_E3_MINI_V1"}
+            ]
+        },
+        {
+            "profile-name": "ender3-v1.2",
+            "keyword": 
+            [
+                {"find":"//#define ENDER3","replace":"#define ENDER3"},
+                {"find":"//#define SKR_E3_MINI_V1_2","replace":"#define SKR_E3_MINI_V1_2"}
+            ]
+        },
+		{
+            "profile-name": "ender3-v2.0",
+            "keyword": 
+            [
+                {"find":"//#define ENDER3","replace":"#define ENDER3"},
+                {"find":"//#define SKR_E3_MINI_V2_0","replace":"#define SKR_E3_MINI_V2_0"}
+            ]
+        },
+		{
+            "profile-name": "ender5-plus-v1.0",
+            "keyword": 
+            [
+                {"find":"//#define ENDER5_PLUS","replace":"#define ENDER5_PLUS"},
+                {"find":"//#define SKR_E3_MINI_V1","replace":"#define SKR_E3_MINI_V1"}
+            ]
+        },
+        {
+            "profile-name": "ender5-plus-v1.2",
+            "keyword": 
+            [
+                {"find":"//#define ENDER5_PLUS","replace":"#define ENDER5_PLUS"},
+                {"find":"//#define SKR_E3_MINI_V1_2","replace":"#define SKR_E3_MINI_V1_2"}
+            ]
+        },
+		{
+            "profile-name": "ender5-plus-v2.0",
+            "keyword": 
+            [
+                {"find":"//#define ENDER5_PLUS","replace":"#define ENDER5_PLUS"},
+                {"find":"//#define SKR_E3_MINI_V2_0","replace":"#define SKR_E3_MINI_V2_0"}
+            ]
+        }
+    ]
+}

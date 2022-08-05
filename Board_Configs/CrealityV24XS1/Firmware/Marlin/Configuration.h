@@ -29,8 +29,9 @@
 //===========================================================================
 //#define ENDER3_S1
 //#define ENDER3_S1_PRO
+//#define ENDER3_S1_PLUS
 
-// F4 CPU Board Setting
+// F4 CPU Board Setting - READ ABOVE FOR WHAT THIS DOES AND HOW TO USE IT.
 //#define ENDER3S1_F4CPU
 
 // EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
@@ -39,10 +40,10 @@
 //#define ENDER3_S1_OEM_12MM            // For Mini EZABL Pro Sensor + Mount
 //#define CUSTOM_PROBE
 
-// Ender 3 S1 LCD Settings - There are 2 LCDs supported by this firmware
+// Ender 3 S1 LCD Settings - There are 2 LCDs supported by this firmware - Touch LCDs are NOT supported.
 // Uncomment the line for the LCD that you are using with your machine. 
 //#define ENDER3_S1_12864_LCD           //TH3D 12864 LCD Kit
-//#define ENDER3_S1_COLOR_LCD           //Ender 3 S1 Color LCD (DWIN/DACAI)
+//#define ENDER3_S1_COLOR_LCD           //Ender 3 S1 Color LCD w/Knob (DWIN/DACAI)
 
 // If you are having issues with the CRTouch uncomment the below line to disable it.
 // Connect the included Z Endstop with its cable to the J713 Header on the board and mount to the printer.
@@ -282,7 +283,7 @@
  */
  
 //Ender 3 S1/S1 Pro Settings
-#if ANY(ENDER3_S1, ENDER3_S1_PRO)
+#if ANY(ENDER3_S1, ENDER3_S1_PRO, ENDER3_S1_PLUS)
   #if ENABLED(ENDER3_S1_PRO)
     #define ENDER3_S1
     #if DISABLED(HIGH_TEMP_THERMISTOR)
@@ -344,10 +345,17 @@
 
   #define EXTRUDERS 1
 
-  #define X_BED_SIZE 220
-  #define Y_BED_SIZE 220
-  #define Z_MAX_POS 270
-  #define MACHINE_SIZE "220x220x270"
+  #if ENABLED(ENDER3_S1_PLUS)
+    #define X_BED_SIZE 300
+    #define Y_BED_SIZE 300
+    #define Z_MAX_POS 300
+    #define MACHINE_SIZE "300x300x300"
+  #else
+    #define X_BED_SIZE 220
+    #define Y_BED_SIZE 220
+    #define Z_MAX_POS 270
+    #define MACHINE_SIZE "220x220x270"
+  #endif
 
   #if ENABLED(HOME_ADJUST)
     #define X_MIN_POS X_HOME_LOCATION

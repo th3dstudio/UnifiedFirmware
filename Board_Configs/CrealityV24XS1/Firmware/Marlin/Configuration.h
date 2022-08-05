@@ -15,11 +15,15 @@
 // THESE BOARDS SHIPPED WITH MULTIPLE CPU TYPES. CHECK YOUR CPU AND READ THE PLATFORMIO.INI FILE FOR DETAILS ON BUILDING FOR
 // THE CORRECT CPU TYPE THAT YOU HAVE ON YOUR PARTICULAR BOARD. FLASHING THE WRONG BUILD ON THE WRONG CPU CAN BRICK YOUR BOARD.
 
+// CRTOUCH NOTES: These machines come standard with a CRTOUCH from the factory. Our firmware assumes you are using that still unless you tell it otherwise
+// by enabling EZABL or CUSTOM_PROBE + BLTOUCH options.
+
 // !!! STM32 F4 CPU Board Users !!!
 // If you have the F4 CPU uncomment the ENDER3S1_F4CPU line below and change your default_envs in platformio.ini to STM32F401RCT6_creality
 // The firmware BIN file MUST be placed in a folder on your SD called STM32F4_UPDATE AND a different name every time you flash.
+// To determine if you have an "F4" CPU look at the large chip on you board. If it says "STM32F4" in the part number then you have an F4 CPU
 
-// ENDER 3 S1 PRO USERS: The stock touch LCD is NOT supported on the S1 Pro and requires the 12864 upgrade kit here: https://www.th3dstudio.com/product/creality-ender-3-s1-12864-lcd-conversion-upgrade-kit/
+// ENDER 3 S1 PRO/PLUS USERS: The stock touch LCD is NOT supported on the S1 Pro and requires the 12864 upgrade kit here: https://www.th3dstudio.com/product/creality-ender-3-s1-12864-lcd-conversion-upgrade-kit/
 // Due to the closed source firmware on the stock touch LCD, we will never support it in our firmware.
 
 // NOTE: Enabling EZABL mounts and/or BLTouch settings will disable the pre-setup settings for the stock CRTouch with its stock mount.

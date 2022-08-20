@@ -17,7 +17,7 @@
 #endif
 #if ENABLED(TINA2_OEM)
   #define ABL_ENABLE
-  #define NOZZLE_TO_PROBE_OFFSET { 28, 4, 0 }
+  #define NOZZLE_TO_PROBE_OFFSET { 28, 0, 0 }
 #endif
 #if ENABLED(ZYLTECH_GEAR_OEM)
   #define ABL_ENABLE

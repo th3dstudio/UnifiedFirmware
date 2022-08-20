@@ -22,6 +22,9 @@
 //===========================================================================
 //#define TINA2
 
+// V3 Setting - If you have the "mushroom" type endstops uncomment this line to set the V3 hardware settings
+//#define TINA2_HARDWARE_V3
+
 // EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
 //#define TINA2_OEM     //for the stock 12mm probe mount included on the printer
 //#define CUSTOM_PROBE
@@ -41,7 +44,7 @@
 #define EZABL_POINTS 3
 
 // Probe Edge - How far from the edge of the bed to probe from. Use 50 if using binder clips. This also sets the edge inset value for MANUAL_MESH_LEVELING.
-#define EZABL_PROBE_EDGE 5
+#define EZABL_PROBE_EDGE 10
 
 // Fast Probing - Works with most machines and all EZABL sensors (8mm/s)
 #define EZABL_FASTPROBE
@@ -275,7 +278,12 @@
 
   #define EXTRUDERS 1
 
-  #define X_BED_SIZE 100
+  #if ENABLED(TINA2_HARDWARE_V3)
+    #define X_BED_SIZE 105
+  #else
+    #define X_BED_SIZE 100
+  #endif
+  
   #define Y_BED_SIZE 120
   #define Z_MAX_POS 100
   

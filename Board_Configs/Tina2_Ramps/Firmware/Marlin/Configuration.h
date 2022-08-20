@@ -14,7 +14,7 @@
 // ONLY UNCOMMENT ONE PRINTER AT A TIME!!! IF YOU HAVE MULTIPLE MACHINES FLASH THEM ONE AT A TIME.
 // UNCOMMENT MEANS REMOVING THE // IN FRONT OF A #define XXXXXX LINE.
 
-// PRINTER NOTE: Works with the wifi and non-wifi models as well as the Monoprice Cadet rebrand.
+// PRINTER NOTE: Works with the wifi and non-wifi models as well as the Monoprice Cadet rebrand. The stock ABL sensor is enabled by default.
 // NOTE: This firmware ONLY works without the wifi module. If you have the wifi module, disconnect it from your board before flashing.
 
 //===========================================================================

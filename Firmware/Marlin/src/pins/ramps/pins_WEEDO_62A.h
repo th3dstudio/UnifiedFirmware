@@ -46,7 +46,7 @@
 
 // Card Reader
 #define SDSS               53
-#define SD_DETECT_PIN 49
+#define SD_DETECT_PIN      49
 
 #define SDPOWER_PIN        -1
 #define PS_ON_PIN          12
@@ -55,13 +55,13 @@
 #define LED_PIN            13
 
 // Extruder0
-#define FAN_PIN             4   // IO pin. Buffer needed
+//#define FAN_PIN             4   // IO pin. Buffer needed
 #define HEATER_0_PIN       10   // EXTRUDER 1
 #define TEMP_0_PIN         13   // ANALOG NUMBERING
 
-// Heater Bed
-#define HEATER_BED_PIN      8   // BED
-#define TEMP_BED_PIN       14   // ANALOG NUMBERING
+// Heated Bed
+//#define HEATER_BED_PIN      8   // BED
+//#define TEMP_BED_PIN       14   // ANALOG NUMBERING
 
 // Buzzer
 #define BEEPER_PIN         37

@@ -18,12 +18,13 @@
 // NOTE: This firmware ONLY works without the wifi module. If you have the wifi module, disconnect it from your board before flashing.
 
 //===========================================================================
-// ******************   TINA2 PRINTERS 2560 CPU BOARD   *********************
+// ****************   TINA2/CADET PRINTERS 2560 CPU BOARD   *****************
 //===========================================================================
 //#define TINA2
+//#define CADET
 
 // V3 Setting - If you have the "mushroom" type endstops uncomment this line to set the V3 hardware settings
-//#define TINA2_HARDWARE_V3
+//#define V3_HARDWARE
 
 // EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
 //#define TINA2_OEM     //for the stock 12mm probe mount included on the printer
@@ -248,8 +249,21 @@
  */
 
 //Enable the stock ABL sensor
-#ifndef TINA2_OEM
+#if DISABLED(TINA2_OEM)
+  #if DISABLED(CUSTOM_PRINTER_NAME)
+    #define CUSTOM_PRINTER_NAME
+    #if ENABLED(CADET)
+      #define USER_PRINTER_NAME "TH3D Cadet"
+    #else
+      #define USER_PRINTER_NAME "TH3D Tina2"
+    #endif
+  #endif
   #define TINA2_OEM
+#endif
+
+//Cadet uses same settings, difference is the printer name shown
+#if ENABLED(CADET)
+  #define TINA2
 #endif
 
 // Tina2 Printer Settings
@@ -278,7 +292,7 @@
 
   #define EXTRUDERS 1
 
-  #if ENABLED(TINA2_HARDWARE_V3)
+  #if ENABLED(V3_HARDWARE)
     #define X_BED_SIZE 105
   #else
     #define X_BED_SIZE 100

@@ -1,14 +1,14 @@
 /**
-* WEEDO 62A Motherboad pin configuration
-* Copyright (C) 2019 WEEDO3D Perron
+* WEEDO 62A Motherboard pin configuration
+* Copyright (C) 2019 WEEDO3D Perron - Modded by Tim @ TH3D Studio LLC
 *
 */
 
-
-#ifndef BOARD_NAME
-#define BOARD_NAME "WEEDO 62A"
+#if HOTENDS > 1 || E_STEPPERS > 1
+  #error "WEEDO 62A supports only 1 hotend / E-stepper. Comment out this line to continue."
 #endif
 
+#define BOARD_INFO_NAME "WEEDO 62A"
 #define LARGE_FLASH true
 
 // X Motor
@@ -19,7 +19,7 @@
 
 // X Endstop
 #define X_MIN_PIN           3
-#define X_MAX_PIN         2
+#define X_MAX_PIN           2
 
 // Y Motor
 #define Y_STEP_PIN         60
@@ -48,31 +48,31 @@
 #define SDSS               53
 #define SD_DETECT_PIN 49
 
-#define SDPOWER            -1
+#define SDPOWER_PIN        -1
 #define PS_ON_PIN          12
 
 // UART LED
 #define LED_PIN            13
 
 // Extruder0
-#define FAN_PIN           4 // IO pin. Buffer needed
-#define HEATER_0_PIN     10   // EXTRUDER 1
+#define FAN_PIN             4   // IO pin. Buffer needed
+#define HEATER_0_PIN       10   // EXTRUDER 1
 #define TEMP_0_PIN         13   // ANALOG NUMBERING
 
 // Heater Bed
-#define HEATER_BED_PIN    8    // BED
-#define TEMP_BED_PIN         14   // ANALOG NUMBERING
+#define HEATER_BED_PIN      8   // BED
+#define TEMP_BED_PIN       14   // ANALOG NUMBERING
 
-// BUZZ
-#define BEEPER_PIN 37
+// Buzzer
+#define BEEPER_PIN         37
 
 // Pins for DOGM SPI LCD Support
-#define DOGLCD_A0  27
-#define DOGLCD_CS  29
-#define LCD_RESET_PIN  25
-#define LCD_CONTRAST 200
+#define DOGLCD_A0          27
+#define DOGLCD_CS          29
+#define LCD_RESET_PIN      25
+#define LCD_CONTRAST      200
 
 // Encoder
-#define BTN_EN1 33
-#define BTN_EN2 31
-#define BTN_ENC 35  //the click switch
+#define BTN_EN1            33
+#define BTN_EN2            31
+#define BTN_ENC            35   //the click switch

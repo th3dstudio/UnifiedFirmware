@@ -15,6 +15,10 @@
 #if ENABLED(CUSTOM_PROBE)
   #define ABL_ENABLE
 #endif
+#if ENABLED(TINA2_OEM)
+  #define ABL_ENABLE
+  #define NOZZLE_TO_PROBE_OFFSET { 28, 4, 0 }
+#endif
 #if ENABLED(ZYLTECH_GEAR_OEM)
   #define ABL_ENABLE
   #define NOZZLE_TO_PROBE_OFFSET { 0, -42, 0 }

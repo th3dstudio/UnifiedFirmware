@@ -14,20 +14,19 @@
 // ONLY UNCOMMENT ONE PRINTER AT A TIME!!! IF YOU HAVE MULTIPLE MACHINES FLASH THEM ONE AT A TIME.
 // UNCOMMENT MEANS REMOVING THE // IN FRONT OF A #define XXXXXX LINE.
 
+// PRINTER NOTE: Works with the wifi and non-wifi models as well as the Monoprice Cadet rebrand.
+// NOTE: This firmware ONLY works without the wifi module. If you have the wifi module, disconnect it from your board before flashing.
+
 //===========================================================================
 // ******************   TINA2 PRINTERS 2560 CPU BOARD   *********************
 //===========================================================================
-//#define TINA2 
-
-// PRINTER NOTE: Works with the wifi and non-wifi models as well as the Monoprice Cadet rebrand
-// NOTE: This firmware ONLY works without the wifi module. If you have the wifi module, disconnect it from your board before flashing.
+//#define TINA2
 
 // EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
-// NOTE - Connect the EZABL Z Endstop connection to the Z+ on the Chiron board, do NOT replace the stock endstops.
-//#define TINA2_OEM
+//#define TINA2_OEM     //for the stock 12mm probe mount included on the printer
 //#define CUSTOM_PROBE
 
-// Z Homing Option - Use EZABL to home Z instead of endstops
+// Z Homing Option - Use EZABL or stock ABL sensor to home Z instead of endstops
 //#define USE_EZABL_HOMEZ
 
 //===========================================================================
@@ -42,7 +41,7 @@
 #define EZABL_POINTS 3
 
 // Probe Edge - How far from the edge of the bed to probe from. Use 50 if using binder clips. This also sets the edge inset value for MANUAL_MESH_LEVELING.
-#define EZABL_PROBE_EDGE 35
+#define EZABL_PROBE_EDGE 5
 
 // Fast Probing - Works with most machines and all EZABL sensors (8mm/s)
 #define EZABL_FASTPROBE
@@ -245,6 +244,11 @@
  * Machine Configuration Settings
  */
 
+//Enable the stock ABL sensor
+#ifndef TINA2_OEM
+  #define TINA2_OEM
+#endif
+
 // Tina2 Printer Settings
 #if ENABLED(TINA2)
   #define SERIAL_PORT 0
@@ -253,9 +257,9 @@
   #define BAUDRATE 250000
   
   #define MINIPANEL
-  #define LCD_CONTRAST_140 //not needed?
+  #define DEFAULT_LCD_CONTRAST 255
     
-  #if DISABLED(REVERSE_KNOB_DIRECTION)
+  #if ENABLED(REVERSE_KNOB_DIRECTION)
     #define REVERSE_ENCODER_DIRECTION
   #endif
 
@@ -337,7 +341,7 @@
   #if ENABLED(USE_EZABL_HOMEZ)
     #define USE_PROBE_FOR_Z_HOMING
   #endif
-  //#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+  #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
 
   #define X_DRIVER_TYPE A4988
   #define Y_DRIVER_TYPE A4988

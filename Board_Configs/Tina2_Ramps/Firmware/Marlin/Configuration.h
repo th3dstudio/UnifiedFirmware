@@ -252,24 +252,21 @@
 
   #define BAUDRATE 250000
   
-  #define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
+  #define MINIPANEL
+  #define LCD_CONTRAST_140 //not needed?
     
   #if DISABLED(REVERSE_KNOB_DIRECTION)
     #define REVERSE_ENCODER_DIRECTION
   #endif
 
   #ifndef MOTHERBOARD
-    #define MOTHERBOARD BOARD_TRIGORILLA_14
+    #define MOTHERBOARD BOARD_WEEDO_62A
   #endif
 
-  //#define OUTAGECON_PIN   58
-  #define Y_STOP_PIN                          42
-  #define Z2_MIN_PIN                          43
-
   #if ENABLED(CUSTOM_ESTEPS)
-    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 100, 400, CUSTOM_ESTEPS_VALUE }
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 400, CUSTOM_ESTEPS_VALUE }
   #else
-    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 100, 400, 405 }
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 400, 95 }
   #endif
 
   #define EXTRUDERS 1
@@ -282,20 +279,21 @@
     #define X_MIN_POS X_HOME_LOCATION
     #define Y_MIN_POS Y_HOME_LOCATION
   #else
-    #define X_MIN_POS -10
+    #define X_MIN_POS 0
     #define Y_MIN_POS 0
   #endif
 
-  #define USE_XMIN_PLUG
+  #define USE_XMAX_PLUG
   #define USE_YMIN_PLUG
   #define USE_ZMIN_PLUG
+  #define USE_ZMAX_PLUG
 
-  #define X_HOME_DIR -1
+  #define X_HOME_DIR 1
   #define Y_HOME_DIR -1
-  #define Z_HOME_DIR -1
+  #define Z_HOME_DIR 1
   
   #if NONE(V6_HOTEND, TH3D_HOTEND_THERMISTOR, KNOWN_HOTEND_THERMISTOR)
-    #define TEMP_SENSOR_0 5
+    #define TEMP_SENSOR_0 1
   #else
     #if ENABLED(EZBOARD_PT100)
       #define TEMP_SENSOR_0 20
@@ -316,28 +314,16 @@
   #define TEMP_SENSOR_6 0
   #define TEMP_SENSOR_7 0
   
-  #if NONE(TH3D_BED_THERMISTOR, KEENOVO_TEMPSENSOR, KNOWN_BED_THERMISTOR, AC_BED)
-    #define TEMP_SENSOR_BED 1
-  #else
-    #if ENABLED(AC_BED)
-      #define TEMP_SENSOR_BED 0
-    #elif ENABLED(KNOWN_BED_THERMISTOR)
-      #define TEMP_SENSOR_BED KNOWN_BED_THERMISTOR_VALUE
-    #elif ENABLED(TH3D_BED_THERMISTOR)
-      #define TEMP_SENSOR_BED 1
-    #elif ENABLED(KEENOVO_TEMPSENSOR)
-      #define TEMP_SENSOR_BED 11
-    #endif
-  #endif
+  #define TEMP_SENSOR_BED 0
   
   #define TEMP_SENSOR_PROBE 0
   #define TEMP_SENSOR_CHAMBER 0
 
   #define ENDSTOPPULLUPS
 
-  #define X_MIN_ENDSTOP_INVERTING true
+  #define X_MIN_ENDSTOP_INVERTING false
   #define Y_MIN_ENDSTOP_INVERTING true
-  #define Z_MIN_ENDSTOP_INVERTING false
+  #define Z_MIN_ENDSTOP_INVERTING true
   #define I_MIN_ENDSTOP_INVERTING false
   #define J_MIN_ENDSTOP_INVERTING false
   #define K_MIN_ENDSTOP_INVERTING false
@@ -347,15 +333,11 @@
   #define I_MAX_ENDSTOP_INVERTING false
   #define J_MAX_ENDSTOP_INVERTING false
   #define K_MAX_ENDSTOP_INVERTING false
-  #define Z_MIN_PROBE_ENDSTOP_INVERTING false
+  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
   #if ENABLED(USE_EZABL_HOMEZ)
     #define USE_PROBE_FOR_Z_HOMING
   #endif
   //#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
-  #if ENABLED(CHIRON_OEM) || ENABLED(CUSTOM_PROBE)
-    #define Z_MIN_PROBE_PIN 19 // Z+ Header on Chiron Board
-    #define Z_MAX_PIN -1
-  #endif
 
   #define X_DRIVER_TYPE A4988
   #define Y_DRIVER_TYPE A4988
@@ -368,10 +350,10 @@
   #define Z_ENABLE_ON 0
   #define E_ENABLE_ON 0
 
-  #define INVERT_X_DIR true
+  #define INVERT_X_DIR false
   #define INVERT_Y_DIR true
-  #define INVERT_Z_DIR true
-  #define INVERT_E0_DIR false
+  #define INVERT_Z_DIR false
+  #define INVERT_E0_DIR true
   
   #define INVERT_E1_DIR false
   #define INVERT_E2_DIR false
@@ -384,8 +366,7 @@
   #define ENCODER_PULSES_PER_STEP 4
   #define ENCODER_STEPS_PER_MENU_ITEM 1
 
-  #define FILAMENT_RUNOUT_SENSOR
-  #define MOUNTED_FILAMENT_SENSOR
+  //#define FILAMENT_RUNOUT_SENSOR
 
   #if ENABLED(FILAMENT_RUNOUT_SENSOR)
     #define FIL_RUNOUT_ENABLED_DEFAULT true // Enable the sensor on startup. Override with M412 followed by M500.

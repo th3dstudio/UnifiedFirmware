@@ -696,6 +696,8 @@
     #define E0_AUTO_FAN_PIN PB15
   #elif ENABLED(ENDER3_S1)
     #define E0_AUTO_FAN_PIN PC0
+  #elif ENABLED(TINA2)
+    #define E0_AUTO_FAN_PIN 9
   #elif ENABLED(EZBOARD_FAN2_HOTEND_MODE)
     #if ENABLED(EZBOARD_V2)
       #define E0_AUTO_FAN_PIN       PC7

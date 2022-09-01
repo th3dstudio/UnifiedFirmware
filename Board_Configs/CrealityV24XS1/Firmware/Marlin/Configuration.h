@@ -302,6 +302,8 @@
       #define CUSTOM_PRINTER_NAME
       #if ENABLED(ENDER3_S1_PRO)
         #define USER_PRINTER_NAME "TH3D E3S1 Pro"
+      #elif ENABLED(ENDER3_S1_PLUS)
+        #define USER_PRINTER_NAME "TH3D E3S1 Plus"
       #else
         #define USER_PRINTER_NAME "TH3D E3S1"
       #endif

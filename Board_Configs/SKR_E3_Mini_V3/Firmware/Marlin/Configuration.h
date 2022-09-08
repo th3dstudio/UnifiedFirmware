@@ -12,59 +12,62 @@
 // ONLY UNCOMMENT ONE PRINTER AT A TIME!!! IF YOU HAVE MULTIPLE MACHINES FLASH THEM ONE AT A TIME.
 // UNCOMMENT MEANS REMOVING THE // IN FRONT OF A #define XXXXXX LINE.
 
-// THESE BOARDS SHIPPED WITH MULTIPLE CPU TYPES. CHECK YOUR CPU AND READ THE PLATFORMIO.INI FILE FOR DETAILS ON BUILDING FOR
-// THE CORRECT CPU TYPE THAT YOU HAVE ON YOUR PARTICULAR BOARD. FLASHING THE WRONG BUILD ON THE WRONG CPU CAN BRICK YOUR BOARD.
-
-// CRTOUCH NOTES: These machines come standard with a CRTOUCH from the factory. Our firmware assumes you are using that still unless you tell it otherwise
-// by enabling EZABL or CUSTOM_PROBE + BLTOUCH options.
-
-// !!! STM32 F4 CPU Board Users !!!
-// If you have the F4 CPU uncomment the ENDER3S1_F4CPU line below and change your default_envs in platformio.ini to STM32F401RCT6_creality
-// The firmware BIN file MUST be placed in a folder on your SD called STM32F4_UPDATE AND a different name every time you flash.
-// To determine if you have an "F4" CPU look at the large chip on you board. If it says "STM32F4" in the part number then you have an F4 CPU
-
-// ENDER 3 S1 PRO/PLUS USERS: The stock touch LCD is NOT supported on the S1 Pro and requires the 12864 upgrade kit here: https://www.th3dstudio.com/product/creality-ender-3-s1-12864-lcd-conversion-upgrade-kit/
-// Due to the closed source firmware on the stock touch LCD, we will never support it in our firmware.
-
-// NOTE: Enabling EZABL mounts and/or BLTouch settings will disable the pre-setup settings for the stock CRTouch with its stock mount.
+// THE BOARD THIS FIRMWARE IS FOR IS A 3RD PARTY/AFTERMARKET/UPGRADE BOARD NOT STANDARD ON THESE MACHINES.
+// THIS FIRMWARE IS PROVIDED AS-IS AND NOT COVERED UNDER ANY TECHNICAL SUPPORT PROVIDED FOR TH3D PRODUCTS. 
+// CONTACT BIGTREETECH SUPPORT IF YOU REQUIRE SUPPORT ON THEIR PRODUCT OR YOU CAN POST IN OUR COMMUNITIES.
+// YOU MUST UNCOMMENT THE PRINTER LINE AND YOUR BOARD VERSION LINE TO COMPILE.
 
 //===========================================================================
-// ***************   CREALITY ENDER 3 S1 V24S1_301 BOARD   ******************
+// ***********   CREALITY PRINTERS W/SKR E3 MINI V3 BOARD    ****************
 //===========================================================================
-//#define ENDER3_S1
-//#define ENDER3_S1_PRO
-//#define ENDER3_S1_PLUS
 
-// F4 CPU Board Setting - READ ABOVE FOR WHAT THIS DOES AND HOW TO USE IT.
-//#define ENDER3S1_F4CPU
+//#define ENDER3
+//#define ENDER3_MAX
+//#define ENDER5
+//#define ENDER5_PLUS
+
+//#define CR10
+//#define CR10MINI
+//#define CR10S4
+//#define CR10S5
+// NOTE: It is HIGHLY recommended to use an external bed MOSFET with the CR-10 series machines due to the high load the beds have.
+// While these boards work on 12V machines, they are designed for 24V printers that pull less current (specifically on the bed).
+// If you need a MOSFET, we carry one here: https://www.th3dstudio.com/product/high-amp-12v-24v-mosfet-heated-bed-or-hotend/
+
+// EZOut Filament Sensor
+// This board only works with this version of our sensor kit: https://www.th3dstudio.com/product/ezout-filament-sensor-kit-standard/
+// If you bought just the sensor from us and not the kit with the adapter PCB you will need to swap the red an white wires at one end of the plug to use it with these boards.
+// Failure to use our sensor with the EZOut adapter PCB OR without swapping the red and white wires will result in a short to ground.
+// Connect the EZOut sensor kit (or sensor only with wiring changed as per above) to the "E-Stop" port and uncomment the below line to enable the filament sensor.
+// Also works with the stock Ender 3 MAX sensor.
+//#define EZOUTV2_ENABLE
+
+// Creality CR-10S Series Filament Sensor
+// Connect the stock sensor to the "E-Stop" port and uncomment the below line to enable the filament sensor.
+//#define CR10S_STOCKFILAMENTSENSOR
 
 // EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
-// Connect the EZABL control board with the Z Endstop cable that came with your S1 to the J713 Header on the printer board.
-//#define ENDER3_S1_OEM_18MM            // For Standard EZABL Pro Sensor + Mount
-//#define ENDER3_S1_OEM_12MM            // For Mini EZABL Pro Sensor + Mount
+//#define CR10_OEM
+//#define ENDER3_OEM
+//#define ENDER3_V2_OEM
+//#define ENDER3_MAX_OEM
+//#define ENDER5_OEM
+//#define ENDER5_PLUS_OEM
 //#define CUSTOM_PROBE
 
-// Ender 3 S1 LCD Settings - There are 2 LCDs supported by this firmware - Touch LCDs are NOT supported.
-// Uncomment the line for the LCD that you are using with your machine. 
-//#define ENDER3_S1_12864_LCD           //TH3D 12864 LCD Kit
-//#define ENDER3_S1_COLOR_LCD           //Ender 3 S1 Color LCD w/Knob (DWIN/DACAI)
+// Ender 5 - Leadscrew Setting
+// If you have the new Ender 5/5 Pro Model that has the new 800steps/mm Z leadscrew uncomment the below option to set the correct steps/mm
+//#define ENDER5_NEW_LEADSCREW
 
-// If you are having issues with the CRTouch uncomment the below line to disable it.
-// Connect the included Z Endstop with its cable to the J713 Header on the board and mount to the printer.
-//#define ENDER3_S1_ZENDSTOP_ONLY
-
-// If you are having issues with the stock filament sensor uncomment the below line to disable it.
-//#define ENDER3_S1_NOFILAMENT_SENSOR
+// Ender 5 Plus ONLY ABL Settings -------------------------------------------
+// By default the Ender 5 Plus comes with a BL Touch. Enabling the ENDER5_PLUS_EZABL or ENDER5_PLUS_NOABL will override the BL Touch setting
+// If you are using the stock BL Touch with a non-stock mount enable the CUSTOM_PROBE line above and enter the offsets below for the new mount.
+//#define ENDER5_PLUS_EZABL
+//#define ENDER5_PLUS_NOABL
 
 // EZNeo Settings -----------------------------------------------------------
 // If you are using an EZNeo strip on your printer, uncomment the line for what strip you are using.
-// Specify your IO pin below as well as this board does not have a dedicated NEOPIXEL header on it.
 //#define EZNEO_220
-
-// EZNeo Manual IO Pin Setting ----------------------------------------------
-// If you have the EZNeo wired with your own 5V power provided, specify the pin used below.
-// See our helpcenter for pinouts for the V2451_301 Board here: https://www.th3dstudio.com/hc/product-information/ezneo/ezneo-creality-v2451_301-ender-3-s1-board-setup/
-//#define NEOPIXEL_PIN PA13
 
 //===========================================================================
 // *************************  END PRINTER SECTION   *************************
@@ -210,10 +213,38 @@
 // If your printer is homing to the endstops hard uncomment this to change the homing speed/divisor to make it less aggressive.
 //#define SLOWER_HOMING
 
+// Axis Direction Settings
+// If you need to reverse the direction of a motor uncomment the below option for that axis.
+// E motor settings are below in the Extruder Settings Section
+//#define REVERSE_X_MOTOR
+//#define REVERSE_Y_MOTOR
+//#define REVERSE_Z_MOTOR
+
 //===========================================================================
 //****************** COMMUNITY REQUESTED FEATURES ***************************
 //*** COMMUNITY REQUESTED FEATURES ARE ALL NOT SUPPORTED BY TH3D SUPPORT ****
 //===========================================================================
+
+// ENDER XTENDER KIT SETTINGS ----------------------
+
+// Ender Xtender Kits for Ender 3/3 Pro
+//#define XTENDER_E3_300    //300x300x250 Size
+//#define XTENDER_E3_300XL  //300x300x400 Size
+//#define XTENDER_E3_400    //400x400x250 Size
+//#define XTENDER_E3_400Z   //235x235x400 Size
+//#define XTENDER_E3_400XL  //400x400x500 Size
+//#define XTENDER_E3_500Z   //235x235x500 Size
+
+// Ender Xtender Kits for Ender 5/5 Pro
+//#define XTENDER_E5_5XL    //235x235x500 Size
+
+// Ender Xtender Kits for Ender 5 Plus
+//#define XTENDER_E5P_400   //510x510x400 Size
+//#define XTENDER_E5P_500   //510x510x500 Size
+
+// BAUDRATE ADJUSTMENT -----------------------------
+// This firmware uses a 115200 default baud rate as that is the most reliable and compatible. If you want to use 250000 uncomment the below line.
+//#define FASTER_BAUDRATE
 
 // HOME OFFSET ADJUSTMENT --------------------------
 // If you need to adjust your XY home offsets from defaults then you can uncomment the HOME_ADJUST line below and enter your
@@ -243,8 +274,18 @@
 // Change the K Value here or use M900 KX.XX in your starting code (recommended).
 #define LINEAR_ADVANCE_K 0
 
+// BL TOUCH ----------------------------------------
+// If you want to use the BL-Touch uncomment the 2 lines below. Refer to BTT documentation for connecting the BL Touch.
+// Use the Z endstop port for the black/white wires from the BL Touch.
+// You also need to uncomment #define CUSTOM_PROBE above and then enter in your offsets above in the CUSTOM PROBE section.
+//#define BLTOUCH
+// Here is where you set your servo pin. For SKR E3 Mini use PA1
+//#define SERVO0_PIN PA1
+// If you are using the 5 pin header for all the BL Touch connections, uncomment the below line
+//#define BLTOUCH_ON_5PIN
+
 // MANUAL MESH LEVELING ----------------------------
-// If you want to use manual mesh leveling you can enable the below option. This is for generating a MANUAL mesh WITHOUT a probe.
+// If you want to use manual mesh leveling you can enable the below option. This is for generating a MANUAL mesh WITHOUT a probe. To change the mesh inset value change the EZABL_PROBE_EDGE setting above.
 // Mesh Bed Leveling Documentation: http://marlinfw.org/docs/gcode/G029-mbl.html 
 // NOTE: If you want to automate the leveling process our EZABL kits do this for you. Check them out here: http://EZABL.TH3DStudio.com
 //#define MANUAL_MESH_LEVELING
@@ -259,7 +300,13 @@
 // ARC Support Override ----------------------------
 // Arc support is enabled by default on all builds but this takes up extra space. If you get compile errors due to the size being too large when enabling other options, then disable ARC_SUPPORT
 // by uncommenting the DISABLE_ARC_SUPPORT line below.
+// Disabling ARC_SUPPORT will restore additional menus to the LCD on this board.
 //#define DISABLE_ARC_SUPPORT
+
+// Action Commands Override ------------------------
+// Action commands support is enabled by default on all builds but this takes up extra space. If you get compile errors due to the size being too large when enabling other options, then disable HOST_ACTION_COMMANDS
+// by uncommenting the DISABLE_ACTION_COMMANDS_SUPPORT line below. This feature is primiarly used for OctoPrint/EZPi setups.
+//#define DISABLE_ACTION_COMMANDS_SUPPORT
 
 //===========================================================================
 // **********************  END CONFIGURATION SETTINGS   *********************
@@ -269,122 +316,191 @@
  * ****************************DO NOT TOUCH ANYTHING BELOW THIS COMMENT**************************
  * Core machine settings are below. Do NOT modify these unless you understand what you are doing.
  */
- 
-/**
- * Sanity Checks
- */
-
-#if ENABLED(LINEAR_ADVANCE)
-  #error "Linear Advance does NOT work on the S1 boards with the TMC drivers due to how Creality has them setup. Disable Linear Advance to continue or comment this line out to continue compile at your own risk."
-#endif
-
-#if NONE(ENDER3_S1_12864_LCD, ENDER3_S1_COLOR_LCD)
-  #error "You must uncomment what LCD you are using and try again."
-#endif
 
 /**
  * Machine Configuration Settings
  */
  
-//Ender 3 S1/S1 Pro Settings
-#if ANY(ENDER3_S1, ENDER3_S1_PRO, ENDER3_S1_PLUS)
-  #if ENABLED(ENDER3_S1_PRO)
-    #define ENDER3_S1
-    #if DISABLED(HIGH_TEMP_THERMISTOR)
-      #define HIGH_TEMP_THERMISTOR
-      #undef HIGH_TEMP_THERMISTOR_TEMP
-      #define HIGH_TEMP_THERMISTOR_TEMP 310
-    #endif
-  #endif
-
-  #if NONE(ENDER3_S1_OEM_18MM, ENDER3_S1_OEM_12MM, CUSTOM_PROBE, ENDER3_S1_ZENDSTOP_ONLY)
-    #ifndef CUSTOM_PRINTER_NAME
-      #define CUSTOM_PRINTER_NAME
-      #if ENABLED(ENDER3_S1_PRO)
-        #define USER_PRINTER_NAME "TH3D E3S1 Pro"
-      #elif ENABLED(ENDER3_S1_PLUS)
-        #define USER_PRINTER_NAME "TH3D E3S1 Plus"
-      #else
-        #define USER_PRINTER_NAME "TH3D E3S1"
-      #endif
-    #endif
-    #ifndef BLTOUCH
-      #define CRTOUCH_PROBE_NAMING
-    #endif
-    #define BLTOUCH
-    #define CUSTOM_PROBE
-    #define NOZZLE_TO_PROBE_OFFSET { -32, -41, 0 }
-    #define BLTOUCH_HS_MODE true
-  #endif
-
-  #define DIRECT_DRIVE_PRINTER
-
-  #define SERIAL_PORT 1
-
-  #define DEFAULT_Kp 28.72
-  #define DEFAULT_Ki 2.62
-  #define DEFAULT_Kd 78.81
-
-  #define DEFAULT_bedKp 462.10
-  #define DEFAULT_bedKi 85.47
-  #define DEFAULT_bedKd 624.59
-
-  #define BAUDRATE 115200
-
-  #if ENABLED(ENDER3S1_F4CPU)
-    #ifndef MOTHERBOARD
-      #define MOTHERBOARD BOARD_CREALITY_V24S1_301_F4
-    #endif 
+ //Creality SKR E3 Mini V3 Board Settings
+#if ANY(ENDER3, ENDER3_MAX, ENDER5, ENDER5_PLUS, CR10, CR10MINI, CR10S4, CR10S5)
+  #define SERIAL_PORT 2
+  #define SERIAL_PORT_2 -1
+  
+  #if ANY(CR10, CR10MINI, CR10S4, CR10S5)
+    #define PRINTER_VOLTAGE_12
   #else
-    #ifndef MOTHERBOARD
-      #define MOTHERBOARD BOARD_CREALITY_V24S1_301
-    #endif  
+    #define PRINTER_VOLTAGE_24
+  #endif
+
+  #if ENABLED(FASTER_BAUDRATE)
+    #define BAUDRATE 250000
+  #else
+    #define BAUDRATE 115200
+  #endif
+  
+  #define CR10_STOCKDISPLAY
+  
+  #if ENABLED(REVERSE_KNOB_DIRECTION) && DISABLED(ENDER5_PLUS)
+    #define REVERSE_ENCODER_DIRECTION
+  #endif
+
+  #define SKR_E3_MINI_V3_0
+  
+  #ifndef MOTHERBOARD
+    #define MOTHERBOARD BOARD_BTT_SKR_MINI_E3_V3_0
+  #endif
+  
+  #if ENABLED(ENDER5_NEW_LEADSCREW)
+    #define CREALITY_Z_STEPS 800
+  #else
+    #define CREALITY_Z_STEPS 400
   #endif
 
   #if ENABLED(CUSTOM_ESTEPS)
-    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS_VALUE }
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, CREALITY_Z_STEPS, CUSTOM_ESTEPS_VALUE }
   #else
-    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 425 }
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, CREALITY_Z_STEPS, 95 }
   #endif
 
   #define SHOW_BOOTSCREEN
 
   #define EXTRUDERS 1
-
-  #if ENABLED(ENDER3_S1_PLUS)
+  
+  #if ENABLED(ENDER5)
+    #if ENABLED(XTENDER_E5_5XL)
+      #define X_BED_SIZE 235
+      #define Y_BED_SIZE 235
+      #define Z_MAX_POS 500
+    #else
+      #define X_BED_SIZE 220
+      #define Y_BED_SIZE 220
+      #define Z_MAX_POS 300
+    #endif
+  #endif
+  
+  #if ENABLED(ENDER5_PLUS)
+    #if ENABLED(XTENDER_E5P_400)
+      #define X_BED_SIZE 510
+      #define Y_BED_SIZE 510
+      #define Z_MAX_POS 400
+    #elif ENABLED(XTENDER_E5P_500)
+      #define X_BED_SIZE 510
+      #define Y_BED_SIZE 510
+      #define Z_MAX_POS 500
+    #else
+      #define X_BED_SIZE 350
+      #define Y_BED_SIZE 350
+      #define Z_MAX_POS 400
+    #endif
+    #if DISABLED(REVERSE_KNOB_DIRECTION)
+      #define REVERSE_ENCODER_DIRECTION
+    #endif
+    #define ENDER5_NEW_LEADSCREW
+  #endif
+  
+  #if ENABLED(ENDER3)
+    #if ENABLED(XTENDER_E3_300)
+      #define X_BED_SIZE 300
+      #define Y_BED_SIZE 300
+      #define Z_MAX_POS 250
+    #elif ENABLED(XTENDER_E3_300XL)
+      #define X_BED_SIZE 300
+      #define Y_BED_SIZE 300
+      #define Z_MAX_POS 400
+    #elif ENABLED(XTENDER_E3_400)
+      #define X_BED_SIZE 400
+      #define Y_BED_SIZE 400
+      #define Z_MAX_POS 250
+    #elif ENABLED(XTENDER_E3_400Z)
+      #define X_BED_SIZE 235
+      #define Y_BED_SIZE 235
+      #define Z_MAX_POS 400
+    #elif ENABLED(XTENDER_E3_400XL)
+      #define X_BED_SIZE 400
+      #define Y_BED_SIZE 400
+      #define Z_MAX_POS 500
+    #elif ENABLED(XTENDER_E3_500Z)
+      #define X_BED_SIZE 235
+      #define Y_BED_SIZE 235
+      #define Z_MAX_POS 500
+    #else
+      #define X_BED_SIZE 235
+      #define Y_BED_SIZE 235
+      #define Z_MAX_POS 250
+    #endif
+  #endif
+  
+  #if ENABLED(ENDER3_MAX)
     #define X_BED_SIZE 300
     #define Y_BED_SIZE 300
-    #define Z_MAX_POS 300
-    #define MACHINE_SIZE "300x300x300"
-  #else
-    #define X_BED_SIZE 220
-    #define Y_BED_SIZE 220
-    #define Z_MAX_POS 270
-    #define MACHINE_SIZE "220x220x270"
+    #define Z_MAX_POS 340
+  #endif
+  
+  #if ENABLED(CR10)
+    #define DUAL_Z_MOTORS
+    #define X_BED_SIZE 300
+    #define Y_BED_SIZE 300
+    #define Z_MAX_POS 400
+    #define PRINTER_VOLTAGE_12
   #endif
 
+  #if ENABLED(CR10MINI)
+    #define X_BED_SIZE 300
+    #define Y_BED_SIZE 220
+    #define Z_MAX_POS 300
+    #define PRINTER_VOLTAGE_12
+  #endif
+
+  #if ENABLED(CR10S4)
+    #define DUAL_Z_MOTORS
+    #define CR10_S4
+    #define X_BED_SIZE 400
+    #define Y_BED_SIZE 400
+    #define Z_MAX_POS 400
+    #define PRINTER_VOLTAGE_12
+    #define SLOWER_PROBE_MOVES
+  #endif
+
+  #if ENABLED(CR10S5)
+    #define DUAL_Z_MOTORS
+    #define CR10_S5
+    #define X_BED_SIZE 500
+    #define Y_BED_SIZE 500
+    #define Z_MAX_POS 500
+    #define PRINTER_VOLTAGE_12
+    #define SLOWER_PROBE_MOVES
+  #endif
+  
   #if ENABLED(HOME_ADJUST)
     #define X_MIN_POS X_HOME_LOCATION
     #define Y_MIN_POS Y_HOME_LOCATION
   #else
-    #define X_MIN_POS -10
-    #define Y_MIN_POS -8
+    #define X_MIN_POS 0
+    #define Y_MIN_POS 0
   #endif
 
-  #define USE_XMIN_PLUG
-  #define USE_YMIN_PLUG
-  #define USE_ZMIN_PLUG
+  #if ENABLED(ENDER5) || ENABLED(ENDER5_PLUS)
+    #define USE_XMAX_PLUG
+    #define USE_YMAX_PLUG
+    #define USE_ZMIN_PLUG
+  #else
+    #define USE_XMIN_PLUG
+    #define USE_YMIN_PLUG
+    #define USE_ZMIN_PLUG
+  #endif
 
-  #define X_HOME_DIR -1
-  #define Y_HOME_DIR -1
-  #define Z_HOME_DIR -1
+  #if ENABLED(ENDER5) || ENABLED(ENDER5_PLUS)
+    #define X_HOME_DIR 1
+    #define Y_HOME_DIR 1
+    #define Z_HOME_DIR -1
+  #else
+    #define X_HOME_DIR -1
+    #define Y_HOME_DIR -1
+    #define Z_HOME_DIR -1
+  #endif
 
   #if NONE(V6_HOTEND, TH3D_HOTEND_THERMISTOR, KNOWN_HOTEND_THERMISTOR)
-    #if ENABLED(ENDER3_S1_PRO)
-      #define TEMP_SENSOR_0 13
-    #else
-      #define TEMP_SENSOR_0 1
-    #endif
+    #define TEMP_SENSOR_0 1
   #else
     #if ENABLED(EZBOARD_PT100)
       #define TEMP_SENSOR_0 20
@@ -422,43 +538,70 @@
   #define TEMP_SENSOR_PROBE 0
   #define TEMP_SENSOR_CHAMBER 0
 
+  #define DEFAULT_Kp 28.72
+  #define DEFAULT_Ki 2.62
+  #define DEFAULT_Kd 78.81
+  
+  #define DEFAULT_bedKp 462.10
+  #define DEFAULT_bedKi 85.47
+  #define DEFAULT_bedKd 624.59
+
   #define ENDSTOPPULLUPS
 
-  #define X_MIN_ENDSTOP_INVERTING true
-  #define Y_MIN_ENDSTOP_INVERTING true
-  #define Z_MIN_ENDSTOP_INVERTING true
+  #define X_MIN_ENDSTOP_INVERTING false
+  #define Y_MIN_ENDSTOP_INVERTING false
+  #define Z_MIN_ENDSTOP_INVERTING false
   #define X_MAX_ENDSTOP_INVERTING false
   #define Y_MAX_ENDSTOP_INVERTING false
   #define Z_MAX_ENDSTOP_INVERTING false
-  
-  #if DISABLED(BLTOUCH)
-    #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
-    #define Z_MIN_PROBE_ENDSTOP_INVERTING true
-  #endif
+  #define Z_MIN_PROBE_ENDSTOP_INVERTING false
 
-  #if ENABLED(BLTOUCH)
-    #define Z_MIN_PROBE_ENDSTOP_INVERTING false
+  #if ENABLED(BLTOUCH_ON_5PIN)
     #define USE_PROBE_FOR_Z_HOMING
+  #else
+    #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
   #endif
 
-  #define X_DRIVER_TYPE TMC2208_STANDALONE
-  #define Y_DRIVER_TYPE TMC2208_STANDALONE
-  #define Z_DRIVER_TYPE TMC2208_STANDALONE
-  #define E0_DRIVER_TYPE TMC2208_STANDALONE
+  #define X_DRIVER_TYPE TMC2209
+  #define Y_DRIVER_TYPE TMC2209
+  #define Z_DRIVER_TYPE TMC2209
+  #define E0_DRIVER_TYPE TMC2209
 
   #define X_ENABLE_ON 0
   #define Y_ENABLE_ON 0
   #define Z_ENABLE_ON 0
   #define E_ENABLE_ON 0
 
-  #define INVERT_X_DIR false
-  #define INVERT_Y_DIR false
-  #define INVERT_Z_DIR true
+  #if ENABLED(REVERSE_X_MOTOR)
+    #define INVERT_X_DIR false
+  #else
+    #define INVERT_X_DIR true
+  #endif
+
+  #if ENABLED(REVERSE_Y_MOTOR)
+    #define INVERT_Y_DIR false
+  #else
+    #define INVERT_Y_DIR true
+  #endif
+
+  #if ENABLED(ENDER5) || ENABLED(ENDER5_PLUS)
+    #if ENABLED(REVERSE_Z_MOTOR)
+      #define INVERT_Z_DIR false
+    #else
+      #define INVERT_Z_DIR true
+    #endif
+  #else
+    #if ENABLED(REVERSE_Z_MOTOR)
+      #define INVERT_Z_DIR true
+    #else
+      #define INVERT_Z_DIR false
+    #endif
+  #endif
 
   #if ENABLED(REVERSE_E_MOTOR_DIRECTION)
-    #define INVERT_E0_DIR true
-  #else
     #define INVERT_E0_DIR false
+  #else
+    #define INVERT_E0_DIR true
   #endif
   
   #define INVERT_E1_DIR false
@@ -469,40 +612,42 @@
   #define INVERT_E6_DIR false
   #define INVERT_E7_DIR false
 
-  #if ENABLED(ENDER3_S1_12864_LCD)
-    #define CR10_STOCKDISPLAY
-    #define RET6_12864_LCD
-  #else
-    #define NO_LCD_REINIT 1
-    #define LCD_SERIAL_PORT 2
-    //Different Ender 3 S1 LCD Display Options - Change at your own risk!!!
-    //#define DWIN_CREALITY_LCD           // Creality UI
-    //#define DWIN_CREALITY_LCD_ENHANCED  // Enhanced UI
-    //#define DWIN_CREALITY_LCD_JYERSUI   // Jyers UI by Jacob Myers
-    #define DWIN_MARLINUI_PORTRAIT      // MarlinUI (portrait orientation)
-    //#define DWIN_MARLINUI_LANDSCAPE     // MarlinUI (landscape orientation)
-  #endif
-  
-  #if ANY(DWIN_CREALITY_LCD, DWIN_CREALITY_LCD_JYERSUI, DWIN_CREALITY_LCD_ENHANCED)
-    #define ENABLE_PIDBED
-    #define POWER_LOSS_RECOVERY
-  #endif
-
   #define ENCODER_PULSES_PER_STEP 4
   #define ENCODER_STEPS_PER_MENU_ITEM 1
 
   #define Z_PROBE_OFFSET_RANGE_MIN -10
   #define Z_PROBE_OFFSET_RANGE_MAX 10
-  #define EXTRUDE_MAXLENGTH 1000
-
-  #if DISABLED(ENDER3_S1_NOFILAMENT_SENSOR)
-    #define FILAMENT_RUNOUT_SENSOR
+  
+  #if ENABLED(ENDER5_PLUS)
+    #if DISABLED(ENDER5_PLUS_NOABL) && DISABLED(ENDER5_PLUS_EZABL)
+      #define BLTOUCH
+    #ifndef EZABL_PROBE_EDGE
+      #define EZABL_PROBE_EDGE 35
+    #endif
+    #ifndef EZABL_POINTS
+      #define EZABL_POINTS 5
+    #endif
+    #if DISABLED(CUSTOM_PROBE)
+        #define CUSTOM_PROBE
+        #define NOZZLE_TO_PROBE_OFFSET { -44, -9, 0}
+      #endif
+    #endif  
+    #if DISABLED(ENDER5_PLUS_NOABL)
+      #define ABL_ENABLE
+    #endif
   #endif
 
+  #if ENABLED(EZOUTV2_ENABLE) || ENABLED(CR10S_STOCKFILAMENTSENSOR)
+    #define FILAMENT_RUNOUT_SENSOR
+  #endif
   #if ENABLED(FILAMENT_RUNOUT_SENSOR)
     #define FIL_RUNOUT_ENABLED_DEFAULT true // Enable the sensor on startup. Override with M412 followed by M500.
     #define NUM_RUNOUT_SENSORS   1          // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
-    #define FIL_RUNOUT_STATE     HIGH       // Pin state indicating that filament is NOT present.
+    #if ENABLED(EZOUTV2_ENABLE)
+      #define FIL_RUNOUT_STATE     LOW        // Pin state indicating that filament is NOT present.
+    #else
+      #define FIL_RUNOUT_STATE     HIGH        // Pin state indicating that filament is NOT present.
+    #endif
     #define FIL_RUNOUT_PULLUP               // Use internal pullup for filament runout pins.
     //#define FIL_RUNOUT_PULLDOWN           // Use internal pulldown for filament runout pins.
 
@@ -549,10 +694,9 @@
       #define PRINTER_EVENT_LEDS
     #endif
   #endif
-
 #endif
-// End Ender 3 S1/S1 Pro Settings
-
+// End SKR E3 Mini V3 Board Settings
+ 
 /*
  * All other settings are stored in the Configuration_backend.h and Configuration_speed.h files. Do not change unless you know what you are doing.
  */

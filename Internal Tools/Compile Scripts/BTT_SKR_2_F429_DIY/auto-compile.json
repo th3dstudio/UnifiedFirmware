@@ -1,0 +1,14 @@
+{
+    "config-file":"Configuration.h",
+    "compile-profile":
+    [
+        {
+            "profile-name": "btt-skr-2-f429-diy",
+            "keyword": 
+            [
+                {"find":"//#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER","replace":"#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER"},
+				{"find":"//#define PRINTER_VOLTAGE_12","replace":"#define PRINTER_VOLTAGE_12"}
+            ]
+        }
+    ]
+}

@@ -1,0 +1,13 @@
+{
+    "config-file":"Configuration.h",
+    "compile-profile":
+    [
+        {
+            "profile-name": "tina2",
+            "keyword": 
+            [
+                {"find":"//#define TINA2","replace":"#define TINA2"}
+            ]
+        }
+    ]
+}

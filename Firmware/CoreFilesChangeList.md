@@ -28,10 +28,10 @@ This does not include machine configs or PlatformIO files.
 				- **common**
 					- `dwin_api.cpp`
 					- `dwin_set.cpp`
-				- **creality*
+				- **creality**
 					- `dwin.cpp`
 					- `dwin_lcd.cpp`
-				- **jyersui*
+				- **jyersui**
 					- `dwin.cpp`
 				- **marlinui**
 					- `dwin_lcd.cpp`

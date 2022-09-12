@@ -6,14 +6,24 @@
             "profile-name": "ender3-s1",
             "keyword": 
             [
-                {"find":"//#define ENDER3_S1","replace":"#define ENDER3_S1"}
+                {"find":"//#define ENDER3_S1","replace":"#define ENDER3_S1"},
+				{"find":"//#define ENDER3_S1_12864_LCD           //TH3D 12864 LCD Kit","replace":"#define ENDER3_S1_12864_LCD           //TH3D 12864 LCD Kit"}
             ]
         },
 		{
             "profile-name": "ender3-s1-pro",
             "keyword": 
             [
-                {"find":"//#define ENDER3_S1_PRO","replace":"#define ENDER3_S1_PRO"}
+                {"find":"//#define ENDER3_S1_PRO","replace":"#define ENDER3_S1_PRO"},
+				{"find":"//#define ENDER3_S1_12864_LCD           //TH3D 12864 LCD Kit","replace":"#define ENDER3_S1_12864_LCD           //TH3D 12864 LCD Kit"}
+            ]
+        },
+		{
+            "profile-name": "ender3-s1-plus",
+            "keyword": 
+            [
+                {"find":"//#define ENDER3_S1_PLUS","replace":"#define ENDER3_S1_PLUS"},
+				{"find":"//#define ENDER3_S1_12864_LCD           //TH3D 12864 LCD Kit","replace":"#define ENDER3_S1_12864_LCD           //TH3D 12864 LCD Kit"}
             ]
         }
     ]

@@ -218,7 +218,7 @@
 // For example offsets check the Configuration_backend.h file.
 //
 // NOTE: The EZABL signal lines need to connect to the "PROBE" header, not the "Z-STOP" header.
-// See here: https://www.th3dstudio.com/hc/guides/wiring-information/ezabl-skr-v2-connection/
+// See here: https://support.th3dstudio.com/helpcenter/ezabl-skr-v2-connection/
 //#define CUSTOM_PROBE
 
 // PID Settings -------------------------------------------------------------
@@ -375,7 +375,7 @@
 
 // PID BED TEMPERATURE CONTROL ---------------------
 // If you want PID Bed Temperature control enable the below line. You will need to tune it for your machine.
-// See the PID Bed setup guide here: https://www.th3dstudio.com/hc/guides/diy-guides/p-i-d-bed-calibration-guide/
+// See the PID Bed setup guide here: https://support.th3dstudio.com/helpcenter/p-i-d-bed-calibration-guide/
 //#define ENABLE_PIDBED
 
 // Z PROBE OFFSET WIZARD ---------------------------

@@ -63,7 +63,7 @@
 
 // EZNeo Manual IO Pin Setting ----------------------------------------------
 // If you have the EZNeo wired with your own 5V power provided, specify the pin used below.
-// See our helpcenter for pinouts for the V2451_301 Board here: https://www.th3dstudio.com/hc/product-information/ezneo/ezneo-creality-v2451_301-ender-3-s1-board-setup/
+// See our helpcenter for pinouts for the V2451_301 Board here: https://support.th3dstudio.com/helpcenter/ezneo-creality-v2451_301-ender-3-s1-board-setup/
 //#define NEOPIXEL_PIN PA13
 
 //===========================================================================
@@ -226,7 +226,7 @@
 
 // PID BED TEMPERATURE CONTROL ---------------------
 // If you want PID Bed Temperature control enable the below line. You will need to tune it for your machine.
-// See the PID Bed setup guide here: https://www.th3dstudio.com/hc/guides/diy-guides/p-i-d-bed-calibration-guide/
+// See the PID Bed setup guide here: https://support.th3dstudio.com/helpcenter/p-i-d-bed-calibration-guide/
 //#define ENABLE_PIDBED
 
 // Z PROBE OFFSET WIZARD ---------------------------

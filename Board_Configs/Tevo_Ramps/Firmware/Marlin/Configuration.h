@@ -38,7 +38,7 @@
 
 // Tarantula Pro EZABL Notes
 // Before connecting the EZABL control board to the Tarantula Pro please remove the 5V wire from the 3 pin plug.
-// Pictures and write up available here: https://www.th3dstudio.com/hc/product-information/ezabl/wiring-info/tevo-tarantula-pro-z-endstop-cable-setup-for-ezabl/
+// Pictures and write up available here: https://support.th3dstudio.com/helpcenter/tevo-tarantula-pro-z-endstop-cable-setup-for-ezabl/
 
 
 //===========================================================================
@@ -201,7 +201,7 @@
 
 // PID BED TEMPERATURE CONTROL ---------------------
 // If you want PID Bed Temperature control enable the below line. You will need to tune it for your machine.
-// See the PID Bed setup guide here: https://www.th3dstudio.com/hc/guides/diy-guides/p-i-d-bed-calibration-guide/
+// See the PID Bed setup guide here: https://support.th3dstudio.com/helpcenter/p-i-d-bed-calibration-guide/
 //#define ENABLE_PIDBED
 
 // Z PROBE OFFSET WIZARD ---------------------------

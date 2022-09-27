@@ -1,0 +1,13 @@
+{
+    "config-file":"Configuration.h",
+    "compile-profile":
+    [
+        {
+            "profile-name": "ender7",
+            "keyword": 
+            [
+                {"find":"//#define ENDER7","replace":"#define ENDER7"}
+            ]
+        }
+    ]
+}

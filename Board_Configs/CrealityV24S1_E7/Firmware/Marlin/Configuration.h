@@ -368,12 +368,12 @@
 
   #define INVERT_X_DIR false
   #define INVERT_Y_DIR false
-  #define INVERT_Z_DIR true
+  #define INVERT_Z_DIR false
 
   #if ENABLED(REVERSE_E_MOTOR_DIRECTION)
-    #define INVERT_E0_DIR true
-  #else
     #define INVERT_E0_DIR false
+  #else
+    #define INVERT_E0_DIR true
   #endif
   
   #define INVERT_E1_DIR false

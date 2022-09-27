@@ -15,6 +15,10 @@
 #if ENABLED(CUSTOM_PROBE)
   #define ABL_ENABLE
 #endif
+#if ENABLED(ENDER7_OEM_MOUNT)
+  #define ABL_ENABLE
+  #define NOZZLE_TO_PROBE_OFFSET { 0, 0, 0 } //WIP
+#endif
 #if ENABLED(TINA2_OEM)
   #define ABL_ENABLE
   #define NOZZLE_TO_PROBE_OFFSET { 28, 0, 0 }

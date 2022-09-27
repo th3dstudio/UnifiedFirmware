@@ -284,7 +284,7 @@
     #define Y_MIN_POS 0
   #endif
 
-  #define COREXY
+  #define COREYX
 
   #define USE_XMIN_PLUG
   #define USE_YMAX_PLUG
@@ -339,9 +339,9 @@
 
   #define ENDSTOPPULLUPS
 
-  #define X_MIN_ENDSTOP_INVERTING true
+  #define X_MIN_ENDSTOP_INVERTING false
   #define Y_MIN_ENDSTOP_INVERTING true
-  #define Z_MIN_ENDSTOP_INVERTING true
+  #define Z_MIN_ENDSTOP_INVERTING false
   #define X_MAX_ENDSTOP_INVERTING false
   #define Y_MAX_ENDSTOP_INVERTING false
   #define Z_MAX_ENDSTOP_INVERTING false

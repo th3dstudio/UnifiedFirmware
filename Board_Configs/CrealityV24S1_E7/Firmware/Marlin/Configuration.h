@@ -278,7 +278,7 @@
 
   #define X_BED_SIZE 250
   #define Y_BED_SIZE 250
-  #define Z_MAX_POS 350
+  #define Z_MAX_POS 300
 
   #if ENABLED(HOME_ADJUST)
     #define X_MIN_POS X_HOME_LOCATION

@@ -258,6 +258,10 @@
   #define SERIAL_PORT 1
   #define BAUDRATE 115200
 
+  #define DEFAULT_Kp 13.17
+  #define DEFAULT_Ki 0.84
+  #define DEFAULT_Kd 51.91
+
   #ifndef MOTHERBOARD
     #define MOTHERBOARD BOARD_CREALITY_V24S1
   #endif  

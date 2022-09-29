@@ -215,8 +215,11 @@
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\Paid\TH3D_Unified2_BTT_SKR_2_F429_DIY.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\BTT_SKR_2_F429_DIY\Firmware"
 
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\Unified2Zips\Paid\TH3D_Unified2_BTT_SKR_2_ALL_DIY.zip"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\Paid\TH3D_Unified2_BTT_SKR_2_ALL_DIY.zip" "D:\Work\Unified2Zips\Paid\TH3D_Unified2_BTT_SKR_2_F429_DIY.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\Paid\TH3D_Unified2_BTT_SKR_2_ALL_DIY.zip" "D:\Work\Unified2Zips\Paid\TH3D_Unified2_BTT_SKR_2_DIY.zip"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\Paid\TH3D_Unified2_BTT_SKR_2_ALL_DIY.zip" "D:\Work\Unified2Zips\Paid\TH3D_Unified2_BTT_SKR_2_F429_DIY.zip"
+
+del "D:\Work\Unified2Zips\Paid\TH3D_Unified2_BTT_SKR_2_DIY.zip"
+del "D:\Work\Unified2Zips\Paid\TH3D_Unified2_BTT_SKR_2_F429_DIY.zip"
 
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Kingroon_V1_2.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Kingroon_V1_2.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"

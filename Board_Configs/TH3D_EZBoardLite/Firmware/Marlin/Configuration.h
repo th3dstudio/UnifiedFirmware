@@ -117,7 +117,6 @@
 
 // Fix for Older EZABL Kits
 // If you are having issues with the EZABL not triggering when connected to the Z-Stop header you can use the servo header pins.
-// See here for details: https://www.th3dstudio.com/hc/product-information/ezboard/ezboard-lite-v1x/ezboard-lite-v1-x-ezabl-not-triggering-fix/
 //#define V3_EZABL_ON_SERVO
 
 // E3D PT100 Thermocouple Support
@@ -304,7 +303,7 @@
 
 // PID BED TEMPERATURE CONTROL ---------------------
 // If you want PID Bed Temperature control enable the below line. You will need to tune it for your machine.
-// See the PID Bed setup guide here: https://www.th3dstudio.com/hc/guides/diy-guides/p-i-d-bed-calibration-guide/
+// See the PID Bed setup guide here: https://support.th3dstudio.com/helpcenter/p-i-d-bed-calibration-guide/
 //#define ENABLE_PIDBED
 
 // Z PROBE OFFSET WIZARD ---------------------------

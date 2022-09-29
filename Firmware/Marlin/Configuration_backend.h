@@ -6,7 +6,7 @@
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-#define UNIFIED_VERSION "TH3D UFW 2.50a"
+#define UNIFIED_VERSION "TH3D UFW 2.51"
 
 /**
  * ABL Probe Settings
@@ -14,6 +14,10 @@
 
 #if ENABLED(CUSTOM_PROBE)
   #define ABL_ENABLE
+#endif
+#if ENABLED(ENDER7_OEM_MOUNT)
+  #define ABL_ENABLE
+  #define NOZZLE_TO_PROBE_OFFSET { 0, 0, 0 } //WIP
 #endif
 #if ENABLED(TINA2_OEM)
   #define ABL_ENABLE
@@ -140,6 +144,10 @@
   #define ABL_ENABLE
 #endif
 #if ENABLED(SV01_OEM_MOUNT)
+  #define NOZZLE_TO_PROBE_OFFSET { 22, -50, 0 }
+  #define ABL_ENABLE
+#endif
+#if ENABLED(SV03_OEM_MOUNT)
   #define NOZZLE_TO_PROBE_OFFSET { 22, -50, 0 }
   #define ABL_ENABLE
 #endif

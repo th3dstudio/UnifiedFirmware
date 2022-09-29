@@ -175,7 +175,7 @@
     #define LCD_PINS_D4                     PB13
 
     #define BTN_ENC                         PB2
-    #if ENABLED(ENDER3_S1_12864_LCD)
+    #if ANY(ENDER3_S1_12864_LCD, ENDER7)
       #define BTN_EN1                         PA2
       #define BTN_EN2                         PB14
     #else

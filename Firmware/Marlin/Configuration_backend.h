@@ -147,6 +147,10 @@
   #define NOZZLE_TO_PROBE_OFFSET { 22, -50, 0 }
   #define ABL_ENABLE
 #endif
+#if ENABLED(SV03_OEM_MOUNT)
+  #define NOZZLE_TO_PROBE_OFFSET { 22, -50, 0 }
+  #define ABL_ENABLE
+#endif
 #if ENABLED(CR10_VOLCANO)
   #define NOZZLE_TO_PROBE_OFFSET { 30, 12, 0 }
   #define ABL_ENABLE

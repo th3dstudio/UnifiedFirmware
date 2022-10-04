@@ -3,6 +3,13 @@
     "compile-profile":
     [
         {
+            "profile-name": "ender2-pro-v3.0",
+            "keyword": 
+            [
+                {"find":"//#define ENDER2_PRO","replace":"#define ENDER2_PRO"}
+            ]
+        },
+		{
             "profile-name": "ender3-v3.0",
             "keyword": 
             [

@@ -8,6 +8,14 @@
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_CrealityV4X.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_CrealityV4X.zip" "D:\Work\GitHub\UnifiedFirmware\Board_Configs\CrealityV4X\Firmware"
 
+"C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV427.zip"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV427.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV427.zip" "D:\Work\GitHub\UnifiedFirmware\Gcode Files"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV427.zip" "D:\Work\GitHub\UnifiedFirmware\LCD Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV427.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV427.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV427.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\CrealityV427\Firmware"
+
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Voxelab_V1XX.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Voxelab_V1XX.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Voxelab_V1XX.zip" "D:\Work\GitHub\UnifiedFirmware\Gcode Files"

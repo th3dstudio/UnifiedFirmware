@@ -32,19 +32,8 @@
 //#define ENDER2_PRO_V423_BOARD
 
 //------------------------------ V4.2.7 Board --------------------------------
-//#define ENDER3_V427_BOARD
-//#define ENDER3_MAX_V427_BOARD
-//#define ENDER3_V2_V427_BOARD
-//#define ENDER5_V427_BOARD
-//#define ENDER5_PLUS_V427_BOARD
-
-//#define CR10_V427_BOARD
-//#define CR10MINI_V427_BOARD
-//#define CR10S4_V427_BOARD
-//#define CR10S5_V427_BOARD
-// NOTE: It is HIGHLY recommended to use an external bed MOSFET with the CR-10 series machines due to the high load the beds have.
-// While these boards work on 12V machines, they are designed for 24V printers that pull less current (specifically on the bed).
-// If you need a MOSFET, we carry one here: https://www.th3dstudio.com/product/high-amp-12v-24v-mosfet-heated-bed-or-hotend/
+// All V4.2.7 Configurations have moved to their own package as this is an aftermarket board.
+// The firmware for this board is included when you purchase a V4.2.7 from TH3D or if you purchase the firmware from the TH3D website.
 
 //------------------------------ V4.3.1 Board -------------------------------
 //#define ENDER6_V431_BOARD
@@ -392,248 +381,6 @@
 #if ENABLED(EZOUT_ENABLE_J1)
   #define EZOUT_ENABLE
 #endif
-
-//CR-10 Series V427 Settings
-#if ENABLED(CR10_V427_BOARD) || ENABLED(CR10MINI_V427_BOARD) || ENABLED(CR10S4_V427_BOARD) || ENABLED(CR10S5_V427_BOARD)
-  #define SERIAL_PORT 1
-  
-  #define PRINTER_VOLTAGE_12
-
-  #define BAUDRATE 115200
-  
-  #define CR10_STOCKDISPLAY
-  #define RET6_12864_LCD
-  
-  #if ENABLED(REVERSE_KNOB_DIRECTION)
-    #define REVERSE_ENCODER_DIRECTION
-  #endif
-  
-  #define MOTHERBOARD BOARD_CREALITY_V427
-
-  #if ENABLED(CUSTOM_ESTEPS)
-    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS_VALUE }
-  #else
-    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
-  #endif
-
-  #define SHOW_BOOTSCREEN
-
-  #define EXTRUDERS 1
-
-  #if ENABLED(CR10_V427_BOARD)
-    #define X_BED_SIZE 300
-    #define Y_BED_SIZE 300
-    #define Z_MAX_POS 400
-    #define PRINTER_VOLTAGE_12
-  #endif
-
-  #if ENABLED(CR10MINI_V427_BOARD)
-    #define X_BED_SIZE 300
-    #define Y_BED_SIZE 220
-    #define Z_MAX_POS 300
-    #define PRINTER_VOLTAGE_12
-  #endif
-
-  #if ENABLED(CR10S4_V427_BOARD)
-    #define X_BED_SIZE 400
-    #define Y_BED_SIZE 400
-    #define Z_MAX_POS 400
-    #define PRINTER_VOLTAGE_12
-    #define SLOWER_PROBE_MOVES
-  #endif
-
-  #if ENABLED(CR10S5_V427_BOARD)
-    #define X_BED_SIZE 500
-    #define Y_BED_SIZE 500
-    #define Z_MAX_POS 500
-    #define PRINTER_VOLTAGE_12
-    #define SLOWER_PROBE_MOVES
-  #endif
-  
-  #if ENABLED(HOME_ADJUST)
-    #define X_MIN_POS X_HOME_LOCATION
-    #define Y_MIN_POS Y_HOME_LOCATION
-  #else
-    #define X_MIN_POS 0
-    #define Y_MIN_POS 0
-  #endif
-
-  #define USE_XMIN_PLUG
-  #define USE_YMIN_PLUG
-  #define USE_ZMIN_PLUG
-
-  #define X_HOME_DIR -1
-  #define Y_HOME_DIR -1
-  #define Z_HOME_DIR -1
-  
-  #if NONE(V6_HOTEND, TH3D_HOTEND_THERMISTOR, KNOWN_HOTEND_THERMISTOR)
-    #define TEMP_SENSOR_0 1
-  #else
-    #if ENABLED(EZBOARD_PT100)
-      #define TEMP_SENSOR_0 20
-    #elif ENABLED(V6_HOTEND)
-      #define TEMP_SENSOR_0 5
-    #elif ENABLED(KNOWN_HOTEND_THERMISTOR)
-      #define TEMP_SENSOR_0 KNOWN_HOTEND_THERMISTOR_VALUE
-    #elif ENABLED(TH3D_HOTEND_THERMISTOR)
-      #define TEMP_SENSOR_0 1
-    #endif
-  #endif
-  
-  #define TEMP_SENSOR_1 0 
-  #define TEMP_SENSOR_2 0
-  #define TEMP_SENSOR_3 0
-  #define TEMP_SENSOR_4 0
-  #define TEMP_SENSOR_5 0
-  #define TEMP_SENSOR_6 0
-  #define TEMP_SENSOR_7 0
-  
-  #if NONE(TH3D_BED_THERMISTOR, KEENOVO_TEMPSENSOR, KNOWN_BED_THERMISTOR, AC_BED)
-    #define TEMP_SENSOR_BED 1
-  #else
-    #if ENABLED(AC_BED)
-      #define TEMP_SENSOR_BED 0
-    #elif ENABLED(KNOWN_BED_THERMISTOR)
-      #define TEMP_SENSOR_BED KNOWN_BED_THERMISTOR_VALUE
-    #elif ENABLED(TH3D_BED_THERMISTOR)
-      #define TEMP_SENSOR_BED 1
-    #elif ENABLED(KEENOVO_TEMPSENSOR)
-      #define TEMP_SENSOR_BED 11
-    #endif
-  #endif
-  
-  #define TEMP_SENSOR_PROBE 0
-  #define TEMP_SENSOR_CHAMBER 0
-
-  #define ENDSTOPPULLUPS
-
-  #define X_MIN_ENDSTOP_INVERTING false
-  #define Y_MIN_ENDSTOP_INVERTING false
-  #define Z_MIN_ENDSTOP_INVERTING false
-  #define X_MAX_ENDSTOP_INVERTING false
-  #define Y_MAX_ENDSTOP_INVERTING false
-  #define Z_MAX_ENDSTOP_INVERTING false
-  #define Z_MIN_PROBE_ENDSTOP_INVERTING false
-
-  #if ENABLED(BLTOUCH_ON_5PIN)
-    #define USE_PROBE_FOR_Z_HOMING
-  #else
-    #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
-  #endif
-
-  #define X_DRIVER_TYPE TMC2208_STANDALONE
-  #define Y_DRIVER_TYPE TMC2208_STANDALONE
-  #define Z_DRIVER_TYPE TMC2208_STANDALONE
-  #define E0_DRIVER_TYPE TMC2208_STANDALONE
-
-  #define X_ENABLE_ON 0
-  #define Y_ENABLE_ON 0
-  #define Z_ENABLE_ON 0
-  #define E_ENABLE_ON 0
-  
-  #if ENABLED(REVERSE_X_MOTOR)
-    #define INVERT_X_DIR true
-  #else
-    #define INVERT_X_DIR false
-  #endif
-
-  #if ENABLED(REVERSE_Y_MOTOR)
-    #define INVERT_Y_DIR true
-  #else
-    #define INVERT_Y_DIR false
-  #endif
-  
-  #if ENABLED(REVERSE_Z_MOTOR)
-    #define INVERT_Z_DIR false
-  #else
-    #define INVERT_Z_DIR true
-  #endif
-
-  #if ENABLED(REVERSE_E_MOTOR_DIRECTION)
-    #define INVERT_E0_DIR true
-  #else
-    #define INVERT_E0_DIR false
-  #endif
-  
-  #define INVERT_E1_DIR false
-  #define INVERT_E2_DIR false
-  #define INVERT_E3_DIR false
-  #define INVERT_E4_DIR false
-  #define INVERT_E5_DIR false
-  #define INVERT_E6_DIR false
-  #define INVERT_E7_DIR false
-
-  #define ENCODER_PULSES_PER_STEP 4
-  #define ENCODER_STEPS_PER_MENU_ITEM 1
-  
-  #if ENABLED(EZOUT_ENABLE)
-    #define FILAMENT_RUNOUT_SENSOR
-    #if DISABLED(EZOUT_ENABLE_J1)
-      #define SPEAKER_KILL
-    #endif
-  #endif
-
-  #if ENABLED(EZOUT_ENABLE) || ENABLED(CR10S_STOCKFILAMENTSENSOR)
-    #define FILAMENT_RUNOUT_SENSOR
-  #endif
-
-  #if ENABLED(FILAMENT_RUNOUT_SENSOR)
-    #define FIL_RUNOUT_ENABLED_DEFAULT true // Enable the sensor on startup. Override with M412 followed by M500.
-    #define NUM_RUNOUT_SENSORS   1          // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
-    #if ENABLED(EZOUT_ENABLE)
-      #define FIL_RUNOUT_STATE     LOW       // Pin state indicating that filament is NOT present.
-    #else
-      #define FIL_RUNOUT_STATE     HIGH       // Pin state indicating that filament is NOT present.
-    #endif
-    #define FIL_RUNOUT_PULLUP               // Use internal pullup for filament runout pins.
-    //#define FIL_RUNOUT_PULLDOWN           // Use internal pulldown for filament runout pins.
-
-    // Set one or more commands to execute on filament runout.
-    // (After 'M412 H' Marlin will ask the host to handle the process.)
-    #define FILAMENT_RUNOUT_SCRIPT "M600"
-
-    // After a runout is detected, continue printing this length of filament
-    // before executing the runout script. Useful for a sensor at the end of
-    // a feed tube. Requires 4 bytes SRAM per sensor, plus 4 bytes overhead.
-    //#define FILAMENT_RUNOUT_DISTANCE_MM 25
-
-    #ifdef FILAMENT_RUNOUT_DISTANCE_MM
-      // Enable this option to use an encoder disc that toggles the runout pin
-      // as the filament moves. (Be sure to set FILAMENT_RUNOUT_DISTANCE_MM
-      // large enough to avoid false positives.)
-      //#define FILAMENT_MOTION_SENSOR
-    #endif
-  #endif
-  
-  #if ENABLED(EZNEO_220)
-    #define RGB_LIGHTS
-    #define NEOPIXEL_LED
-    #if ENABLED(NEOPIXEL_LED)
-      #define NEOPIXEL_TYPE   NEO_GRB // NEO_GRBW / NEO_GRB - four/three channel driver type (defined in Adafruit_NeoPixel.h)
-      #define NEOPIXEL_PIXELS 15       // Number of LEDs in the strip. (Longest strip when NEOPIXEL2_SEPARATE is disabled.)
-      #define NEOPIXEL_IS_SEQUENTIAL   // Sequential display for temperature change - LED by LED. Disable to change all LEDs at once.
-      #define NEOPIXEL_BRIGHTNESS 255  // Initial brightness (0-255)
-      #define NEOPIXEL_STARTUP_TEST  // Cycle through colors at startup
-    #endif
-
-    /**
-     * Printer Event LEDs
-     *
-     * During printing, the LEDs will reflect the printer status:
-     *
-     *  - Gradually change from blue to violet as the heated bed gets to target temp
-     *  - Gradually change from violet to red as the hotend gets to temperature
-     *  - Change to white to illuminate work surface
-     *  - Change to green once print has finished
-     *  - Turn off after the print has finished and the user has pushed a button
-     */
-    #if ANY(BLINKM, RGB_LED, RGBW_LED, PCA9632, PCA9533, NEOPIXEL_LED)
-      #define PRINTER_EVENT_LEDS
-    #endif
-  #endif
-  
-#endif
-// End CR-10 Series V427 Settings
  
 //Ender 6 V431 Board Settings
 #if ENABLED(ENDER6_V431_BOARD)
@@ -1086,8 +833,8 @@
 //End Ender 2 Pro Board Settings
  
 //Ender 3/3 MAX/5/5 Plus V42X Board Settings
-#if ANY(ENDER3_V422_BOARD, ENDER5_V422_BOARD, ENDER3_V427_BOARD, ENDER5_V427_BOARD, ENDER3_MAX_V422_BOARD, ENDER3_MAX_V427_BOARD, ENDER5_PLUS_V427_BOARD)
-  #if ANY(ENDER3_MAX_V422_BOARD, ENDER3_MAX_V427_BOARD, ENDER5_PLUS_V427_BOARD)
+#if ANY(ENDER3_V422_BOARD, ENDER5_V422_BOARD, ENDER3_MAX_V422_BOARD)
+  #if ENABLED(ENDER3_MAX_V422_BOARD)
     #define MOUNTED_FILAMENT_SENSOR
   #endif
   
@@ -1107,10 +854,6 @@
   #if ENABLED(ENDER3_V422_BOARD) || ENABLED(ENDER5_V422_BOARD) || ENABLED(ENDER3_MAX_V422_BOARD)
     #ifndef MOTHERBOARD
       #define MOTHERBOARD BOARD_CREALITY_V422
-    #endif
-  #else
-    #ifndef MOTHERBOARD
-      #define MOTHERBOARD BOARD_CREALITY_V427
     #endif
   #endif
   
@@ -1180,26 +923,6 @@
     #endif
   #endif
   
-  #if ENABLED(ENDER5_PLUS)
-    #if ENABLED(XTENDER_E5P_400)
-      #define X_BED_SIZE 510
-      #define Y_BED_SIZE 510
-      #define Z_MAX_POS 400
-    #elif ENABLED(XTENDER_E5P_500)
-      #define X_BED_SIZE 510
-      #define Y_BED_SIZE 510
-      #define Z_MAX_POS 500
-    #else
-      #define X_BED_SIZE 350
-      #define Y_BED_SIZE 350
-      #define Z_MAX_POS 400
-    #endif
-    #if DISABLED(REVERSE_KNOB_DIRECTION)
-      #define REVERSE_ENCODER_DIRECTION
-    #endif
-    #define ENDER5_NEW_LEADSCREW
-  #endif
-  
   #if ENABLED(HOME_ADJUST)
     #define X_MIN_POS X_HOME_LOCATION
     #define Y_MIN_POS Y_HOME_LOCATION
@@ -1208,7 +931,7 @@
     #define Y_MIN_POS 0
   #endif
 
-  #if ANY(ENDER5, ENDER5_PLUS)
+  #if ENABLED(ENDER5)
     #define USE_XMAX_PLUG
     #define USE_YMAX_PLUG
     #define USE_ZMIN_PLUG
@@ -1218,7 +941,7 @@
     #define USE_ZMIN_PLUG
   #endif
 
-  #if ANY(ENDER5_V422_BOARD, ENDER5_V427_BOARD, ENDER5_PLUS_V427_BOARD)
+  #if ENABLED(ENDER5_V422_BOARD)
     #define X_HOME_DIR 1
     #define Y_HOME_DIR 1
     #define Z_HOME_DIR -1
@@ -1325,7 +1048,7 @@
     #define INVERT_Y_DIR false
   #endif
   
-  #if ENABLED(ENDER5) || ENABLED(ENDER5_PLUS)
+  #if ENABLED(ENDER5)
     #if ENABLED(REVERSE_Z_MOTOR)
       #define INVERT_Z_DIR true
     #else
@@ -1356,25 +1079,6 @@
   #define ENCODER_PULSES_PER_STEP 4
   #define ENCODER_STEPS_PER_MENU_ITEM 1
   
-  #if ENABLED(ENDER5_PLUS_V427_BOARD)
-    #if DISABLED(ENDER5_PLUS_NOABL) && DISABLED(ENDER5_PLUS_EZABL)
-      #define BLTOUCH
-    #ifndef EZABL_PROBE_EDGE
-      #define EZABL_PROBE_EDGE 35
-    #endif
-    #ifndef EZABL_POINTS
-      #define EZABL_POINTS 5
-    #endif
-    #if DISABLED(CUSTOM_PROBE)
-        #define CUSTOM_PROBE
-        #define NOZZLE_TO_PROBE_OFFSET { -44, -9, 0}
-      #endif
-    #endif  
-    #if DISABLED(ENDER5_PLUS_NOABL)
-      #define ABL_ENABLE
-    #endif
-  #endif
-  
   #if ENABLED(EZOUT_ENABLE)
     #define FILAMENT_RUNOUT_SENSOR
     #if DISABLED(EZOUT_ENABLE_J1)
@@ -1382,7 +1086,7 @@
     #endif
   #endif
 
-  #if ANY(ENDER3_MAX_V422_BOARD, ENDER3_MAX_V427_BOARD, ENDER5_PLUS_V427_BOARD)
+  #if ENABLED(ENDER3_MAX_V422_BOARD)
     #define FILAMENT_RUNOUT_SENSOR
   #endif
 
@@ -1438,22 +1142,16 @@
   #endif
   
 #endif
-// End Ender 3/3 MAX/5/5 Plus V42X Board Settings
+// End Ender 3/3 MAX/5 V42X Board Settings
  
 // Ender 3 V2 Settings
-#if ENABLED(ENDER3_V2_V422_BOARD) || ENABLED(ENDER3_V2_V427_BOARD)
+#if ENABLED(ENDER3_V2_V422_BOARD)
   #define SERIAL_PORT 1
 
   #define BAUDRATE 115200
 
-  #if ENABLED(ENDER3_V2_V422_BOARD)
-    #ifndef MOTHERBOARD
-      #define MOTHERBOARD BOARD_CREALITY_V422
-    #endif
-  #else
-    #ifndef MOTHERBOARD
-      #define MOTHERBOARD BOARD_CREALITY_V427
-    #endif
+  #ifndef MOTHERBOARD
+    #define MOTHERBOARD BOARD_CREALITY_V422
   #endif
 
   #if ENABLED(CUSTOM_ESTEPS)

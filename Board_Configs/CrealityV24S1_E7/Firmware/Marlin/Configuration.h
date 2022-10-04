@@ -15,7 +15,7 @@
 // THESE BOARDS SHIPPED WITH MULTIPLE CPU TYPES. CHECK YOUR CPU AND READ THE PLATFORMIO.INI FILE FOR DETAILS ON BUILDING FOR
 // THE CORRECT CPU TYPE THAT YOU HAVE ON YOUR PARTICULAR BOARD. FLASHING THE WRONG BUILD ON THE WRONG CPU CAN BRICK YOUR BOARD.
 
-// The stock touch LCD is NOT supported and requires the 12864 upgrade kit here: COMING SOON
+// The stock touch LCD is NOT supported and requires the 12864 upgrade kit here: https://www.th3dstudio.com/product/creality-ender-7-12864-lcd-conversion-upgrade-kit/
 // Due to the closed source firmware on the stock touch LCD, we will never support it in our firmware.
 
 //===========================================================================
@@ -23,7 +23,7 @@
 //===========================================================================
 //#define ENDER7
 
-//#define ENDER7_OEM_MOUNT            // WIP
+//#define ENDER7_OEM_MICRO_MOUNT     //Due to space restrictions ONLY the MICRO (8mm) size sensors are supported.
 //#define CUSTOM_PROBE
 
 // EZNeo Settings -----------------------------------------------------------

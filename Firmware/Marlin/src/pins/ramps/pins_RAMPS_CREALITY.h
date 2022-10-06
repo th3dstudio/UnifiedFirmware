@@ -22,10 +22,10 @@
 #pragma once
 
 #if HOTENDS > 2 || E_STEPPERS > 2
-  #error "Creality3D RAMPS supports only 2 hotends / E-steppers. Comment out this line to continue."
+  #error "Creality RAMPS supports up to 2 hotends / E steppers."
 #endif
 
-#define BOARD_INFO_NAME "Creality3D V2.X"
+#define BOARD_INFO_NAME "Creality3D RAMPS"
 
 //
 // Pins for Ender 5 Plus - Uses Physical XY MIN headers for XY MAX Homing
@@ -60,14 +60,8 @@
 //
 // Heaters / Fans
 //
-
-// Power outputs EFBF or EFBE
-// Added all 4 outputs here as they never change on this board - TH3D
-#define MOSFET_A_PIN                          10 //E0 Hotend MOSFET
-#define MOSFET_B_PIN                           7 //E1 Hotend MOSFET
-#define MOSFET_C_PIN                           8 //Heated Bed MOSFET
-#define MOSFET_D_PIN                           9 //Layer Fan MOSFET
-#define FAN_PIN                     MOSFET_D_PIN
+#define MOSFET_B_PIN                           7  // For HEATER_1_PIN ("EEF" or "EEB")
+#define FAN_PIN                                9
 
 #define FIL_RUNOUT_PIN                         2
 #if NUM_RUNOUT_SENSORS >= 2
@@ -75,7 +69,12 @@
 #endif
 
 #ifndef SD_DETECT_PIN
-  #define SD_DETECT_PIN                       49  // Always define onboard SD detect
+  #if SD_CONNECTION_IS(ONBOARD)
+    //#define HAS_ONBOARD_SD_DETECT               // If the SD_DETECT_PIN is wired up
+  #endif
+  #if ENABLED(HAS_ONBOARD_SD_DETECT) || !SD_CONNECTION_IS(ONBOARD)
+    #define SD_DETECT_PIN                     49
+  #endif
 #endif
 
 #ifndef PS_ON_PIN

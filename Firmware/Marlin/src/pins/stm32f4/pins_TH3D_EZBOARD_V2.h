@@ -34,7 +34,7 @@
 // Onboard I2C EEPROM
 #if NO_EEPROM_SELECTED
   #define I2C_EEPROM
-  #define MARLIN_EEPROM_SIZE              0x1000  // 4KB
+  #define MARLIN_EEPROM_SIZE              0x1000  // 4K
   #define I2C_SCL_PIN                       PB6
   #define I2C_SDA_PIN                       PB7
   #undef NO_EEPROM_SELECTED
@@ -48,7 +48,7 @@
 //
 // Servos
 //
-#if ENABLED(V3_EZABL_ON_SERVO) || ENABLED(EZBOARD_PT100)
+#if ANY(V3_EZABL_ON_SERVO, EZBOARD_PT100)
   #define SERVO0_PIN                        -1
 #else
   #define SERVO0_PIN                        PA2
@@ -130,6 +130,20 @@
 
   // Reduce baud rate to improve software serial reliability
   #define TMC_BAUD_RATE                    19200
+
+  // Default TMC slave addresses
+  #ifndef X_SLAVE_ADDRESS
+    #define X_SLAVE_ADDRESS  0
+  #endif
+  #ifndef Y_SLAVE_ADDRESS
+    #define Y_SLAVE_ADDRESS  1
+  #endif
+  #ifndef Z_SLAVE_ADDRESS
+    #define Z_SLAVE_ADDRESS  2
+  #endif
+  #ifndef E0_SLAVE_ADDRESS
+    #define E0_SLAVE_ADDRESS 3
+  #endif
 #endif
 
 //
@@ -188,12 +202,12 @@
 //
 
 /**
- *        ______
- *    5V | 1  2 | GND
- *  PB15 | 3  4 | PB12
- *  PB13 | 5  6   PC5
- *  ---- | 7  8 | PC4
- *  PB0  | 9 10 | PA14
+ *        ------
+ *  PA14 | 1  2 | PB0
+ *  PC4  | 3  4 | --
+ *  PC5  | 5  6   PB13
+ *  PB12 | 7  8 | PB15
+ *   GND | 9 10 | 5V
  *        ------
  *         EXP1
  *
@@ -203,30 +217,30 @@
  * A remote SD card is currently not supported because the pins routed to the EXP2
  * connector are shared with the onboard SD card.
  */
-#define EXP1_03_PIN                         PB15
-#define EXP1_04_PIN                         PB12
-#define EXP1_05_PIN                         PB13
-#define EXP1_06_PIN                         PC5
-//#define EXP1_07_PIN                       -1
-#define EXP1_08_PIN                         PC4
-#define EXP1_09_PIN                         PB0
-#define EXP1_10_PIN                         PA14
+#define EXP1_01_PIN                         PA14
+#define EXP1_02_PIN                         PB0
+#define EXP1_03_PIN                         PC4
+//#define EXP1_04_PIN                       -1
+#define EXP1_05_PIN                         PC5
+#define EXP1_06_PIN                         PB13
+#define EXP1_07_PIN                         PB12
+#define EXP1_08_PIN                         PB15
 
 #if ENABLED(CR10_STOCKDISPLAY)
-  /**          ______
-   *       5V | 1  2 | GND
-   *   LCD_EN | 3  4 | LCD_RS
-   *   LCD_D4 | 5  6   EN2
-   *    RESET | 7  8 | EN1
-   *      ENC | 9 10 | BEEPER
+  /**          ------
+   *   BEEPER | 1  2 | ENC
+   *   EN1    | 3  4 | RESET
+   *   EN2    | 5  6   LCD_D4
+   *   LCD_RS | 7  8 | LCD_EN
+   *      GND | 9 10 | 5V
    *           ------
    */
   #ifdef DISABLE_JTAGSWD
-    #define BEEPER_PIN               EXP1_10_PIN  // Not connected in dev board
+    #define BEEPER_PIN               EXP1_01_PIN  // Not connected in dev board
   #endif
-  #define LCD_PINS_RS                EXP1_04_PIN
-  #define LCD_PINS_ENABLE            EXP1_03_PIN
-  #define LCD_PINS_D4                EXP1_05_PIN
+  #define LCD_PINS_RS                EXP1_07_PIN
+  #define LCD_PINS_ENABLE            EXP1_08_PIN
+  #define LCD_PINS_D4                EXP1_06_PIN
   //#define KILL_PIN                        -1
 
   #define BOARD_ST7920_DELAY_1           600
@@ -234,18 +248,18 @@
   #define BOARD_ST7920_DELAY_3           750
 
 #elif ENABLED(MKS_MINI_12864)
-  /**          ______
-   *       5V | 1  2 | GND
-   * SPI-MOSI | 3  4 | SPI-CS
-   *       A0 | 5  6   EN2
-   *       -- | 7  8 | EN1
-   *      ENC | 9 10 | SPI-SCK
+  /**          ------
+   *      SCK | 1  2 | ENC
+   *      EN1 | 3  4 | --
+   *      EN2 | 5  6   A0
+   *      CS  | 7  8 | MOSI
+   *      GND | 9 10 | 5V
    *           ------
    */
-  #define DOGLCD_CS                  EXP1_04_PIN
-  #define DOGLCD_A0                  EXP1_05_PIN
-  #define DOGLCD_SCK                 EXP1_10_PIN
-  #define DOGLCD_MOSI                EXP1_03_PIN
+  #define DOGLCD_CS                  EXP1_07_PIN
+  #define DOGLCD_A0                  EXP1_06_PIN
+  #define DOGLCD_SCK                 EXP1_01_PIN
+  #define DOGLCD_MOSI                EXP1_08_PIN
   #define LCD_CONTRAST_INIT                  160
   #define LCD_CONTRAST_MIN                   120
   #define LCD_CONTRAST_MAX                   180
@@ -259,7 +273,7 @@
 #endif
 
 #if EITHER(CR10_STOCKDISPLAY, MKS_MINI_12864)
-  #define BTN_EN1                    EXP1_06_PIN
-  #define BTN_EN2                    EXP1_08_PIN
-  #define BTN_ENC                    EXP1_09_PIN
+  #define BTN_EN1                    EXP1_03_PIN
+  #define BTN_EN2                    EXP1_05_PIN
+  #define BTN_ENC                    EXP1_02_PIN
 #endif

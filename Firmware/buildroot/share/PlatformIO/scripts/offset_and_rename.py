@@ -10,12 +10,10 @@
 #
 import pioutil
 if pioutil.is_pio_build():
-	import os,sys,marlin
-	Import("env")
+	import sys,marlin
 
-	from SCons.Script import DefaultEnvironment
-	board = DefaultEnvironment().BoardConfig()
-
+	env = marlin.env
+	board = env.BoardConfig()
 	board_keys = board.get("build").keys()
 
 	#
@@ -39,15 +37,15 @@ if pioutil.is_pio_build():
 				env["LINKFLAGS"][i] = "-Wl,--defsym=LD_MAX_DATA_SIZE=" + str(maximum_ram_size - 40)
 
 	#
-	# For build.encrypt rename and encode the firmware file.
+	# For build.encrypt_mks rename and encode the firmware file.
 	#
-	if 'encrypt' in board_keys:
+	if 'encrypt_mks' in board_keys:
 
-		# Encrypt ${PROGNAME}.bin and save it with the name given in build.encrypt
+		# Encrypt ${PROGNAME}.bin and save it with the name given in build.encrypt_mks
 		def encrypt(source, target, env):
-			marlin.encrypt_mks(source, target, env, board.get("build.encrypt"))
+			marlin.encrypt_mks(source, target, env, board.get("build.encrypt_mks"))
 
-		if board.get("build.encrypt") != "":
+		if board.get("build.encrypt_mks") != "":
 			marlin.add_post_action(encrypt)
 
 	#
@@ -56,8 +54,7 @@ if pioutil.is_pio_build():
 	if 'rename' in board_keys:
 
 		def rename_target(source, target, env):
-			firmware = os.path.join(target[0].dir.path, board.get("build.rename"))
-			import shutil
-			shutil.copy(target[0].path, firmware)
+			from pathlib import Path
+			Path(target[0].path).replace(Path(target[0].dir.path, board.get("build.rename")))
 
 		marlin.add_post_action(rename_target)

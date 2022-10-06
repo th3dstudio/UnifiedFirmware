@@ -238,7 +238,7 @@
   #define LCD_SDSS                         P0_28  // EXP2.4
   #define LCD_PINS_ENABLE                  P0_18  // EXP1.3
   #define LCD_PINS_D4                      P0_15  // EXP1.5
-  #if ANY(VIKI2, miniVIKI)
+  #if EITHER(VIKI2, miniVIKI)
     #define DOGLCD_SCK                SD_SCK_PIN
     #define DOGLCD_MOSI              SD_MOSI_PIN
   #endif
@@ -278,11 +278,7 @@
     #endif
 
   #elif ENABLED(MINIPANEL)
-    // GLCD features
-    // Uncomment screen orientation
-    //#define LCD_SCREEN_ROT_90
-    //#define LCD_SCREEN_ROT_180
-    //#define LCD_SCREEN_ROT_270
+    //#define LCD_SCREEN_ROTATE              180  // 0, 90, 180, 270
   #endif
 
 #endif // HAS_WIRED_LCD

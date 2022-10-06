@@ -51,9 +51,7 @@
 #if FET_ORDER_EEB
   #define MOSFET_C_PIN                         8  // BED
 #elif FET_ORDER_EFB
-  #if BOTH(CHIRON, REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER) // Needed for TH3D LCD Conversion Kit
-  	#define MOSFET_C_PIN                      45
-  #elif DISABLED(ANYCUBIC_LCD_CHIRON)
+  #if DISABLED(ANYCUBIC_LCD_CHIRON)
     #define MOSFET_C_PIN                       8
   #else
     #define MOSFET_C_PIN                      45
@@ -130,7 +128,7 @@
 
   // LCD Display input pins
   #if IS_NEWPANEL
-    #if ANY(VIKI2, miniVIKI)
+    #if EITHER(VIKI2, miniVIKI)
       #undef DOGLCD_A0
       #define DOGLCD_A0                       23
     #elif ENABLED(ELB_FULL_GRAPHIC_CONTROLLER)

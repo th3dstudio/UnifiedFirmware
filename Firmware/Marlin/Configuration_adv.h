@@ -30,7 +30,25 @@
  *
  * Basic settings can be found in Configuration.h
  */
-#define CONFIGURATION_ADV_H_VERSION 02000903
+#define CONFIGURATION_ADV_H_VERSION 02010100
+
+// @section develop
+
+/**
+ * Configuration Export
+ *
+ * Export the configuration as part of the build. (See signature.py)
+ * Output files are saved with the build (e.g., .pio/build/mega2560).
+ *
+ * See `build_all_examples --ini` as an example of config.ini archiving.
+ *
+ *  1 = marlin_config.json - Dictionary containing the configuration.
+ *      This file is also generated for CONFIGURATION_EMBEDDING.
+ *  2 = config.ini - File format for PlatformIO preprocessing.
+ *  3 = schema.json - The entire configuration schema. (13 = pattern groups)
+ *  4 = schema.yml - The entire configuration schema.
+ */
+//#define CONFIG_EXPORT   // :[1:'JSON', 2:'config.ini', 3:'schema.json', 4:'schema.yml']
 
 //===========================================================================
 //============================= Thermal Settings ============================
@@ -54,108 +72,119 @@
 // Custom Thermistor 1000 parameters
 //
 #if TEMP_SENSOR_0 == 1000
-  #define HOTEND0_PULLUP_RESISTOR_OHMS 4700    // Pullup resistor
-  #define HOTEND0_RESISTANCE_25C_OHMS  100000  // Resistance at 25C
-  #define HOTEND0_BETA                 3950    // Beta value
+  #define HOTEND0_PULLUP_RESISTOR_OHMS    4700 // Pullup resistor
+  #define HOTEND0_RESISTANCE_25C_OHMS   100000 // Resistance at 25C
+  #define HOTEND0_BETA                    3950 // Beta value
+  #define HOTEND0_SH_C_COEFF                 0 // Steinhart-Hart C coefficient
 #endif
 
 #if TEMP_SENSOR_1 == 1000
-  #define HOTEND1_PULLUP_RESISTOR_OHMS 4700    // Pullup resistor
-  #define HOTEND1_RESISTANCE_25C_OHMS  100000  // Resistance at 25C
-  #define HOTEND1_BETA                 3950    // Beta value
+  #define HOTEND1_PULLUP_RESISTOR_OHMS    4700 // Pullup resistor
+  #define HOTEND1_RESISTANCE_25C_OHMS   100000 // Resistance at 25C
+  #define HOTEND1_BETA                    3950 // Beta value
+  #define HOTEND1_SH_C_COEFF                 0 // Steinhart-Hart C coefficient
 #endif
 
 #if TEMP_SENSOR_2 == 1000
-  #define HOTEND2_PULLUP_RESISTOR_OHMS 4700    // Pullup resistor
-  #define HOTEND2_RESISTANCE_25C_OHMS  100000  // Resistance at 25C
-  #define HOTEND2_BETA                 3950    // Beta value
+  #define HOTEND2_PULLUP_RESISTOR_OHMS    4700 // Pullup resistor
+  #define HOTEND2_RESISTANCE_25C_OHMS   100000 // Resistance at 25C
+  #define HOTEND2_BETA                    3950 // Beta value
+  #define HOTEND2_SH_C_COEFF                 0 // Steinhart-Hart C coefficient
 #endif
 
 #if TEMP_SENSOR_3 == 1000
-  #define HOTEND3_PULLUP_RESISTOR_OHMS 4700    // Pullup resistor
-  #define HOTEND3_RESISTANCE_25C_OHMS  100000  // Resistance at 25C
-  #define HOTEND3_BETA                 3950    // Beta value
+  #define HOTEND3_PULLUP_RESISTOR_OHMS    4700 // Pullup resistor
+  #define HOTEND3_RESISTANCE_25C_OHMS   100000 // Resistance at 25C
+  #define HOTEND3_BETA                    3950 // Beta value
+  #define HOTEND3_SH_C_COEFF                 0 // Steinhart-Hart C coefficient
 #endif
 
 #if TEMP_SENSOR_4 == 1000
-  #define HOTEND4_PULLUP_RESISTOR_OHMS 4700    // Pullup resistor
-  #define HOTEND4_RESISTANCE_25C_OHMS  100000  // Resistance at 25C
-  #define HOTEND4_BETA                 3950    // Beta value
+  #define HOTEND4_PULLUP_RESISTOR_OHMS    4700 // Pullup resistor
+  #define HOTEND4_RESISTANCE_25C_OHMS   100000 // Resistance at 25C
+  #define HOTEND4_BETA                    3950 // Beta value
+  #define HOTEND4_SH_C_COEFF                 0 // Steinhart-Hart C coefficient
 #endif
 
 #if TEMP_SENSOR_5 == 1000
-  #define HOTEND5_PULLUP_RESISTOR_OHMS 4700    // Pullup resistor
-  #define HOTEND5_RESISTANCE_25C_OHMS  100000  // Resistance at 25C
-  #define HOTEND5_BETA                 3950    // Beta value
+  #define HOTEND5_PULLUP_RESISTOR_OHMS    4700 // Pullup resistor
+  #define HOTEND5_RESISTANCE_25C_OHMS   100000 // Resistance at 25C
+  #define HOTEND5_BETA                    3950 // Beta value
+  #define HOTEND5_SH_C_COEFF                 0 // Steinhart-Hart C coefficient
 #endif
 
 #if TEMP_SENSOR_6 == 1000
-  #define HOTEND6_PULLUP_RESISTOR_OHMS 4700    // Pullup resistor
-  #define HOTEND6_RESISTANCE_25C_OHMS  100000  // Resistance at 25C
-  #define HOTEND6_BETA                 3950    // Beta value
+  #define HOTEND6_PULLUP_RESISTOR_OHMS    4700 // Pullup resistor
+  #define HOTEND6_RESISTANCE_25C_OHMS   100000 // Resistance at 25C
+  #define HOTEND6_BETA                    3950 // Beta value
+  #define HOTEND6_SH_C_COEFF                 0 // Steinhart-Hart C coefficient
 #endif
 
 #if TEMP_SENSOR_7 == 1000
-  #define HOTEND7_PULLUP_RESISTOR_OHMS 4700    // Pullup resistor
-  #define HOTEND7_RESISTANCE_25C_OHMS  100000  // Resistance at 25C
-  #define HOTEND7_BETA                 3950    // Beta value
+  #define HOTEND7_PULLUP_RESISTOR_OHMS    4700 // Pullup resistor
+  #define HOTEND7_RESISTANCE_25C_OHMS   100000 // Resistance at 25C
+  #define HOTEND7_BETA                    3950 // Beta value
+  #define HOTEND7_SH_C_COEFF                 0 // Steinhart-Hart C coefficient
 #endif
 
 #if TEMP_SENSOR_BED == 1000
-  #define BED_PULLUP_RESISTOR_OHMS     4700    // Pullup resistor
-  #define BED_RESISTANCE_25C_OHMS      100000  // Resistance at 25C
-  #define BED_BETA                     3950    // Beta value
+  #define BED_PULLUP_RESISTOR_OHMS        4700 // Pullup resistor
+  #define BED_RESISTANCE_25C_OHMS       100000 // Resistance at 25C
+  #define BED_BETA                        3950 // Beta value
+  #define BED_SH_C_COEFF                     0 // Steinhart-Hart C coefficient
 #endif
 
 #if TEMP_SENSOR_CHAMBER == 1000
-  #define CHAMBER_PULLUP_RESISTOR_OHMS 4700    // Pullup resistor
-  #define CHAMBER_RESISTANCE_25C_OHMS  100000  // Resistance at 25C
-  #define CHAMBER_BETA                 3950    // Beta value
+  #define CHAMBER_PULLUP_RESISTOR_OHMS    4700 // Pullup resistor
+  #define CHAMBER_RESISTANCE_25C_OHMS   100000 // Resistance at 25C
+  #define CHAMBER_BETA                    3950 // Beta value
+  #define CHAMBER_SH_C_COEFF                 0 // Steinhart-Hart C coefficient
 #endif
 
 #if TEMP_SENSOR_COOLER == 1000
-  #define COOLER_PULLUP_RESISTOR_OHMS 4700    // Pullup resistor
-  #define COOLER_RESISTANCE_25C_OHMS  100000  // Resistance at 25C
-  #define COOLER_BETA                 3950    // Beta value
+  #define COOLER_PULLUP_RESISTOR_OHMS     4700 // Pullup resistor
+  #define COOLER_RESISTANCE_25C_OHMS    100000 // Resistance at 25C
+  #define COOLER_BETA                     3950 // Beta value
+  #define COOLER_SH_C_COEFF                  0 // Steinhart-Hart C coefficient
 #endif
 
 #if TEMP_SENSOR_PROBE == 1000
-  #define PROBE_PULLUP_RESISTOR_OHMS   4700    // Pullup resistor
-  #define PROBE_RESISTANCE_25C_OHMS    100000  // Resistance at 25C
-  #define PROBE_BETA                   3950    // Beta value
+  #define PROBE_PULLUP_RESISTOR_OHMS      4700 // Pullup resistor
+  #define PROBE_RESISTANCE_25C_OHMS     100000 // Resistance at 25C
+  #define PROBE_BETA                      3950 // Beta value
+  #define PROBE_SH_C_COEFF                   0 // Steinhart-Hart C coefficient
 #endif
 
 #if TEMP_SENSOR_BOARD == 1000
-  #define BOARD_PULLUP_RESISTOR_OHMS   4700    // Pullup resistor
-  #define BOARD_RESISTANCE_25C_OHMS    100000  // Resistance at 25C
-  #define BOARD_BETA                   3950    // Beta value
+  #define BOARD_PULLUP_RESISTOR_OHMS      4700 // Pullup resistor
+  #define BOARD_RESISTANCE_25C_OHMS     100000 // Resistance at 25C
+  #define BOARD_BETA                      3950 // Beta value
+  #define BOARD_SH_C_COEFF                   0 // Steinhart-Hart C coefficient
 #endif
 
 #if TEMP_SENSOR_REDUNDANT == 1000
-  #define REDUNDANT_PULLUP_RESISTOR_OHMS   4700    // Pullup resistor
-  #define REDUNDANT_RESISTANCE_25C_OHMS    100000  // Resistance at 25C
-  #define REDUNDANT_BETA                   3950    // Beta value
+  #define REDUNDANT_PULLUP_RESISTOR_OHMS  4700 // Pullup resistor
+  #define REDUNDANT_RESISTANCE_25C_OHMS 100000 // Resistance at 25C
+  #define REDUNDANT_BETA                  3950 // Beta value
+  #define REDUNDANT_SH_C_COEFF               0 // Steinhart-Hart C coefficient
 #endif
 
 /**
- * Configuration options for MAX Thermocouples (-2, -3, -5).
- *   FORCE_HW_SPI:   Ignore SCK/MOSI/MISO pins and just use the CS pin & default SPI bus.
- *   MAX31865_WIRES: Set the number of wires for the probe connected to a MAX31865 board, 2-4. Default: 2
- *   MAX31865_50HZ:  Enable 50Hz filter instead of the default 60Hz.
- *   MAX31865_USE_READ_ERROR_DETECTION: Detects random read errors from value spikes (a 20°C difference in less than 1sec)
- *   MAX31865_USE_AUTO_MODE: Faster and more frequent reads than 1-shot, but bias voltage always on, slightly affecting RTD temperature.
- *   MAX31865_MIN_SAMPLING_TIME_MSEC: in 1-shot mode, the minimum time between subsequent reads. This reduces the effect of bias voltage by leaving the sensor unpowered for longer intervals.
- *   MAX31865_WIRE_OHMS: In 2-wire configurations, manually set the wire resistance for more accurate readings
+ * Thermocouple Options — for MAX6675 (-2), MAX31855 (-3), and MAX31865 (-5).
  */
-//#define TEMP_SENSOR_FORCE_HW_SPI
-//#define MAX31865_SENSOR_WIRES_0 2
+//#define TEMP_SENSOR_FORCE_HW_SPI                // Ignore SCK/MOSI/MISO pins; use CS and the default SPI bus.
+//#define MAX31865_SENSOR_WIRES_0 2               // (2-4) Number of wires for the probe connected to a MAX31865 board.
 //#define MAX31865_SENSOR_WIRES_1 2
-//#define MAX31865_50HZ_FILTER
-//#define MAX31865_USE_READ_ERROR_DETECTION
-//#define MAX31865_USE_AUTO_MODE
-//#define MAX31865_MIN_SAMPLING_TIME_MSEC 100
-//#define MAX31865_WIRE_OHMS_0 0.0f
-//#define MAX31865_WIRE_OHMS_1 0.0f
+
+//#define MAX31865_50HZ_FILTER                    // Use a 50Hz filter instead of the default 60Hz.
+//#define MAX31865_USE_READ_ERROR_DETECTION       // Treat value spikes (20°C delta in under 1s) as read errors.
+
+//#define MAX31865_USE_AUTO_MODE                  // Read faster and more often than 1-shot; bias voltage always on; slight effect on RTD temperature.
+//#define MAX31865_MIN_SAMPLING_TIME_MSEC     100 // (ms) 1-shot: minimum read interval. Reduces bias voltage effects by leaving sensor unpowered for longer intervals.
+//#define MAX31865_IGNORE_INITIAL_FAULTY_READS 10 // Ignore some read faults (keeping the temperature reading) to work around a possible issue (#23439).
+
+//#define MAX31865_WIRE_OHMS_0              0.95f // For 2-wire, set the wire resistances for more accurate readings.
+//#define MAX31865_WIRE_OHMS_1              0.0f
 
 /**
  * Hephestos 2 24V heated bed upgrade kit.
@@ -252,20 +281,6 @@
   #endif
 #endif
 
-//
-// Laser Coolant Flow Meter
-//
-//#define LASER_COOLANT_FLOW_METER
-#if ENABLED(LASER_COOLANT_FLOW_METER)
-  #define FLOWMETER_PIN         20  // Requires an external interrupt-enabled pin (e.g., RAMPS 2,3,18,19,20,21)
-  #define FLOWMETER_PPL       5880  // (pulses/liter) Flow meter pulses-per-liter on the input pin
-  #define FLOWMETER_INTERVAL  1000  // (ms) Flow rate calculation interval in milliseconds
-  #define FLOWMETER_SAFETY          // Prevent running the laser without the minimum flow rate set below
-  #if ENABLED(FLOWMETER_SAFETY)
-    #define FLOWMETER_MIN_LITERS_PER_MINUTE 1.5 // (liters/min) Minimum flow required when enabled
-  #endif
-#endif
-
 /**
  * Thermal Protection provides additional protection to your printer from damage
  * and fire. Marlin always includes safe min and max temperature ranges which
@@ -347,6 +362,14 @@
    */
   #define WATCH_COOLER_TEMP_PERIOD             60 // Seconds
   #define WATCH_COOLER_TEMP_INCREASE            3 // Degrees Celsius
+#endif
+
+#if ANY(THERMAL_PROTECTION_HOTENDS, THERMAL_PROTECTION_BED, THERMAL_PROTECTION_CHAMBER, THERMAL_PROTECTION_COOLER)
+  /**
+   * Thermal Protection Variance Monitor - EXPERIMENTAL.
+   * Kill the machine on a stuck temperature sensor. Disable if you get false positives.
+   */
+  //#define THERMAL_PROTECTION_VARIANCE_MONITOR   // Detect a sensor malfunction preventing temperature updates
 #endif
 
 #if ENABLED(PIDTEMP)
@@ -645,8 +668,8 @@
  *
  * USE_OCR2A_AS_TOP [undefined by default]
  *   Boards that use TIMER2 for PWM have limitations resulting in only a few possible frequencies on TIMER2:
- *   16MHz MCUs: [62.5KHz, 31.4KHz (default), 7.8KHz, 3.92KHz, 1.95KHz, 977Hz, 488Hz, 244Hz, 60Hz, 122Hz, 30Hz]
- *   20MHz MCUs: [78.1KHz, 39.2KHz (default), 9.77KHz, 4.9KHz, 2.44KHz, 1.22KHz, 610Hz, 305Hz, 153Hz, 76Hz, 38Hz]
+ *   16MHz MCUs: [62.5kHz, 31.4kHz (default), 7.8kHz, 3.92kHz, 1.95kHz, 977Hz, 488Hz, 244Hz, 60Hz, 122Hz, 30Hz]
+ *   20MHz MCUs: [78.1kHz, 39.2kHz (default), 9.77kHz, 4.9kHz, 2.44kHz, 1.22kHz, 610Hz, 305Hz, 153Hz, 76Hz, 38Hz]
  *   A greater range can be achieved by enabling USE_OCR2A_AS_TOP. But note that this option blocks the use of
  *   PWM on pin OC2A. Only use this option if you don't need PWM on 0C2A. (Check your schematic.)
  *   USE_OCR2A_AS_TOP sacrifices duty cycle control resolution to achieve this broader range of frequencies.
@@ -719,7 +742,6 @@
 #define E7_AUTO_FAN_PIN -1
 #define CHAMBER_AUTO_FAN_PIN -1
 #define COOLER_AUTO_FAN_PIN -1
-#define COOLER_FAN_PIN -1
 
 #ifndef EXTRUDER_AUTO_FAN_TEMPERATURE
   #define EXTRUDER_AUTO_FAN_TEMPERATURE 50
@@ -818,79 +840,6 @@
 #endif
 
 /**
- * Dual Steppers / Dual Endstops
- *
- * This section will allow you to use extra E drivers to drive a second motor for X, Y, or Z axes.
- *
- * For example, set X_DUAL_STEPPER_DRIVERS setting to use a second motor. If the motors need to
- * spin in opposite directions set INVERT_X2_VS_X_DIR. If the second motor needs its own endstop
- * set X_DUAL_ENDSTOPS. This can adjust for "racking." Use X2_USE_ENDSTOP to set the endstop plug
- * that should be used for the second endstop. Extra endstops will appear in the output of 'M119'.
- *
- * Use X_DUAL_ENDSTOP_ADJUSTMENT to adjust for mechanical imperfection. After homing both motors
- * this offset is applied to the X2 motor. To find the offset home the X axis, and measure the error
- * in X2. Dual endstop offsets can be set at runtime with 'M666 X<offset> Y<offset> Z<offset>'.
- */
-
-//#define X_DUAL_STEPPER_DRIVERS
-#if ENABLED(X_DUAL_STEPPER_DRIVERS)
-  //#define INVERT_X2_VS_X_DIR    // Enable if X2 direction signal is opposite to X
-  //#define X_DUAL_ENDSTOPS
-  #if ENABLED(X_DUAL_ENDSTOPS)
-    #define X2_USE_ENDSTOP _XMAX_
-    #define X2_ENDSTOP_ADJUSTMENT  0
-  #endif
-#endif
-
-//#define Y_DUAL_STEPPER_DRIVERS
-#if ENABLED(Y_DUAL_STEPPER_DRIVERS)
-  //#define INVERT_Y2_VS_Y_DIR   // Enable if Y2 direction signal is opposite to Y
-  //#define Y_DUAL_ENDSTOPS
-  #if ENABLED(Y_DUAL_ENDSTOPS)
-    #define Y2_USE_ENDSTOP _YMAX_
-    #define Y2_ENDSTOP_ADJUSTMENT  0
-  #endif
-#endif
-
-//
-// For Z set the number of stepper drivers
-//
-#if ENABLED(SIDEWINDER_X1) || ENABLED(CHIRON)
-  #define NUM_Z_STEPPER_DRIVERS 2   // (1-4) Z options change based on how many
-#else
-  #define NUM_Z_STEPPER_DRIVERS 1   // (1-4) Z options change based on how many
-#endif
-
-#if NUM_Z_STEPPER_DRIVERS > 1
-  // Enable if Z motor direction signals are the opposite of Z1
-  //#define INVERT_Z2_VS_Z_DIR
-  //#define INVERT_Z3_VS_Z_DIR
-  //#define INVERT_Z4_VS_Z_DIR
-
-  #if ENABLED(CHIRON) && DISABLED(USE_EZABL_HOMEZ)
-    #define Z_MULTI_ENDSTOPS
-  #endif
-  #if ENABLED(Z_MULTI_ENDSTOPS)
-    #define Z2_USE_ENDSTOP          _XMAX_
-    #define Z2_ENDSTOP_ADJUSTMENT   0
-    #if NUM_Z_STEPPER_DRIVERS >= 3
-      #define Z3_USE_ENDSTOP        _YMAX_
-      #define Z3_ENDSTOP_ADJUSTMENT 0
-    #endif
-    #if NUM_Z_STEPPER_DRIVERS >= 4
-      #define Z4_USE_ENDSTOP        _ZMAX_
-      #define Z4_ENDSTOP_ADJUSTMENT 0
-    #endif
-  #endif
-#endif
-
-// Drive the E axis with two synchronized steppers
-//#define E_DUAL_STEPPER_DRIVERS
-#if ENABLED(E_DUAL_STEPPER_DRIVERS)
-  //#define INVERT_E1_VS_E0_DIR   // Enable if the E motors need opposite DIR states
-#endif
-
-/**
  * Dual X Carriage
  *
  * This setup has two X carriages that can move independently, each with its own hotend.
@@ -920,18 +869,17 @@
  */
 //#define DUAL_X_CARRIAGE
 #if ENABLED(DUAL_X_CARRIAGE)
-  #define X1_MIN_POS X_MIN_POS   // Set to X_MIN_POS
-  #define X1_MAX_POS X_BED_SIZE  // Set a maximum so the first X-carriage can't hit the parked second X-carriage
-  #define X2_MIN_POS    80       // Set a minimum to ensure the  second X-carriage can't hit the parked first X-carriage
-  #define X2_MAX_POS   353       // Set this to the distance between toolheads when both heads are homed
-  #define X2_HOME_DIR    1       // Set to 1. The second X-carriage always homes to the maximum endstop position
-  #define X2_HOME_POS X2_MAX_POS // Default X2 home position. Set to X2_MAX_POS.
-                      // However: In this mode the HOTEND_OFFSET_X value for the second extruder provides a software
-                      // override for X2_HOME_POS. This also allow recalibration of the distance between the two endstops
-                      // without modifying the firmware (through the "M218 T1 X???" command).
-                      // Remember: you should set the second extruder x-offset to 0 in your slicer.
+  #define X1_MIN_POS X_MIN_POS    // Set to X_MIN_POS
+  #define X1_MAX_POS X_BED_SIZE   // A max coordinate so the X1 carriage can't hit the parked X2 carriage
+  #define X2_MIN_POS    80        // A min coordinate so the X2 carriage can't hit the parked X1 carriage
+  #define X2_MAX_POS   353        // The max position of the X2 carriage, typically also the home position
+  #define X2_HOME_DIR    1        // Set to 1. The X2 carriage always homes to the max endstop position
+  #define X2_HOME_POS X2_MAX_POS  // Default X2 home position. Set to X2_MAX_POS.
+                                  // NOTE: For Dual X Carriage use M218 T1 Xn to override the X2_HOME_POS.
+                                  // This allows recalibration of endstops distance without a rebuild.
+                                  // Remember to set the second extruder's X-offset to 0 in your slicer.
 
-  // This is the default power-up mode which can be later using M605.
+  // This is the default power-up mode which can be changed later using M605 S<mode>.
   #define DEFAULT_DUAL_X_CARRIAGE_MODE DXC_AUTO_PARK_MODE
 
   // Default x offset in duplication mode (typically set to half print bed width)
@@ -939,6 +887,77 @@
 
   // Default action to execute following M605 mode change commands. Typically G28X to apply new mode.
   //#define EVENT_GCODE_IDEX_AFTER_MODECHANGE "G28X"
+#endif
+
+/**
+ * Multi-Stepper / Multi-Endstop
+ *
+ * When X2_DRIVER_TYPE is defined, this indicates that the X and X2 motors work in tandem.
+ * The following explanations for X also apply to Y and Z multi-stepper setups.
+ * Endstop offsets may be changed by 'M666 X<offset> Y<offset> Z<offset>' and stored to EEPROM.
+ *
+ * - Enable INVERT_X2_VS_X_DIR if the X2 motor requires an opposite DIR signal from X.
+ *
+ * - Enable X_DUAL_ENDSTOPS if the second motor has its own endstop, with adjustable offset.
+ *
+ *   - Extra endstops are included in the output of 'M119'.
+ *
+ *   - Set X_DUAL_ENDSTOP_ADJUSTMENT to the known error in the X2 endstop.
+ *     Applied to the X2 motor on 'G28' / 'G28 X'.
+ *     Get the offset by homing X and measuring the error.
+ *     Also set with 'M666 X<offset>' and stored to EEPROM with 'M500'.
+ *
+ *   - Use X2_USE_ENDSTOP to set the endstop plug by name. (_XMIN_, _XMAX_, _YMIN_, _YMAX_, _ZMIN_, _ZMAX_)
+ */
+#if HAS_X2_STEPPER && DISABLED(DUAL_X_CARRIAGE)
+  //#define INVERT_X2_VS_X_DIR        // X2 direction signal is the opposite of X
+  //#define X_DUAL_ENDSTOPS           // X2 has its own endstop
+  #if ENABLED(X_DUAL_ENDSTOPS)
+    #define X2_USE_ENDSTOP    _XMAX_  // X2 endstop board plug. Don't forget to enable USE_*_PLUG.
+    #define X2_ENDSTOP_ADJUSTMENT  0  // X2 offset relative to X endstop
+  #endif
+#endif
+
+#if HAS_DUAL_Y_STEPPERS
+  //#define INVERT_Y2_VS_Y_DIR        // Y2 direction signal is the opposite of Y
+  //#define Y_DUAL_ENDSTOPS           // Y2 has its own endstop
+  #if ENABLED(Y_DUAL_ENDSTOPS)
+    #define Y2_USE_ENDSTOP    _YMAX_  // Y2 endstop board plug. Don't forget to enable USE_*_PLUG.
+    #define Y2_ENDSTOP_ADJUSTMENT  0  // Y2 offset relative to Y endstop
+  #endif
+#endif
+
+//
+// Multi-Z steppers
+//
+#ifdef Z2_DRIVER_TYPE
+  //#define INVERT_Z2_VS_Z_DIR        // Z2 direction signal is the opposite of Z
+
+  //#define Z_MULTI_ENDSTOPS          // Other Z axes have their own endstops
+  #if ENABLED(Z_MULTI_ENDSTOPS)
+    #define Z2_USE_ENDSTOP   _XMAX_   // Z2 endstop board plug. Don't forget to enable USE_*_PLUG.
+    #define Z2_ENDSTOP_ADJUSTMENT 0   // Z2 offset relative to Y endstop
+  #endif
+  #ifdef Z3_DRIVER_TYPE
+    //#define INVERT_Z3_VS_Z_DIR      // Z3 direction signal is the opposite of Z
+    #if ENABLED(Z_MULTI_ENDSTOPS)
+      #define Z3_USE_ENDSTOP   _YMAX_ // Z3 endstop board plug. Don't forget to enable USE_*_PLUG.
+      #define Z3_ENDSTOP_ADJUSTMENT 0 // Z3 offset relative to Y endstop
+    #endif
+  #endif
+  #ifdef Z4_DRIVER_TYPE
+    //#define INVERT_Z4_VS_Z_DIR      // Z4 direction signal is the opposite of Z
+    #if ENABLED(Z_MULTI_ENDSTOPS)
+      #define Z4_USE_ENDSTOP   _ZMAX_ // Z4 endstop board plug. Don't forget to enable USE_*_PLUG.
+      #define Z4_ENDSTOP_ADJUSTMENT 0 // Z4 offset relative to Y endstop
+    #endif
+  #endif
+#endif
+
+// Drive the E axis with two synchronized steppers
+//#define E_DUAL_STEPPER_DRIVERS
+#if ENABLED(E_DUAL_STEPPER_DRIVERS)
+  //#define INVERT_E1_VS_E0_DIR       // E direction signals are opposites
 #endif
 
 // Activate a solenoid on the active extruder with M380. Disable all with M381.
@@ -953,12 +972,12 @@
  * the position of the toolhead relative to the workspace.
  */
 
-//#define SENSORLESS_BACKOFF_MM  { 2, 2, 0 }  // (mm) Backoff from endstops before sensorless homing
+//#define SENSORLESS_BACKOFF_MM  { 2, 2, 0 }  // (linear=mm, rotational=°) Backoff from endstops before sensorless homing
 
-#define HOMING_BUMP_MM      { 5, 5, 2 }       // (mm) Backoff from endstops after first bump
+#define HOMING_BUMP_MM      { 5, 5, 2 }       // (linear=mm, rotational=°) Backoff from endstops after first bump
 #define HOMING_BUMP_DIVISOR { 2, 2, 4 }       // Re-Bump Speed Divisor (Divides the Homing Feedrate)
 
-//#define HOMING_BACKOFF_POST_MM { 2, 2, 2 }  // (mm) Backoff from endstops after homing
+//#define HOMING_BACKOFF_POST_MM { 2, 2, 2 }  // (linear=mm, rotational=°) Backoff from endstops after homing
 
 #define QUICK_HOME                          // If G28 contains XY do a diagonal move first
 //#define HOME_Y_BEFORE_X                     // If G28 contains XY home Y before X
@@ -1046,9 +1065,12 @@
   #define Z_STEPPER_AUTO_ALIGN
 #endif
 #if ENABLED(Z_STEPPER_AUTO_ALIGN)
-  // Define probe X and Y positions for Z1, Z2 [, Z3 [, Z4]]
-  // If not defined, probe limits will be used.
-  // Override with 'M422 S<index> X<pos> Y<pos>'
+  /**
+   * Define probe X and Y positions for Z1, Z2 [, Z3 [, Z4]]
+   * These positions are machine-relative and do not shift with the M206 home offset!
+   * If not defined, probe limits will be used.
+   * Override with 'M422 S<index> X<pos> Y<pos>'.
+   */
   //#define Z_STEPPER_ALIGN_XY { {  10, 190 }, { 100,  10 }, { 190, 190 } }
 
   /**
@@ -1074,15 +1096,17 @@
     //#define Z_STEPPERS_ORIENTATION 0
   #endif
 
-  // Provide Z stepper positions for more rapid convergence in bed alignment.
-  // Requires triple stepper drivers (i.e., set NUM_Z_STEPPER_DRIVERS to 3)
-  //#define Z_STEPPER_ALIGN_KNOWN_STEPPER_POSITIONS
-  #if ENABLED(Z_STEPPER_ALIGN_KNOWN_STEPPER_POSITIONS)
-    // Define Stepper XY positions for Z1, Z2, Z3 corresponding to
-    // the Z screw positions in the bed carriage.
-    // Define one position per Z stepper in stepper driver order.
-    #define Z_STEPPER_ALIGN_STEPPER_XY { { 210.7, 102.5 }, { 152.6, 220.0 }, { 94.5, 102.5 } }
-  #else
+  /**
+   * Z Stepper positions for more rapid convergence in bed alignment.
+   * Requires 3 or 4 Z steppers.
+   *
+   * Define Stepper XY positions for Z1, Z2, Z3... corresponding to the screw
+   * positions in the bed carriage, with one position per Z stepper in stepper
+   * driver order.
+   */
+  //#define Z_STEPPER_ALIGN_STEPPER_XY { { 210.7, 102.5 }, { 152.6, 220.0 }, { 94.5, 102.5 } }
+
+  #ifndef Z_STEPPER_ALIGN_STEPPER_XY
     // Amplification factor. Used to scale the correction step up or down in case
     // the stepper (spindle) position is farther out than the test point.
     #define Z_STEPPER_ALIGN_AMP 1.0       // Use a value > 1.0 NOTE: This may cause instability!
@@ -1144,6 +1168,9 @@
 #define INVERT_I_STEP_PIN false
 #define INVERT_J_STEP_PIN false
 #define INVERT_K_STEP_PIN false
+#define INVERT_U_STEP_PIN false
+#define INVERT_V_STEP_PIN false
+#define INVERT_W_STEP_PIN false
 #define INVERT_E_STEP_PIN false
 
 /**
@@ -1158,11 +1185,14 @@
 #define DISABLE_INACTIVE_I true
 #define DISABLE_INACTIVE_J true
 #define DISABLE_INACTIVE_K true
+#define DISABLE_INACTIVE_U true
+#define DISABLE_INACTIVE_V true
+#define DISABLE_INACTIVE_W true
 #define DISABLE_INACTIVE_E true
 
 // Default Minimum Feedrates for printing and travel moves
-#define DEFAULT_MINIMUMFEEDRATE       0.0     // (mm/s) Minimum feedrate. Set with M205 S.
-#define DEFAULT_MINTRAVELFEEDRATE     0.0     // (mm/s) Minimum travel feedrate. Set with M205 T.
+#define DEFAULT_MINIMUMFEEDRATE       0.0     // (mm/s. °/s for rotational-only moves) Minimum feedrate. Set with M205 S.
+#define DEFAULT_MINTRAVELFEEDRATE     0.0     // (mm/s. °/s for rotational-only moves) Minimum travel feedrate. Set with M205 T.
 
 // Minimum time that a segment needs to take as the buffer gets emptied
 #define DEFAULT_MINSEGMENTTIME        20000   // (µs) Set with M205 B.
@@ -1198,7 +1228,7 @@
 #if ENABLED(BACKLASH_COMPENSATION)
   // Define values for backlash distance and correction.
   // If BACKLASH_GCODE is enabled these values are the defaults.
-  #define BACKLASH_DISTANCE_MM { 0, 0, 0 } // (mm) One value for each linear axis
+  #define BACKLASH_DISTANCE_MM { 0, 0, 0 } // (linear=mm, rotational=°) One value for each linear axis
   #define BACKLASH_CORRECTION    0.0       // 0.0 = no correction; 1.0 = full correction
 
   // Add steps for motor direction changes on CORE kinematics
@@ -1275,6 +1305,12 @@
   //#define CALIBRATION_MEASURE_JMAX
   //#define CALIBRATION_MEASURE_KMIN
   //#define CALIBRATION_MEASURE_KMAX
+  //#define CALIBRATION_MEASURE_UMIN
+  //#define CALIBRATION_MEASURE_UMAX
+  //#define CALIBRATION_MEASURE_VMIN
+  //#define CALIBRATION_MEASURE_VMAX
+  //#define CALIBRATION_MEASURE_WMIN
+  //#define CALIBRATION_MEASURE_WMAX
 
   // Probing at the exact top center only works if the center is flat. If
   // probing on a screwhead or hollow washer, probe near the edges.

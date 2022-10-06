@@ -1659,7 +1659,9 @@
   //#define UTF_FILENAME_SUPPORT
 
   // This allows hosts to request long names for files and folders with M33
-  //#define LONG_FILENAME_HOST_SUPPORT
+  #if ENABLED(BTT_TOUCH_SCREEN)
+    #define LONG_FILENAME_HOST_SUPPORT
+  #endif
 
   // Enable this option to scroll long filenames in the SD card menu
   #if NONE(SPACE_SAVER, DWIN_CREALITY_LCD, SPACE_SAVER_2560)
@@ -1686,7 +1688,9 @@
   /**
    * Auto-report SdCard status with M27 S<seconds>
    */
-  //#define AUTO_REPORT_SD_STATUS
+  #if ENABLED(BTT_TOUCH_SCREEN)
+    #define AUTO_REPORT_SD_STATUS
+  #endif
 
   /**
    * Support for USB thumb drives using an Arduino USB Host Shield or
@@ -2475,7 +2479,9 @@
  * Currently handles M108, M112, M410, M876
  * NOTE: Not yet implemented for all platforms.
  */
-//#define EMERGENCY_PARSER
+#if ENABLED(BTT_TOUCH_SCREEN)
+  #define EMERGENCY_PARSER
+#endif
 
 /**
  * Realtime Reporting (requires EMERGENCY_PARSER)
@@ -2511,7 +2517,9 @@
 #define SERIAL_OVERRUN_PROTECTION
 
 // For serial echo, the number of digits after the decimal point
-//#define SERIAL_FLOAT_PRECISION 4
+#if ENABLED(BTT_TOUCH_SCREEN)
+  #define SERIAL_FLOAT_PRECISION 4
+#endif
 
 // @section extras
 
@@ -2703,7 +2711,9 @@
   #define PARK_HEAD_ON_PAUSE                      // Park the nozzle during pause and filament change.
   //#define HOME_BEFORE_FILAMENT_CHANGE           // If needed, home before parking for filament change
 
-  //#define FILAMENT_LOAD_UNLOAD_GCODES           // Add M701/M702 Load/Unload G-codes, plus Load/Unload in the LCD Prepare menu.
+  #if ENABLED(BTT_TOUCH_SCREEN)
+    #define FILAMENT_LOAD_UNLOAD_GCODES           // Add M701/M702 Load/Unload G-codes, plus Load/Unload in the LCD Prepare menu.
+  #endif
   //#define FILAMENT_UNLOAD_ALL_EXTRUDERS         // Allow M702 to unload all extruders above a minimum target temp (as set by M302)
 #endif
 
@@ -4035,15 +4045,19 @@
 /**
  * Auto-report position with M154 S<seconds>
  */
-//#define AUTO_REPORT_POSITION
+#if ENABLED(BTT_TOUCH_SCREEN)
+  #define AUTO_REPORT_POSITION
+#endif
 
 /**
  * Include capabilities in M115 output
  */
-#if DISABLED(SPACE_SAVER)
+#if NONE(SPACE_SAVER, BTT_TOUCH_SCREEN)
   #define EXTENDED_CAPABILITIES_REPORT
   #if ENABLED(EXTENDED_CAPABILITIES_REPORT)
-    //#define M115_GEOMETRY_REPORT
+    #if ENABLED(BTT_TOUCH_SCREEN)
+      #define M115_GEOMETRY_REPORT
+    #endif
   #endif
 #endif
 
@@ -4094,11 +4108,15 @@
 #endif
 
 // Extra options for the M114 "Current Position" report
-//#define M114_DETAIL         // Use 'M114` for details to check planner calculations
+#if ENABLED(BTT_TOUCH_SCREEN)
+  #define M114_DETAIL         // Use 'M114` for details to check planner calculations
+#endif
 //#define M114_REALTIME       // Real current position based on forward kinematics
 //#define M114_LEGACY         // M114 used to synchronize on every call. Enable if needed.
 
-//#define REPORT_FAN_CHANGE   // Report the new fan speed when changed by M106 (and others)
+#if ENABLED(BTT_TOUCH_SCREEN)
+  #define REPORT_FAN_CHANGE   // Report the new fan speed when changed by M106 (and others)
+#endif
 
 /**
  * Set the number of proportional font spaces required to fill up a typical character space.
@@ -4270,12 +4288,14 @@
  * Host Prompt Support enables Marlin to use the host for user prompts so
  * filament runout and other processes can be managed from the host side.
  */
-#if DISABLED(DISABLE_ACTION_COMMANDS_SUPPORT)
+#if DISABLED(DISABLE_ACTION_COMMANDS_SUPPORT) || ENABLED(BTT_TOUCH_SCREEN)
   #define HOST_ACTION_COMMANDS
 #endif
 #if ENABLED(HOST_ACTION_COMMANDS)
   //#define HOST_PAUSE_M76
-  //#define HOST_PROMPT_SUPPORT
+  #if ENABLED(BTT_TOUCH_SCREEN)
+    #define HOST_PROMPT_SUPPORT
+  #endif
   //#define HOST_START_MENU_ITEM      // Add a menu item that tells the host to start
   //#define HOST_SHUTDOWN_MENU_ITEM   // Add a menu item that tells the host to shut down
 #endif

@@ -6,7 +6,7 @@
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-#define UNIFIED_VERSION "TH3D UFW 2.51"
+#define UNIFIED_VERSION "TH3D UFW 2.51a"
 
 /**
  * ABL Probe Settings
@@ -343,6 +343,10 @@
 
 #if ENABLED(BLTOUCH) && DISABLED(CUSTOM_PROBE)
   #error "You must uncomment the CUSTOM_PROBE option in the EZABL probe mount section and then enter your mount offsets into the Custom Probe section."
+#endif
+
+#if BOTH(BTT_TOUCH_SCREEN, ABL_ENABLE)
+  #define G26_MESH_VALIDATION
 #endif
 
 /**

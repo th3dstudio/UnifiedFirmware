@@ -292,6 +292,10 @@
 //#define XTENDER_E5P_400   //510x510x400 Size
 //#define XTENDER_E5P_500   //510x510x500 Size
 
+// BTT TOUCH SCREEN --------------------------------
+// If you are using the BTT Touch Screen uncomment the below line to enable additional options per the BTT docs they recommend for use with their LCD
+//#define BTT_TOUCH_SCREEN
+
 // HOME OFFSET ADJUSTMENT --------------------------
 // If you need to adjust your XY home offsets from defaults then you can uncomment the HOME_ADJUST line below and enter your
 // custom XY offsets. This is provided for convenience and is unsupported with included product support.

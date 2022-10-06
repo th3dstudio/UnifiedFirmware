@@ -297,6 +297,10 @@
 //#define XTENDER_E5P_400   //510x510x400 Size
 //#define XTENDER_E5P_500   //510x510x500 Size
 
+// BTT TOUCH SCREEN --------------------------------
+// If you are using the BTT Touch Screen uncomment the below line to enable additional options per the BTT docs they recommend for use with their LCD
+//#define BTT_TOUCH_SCREEN
+
 // SENSORLESS HOMING SETTINGS ----------------------
 // If you want to use sensorless homing on your X or Y Axis, uncomment the X_AXIS_SENSORLESS_HOMING or Y_AXIS_SENSORLESS_HOMING to enable it.
 // You will have to change the calibration setting to get it to home correctly. See here for details: https://marlinfw.org/docs/gcode/M914.html

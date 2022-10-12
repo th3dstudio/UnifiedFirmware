@@ -6,7 +6,7 @@
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-#define UNIFIED_VERSION "TH3D UFW 2.51c"
+#define UNIFIED_VERSION "TH3D UFW 2.51d"
 
 /**
  * ABL Probe Settings
@@ -347,6 +347,13 @@
 
 #if BOTH(BTT_TOUCH_SCREEN, ABL_ENABLE)
   #define G26_MESH_VALIDATION
+  #define MESH_TEST_NOZZLE_SIZE    0.4  // (mm) Diameter of primary nozzle.
+  #define MESH_TEST_LAYER_HEIGHT   0.2  // (mm) Default layer height for G26.
+  #define MESH_TEST_HOTEND_TEMP  205    // (°C) Default nozzle temperature for G26.
+  #define MESH_TEST_BED_TEMP      60    // (°C) Default bed temperature for G26.
+  #define G26_XY_FEEDRATE         20    // (mm/s) Feedrate for G26 XY moves.
+  #define G26_XY_FEEDRATE_TRAVEL 100    // (mm/s) Feedrate for G26 XY travel moves.
+  #define G26_RETRACT_MULTIPLIER   1.0  // G26 Q (retraction) used by default between mesh test elements.
 #endif
 
 /**

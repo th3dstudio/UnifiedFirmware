@@ -2,7 +2,7 @@
 
 This is a list of bugs are are aware of in the firmware along with workarounds (if any).
 
-**Last Updated:** 4/20/22
+**Last Updated:** 10/17/22
 
 ----------
 
@@ -17,3 +17,10 @@ This is a list of bugs are are aware of in the firmware along with workarounds (
 **Issue:** These LCDs work but sometimes can experience artifacting and/or flickering. This is just how they work with Marlin and there is no fix currently. This also can happen if you spin the encoder wheel very quickly. These LCDs are closed source so fixing issues with them is not something we can do quickly or easily.
 
 **Workaround:** Replace the LCD with a 12864. We make kits for ALL the affected printer models to swap the LCD out for one that works 100% with your printer board and model.
+
+----------
+
+## Z Probe Offset Wizard ##
+**Issue:** Users have reported that with the Z Probe Offset Wizard enabled it can cause the firmware to hang and reset sometimes.
+
+**Workaround:** Disable the Z Probe Offset Wizard

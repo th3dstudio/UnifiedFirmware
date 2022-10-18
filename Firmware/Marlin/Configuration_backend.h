@@ -6,7 +6,7 @@
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-#define UNIFIED_VERSION "TH3D UFW 2.51d"
+#define UNIFIED_VERSION "TH3D UFW 2.52"
 
 /**
  * ABL Probe Settings
@@ -338,7 +338,7 @@
  */
 
 #if ENABLED(ABL_ENABLE) && ENABLED(S_CURVE_ACCELERATION)
-  #error "S_CURVE_ACCELERATION is not compatible with ABL systems. Disable this and re-compile."
+  #error "S_CURVE_ACCELERATION is not compatible with ABL systems. Disable this and re-compile or comment out this error and continue at your own risk."
 #endif
 
 #if ENABLED(BLTOUCH) && DISABLED(CUSTOM_PROBE)
@@ -347,6 +347,9 @@
 
 #if BOTH(BTT_TOUCH_SCREEN, ABL_ENABLE)
   #define G26_MESH_VALIDATION
+#endif
+
+#if ENABLED(G26_MESH_VALIDATION)
   #define MESH_TEST_NOZZLE_SIZE    0.4  // (mm) Diameter of primary nozzle.
   #define MESH_TEST_LAYER_HEIGHT   0.2  // (mm) Default layer height for G26.
   #define MESH_TEST_HOTEND_TEMP  205    // (°C) Default nozzle temperature for G26.

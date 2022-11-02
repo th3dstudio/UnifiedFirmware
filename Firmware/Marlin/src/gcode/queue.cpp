@@ -196,14 +196,15 @@ bool GCodeQueue::process_injected_command() {
  * Never call this from a G-code handler!
  */
 void GCodeQueue::enqueue_one_now(const char * const cmd) { while (!enqueue_one(cmd)) idle(); }
+void GCodeQueue::enqueue_one_now(FSTR_P const fcmd) { while (!enqueue_one(fcmd)) idle(); }
 
 /**
  * Attempt to enqueue a single G-code command
  * and return 'true' if successful.
  */
-bool GCodeQueue::enqueue_one(FSTR_P const fgcode) {
+bool GCodeQueue::enqueue_one(FSTR_P const fcmd) {
   size_t i = 0;
-  PGM_P p = FTOP(fgcode);
+  PGM_P p = FTOP(fcmd);
   char c;
   while ((c = pgm_read_byte(&p[i])) && c != '\n') i++;
   char cmd[i + 1];
@@ -383,7 +384,7 @@ inline bool process_line_done(uint8_t &sis, char (&buff)[MAX_CMD_SIZE], int &ind
   buff[ind] = '\0';                   // Of course, I'm a Terminator.
   const bool is_empty = (ind == 0);   // An empty line?
   if (is_empty)
-    thermalManager.manage_heater();   // Keep sensors satisfied
+    thermalManager.task();            // Keep sensors satisfied
   else
     ind = 0;                          // Start a new line
   return is_empty;                    // Inform the caller
@@ -522,7 +523,7 @@ void GCodeQueue::get_serial_commands() {
         #if DISABLED(EMERGENCY_PARSER)
           // Process critical commands early
           if (command[0] == 'M') switch (command[3]) {
-            case '8': if (command[2] == '0' && command[1] == '1') { wait_for_heatup = false; TERN_(HAS_LCD_MENU, wait_for_user = false); } break;
+            case '8': if (command[2] == '0' && command[1] == '1') { wait_for_heatup = false; TERN_(HAS_MARLINUI_MENU, wait_for_user = false); } break;
             case '2': if (command[2] == '1' && command[1] == '1') kill(FPSTR(M112_KILL_STR), nullptr, true); break;
             case '0': if (command[1] == '4' && command[2] == '1') quickstop_stepper(); break;
           }

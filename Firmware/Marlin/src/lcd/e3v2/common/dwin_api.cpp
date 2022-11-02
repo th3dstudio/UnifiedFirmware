@@ -21,7 +21,7 @@
  */
 #include "../../../inc/MarlinConfigPre.h"
 
-#if EITHER(HAS_DWIN_E3V2, IS_DWIN_MARLINUI)
+#if HAS_DWIN_E3V2 || IS_DWIN_MARLINUI
 
 #include "dwin_api.h"
 #include "dwin_set.h"
@@ -234,7 +234,9 @@ void DWIN_Frame_AreaMove(uint8_t mode, uint8_t dir, uint16_t dis,
 //  *string: The string
 //  rlimit: To limit the drawn string length
 void DWIN_Draw_String(bool bShow, uint8_t size, uint16_t color, uint16_t bColor, uint16_t x, uint16_t y, const char * const string, uint16_t rlimit/*=0xFFFF*/) {
-  DWIN_Draw_Rectangle(1, bColor, x, y, x + (fontWidth(size) * strlen_P(string)), y + fontHeight(size));
+  #if DISABLED(DWIN_LCD_PROUI)
+    DWIN_Draw_Rectangle(1, bColor, x, y, x + (fontWidth(size) * strlen_P(string)), y + fontHeight(size));
+  #endif
   constexpr uint8_t widthAdjust = 0;
   size_t i = 0;
   DWIN_Byte(i, 0x11);

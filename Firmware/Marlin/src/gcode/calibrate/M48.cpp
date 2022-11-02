@@ -89,7 +89,7 @@ void GcodeSuite::M48() {
     return;
   }
 
-  #if DISABLED(SPACE_SAVER) //Save space for lower end boards. Disabled/added by TH3D.
+  #if NONE(SPACE_SAVER, DISABLE_TH3D_MODS) //Save space for lower end boards. Disabled/added by TH3D.
   // Get the number of leg moves per test-point
   bool seen_L = parser.seen('L');
   uint8_t n_legs = seen_L ? parser.value_byte() : 0;
@@ -126,7 +126,7 @@ void GcodeSuite::M48() {
         max = -99999.9, // Largest value sampled so far
         sample_set[n_samples];  // Storage for sampled values
 
-  #if DISABLED(SPACE_SAVER) //Save space for lower end boards. Disabled/added by TH3D.
+  #if NONE(SPACE_SAVER, DISABLE_TH3D_MODS) //Save space for lower end boards. Disabled/added by TH3D.
   auto dev_report = [](const bool verbose, const_float_t mean, const_float_t sigma, const_float_t min, const_float_t max, const bool final=false) {
     if (verbose) {
       SERIAL_ECHOPAIR_F("Mean: ", mean, 6);
@@ -165,7 +165,7 @@ void GcodeSuite::M48() {
         ui.status_printf(0, F(S_FMT ": %d/%d"), GET_TEXT(MSG_M48_POINT), int(n + 1), int(n_samples));
       #endif
 
-      #if DISABLED(SPACE_SAVER) //Not needed for non-delta machines. Disabled by TH3D for some boards to save space.
+      #if NONE(SPACE_SAVER, DISABLE_TH3D_MODS) //Not needed for non-delta machines. Disabled by TH3D for some boards to save space.
       // When there are "legs" of movement move around the point before probing
       if (n_legs) {
 

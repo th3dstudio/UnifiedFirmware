@@ -1433,7 +1433,6 @@
 //
 //#define LCD_BACKLIGHT_TIMEOUT 30 // (s) Timeout before turning off the backlight
 
-
 #if HAS_BED_PROBE && EITHER(HAS_MARLINUI_MENU, HAS_TFT_LVGL_UI)
   //#define PROBE_OFFSET_WIZARD       // Add a Probe Z Offset calibration option to the LCD menu
   #if ENABLED(PROBE_OFFSET_WIZARD)
@@ -1618,7 +1617,7 @@
   //#define SDCARD_RATHERRECENTFIRST
 
   #if DISABLED(SPACE_SAVER) && DISABLED(SPACE_SAVER_2560)
-    #define SD_MENU_CONFIRM_START             // Confirm the selected SD file before printing
+    #define SD_MENU_CONFIRM_START           // Confirm the selected SD file before printing
   #endif
 
   #define NO_SD_AUTOSTART                   // Remove auto#.g file support completely to save some Flash, SRAM

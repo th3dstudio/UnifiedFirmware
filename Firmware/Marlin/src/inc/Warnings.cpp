@@ -731,10 +731,11 @@
   #endif
 #endif
 
-//Disabled by TH3D to prevent user confusion.
-//#if CANNOT_EMBED_CONFIGURATION
-  //#warning "Disabled CONFIGURATION_EMBEDDING because the target usually has less flash storage. Define FORCE_CONFIG_EMBED to override."
-//#endif
+#if ENABLED(DISABLE_TH3D_MODS) //Disabled by TH3D to prevent user confusion.
+#if CANNOT_EMBED_CONFIGURATION
+  #warning "Disabled CONFIGURATION_EMBEDDING because the target usually has less flash storage. Define FORCE_CONFIG_EMBED to override."
+#endif
+#endif
 
 #if HAS_LCD_CONTRAST && LCD_CONTRAST_MIN >= LCD_CONTRAST_MAX
   #warning "Contrast cannot be changed when LCD_CONTRAST_MIN >= LCD_CONTRAST_MAX."

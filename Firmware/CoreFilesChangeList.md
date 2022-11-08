@@ -2,10 +2,16 @@ This is a list of files that we have modified in the core Marlin files for our d
 
 This is for our reference to make sure to retain changes made to the core files when merging in the latest Marlin firmware baseline.
 
-This does not include machine configs or PlatformIO files.
+This does not include machine `configuration.h` or `PlatformIO.ini` files.
 
 ----------
 
+- **buildroot**
+	- **share**
+		- **PlatformIO**
+			- **variants**
+				- **MARLIN_G0B1RE**
+					- `variant_MARLIN_STM32G0B1RE.cpp` - USB Fix from BTT
 - **ini**
 	- `avr.ini`
 	- `stm32f1.ini`

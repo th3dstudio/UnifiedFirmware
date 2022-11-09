@@ -6,7 +6,7 @@
             "profile-name": "ender2-427",
             "keyword": 
             [
-                {"find":"//#define ENDER2_PRO     //Requires Motor Adapter Cable from TH3D due to stock connections using 5 pins","replace":"//#define ENDER2_PRO     //Requires Motor Adapter Cable from TH3D due to stock connections using 5 pins"}
+                {"find":"//#define ENDER2_PRO     //Requires Motor Adapter Cable from TH3D due to stock connections using 5 pins","replace":"#define ENDER2_PRO     //Requires Motor Adapter Cable from TH3D due to stock connections using 5 pins"}
             ]
         },
 		{

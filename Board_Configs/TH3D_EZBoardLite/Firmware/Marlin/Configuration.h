@@ -32,6 +32,7 @@
 
 // Ender Series -------------------------------------------------------------
 //#define ENDER2
+//#define ENDER2_PRO     //Requires Motor Adapter Cable from TH3D due to stock connections using 5 pins
 //#define ENDER3
 //#define ENDER3_MAX
 //#define ENDER5
@@ -58,6 +59,8 @@
 //#define CR10_OEM                 //OEM Mount for Creality Machines (Ender3/Ender5/Ender5Plus/CR-10/CR-10S/CR-20)
 //#define ENDER2_OEM               //Ender 2 Specific OEM Mount
 //#define ENDER2_V6                //Ender 2 Specific V6 Mount
+//#define ENDER2_PRO_OEM           //Ender 2 PRO Specific OEM Mount
+//#define ENDER2_PRO_OEM_MICRO     //Ender 2 PRO Specific OEM Mount FOR MICRO SIZE
 //#define ENDER3_MAX_OEM           //Ender 3 MAX Specific OEM Mount
 //#define SV01_OEM_MOUNT           //Sovol SV01 OEM Mount
 //#define CR10_VOLCANO             //TH3D CR-10 Volcano Mount 
@@ -292,6 +295,10 @@
 //#define XTENDER_E5P_400   //510x510x400 Size
 //#define XTENDER_E5P_500   //510x510x500 Size
 
+// BTT TOUCH SCREEN --------------------------------
+// If you are using the BTT Touch Screen uncomment the below line to enable additional options per the BTT docs they recommend for use with their LCD
+//#define BTT_TOUCH_SCREEN
+
 // HOME OFFSET ADJUSTMENT --------------------------
 // If you need to adjust your XY home offsets from defaults then you can uncomment the HOME_ADJUST line below and enter your
 // custom XY offsets. This is provided for convenience and is unsupported with included product support.
@@ -305,10 +312,6 @@
 // If you want PID Bed Temperature control enable the below line. You will need to tune it for your machine.
 // See the PID Bed setup guide here: https://support.th3dstudio.com/helpcenter/p-i-d-bed-calibration-guide/
 //#define ENABLE_PIDBED
-
-// Z PROBE OFFSET WIZARD ---------------------------
-// Marlin has a Z Probe Offset Wizard now. If you want to enable this, uncomment the below line.
-//#define PROBE_OFFSET_WIZARD
 
 // FINE BABYSTEPPING -------------------------------
 // Enabling the below line will set the babystep resolution from 0.025mm to 0.010mm for finer control.
@@ -356,7 +359,7 @@
  */
  
 //EZBoard based Machine Settings
-#if ENABLED(CR10) || ENABLED(CR10_MINI) || ENABLED(CR10_S4) || ENABLED(CR10_S5) || ENABLED(CR10S) || ENABLED(CR10S_MINI) || ENABLED(CR10S_S4) || ENABLED(CR10S_S5) || ENABLED(ENDER2) || ENABLED(ENDER3) || ENABLED(ENDER5) || ENABLED(ENDER5_PLUS) || ENABLED(SOVOL_SV01) || ENABLED(SOVOL_SV03) || ENABLED(CR20) || ENABLED(ENDER3_MAX)
+#if ANY(CR10, CR10_MINI, CR10_S4, CR10_S5, CR10S, CR10S_MINI, CR10S_S4, CR10S_S5, ENDER2, ENDER2_PRO, ENDER3, ENDER5, ENDER5_PLUS, SOVOL_SV01, SOVOL_SV03, CR20, ENDER3_MAX)
 
   #define SERIAL_PORT -1
   #define SERIAL_PORT_2 0
@@ -455,6 +458,13 @@
     #define Y_BED_SIZE 150
     #define Z_MAX_POS 220
     #define PRINTER_VOLTAGE_12
+  #endif
+  
+  #if ENABLED(ENDER2_PRO)
+    #define X_BED_SIZE 165
+    #define Y_BED_SIZE 168
+    #define Z_MAX_POS 180
+    #define PRINTER_VOLTAGE_24
   #endif
 
   #if ENABLED(ENDER3)
@@ -564,6 +574,15 @@
   #if ENABLED(HOME_ADJUST)
     #define X_MIN_POS X_HOME_LOCATION
     #define Y_MIN_POS Y_HOME_LOCATION
+  #elif ENABLED(ENDER2_PRO_OEM)
+    #define X_MIN_POS -9
+    #define Y_MIN_POS -4
+  #elif ENABLED(ENDER2_PRO_OEM_MICRO)
+    #define X_MIN_POS -9
+    #define Y_MIN_POS -4
+  #elif ENABLED(ENDER2_PRO)
+    #define X_MIN_POS -20
+    #define Y_MIN_POS -4
   #else
     #define X_MIN_POS 0
     #define Y_MIN_POS 0
@@ -652,19 +671,35 @@
   #define Z_ENABLE_ON 0
   #define E_ENABLE_ON 0
 
-  #if ENABLED(REVERSE_X_MOTOR)
-    #define INVERT_X_DIR false
+  #if ENABLED(ENDER2_PRO)
+    #if ENABLED(REVERSE_X_MOTOR)
+      #define INVERT_X_DIR true
+    #else
+      #define INVERT_X_DIR false
+    #endif
   #else
-    #define INVERT_X_DIR true
+    #if ENABLED(REVERSE_X_MOTOR)
+      #define INVERT_X_DIR false
+    #else
+      #define INVERT_X_DIR true
+    #endif
   #endif
 
-  #if ENABLED(REVERSE_Y_MOTOR)
-    #define INVERT_Y_DIR false
+  #if ENABLED(ENDER2_PRO)
+    #if ENABLED(REVERSE_Y_MOTOR)
+      #define INVERT_Y_DIR true
+    #else
+      #define INVERT_Y_DIR false
+    #endif
   #else
-    #define INVERT_Y_DIR true
+    #if ENABLED(REVERSE_Y_MOTOR)
+      #define INVERT_Y_DIR false
+    #else
+      #define INVERT_Y_DIR true
+    #endif
   #endif
 
-  #if ENABLED(ENDER5)
+  #if ANY(ENDER5, ENDER2_PRO)
     #if ENABLED(REVERSE_Z_MOTOR)
       #define INVERT_Z_DIR false
     #else
@@ -678,7 +713,7 @@
     #endif
   #endif
   
-  #if ENABLED(SOVOL_SV01)
+  #if ANY(SOVOL_SV01, ENDER2_PRO)
     #if ENABLED(REVERSE_E_MOTOR_DIRECTION)
       #define INVERT_E0_DIR true
     #else

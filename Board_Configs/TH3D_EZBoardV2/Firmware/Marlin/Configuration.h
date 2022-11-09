@@ -297,6 +297,10 @@
 //#define XTENDER_E5P_400   //510x510x400 Size
 //#define XTENDER_E5P_500   //510x510x500 Size
 
+// BTT TOUCH SCREEN --------------------------------
+// If you are using the BTT Touch Screen uncomment the below line to enable additional options per the BTT docs they recommend for use with their LCD
+//#define BTT_TOUCH_SCREEN
+
 // SENSORLESS HOMING SETTINGS ----------------------
 // If you want to use sensorless homing on your X or Y Axis, uncomment the X_AXIS_SENSORLESS_HOMING or Y_AXIS_SENSORLESS_HOMING to enable it.
 // You will have to change the calibration setting to get it to home correctly. See here for details: https://marlinfw.org/docs/gcode/M914.html
@@ -320,10 +324,6 @@
 // If you want PID Bed Temperature control enable the below line. You will need to tune it for your machine.
 // See the PID Bed setup guide here: https://support.th3dstudio.com/helpcenter/p-i-d-bed-calibration-guide/
 //#define ENABLE_PIDBED
-
-// Z PROBE OFFSET WIZARD ---------------------------
-// Marlin has a Z Probe Offset Wizard now. If you want to enable this, uncomment the below line.
-//#define PROBE_OFFSET_WIZARD
 
 // FINE BABYSTEPPING -------------------------------
 // Enabling the below line will set the babystep resolution from 0.025mm to 0.010mm for finer control.
@@ -393,7 +393,7 @@
  */
  
 //EZBoard V2 based Machine Settings
-#if ENABLED(CR10) || ENABLED(CR10_MINI) || ENABLED(CR10_S4) || ENABLED(CR10_S5) || ENABLED(CR10S) || ENABLED(CR10S_MINI) || ENABLED(CR10S_S4) || ENABLED(CR10S_S5) || ENABLED(ENDER2) || ENABLED(ENDER2_PRO) || ENABLED(ENDER3) || ENABLED(ENDER5) || ENABLED(ENDER5_PLUS) || ENABLED(SOVOL_SV01) || ENABLED(SOVOL_SV03) || ENABLED(CR20) || ENABLED(ENDER3_MAX)
+#if ANY(CR10, CR10_MINI, CR10_S4, CR10_S5, CR10S, CR10S_MINI, CR10S_S4, CR10S_S5, ENDER2, ENDER2_PRO, ENDER3, ENDER5, ENDER5_PLUS, SOVOL_SV01, SOVOL_SV03, CR20, ENDER3_MAX)
 
   #define SERIAL_PORT -1
   #define BAUDRATE 115200

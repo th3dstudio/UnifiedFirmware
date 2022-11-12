@@ -549,7 +549,7 @@
   #endif
 #endif
 
-#if (ENABLED(EZBOARD) || ENABLED(EZBOARD_V2)) && DISABLED(USE_CONTROLLER_FAN) && DISABLED(EZBOARD_FAN2_HOTEND_MODE)
+#if (ENABLED(EZBOARD) || ENABLED(EZBOARD_V2)) && DISABLED(USE_CONTROLLER_FAN) && DISABLED(EZBOARD_FAN2_HOTEND_MODE) && DISABLED(EZBOARD_FAN2_PART_COOLING_MODE)
   #define USE_CONTROLLER_FAN
   #if ENABLED(EZBOARD_V2)
     #define CONTROLLER_FAN_PIN       PC7
@@ -667,8 +667,9 @@
 /**
  * Use one of the PWM fans as a redundant part-cooling fan
  */
-//#define REDUNDANT_PART_COOLING_FAN 2  // Index of the fan to sync with FAN 0.
-
+#if ENABLED(EZBOARD_FAN2_PART_COOLING_MODE)
+#define REDUNDANT_PART_COOLING_FAN 1  // Index of the fan to sync with FAN 0.
+#endif
 // @section extruder
 
 /**

@@ -667,8 +667,8 @@
 /**
  * Use one of the PWM fans as a redundant part-cooling fan
  */
-#if ENABLED(EZBOARD_FAN2_PART_COOLING_MODE)
-#define REDUNDANT_PART_COOLING_FAN 1  // Index of the fan to sync with FAN 0.
+#if ENABLED(EZBOARD_V2) && ENABLED(EZBOARD_FAN2_PART_COOLING_MODE)
+  #define REDUNDANT_PART_COOLING_FAN 1  // Index of the fan to sync with FAN 0.
 #endif
 // @section extruder
 

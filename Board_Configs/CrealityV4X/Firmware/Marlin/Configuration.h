@@ -74,6 +74,7 @@
 //#define ENDER5_PLUS_OEM
 //#define ENDER6_OEM
 //#define ENDER6_PETSFANG //Source: https://support.th3dstudio.com/helpcenter/ender-6-5015-ezabl-petsfang-mount/
+//#define SPRITE_EXTRUDER_18MM_MOUNT // Mounts to the stock CRTouch bracket
 //#define CUSTOM_PROBE
 
 // Ender 3 V2 - LCD Setting

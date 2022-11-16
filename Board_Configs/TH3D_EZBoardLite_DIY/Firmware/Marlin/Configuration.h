@@ -197,6 +197,7 @@
 //#define TM3DAERO                 //TM3D Aero Mount for V6
 //#define TM3DAERO_EXTENDED        //TM3D Arto Mount for Volcano
 //#define PETSFANG                 //This is the RIGHT mounted version
+//#define SPRITE_EXTRUDER_18MM_MOUNT // Mounts to the stock CRTouch bracket
 //#define CUSTOM_PROBE             //For any other probe mount (also used for BL Touch), Enter offsets below
 
 // PID Settings -------------------------------------------------------------

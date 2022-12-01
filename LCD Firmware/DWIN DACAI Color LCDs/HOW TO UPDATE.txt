@@ -1,6 +1,11 @@
-This LCD firmware works on both the older and new version of the LCDs Found on the Ender 3 V2, Ender 3 S1, and Aquila X1 printers. Both use the same file to update and directions below. On LCDs with a landscape orientation the TH3D bootscreen will be sideways, this is normal.
+This LCD firmware works on both the older and new version of the LCDs Found on the Ender 3 V2, Ender 3 NEO Models, Ender 3 S1, and Aquila X1 printers. Both use the same file to update and directions below. On LCDs with a landscape orientation the TH3D bootscreen will be sideways, this is normal. This works with the DACAI and DWIN versions of the LCDs. 
 
-Credit: Thank you to Dave at Insanity Automation for the LCD firmware for both LCD versions.
+If you have a "VIEWE" it is not supported and will need to be replaced. We carry 12864 LCD kits for these machines to convert them from the unsupported LCD to the 12864 Style Display. Here is how to determine what LCD type you have: https://support.th3dstudio.com/helpcenter/creality-printers-color-lcds/
+
+Credit: Thank you to Dave at Insanity Automation for the custom LCD firmware for both LCD versions.
+
+---------------------------------------------------------------------------------------------------
+DIRECTIONS:
 
 1. In the firmware download there is a folder called "LCD Firmware". Open that folder and then open the folder labeled "Ender 3 V2 S1"
 

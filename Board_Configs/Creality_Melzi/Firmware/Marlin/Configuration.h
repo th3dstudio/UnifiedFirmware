@@ -43,6 +43,7 @@
 //#define TM3DAERO
 //#define TM3DAERO_EXTENDED
 //#define PETSFANG //This is the RIGHT mounted version - if using the left mount please use the CUSTOM_PROBE option.
+//#define SPRITE_EXTRUDER_18MM_MOUNT // Mounts to the stock CRTouch bracket
 //#define CUSTOM_PROBE
 
 // Ender 5 - Leadscrew Setting

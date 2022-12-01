@@ -20,23 +20,24 @@
 // ***********   CREALITY PRINTERS W/V4.X.X BOARD - F103 CPU   **************
 //===========================================================================
 //------------------------------ V4.2.2 Board -------------------------------
-//#define ENDER3_V422_BOARD
-//#define ENDER3_MAX_V422_BOARD
-//#define ENDER3_V2_V422_BOARD
-//#define ENDER5_V422_BOARD
+//#define ENDER3
+//#define ENDER3_MAX
+//#define ENDER3_MAX_NEO
+//#define ENDER3_V2
+//#define ENDER5
 
 // V4.2.2 TMC Driver Settings - Uncomment if you have TMC drivers on a 4.2.2 Board to set driver timings
 //#define V42X_TMC220X_DRIVERS //"A" or "B" Code on SD Slot
 
 //------------------------------ V4.2.3 Board -------------------------------
-//#define ENDER2_PRO_V423_BOARD
+//#define ENDER2_PRO
 
 //------------------------------ V4.2.7 Board --------------------------------
 // All V4.2.7 Configurations have moved to their own package as this is an aftermarket board.
 // The firmware for this board is included when you purchase a V4.2.7 from TH3D or if you purchase the firmware from the TH3D website.
 
 //------------------------------ V4.3.1 Board -------------------------------
-//#define ENDER6_V431_BOARD
+//#define ENDER6
 
 // Ender 6 - Filament Sensor Override
 // If you have issues with your filament sensor on the Ender 6 uncomment the below option to disable it.
@@ -343,7 +344,7 @@
  */
  
 //V42X with TMC Driver Sanity Checks
-#if ANY(ENDER2_PRO_V423_BOARD, ENDER3_V2_V422_BOARD, ENDER6_V431_BOARD)
+#if ANY(ENDER2_PRO, ENDER3_V2, ENDER6)
   #define V42X_TMC220X_DRIVERS
 #endif
 
@@ -351,20 +352,20 @@
   #error "Linear Advance does NOT work on the V4.2.X boards with the TMC drivers due to how Creality has them setup. Disable Linear Advance to continue or comment this line out to continue compile at your own risk."
 #endif
 
-#if ENABLED(ENDER3_V422_BOARD)
-  #define ENDER3
-#endif
-
-#if ENABLED(ENDER3_V2_V422_BOARD)
-  #define ENDER3_V2
-#endif
-
-#if ENABLED(ENDER3_MAX_V422_BOARD)
+//Ender 3 Max NEO Settings
+#if ENABLED(ENDER3_MAX_NEO)
   #define ENDER3_MAX
-#endif
-
-#if ENABLED(ENDER5_V422_BOARD)
-  #define ENDER5
+  
+  #if NONE(BLTOUCH, ENDER3_MAX_OEM)
+    #define BLTOUCH
+    #define CUSTOM_PROBE
+    #define NOZZLE_TO_PROBE_OFFSET { -40, -14, 0 }
+    #define BLTOUCH_ON_5PIN
+  #endif
+  
+  #if NONE(EZOUT_ENABLE, EZOUT_ENABLE_J1)
+    #define EZOUT_ENABLE_J1
+  #endif
 #endif
 
 /**
@@ -376,7 +377,7 @@
 #endif
  
 //Ender 6 V431 Board Settings
-#if ENABLED(ENDER6_V431_BOARD)
+#if ENABLED(ENDER6)
 	#define SERIAL_PORT 1
   
   #define PRINTER_VOLTAGE_24
@@ -611,7 +612,7 @@
 // End Ender 6 Settings
 
 //Ender 2 Pro Board Settings
-#if ENABLED(ENDER2_PRO_V423_BOARD)
+#if ENABLED(ENDER2_PRO)
   #define SERIAL_PORT 1
 
   #define BAUDRATE 115200
@@ -826,8 +827,8 @@
 //End Ender 2 Pro Board Settings
  
 //Ender 3/3 MAX/5/5 Plus V42X Board Settings
-#if ANY(ENDER3_V422_BOARD, ENDER5_V422_BOARD, ENDER3_MAX_V422_BOARD)
-  #if ENABLED(ENDER3_MAX_V422_BOARD)
+#if ANY(ENDER3, ENDER5, ENDER3_MAX)
+  #if ENABLED(ENDER3_MAX)
     #define MOUNTED_FILAMENT_SENSOR
   #endif
   
@@ -844,7 +845,7 @@
     #define REVERSE_ENCODER_DIRECTION
   #endif
   
-  #if ENABLED(ENDER3_V422_BOARD) || ENABLED(ENDER5_V422_BOARD) || ENABLED(ENDER3_MAX_V422_BOARD)
+  #if ENABLED(ENDER3) || ENABLED(ENDER5) || ENABLED(ENDER3_MAX)
     #ifndef MOTHERBOARD
       #define MOTHERBOARD BOARD_CREALITY_V422
     #endif
@@ -934,7 +935,7 @@
     #define USE_ZMIN_PLUG
   #endif
 
-  #if ENABLED(ENDER5_V422_BOARD)
+  #if ENABLED(ENDER5)
     #define X_HOME_DIR 1
     #define Y_HOME_DIR 1
     #define Z_HOME_DIR -1
@@ -1012,7 +1013,7 @@
     #define Y_DRIVER_TYPE TMC2208_STANDALONE
     #define Z_DRIVER_TYPE TMC2208_STANDALONE
     #define E0_DRIVER_TYPE TMC2208_STANDALONE
-  #elif ENABLED(ENDER3_MAX_V422_BOARD)
+  #elif ENABLED(ENDER3_MAX)
     #define X_DRIVER_TYPE TMC2208_STANDALONE
     #define Y_DRIVER_TYPE TMC2208_STANDALONE
     #define Z_DRIVER_TYPE A4988
@@ -1079,7 +1080,7 @@
     #endif
   #endif
 
-  #if ENABLED(ENDER3_MAX_V422_BOARD)
+  #if ENABLED(ENDER3_MAX)
     #define FILAMENT_RUNOUT_SENSOR
   #endif
 
@@ -1138,7 +1139,7 @@
 // End Ender 3/3 MAX/5 V42X Board Settings
  
 // Ender 3 V2 Settings
-#if ENABLED(ENDER3_V2_V422_BOARD)
+#if ENABLED(ENDER3_V2)
   #define SERIAL_PORT 1
 
   #define BAUDRATE 115200

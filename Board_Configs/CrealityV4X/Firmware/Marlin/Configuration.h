@@ -357,7 +357,7 @@
 #if ENABLED(ENDER3_V2_NEO)
   #define ENDER3_V2
   
-  #if NONE(BLTOUCH, ENDER3_OEM)
+  #if NONE(BLTOUCH, ENDER3_V2_OEM)
     #define BLTOUCH
     #define CUSTOM_PROBE
     #define NOZZLE_TO_PROBE_OFFSET { -40, -14, 0 }

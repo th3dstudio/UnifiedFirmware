@@ -21,6 +21,7 @@
 //===========================================================================
 //------------------------------ V4.2.2 Board -------------------------------
 //#define ENDER3
+//#define ENDER3_NEO
 //#define ENDER3_MAX
 //#define ENDER3_MAX_NEO
 //#define ENDER3_V2
@@ -352,6 +353,19 @@
   #error "Linear Advance does NOT work on the V4.2.X boards with the TMC drivers due to how Creality has them setup. Disable Linear Advance to continue or comment this line out to continue compile at your own risk."
 #endif
 
+//Ender 3 NEO Settings
+#if ENABLED(ENDER3_NEO)
+  #define ENDER3
+  
+  #if NONE(BLTOUCH, ENDER3_OEM)
+    #define BLTOUCH
+    #define CUSTOM_PROBE
+    #define NOZZLE_TO_PROBE_OFFSET { -40, -14, 0 }
+    #define BLTOUCH_ON_5PIN
+    #define CRTOUCH_PROBE_NAMING
+  #endif
+#endif
+
 //Ender 3 Max NEO Settings
 #if ENABLED(ENDER3_MAX_NEO)
   #define ENDER3_MAX
@@ -361,6 +375,7 @@
     #define CUSTOM_PROBE
     #define NOZZLE_TO_PROBE_OFFSET { -40, -14, 0 }
     #define BLTOUCH_ON_5PIN
+    #define CRTOUCH_PROBE_NAMING
   #endif
   
   #if NONE(EZOUT_ENABLE, EZOUT_ENABLE_J1)

@@ -26,7 +26,7 @@
 ////////////////////////////
 
 /**
- * Marlin release version identifier - Based on Marlin 2.1.1 code base w/custom fixes for machines.
+ * Marlin release version identifier - Based on Marlin 2.1.1 code base w/custom fixes for machines and bugfix pulled on 12/1/22.
  */
 #define SHORT_BUILD_VERSION UNIFIED_VERSION
 

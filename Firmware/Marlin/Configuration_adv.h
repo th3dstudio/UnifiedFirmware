@@ -30,7 +30,7 @@
  *
  * Basic settings can be found in Configuration.h
  */
-#define CONFIGURATION_ADV_H_VERSION 02010100
+#define CONFIGURATION_ADV_H_VERSION 02010200
 
 // @section develop
 
@@ -48,7 +48,7 @@
  *  3 = schema.json - The entire configuration schema. (13 = pattern groups)
  *  4 = schema.yml - The entire configuration schema.
  */
-//#define CONFIG_EXPORT   // :[1:'JSON', 2:'config.ini', 3:'schema.json', 4:'schema.yml']
+//#define CONFIG_EXPORT 2 // :[1:'JSON', 2:'config.ini', 3:'schema.json', 4:'schema.yml']
 
 //===========================================================================
 //============================= Thermal Settings ============================
@@ -481,18 +481,22 @@
 // before a min_temp_error is triggered. (Shouldn't be more than 10.)
 //#define MAX_CONSECUTIVE_LOW_TEMPERATURE_ERROR_ALLOWED 0
 
-// The number of milliseconds a hotend will preheat before starting to check
-// the temperature. This value should NOT be set to the time it takes the
-// hot end to reach the target temperature, but the time it takes to reach
-// the minimum temperature your thermistor can read. The lower the better/safer.
-// This shouldn't need to be more than 30 seconds (30000)
+/**
+ * The number of milliseconds a hotend will preheat before starting to check
+ * the temperature. This value should NOT be set to the time it takes the
+ * hot end to reach the target temperature, but the time it takes to reach
+ * the minimum temperature your thermistor can read. The lower the better/safer.
+ * This shouldn't need to be more than 30 seconds (30000)
+ */
 //#define MILLISECONDS_PREHEAT_TIME 0
 
 // @section extruder
 
-// Extruder runout prevention.
-// If the machine is idle and the temperature over MINTEMP
-// then extrude some filament every couple of SECONDS.
+/**
+ * Extruder runout prevention.
+ * If the machine is idle and the temperature over MINTEMP
+ * then extrude some filament every couple of SECONDS.
+ */
 //#define EXTRUDER_RUNOUT_PREVENT
 #if ENABLED(EXTRUDER_RUNOUT_PREVENT)
   #define EXTRUDER_RUNOUT_MINTEMP 190
@@ -1431,7 +1435,7 @@
 //
 // LCD Backlight Timeout
 //
-//#define LCD_BACKLIGHT_TIMEOUT 30 // (s) Timeout before turning off the backlight
+//#define LCD_BACKLIGHT_TIMEOUT_MINS 1  // (minutes) Timeout before turning off the backlight
 
 #if HAS_BED_PROBE && EITHER(HAS_MARLINUI_MENU, HAS_TFT_LVGL_UI)
   //#define PROBE_OFFSET_WIZARD       // Add a Probe Z Offset calibration option to the LCD menu
@@ -1707,8 +1711,9 @@
   //#define UTF_FILENAME_SUPPORT
 
   #if ENABLED(BTT_TOUCH_SCREEN)
-    #define LONG_FILENAME_HOST_SUPPORT    // Get the long filename of a file/folder with 'M33 <dosname>' and list long filenames with 'M20 L'
-    #define LONG_FILENAME_WRITE_SUPPORT   // Create / delete files with long filenames via M28, M30, and Binary Transfer Protocol
+    #define LONG_FILENAME_HOST_SUPPORT      // Get the long filename of a file/folder with 'M33 <dosname>' and list long filenames with 'M20 L'
+    #define LONG_FILENAME_WRITE_SUPPORT     // Create / delete files with long filenames via M28, M30, and Binary Transfer Protocol
+    //#define M20_TIMESTAMP_SUPPORT         // Include timestamps by adding the 'T' flag to M20 commands
   #endif
 
   #if NONE(SPACE_SAVER, DWIN_CREALITY_LCD, SPACE_SAVER_2560)
@@ -1877,7 +1882,7 @@
    * Adds the menu item Configuration > LCD Timeout (m) to set a wait period
    * from 0 (disabled) to 99 minutes.
    */
-  //#define DISPLAY_SLEEP_MINUTES 2  // (minutes) Timeout before turning off the screen
+  //#define DISPLAY_SLEEP_MINUTES 2  // (minutes) Timeout before turning off the screen. Set with M255 S.
 
   /**
    * ST7920-based LCDs can emulate a 16 x 4 character display using
@@ -1912,7 +1917,7 @@
   #define STATUS_HOTEND_INVERTED      // Show solid nozzle bitmaps when heating (Requires STATUS_HOTEND_ANIM for numbered hotends)
   #define STATUS_HOTEND_ANIM          // Use a second bitmap to indicate hotend heating
   #define STATUS_BED_ANIM             // Use a second bitmap to indicate bed heating
-  //#define STATUS_CHAMBER_ANIM         // Use a second bitmap to indicate chamber heating
+  //#define STATUS_CHAMBER_ANIM       // Use a second bitmap to indicate chamber heating
   //#define STATUS_CUTTER_ANIM        // Use a second bitmap to indicate spindle / laser active
   //#define STATUS_COOLER_ANIM        // Use a second bitmap to indicate laser cooling
   //#define STATUS_FLOWMETER_ANIM     // Use multiple bitmaps to indicate coolant flow
@@ -2215,10 +2220,6 @@
  */
 #if ENABLED(LINEAR_ADVANCE)
   #define LIN_ADVANCE
-  
-  // Still needed?
-  //#undef DEFAULT_EJERK      //undefine any EJERK set already in the machine config
-  //#define DEFAULT_EJERK 10  //set to 10 for LA to work effectively and bypass Marlin error
 #endif
 
 #if ENABLED(LIN_ADVANCE)
@@ -3989,6 +3990,8 @@
  */
 //#define CNC_COORDINATE_SYSTEMS
 
+// @section reporting
+
 /**
  * Auto-report fan speed with M123 S<seconds>
  * Requires fans with tachometer pins
@@ -4486,7 +4489,7 @@
 /**
  * WiFi Support (Espressif ESP32 WiFi)
  */
-//#define WIFISUPPORT         // Marlin embedded WiFi managenent
+//#define WIFISUPPORT         // Marlin embedded WiFi management
 //#define ESP3D_WIFISUPPORT   // ESP3D Library WiFi management (https://github.com/luc-github/ESP3DLib)
 
 #if EITHER(WIFISUPPORT, ESP3D_WIFISUPPORT)

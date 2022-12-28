@@ -42,7 +42,7 @@
 #endif
 #undef en
 
-#define MEDIA_TYPE_EN "Media"
+#define MEDIA_TYPE_EN "SD"
 
 namespace Language_en {
   constexpr uint8_t CHARSIZE              = 2;
@@ -281,8 +281,13 @@ namespace Language_en {
   LSTR MSG_UBL_7_SAVE_MESH                = _UxGT("7. Save Bed Mesh");
 
   LSTR MSG_LED_CONTROL                    = _UxGT("LED Control");
-  LSTR MSG_LEDS                           = _UxGT("Lights");
-  LSTR MSG_LED_PRESETS                    = _UxGT("Light Presets");
+  #if ENABLED(EZNEO_220)
+    LSTR MSG_LEDS                           = _UxGT("EZNeo");
+    LSTR MSG_LED_PRESETS                    = _UxGT("EZNeo Presets");
+  #else
+    LSTR MSG_LEDS                           = _UxGT("Lights");
+    LSTR MSG_LED_PRESETS                    = _UxGT("Light Presets");
+  #endif
   LSTR MSG_SET_LEDS_RED                   = _UxGT("Red");
   LSTR MSG_SET_LEDS_ORANGE                = _UxGT("Orange");
   LSTR MSG_SET_LEDS_YELLOW                = _UxGT("Yellow");
@@ -296,7 +301,7 @@ namespace Language_en {
   LSTR MSG_LEDS2                          = _UxGT("Lights #2");
   LSTR MSG_NEO2_PRESETS                   = _UxGT("Light #2 Presets");
   LSTR MSG_NEO2_BRIGHTNESS                = _UxGT("Brightness");
-  LSTR MSG_CUSTOM_LEDS                    = _UxGT("Custom Lights");
+  LSTR MSG_CUSTOM_LEDS                    = _UxGT("Custom Color");
   LSTR MSG_INTENSITY_R                    = _UxGT("Red Intensity");
   LSTR MSG_INTENSITY_G                    = _UxGT("Green Intensity");
   LSTR MSG_INTENSITY_B                    = _UxGT("Blue Intensity");
@@ -441,7 +446,7 @@ namespace Language_en {
   LSTR MSG_STORE_EEPROM                   = _UxGT("Store Settings");
   LSTR MSG_LOAD_EEPROM                    = _UxGT("Load Settings");
   LSTR MSG_RESTORE_DEFAULTS               = _UxGT("Restore Defaults");
-  LSTR MSG_INIT_EEPROM                    = _UxGT("Initialize EEPROM");
+  LSTR MSG_INIT_EEPROM                    = _UxGT("Reset EEPROM");
   LSTR MSG_ERR_EEPROM_CRC                 = _UxGT("EEPROM CRC Error");
   LSTR MSG_ERR_EEPROM_INDEX               = _UxGT("EEPROM Index Error");
   LSTR MSG_ERR_EEPROM_VERSION             = _UxGT("EEPROM Version Error");
@@ -559,18 +564,33 @@ namespace Language_en {
   LSTR MSG_RELEASE_MEDIA                  = _UxGT("Release ") MEDIA_TYPE_EN;
   LSTR MSG_ZPROBE_OUT                     = _UxGT("Z Probe Past Bed");
   LSTR MSG_SKEW_FACTOR                    = _UxGT("Skew Factor");
-  LSTR MSG_BLTOUCH                        = _UxGT("BLTouch");
-  LSTR MSG_BLTOUCH_SELFTEST               = _UxGT("Self-Test");
-  LSTR MSG_BLTOUCH_RESET                  = _UxGT("Reset");
-  LSTR MSG_BLTOUCH_STOW                   = _UxGT("Stow");
-  LSTR MSG_BLTOUCH_DEPLOY                 = _UxGT("Deploy");
-  LSTR MSG_BLTOUCH_SW_MODE                = _UxGT("SW-Mode");
-  LSTR MSG_BLTOUCH_SPEED_MODE             = _UxGT("High Speed");
-  LSTR MSG_BLTOUCH_5V_MODE                = _UxGT("5V-Mode");
-  LSTR MSG_BLTOUCH_OD_MODE                = _UxGT("OD-Mode");
-  LSTR MSG_BLTOUCH_MODE_STORE             = _UxGT("Mode-Store");
-  LSTR MSG_BLTOUCH_MODE_STORE_5V          = _UxGT("Set BLTouch to 5V");
-  LSTR MSG_BLTOUCH_MODE_STORE_OD          = _UxGT("Set BLTouch to OD");
+  #if DISABLED(CRTOUCH_PROBE_NAMING)
+    LSTR MSG_BLTOUCH                        = _UxGT("BLTouch");
+  	LSTR MSG_BLTOUCH_SELFTEST               = _UxGT("Self-Test");
+  	LSTR MSG_BLTOUCH_RESET                  = _UxGT("Reset");
+  	LSTR MSG_BLTOUCH_STOW                   = _UxGT("Stow");
+  	LSTR MSG_BLTOUCH_DEPLOY                 = _UxGT("Deploy");
+  	LSTR MSG_BLTOUCH_SW_MODE                = _UxGT("SW-Mode");
+  	LSTR MSG_BLTOUCH_SPEED_MODE             = _UxGT("High Speed");
+  	LSTR MSG_BLTOUCH_5V_MODE                = _UxGT("5V-Mode");
+  	LSTR MSG_BLTOUCH_OD_MODE                = _UxGT("OD-Mode");
+  	LSTR MSG_BLTOUCH_MODE_STORE             = _UxGT("Mode-Store");
+  	LSTR MSG_BLTOUCH_MODE_STORE_5V          = _UxGT("Set BLTouch to 5V");
+  	LSTR MSG_BLTOUCH_MODE_STORE_OD          = _UxGT("Set BLTouch to OD");
+  #else
+	LSTR MSG_BLTOUCH                        = _UxGT("CRTouch");
+    LSTR MSG_BLTOUCH_SELFTEST               = _UxGT("Self-Test");
+    LSTR MSG_BLTOUCH_RESET                  = _UxGT("Reset");
+    LSTR MSG_BLTOUCH_STOW                   = _UxGT("Stow");
+    LSTR MSG_BLTOUCH_DEPLOY                 = _UxGT("Deploy");
+    LSTR MSG_BLTOUCH_SW_MODE                = _UxGT("SW-Mode");
+    LSTR MSG_BLTOUCH_SPEED_MODE             = _UxGT("High Speed");
+    LSTR MSG_BLTOUCH_5V_MODE                = _UxGT("5V-Mode");
+    LSTR MSG_BLTOUCH_OD_MODE                = _UxGT("OD-Mode");
+    LSTR MSG_BLTOUCH_MODE_STORE             = _UxGT("Mode-Store");
+    LSTR MSG_BLTOUCH_MODE_STORE_5V          = _UxGT("Set CRTouch to 5V");
+    LSTR MSG_BLTOUCH_MODE_STORE_OD          = _UxGT("Set CRTouch to OD");
+  #endif
   LSTR MSG_BLTOUCH_MODE_ECHO              = _UxGT("Report Drain");
   LSTR MSG_BLTOUCH_MODE_CHANGE            = _UxGT("DANGER: Bad settings can cause damage! Proceed anyway?");
   LSTR MSG_TOUCHMI_PROBE                  = _UxGT("TouchMI");
@@ -585,7 +605,11 @@ namespace Language_en {
   LSTR MSG_ZPROBE_OFFSETS                 = _UxGT("Probe Offsets");
   LSTR MSG_ZPROBE_XOFFSET                 = _UxGT("Probe X Offset");
   LSTR MSG_ZPROBE_YOFFSET                 = _UxGT("Probe Y Offset");
-  LSTR MSG_ZPROBE_ZOFFSET                 = _UxGT("Probe Z Offset");
+  #if ENABLED(BABYSTEP_ZPROBE_OFFSET)
+  	LSTR MSG_ZPROBE_ZOFFSET                 = _UxGT("Z Offset/Babystep");
+  #else
+  	LSTR MSG_ZPROBE_ZOFFSET                 = _UxGT("Probe Z Offset");
+  #endif
   LSTR MSG_ZPROBE_MARGIN                  = _UxGT("Probe Margin");
   LSTR MSG_Z_FEED_RATE                    = _UxGT("Z Feed Rate");
   LSTR MSG_ENABLE_HS_MODE                 = _UxGT("Enable HS mode");

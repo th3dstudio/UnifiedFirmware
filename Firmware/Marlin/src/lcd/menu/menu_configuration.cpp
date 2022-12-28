@@ -602,7 +602,7 @@ void menu_configuration() {
     CONFIRM_ITEM(MSG_INIT_EEPROM,
       MSG_BUTTON_INIT, MSG_BUTTON_CANCEL,
       ui.init_eeprom, nullptr,
-      GET_TEXT(MSG_INIT_EEPROM), (const char *)nullptr, PSTR("?")
+      GET_TEXT_F(MSG_INIT_EEPROM), (const char *)nullptr, F("?")
     );
   #endif
   #endif

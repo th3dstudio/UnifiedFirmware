@@ -2,7 +2,7 @@
 
 This is a list of bugs are are aware of in the firmware along with workarounds (if any).
 
-**Last Updated:** 4/20/22
+**Last Updated:** 12/27/22
 
 ----------
 

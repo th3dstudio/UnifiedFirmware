@@ -130,6 +130,7 @@ WEAK void SystemClock_Config(void)
   RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
 
   // Reset clock registers (in case bootloader has changed them)
+  // Using the latest code from BTT themselves. Marlin is using an outdated code reference.
   SystemInit();
 
   /** Configure the main internal regulator output voltage

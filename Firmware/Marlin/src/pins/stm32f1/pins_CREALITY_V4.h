@@ -25,6 +25,10 @@
  * Creality 4.2.x (STM32F103RE / STM32F103RC) board pin assignments
  */
 
+// Required on the V4 boards - Added by TH3D
+#define FAN_SOFT_PWM
+#define SOFT_PWM_SCALE 0
+
 #include "env_validate.h"
 
 #if HAS_MULTI_HOTEND || E_STEPPERS > 1

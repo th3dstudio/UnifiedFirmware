@@ -282,6 +282,10 @@
 
 // INPUT SHAPING -----------------------------------
 // See here on how to use Input Shaping: INPUTSHAPINGURLHERE
+//
+// CPU LIMITATION WARNING: While this will compile and fit in memory, these 8-bit CPUs are outdated and may run poorly with input shaping.
+// If you want to reliably and smoothly run input shaping you should upgrade to a 32-bit board. If you have issues, disable input shaping.
+//
 //#define INPUT_SHAPING
 // Below are the frequency and damping settings for each axis.
 // Damping must have f at the end of the number and the range is 0.00-1.00.
@@ -366,6 +370,10 @@
  * ****************************DO NOT TOUCH ANYTHING BELOW THIS COMMENT**************************
  * Core machine settings are below. Do NOT modify these unless you understand what you are doing.
  */
+
+// Enable Software PWM to avoid Timer Conflict
+#define FAN_SOFT_PWM
+#define SOFT_PWM_SCALE 0
 
 /**
  * Machine Configuration Settings

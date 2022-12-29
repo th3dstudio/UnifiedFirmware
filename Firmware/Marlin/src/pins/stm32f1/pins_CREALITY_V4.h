@@ -183,14 +183,25 @@
    *   GND | 9 10 | 5V
    *        ------
    */
-  #define EXP3_01_PIN                       PC6
-  #define EXP3_02_PIN                       PB2
-  #define EXP3_03_PIN                       PB10
-  #define EXP3_04_PIN                       PB11
-  #define EXP3_05_PIN                       PB14
-  #define EXP3_06_PIN                       PB13
-  #define EXP3_07_PIN                       PB12
-  #define EXP3_08_PIN                       PB15
+  #if ANY(ENDER3_S1_12864_LCD, ENDER7)
+    #define EXP3_01_PIN                       PC6
+    #define EXP3_02_PIN                       PB2
+    #define EXP3_03_PIN                       PA2
+    #define EXP3_04_PIN                       PB11
+    #define EXP3_05_PIN                       PB14
+    #define EXP3_06_PIN                       PB13
+    #define EXP3_07_PIN                       PB12
+    #define EXP3_08_PIN                       PB15
+  #else
+    #define EXP3_01_PIN                       PC6
+    #define EXP3_02_PIN                       PB2
+    #define EXP3_03_PIN                       PB10
+    #define EXP3_04_PIN                       PB11
+    #define EXP3_05_PIN                       PB14
+    #define EXP3_06_PIN                       PB13
+    #define EXP3_07_PIN                       PB12
+    #define EXP3_08_PIN                       PB15
+  #endif
 
 #elif EITHER(VET6_12864_LCD, DWIN_VET6_CREALITY_LCD)
 

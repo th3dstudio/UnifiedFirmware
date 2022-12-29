@@ -527,30 +527,6 @@
   #define SPEAKER
 #endif
 
-#if defined(__AVR_ATmega1284__)
-  // Leave this on until 2.0.9.3 bug with fan control not working is resolved
-  // Once 2.0.9.3 Fan bug is fixed remove from future releases
-  // Details: https://github.com/MarlinFirmware/Marlin/issues/23418
-  #define FAN_FIX
-#elif defined(__AVR_ATmega1284P__)
-  // Leave this on until 2.0.9.3 bug with fan control not working is resolved
-  // Once 2.0.9.3 Fan bug is fixed remove from future releases
-  // Details: https://github.com/MarlinFirmware/Marlin/issues/23418
-  #define FAN_FIX
-#elif defined(__AVR_ATmega1280__)
-  // Leave this on until 2.0.9.3 bug with fan control not working is resolved
-  // Once 2.0.9.3 Fan bug is fixed remove from future releases
-  // Details: https://github.com/MarlinFirmware/Marlin/issues/23418
-  #define FAN_FIX
-#elif defined(__AVR_ATmega2560__)
-  // Leave this on until 2.0.9.3 bug with fan control not working is resolved
-  // Once 2.0.9.3 Fan bug is fixed remove from future releases
-  // Details: https://github.com/MarlinFirmware/Marlin/issues/23418
-  #define FAN_FIX
-#else
-  // do nothing
-#endif
-
 #if ENABLED(FAN_FIX)
   #define FAN_SOFT_PWM
   #define SOFT_PWM_SCALE 1

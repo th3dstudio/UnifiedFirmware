@@ -3521,7 +3521,9 @@
    * Beta feature!
    * Create a 50/50 square wave step pulse optimal for stepper drivers.
    */
-  #define SQUARE_WAVE_STEPPING
+  #if DISABLED(INPUT_SHAPING)
+    #define SQUARE_WAVE_STEPPING
+  #endif
 
   /**
    * Enable M122 debugging command for TMC stepper drivers.

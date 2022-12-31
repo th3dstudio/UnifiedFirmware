@@ -26,8 +26,12 @@
  */
 
 // Required on the V4 boards - Added by TH3D
-#define FAN_SOFT_PWM
-#define SOFT_PWM_SCALE 0
+#ifndef FAN_SOFT_PWM
+  #define FAN_SOFT_PWM
+#endif
+#ifndef SOFT_PWM_SCALE
+  #define SOFT_PWM_SCALE 0
+#endif
 
 #include "env_validate.h"
 

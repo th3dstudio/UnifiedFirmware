@@ -363,6 +363,9 @@
   #define G26_RETRACT_MULTIPLIER   1.0  // G26 Q (retraction) used by default between mesh test elements.
 #endif
 
+// Bypass Linear Advance Low Jerk Warning
+#define ALLOW_LOW_EJERK
+
 /**
  * Temp Settings
  */

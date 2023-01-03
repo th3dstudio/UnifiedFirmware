@@ -45,7 +45,7 @@
 //#define CUSTOM_PROBE
 
 // Ender 3 S1 LCD Settings - There are 2 LCDs supported by this firmware - Touch LCDs are NOT supported.
-// Uncomment the line for the LCD that you are using with your machine. 
+// Uncomment the line for the LCD that you are using with your machine.
 //#define ENDER3_S1_12864_LCD           //TH3D 12864 LCD Kit
 //#define ENDER3_S1_COLOR_LCD           //Ender 3 S1 Color LCD w/Knob (DWIN/DACAI)
 
@@ -124,11 +124,11 @@
   *
   * Specify a Probe position as { X, Y, Z }
   * Do NOT enter an number for the Z position in here. Store your offset in EEPROM.
-  * 
+  *
   * When is the offset POSITIVE?
   * If the probe is right of the nozzle the offset on X is POSITIVE
   * If the probe is behind of the nozzle the offset on Y is POSITIVE
-  * 
+  *
   * When is the offset NEGATIVE?
   * If the probe is left of the nozzle the offset on X is NEGATIVE
   * If the probe is in front of the nozzle the offset on Y is NEGATIVE
@@ -155,7 +155,7 @@
 //#define REVERSE_E_MOTOR_DIRECTION
 
 // FILAMENT SENSOR UNLOAD SETTINGS -----------------
-// If you have a filament sensor that is physically mounted to the machine you can enable MOUNTED_FILAMENT_SENSOR to set the unload length to 5mm to prevent filament from backing up in the sensor by uncommenting MOUNTED_FILAMENT_SENSOR 
+// If you have a filament sensor that is physically mounted to the machine you can enable MOUNTED_FILAMENT_SENSOR to set the unload length to 5mm to prevent filament from backing up in the sensor by uncommenting MOUNTED_FILAMENT_SENSOR
 //#define MOUNTED_FILAMENT_SENSOR
 
 // If you have a direct drive machine with a filament sensor uncomment DIRECT_DRIVE_PRINTER to decrease the unload length from 100mm to 20mm
@@ -253,7 +253,7 @@
 
 // MANUAL MESH LEVELING ----------------------------
 // If you want to use manual mesh leveling you can enable the below option. This is for generating a MANUAL mesh WITHOUT a probe.
-// Mesh Bed Leveling Documentation: http://marlinfw.org/docs/gcode/G029-mbl.html 
+// Mesh Bed Leveling Documentation: http://marlinfw.org/docs/gcode/G029-mbl.html
 // NOTE: If you want to automate the leveling process our EZABL kits do this for you. Check them out here: http://EZABL.TH3DStudio.com
 //#define MANUAL_MESH_LEVELING
 
@@ -277,7 +277,7 @@
  * ****************************DO NOT TOUCH ANYTHING BELOW THIS COMMENT**************************
  * Core machine settings are below. Do NOT modify these unless you understand what you are doing.
  */
- 
+
 /**
  * Sanity Checks
  */
@@ -293,7 +293,7 @@
 /**
  * Machine Configuration Settings
  */
- 
+
 //Ender 3 S1/S1 Pro Settings
 #if ANY(ENDER3_S1, ENDER3_S1_PRO, ENDER3_S1_PLUS)
   #if ENABLED(ENDER3_S1_PRO)
@@ -342,11 +342,11 @@
   #if ENABLED(ENDER3S1_F4CPU)
     #ifndef MOTHERBOARD
       #define MOTHERBOARD BOARD_CREALITY_V24S1_301F4
-    #endif 
+    #endif
   #else
     #ifndef MOTHERBOARD
       #define MOTHERBOARD BOARD_CREALITY_V24S1_301
-    #endif  
+    #endif
   #endif
 
   #if ENABLED(CUSTOM_ESTEPS)
@@ -404,15 +404,15 @@
       #define TEMP_SENSOR_0 1
     #endif
   #endif
-  
-  #define TEMP_SENSOR_1 0 
+
+  #define TEMP_SENSOR_1 0
   #define TEMP_SENSOR_2 0
   #define TEMP_SENSOR_3 0
   #define TEMP_SENSOR_4 0
   #define TEMP_SENSOR_5 0
   #define TEMP_SENSOR_6 0
   #define TEMP_SENSOR_7 0
-  
+
   #if NONE(TH3D_BED_THERMISTOR, KEENOVO_TEMPSENSOR, KNOWN_BED_THERMISTOR, AC_BED)
     #define TEMP_SENSOR_BED 1
   #else
@@ -426,7 +426,7 @@
       #define TEMP_SENSOR_BED 11
     #endif
   #endif
-  
+
   #define TEMP_SENSOR_PROBE 0
   #define TEMP_SENSOR_CHAMBER 0
 
@@ -438,7 +438,7 @@
   #define X_MAX_ENDSTOP_INVERTING false
   #define Y_MAX_ENDSTOP_INVERTING false
   #define Z_MAX_ENDSTOP_INVERTING false
-  
+
   #if DISABLED(BLTOUCH)
     #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
     #define Z_MIN_PROBE_ENDSTOP_INVERTING true
@@ -468,7 +468,7 @@
   #else
     #define INVERT_E0_DIR false
   #endif
-  
+
   #define INVERT_E1_DIR false
   #define INVERT_E2_DIR false
   #define INVERT_E3_DIR false
@@ -480,6 +480,9 @@
   #if ENABLED(ENDER3_S1_12864_LCD)
     #define CR10_STOCKDISPLAY
     #define RET6_12864_LCD
+    #define ST7920_DELAY_1 DELAY_NS(600)
+    #define ST7920_DELAY_2 DELAY_NS(750)
+    #define ST7920_DELAY_3 DELAY_NS(750)
   #else
     #define NO_LCD_REINIT 1
     #define LCD_SERIAL_PORT 2
@@ -490,7 +493,7 @@
     #define DWIN_MARLINUI_PORTRAIT      // MarlinUI (portrait orientation)
     //#define DWIN_MARLINUI_LANDSCAPE     // MarlinUI (landscape orientation)
   #endif
-  
+
   #if ANY(DWIN_CREALITY_LCD, DWIN_CREALITY_LCD_JYERSUI, DWIN_CREALITY_LCD_ENHANCED)
     #define ENABLE_PIDBED
     #define POWER_LOSS_RECOVERY
@@ -530,7 +533,7 @@
       //#define FILAMENT_MOTION_SENSOR
     #endif
   #endif
-  
+
   #if ENABLED(EZNEO_220)
     #define RGB_LIGHTS
     #define NEOPIXEL_LED
@@ -564,6 +567,6 @@
 /*
  * All other settings are stored in the Configuration_backend.h and Configuration_speed.h files. Do not change unless you know what you are doing.
  */
- 
+
 #include "Configuration_backend.h"
 #include "Configuration_speed.h"

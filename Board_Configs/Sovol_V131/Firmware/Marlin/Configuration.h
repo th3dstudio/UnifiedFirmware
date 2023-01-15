@@ -25,13 +25,7 @@
 //#define EZOUT_ENABLE
 
 // EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
-//#define SV06_OEM_MOUNT
 //#define CUSTOM_PROBE
-
-// Sovol SV06 ONLY ABL Settings 
-// By default the Ender 5 Plus comes with a BL Touch. Enabling the ENDER5_PLUS_EZABL or ENDER5_PLUS_NOABL will override the BL Touch setting
-// If you are using the stock BL Touch with a non-stock mount enable the CUSTOM_PROBE line above and enter the offsets below for the new mount.
-//#define SV06_NOABL
 
 // EZNeo Settings
 // If you are using an EZNeo strip on your printer, uncomment the line for what strip you are using.
@@ -271,6 +265,11 @@
  
 //SV06 V131 Board Settings
 #if ENABLED(SOVOL_SV06)
+  #if DISABLED(CUSTOM_PROBE)
+    #define CUSTOM_PROBE
+    #define NOZZLE_TO_PROBE_OFFSET { 25, -25, 0 }
+  #endif
+
 	#define SERIAL_PORT 1
   
   #define PRINTER_VOLTAGE_24

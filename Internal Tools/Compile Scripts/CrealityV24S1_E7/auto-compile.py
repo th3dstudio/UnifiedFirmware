@@ -6,7 +6,7 @@ import glob
 
 MARLIN_PATH = "Marlin/"
 AUTO_COMPILE_DIR = "Auto-compile-output/"
-ENVI_NAME = "STM32F103RCT6_creality"
+ENVI_NAME = "STM32F103RC_creality"
 AUTO_COMPILE_VERSION = "v1.1"
 DEBUG = False
 SAVE_CONFIG_FILE = True

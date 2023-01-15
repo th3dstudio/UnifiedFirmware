@@ -1,0 +1,13 @@
+{
+    "config-file":"Configuration.h",
+    "compile-profile":
+    [
+        {
+            "profile-name": "sovol-sv06",
+            "keyword": 
+            [
+                {"find":"//#define SOVOL_SV06","replace":"#define SOVOL_SV06"}
+            ]
+        }
+    ]
+}

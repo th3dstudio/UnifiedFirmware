@@ -71,11 +71,20 @@
 //
 // Custom Thermistor 1000 parameters
 //
-#if TEMP_SENSOR_0 == 1000
-  #define HOTEND0_PULLUP_RESISTOR_OHMS    4700 // Pullup resistor
-  #define HOTEND0_RESISTANCE_25C_OHMS   100000 // Resistance at 25C
-  #define HOTEND0_BETA                    3950 // Beta value
-  #define HOTEND0_SH_C_COEFF                 0 // Steinhart-Hart C coefficient
+#if ENABLED(SOVOL_SV06)
+  #if TEMP_SENSOR_0 == 1000
+    #define HOTEND0_PULLUP_RESISTOR_OHMS    4700 // Pullup resistor
+    #define HOTEND0_RESISTANCE_25C_OHMS    94162 // Resistance at 25C
+    #define HOTEND0_BETA                    4160 // Beta value
+    #define HOTEND0_SH_C_COEFF                 0 // Steinhart-Hart C coefficient
+  #endif
+#else
+  #if TEMP_SENSOR_0 == 1000
+    #define HOTEND0_PULLUP_RESISTOR_OHMS    4700 // Pullup resistor
+    #define HOTEND0_RESISTANCE_25C_OHMS   100000 // Resistance at 25C
+    #define HOTEND0_BETA                    3950 // Beta value
+    #define HOTEND0_SH_C_COEFF                 0 // Steinhart-Hart C coefficient
+  #endif
 #endif
 
 #if TEMP_SENSOR_1 == 1000
@@ -2901,7 +2910,7 @@
    */
   #define INTERPOLATE      true
 
-  #if ENABLED(EZBOARD) || ENABLED(EZBOARD_V2) || ENABLED(SKR_E3_MINI_BOARD) || ENABLED(DIY_TMCBOARD) || ENABLED(SKR_E3_MINI_V3_0)
+  #if ANY(EZBOARD, EZBOARD_V2, SKR_E3_MINI_BOARD, DIY_TMCBOARD, SKR_E3_MINI_V3_0, SOVOL_SV06)
     #if AXIS_IS_TMC_CONFIG(X)
       #if X_MOTOR_CURRENT > 0
         #define X_CURRENT X_MOTOR_CURRENT
@@ -2910,7 +2919,11 @@
       #endif
       #define X_CURRENT_HOME  X_CURRENT  // (mA) RMS current for sensorless homing
       #define X_MICROSTEPS     16        // 0..256
-      #define X_RSENSE          0.11
+      #if ENABLED(SOVOL_SV06)
+        #define X_RSENSE         0.15
+      #else
+        #define X_RSENSE         0.11
+      #endif
       #define X_CHAIN_POS      -1        // -1..0: Not chained. 1: MCU MOSI connected. 2: Next in chain, ...
       //#define X_INTERPOLATE  true      // Enable to override 'INTERPOLATE' for the X axis
       //#define X_HOLD_MULTIPLIER 0.5    // Enable to override 'HOLD_MULTIPLIER' for the X axis
@@ -2938,7 +2951,7 @@
     //#define X2_HOLD_MULTIPLIER 0.5
   #endif
 
-  #if ENABLED(EZBOARD) || ENABLED(EZBOARD_V2) || ENABLED(SKR_E3_MINI_BOARD) || ENABLED(DIY_TMCBOARD) || ENABLED(SKR_E3_MINI_V3_0)
+  #if ANY(EZBOARD, EZBOARD_V2, SKR_E3_MINI_BOARD, DIY_TMCBOARD, SKR_E3_MINI_V3_0, SOVOL_SV06)
     #if AXIS_IS_TMC_CONFIG(Y)
       #if ENABLED(CR10_S5) || ENABLED(CR10S_S5)
         #define Y_CURRENT   800
@@ -2952,7 +2965,11 @@
       
       #define Y_CURRENT_HOME  Y_CURRENT
       #define Y_MICROSTEPS     16
-      #define Y_RSENSE          0.11
+      #if ENABLED(SOVOL_SV06)
+        #define Y_RSENSE         0.15
+      #else
+        #define Y_RSENSE         0.11
+      #endif
       #define Y_CHAIN_POS      -1
       //#define Y_INTERPOLATE  true
       //#define Y_HOLD_MULTIPLIER 0.5
@@ -2979,7 +2996,7 @@
     //#define Y2_HOLD_MULTIPLIER 0.5
   #endif
 
-  #if ENABLED(EZBOARD) || ENABLED(EZBOARD_V2) || ENABLED(SKR_E3_MINI_BOARD) || ENABLED(DIY_TMCBOARD) || ENABLED(SKR_E3_MINI_V3_0)
+  #if ANY(EZBOARD, EZBOARD_V2, SKR_E3_MINI_BOARD, DIY_TMCBOARD, SKR_E3_MINI_V3_0, SOVOL_SV06)
     #if AXIS_IS_TMC_CONFIG(Z)
       #if ENABLED(DUAL_Z_MOTORS)
         #define Z_CURRENT     1000
@@ -2997,7 +3014,11 @@
         #define Z_MICROSTEPS 16
       #endif
       
-      #define Z_RSENSE          0.11
+      #if ENABLED(SOVOL_SV06)
+        #define Z_RSENSE         0.15
+      #else
+        #define Z_RSENSE         0.11
+      #endif
       #define Z_CHAIN_POS      -1
       //#define Z_INTERPOLATE  true
       //#define Z_HOLD_MULTIPLIER 0.5
@@ -3104,7 +3125,7 @@
     //#define W_HOLD_MULTIPLIER 0.5
   #endif
   
-  #if AXIS_IS_TMC_CONFIG(E0) || ENABLED(SKR_E3_MINI_BOARD) || ENABLED(DIY_TMCBOARD) || ENABLED(SKR_E3_MINI_V3_0)
+  #if ANY(EZBOARD, EZBOARD_V2, SKR_E3_MINI_BOARD, DIY_TMCBOARD, SKR_E3_MINI_V3_0, SOVOL_SV06)
     #if ENABLED(PANCAKE_STEPPER)
       #define E0_CURRENT    550
     #elif E0_MOTOR_CURRENT > 0
@@ -3114,7 +3135,11 @@
     #endif
     
     #define E0_MICROSTEPS    16
-    #define E0_RSENSE         0.11
+    #if ENABLED(SOVOL_SV06)
+      #define E0_RSENSE         0.15
+    #else
+      #define E0_RSENSE         0.11
+    #endif
     #define E0_CHAIN_POS     -1
     //#define E0_INTERPOLATE true
     //#define E0_HOLD_MULTIPLIER 0.5
@@ -3242,7 +3267,7 @@
    * Set *_SERIAL_TX_PIN and *_SERIAL_RX_PIN to match for all drivers
    * on the same serial port, either here or in your board's pins file.
    */
-  #if ENABLED(SKR_E3_MINI_V1) || ENABLED(SKR_E3_MINI_V2_0) || ENABLED(SKR_E3_MINI_V3_0)
+  #if ANY(SKR_E3_MINI_V1, SKR_E3_MINI_V2_0, SKR_E3_MINI_V3_0)
     #define  X_SLAVE_ADDRESS 0
     #define  Y_SLAVE_ADDRESS 2
     #define  Z_SLAVE_ADDRESS 1
@@ -3269,6 +3294,29 @@
     #define  X_SLAVE_ADDRESS 0
     #define  Y_SLAVE_ADDRESS 1
     #define  Z_SLAVE_ADDRESS 2
+    #define X2_SLAVE_ADDRESS 0
+    #define Y2_SLAVE_ADDRESS 0
+    #define Z2_SLAVE_ADDRESS 0
+    #define Z3_SLAVE_ADDRESS 0
+    #define Z4_SLAVE_ADDRESS 0
+    #define  I_SLAVE_ADDRESS 0
+    #define  J_SLAVE_ADDRESS 0
+    #define  K_SLAVE_ADDRESS 0
+    #define  U_SLAVE_ADDRESS 0
+    #define  V_SLAVE_ADDRESS 0
+    #define  W_SLAVE_ADDRESS 0
+    #define E0_SLAVE_ADDRESS 3
+    #define E1_SLAVE_ADDRESS 0
+    #define E2_SLAVE_ADDRESS 0
+    #define E3_SLAVE_ADDRESS 0
+    #define E4_SLAVE_ADDRESS 0
+    #define E5_SLAVE_ADDRESS 0
+    #define E6_SLAVE_ADDRESS 0
+    #define E7_SLAVE_ADDRESS 0
+  #elif ENABLED(SOVOL_SV06)
+    #define  X_SLAVE_ADDRESS 3
+    #define  Y_SLAVE_ADDRESS 3
+    #define  Z_SLAVE_ADDRESS 3
     #define X2_SLAVE_ADDRESS 0
     #define Y2_SLAVE_ADDRESS 0
     #define Z2_SLAVE_ADDRESS 0
@@ -3477,7 +3525,7 @@
    * Comment *_STALL_SENSITIVITY to disable sensorless homing for that axis.
    * @section tmc/stallguard
    */
-  #if ENABLED(X_AXIS_SENSORLESS_HOMING) || ENABLED(Y_AXIS_SENSORLESS_HOMING)
+  #if ANY(X_AXIS_SENSORLESS_HOMING, Y_AXIS_SENSORLESS_HOMING)
     #define SENSORLESS_HOMING // StallGuard capable drivers only
   #endif
 
@@ -4331,11 +4379,13 @@
  * Implemented as G34 because M915 is deprecated.
  * @section calibrate
  */
-//#define MECHANICAL_GANTRY_CALIBRATION
+#if ENABLED(SOVOL_SV06)
+  #define MECHANICAL_GANTRY_CALIBRATION
+#endif
 #if ENABLED(MECHANICAL_GANTRY_CALIBRATION)
-  #define GANTRY_CALIBRATION_CURRENT          600     // Default calibration current in ma
+  #define GANTRY_CALIBRATION_CURRENT         1100     // Default calibration current in ma
   #define GANTRY_CALIBRATION_EXTRA_HEIGHT      15     // Extra distance in mm past Z_###_POS to move
-  #define GANTRY_CALIBRATION_FEEDRATE         500     // Feedrate for correction move
+  #define GANTRY_CALIBRATION_FEEDRATE         240     // Feedrate for correction move
   //#define GANTRY_CALIBRATION_TO_MIN                 // Enable to calibrate Z in the MIN direction
 
   //#define GANTRY_CALIBRATION_SAFE_POSITION XY_CENTER // Safe position for nozzle

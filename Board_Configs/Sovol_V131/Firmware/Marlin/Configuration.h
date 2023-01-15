@@ -297,6 +297,8 @@
 
   #define SHOW_BOOTSCREEN
 
+  #define DISABLE_ENDSTOP_NOISE_FILTERING
+
   #define EXTRUDERS 1
 
   #define X_BED_SIZE 220
@@ -311,16 +313,19 @@
     #define Y_MIN_POS 0
   #endif
 
-  #define USE_XMAX_PLUG
-  #define USE_YMAX_PLUG
+  #define USE_XMIN_PLUG
+  #define USE_YMIN_PLUG
   #define USE_ZMIN_PLUG
 
-  #define X_HOME_DIR 1
-  #define Y_HOME_DIR 1
+  #define X_AXIS_SENSORLESS_HOMING
+  #define Y_AXIS_SENSORLESS_HOMING
+
+  #define X_HOME_DIR -1
+  #define Y_HOME_DIR -1
   #define Z_HOME_DIR -1
 
   #if NONE(V6_HOTEND, TH3D_HOTEND_THERMISTOR, KNOWN_HOTEND_THERMISTOR)
-    #define TEMP_SENSOR_0 1
+    #define TEMP_SENSOR_0 1000
   #else
     #if ENABLED(EZBOARD_PT100)
       #define TEMP_SENSOR_0 20
@@ -383,6 +388,14 @@
   #define Y_DRIVER_TYPE TMC2209
   #define Z_DRIVER_TYPE TMC2209
   #define E0_DRIVER_TYPE TMC2209
+
+  #define X_MOTOR_CURRENT 860
+  #define Y_MOTOR_CURRENT 900
+  #define Z_MOTOR_CURRENT 1000
+  #define E_MOTOR_CURRENT 550
+
+  #define X_SH_CALIBRATION 65
+  #define Y_SH_CALIBRATION 68
 
   #define X_ENABLE_ON 0
   #define Y_ENABLE_ON 0

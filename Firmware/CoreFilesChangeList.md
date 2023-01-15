@@ -20,7 +20,10 @@ This does not include machine `configuration.h` or `PlatformIO.ini` files.
 - **Marlin**
 	- **src**
 		- **core**
+			- `boards.h`
 			- `language.h`
+		- **inc**
+			- `Warnings.cpp`
 		- **gcode**
 			- **calibrate**
 				- `M48.cpp`

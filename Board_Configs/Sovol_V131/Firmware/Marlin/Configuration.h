@@ -34,6 +34,7 @@
 // EZNeo Settings
 // If you are using an EZNeo strip on your printer, uncomment the line for what strip you are using.
 // Specify your IO pin below as well as this board does not have a dedicated NEOPIXEL header on it.
+// FUTURE USE - DUE TO LIMITATIONS OF THE CLONE CPU ON THESE BOARD NO NEOPIXELS ARE SUPPORTED AT THIS TIME
 //#define EZNEO_220
 
 // EZNeo Manual IO Pin Setting 
@@ -273,8 +274,10 @@
   #if DISABLED(CUSTOM_PROBE)
     #define CUSTOM_PROBE
     #define NOZZLE_TO_PROBE_OFFSET { 25, -25, 0 }
-    #define CUSTOM_PRINTER_NAME
-    #define USER_PRINTER_NAME "SOVOL SV06"
+    #ifndef CUSTOM_PRINTER_NAME
+      #define CUSTOM_PRINTER_NAME
+      #define USER_PRINTER_NAME "SOVOL SV06"
+    #endif
   #endif
 
 	#define SERIAL_PORT 1

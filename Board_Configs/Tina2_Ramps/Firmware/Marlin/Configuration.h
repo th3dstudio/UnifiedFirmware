@@ -386,7 +386,6 @@
   #define X_DRIVER_TYPE A4988
   #define Y_DRIVER_TYPE A4988
   #define Z_DRIVER_TYPE A4988
-  #define Z2_DRIVER_TYPE A4988
   #define E0_DRIVER_TYPE A4988
 
   #define X_ENABLE_ON 0

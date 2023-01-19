@@ -257,7 +257,9 @@
 
 // Enable Software PWM to avoid Timer Conflict
 #define FAN_SOFT_PWM
-#define SOFT_PWM_SCALE 0
+#if DISABLED(FAN_FIX)
+  #define SOFT_PWM_SCALE 0
+#endif
 
 // AnyCubic Printers Settings
 #if ENABLED(CHIRON)

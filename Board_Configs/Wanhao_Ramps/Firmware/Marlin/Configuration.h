@@ -262,10 +262,12 @@
 
 // Enable Software PWM to avoid Timer Conflict
 #define FAN_SOFT_PWM
-#define SOFT_PWM_SCALE 0
+#if DISABLED(FAN_FIX)
+  #define SOFT_PWM_SCALE 0
+#endif
 
 // Wanhao Printer Settings
-#if ENABLED(WANHAO_I3MINI) || ENABLED(WANHAO_I3MINI_V2)
+#if ANY(WANHAO_I3MINI, WANHAO_I3MINI_V2)
   #define SERIAL_PORT 0
   #define SPACE_SAVER_2560
 

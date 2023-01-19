@@ -16,6 +16,10 @@
 // compiling for these chips. Most boards regardless of the CPU will work as-is but if you have issues with
 // the board flashing the firmware you may have to change the default_envs value as noted in platformio.ini.
 
+// BOARDS WITH THE GD32 CPUS MAY REQUIRE FLASHING BACK TO THE STOCK FIRMWARE BEFORE LOADING A NEW BUILD ON THE BOARD
+// WE'VE INCLUDED THE STOCK FIRMWARE IN THE FOLDER CALLED "GD32 CPU Stock Firmware"
+// WHEN DOING MULTIPLE UPDATES WE RECOMMEND HAVING A SD CARD WITH THE STOCK FIRMWARE FOR QUICK FLASHING
+
 //===========================================================================
 // ***********   CREALITY PRINTERS W/V4.X.X BOARD - F103 CPU   **************
 //===========================================================================
@@ -362,7 +366,7 @@
 #endif
 
 #if BOTH(V42X_TMC220X_DRIVERS, LINEAR_ADVANCE)
-  #error "Linear Advance does NOT work on the V4.2.X boards with the TMC drivers due to how Creality has them setup. Disable Linear Advance to continue or comment this line out to continue compile at your own risk."
+  #warning "Linear Advance may NOT work on the V4.2.X boards with the TMC drivers due to how Creality has them setup. Comment out this warning to hide it."
 #endif
 
 //Ender 3 NEO Settings

@@ -831,6 +831,7 @@
 
     #elif ENABLED(MINIPANEL)
 
+      #if DISABLED(CR20) //Added by TH3D
       #define BEEPER_PIN             AUX2_08_PIN
       #define LCD_BACKLIGHT_PIN      AUX2_10_PIN
 
@@ -845,6 +846,7 @@
         #define SD_DETECT_PIN        AUX3_02_PIN
       #endif
       #define KILL_PIN               AUX2_05_PIN
+      #endif
 
     #elif ENABLED(ZONESTAR_LCD)
 

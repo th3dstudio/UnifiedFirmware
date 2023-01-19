@@ -126,7 +126,7 @@
 #define X_STEPS_MM 80
 #define Y_STEPS_MM 80
 #define Z_STEPS_MM 400
-#define E_STEPS_MM 95
+#define E0_STEPS_MM 95
 
 // Acceleration Settings ----------------------------------------------------
 //#define DEFAULT_ACCELERATION          500

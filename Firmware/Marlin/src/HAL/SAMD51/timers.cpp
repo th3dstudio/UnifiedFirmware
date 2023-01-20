@@ -1,8 +1,9 @@
 /**
  * Marlin 3D Printer Firmware
- *
  * Copyright (c) 2020 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
- * SAMD51 HAL developed by Giuliano Zaro (AKA GMagician)
+ *
+ * Based on Sprinter and grbl.
+ * Copyright (c) 2011 Camiel Gubbels / Erik van der Zalm
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,6 +18,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
+ */
+
+/**
+ * SAMD51 HAL developed by Giuliano Zaro (AKA GMagician)
  */
 #ifdef __SAMD51__
 
@@ -79,7 +84,7 @@ void HAL_timer_start(const uint8_t timer_num, const uint32_t frequency) {
     rtc->MODE0.INTENCLR.reg = RTC_MODE0_INTENCLR_CMP0;
 
     // RTC clock setup
-    OSC32KCTRL->RTCCTRL.reg = OSC32KCTRL_RTCCTRL_RTCSEL_XOSC32K;  // External 32.768KHz oscillator
+    OSC32KCTRL->RTCCTRL.reg = OSC32KCTRL_RTCCTRL_RTCSEL_XOSC32K;  // External 32.768kHz oscillator
 
     // Stop timer, just in case, to be able to reconfigure it
     rtc->MODE0.CTRLA.bit.ENABLE = false;

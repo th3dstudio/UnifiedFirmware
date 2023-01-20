@@ -21,7 +21,10 @@
  */
 #pragma once
 
-/* DGUS implementation written by coldtobi in 2019 for Marlin */
+/**
+ * DGUS implementation written by coldtobi in 2019.
+ * Updated for STM32G0B1RE by Protomosh in 2022.
+ */
 
 #include "config/DGUS_Screen.h"
 #include "config/DGUS_Control.h"
@@ -30,11 +33,13 @@
 #include "../../../inc/MarlinConfigPre.h"
 #include "../../../MarlinCore.h"
 
+//#define DEBUG_DGUSLCD // Uncomment for debug messages
 #define DEBUG_OUT ENABLED(DEBUG_DGUSLCD)
 #include "../../../core/debug_out.h"
 
-#define Swap16(val) ((uint16_t)(((uint16_t)(val) >> 8) |\
-                                ((uint16_t)(val) << 8)))
+// New endianness swap for 32bit mcu (tested with STM32G0B1RE)
+#define BE16_P(V) ( ((uint8_t*)(V))[0] << 8U | ((uint8_t*)(V))[1] )
+#define BE32_P(V) ( ((uint8_t*)(V))[0] << 24U | ((uint8_t*)(V))[1] << 16U | ((uint8_t*)(V))[2] << 8U | ((uint8_t*)(V))[3] )
 
 // Low-Level access to the display.
 class DGUSDisplay {
@@ -69,6 +74,9 @@ public:
   // Until now I did not need to actively read from the display. That's why there is no ReadVariable
   // (I extensively use the auto upload of the display)
 
+  // Read GUI and OS version from screen
+  static void ReadVersions();
+
   // Force display into another screen.
   static void SwitchScreen(DGUS_Screen screen);
   // Play sounds using the display speaker.
@@ -98,7 +106,7 @@ public:
 
   // Checks two things: Can we confirm the presence of the display and has we initialized it.
   // (both boils down that the display answered to our chatting)
-  static inline bool IsInitialized() {
+  static bool IsInitialized() {
     return initialized;
   }
 

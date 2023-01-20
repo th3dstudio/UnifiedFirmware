@@ -24,11 +24,6 @@
 #include "../inc/MarlinConfigPre.h"
 #include "../HAL/shared/Marduino.h"
 
-typedef union {
-  uint8_t bits;
-  struct { bool info:1, errors:1, debug:1; };
-} flag_t;
-
 #if ENABLED(HOST_PROMPT_SUPPORT)
 
   enum PromptReason : uint8_t {
@@ -44,9 +39,6 @@ typedef union {
 
 class HostUI {
   public:
-
-  static flag_t flag;
-  HostUI() { flag.bits = 0xFF; }
 
   static void action(FSTR_P const fstr, const bool eol=true);
 
@@ -87,7 +79,14 @@ class HostUI {
   #if ENABLED(HOST_PROMPT_SUPPORT)
     private:
     static void prompt(FSTR_P const ptype, const bool eol=true);
-    static void prompt_plus(FSTR_P const ptype, FSTR_P const fstr, const char extra_char='\0');
+    static void prompt_plus(const bool pgm, FSTR_P const ptype, const char * const str, const char extra_char='\0');
+    static void prompt_plus(FSTR_P const ptype, FSTR_P const fstr, const char extra_char='\0') {
+      prompt_plus(true, ptype, FTOP(fstr), extra_char);
+    }
+    static void prompt_plus(FSTR_P const ptype, const char * const cstr, const char extra_char='\0') {
+      prompt_plus(false, ptype, cstr, extra_char);
+    }
+
     static void prompt_show();
     static void _prompt_show(FSTR_P const btn1, FSTR_P const btn2);
 
@@ -97,15 +96,22 @@ class HostUI {
     static void handle_response(const uint8_t response);
 
     static void notify_P(PGM_P const message);
-    static inline void notify(FSTR_P const fmsg) { notify_P(FTOP(fmsg)); }
+    static void notify(FSTR_P const fmsg) { notify_P(FTOP(fmsg)); }
     static void notify(const char * const message);
 
     static void prompt_begin(const PromptReason reason, FSTR_P const fstr, const char extra_char='\0');
-    static void prompt_button(FSTR_P const fstr);
+    static void prompt_begin(const PromptReason reason, const char * const cstr, const char extra_char='\0');
     static void prompt_end();
+
+    static void prompt_button(FSTR_P const fstr);
+    static void prompt_button(const char * const cstr);
+
     static void prompt_do(const PromptReason reason, FSTR_P const pstr, FSTR_P const btn1=nullptr, FSTR_P const btn2=nullptr);
+    static void prompt_do(const PromptReason reason, const char * const cstr, FSTR_P const btn1=nullptr, FSTR_P const btn2=nullptr);
     static void prompt_do(const PromptReason reason, FSTR_P const pstr, const char extra_char, FSTR_P const btn1=nullptr, FSTR_P const btn2=nullptr);
-    static inline void prompt_open(const PromptReason reason, FSTR_P const pstr, FSTR_P const btn1=nullptr, FSTR_P const btn2=nullptr) {
+    static void prompt_do(const PromptReason reason, const char * const cstr, const char extra_char, FSTR_P const btn1=nullptr, FSTR_P const btn2=nullptr);
+
+    static void prompt_open(const PromptReason reason, FSTR_P const pstr, FSTR_P const btn1=nullptr, FSTR_P const btn2=nullptr) {
       if (host_prompt_reason == PROMPT_NOT_DEFINED) prompt_do(reason, pstr, btn1, btn2);
     }
 

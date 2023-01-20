@@ -430,25 +430,24 @@ void NextionTFT::PanelInfo(uint8_t req) {
     break;
 
   case 36: // Endstop Info
-    #if HAS_X_MIN
+    #if X_HOME_TO_MIN
       SEND_VALasTXT("x1", READ(X_MIN_PIN) != X_MIN_ENDSTOP_INVERTING ? "triggered" : "open");
-    #endif
-    #if HAS_X_MAX
+    #elif X_HOME_TO_MAX
       SEND_VALasTXT("x2", READ(X_MAX_PIN) != X_MAX_ENDSTOP_INVERTING ? "triggered" : "open");
     #endif
-    #if HAS_Y_MIN
+    #if Y_HOME_TO_MIN
       SEND_VALasTXT("y1", READ(Y_MIN_PIN) != Y_MIN_ENDSTOP_INVERTING ? "triggered" : "open");
+    #elif Y_HOME_TO_MAX
+      SEND_VALasTXT("y2", READ(X_MAX_PIN) != Y_MAX_ENDSTOP_INVERTING ? "triggered" : "open");
     #endif
-    #if HAS_Z_MIN
+    #if Z_HOME_TO_MIN
       SEND_VALasTXT("z1", READ(Z_MIN_PIN) != Z_MIN_ENDSTOP_INVERTING ? "triggered" : "open");
-    #endif
-    #if HAS_Z_MAX
+    #elif Z_HOME_TO_MAX
       SEND_VALasTXT("z2", READ(Z_MAX_PIN) != Z_MAX_ENDSTOP_INVERTING ? "triggered" : "open");
     #endif
     #if HAS_Z2_MIN
       SEND_VALasTXT("z2", READ(Z2_MIN_PIN) != Z2_MIN_ENDSTOP_INVERTING ? "triggered" : "open");
-    #endif
-    #if HAS_Z2_MAX
+    #elif HAS_Z2_MAX
       SEND_VALasTXT("z2", READ(Z2_MAX_PIN) != Z2_MAX_ENDSTOP_INVERTING ? "triggered" : "open");
     #endif
     #if HAS_BED_PROBE
@@ -460,17 +459,17 @@ void NextionTFT::PanelInfo(uint8_t req) {
 
   case 37: // PID
     #if ENABLED(PIDTEMP)
-      #define SEND_PID_INFO_0(A, B) SEND_VALasTXT(A, getPIDValues_K##B(E0))
+      #define SEND_PID_INFO_0(A, B) SEND_VALasTXT(A, getPID_K##B(E0))
     #else
       #define SEND_PID_INFO_0(A, B) SEND_NA(A)
     #endif
     #if BOTH(PIDTEMP, HAS_MULTI_EXTRUDER)
-      #define SEND_PID_INFO_1(A, B) SEND_VALasTXT(A, getPIDValues_K##B(E1))
+      #define SEND_PID_INFO_1(A, B) SEND_VALasTXT(A, getPID_K##B(E1))
     #else
       #define SEND_PID_INFO_1(A, B) SEND_NA(A)
     #endif
     #if ENABLED(PIDTEMPBED)
-      #define SEND_PID_INFO_BED(A, B) SEND_VALasTXT(A, getBedPIDValues_K##B())
+      #define SEND_PID_INFO_BED(A, B) SEND_VALasTXT(A, getBedPID_K##B())
     #else
       #define SEND_PID_INFO_BED(A, B) SEND_NA(A)
     #endif

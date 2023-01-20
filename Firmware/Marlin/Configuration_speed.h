@@ -1,6 +1,6 @@
 #pragma once
 
-#define CONFIGURATION_SPEED_H_VERSION 02000903
+#define CONFIGURATION_SPEED_H_VERSION 02010200
 
 /**
  * Feedrate Settings

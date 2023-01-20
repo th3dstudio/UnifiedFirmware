@@ -26,7 +26,7 @@
 
 #include "../bedlevel.h"
 
-unified_bed_leveling ubl;
+unified_bed_leveling bedlevel;
 
 #include "../../../MarlinCore.h"
 #include "../../../gcode/gcode.h"
@@ -213,8 +213,8 @@ void unified_bed_leveling::display_map(const uint8_t map_type) {
       else if (isnan(f))
         SERIAL_ECHOF(human ? F("  .   ") : F("NAN"));
       else if (human || csv) {
-        if (human && f >= 0.0) SERIAL_CHAR(f > 0 ? '+' : ' ');  // Display sign also for positive numbers (' ' for 0)
-        SERIAL_ECHO_F(f, 3);                                    // Positive: 5 digits, Negative: 6 digits
+        if (human && f >= 0) SERIAL_CHAR(f > 0 ? '+' : ' ');  // Display sign also for positive numbers (' ' for 0)
+        SERIAL_DECIMAL(f);                                    // Positive: 5 digits, Negative: 6 digits
       }
       if (csv && i < (GRID_MAX_POINTS_X) - 1) SERIAL_CHAR('\t');
 
@@ -260,7 +260,7 @@ bool unified_bed_leveling::sanity_check() {
    */
   void GcodeSuite::M1004() {
 
-    #define ALIGN_GCODE TERN(Z_STEPPER_AUTO_ALIGN, "G34", "")
+    #define ALIGN_GCODE TERN(Z_STEPPER_AUTO_ALIGN, "G34\n", "")
     #define PROBE_GCODE TERN(HAS_BED_PROBE, "G29P1\nG29P3", "G29P4R")
 
     #if HAS_HOTEND
@@ -280,7 +280,7 @@ bool unified_bed_leveling::sanity_check() {
     #endif
 
     process_subcommands_now(FPSTR(G28_STR));      // Home
-    process_subcommands_now(F(ALIGN_GCODE "\n"    // Align multi z axis if available
+    process_subcommands_now(F(ALIGN_GCODE         // Align multi z axis if available
                               PROBE_GCODE "\n"    // Build mesh with available hardware
                               "G29P3\nG29P3"));   // Ensure mesh is complete by running smart fill twice
 

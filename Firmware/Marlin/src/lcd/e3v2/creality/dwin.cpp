@@ -33,7 +33,7 @@
 //#define USE_STRING_HEADINGS
 //#define USE_STRING_TITLES
 
-#if ENABLED(LCD_BED_LEVELING) && DISABLED(PROBE_MANUALLY) && ANY(AUTO_BED_LEVELING_BILINEAR, AUTO_BED_LEVELING_LINEAR, AUTO_BED_LEVELING_3POINT)
+#if DISABLED(PROBE_MANUALLY) && ANY(AUTO_BED_LEVELING_BILINEAR, AUTO_BED_LEVELING_LINEAR, AUTO_BED_LEVELING_3POINT)
   #define HAS_ONESTEP_LEVELING 1
 #endif
 
@@ -469,15 +469,6 @@ void Draw_Back_First(const bool is_sel=true) {
   else
     Item_AreaCopy(223, 179, 254, 189);
   if (is_sel) Draw_Menu_Cursor(0);
-}
-
-template <typename T>
-inline bool Apply_Encoder(const EncoderState &encoder_diffState, T &valref) {
-  if (encoder_diffState == ENCODER_DIFF_CW)
-    valref += EncoderRate.encoderMoveValue;
-  else if (encoder_diffState == ENCODER_DIFF_CCW)
-    valref -= EncoderRate.encoderMoveValue;
-  return encoder_diffState == ENCODER_DIFF_ENTER;
 }
 
 //
@@ -1296,15 +1287,6 @@ void Goto_MainMenu() {
   TERN(HAS_ONESTEP_LEVELING, ICON_Leveling, ICON_StartInfo)();
 }
 
-inline EncoderState get_encoder_state() {
-  static millis_t Encoder_ms = 0;
-  const millis_t ms = millis();
-  if (PENDING(ms, Encoder_ms)) return ENCODER_DIFF_NO;
-  const EncoderState state = Encoder_ReceiveAnalyze();
-  if (state != ENCODER_DIFF_NO) Encoder_ms = ms + ENCODER_WAIT_MS;
-  return state;
-}
-
 void HMI_Plan_Move(const feedRate_t fr_mm_s) {
   if (!planner.is_full()) {
     planner.synchronize();
@@ -1383,8 +1365,6 @@ void HMI_Move_Z() {
 #endif
 
 #if HAS_ZOFFSET_ITEM
-
-  bool printer_busy() { return planner.movesplanned() || printingIsActive(); }
 
   void HMI_Zoffset() {
     EncoderState encoder_diffState = Encoder_ReceiveAnalyze();
@@ -1751,7 +1731,7 @@ void update_variable() {
     if (_new_hotend_target)
       Draw_Stat_Int(25 + 4 * STAT_CHR_W + 6, 384, _hotendtarget);
 
-    static int16_t _flow = planner.flow_percentage[0];
+    static int16_t _flow = 0;
     if (_flow != planner.flow_percentage[0]) {
       _flow = planner.flow_percentage[0];
       Draw_Stat_Int(116 + 2 * STAT_CHR_W, 417, _flow);
@@ -1765,7 +1745,7 @@ void update_variable() {
       Draw_Stat_Int(25 + 4 * STAT_CHR_W + 6, 417, _bedtarget);
   #endif
 
-  static int16_t _feedrate = 100;
+  static int16_t _feedrate = 0;
   if (_feedrate != feedrate_percentage) {
     _feedrate = feedrate_percentage;
     Draw_Stat_Int(116 + 2 * STAT_CHR_W, 384, _feedrate);
@@ -1830,6 +1810,9 @@ void make_name_without_ext(char *dst, char *src, size_t maxlen=MENU_CHAR_LIMIT) 
 }
 
 void HMI_SDCardInit() { card.cdroot(); }
+
+// Initialize or re-initialize the LCD
+void MarlinUI::init_lcd() { DWIN_Startup(); }
 
 void MarlinUI::refresh() { /* Nothing to see here */ }
 
@@ -2266,6 +2249,8 @@ void HMI_SelectFile() {
         //  thermalManager.fan_speed[i] = 255;
       #endif
 
+      _card_percent = 0;
+      _remain_time = 0;
       Goto_PrintProcess();
     }
   }
@@ -2640,15 +2625,13 @@ void Draw_HomeOff_Menu() {
 #include "../../../libs/buzzer.h"
 
 void HMI_AudioFeedback(const bool success=true) {
-  #if HAS_BUZZER
-    if (success) {
-      buzzer.tone(100, 659);
-      buzzer.tone(10, 0);
-      buzzer.tone(100, 698);
-    }
-    else
-      buzzer.tone(40, 440);
-  #endif
+  if (success) {
+    BUZZ(100, 659);
+    BUZZ(10, 0);
+    BUZZ(100, 698);
+  }
+  else
+    BUZZ(40, 440);
 }
 
 // Prepare
@@ -2743,7 +2726,7 @@ void HMI_Prepare() {
             EncoderRate.enabled = true;
           #else
             // Apply workspace offset, making the current position 0,0,0
-            queue.inject(F("G92 X0 Y0 Z0"));
+            queue.inject(F("G92X0Y0Z0"));
             HMI_AudioFeedback();
           #endif
           break;
@@ -2757,7 +2740,10 @@ void HMI_Prepare() {
       #endif
 
       #if HAS_HOTEND || HAS_HEATED_BED
-        case PREPARE_CASE_COOL: thermalManager.cooldown(); break;
+        case PREPARE_CASE_COOL:
+          thermalManager.cooldown();
+          ui.reset_status();
+          break;
       #endif
 
       case PREPARE_CASE_LANG:
@@ -3409,11 +3395,11 @@ void Draw_Max_Accel_Menu() {
 
     Draw_Back_First();
     LOOP_L_N(i, 3 + ENABLED(HAS_HOTEND)) Draw_Menu_Line(i + 1, ICON_MaxSpeedJerkX + i);
-    Draw_Edit_Float3(1, planner.max_jerk[X_AXIS] * MINUNITMULT);
-    Draw_Edit_Float3(2, planner.max_jerk[Y_AXIS] * MINUNITMULT);
-    Draw_Edit_Float3(3, planner.max_jerk[Z_AXIS] * MINUNITMULT);
+    Draw_Edit_Float3(1, planner.max_jerk.x * MINUNITMULT);
+    Draw_Edit_Float3(2, planner.max_jerk.y * MINUNITMULT);
+    Draw_Edit_Float3(3, planner.max_jerk.z * MINUNITMULT);
     #if HAS_HOTEND
-      Draw_Edit_Float3(4, planner.max_jerk[E_AXIS] * MINUNITMULT);
+      Draw_Edit_Float3(4, planner.max_jerk.e * MINUNITMULT);
     #endif
   }
 #endif
@@ -3568,9 +3554,9 @@ void HMI_AdvSet() {
         case ADVSET_CASE_HOMEOFF:
           checkkey = HomeOff;
           select_item.reset();
-          HMI_ValueStruct.Home_OffX_scaled = home_offset[X_AXIS] * 10;
-          HMI_ValueStruct.Home_OffY_scaled = home_offset[Y_AXIS] * 10;
-          HMI_ValueStruct.Home_OffZ_scaled = home_offset[Z_AXIS] * 10;
+          HMI_ValueStruct.Home_OffX_scaled = home_offset.x * 10;
+          HMI_ValueStruct.Home_OffY_scaled = home_offset.y * 10;
+          HMI_ValueStruct.Home_OffZ_scaled = home_offset.z * 10;
           Draw_HomeOff_Menu();
           break;
       #endif
@@ -3818,7 +3804,7 @@ void HMI_Tune() {
             EncoderRate.enabled = true;
           #else
             // Apply workspace offset, making the current position 0,0,0
-            queue.inject(F("G92 X0 Y0 Z0"));
+            queue.inject(F("G92X0Y0Z0"));
             HMI_AudioFeedback();
           #endif
         break;
@@ -4078,6 +4064,13 @@ void HMI_Init() {
   HMI_SetLanguage();
 }
 
+void DWIN_InitScreen() {
+  Encoder_Configuration();
+  HMI_Init();
+  HMI_SetLanguageCache();
+  HMI_StartFrame(true);
+}
+
 void DWIN_Update() {
   EachMomentUpdate();   // Status update
   HMI_SDCardUpdate();   // SD card update
@@ -4170,10 +4163,7 @@ void EachMomentUpdate() {
   }
   #if ENABLED(POWER_LOSS_RECOVERY)
     else if (DWIN_lcd_sd_status && recovery.dwin_flag) { // resume print before power off
-      static bool recovery_flag = false;
-
       recovery.dwin_flag = false;
-      recovery_flag = true;
 
       auto update_selection = [&](const bool sel) {
         HMI_flag.select_flag = sel;
@@ -4193,6 +4183,7 @@ void EachMomentUpdate() {
       DWIN_Draw_String(true, font8x16, Popup_Text_Color, Color_Bg_Window, npos, 252, name);
       DWIN_UpdateLCD();
 
+      bool recovery_flag = true;
       while (recovery_flag) {
         EncoderState encoder_diffState = Encoder_ReceiveAnalyze();
         if (encoder_diffState != ENCODER_DIFF_NO) {
@@ -4286,7 +4277,7 @@ void DWIN_HandleScreen() {
   }
 }
 
-void DWIN_CompletedHoming() {
+void DWIN_HomingDone() {
   HMI_flag.home_flag = false;
   dwin_zoffset = TERN0(HAS_BED_PROBE, probe.offset.z);
   if (checkkey == Last_Prepare) {
@@ -4302,7 +4293,7 @@ void DWIN_CompletedHoming() {
   }
 }
 
-void DWIN_CompletedLeveling() {
+void DWIN_LevelingDone() {
   if (checkkey == Leveling) Goto_MainMenu();
 }
 
@@ -4314,9 +4305,13 @@ void DWIN_StatusChanged(const char * const cstr/*=nullptr*/) {
 }
 
 void DWIN_StatusChanged(FSTR_P const fstr) {
-  char str[strlen_P(FTOP(fstr)) + 1];
-  strcpy_P(str, FTOP(fstr));
-  DWIN_StatusChanged(str);
+  #ifdef __AVR__
+    char str[strlen_P(FTOP(fstr)) + 1];
+    strcpy_P(str, FTOP(fstr));
+    DWIN_StatusChanged(str);
+  #else
+    DWIN_StatusChanged(FTOP(fstr));
+  #endif
 }
 
 #endif // DWIN_CREALITY_LCD

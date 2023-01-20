@@ -62,6 +62,13 @@
 #define TEMP_0_PIN                            39  // Analog Input
 #define TEMP_BED_PIN                          36  // Analog Input
 
+#if ENABLED(MAX31856_PANDAPI)
+  #define MAX31856_CLK_PIN                    29
+  #define MAX31856_MISO_PIN                   24
+  #define MAX31856_MOSI_PIN                   28
+  #define MAX31856_CS_PIN                     27
+#endif
+
 //
 // Heaters / Fans
 //
@@ -74,25 +81,48 @@
   #define E0_AUTO_FAN_PIN                    120  // FAN2
 #endif
 
+/**            ------                              ------
+ * (MISO 19?) | 1  2 | (18 SCK?)     (BEEPER) 129 | 1  2 | 12 (^ENC)
+ *   (EN1) 33 | 3  4 | (5 SDSS?)     (EN)      26 | 3  4 | 27 (RS)
+ *   (EN2) 32   5  6 | (23 MOSI?)    (D4)      14 | 5  6   --
+ * (SDDET 2?) | 7  8 | (RESET)                 -- | 7  8 | --
+ *         -- | 9 10 | --                   (GND) | 9 10 | (5V)
+ *             ------                              ------
+ *              EXP2                                EXP1
+ */
+#define EXP1_01_PIN                          129
+#define EXP1_02_PIN                           12
+#define EXP1_03_PIN                           26
+#define EXP1_04_PIN                           27
+#define EXP1_05_PIN                           14
+
+#define EXP2_01_PIN                           19  // ?
+#define EXP2_02_PIN                           18  // ?
+#define EXP2_03_PIN                           33
+#define EXP2_04_PIN                            5  // ?
+#define EXP2_05_PIN                           32
+#define EXP2_06_PIN                           23  // ?
+#define EXP2_07_PIN                            2  // ?
+
 //
-// SD card
+// SD Card
 //
 #if ENABLED(SDSUPPORT)
-  #define SD_MOSI_PIN                         23
-  #define SD_MISO_PIN                         19
-  #define SD_SCK_PIN                          18
-  #define SDSS                                 5
-  #define SD_DETECT_PIN                        2
+  #define SD_MOSI_PIN                EXP2_06_PIN
+  #define SD_MISO_PIN                EXP2_01_PIN
+  #define SD_SCK_PIN                 EXP2_02_PIN
+  #define SDSS                       EXP2_04_PIN
+  #define SD_DETECT_PIN              EXP2_07_PIN
 #endif
 
 #if HAS_WIRED_LCD
-  #define BEEPER_PIN                         129
-  #define BTN_ENC                             12
+  #define BEEPER_PIN                 EXP1_01_PIN
 
-  #define BTN_EN1                             33
-  #define BTN_EN2                             32
+  #define BTN_ENC                    EXP1_02_PIN
+  #define BTN_EN1                    EXP2_03_PIN
+  #define BTN_EN2                    EXP2_05_PIN
 
-  #define LCD_PINS_RS                         27
-  #define LCD_PINS_ENABLE                     26
-  #define LCD_PINS_D4                         14
+  #define LCD_PINS_RS                EXP1_04_PIN
+  #define LCD_PINS_ENABLE            EXP1_03_PIN
+  #define LCD_PINS_D4                EXP1_05_PIN
 #endif

@@ -5,8 +5,8 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2017 STMicroelectronics.
-  * All rights reserved.</center></h2>
+  * Copyright (c) 2017 STMicroelectronics.
+  * All rights reserved.
   *
   * This software component is licensed by ST under BSD 3-Clause license,
   * the "License"; You may not use this file except in compliance with the
@@ -35,7 +35,6 @@ extern "C" {
 #define HAL_ADC_MODULE_ENABLED
 #define HAL_CRC_MODULE_ENABLED
 #define HAL_DMA_MODULE_ENABLED
-#define HAL_SD_MODULE_ENABLED
 #define HAL_FLASH_MODULE_ENABLED
 #define HAL_GPIO_MODULE_ENABLED
 #define HAL_I2C_MODULE_ENABLED
@@ -70,6 +69,7 @@ extern "C" {
 //#define HAL_QSPI_MODULE_ENABLED
 //#define HAL_RNG_MODULE_ENABLED
 //#define HAL_SAI_MODULE_ENABLED
+#define HAL_SD_MODULE_ENABLED
 //#define HAL_UART_MODULE_ENABLED
 //#define HAL_USART_MODULE_ENABLED
 //#define HAL_IRDA_MODULE_ENABLED

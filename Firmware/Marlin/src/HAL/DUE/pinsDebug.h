@@ -53,7 +53,7 @@
  *     The net result is that both the g_pinStatus[pin] array and the PIO_OSR register
  *     needs to be looked at when determining if a pin is an input or an output.
  *
- * b) Due has only pins 6, 7, 8 & 9 enabled for PWMs.  FYI - they run at 1KHz
+ * b) Due has only pins 6, 7, 8 & 9 enabled for PWMs.  FYI - they run at 1kHz
  *
  * c) NUM_DIGITAL_PINS does not include the analog pins
  *
@@ -70,7 +70,7 @@
 #define PRINT_PIN_ANALOG(p) do{ sprintf_P(buffer, PSTR(" (A%2d)  "), DIGITAL_PIN_TO_ANALOG_PIN(pin)); SERIAL_ECHO(buffer); }while(0)
 #define GET_ARRAY_PIN(p) pin_array[p].pin
 #define GET_ARRAY_IS_DIGITAL(p) pin_array[p].is_digital
-#define VALID_PIN(pin) (pin >= 0 && pin < (int8_t)NUMBER_PINS_TOTAL ? 1 : 0)
+#define VALID_PIN(pin) (pin >= 0 && pin < int8_t(NUMBER_PINS_TOTAL))
 #define DIGITAL_PIN_TO_ANALOG_PIN(p) int(p - analogInputToDigitalPin(0))
 #define IS_ANALOG(P) WITHIN(P, char(analogInputToDigitalPin(0)), char(analogInputToDigitalPin(NUM_ANALOG_INPUTS - 1)))
 #define pwm_status(pin) (((g_pinStatus[pin] & 0xF) == PIN_STATUS_PWM) && \
@@ -85,7 +85,6 @@ bool GET_PINMODE(int8_t pin) {  // 1: output, 0: input
           || pin_status == PIN_STATUS_DIGITAL_OUTPUT
           || pwm_status(pin));
 }
-
 
 void pwm_details(int32_t pin) {
   if (pwm_status(pin)) {

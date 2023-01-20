@@ -63,7 +63,7 @@ const uint16_t VPList_Main[] PROGMEM = {
   VP_XPos, VP_YPos, VP_ZPos,
   VP_Fan0_Percentage,
   VP_Feedrate_Percentage,
-  #if ENABLED(LCD_SET_PROGRESS_MANUALLY)
+  #if ENABLED(SET_PROGRESS_PERCENT)
     VP_PrintProgress_Percentage,
   #endif
   0x0000
@@ -222,12 +222,12 @@ const uint16_t VPList_SDPrintTune[] PROGMEM = {
 };
 
 const uint16_t VPList_StepPerMM[] PROGMEM = {
-  VP_X_STEP_PER_MM
-  , VP_Y_STEP_PER_MM
-  , VP_Z_STEP_PER_MM
-  OPTARG(HAS_HOTEND,       VP_E0_STEP_PER_MM)
-  OPTARG(HAS_MULTI_HOTEND, VP_E1_STEP_PER_MM)
-  , 0x0000
+  VP_X_STEP_PER_MM,
+  VP_Y_STEP_PER_MM,
+  VP_Z_STEP_PER_MM,
+  OPTITEM(HAS_HOTEND,       VP_E0_STEP_PER_MM)
+  OPTITEM(HAS_MULTI_HOTEND, VP_E1_STEP_PER_MM)
+  0x0000
 };
 
 const uint16_t VPList_PIDE0[] PROGMEM = {

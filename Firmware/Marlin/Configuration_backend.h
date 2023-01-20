@@ -1,12 +1,12 @@
 #pragma once
 
-#define CONFIGURATION_BACKEND_H_VERSION 02000903
+#define CONFIGURATION_BACKEND_H_VERSION 02010200
 
 //===========================================================================
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-#define UNIFIED_VERSION "TH3D UFW 2.53"
+#define UNIFIED_VERSION "TH3D UFW 2.60"
 
 /**
  * ABL Probe Settings
@@ -320,7 +320,7 @@
     #define Z_MIN_PROBE_ENDSTOP_INVERTING false
     #undef Z_MIN_ENDSTOP_INVERTING
     #define Z_MIN_ENDSTOP_INVERTING false
-  #elif (ENABLED(CR10S_PRO_STOCK_ABL) && ENABLED(CR10S_PRO)) || ANY(ENDER3_S1, ENDER3_S1_PRO, ENDER3_S1_PLUS)
+  #elif (ENABLED(CR10S_PRO_STOCK_ABL) && ENABLED(CR10S_PRO)) || ANY(ENDER3_S1, ENDER3_S1_PRO, ENDER3_S1_PLUS, SOVOL_SV06)
     //Ender 3 S1 J713 header for Z Endstop is reverse logic via hardware for some reason. Need to invert the EZABL logic for it here.
     #undef Z_MIN_PROBE_ENDSTOP_INVERTING
     #define Z_MIN_PROBE_ENDSTOP_INVERTING false
@@ -353,6 +353,8 @@
   #define G26_MESH_VALIDATION
 #endif
 
+#define NO_CREALITY_422_DRIVER_WARNING
+
 #if ENABLED(G26_MESH_VALIDATION)
   #define MESH_TEST_NOZZLE_SIZE    0.4  // (mm) Diameter of primary nozzle.
   #define MESH_TEST_LAYER_HEIGHT   0.2  // (mm) Default layer height for G26.
@@ -362,6 +364,9 @@
   #define G26_XY_FEEDRATE_TRAVEL 100    // (mm/s) Feedrate for G26 XY travel moves.
   #define G26_RETRACT_MULTIPLIER   1.0  // G26 Q (retraction) used by default between mesh test elements.
 #endif
+
+// Bypass Linear Advance Low Jerk Warning
+#define ALLOW_LOW_EJERK
 
 /**
  * Temp Settings
@@ -527,30 +532,6 @@
   #define SPEAKER
 #endif
 
-#if defined(__AVR_ATmega1284__)
-  // Leave this on until 2.0.9.3 bug with fan control not working is resolved
-  // Once 2.0.9.3 Fan bug is fixed remove from future releases
-  // Details: https://github.com/MarlinFirmware/Marlin/issues/23418
-  #define FAN_FIX
-#elif defined(__AVR_ATmega1284P__)
-  // Leave this on until 2.0.9.3 bug with fan control not working is resolved
-  // Once 2.0.9.3 Fan bug is fixed remove from future releases
-  // Details: https://github.com/MarlinFirmware/Marlin/issues/23418
-  #define FAN_FIX
-#elif defined(__AVR_ATmega1280__)
-  // Leave this on until 2.0.9.3 bug with fan control not working is resolved
-  // Once 2.0.9.3 Fan bug is fixed remove from future releases
-  // Details: https://github.com/MarlinFirmware/Marlin/issues/23418
-  #define FAN_FIX
-#elif defined(__AVR_ATmega2560__)
-  // Leave this on until 2.0.9.3 bug with fan control not working is resolved
-  // Once 2.0.9.3 Fan bug is fixed remove from future releases
-  // Details: https://github.com/MarlinFirmware/Marlin/issues/23418
-  #define FAN_FIX
-#else
-  // do nothing
-#endif
-
 #if ENABLED(FAN_FIX)
   #define FAN_SOFT_PWM
   #define SOFT_PWM_SCALE 1
@@ -662,19 +643,19 @@
 #endif
 
 #if NONE(DWIN_CREALITY_LCD, DWIN_CREALITY_LCD_ENHANCED)
-  #define LEVEL_BED_CORNERS
+  #define LCD_BED_TRAMMING
 #endif
 
-#if ENABLED(LEVEL_BED_CORNERS)
-  #define LEVEL_CORNERS_INSET_LFRB { 30, 30, 30, 30 } // (mm) Left, Front, Right, Back insets
-  #define LEVEL_CORNERS_HEIGHT      0.0   // (mm) Z height of nozzle at leveling points
-  #define LEVEL_CORNERS_Z_HOP       5.0   // (mm) Z height of nozzle between leveling points
-  #define LEVEL_CENTER_TOO              // Move to the center after the last corner
-  //#define LEVEL_CORNERS_USE_PROBE
-  #if ENABLED(LEVEL_CORNERS_USE_PROBE)
-    #define LEVEL_CORNERS_PROBE_TOLERANCE 0.1
-    #define LEVEL_CORNERS_VERIFY_RAISED   // After adjustment triggers the probe, re-probe to verify
-    //#define LEVEL_CORNERS_AUDIO_FEEDBACK
+#if ENABLED(LCD_BED_TRAMMING)
+  #define BED_TRAMMING_INSET_LFRB { 30, 30, 30, 30 } // (mm) Left, Front, Right, Back insets
+  #define BED_TRAMMING_HEIGHT      0.0        // (mm) Z height of nozzle at leveling points
+  #define BED_TRAMMING_Z_HOP       5.0        // (mm) Z height of nozzle between leveling points
+  #define BED_TRAMMING_INCLUDE_CENTER       // Move to the center after the last corner
+  //#define BED_TRAMMING_USE_PROBE
+  #if ENABLED(BED_TRAMMING_USE_PROBE)
+    #define BED_TRAMMING_PROBE_TOLERANCE 0.1  // (mm)
+    #define BED_TRAMMING_VERIFY_RAISED        // After adjustment triggers the probe, re-probe to verify
+    //#define BED_TRAMMING_AUDIO_FEEDBACK
   #endif
 
   /**
@@ -694,7 +675,7 @@
    *  |  1       2  |   | 1         4 |    | 1         2 |   | 2           |
    *  LF --------- RF   LF --------- RF    LF --------- RF   LF --------- RF
    */
-  #define LEVEL_CORNERS_LEVELING_ORDER { LF, RF, RB, LB }
+  #define BED_TRAMMING_LEVELING_ORDER { LF, RF, RB, LB }
 #endif
 
 #if ENABLED(MANUAL_MESH_LEVELING) && DISABLED(ABL_ENABLE)

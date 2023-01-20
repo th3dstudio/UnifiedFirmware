@@ -5,7 +5,7 @@
  * MAKE SURE ALL SLICERS AND OTHER PROGRAMS THAT CONNECT TO YOUR PRINTER COM PORT ARE CLOSED BEFORE FLASHING.
  */
 #pragma once
-#define CONFIGURATION_H_VERSION 02000903
+#define CONFIGURATION_H_VERSION 02010200
 
 //===========================================================================
 //============================ TH3D Configuration ===========================
@@ -197,6 +197,18 @@
 //*** COMMUNITY REQUESTED FEATURES ARE ALL NOT SUPPORTED BY TH3D SUPPORT ****
 //===========================================================================
 
+// INPUT SHAPING -----------------------------------
+// See here on how to use Input Shaping: https://www.th3dstudio.com/marlin-input-shaping-calculator/
+//#define INPUT_SHAPING
+// Below are the frequency and damping settings for each axis.
+// Damping must have f at the end of the number and the range is 0.00-1.00.
+// X Axis Settings
+#define INPUT_SHAPING_FREQ_X 40
+#define INPUT_SHAPING_DAMPING_X 0.15f
+// Y Axis Settings
+#define INPUT_SHAPING_FREQ_Y 40
+#define INPUT_SHAPING_DAMPING_Y 0.15f
+
 // HOME OFFSET ADJUSTMENT --------------------------
 // If you need to adjust your XY home offsets from defaults then you can uncomment the HOME_ADJUST line below and enter your
 // custom XY offsets. This is provided for convenience and is unsupported with included product support.
@@ -260,7 +272,7 @@
  */
 
 // Artillery Printers Settings
-#if ENABLED(SIDEWINDER_X1) || ENABLED(ARTILLERY_AL4)
+#if ANY(SIDEWINDER_X1, ARTILLERY_AL4)
   #if ENABLED(EZ300_OEM_MOUNT) && ENABLED(ARTILLERY_AL4)
     #define ARTILLERY_AL4_X_AXIS_TMC2208
     #define ARTILLERY_AL4_Y_AXIS_TMC2208

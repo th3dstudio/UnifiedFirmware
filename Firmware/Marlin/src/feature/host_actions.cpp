@@ -39,10 +39,7 @@
 
 HostUI hostui;
 
-flag_t HostUI::flag;
-
 void HostUI::action(FSTR_P const fstr, const bool eol) {
-  if (!flag.bits) return;
   PORT_REDIRECT(SerialMask::All);
   SERIAL_ECHOPGM("//action:");
   SERIAL_ECHOF(fstr);
@@ -96,43 +93,47 @@ void HostUI::action(FSTR_P const fstr, const bool eol) {
   #endif
 
   void HostUI::notify(const char * const cstr) {
-    if (!flag.bits) return;
     PORT_REDIRECT(SerialMask::All);
     action(F("notification "), false);
     SERIAL_ECHOLN(cstr);
   }
 
   void HostUI::notify_P(PGM_P const pstr) {
-    if (!flag.bits) return;
     PORT_REDIRECT(SerialMask::All);
     action(F("notification "), false);
     SERIAL_ECHOLNPGM_P(pstr);
   }
 
   void HostUI::prompt(FSTR_P const ptype, const bool eol/*=true*/) {
-    if (!flag.bits) return;
     PORT_REDIRECT(SerialMask::All);
     action(F("prompt_"), false);
     SERIAL_ECHOF(ptype);
     if (eol) SERIAL_EOL();
   }
 
-  void HostUI::prompt_plus(FSTR_P const ptype, FSTR_P const fstr, const char extra_char/*='\0'*/) {
-    if (!flag.bits) return;
+  void HostUI::prompt_plus(const bool pgm, FSTR_P const ptype, const char * const str, const char extra_char/*='\0'*/) {
     prompt(ptype, false);
     PORT_REDIRECT(SerialMask::All);
     SERIAL_CHAR(' ');
-    SERIAL_ECHOF(fstr);
+    if (pgm)
+      SERIAL_ECHOPGM_P(str);
+    else
+      SERIAL_ECHO(str);
     if (extra_char != '\0') SERIAL_CHAR(extra_char);
     SERIAL_EOL();
   }
+
   void HostUI::prompt_begin(const PromptReason reason, FSTR_P const fstr, const char extra_char/*='\0'*/) {
-    if (!flag.bits) return;
     prompt_end();
     host_prompt_reason = reason;
     prompt_plus(F("begin"), fstr, extra_char);
   }
-  void HostUI::prompt_button(FSTR_P const fstr) { prompt_plus(F("button"), fstr); }
+  void HostUI::prompt_begin(const PromptReason reason, const char * const cstr, const char extra_char/*='\0'*/) {
+    prompt_end();
+    host_prompt_reason = reason;
+    prompt_plus(F("begin"), cstr, extra_char);
+  }
+
   void HostUI::prompt_end() { prompt(F("end")); }
   void HostUI::prompt_show() { prompt(F("show")); }
 
@@ -141,12 +142,24 @@ void HostUI::action(FSTR_P const fstr, const bool eol) {
     if (btn2) prompt_button(btn2);
     prompt_show();
   }
+
+  void HostUI::prompt_button(FSTR_P const fstr) { prompt_plus(F("button"), fstr); }
+  void HostUI::prompt_button(const char * const cstr) { prompt_plus(F("button"), cstr); }
+
   void HostUI::prompt_do(const PromptReason reason, FSTR_P const fstr, FSTR_P const btn1/*=nullptr*/, FSTR_P const btn2/*=nullptr*/) {
     prompt_begin(reason, fstr);
     _prompt_show(btn1, btn2);
   }
+  void HostUI::prompt_do(const PromptReason reason, const char * const cstr, FSTR_P const btn1/*=nullptr*/, FSTR_P const btn2/*=nullptr*/) {
+    prompt_begin(reason, cstr);
+    _prompt_show(btn1, btn2);
+  }
   void HostUI::prompt_do(const PromptReason reason, FSTR_P const fstr, const char extra_char, FSTR_P const btn1/*=nullptr*/, FSTR_P const btn2/*=nullptr*/) {
     prompt_begin(reason, fstr, extra_char);
+    _prompt_show(btn1, btn2);
+  }
+  void HostUI::prompt_do(const PromptReason reason, const char * const cstr, const char extra_char, FSTR_P const btn1/*=nullptr*/, FSTR_P const btn2/*=nullptr*/) {
+    prompt_begin(reason, cstr, extra_char);
     _prompt_show(btn1, btn2);
   }
 

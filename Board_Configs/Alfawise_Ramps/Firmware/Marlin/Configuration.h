@@ -5,7 +5,7 @@
  * MAKE SURE ALL SLICERS AND OTHER PROGRAMS THAT CONNECT TO YOUR PRINTER COM PORT ARE CLOSED BEFORE FLASHING.
  */
 #pragma once
-#define CONFIGURATION_H_VERSION 02000903
+#define CONFIGURATION_H_VERSION 02010200
 
 //===========================================================================
 //============================ TH3D Configuration ===========================
@@ -173,6 +173,22 @@
 //*** COMMUNITY REQUESTED FEATURES ARE ALL NOT SUPPORTED BY TH3D SUPPORT ****
 //===========================================================================
 
+// INPUT SHAPING -----------------------------------
+// See here on how to use Input Shaping: https://www.th3dstudio.com/marlin-input-shaping-calculator/
+//
+// CPU LIMITATION WARNING: While this will compile and fit in memory, these 8-bit CPUs are outdated and may run poorly with input shaping.
+// If you want to reliably and smoothly run input shaping you should upgrade to a 32-bit board. If you have issues, disable input shaping.
+//
+//#define INPUT_SHAPING
+// Below are the frequency and damping settings for each axis.
+// Damping must have f at the end of the number and the range is 0.00-1.00.
+// X Axis Settings
+#define INPUT_SHAPING_FREQ_X 40
+#define INPUT_SHAPING_DAMPING_X 0.15f
+// Y Axis Settings
+#define INPUT_SHAPING_FREQ_Y 40
+#define INPUT_SHAPING_DAMPING_Y 0.15f
+
 // HOME OFFSET ADJUSTMENT --------------------------
 // If you need to adjust your XY home offsets from defaults then you can uncomment the HOME_ADJUST line below and enter your
 // custom XY offsets. This is provided for convenience and is unsupported with included product support.
@@ -234,6 +250,12 @@
 /**
  * Machine Configuration Settings
  */
+
+// Enable Software PWM to avoid Timer Conflict
+#define FAN_SOFT_PWM
+#if DISABLED(FAN_FIX)
+  #define SOFT_PWM_SCALE 0
+#endif
 
 // Alfawise Printer Settings
 #if ENABLED(ALFAWISE_U10)

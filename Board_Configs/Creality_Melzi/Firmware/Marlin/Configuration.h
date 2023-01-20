@@ -5,7 +5,7 @@
  * MAKE SURE ALL SLICERS AND OTHER PROGRAMS THAT CONNECT TO YOUR PRINTER COM PORT ARE CLOSED BEFORE FLASHING.
  */
 #pragma once
-#define CONFIGURATION_H_VERSION 02000903
+#define CONFIGURATION_H_VERSION 02010200
 
 //===========================================================================
 //============================ TH3D Configuration ===========================
@@ -198,6 +198,18 @@
 //****************** COMMUNITY REQUESTED FEATURES ***************************
 //*** COMMUNITY REQUESTED FEATURES ARE ALL NOT SUPPORTED BY TH3D SUPPORT ****
 //===========================================================================
+
+// INPUT SHAPING -----------------------------------
+// See here on how to use Input Shaping: https://www.th3dstudio.com/marlin-input-shaping-calculator/
+//#define INPUT_SHAPING
+// Below are the frequency and damping settings for each axis.
+// Damping must have f at the end of the number and the range is 0.00-1.00.
+// X Axis Settings
+#define INPUT_SHAPING_FREQ_X 40
+#define INPUT_SHAPING_DAMPING_X 0.15f
+// Y Axis Settings
+#define INPUT_SHAPING_FREQ_Y 40
+#define INPUT_SHAPING_DAMPING_Y 0.15f
 
 // ENDER XTENDER KIT SETTINGS ----------------------
 

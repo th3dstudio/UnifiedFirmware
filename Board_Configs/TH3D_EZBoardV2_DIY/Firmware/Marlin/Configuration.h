@@ -5,7 +5,7 @@
  * THIS FIRMWARE VERSION IS FOR DIY USE ONLY BY ADVANCED USERS AND IS NOT COVERED UNDER INCLUDED TECHNICAL SUPPORT
  */
 #pragma once
-#define CONFIGURATION_H_VERSION 02000903
+#define CONFIGURATION_H_VERSION 02010200
 
 //#@CONFIGURATION_START_FLAG
 
@@ -337,6 +337,18 @@
 //****************** COMMUNITY REQUESTED FEATURES ***************************
 //*** COMMUNITY REQUESTED FEATURES ARE ALL NOT SUPPORTED BY TH3D SUPPORT ****
 //===========================================================================
+
+// INPUT SHAPING -----------------------------------
+// See here on how to use Input Shaping: https://www.th3dstudio.com/marlin-input-shaping-calculator/
+//#define INPUT_SHAPING
+// Below are the frequency and damping settings for each axis.
+// Damping must have f at the end of the number and the range is 0.00-1.00.
+// X Axis Settings
+#define INPUT_SHAPING_FREQ_X 40
+#define INPUT_SHAPING_DAMPING_X 0.15f
+// Y Axis Settings
+#define INPUT_SHAPING_FREQ_Y 40
+#define INPUT_SHAPING_DAMPING_Y 0.15f
 
 // SENSORLESS HOMING SETTINGS ----------------------
 // If you want to use sensorless homing on your X or Y Axis, uncomment the X_AXIS_SENSORLESS_HOMING or Y_AXIS_SENSORLESS_HOMING to enable it.

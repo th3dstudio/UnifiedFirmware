@@ -5,7 +5,7 @@
  * MAKE SURE ALL SLICERS AND OTHER PROGRAMS THAT CONNECT TO YOUR PRINTER COM PORT ARE CLOSED BEFORE FLASHING.
  */
 #pragma once
-#define CONFIGURATION_H_VERSION 02000903
+#define CONFIGURATION_H_VERSION 02010200
 
 //===========================================================================
 //============================ TH3D Configuration ===========================
@@ -23,7 +23,8 @@
 //#define CR10S_S5
 //#define CR10_V2
 //#define CR10_V3
-//#define CR10S_PRO
+//#define CR10S_PRO         //V1 Model came with an 18mm probe pre-installed
+//#define CR10S_PRO_V2      //V2 Model came with a BLTouch pre-installed
 //#define CR20
 //#define CRX
 //#define ENDER4
@@ -76,9 +77,6 @@
 // Creality 2560 Silent Board
 // If you are using the 2560 based "Silent" board with TMC drivers enable the below setting
 //#define CREALITY_SILENT_BOARD
-
-// CR-10S Pro - If you are using the stock Creality ABL probe on the CR-10S Pro uncomment the below line
-//#define CR10S_PRO_STOCK_ABL
 
 // EZNeo Settings -----------------------------------------------------------
 // If you are using an EZNeo strip on your printer, uncomment the line for what strip you are using.
@@ -280,6 +278,22 @@
 //*** COMMUNITY REQUESTED FEATURES ARE ALL NOT SUPPORTED BY TH3D SUPPORT ****
 //===========================================================================
 
+// INPUT SHAPING -----------------------------------
+// See here on how to use Input Shaping: https://www.th3dstudio.com/marlin-input-shaping-calculator/
+//
+// CPU LIMITATION WARNING: While this will compile and fit in memory, these 8-bit CPUs are outdated and may run poorly with input shaping.
+// If you want to reliably and smoothly run input shaping you should upgrade to a 32-bit board. If you have issues, disable input shaping.
+//
+//#define INPUT_SHAPING
+// Below are the frequency and damping settings for each axis.
+// Damping must have f at the end of the number and the range is 0.00-1.00.
+// X Axis Settings
+#define INPUT_SHAPING_FREQ_X 40
+#define INPUT_SHAPING_DAMPING_X 0.15f
+// Y Axis Settings
+#define INPUT_SHAPING_FREQ_Y 40
+#define INPUT_SHAPING_DAMPING_Y 0.15f
+
 // ENDER XTENDER KIT SETTINGS ----------------------
 
 // Ender Xtender Kits for Ender 3/3 Pro
@@ -355,12 +369,44 @@
  * Core machine settings are below. Do NOT modify these unless you understand what you are doing.
  */
 
+//CR-10S Pro V2 Stock BLTouch Setup
+#if ENABLED(CR10S_PRO_V2)
+  #define CR10S_PRO
+  #if NONE(CUSTOM_PROBE, CR10S_PRO_OEM, BLTOUCH)
+    #define BLTOUCH
+    #define CUSTOM_PROBE
+    #ifndef SERVO0_PIN
+      #define SERVO0_PIN 11
+    #endif
+    #define NOZZLE_TO_PROBE_OFFSET { -27, 0, 0 }
+  #endif
+#endif
+
+//CR-10S Pro Stock ABL Setup
+#if ENABLED(CR10S_PRO) && DISABLED(CR10S_PRO_V2)
+  #if NONE(CUSTOM_PROBE, CR10S_PRO_OEM, BLTOUCH)
+    #define CUSTOM_PROBE
+    #define CR10S_PRO_STOCK_ABL
+    #define NOZZLE_TO_PROBE_OFFSET { -27, 0, 0 }
+  #endif
+#endif
+
+#if ALL(CR10LCD_CR10S, CR10S_PRO)
+  #error "CR10LCD_CR10S is not supported on the CR-10S Pro V1/V2. Disable it in the Configuration.h file"
+#endif
+
+// Enable Software PWM to avoid Timer Conflict
+#define FAN_SOFT_PWM
+#if DISABLED(FAN_FIX)
+  #define SOFT_PWM_SCALE 0
+#endif
+
 /**
  * Machine Configuration Settings
  */
 
 // Creality 2560 Printer Settings
-#if ENABLED(CR10S) || ENABLED(CR10_V2) || ENABLED(CR10_V3) || ENABLED(CR10S_MINI) || ENABLED(CR10S_S4) || ENABLED(CR10S_S5) || ENABLED(ENDER3_DUAL_EXTRUDER_BOARD) || ENABLED(CR20) || ENABLED(ENDER5_DUAL_EXTRUDER_BOARD) || ENABLED(CRX) || ENABLED(CR10S_PRO) || ENABLED(CRX) || ENABLED(ENDER5_PLUS)
+#if ANY(CR10S, CR10_V2, CR10_V3, CR10S_MINI, CR10S_S4, CR10S_S5, ENDER3_DUAL_EXTRUDER_BOARD, CR20, ENDER5_DUAL_EXTRUDER_BOARD, CRX, CR10S_PRO, CRX, ENDER5_PLUS)
   #if ENABLED(ENDER3_DUAL_EXTRUDER_BOARD)
     #define ENDER3
   #endif
@@ -402,7 +448,7 @@
     #endif  
   #endif
 
-  #if ENABLED(ENDER5_NEW_LEADSCREW) || ENABLED(ENDER5_PLUS)
+  #if ANY(ENDER5_NEW_LEADSCREW, ENDER5_PLUS)
     #define CREALITY_Z_STEPS 800
   #else
     #define CREALITY_Z_STEPS 400
@@ -413,7 +459,7 @@
 
   #define BAUDRATE 115200
   
-  #if ENABLED(CR10LCD_CR10S) || ENABLED(ENDER3_DUAL_EXTRUDER_BOARD) || ENABLED(ENDER5_DUAL_EXTRUDER_BOARD)
+  #if ANY(CR10LCD_CR10S, ENDER3_DUAL_EXTRUDER_BOARD, ENDER5_DUAL_EXTRUDER_BOARD)
     #define CR10_STOCKDISPLAY
     #if ENABLED(REVERSE_KNOB_DIRECTION)
       #define REVERSE_ENCODER_DIRECTION
@@ -430,7 +476,7 @@
     #define ST7920_DELAY_2 DELAY_NS(200)
     #define ST7920_DELAY_3 DELAY_NS(200)
     
-    #if ENABLED(CRX) || ENABLED(CR10S_PRO) || ENABLED(ENDER5_PLUS)
+    #if ANY(CRX, CR10S_PRO, ENDER5_PLUS)
       #if DISABLED(REVERSE_KNOB_DIRECTION)
         #define REVERSE_ENCODER_DIRECTION
       #endif
@@ -459,13 +505,13 @@
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, CREALITY_Z_STEPS, DUAL_EXTRUDER_E0_STEPS, DUAL_EXTRUDER_E1_STEPS }
   #endif
 
-  #if ENABLED(CRX) || ENABLED(DUAL_EXTRUDER_SINGLE_NOZZLE) || ENABLED(DUAL_EXTRUDER_DUAL_NOZZLES)
+  #if ANY(CRX, DUAL_EXTRUDER_SINGLE_NOZZLE, DUAL_EXTRUDER_DUAL_NOZZLES)
     #define EXTRUDERS 2
   #else
     #define EXTRUDERS 1
   #endif
 
-  #if ENABLED(CR10S) || ENABLED(CRX) || ENABLED(CR10_V2) || ENABLED(CR10S_PRO)
+  #if ANY(CR10S, CRX, CR10_V2, CR10S_PRO)
     #define X_BED_SIZE 300
     #define Y_BED_SIZE 300
     #define Z_MAX_POS 400
@@ -588,7 +634,7 @@
     #define Z_HOME_DIR -1
   #endif
 
-  #if ENABLED(CRX) || ENABLED(DUAL_EXTRUDER_SINGLE_NOZZLE)
+  #if ANY(CRX, DUAL_EXTRUDER_SINGLE_NOZZLE)
     #define SINGLENOZZLE
   #endif
   
@@ -659,7 +705,7 @@
   #define Z_MIN_PROBE_ENDSTOP_INVERTING false
   #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
 
-  #if ENABLED(CR10_V2) || ENABLED(CREALITY_SILENT_BOARD) || ENABLED(CR10S_PRO)
+  #if ANY(CR10_V2, CREALITY_SILENT_BOARD, CR10S_PRO)
     #define X_DRIVER_TYPE TMC2208_STANDALONE
     #define Y_DRIVER_TYPE TMC2208_STANDALONE
     #define Z_DRIVER_TYPE TMC2208_STANDALONE
@@ -678,13 +724,13 @@
 
   #define INVERT_X_DIR false
   
-  #if ENABLED(CRX) || ENABLED(CR10S_PRO)
+  #if ANY(CRX, CR10S_PRO)
     #define INVERT_Y_DIR true
   #else
     #define INVERT_Y_DIR false
   #endif
   
-  #if ENABLED(ENDER5_DUAL_EXTRUDER_BOARD) || ENABLED(ENDER5_PLUS)
+  #if ANY(ENDER5_DUAL_EXTRUDER_BOARD, ENDER5_PLUS)
     #define INVERT_Z_DIR false
   #else
     #define INVERT_Z_DIR true

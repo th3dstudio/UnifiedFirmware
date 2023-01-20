@@ -3,7 +3,7 @@
  * NO IMPLIED SUPPORT OR WARRANTY IS PROVIDED WITH THIS FIRMWARE AND IS PROVIDED AS-IS
  */
 #pragma once
-#define CONFIGURATION_H_VERSION 02000903
+#define CONFIGURATION_H_VERSION 02010200
 
 //===========================================================================
 //============================ TH3D Configuration ===========================
@@ -15,6 +15,10 @@
 // If you have a 512K CPU and/or a GD32 CPU please read the notes in the platformio.ini file for details on
 // compiling for these chips. Most boards regardless of the CPU will work as-is but if you have issues with
 // the board flashing the firmware you may have to change the default_envs value as noted in platformio.ini.
+
+// BOARDS WITH THE GD32 CPUS MAY REQUIRE FLASHING BACK TO THE STOCK FIRMWARE BEFORE LOADING A NEW BUILD ON THE BOARD
+// WE'VE INCLUDED THE STOCK FIRMWARE IN THE FOLDER CALLED "GD32 CPU Stock Firmware"
+// WHEN DOING MULTIPLE UPDATES WE RECOMMEND HAVING A SD CARD WITH THE STOCK FIRMWARE FOR QUICK FLASHING
 
 //===========================================================================
 // ***********   CREALITY PRINTERS W/V4.X.X BOARD - F103 CPU   **************
@@ -264,6 +268,18 @@
 //*** COMMUNITY REQUESTED FEATURES ARE ALL NOT SUPPORTED BY TH3D SUPPORT ****
 //===========================================================================
 
+// INPUT SHAPING -----------------------------------
+// See here on how to use Input Shaping: https://www.th3dstudio.com/marlin-input-shaping-calculator/
+//#define INPUT_SHAPING
+// Below are the frequency and damping settings for each axis.
+// Damping must have f at the end of the number and the range is 0.00-1.00.
+// X Axis Settings
+#define INPUT_SHAPING_FREQ_X 40
+#define INPUT_SHAPING_DAMPING_X 0.15f
+// Y Axis Settings
+#define INPUT_SHAPING_FREQ_Y 40
+#define INPUT_SHAPING_DAMPING_Y 0.15f
+
 // ENDER XTENDER KIT SETTINGS ----------------------
 
 // Ender Xtender Kits for Ender 3/3 Pro/3 V2
@@ -350,7 +366,7 @@
 #endif
 
 #if BOTH(V42X_TMC220X_DRIVERS, LINEAR_ADVANCE)
-  #error "Linear Advance does NOT work on the V4.2.X boards with the TMC drivers due to how Creality has them setup. Disable Linear Advance to continue or comment this line out to continue compile at your own risk."
+  #warning "Linear Advance may NOT work on the V4.2.X boards with the TMC drivers due to how Creality has them setup. Comment out this warning to hide it."
 #endif
 
 //Ender 3 NEO Settings

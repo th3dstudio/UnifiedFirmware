@@ -373,6 +373,8 @@
 #if ENABLED(CR10S_PRO_V2)
   #define CR10S_PRO
   #if NONE(CUSTOM_PROBE, CR10S_PRO_OEM, BLTOUCH)
+    #define Z_MAX_PIN -1
+    #define Z_MIN_PROBE_PIN 19
     #define BLTOUCH
     #define CUSTOM_PROBE
     #ifndef SERVO0_PIN

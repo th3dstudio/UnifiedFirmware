@@ -23,7 +23,8 @@
 //#define CR10S_S5
 //#define CR10_V2
 //#define CR10_V3
-//#define CR10S_PRO
+//#define CR10S_PRO         //V1 Model came with an 18mm probe pre-installed
+//#define CR10S_PRO_V2      //V2 Model came with a BLTouch pre-installed
 //#define CR20
 //#define CRX
 //#define ENDER4
@@ -76,9 +77,6 @@
 // Creality 2560 Silent Board
 // If you are using the 2560 based "Silent" board with TMC drivers enable the below setting
 //#define CREALITY_SILENT_BOARD
-
-// CR-10S Pro - If you are using the stock Creality ABL probe on the CR-10S Pro uncomment the below line
-//#define CR10S_PRO_STOCK_ABL
 
 // EZNeo Settings -----------------------------------------------------------
 // If you are using an EZNeo strip on your printer, uncomment the line for what strip you are using.
@@ -370,6 +368,32 @@
  * ****************************DO NOT TOUCH ANYTHING BELOW THIS COMMENT**************************
  * Core machine settings are below. Do NOT modify these unless you understand what you are doing.
  */
+
+//CR-10S Pro V2 Stock BLTouch Setup
+#if ENABLED(CR10S_PRO_V2)
+  #define CR10S_PRO
+  #if NONE(CUSTOM_PROBE, CR10S_PRO_OEM, BLTOUCH)
+    #define BLTOUCH
+    #define CUSTOM_PROBE
+    #ifndef SERVO0_PIN
+      #define SERVO0_PIN 11
+    #endif
+    #define NOZZLE_TO_PROBE_OFFSET { -27, 0, 0 }
+  #endif
+#endif
+
+//CR-10S Pro Stock ABL Setup
+#if ENABLED(CR10S_PRO) && DISABLED(CR10S_PRO_V2)
+  #if NONE(CUSTOM_PROBE, CR10S_PRO_OEM, BLTOUCH)
+    #define CUSTOM_PROBE
+    #define CR10S_PRO_STOCK_ABL
+    #define NOZZLE_TO_PROBE_OFFSET { -27, 0, 0 }
+  #endif
+#endif
+
+#if ALL(CR10LCD_CR10S, CR10S_PRO)
+  #error "CR10LCD_CR10S is not supported on the CR-10S Pro V1/V2. Disable it in the Configuration.h file"
+#endif
 
 // Enable Software PWM to avoid Timer Conflict
 #define FAN_SOFT_PWM

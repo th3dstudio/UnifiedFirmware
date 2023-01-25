@@ -6,7 +6,7 @@
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-#define UNIFIED_VERSION "TH3D UFW 2.60"
+#define UNIFIED_VERSION "TH3D UFW 2.60a"
 
 /**
  * ABL Probe Settings
@@ -265,6 +265,23 @@
 #endif
 
 #if ENABLED(ABL_ENABLE)
+  #if ENABLED(BD_SENSOR)
+    #define I2C_BD_DELAY 20
+    #define USE_PROBE_FOR_Z_HOMING
+    #define CUSTOM_MENU_MAIN
+    #define CUSTOM_MENU_MAIN_TITLE "BDSensor"
+    //#define CUSTOM_MENU_MAIN_SCRIPT_DONE "M117 BDSensor Done"
+    #define CUSTOM_MENU_MAIN_SCRIPT_AUDIBLE_FEEDBACK
+    #define CUSTOM_MENU_MAIN_SCRIPT_RETURN   // Return to status screen after a script
+    #define CUSTOM_MENU_MAIN_ONLY_IDLE         // Only show custom menu when the machine is idle
+    #define MAIN_MENU_ITEM_1_DESC "Calibrate BDSensor"
+    #define MAIN_MENU_ITEM_1_GCODE "M102 S-6"
+    #define MAIN_MENU_ITEM_1_CONFIRM
+    #define MAIN_MENU_ITEM_2_DESC "Read BDSensor Data"
+    #define MAIN_MENU_ITEM_2_GCODE "M102 S-1"
+    #define MAIN_MENU_ITEM_2_CONFIRM
+  #endif
+
   #define ENABLE_LEVELING_FADE_HEIGHT
   #if ENABLED(ENABLE_LEVELING_FADE_HEIGHT)
     #define DEFAULT_LEVELING_FADE_HEIGHT 0 // (mm) Default fade height - Disable by default to prevent user issues
@@ -279,10 +296,12 @@
   #define Z_PROBE_OFFSET_RANGE_MAX     1
   
   #define Z_MIN_PROBE_REPEATABILITY_TEST
-  #define Z_AFTER_HOMING               5
+  #if DISABLED(BD_SENSOR)
+    #define Z_AFTER_HOMING               5
+  #endif
   #define Z_PROBE_LOW_POINT           -10
   
-  #if DISABLED(BLTOUCH)
+  #if NONE(BLTOUCH, BD_SENSOR)
     #define FIX_MOUNTED_PROBE
   #endif
   
@@ -315,7 +334,7 @@
   #endif
   
   // ABL Probe Logic Settings
-  #if ENABLED(BLTOUCH) // BLTouch uses false
+  #if ANY(BLTOUCH, BD_SENSOR) // BLTouch & BDSensor use false
     #undef Z_MIN_PROBE_ENDSTOP_INVERTING
     #define Z_MIN_PROBE_ENDSTOP_INVERTING false
     #undef Z_MIN_ENDSTOP_INVERTING
@@ -347,6 +366,14 @@
 
 #if ENABLED(BLTOUCH) && DISABLED(CUSTOM_PROBE)
   #error "You must uncomment the CUSTOM_PROBE option in the EZABL probe mount section and then enter your mount offsets into the Custom Probe section."
+#endif
+
+#if ENABLED(BD_SENSOR) && DISABLED(CUSTOM_PROBE)
+  #error "You must uncomment the CUSTOM_PROBE option in the EZABL probe mount section and then enter your mount offsets into the Custom Probe section."
+#endif
+
+#if DISABLED(BD_SENSOR) && ENABLED(BD_SENSOR_DISPLAY_MESSAGES)
+  #error "BD_SENSOR_DISPLAY_MESSAGES is ONLY compatible when using a BDSensor."
 #endif
 
 #if BOTH(BTT_TOUCH_SCREEN, ABL_ENABLE)
@@ -505,6 +532,9 @@
 #if ENABLED(SLOWER_HOMING)
   #define HOMING_FEEDRATE_MM_M { (20*60), (20*60), (4*60) }
   #define Z_PROBE_FEEDRATE_FAST (4*60)
+#elif ENABLED(BD_SENSOR)
+  #define HOMING_FEEDRATE_MM_M { (50*60), (50*60), (1*60) }
+  #define Z_PROBE_FEEDRATE_FAST (4*60)
 #else
   #if ENABLED(EZABL_SUPERFASTPROBE) && ENABLED(ABL_ENABLE) && DISABLED(BLTOUCH)
     #define HOMING_FEEDRATE_MM_M { (50*60), (50*60), (15*60) }
@@ -546,6 +576,11 @@
   #define Z_PROBE_FEEDRATE_SLOW (Z_PROBE_FEEDRATE_FAST / 2)
   #define ENDSTOPPULLUP_ZMIN
   #define ENDSTOPPULLUP_ZMIN_PROBE
+#elif ENABLED(BD_SENSOR)
+  #define Z_CLEARANCE_DEPLOY_PROBE   0
+  #define Z_CLEARANCE_BETWEEN_PROBES 1
+  #define Z_CLEARANCE_MULTI_PROBE    1
+  #define Z_PROBE_FEEDRATE_SLOW (Z_PROBE_FEEDRATE_FAST / 2)
 #elif ENABLED(EZABL_SUPERFASTPROBE) && ENABLED(ABL_ENABLE)
   #define Z_CLEARANCE_DEPLOY_PROBE   2
   #define Z_CLEARANCE_BETWEEN_PROBES 2

@@ -403,8 +403,8 @@
   #define Z_MOTOR_CURRENT 1000
   #define E_MOTOR_CURRENT 550
 
-  #define X_SH_CALIBRATION 65
-  #define Y_SH_CALIBRATION 68
+  #define X_SH_CALIBRATION 90
+  #define Y_SH_CALIBRATION 75
 
   #define X_ENABLE_ON 0
   #define Y_ENABLE_ON 0

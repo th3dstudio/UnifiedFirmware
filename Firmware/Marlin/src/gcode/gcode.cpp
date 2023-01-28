@@ -677,7 +677,11 @@ void GcodeSuite::process_parsed_command(const bool no_ok/*=false*/) {
       case 114: M114(); break;                                    // M114: Report current position
       case 115: M115(); break;                                    // M115: Report capabilities
 
-      case 117: TERN_(HAS_STATUS_MESSAGE, M117()); break;         // M117: Set LCD message text, if possible
+      #if ALL(BD_SENSOR, BD_SENSOR_DISPLAY_MESSAGES)
+        case 117: TERN_(HAS_STATUS_MESSAGE, M117()); return;      // M117: Set LCD message text, if possible
+      #else
+        case 117: TERN_(HAS_STATUS_MESSAGE, M117()); break;       // M117: Set LCD message text, if possible
+      #endif
 
       case 118: M118(); break;                                    // M118: Display a message in the host console
       case 119: M119(); break;                                    // M119: Report endstop states

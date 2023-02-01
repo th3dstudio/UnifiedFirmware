@@ -6,7 +6,7 @@
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-#define UNIFIED_VERSION "TH3D UFW 2.60a"
+#define UNIFIED_VERSION "TH3D UFW 2.60b"
 
 /**
  * ABL Probe Settings

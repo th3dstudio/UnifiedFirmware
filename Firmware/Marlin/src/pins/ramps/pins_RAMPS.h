@@ -233,8 +233,14 @@
 #define HEATER_0_PIN                MOSFET_A_PIN
 
 #if FET_ORDER_EFB                                 // Hotend, Fan, Bed
-  #ifndef HEATER_BED_PIN
-    #define HEATER_BED_PIN          MOSFET_C_PIN
+  #if ENABLED(CHIRON)
+    #ifndef HEATER_BED_PIN
+      #define HEATER_BED_PIN        MOSFET_B_PIN  // Added by TH3D for LCD Kit for Chiron
+    #endif
+  #else
+    #ifndef HEATER_BED_PIN
+      #define HEATER_BED_PIN        MOSFET_C_PIN
+    #endif
   #endif
 #elif FET_ORDER_EEF                               // Hotend, Hotend, Fan
   #define HEATER_1_PIN              MOSFET_B_PIN

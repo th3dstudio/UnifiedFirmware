@@ -43,6 +43,7 @@ This does not include machine `configuration.h` or `PlatformIO.ini` files.
 			- **mega**
 				- `pins_WANHAO_ONEPLUS.h`
 			- **ramps**
+				- `ping_RAMPS.h`
 				- `pins_RAMPS_CREALITY.h`
 			- **sanguino**
 				- `pins_ANET_10.h`

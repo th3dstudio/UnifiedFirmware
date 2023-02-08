@@ -265,9 +265,13 @@
 #endif
 
 #if ENABLED(ABL_ENABLE)
+
+  #if DISABLED(CHIRON)
+    #define USE_PROBE_FOR_Z_HOMING
+  #endif
+  
   #if ENABLED(BD_SENSOR)
     #define I2C_BD_DELAY 20
-    #define USE_PROBE_FOR_Z_HOMING
     #define CUSTOM_MENU_MAIN
     #define CUSTOM_MENU_MAIN_TITLE "BDSensor"
     //#define CUSTOM_MENU_MAIN_SCRIPT_DONE "M117 BDSensor Done"
@@ -282,7 +286,7 @@
     #define MAIN_MENU_ITEM_2_CONFIRM
   #endif
 
-  #define ENABLE_LEVELING_FADE_HEIGHT
+  //#define ENABLE_LEVELING_FADE_HEIGHT // Disabling as it causes other issues
   #if ENABLED(ENABLE_LEVELING_FADE_HEIGHT)
     #define DEFAULT_LEVELING_FADE_HEIGHT 0 // (mm) Default fade height - Disable by default to prevent user issues
   #endif

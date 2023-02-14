@@ -280,7 +280,7 @@
     #endif
   #endif
 
-	#define SERIAL_PORT 1
+  #define SERIAL_PORT 1
   
   #define PRINTER_VOLTAGE_24
 

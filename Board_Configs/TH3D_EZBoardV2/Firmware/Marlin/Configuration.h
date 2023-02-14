@@ -44,6 +44,7 @@
 // Sovol Machines -----------------------------------------------------------
 //#define SOVOL_SV01
 //#define SOVOL_SV03
+//#define SOVOL_SV06
 
 // Filament Sensor Options --------------------------------------------------
 // If your machine came stock with a filament sensor it will be enabled automatically. If you replaced your stock sensor with our EZOut or you added an EZOut enabling the EZOUTV2_ENABLE will override the Creality sensor if your machine had one
@@ -77,8 +78,7 @@
 //#define ENDER5_PLUS_EZABL
 //#define ENDER5_PLUS_NOABL
 
-//===========================================================================
-// Sovol SV03 - ABL Settings
+// Sovol SV03 - ABL Settings ------------------------------------------------
 // By default the Sovol SV03 comes with a BL Touch. Enabling the SV03_EZABL or SV03_NOABL will override the BL Touch setting
 // If you are using the stock BL Touch with a non-stock mount enable the CUSTOM_PROBE line above and enter the offsets below for the new mount.
 //#define SV03_EZABL
@@ -893,6 +893,284 @@
   
 #endif
 //End EZBoard V2 based Machine Settings
+
+//EZBoard V2 SV06 Settings
+#if ENABLED(SOVOL_SV06)
+  
+  #if DISABLED(CUSTOM_PROBE)
+    #define CUSTOM_PROBE
+    #define NOZZLE_TO_PROBE_OFFSET { 25, -25, 0 }
+    #ifndef CUSTOM_PRINTER_NAME
+      #define CUSTOM_PRINTER_NAME
+      #define USER_PRINTER_NAME "SOVOL SV06"
+    #endif
+  #endif
+
+  #define DISABLE_ENDSTOP_NOISE_FILTERING
+  #define SERIAL_PORT -1
+  #define BAUDRATE 115200
+  #define SERIAL_PORT_2 1
+  #define BAUDRATE_2 BAUDRATE
+  
+  #define CR10_STOCKDISPLAY
+  
+  #if ENABLED(REVERSE_KNOB_DIRECTION) && DISABLED(ENDER5_PLUS)
+    #define REVERSE_ENCODER_DIRECTION
+  #endif
+  
+  #ifndef MOTHERBOARD
+    #define MOTHERBOARD BOARD_TH3D_EZBOARD_V2
+  #endif
+  
+  #if ENABLED(CUSTOM_ESTEPS)
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS_VALUE }
+  #else
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 800, 691.5 }
+  #endif
+  
+  #define SHOW_BOOTSCREEN
+  
+  #define EXTRUDERS 1
+  
+  #define X_BED_SIZE 220
+  #define Y_BED_SIZE 220
+  #define Z_MAX_POS 250
+  #define PRINTER_VOLTAGE_24
+  
+  #if (CUSTOM_ZHEIGHT > Z_MAX_POS)
+    #undef Z_MAX_POS
+    #define Z_MAX_POS CUSTOM_ZHEIGHT
+  #endif
+
+  #if ENABLED(HOME_ADJUST)
+    #define X_MIN_POS X_HOME_LOCATION
+    #define Y_MIN_POS Y_HOME_LOCATION
+  #else
+    #define X_MIN_POS 0
+    #define Y_MIN_POS 0
+  #endif
+
+  #define USE_XMIN_PLUG
+  #define USE_YMIN_PLUG
+  #define USE_ZMIN_PLUG
+
+  #define X_AXIS_SENSORLESS_HOMING
+  #define Y_AXIS_SENSORLESS_HOMING
+
+  #define ENDSTOPPULLUP_XMIN
+  #define ENDSTOPPULLUP_YMIN
+
+  #define X_HOME_DIR -1
+  #define Y_HOME_DIR -1
+  #define Z_HOME_DIR -1
+  
+  #if NONE(V6_HOTEND, TH3D_HOTEND_THERMISTOR, KNOWN_HOTEND_THERMISTOR, EZBOARD_PT100)
+    #define TEMP_SENSOR_0 1
+  #else
+    #if ENABLED(EZBOARD_PT100)
+      #define TEMP_SENSOR_0 20
+    #elif ENABLED(V6_HOTEND)
+      #define TEMP_SENSOR_0 5
+    #elif ENABLED(KNOWN_HOTEND_THERMISTOR)
+      #define TEMP_SENSOR_0 KNOWN_HOTEND_THERMISTOR_VALUE
+    #elif ENABLED(TH3D_HOTEND_THERMISTOR)
+      #define TEMP_SENSOR_0 1
+    #endif
+  #endif
+  
+  #define TEMP_SENSOR_1 0 
+  #define TEMP_SENSOR_2 0
+  #define TEMP_SENSOR_3 0
+  #define TEMP_SENSOR_4 0
+  #define TEMP_SENSOR_5 0
+  #define TEMP_SENSOR_6 0
+  #define TEMP_SENSOR_7 0
+  
+  #if NONE(TH3D_BED_THERMISTOR, KEENOVO_TEMPSENSOR, KNOWN_BED_THERMISTOR, AC_BED)
+    #define TEMP_SENSOR_BED 1
+  #else
+    #if ENABLED(AC_BED)
+      #define TEMP_SENSOR_BED 0
+    #elif ENABLED(KNOWN_BED_THERMISTOR)
+      #define TEMP_SENSOR_BED KNOWN_BED_THERMISTOR_VALUE
+    #elif ENABLED(TH3D_BED_THERMISTOR)
+      #define TEMP_SENSOR_BED 1
+    #elif ENABLED(KEENOVO_TEMPSENSOR)
+      #define TEMP_SENSOR_BED 11
+    #endif
+  #endif
+    
+  #define TEMP_SENSOR_PROBE 0
+  #define TEMP_SENSOR_CHAMBER 0
+
+  #define DEFAULT_Kp 15.95
+  #define DEFAULT_Ki 1.30
+  #define DEFAULT_Kd 48.96
+  
+  #define DEFAULT_bedKp 110.38
+  #define DEFAULT_bedKi 6.12
+  #define DEFAULT_bedKd 497.3
+
+  #if ENABLED(V3_EZABL_ON_SERVO)
+    #define ENDSTOPPULLUP_ZMIN
+    #define ENDSTOPPULLUP_ZMIN_PROBE
+  #endif
+
+  #define X_MIN_ENDSTOP_INVERTING false
+  #define Y_MIN_ENDSTOP_INVERTING false
+  #define Z_MIN_ENDSTOP_INVERTING false
+  #define X_MAX_ENDSTOP_INVERTING false
+  #define Y_MAX_ENDSTOP_INVERTING false
+  #define Z_MAX_ENDSTOP_INVERTING false
+  #define Z_MIN_PROBE_ENDSTOP_INVERTING false
+  
+  #define USE_PROBE_FOR_Z_HOMING
+  #define Z_MIN_PROBE_PIN PA2
+
+  #define X_DRIVER_TYPE  TMC2209
+  #define Y_DRIVER_TYPE  TMC2209
+  #define Z_DRIVER_TYPE  TMC2209
+  #define E0_DRIVER_TYPE TMC2209
+
+  #define X_MOTOR_CURRENT 860
+  #define Y_MOTOR_CURRENT 900
+  #define Z_MOTOR_CURRENT 1000
+  #define E_MOTOR_CURRENT 550
+
+  #if DISABLED(X_AXIS_SENSORLESS_HOMING)
+    #undef X_SH_CALIBRATION
+    #define X_SH_CALIBRATION 90
+  #endif
+  
+  #if DISABLED(Y_AXIS_SENSORLESS_HOMING)
+    #undef Y_SH_CALIBRATION
+    #define Y_SH_CALIBRATION 75
+  #endif
+
+  #define X_ENABLE_ON 0
+  #define Y_ENABLE_ON 0
+  #define Z_ENABLE_ON 0
+  #define E_ENABLE_ON 0
+
+  #if ENABLED(REVERSE_X_MOTOR)
+    #define INVERT_X_DIR false
+  #else
+    #define INVERT_X_DIR true
+  #endif
+
+  #if ENABLED(REVERSE_Y_MOTOR)
+    #define INVERT_Y_DIR false
+  #else
+    #define INVERT_Y_DIR true
+  #endif
+
+  #if ENABLED(REVERSE_Z_MOTOR)
+    #define INVERT_Z_DIR true
+  #else
+    #define INVERT_Z_DIR false
+  #endif
+  
+  #if ENABLED(REVERSE_E_MOTOR_DIRECTION)
+    #define INVERT_E0_DIR false
+  #else
+    #define INVERT_E0_DIR true
+  #endif
+
+  #define INVERT_E1_DIR false
+  #define INVERT_E2_DIR false
+  #define INVERT_E3_DIR false
+  #define INVERT_E4_DIR false
+  #define INVERT_E5_DIR false
+
+  #define ENCODER_PULSES_PER_STEP 4
+  #define ENCODER_STEPS_PER_MENU_ITEM 1
+  
+  #if ENABLED(SOVOL_SV03)
+    #if DISABLED(SV03_NOABL) && DISABLED(SV03_EZABL)
+      #if DISABLED(BLTOUCH)
+        #define BLTOUCH
+      #endif
+      
+      #ifndef SERVO0_PIN
+        #define SERVO0_PIN PA2
+      #endif
+      
+      #if DISABLED(CUSTOM_PROBE)
+        #define CUSTOM_PROBE
+        #define NOZZLE_TO_PROBE_OFFSET { -34, -13, 0 }
+      #endif
+    #endif  
+  #endif
+
+  #define EZBOARD_V2
+
+  #if ENABLED(EZOUTV2_ENABLE)
+    #define FILAMENT_RUNOUT_SENSOR
+  #endif
+  
+  #if ENABLED(FILAMENT_RUNOUT_SENSOR)
+    
+    #define FIL_RUNOUT_ENABLED_DEFAULT true // Enable the sensor on startup. Override with M412 followed by M500.
+    #define NUM_RUNOUT_SENSORS   1          // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
+    
+    #if ENABLED(EZOUTV2_ENABLE)
+      #define FIL_RUNOUT_STATE LOW  // Pin state indicating that filament is NOT present.
+    #else
+      #define FIL_RUNOUT_STATE HIGH // Pin state indicating that filament is NOT present.
+    #endif
+    
+    #define FIL_RUNOUT_PULLUP               // Use internal pullup for filament runout pins.
+    //#define FIL_RUNOUT_PULLDOWN           // Use internal pulldown for filament runout pins.
+
+    // Set one or more commands to execute on filament runout.
+    // (After 'M412 H' Marlin will ask the host to handle the process.)
+    #define FILAMENT_RUNOUT_SCRIPT "M600"
+
+    // After a runout is detected, continue printing this length of filament
+    // before executing the runout script. Useful for a sensor at the end of
+    // a feed tube. Requires 4 bytes SRAM per sensor, plus 4 bytes overhead.
+    //#define FILAMENT_RUNOUT_DISTANCE_MM 25
+
+    #ifdef FILAMENT_RUNOUT_DISTANCE_MM
+      // Enable this option to use an encoder disc that toggles the runout pin
+      // as the filament moves. (Be sure to set FILAMENT_RUNOUT_DISTANCE_MM
+      // large enough to avoid false positives.)
+      //#define FILAMENT_MOTION_SENSOR
+    #endif
+  #endif
+
+  #if ENABLED(EZNEO_220)
+    #define RGB_LIGHTS
+    #define NEOPIXEL_LED
+    #if ENABLED(NEOPIXEL_LED)
+      #define NEOPIXEL_TYPE   NEO_GRB // NEO_GRBW / NEO_GRB - four/three channel driver type (defined in Adafruit_NeoPixel.h)
+      #ifndef NEOPIXEL_PIN
+        #define NEOPIXEL_PIN    PA8    // LED driving pin
+      #endif
+      #define NEOPIXEL_PIXELS 15       // Number of LEDs in the strip. (Longest strip when NEOPIXEL2_SEPARATE is disabled.)
+      #define NEOPIXEL_IS_SEQUENTIAL   // Sequential display for temperature change - LED by LED. Disable to change all LEDs at once.
+      #define NEOPIXEL_BRIGHTNESS 255  // Initial brightness (0-255)
+      #define NEOPIXEL_STARTUP_TEST  // Cycle through colors at startup
+    #endif
+
+    /**
+     * Printer Event LEDs
+     *
+     * During printing, the LEDs will reflect the printer status:
+     *
+     *  - Gradually change from blue to violet as the heated bed gets to target temp
+     *  - Gradually change from violet to red as the hotend gets to temperature
+     *  - Change to white to illuminate work surface
+     *  - Change to green once print has finished
+     *  - Turn off after the print has finished and the user has pushed a button
+     */
+    #if ANY(BLINKM, RGB_LED, RGBW_LED, PCA9632, PCA9533, NEOPIXEL_LED)
+      #define PRINTER_EVENT_LEDS
+    #endif
+  #endif
+  
+#endif
+//End EZBoard V2 SV06 Settings
 
 /*
  * All other settings are stored in the Configuration_backend.h and Configuration_speed.h files. Do not change unless you know what you are doing.

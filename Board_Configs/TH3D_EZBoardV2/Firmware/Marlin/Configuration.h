@@ -64,6 +64,7 @@
 //#define ENDER2_PRO_OEM_MICRO     //Ender 2 PRO Specific OEM Mount FOR MICRO SIZE
 //#define ENDER3_MAX_OEM           //Ender 3 MAX Specific OEM Mount
 //#define SV01_OEM_MOUNT           //Sovol SV01 OEM Mount
+//#define SV06_EZABL_OEM_MOUNT     //Sovol SV06 EZABL OEM Mount
 //#define CR10_VOLCANO             //TH3D CR-10 Volcano Mount 
 //#define CR10_V6HEAVYDUTY         //V6 Heavy Duty Mount
 //#define TM3DAERO                 //TM3D Aero Mount for V6
@@ -83,6 +84,9 @@
 // If you are using the stock BL Touch with a non-stock mount enable the CUSTOM_PROBE line above and enter the offsets below for the new mount.
 //#define SV03_EZABL
 //#define SV03_NOABL
+
+// SV06 EZABL Settings - If you are using the EZABL on this instead of the stock probe also uncomment the below line to set the EZABL settings
+//#define SV06_EZABL_INSTALLED
 
 // EZNeo Settings -----------------------------------------------------------
 // If you are using an EZNeo strip on your printer, uncomment the line for what strip you are using.
@@ -896,13 +900,22 @@
 
 //EZBoard V2 SV06 Settings
 #if ENABLED(SOVOL_SV06)
+  #if ENABLED(SV06_EZABL_INSTALLED)
+    #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+  #endif
   
-  #if DISABLED(CUSTOM_PROBE)
-    #define CUSTOM_PROBE
-    #define NOZZLE_TO_PROBE_OFFSET { 25, -25, 0 }
+  #if DISABLED(SV06_EZABL_INSTALLED)
+    #define USE_PROBE_FOR_Z_HOMING
+    #define Z_MIN_PROBE_PIN PA2
+
+    #ifndef CUSTOM_PROBE
+      #define CUSTOM_PROBE
+      #define NOZZLE_TO_PROBE_OFFSET { 25, -25, 0 }
+    #endif
+
     #ifndef CUSTOM_PRINTER_NAME
       #define CUSTOM_PRINTER_NAME
-      #define USER_PRINTER_NAME "SOVOL SV06"
+      #define USER_PRINTER_NAME "EZBoard SV06"
     #endif
   #endif
 
@@ -1023,9 +1036,6 @@
   #define Y_MAX_ENDSTOP_INVERTING false
   #define Z_MAX_ENDSTOP_INVERTING false
   #define Z_MIN_PROBE_ENDSTOP_INVERTING false
-  
-  #define USE_PROBE_FOR_Z_HOMING
-  #define Z_MIN_PROBE_PIN PA2
 
   #define X_DRIVER_TYPE  TMC2209
   #define Y_DRIVER_TYPE  TMC2209

@@ -367,7 +367,7 @@
   #if ENABLED(USE_EZABL_HOMEZ)
     #define USE_PROBE_FOR_Z_HOMING
   #endif
-  //#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+  
   #if ENABLED(CHIRON_OEM) || ENABLED(CUSTOM_PROBE)
     #define Z_MIN_PROBE_PIN 19 // Z+ Header on Chiron Board
     #define Z_MAX_PIN -1

@@ -6,7 +6,7 @@
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-#define UNIFIED_VERSION "TH3D UFW 2.60b"
+#define UNIFIED_VERSION "TH3D UFW 2.61"
 
 /**
  * ABL Probe Settings
@@ -14,6 +14,10 @@
 
 #if ENABLED(CUSTOM_PROBE)
   #define ABL_ENABLE
+#endif
+#if ENABLED(SV06_EZABL_OEM_MOUNT)
+  #define ABL_ENABLE
+  #define NOZZLE_TO_PROBE_OFFSET { 30, -28, 0 }
 #endif
 #if ENABLED(SPRITE_EXTRUDER_18MM_MOUNT)
   #define ABL_ENABLE
@@ -265,9 +269,13 @@
 #endif
 
 #if ENABLED(ABL_ENABLE)
+
+  #if DISABLED(CHIRON)
+    #define USE_PROBE_FOR_Z_HOMING
+  #endif
+  
   #if ENABLED(BD_SENSOR)
     #define I2C_BD_DELAY 20
-    #define USE_PROBE_FOR_Z_HOMING
     #define CUSTOM_MENU_MAIN
     #define CUSTOM_MENU_MAIN_TITLE "BDSensor"
     //#define CUSTOM_MENU_MAIN_SCRIPT_DONE "M117 BDSensor Done"
@@ -282,7 +290,7 @@
     #define MAIN_MENU_ITEM_2_CONFIRM
   #endif
 
-  #define ENABLE_LEVELING_FADE_HEIGHT
+  //#define ENABLE_LEVELING_FADE_HEIGHT // Disabling as it causes other issues
   #if ENABLED(ENABLE_LEVELING_FADE_HEIGHT)
     #define DEFAULT_LEVELING_FADE_HEIGHT 0 // (mm) Default fade height - Disable by default to prevent user issues
   #endif
@@ -339,7 +347,7 @@
     #define Z_MIN_PROBE_ENDSTOP_INVERTING false
     #undef Z_MIN_ENDSTOP_INVERTING
     #define Z_MIN_ENDSTOP_INVERTING false
-  #elif (ENABLED(CR10S_PRO_STOCK_ABL) && ENABLED(CR10S_PRO)) || ANY(ENDER3_S1, ENDER3_S1_PRO, ENDER3_S1_PLUS, SOVOL_SV06)
+  #elif (ENABLED(CR10S_PRO_STOCK_ABL) && ENABLED(CR10S_PRO)) || ANY(ENDER3_S1, ENDER3_S1_PRO, ENDER3_S1_PLUS) || (ENABLED(SOVOL_SV06) && DISABLED(SV06_EZABL_INSTALLED))
     //Ender 3 S1 J713 header for Z Endstop is reverse logic via hardware for some reason. Need to invert the EZABL logic for it here.
     #undef Z_MIN_PROBE_ENDSTOP_INVERTING
     #define Z_MIN_PROBE_ENDSTOP_INVERTING false

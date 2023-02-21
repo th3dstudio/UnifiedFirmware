@@ -77,8 +77,7 @@
 //#define ENDER5_PLUS_EZABL
 //#define ENDER5_PLUS_NOABL
 
-//===========================================================================
-// Sovol SV03 - ABL Settings
+// Sovol SV03 - ABL Settings ------------------------------------------------
 // By default the Sovol SV03 comes with a BL Touch. Enabling the SV03_EZABL or SV03_NOABL will override the BL Touch setting
 // If you are using the stock BL Touch with a non-stock mount enable the CUSTOM_PROBE line above and enter the offsets below for the new mount.
 //#define SV03_EZABL

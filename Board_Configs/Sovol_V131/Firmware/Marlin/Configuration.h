@@ -29,7 +29,11 @@
 //#define EZOUT_ENABLE
 
 // EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
+//#define SV06_EZABL_OEM_MOUNT
 //#define CUSTOM_PROBE
+
+// SV06 EZABL Settings - If you are using the EZABL on this instead of the stock probe also uncomment the below line to set the EZABL settings
+//#define SV06_EZABL_INSTALLED
 
 // EZNeo Settings
 // If you are using an EZNeo strip on your printer, uncomment the line for what strip you are using.
@@ -234,12 +238,8 @@
 #define LINEAR_ADVANCE_K 0
 
 // BL TOUCH ----------------------------------------
-// There are 2 ways to connect the BL Touch to the V4.2.X boards - All on the 5 pin header or using 3 pins on the 5 pin header + Z Endstop port
-// For details on these 2 types of connections refer to our help center article here: https://support.th3dstudio.com/helpcenter/creality-v4-2-2-v4-2-7-board-bl-touch-wiring-options/
 // If you want to use the BL-Touch uncomment the BLTOUCH line below and uncomment #define CUSTOM_PROBE above and then enter in your offsets above in the CUSTOM PROBE section.
 //#define BLTOUCH
-// If you are using the 5 pin header for all the BL Touch connections, uncomment the below line
-//#define BLTOUCH_ON_5PIN
 
 // MANUAL MESH LEVELING ----------------------------
 // If you want to use manual mesh leveling you can enable the below option. This is for generating a MANUAL mesh WITHOUT a probe.
@@ -271,16 +271,26 @@
 //SV06 V131 Board Settings
 #if ENABLED(SOVOL_SV06)
   #define SPEAKER_KILL
-  #if DISABLED(CUSTOM_PROBE)
-    #define CUSTOM_PROBE
-    #define NOZZLE_TO_PROBE_OFFSET { 25, -25, 0 }
+  #if ENABLED(SV06_EZABL_INSTALLED)
+    #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+  #endif
+
+  #if DISABLED(SV06_EZABL_INSTALLED)
+    #define USE_PROBE_FOR_Z_HOMING
+    #define Z_MIN_PROBE_PIN PB1
+
+    #ifndef CUSTOM_PROBE
+      #define CUSTOM_PROBE
+      #define NOZZLE_TO_PROBE_OFFSET { 25, -25, 0 }
+    #endif
+
     #ifndef CUSTOM_PRINTER_NAME
       #define CUSTOM_PRINTER_NAME
       #define USER_PRINTER_NAME "SOVOL SV06"
     #endif
   #endif
 
-	#define SERIAL_PORT 1
+  #define SERIAL_PORT 1
   
   #define PRINTER_VOLTAGE_24
 
@@ -390,9 +400,6 @@
   #define Z_MAX_ENDSTOP_INVERTING false
   #define Z_MIN_PROBE_ENDSTOP_INVERTING false
 
-  #define USE_PROBE_FOR_Z_HOMING
-  #define Z_MIN_PROBE_PIN PB1
-
   #define X_DRIVER_TYPE TMC2209
   #define Y_DRIVER_TYPE TMC2209
   #define Z_DRIVER_TYPE TMC2209
@@ -448,6 +455,7 @@
 
   #if ENABLED(EZOUT_ENABLE)
     #define FILAMENT_RUNOUT_SENSOR
+    #define DIRECT_DRIVE_PRINTER
   #endif
 
   #if ENABLED(FILAMENT_RUNOUT_SENSOR)

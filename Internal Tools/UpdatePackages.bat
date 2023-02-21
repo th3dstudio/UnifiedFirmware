@@ -1,12 +1,5 @@
 @echo off
 
-"C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\Unified2Zips\TH3D_Unified2_SovolV4X.zip"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_SovolV4X.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_SovolV4X.zip" "D:\Work\GitHub\UnifiedFirmware\Gcode Files"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_SovolV4X.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_SovolV4X.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_SovolV4X.zip" "D:\Work\GitHub\UnifiedFirmware\Board_Configs\SovolV4X\Firmware"
-
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\Unified2Zips\TH3D_Unified2_CrealityV4X.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_CrealityV4X.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_CrealityV4X.zip" "D:\Work\GitHub\UnifiedFirmware\Gcode Files"

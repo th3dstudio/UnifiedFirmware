@@ -6,7 +6,7 @@
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-#define UNIFIED_VERSION "TH3D UFW 2.61"
+#define UNIFIED_VERSION "TH3D UFW 2.62"
 
 /**
  * ABL Probe Settings
@@ -573,6 +573,7 @@
 #if ENABLED(FAN_FIX)
   #define FAN_SOFT_PWM
   #define SOFT_PWM_SCALE 1
+  #define SOFT_PWM_DITHER
 #else
   #define SOFT_PWM_SCALE 0
 #endif

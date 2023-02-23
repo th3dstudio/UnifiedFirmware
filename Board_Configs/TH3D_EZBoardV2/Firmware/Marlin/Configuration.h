@@ -44,7 +44,7 @@
 // Sovol Machines -----------------------------------------------------------
 //#define SOVOL_SV01
 //#define SOVOL_SV03
-//#define SOVOL_SV06 // See here for stock ABL sensor wiring: https://www.th3dstudio.com/product/dupont-jumper-wire-pack-120-pieces/
+//#define SOVOL_SV06 // See here for stock ABL sensor wiring: https://support.th3dstudio.com/helpcenter/ezboard-v2-sovol-sv06-stock-abl-sensor-wiring/
 
 // Filament Sensor Options --------------------------------------------------
 // If your machine came stock with a filament sensor it will be enabled automatically. If you replaced your stock sensor with our EZOut or you added an EZOut enabling the EZOUTV2_ENABLE will override the Creality sensor if your machine had one

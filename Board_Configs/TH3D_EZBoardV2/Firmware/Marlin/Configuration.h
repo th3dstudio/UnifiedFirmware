@@ -1047,12 +1047,12 @@
   #define Z_MOTOR_CURRENT 1000
   #define E_MOTOR_CURRENT 550
 
-  #if DISABLED(X_AXIS_SENSORLESS_HOMING)
+  #if X_SH_CALIBRATION == 8
     #undef X_SH_CALIBRATION
     #define X_SH_CALIBRATION 90
   #endif
   
-  #if DISABLED(Y_AXIS_SENSORLESS_HOMING)
+  #if Y_SH_CALIBRATION == 8
     #undef Y_SH_CALIBRATION
     #define Y_SH_CALIBRATION 75
   #endif
@@ -1063,9 +1063,9 @@
   #define E_ENABLE_ON 0
 
   #if ENABLED(REVERSE_X_MOTOR)
-    #define INVERT_X_DIR false
-  #else
     #define INVERT_X_DIR true
+  #else
+    #define INVERT_X_DIR false
   #endif
 
   #if ENABLED(REVERSE_Y_MOTOR)
@@ -1081,9 +1081,9 @@
   #endif
   
   #if ENABLED(REVERSE_E_MOTOR_DIRECTION)
-    #define INVERT_E0_DIR false
-  #else
     #define INVERT_E0_DIR true
+  #else
+    #define INVERT_E0_DIR false
   #endif
 
   #define INVERT_E1_DIR false
@@ -1116,6 +1116,7 @@
 
   #if ENABLED(EZOUTV2_ENABLE)
     #define FILAMENT_RUNOUT_SENSOR
+    #define DIRECT_DRIVE_PRINTER
   #endif
   
   #if ENABLED(FILAMENT_RUNOUT_SENSOR)

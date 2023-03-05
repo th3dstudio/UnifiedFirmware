@@ -270,7 +270,7 @@
 
 #if ENABLED(ABL_ENABLE)
 
-  #if DISABLED(CHIRON)
+  #if NONE(CHIRON, TINA2)
     #define USE_PROBE_FOR_Z_HOMING
   #endif
   

@@ -6,7 +6,7 @@
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-#define UNIFIED_VERSION "TH3D UFW 2.62"
+#define UNIFIED_VERSION "TH3D UFW 2.62a"
 
 /**
  * ABL Probe Settings
@@ -270,7 +270,7 @@
 
 #if ENABLED(ABL_ENABLE)
 
-  #if DISABLED(CHIRON)
+  #if NONE(CHIRON, TINA2)
     #define USE_PROBE_FOR_Z_HOMING
   #endif
   
@@ -325,7 +325,7 @@
   
   #define PROBING_MARGIN EZABL_PROBE_EDGE
   
-  #if ENABLED(FIX_MOUNTED_PROBE) && DISABLED(HEATERS_ON_DURING_PROBING)
+  #if DISABLED(HEATERS_ON_DURING_PROBING)
     #define PROBING_HEATERS_OFF   
   #endif
   

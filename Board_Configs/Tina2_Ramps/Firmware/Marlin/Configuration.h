@@ -334,7 +334,11 @@
 
   #define X_HOME_DIR 1
   #define Y_HOME_DIR -1
-  #define Z_HOME_DIR 1
+  #if ENABLED(USE_EZABL_HOMEZ)
+    #define Z_HOME_DIR -1
+  #else
+    #define Z_HOME_DIR 1
+  #endif
   
   #if NONE(V6_HOTEND, TH3D_HOTEND_THERMISTOR, KNOWN_HOTEND_THERMISTOR)
     #define TEMP_SENSOR_0 1

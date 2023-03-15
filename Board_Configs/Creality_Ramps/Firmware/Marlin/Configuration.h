@@ -372,6 +372,16 @@
 //CR-10S Pro V2 Stock BLTouch Setup
 #if ENABLED(CR10S_PRO_V2)
   #define CR10S_PRO
+  
+  #if ALL(CUSTOM_PROBE, BLTOUCH)
+    #define Z_MAX_PIN -1
+    #define Z_MIN_PROBE_PIN 19
+    #define BLTOUCH
+    #ifndef SERVO0_PIN
+      #define SERVO0_PIN 11
+    #endif
+  #endif
+
   #if NONE(CUSTOM_PROBE, CR10S_PRO_OEM, BLTOUCH)
     #define Z_MAX_PIN -1
     #define Z_MIN_PROBE_PIN 19

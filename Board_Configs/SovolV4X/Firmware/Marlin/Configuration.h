@@ -25,10 +25,14 @@
 //===========================================================================
 //#define SOVOL_SV01_PRO
 
+//------------------------------ Upgrade Settings -------------------------------
 // EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
-//#define SOVOL_SV01_PRO
+//#define SV01_PRO_OEM_MOUNT
 //#define SPRITE_EXTRUDER_18MM_MOUNT // Mounts to the stock CRTouch bracket
 //#define CUSTOM_PROBE
+
+// SV01 Pro EZABL Settings - If you are using the EZABL on this instead of the stock probe also uncomment the below line to set the EZABL settings
+//#define SV01_PRO_EZABL_INSTALLED
 
 // EZNeo Settings
 // If you are using an EZNeo strip on your printer, uncomment the line for what strip you are using.
@@ -285,7 +289,26 @@
  
 //SV01 PRO V422 Board Settings
 #if ENABLED(SOVOL_SV01_PRO)
-	#define SERIAL_PORT 1
+  #if ENABLED(SV01_PRO_EZABL_INSTALLED)
+    #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+  #endif
+
+  #if DISABLED(SV01_PRO_EZABL_INSTALLED)
+    #define BLTOUCH
+    #define BLTOUCH_ON_5PIN
+
+    #ifndef CUSTOM_PROBE
+      #define CUSTOM_PROBE
+      #define NOZZLE_TO_PROBE_OFFSET { 38, 15, 0 }
+    #endif
+
+    #ifndef CUSTOM_PRINTER_NAME
+      #define CUSTOM_PRINTER_NAME
+      #define USER_PRINTER_NAME "SOVOL SV01 Pro"
+    #endif
+  #endif
+
+  #define SERIAL_PORT 1
   
   #define PRINTER_VOLTAGE_24
 
@@ -303,42 +326,34 @@
     #define MOTHERBOARD BOARD_CREALITY_V422
   #endif
 
-  #if ENABLED(ENDER6_LDO_XY)
-    #if ENABLED(CUSTOM_ESTEPS)
-      #define DEFAULT_AXIS_STEPS_PER_UNIT   { 160, 160, 400, CUSTOM_ESTEPS_VALUE }
-    #else
-      #define DEFAULT_AXIS_STEPS_PER_UNIT   { 160, 160, 400, 140 }
-    #endif
+  #if ENABLED(CUSTOM_ESTEPS)
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS_VALUE }
   #else
-    #if ENABLED(CUSTOM_ESTEPS)
-      #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS_VALUE }
-    #else
-      #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 140 }
-    #endif
-  #endif  
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 415 }
+  #endif
 
   #define SHOW_BOOTSCREEN
 
   #define EXTRUDERS 1
 
-  #define X_BED_SIZE 250
-  #define Y_BED_SIZE 250
-  #define Z_MAX_POS 400
+  #define X_BED_SIZE 290
+  #define Y_BED_SIZE 240
+  #define Z_MAX_POS 300
   
   #if ENABLED(HOME_ADJUST)
     #define X_MIN_POS X_HOME_LOCATION
     #define Y_MIN_POS Y_HOME_LOCATION
   #else
-    #define X_MIN_POS 0
+    #define X_MIN_POS -12
     #define Y_MIN_POS 0
   #endif
 
-  #define USE_XMAX_PLUG
-  #define USE_YMAX_PLUG
+  #define USE_XMIN_PLUG
+  #define USE_YMIN_PLUG
   #define USE_ZMIN_PLUG
 
-  #define X_HOME_DIR 1
-  #define Y_HOME_DIR 1
+  #define X_HOME_DIR -1
+  #define Y_HOME_DIR -1
   #define Z_HOME_DIR -1
 
   #if NONE(V6_HOTEND, TH3D_HOTEND_THERMISTOR, KNOWN_HOTEND_THERMISTOR)
@@ -380,13 +395,17 @@
   #define TEMP_SENSOR_PROBE 0
   #define TEMP_SENSOR_CHAMBER 0
 
-  #define DEFAULT_Kp 28.72
-  #define DEFAULT_Ki 2.62
-  #define DEFAULT_Kd 78.81
-  
-  #define DEFAULT_bedKp 462.10
-  #define DEFAULT_bedKi 85.47
-  #define DEFAULT_bedKd 624.59
+  #ifndef DEFAULT_Kp
+    #define DEFAULT_Kp  23.81
+    #define DEFAULT_Ki   1.93
+    #define DEFAULT_Kd  73.64
+  #endif
+
+  #ifndef DEFAULT_bedKp
+    #define DEFAULT_bedKp 110.38
+    #define DEFAULT_bedKi 6.12
+    #define DEFAULT_bedKd 497.3
+  #endif
 
   #define ENDSTOPPULLUPS
 
@@ -404,24 +423,15 @@
     #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
   #endif
 
-  #if ENABLED(ENDER6_TMCXY_A4988ZE_DRIVERS)
-    #define X_DRIVER_TYPE TMC2208_STANDALONE
-    #define Y_DRIVER_TYPE TMC2208_STANDALONE
-    #define Z_DRIVER_TYPE A4988
-    #define E0_DRIVER_TYPE A4988
-  #else
-    #define X_DRIVER_TYPE TMC2208_STANDALONE
-    #define Y_DRIVER_TYPE TMC2208_STANDALONE
-    #define Z_DRIVER_TYPE TMC2208_STANDALONE
-    #define E0_DRIVER_TYPE TMC2208_STANDALONE
-  #endif
+  #define X_DRIVER_TYPE TMC2208_STANDALONE
+  #define Y_DRIVER_TYPE TMC2208_STANDALONE
+  #define Z_DRIVER_TYPE TMC2208_STANDALONE
+  #define E0_DRIVER_TYPE TMC2208_STANDALONE
 
   #define X_ENABLE_ON 0
   #define Y_ENABLE_ON 0
   #define Z_ENABLE_ON 0
   #define E_ENABLE_ON 0
-
-  #define COREYX
   
   #if ENABLED(REVERSE_X_MOTOR)
     #define INVERT_X_DIR true
@@ -436,15 +446,15 @@
   #endif
   
   #if ENABLED(REVERSE_Z_MOTOR)
-    #define INVERT_Z_DIR true
-  #else
     #define INVERT_Z_DIR false
+  #else
+    #define INVERT_Z_DIR true
   #endif
 
   #if ENABLED(REVERSE_E_MOTOR_DIRECTION)
-    #define INVERT_E0_DIR false
-  #else
     #define INVERT_E0_DIR true
+  #else
+    #define INVERT_E0_DIR false
   #endif
   
   #define INVERT_E1_DIR false
@@ -460,7 +470,7 @@
 
   #if ANY(EZOUT_ENABLE, EZOUT_ENABLE_J1)
     #define FILAMENT_RUNOUT_SENSOR
-  #elif DISABLED(ENDER6_NOFILAMENT_SENSOR)
+  #elif DISABLED(SV01_PRO_NOFILAMENT_SENSOR)
     #define FILAMENT_RUNOUT_SENSOR
   #endif
 

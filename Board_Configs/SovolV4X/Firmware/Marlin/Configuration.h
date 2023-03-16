@@ -27,7 +27,7 @@
 
 //------------------------------ Upgrade Settings -------------------------------
 // EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
-//#define SV01_PRO_OEM_MOUNT
+//#define SV01_PRO_EZABL_OEM_MOUNT
 //#define SPRITE_EXTRUDER_18MM_MOUNT // Mounts to the stock CRTouch bracket
 //#define CUSTOM_PROBE
 
@@ -350,7 +350,9 @@
 
   #define USE_XMIN_PLUG
   #define USE_YMIN_PLUG
-  #define USE_ZMIN_PLUG
+  #if DISABLED(BLTOUCH_ON_5PIN)
+    #define USE_ZMIN_PLUG
+  #endif
 
   #define X_HOME_DIR -1
   #define Y_HOME_DIR -1

@@ -24,12 +24,6 @@
 // ******************   SOVOL PRINTERS W/V4.X.X BOARD   *********************
 //===========================================================================
 //#define SOVOL_SV01_PRO
-//#define ENDER3_NEO
-//#define ENDER3_MAX
-//#define ENDER3_MAX_NEO
-//#define ENDER3_V2
-//#define ENDER3_V2_NEO
-//#define ENDER5
 
 // EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
 //#define SOVOL_SV01_PRO

@@ -467,7 +467,7 @@ namespace Language_en {
   LSTR MSG_POWER                          = _UxGT("Power");
   LSTR MSG_START_PRINT                    = _UxGT("Start Print");
   LSTR MSG_BUTTON_NEXT                    = _UxGT("Next");
-  LSTR MSG_BUTTON_INIT                    = _UxGT("Init");
+  LSTR MSG_BUTTON_INIT                    = _UxGT("Reset");
   LSTR MSG_BUTTON_STOP                    = _UxGT("Stop");
   LSTR MSG_BUTTON_PRINT                   = _UxGT("Print");
   LSTR MSG_BUTTON_RESET                   = _UxGT("Reset");

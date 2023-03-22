@@ -1,0 +1,1 @@
+This replaces the stock CRTouch Mount and uses the stock screws.

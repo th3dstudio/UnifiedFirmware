@@ -6,7 +6,7 @@
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-#define UNIFIED_VERSION "TH3D UFW 2.63"
+#define UNIFIED_VERSION "TH3D UFW 2.64"
 
 /**
  * ABL Probe Settings
@@ -17,7 +17,11 @@
 #endif
 #if ENABLED(SV01_PRO_EZABL_OEM_MOUNT)
   #define ABL_ENABLE
-  #define NOZZLE_TO_PROBE_OFFSET { 0, 0, 0 } //NOT DONE
+  #define NOZZLE_TO_PROBE_OFFSET { 43, 5, 0 }
+#endif
+#if ENABLED(SV01_PRO_EZABL_MICRO_OEM_MOUNT)
+  #define ABL_ENABLE
+  #define NOZZLE_TO_PROBE_OFFSET { 38, 10, 0 }
 #endif
 #if ENABLED(SV06_EZABL_OEM_MOUNT)
   #define ABL_ENABLE

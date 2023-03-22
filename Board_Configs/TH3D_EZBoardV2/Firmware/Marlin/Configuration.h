@@ -44,7 +44,8 @@
 // Sovol Machines -----------------------------------------------------------
 //#define SOVOL_SV01
 //#define SOVOL_SV03
-//#define SOVOL_SV06 // See here for stock ABL sensor wiring: https://support.th3dstudio.com/helpcenter/ezboard-v2-sovol-sv06-stock-abl-sensor-wiring/
+//#define SOVOL_SV06         // See here for stock ABL sensor wiring: https://support.th3dstudio.com/helpcenter/ezboard-v2-sovol-sv06-stock-abl-sensor-wiring/
+//#define SOVOL_SV01_PRO     // See here for stock CRTouch sensor wiring: https://support.th3dstudio.com/helpcenter/ezboard-v2-sovol-sv01-pro-stock-abl-sensor-wiring/
 
 // Filament Sensor Options --------------------------------------------------
 // If your machine came stock with a filament sensor it will be enabled automatically. If you replaced your stock sensor with our EZOut or you added an EZOut enabling the EZOUTV2_ENABLE will override the Creality sensor if your machine had one
@@ -57,27 +58,32 @@
 
 // EZABL Probe Mounts -------------------------------------------------------
 // Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
-//#define CR10_OEM                 //OEM Mount for Creality Machines (Ender3/Ender5/Ender5Plus/CR-10/CR-10S/CR-20)
-//#define ENDER2_OEM               //Ender 2 Specific OEM Mount
-//#define ENDER2_V6                //Ender 2 Specific V6 Mount
-//#define ENDER2_PRO_OEM           //Ender 2 PRO Specific OEM Mount
-//#define ENDER2_PRO_OEM_MICRO     //Ender 2 PRO Specific OEM Mount FOR MICRO SIZE
-//#define ENDER3_MAX_OEM           //Ender 3 MAX Specific OEM Mount
-//#define SV01_OEM_MOUNT           //Sovol SV01 OEM Mount
-//#define SV06_EZABL_OEM_MOUNT     //Sovol SV06 EZABL OEM Mount
-//#define CR10_VOLCANO             //TH3D CR-10 Volcano Mount 
-//#define CR10_V6HEAVYDUTY         //V6 Heavy Duty Mount
-//#define TM3DAERO                 //TM3D Aero Mount for V6
-//#define TM3DAERO_EXTENDED        //TM3D Arto Mount for Volcano
-//#define PETSFANG                 //This is the RIGHT mounted version
-//#define SPRITE_EXTRUDER_18MM_MOUNT // Mounts to the stock CRTouch bracket
-//#define CUSTOM_PROBE             //For any other probe mount (also used for BL Touch), Enter offsets below
+//#define CR10_OEM                         //OEM Mount for Creality Machines (Ender3/Ender5/Ender5Plus/CR-10/CR-10S/CR-20)
+//#define ENDER2_OEM                       //Ender 2 Specific OEM Mount
+//#define ENDER2_V6                        //Ender 2 Specific V6 Mount
+//#define ENDER2_PRO_OEM                   //Ender 2 PRO Specific OEM Mount
+//#define ENDER2_PRO_OEM_MICRO             //Ender 2 PRO Specific OEM Mount FOR MICRO SIZE
+//#define ENDER3_MAX_OEM                   //Ender 3 MAX Specific OEM Mount
+//#define SV01_OEM_MOUNT                   //Sovol SV01 OEM Mount
+//#define SV01_PRO_EZABL_OEM_MOUNT         //For our 18mm Sensors
+//#define SV01_PRO_EZABL_MICRO_OEM_MOUNT   //For our 8mm Sensors
+//#define SV06_EZABL_OEM_MOUNT             //Sovol SV06 EZABL OEM Mount
+//#define CR10_VOLCANO                     //TH3D CR-10 Volcano Mount 
+//#define CR10_V6HEAVYDUTY                 //V6 Heavy Duty Mount
+//#define TM3DAERO                         //TM3D Aero Mount for V6
+//#define TM3DAERO_EXTENDED                //TM3D Arto Mount for Volcano
+//#define PETSFANG                         //This is the RIGHT mounted version
+//#define SPRITE_EXTRUDER_18MM_MOUNT       // Mounts to the stock CRTouch bracket
+//#define CUSTOM_PROBE                     //For any other probe mount (also used for BL Touch), Enter offsets below
 
 // Ender 5 Plus ONLY ABL Settings -------------------------------------------
 // By default the Ender 5 Plus comes with a BL Touch. Enabling the ENDER5_PLUS_EZABL or ENDER5_PLUS_NOABL will override the BL Touch setting
 // If you are using the stock BL Touch with a non-stock mount enable the CUSTOM_PROBE line above and enter the offsets below for the new mount.
 //#define ENDER5_PLUS_EZABL
 //#define ENDER5_PLUS_NOABL
+
+// SV01 Pro EZABL Settings - If you are using the EZABL on this instead of the stock probe also uncomment the below line to set the EZABL settings
+//#define SV01_PRO_EZABL_INSTALLED
 
 // Sovol SV03 - ABL Settings ------------------------------------------------
 // By default the Sovol SV03 comes with a BL Touch. Enabling the SV03_EZABL or SV03_NOABL will override the BL Touch setting
@@ -123,7 +129,7 @@
 // below line. However, if you get lost steps and inconsistent extrusion then disable this option.
 //#define STEALTHCHOP_E
 
-// Fix for Older EZABL Kits
+// Fix for EZABL Kits
 // If you are having issues with the EZABL not triggering when connected to the Z-Stop header you can use the servo header pins.
 //#define V3_EZABL_ON_SERVO
 
@@ -405,12 +411,29 @@
   #define ENDSTOPPULLUP_YMAX
 #endif
 
+#if ENABLED(SOVOL_SV01_PRO)
+  #if DISABLED(SV01_PRO_EZABL_INSTALLED)
+    #define BLTOUCH
+    #define SERVO0_PIN PA2
+
+    #ifndef CUSTOM_PROBE
+      #define CUSTOM_PROBE
+      #define NOZZLE_TO_PROBE_OFFSET { 38, 15, 0 }
+    #endif
+
+    #ifndef CUSTOM_PRINTER_NAME
+      #define CUSTOM_PRINTER_NAME
+      #define USER_PRINTER_NAME "SOVOL SV01 Pro"
+    #endif
+  #endif
+#endif
+
 /**
  * Machine Configuration Settings
  */
  
 //EZBoard V2 based Machine Settings
-#if ANY(CR10, CR10_MINI, CR10_S4, CR10_S5, CR10S, CR10S_MINI, CR10S_S4, CR10S_S5, ENDER2, ENDER2_PRO, ENDER3, ENDER5, ENDER5_PLUS, SOVOL_SV01, SOVOL_SV03, CR20, ENDER3_MAX)
+#if ANY(CR10, CR10_MINI, CR10_S4, CR10_S5, CR10S, CR10S_MINI, CR10S_S4, CR10S_S5, ENDER2, ENDER2_PRO, ENDER3, ENDER5, ENDER5_PLUS, SOVOL_SV01, SOVOL_SV01_PRO, SOVOL_SV03, CR20, ENDER3_MAX)
 
   #define SERIAL_PORT -1
   #define BAUDRATE 115200
@@ -427,11 +450,11 @@
     #define REVERSE_ENCODER_DIRECTION
   #endif
   
-  #if ENABLED(CR10S) || ENABLED(CR10S_S4) || ENABLED(CR10S_S5) || ENABLED(SOVOL_SV01) || ENABLED(SOVOL_SV03) || ENABLED(ENDER3_MAX)
+  #if ENABLED(CR10S) || ENABLED(CR10S_S4) || ENABLED(CR10S_S5) || ENABLED(SOVOL_SV01) || ENABLED(SOVOL_SV01_PRO) || ENABLED(SOVOL_SV03) || ENABLED(ENDER3_MAX)
     //S models + SV01 assume that you have 2x motors, filament sensor, and are using the dual adapter.
     //So lets up the VREF on Z and reverse the Z axis when using the dual motor adapter and enable the filament sensor
 	
-    #if ENABLED(CR10S) || ENABLED(CR10S_S4) || ENABLED(CR10S_S5) || ENABLED(SOVOL_SV01) || ENABLED(SOVOL_SV03)
+    #if ENABLED(CR10S) || ENABLED(CR10S_S4) || ENABLED(CR10S_S5) || ENABLED(SOVOL_SV01) || ENABLED(SOVOL_SV01_PRO) || ENABLED(SOVOL_SV03)
       #define DUAL_Z_MOTORS
     #endif
 
@@ -467,6 +490,8 @@
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS_VALUE }
   #elif ENABLED(SOVOL_SV01) || ENABLED(SOVOL_SV03)
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 402 }
+  #elif ENABLED(SOVOL_SV01_PRO)
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 415 }
   #else
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
   #endif
@@ -597,6 +622,13 @@
     #define MOUNTED_FILAMENT_SENSOR
   #endif
 
+  #if ENABLED(SOVOL_SV01_PRO)
+    #define X_BED_SIZE 290
+    #define Y_BED_SIZE 240
+    #define Z_MAX_POS 300
+    #define PRINTER_VOLTAGE_24
+  #endif
+
   #if ENABLED(SOVOL_SV01)
     #define X_BED_SIZE 280
     #define Y_BED_SIZE 240
@@ -635,6 +667,9 @@
   #elif ENABLED(ENDER2_PRO)
     #define X_MIN_POS -20
     #define Y_MIN_POS -4
+  #elif ENABLED(SOVOL_SV01_PRO)
+    #define X_MIN_POS -12
+    #define Y_MIN_POS 0
   #else
     #define X_MIN_POS 0
     #define Y_MIN_POS 0
@@ -751,7 +786,7 @@
     #endif
   #endif
 
-  #if ANY(ENDER5, ENDER5_PLUS, ENDER2_PRO)
+  #if ANY(ENDER5, ENDER5_PLUS, ENDER2_PRO, SOVOL_SV01_PRO)
     #if ENABLED(REVERSE_Z_MOTOR)
       #define INVERT_Z_DIR false
     #else

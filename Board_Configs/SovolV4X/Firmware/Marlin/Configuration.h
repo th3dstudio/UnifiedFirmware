@@ -27,7 +27,8 @@
 
 //------------------------------ Upgrade Settings -------------------------------
 // EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
-//#define SV01_PRO_EZABL_OEM_MOUNT
+//#define SV01_PRO_EZABL_OEM_MOUNT //For our 18mm Sensors
+//#define SV01_PRO_EZABL_MICRO_OEM_MOUNT //For our 8mm Sensors
 //#define SPRITE_EXTRUDER_18MM_MOUNT // Mounts to the stock CRTouch bracket
 //#define CUSTOM_PROBE
 

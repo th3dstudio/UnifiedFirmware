@@ -1082,9 +1082,17 @@
   #define Z_MOTOR_CURRENT 1000
   #define E_MOTOR_CURRENT 550
 
+  #ifndef X_SH_CALIBRATION
+    #define X_SH_CALIBRATION 90
+  #endif
+
   #if X_SH_CALIBRATION == 8
     #undef X_SH_CALIBRATION
     #define X_SH_CALIBRATION 90
+  #endif
+
+  #ifndef Y_SH_CALIBRATION
+    #define Y_SH_CALIBRATION 75
   #endif
   
   #if Y_SH_CALIBRATION == 8

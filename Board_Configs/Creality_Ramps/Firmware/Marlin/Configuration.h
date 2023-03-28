@@ -62,7 +62,12 @@
 
 // Filament Sensor - EZOut Kits
 // If you are using our EZOut filament sensor kit on your machine uncomment the below line.
+// This board only works with this version of our sensor kit: https://www.th3dstudio.com/product/ezout-filament-sensor-kit-standard/
+// If you bought just the sensor from us and not the kit with the adapter PCB shown at the above link, you will need to swap the red an white wires at one end of the plug to use it with these boards.
+// Failure to use our sensor with the EZOut adapter PCB OR without swapping the red and white wires will result in a short to ground.
+// Connect the EZOut sensor kit (or sensor only with wiring changed as per above) to the "X+" port and uncomment the below line to enable the filament sensor.
 //#define EZOUT_ENABLE
+//
 // DUAL EXTRUSION: The firmware assumes you have an EZOut sensor for each extruder (connect E1 sensor to X+ and E2 sensor to Y+). Mixing sensor brands is not supported.
 // If you need the EZOut Filament sensor kit for dual extrusion you can get it here as a package: https://www.th3dstudio.com/product/ezout-std-x2/
 

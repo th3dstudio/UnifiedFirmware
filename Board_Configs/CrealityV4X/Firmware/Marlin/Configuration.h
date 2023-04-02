@@ -263,6 +263,13 @@
 //#define REVERSE_Y_MOTOR
 //#define REVERSE_Z_MOTOR
 
+// Bed and Z Height Adjustments
+// If you need to make changes to your X, Y, and/or Z size on your printer for whatever reason you can uncomment the custom size/height line
+// for whatever axis you need to make changes to and then replace the XXX with the new size in millimeters.
+//#define CUSTOM_X_BED_SIZE XXX
+//#define CUSTOM_Y_BED_SIZE XXX
+//#define CUSTOM_Z_HEIGHT XXX
+
 //===========================================================================
 //****************** COMMUNITY REQUESTED FEATURES ***************************
 //*** COMMUNITY REQUESTED FEATURES ARE ALL NOT SUPPORTED BY TH3D SUPPORT ****

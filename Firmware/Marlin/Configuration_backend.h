@@ -6,7 +6,7 @@
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-#define UNIFIED_VERSION "TH3D UFW 2.64a"
+#define UNIFIED_VERSION "TH3D UFW 2.65"
 
 /**
  * ABL Probe Settings
@@ -370,6 +370,25 @@
     #endif
   #endif
 
+#endif
+
+/**
+ * Config Overrides
+ */
+
+#ifdef CUSTOM_X_BED_SIZE
+  #undef X_BED_SIZE
+  #define X_BED_SIZE CUSTOM_X_BED_SIZE
+#endif
+
+#ifdef CUSTOM_Y_BED_SIZE
+  #undef Y_BED_SIZE
+  #define Y_BED_SIZE CUSTOM_Y_BED_SIZE
+#endif
+
+#ifdef CUSTOM_Z_HEIGHT
+  #undef Z_MAX_POS
+  #define Z_MAX_POS CUSTOM_Z_HEIGHT
 #endif
 
 /**

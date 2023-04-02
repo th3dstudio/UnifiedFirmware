@@ -174,6 +174,13 @@
 // If your printer is homing to the endstops hard uncomment this to change the homing speed/divisor to make it less aggressive.
 //#define SLOWER_HOMING
 
+// Bed and Z Height Adjustments
+// If you need to make changes to your X, Y, and/or Z size on your printer for whatever reason you can uncomment the custom size/height line
+// for whatever axis you need to make changes to and then replace the XXX with the new size in millimeters.
+//#define CUSTOM_X_BED_SIZE XXX
+//#define CUSTOM_Y_BED_SIZE XXX
+//#define CUSTOM_Z_HEIGHT XXX
+
 //===========================================================================
 //****************** COMMUNITY REQUESTED FEATURES ***************************
 //*** COMMUNITY REQUESTED FEATURES ARE ALL NOT SUPPORTED BY TH3D SUPPORT ****

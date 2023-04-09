@@ -37,6 +37,7 @@
 //#define ENDER3_PRO
 //#define ENDER3_MAX
 //#define ENDER5
+//#define ENDER5_PRO
 //#define ENDER5_PLUS
 
 // Other Machines -----------------------------------------------------------
@@ -378,6 +379,11 @@
 //Set Ender 3 Pro Machine Setting
 #if ENABLED(ENDER3_PRO)
   #define ENDER3
+#endif
+
+//Set Ender 5 Pro Machine Setting
+#if ENABLED(ENDER5_PRO)
+  #define ENDER5
 #endif
 
 /**

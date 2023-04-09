@@ -463,6 +463,8 @@
   #define DISABLE_ENDSTOP_NOISE_FILTERING
   #define ENDSTOPPULLUP_XMIN
   #define ENDSTOPPULLUP_XMAX
+  #undef  X_ENDSTOP_LOGIC
+  #define X_ENDSTOP_LOGIC false
 #endif
 
 #if ENABLED(Y_AXIS_SENSORLESS_HOMING)
@@ -471,6 +473,8 @@
   #endif
   #define ENDSTOPPULLUP_YMIN
   #define ENDSTOPPULLUP_YMAX
+  #undef  Y_ENDSTOP_LOGIC
+  #define Y_ENDSTOP_LOGIC false
 #endif
 
 //EZBoard V2 DIY based Machine Settings

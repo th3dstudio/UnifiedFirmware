@@ -34,6 +34,7 @@
 //#define ENDER2
 //#define ENDER2_PRO     //Requires Motor Adapter Cable from TH3D due to stock connections using 5 pins
 //#define ENDER3
+//#define ENDER3_PRO
 //#define ENDER3_MAX
 //#define ENDER5
 //#define ENDER5_PLUS
@@ -373,6 +374,11 @@
  * ****************************DO NOT TOUCH ANYTHING BELOW THIS COMMENT**************************
  * Core machine settings are below. Do NOT modify these unless you understand what you are doing.
  */
+ 
+//Set Ender 3 Pro Machine Setting
+#if ENABLED(ENDER3_PRO)
+  #define ENDER3
+#endif
 
 /**
  * Machine Configuration Settings

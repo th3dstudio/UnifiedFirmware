@@ -25,6 +25,7 @@
 //===========================================================================
 //------------------------------ V4.2.2 Board -------------------------------
 //#define ENDER3
+//#define ENDER3_PRO
 //#define ENDER3_NEO
 //#define ENDER3_MAX
 //#define ENDER3_MAX_NEO
@@ -362,6 +363,11 @@
  * ****************************DO NOT TOUCH ANYTHING BELOW THIS COMMENT**************************
  * Core machine settings are below. Do NOT modify these unless you understand what you are doing.
  */
+ 
+//Set Ender 3 Pro Machine Setting
+#if ENABLED(ENDER3_PRO)
+  #define ENDER3
+#endif
  
 /**
  * Sanity Checks

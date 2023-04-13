@@ -3053,14 +3053,35 @@
     #endif
   #endif
 
-  #if AXIS_IS_TMC_CONFIG(Z2)
-    #define Z2_CURRENT      800
-    #define Z2_CURRENT_HOME Z2_CURRENT
-    #define Z2_MICROSTEPS    Z_MICROSTEPS
-    #define Z2_RSENSE         0.11
-    #define Z2_CHAIN_POS     -1
-    //#define Z2_INTERPOLATE true
-    //#define Z2_HOLD_MULTIPLIER 0.5
+  #if ENABLED(DIY_TMCBOARD)
+    #if AXIS_IS_TMC_CONFIG(Z2)
+      #if ENABLED(DUAL_Z_MOTORS)
+        #define Z2_CURRENT     1000
+      #elif Z_MOTOR_CURRENT > 0
+        #define Z2_CURRENT Z_MOTOR_CURRENT
+      #else
+        #define Z2_CURRENT     700
+      #endif
+
+      #define Z2_CURRENT_HOME Z2_CURRENT
+      #define Z2_MICROSTEPS Z_MICROSTEPS
+      #define Z2_CURRENT_HOME  Z2_CURRENT
+      #define Z2_MICROSTEPS    Z_MICROSTEPS
+      #define Z2_RSENSE         0.11
+      #define Z2_CHAIN_POS     -1
+      //#define Z2_INTERPOLATE true
+      //#define Z2_HOLD_MULTIPLIER 0.5
+    #endif
+  #else
+    #if AXIS_IS_TMC_CONFIG(Z2)
+      #define Z2_CURRENT      800
+      #define Z2_CURRENT_HOME Z2_CURRENT
+      #define Z2_MICROSTEPS    Z_MICROSTEPS
+      #define Z2_RSENSE         0.11
+      #define Z2_CHAIN_POS     -1
+      //#define Z2_INTERPOLATE true
+      //#define Z2_HOLD_MULTIPLIER 0.5
+    #endif
   #endif
 
   #if AXIS_IS_TMC_CONFIG(Z3)
@@ -4217,31 +4238,33 @@
  * User-defined buttons to run custom G-code.
  * Up to 25 may be defined.
  */
-//#define CUSTOM_USER_BUTTONS
+#ifdef LDO_FILAMENT_UNLOAD_PIN
+  #define CUSTOM_USER_BUTTONS
+#endif
 #if ENABLED(CUSTOM_USER_BUTTONS)
-  //#define BUTTON1_PIN -1
+  #define BUTTON1_PIN LDO_FILAMENT_UNLOAD_PIN
   #if PIN_EXISTS(BUTTON1)
-    #define BUTTON1_HIT_STATE     LOW       // State of the triggered button. NC=LOW. NO=HIGH.
-    #define BUTTON1_WHEN_PRINTING false     // Button allowed to trigger during printing?
-    #define BUTTON1_GCODE         "G28"
-    #define BUTTON1_DESC          "Homing"  // Optional string to set the LCD status
+    #define BUTTON1_HIT_STATE     HIGH       // State of the triggered button. NC=LOW. NO=HIGH.
+    #define BUTTON1_WHEN_PRINTING true     // Button allowed to trigger during printing?
+    #define BUTTON1_GCODE         "M702 U100"
+    #define BUTTON1_DESC          "Unloading Filament"  // Optional string to set the LCD status
   #endif
 
-  //#define BUTTON2_PIN -1
-  #if PIN_EXISTS(BUTTON2)
-    #define BUTTON2_HIT_STATE     LOW
-    #define BUTTON2_WHEN_PRINTING false
-    #define BUTTON2_GCODE         "M140 S" STRINGIFY(PREHEAT_1_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_1_TEMP_HOTEND)
-    #define BUTTON2_DESC          "Preheat for " PREHEAT_1_LABEL
-  #endif
+  //#define BUTTON2_PIN FIL_RUNOUT_PIN
+  //#if PIN_EXISTS(BUTTON2)
+    //#define BUTTON2_HIT_STATE     HIGH
+    //#define BUTTON2_WHEN_PRINTING TRUE
+    //#define BUTTON2_GCODE         "M701 L100"
+    //#define BUTTON2_DESC          "Loading Filament"  // Optional string to set the LCD status
+  //#endif
 
   //#define BUTTON3_PIN -1
-  #if PIN_EXISTS(BUTTON3)
-    #define BUTTON3_HIT_STATE     LOW
-    #define BUTTON3_WHEN_PRINTING false
-    #define BUTTON3_GCODE         "M140 S" STRINGIFY(PREHEAT_2_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_2_TEMP_HOTEND)
-    #define BUTTON3_DESC          "Preheat for " PREHEAT_2_LABEL
-  #endif
+  //#if PIN_EXISTS(BUTTON3)
+    //#define BUTTON3_HIT_STATE     LOW
+    //#define BUTTON3_WHEN_PRINTING false
+    //#define BUTTON3_GCODE         "M140 S" STRINGIFY(PREHEAT_2_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_2_TEMP_HOTEND)
+    //#define BUTTON3_DESC          "Preheat for " PREHEAT_2_LABEL
+  //#endif
 #endif
 
 // @section host

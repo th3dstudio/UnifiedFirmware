@@ -6,7 +6,7 @@
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-#define UNIFIED_VERSION "TH3D UFW 2.65a"
+#define UNIFIED_VERSION "TH3D UFW 2.65b"
 
 /**
  * ABL Probe Settings
@@ -321,7 +321,7 @@
     #define FIX_MOUNTED_PROBE
   #endif
   
-  #if ENABLED(SLOWER_PROBE_MOVES) || ENABLED(PROBING_STEPPERS_OFF)
+  #if ANY(SLOWER_PROBE_MOVES, PROBING_STEPPERS_OFF)
     #define XY_PROBE_FEEDRATE (133*60)
   #else
     #if ENABLED(EZABL_SUPERFASTPROBE)
@@ -435,7 +435,11 @@
  */
 
 #define PREVENT_COLD_EXTRUSION
-#define EXTRUDE_MINTEMP 170
+#if ENABLED(LDO_FILAMENT_ENABLE)
+  #define EXTRUDE_MINTEMP 190
+#else
+  #define EXTRUDE_MINTEMP 170
+#endif
 
 #define DUMMY_THERMISTOR_998_VALUE 25
 #define DUMMY_THERMISTOR_999_VALUE 100
@@ -571,10 +575,10 @@
   #define HOMING_FEEDRATE_MM_M { (50*60), (50*60), (1*60) }
   #define Z_PROBE_FEEDRATE_FAST (4*60)
 #else
-  #if ENABLED(EZABL_SUPERFASTPROBE) && ENABLED(ABL_ENABLE) && DISABLED(BLTOUCH)
+  #if ALL(EZABL_SUPERFASTPROBE, ABL_ENABLE) && NONE(BLTOUCH)
     #define HOMING_FEEDRATE_MM_M { (50*60), (50*60), (15*60) }
     #define Z_PROBE_FEEDRATE_FAST (15*60)
-  #elif ENABLED(EZABL_FASTPROBE) && ENABLED(ABL_ENABLE)
+  #elif ALL(EZABL_FASTPROBE, ABL_ENABLE)
     #define HOMING_FEEDRATE_MM_M { (50*60), (50*60), (8*60) }
     #define Z_PROBE_FEEDRATE_FAST (8*60)
   #else
@@ -766,8 +770,9 @@
   #define SEGMENT_LEVELED_MOVES
   #define LEVELED_SEGMENT_LENGTH 5.0
 
-  #define GRID_MAX_POINTS_X 3
+  #define GRID_MAX_POINTS_X EZABL_POINTS
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
+  #define XY_PROBE_FEEDRATE (50*60)
   
   #if DISABLED(SPACE_SAVER)
     #define MESH_EDIT_MENU

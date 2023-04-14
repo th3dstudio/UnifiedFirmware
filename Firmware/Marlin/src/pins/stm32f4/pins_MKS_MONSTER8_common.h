@@ -105,11 +105,20 @@
   #define E1_CS_PIN                         PD4
 #endif
 
-#define E2_ENABLE_PIN                       PD3   // Driver5
-#define E2_STEP_PIN                         PD2
-#define E2_DIR_PIN                          PD1
-#ifndef E2_CS_PIN
-  #define E2_CS_PIN                         PD0
+#if ENABLED(MKS_MONSTER_8_V2_DUALZ_MOTORS) //TH3D Customizations
+  #define Z2_ENABLE_PIN                     PD3   // Driver5
+  #define Z2_STEP_PIN                       PD2
+  #define Z2_DIR_PIN                        PD1
+  #ifndef Z2_CS_PIN
+    #define Z2_CS_PIN                       PD0
+  #endif
+#else
+  #define E2_ENABLE_PIN                     PD3   // Driver5
+  #define E2_STEP_PIN                       PD2
+  #define E2_DIR_PIN                        PD1
+  #ifndef E2_CS_PIN
+    #define E2_CS_PIN                       PD0
+  #endif
 #endif
 
 #define E3_ENABLE_PIN                       PC8   // Driver6
@@ -164,8 +173,13 @@
   #define E1_SERIAL_TX_PIN                  PD4
   #define E1_SERIAL_RX_PIN      E1_SERIAL_TX_PIN
 
-  #define E2_SERIAL_TX_PIN                  PD0
-  #define E2_SERIAL_RX_PIN      E2_SERIAL_TX_PIN
+  #if ENABLED(MKS_MONSTER_8_V2_DUALZ_MOTORS) //TH3D Customizations
+    #define Z2_SERIAL_TX_PIN                PD0
+    #define Z2_SERIAL_RX_PIN    Z2_SERIAL_TX_PIN
+  #else
+    #define E2_SERIAL_TX_PIN                PD0
+    #define E2_SERIAL_RX_PIN    E2_SERIAL_TX_PIN
+  #endif
 
   #define E3_SERIAL_TX_PIN                  PD15
   #define E3_SERIAL_RX_PIN      E3_SERIAL_TX_PIN
@@ -310,9 +324,14 @@
 
 #elif HAS_WIRED_LCD
 
-  #define LCD_PINS_ENABLE            EXP1_03_PIN
-  #define LCD_PINS_RS                EXP1_04_PIN
-  #define LCD_BACKLIGHT_PIN                 -1
+  #if ENABLED(CR10_STOCKDISPLAY) //TH3D Customizations
+    #define LCD_PINS_RS                EXP1_07_PIN
+    #define LCD_PINS_ENABLE            EXP1_08_PIN
+  #else
+    #define LCD_PINS_ENABLE            EXP1_03_PIN
+    #define LCD_PINS_RS                EXP1_04_PIN
+    #define LCD_BACKLIGHT_PIN                 -1
+  #endif
 
   // MKS MINI12864 and MKS LCD12864B; If using MKS LCD12864A (Need to remove RPK2 resistor)
   #if ENABLED(MKS_MINI_12864)
@@ -343,7 +362,11 @@
 
   #else
 
-    #define LCD_PINS_D4              EXP1_05_PIN
+    #if ENABLED(CR10_STOCKDISPLAY) //TH3D Customizations
+      #define LCD_PINS_D4              EXP1_06_PIN
+    #else
+      #define LCD_PINS_D4              EXP1_05_PIN
+    #endif
     #if ENABLED(ULTIPANEL)
       #define LCD_PINS_D5            EXP1_06_PIN
       #define LCD_PINS_D6            EXP1_07_PIN
@@ -358,7 +381,12 @@
 
 #endif // HAS_WIRED_LCD
 
-#if ANY(TFT_COLOR_UI, TFT_CLASSIC_UI, HAS_WIRED_LCD)
+#if ENABLED(CR10_STOCKDISPLAY) //TH3D Customizations
+  #define BTN_EN1                    EXP1_03_PIN
+  #define BTN_EN2                    EXP1_05_PIN
+  #define BTN_ENC                    EXP1_02_PIN
+  #define BEEPER_PIN                 EXP1_01_PIN
+#elif ANY(TFT_COLOR_UI, TFT_CLASSIC_UI, HAS_WIRED_LCD)
   #define BEEPER_PIN                 EXP1_01_PIN
   #define BTN_EN1                    EXP2_03_PIN
   #define BTN_EN2                    EXP2_05_PIN

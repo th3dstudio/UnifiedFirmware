@@ -25,12 +25,14 @@
 //===========================================================================
 //------------------------------ V4.2.2 Board -------------------------------
 //#define ENDER3
+//#define ENDER3_PRO
 //#define ENDER3_NEO
 //#define ENDER3_MAX
 //#define ENDER3_MAX_NEO
 //#define ENDER3_V2
 //#define ENDER3_V2_NEO
 //#define ENDER5
+//#define ENDER5_PRO
 
 // V4.2.2 TMC Driver Settings - Uncomment if you have TMC drivers on a 4.2.2 Board to set driver timings
 //#define V42X_TMC220X_DRIVERS //"A" or "B" Code on SD Slot
@@ -41,6 +43,7 @@
 //------------------------------ V4.2.7 Board --------------------------------
 // All V4.2.7 Configurations have moved to their own package as this is an aftermarket board.
 // The firmware for this board is included when you purchase a V4.2.7 from TH3D or if you purchase the firmware from the TH3D website.
+// You can get the 4.2.7 Firmware here: https://www.th3dstudio.com/product/unified-2-firmware-for-creality-v4-2-7-silent-board/
 
 //------------------------------ V4.3.1 Board -------------------------------
 //#define ENDER6
@@ -362,6 +365,16 @@
  * ****************************DO NOT TOUCH ANYTHING BELOW THIS COMMENT**************************
  * Core machine settings are below. Do NOT modify these unless you understand what you are doing.
  */
+ 
+//Set Ender 3 Pro Machine Setting
+#if ENABLED(ENDER3_PRO)
+  #define ENDER3
+#endif
+
+//Set Ender 5 Pro Machine Setting
+#if ENABLED(ENDER5_PRO)
+  #define ENDER5
+#endif
  
 /**
  * Sanity Checks

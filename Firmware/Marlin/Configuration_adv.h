@@ -604,6 +604,18 @@
   #endif
 #endif
 
+#if ENABLED(MKS_MONSTER_8_V2_FAN1)
+  #define USE_CONTROLLER_FAN
+  #define CONTROLLER_FAN_PIN       PA1
+  #define CONTROLLERFAN_IDLE_TIME     60
+  #define CONTROLLERFAN_SPEED_MIN      0
+  #define CONTROLLERFAN_SPEED_ACTIVE 255
+  #define CONTROLLER_FAN_EDITABLE
+  #if ENABLED(CONTROLLER_FAN_EDITABLE)
+    #define CONTROLLER_FAN_MENU
+  #endif
+#endif
+
 #if ENABLED(MKS_SGENL_V2_HE1_FAN) && DISABLED(USE_CONTROLLER_FAN)
   #ifdef E1_STEPS_MM
     #if ENABLED(SINGLENOZZLE)
@@ -729,6 +741,8 @@
 #ifndef E0_AUTO_FAN_PIN
   #if ANY(TORNADO, TARANTULA_PRO, SIDEWINDER_X1, SUNLU_S8_SH_2560_BOARD) || (ENABLED(EZ300_OEM_MOUNT) && ENABLED(ARTILLERY_AL4))
     #define E0_AUTO_FAN_PIN 7
+  #elif ENABLED(MKS_MONSTER_8_V2_FAN2)
+    #define E0_AUTO_FAN_PIN PA0
   #elif ENABLED(MKS_SGENL_V2_FAN2)
     #define E0_AUTO_FAN_PIN P1_04
   #elif (ENABLED(WANHAO_I3MINI) || ENABLED(WANHAO_I3MINI_V2)) && ENABLED(WANHAO_I3MINI_E0_FAN)
@@ -1086,7 +1100,7 @@
  * Z Steppers Auto-Alignment
  * Add the G34 command to align multiple Z steppers using a bed probe.
  */
-#if ENABLED(CHIRON) && ENABLED(ABL_ENABLE)
+#if (ALL(CHIRON, ABL_ENABLE) || ALL(MKS_MONSTER_8_V2_DUALZ_MOTORS, ABL_ENABLE))
   #define Z_STEPPER_AUTO_ALIGN
 #endif
 #if ENABLED(Z_STEPPER_AUTO_ALIGN)
@@ -3039,14 +3053,35 @@
     #endif
   #endif
 
-  #if AXIS_IS_TMC_CONFIG(Z2)
-    #define Z2_CURRENT      800
-    #define Z2_CURRENT_HOME Z2_CURRENT
-    #define Z2_MICROSTEPS    Z_MICROSTEPS
-    #define Z2_RSENSE         0.11
-    #define Z2_CHAIN_POS     -1
-    //#define Z2_INTERPOLATE true
-    //#define Z2_HOLD_MULTIPLIER 0.5
+  #if ENABLED(DIY_TMCBOARD)
+    #if AXIS_IS_TMC_CONFIG(Z2)
+      #if ENABLED(DUAL_Z_MOTORS)
+        #define Z2_CURRENT     1000
+      #elif Z_MOTOR_CURRENT > 0
+        #define Z2_CURRENT Z_MOTOR_CURRENT
+      #else
+        #define Z2_CURRENT     700
+      #endif
+
+      #define Z2_CURRENT_HOME Z2_CURRENT
+      #define Z2_MICROSTEPS Z_MICROSTEPS
+      #define Z2_CURRENT_HOME  Z2_CURRENT
+      #define Z2_MICROSTEPS    Z_MICROSTEPS
+      #define Z2_RSENSE         0.11
+      #define Z2_CHAIN_POS     -1
+      //#define Z2_INTERPOLATE true
+      //#define Z2_HOLD_MULTIPLIER 0.5
+    #endif
+  #else
+    #if AXIS_IS_TMC_CONFIG(Z2)
+      #define Z2_CURRENT      800
+      #define Z2_CURRENT_HOME Z2_CURRENT
+      #define Z2_MICROSTEPS    Z_MICROSTEPS
+      #define Z2_RSENSE         0.11
+      #define Z2_CHAIN_POS     -1
+      //#define Z2_INTERPOLATE true
+      //#define Z2_HOLD_MULTIPLIER 0.5
+    #endif
   #endif
 
   #if AXIS_IS_TMC_CONFIG(Z3)
@@ -4203,31 +4238,33 @@
  * User-defined buttons to run custom G-code.
  * Up to 25 may be defined.
  */
-//#define CUSTOM_USER_BUTTONS
+#ifdef LDO_FILAMENT_UNLOAD_PIN
+  #define CUSTOM_USER_BUTTONS
+#endif
 #if ENABLED(CUSTOM_USER_BUTTONS)
-  //#define BUTTON1_PIN -1
+  #define BUTTON1_PIN LDO_FILAMENT_UNLOAD_PIN
   #if PIN_EXISTS(BUTTON1)
-    #define BUTTON1_HIT_STATE     LOW       // State of the triggered button. NC=LOW. NO=HIGH.
-    #define BUTTON1_WHEN_PRINTING false     // Button allowed to trigger during printing?
-    #define BUTTON1_GCODE         "G28"
-    #define BUTTON1_DESC          "Homing"  // Optional string to set the LCD status
+    #define BUTTON1_HIT_STATE     HIGH       // State of the triggered button. NC=LOW. NO=HIGH.
+    #define BUTTON1_WHEN_PRINTING true     // Button allowed to trigger during printing?
+    #define BUTTON1_GCODE         "M702 U100"
+    #define BUTTON1_DESC          "Unloading Filament"  // Optional string to set the LCD status
   #endif
 
-  //#define BUTTON2_PIN -1
-  #if PIN_EXISTS(BUTTON2)
-    #define BUTTON2_HIT_STATE     LOW
-    #define BUTTON2_WHEN_PRINTING false
-    #define BUTTON2_GCODE         "M140 S" STRINGIFY(PREHEAT_1_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_1_TEMP_HOTEND)
-    #define BUTTON2_DESC          "Preheat for " PREHEAT_1_LABEL
-  #endif
+  //#define BUTTON2_PIN FIL_RUNOUT_PIN
+  //#if PIN_EXISTS(BUTTON2)
+    //#define BUTTON2_HIT_STATE     HIGH
+    //#define BUTTON2_WHEN_PRINTING TRUE
+    //#define BUTTON2_GCODE         "M701 L100"
+    //#define BUTTON2_DESC          "Loading Filament"  // Optional string to set the LCD status
+  //#endif
 
   //#define BUTTON3_PIN -1
-  #if PIN_EXISTS(BUTTON3)
-    #define BUTTON3_HIT_STATE     LOW
-    #define BUTTON3_WHEN_PRINTING false
-    #define BUTTON3_GCODE         "M140 S" STRINGIFY(PREHEAT_2_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_2_TEMP_HOTEND)
-    #define BUTTON3_DESC          "Preheat for " PREHEAT_2_LABEL
-  #endif
+  //#if PIN_EXISTS(BUTTON3)
+    //#define BUTTON3_HIT_STATE     LOW
+    //#define BUTTON3_WHEN_PRINTING false
+    //#define BUTTON3_GCODE         "M140 S" STRINGIFY(PREHEAT_2_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_2_TEMP_HOTEND)
+    //#define BUTTON3_DESC          "Preheat for " PREHEAT_2_LABEL
+  //#endif
 #endif
 
 // @section host

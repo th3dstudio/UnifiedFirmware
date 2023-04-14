@@ -24,7 +24,9 @@
 //#define CR10_S5
 //#define ENDER2
 //#define ENDER3
+//#define ENDER3_PRO
 //#define ENDER5
+//#define ENDER5_PRO
 
 // If you are using our EZOut V1/V2 (connects to LCD header) filament sensor kit please follow the install guide
 // and then uncomment the #define EZOUT_ENABLE line below.
@@ -296,6 +298,16 @@
  * ****************************DO NOT TOUCH ANYTHING BELOW THIS COMMENT**************************
  * Core machine settings are below. Do NOT modify these unless you understand what you are doing.
  */
+ 
+//Set Ender 3 Pro Machine Setting
+#if ENABLED(ENDER3_PRO)
+  #define ENDER3
+#endif
+
+//Set Ender 5 Pro Machine Setting
+#if ENABLED(ENDER5_PRO)
+  #define ENDER5
+#endif
 
 /**
  * Automatic Optimizations

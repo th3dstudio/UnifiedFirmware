@@ -6,7 +6,7 @@
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-#define UNIFIED_VERSION "TH3D UFW 2.65a"
+#define UNIFIED_VERSION "TH3D UFW 2.65b"
 
 /**
  * ABL Probe Settings
@@ -321,7 +321,7 @@
     #define FIX_MOUNTED_PROBE
   #endif
   
-  #if ENABLED(SLOWER_PROBE_MOVES) || ENABLED(PROBING_STEPPERS_OFF)
+  #if ANY(SLOWER_PROBE_MOVES, PROBING_STEPPERS_OFF)
     #define XY_PROBE_FEEDRATE (133*60)
   #else
     #if ENABLED(EZABL_SUPERFASTPROBE)
@@ -770,8 +770,9 @@
   #define SEGMENT_LEVELED_MOVES
   #define LEVELED_SEGMENT_LENGTH 5.0
 
-  #define GRID_MAX_POINTS_X 3
+  #define GRID_MAX_POINTS_X EZABL_POINTS
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
+  #define XY_PROBE_FEEDRATE (50*60)
   
   #if DISABLED(SPACE_SAVER)
     #define MESH_EDIT_MENU

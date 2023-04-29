@@ -237,10 +237,12 @@
 
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_MKS_Monster_8_V2_DIY.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_MKS_Monster_8_V2_DIY.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_MKS_Monster_8_V2_DIY.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\MKS_Monster_8_V2_DIY\Board Mounts"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_MKS_Monster_8_V2_DIY.zip" "D:\Work\GitHub\UnifiedFirmware\Gcode Files"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_MKS_Monster_8_V2_DIY.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_MKS_Monster_8_V2_DIY.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_MKS_Monster_8_V2_DIY.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\MKS_Monster_8_V2_DIY\Firmware"
+
 
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_BTT_SKR_2_ALL_DIY.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_BTT_SKR_2_ALL_DIY.zip" "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_BTT_SKR_2_DIY.zip"

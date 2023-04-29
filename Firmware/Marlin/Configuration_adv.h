@@ -3330,8 +3330,13 @@
     #define E6_SLAVE_ADDRESS 0
     #define E7_SLAVE_ADDRESS 0
   #elif ENABLED(EZBOARD_V2)
-    #define  X_SLAVE_ADDRESS 0
-    #define  Y_SLAVE_ADDRESS 1
+    #if ENABLED(ENDER6)
+      #define  X_SLAVE_ADDRESS 1
+      #define  Y_SLAVE_ADDRESS 0
+    #else
+      #define  X_SLAVE_ADDRESS 0
+      #define  Y_SLAVE_ADDRESS 1
+    #endif
     #define  Z_SLAVE_ADDRESS 2
     #define X2_SLAVE_ADDRESS 0
     #define Y2_SLAVE_ADDRESS 0

@@ -100,13 +100,23 @@
 //
 // Steppers
 //
-#define X_STEP_PIN                          PB3
-#define X_DIR_PIN                           PD2
-#define X_ENABLE_PIN                        PB5
+#if ENABLED(ENDER6)
+  #define X_STEP_PIN                          PB8
+  #define X_DIR_PIN                           PC13
+  #define X_ENABLE_PIN                        PC12
+  
+  #define Y_STEP_PIN                          PB3
+  #define Y_DIR_PIN                           PD2
+  #define Y_ENABLE_PIN                        PB5
+#else
+  #define X_STEP_PIN                          PB3
+  #define X_DIR_PIN                           PD2
+  #define X_ENABLE_PIN                        PB5
 
-#define Y_STEP_PIN                          PB8
-#define Y_DIR_PIN                           PC13
-#define Y_ENABLE_PIN                        PC12
+  #define Y_STEP_PIN                          PB8
+  #define Y_DIR_PIN                           PC13
+  #define Y_ENABLE_PIN                        PC12
+#endif
 
 #define Z_STEP_PIN                          PA3
 #define Z_DIR_PIN                           PB1

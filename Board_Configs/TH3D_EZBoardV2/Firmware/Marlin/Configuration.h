@@ -38,7 +38,8 @@
 //#define ENDER3_MAX
 //#define ENDER5
 //#define ENDER5_PRO
-//#define ENDER5_PLUS
+//#define ENDER5_PLUS    //Requires the TH3D LCD Kit
+//#define ENDER6         //Requires the TH3D LCD Kit
 
 // Other Machines -----------------------------------------------------------
 //#define CR20
@@ -66,6 +67,8 @@
 //#define ENDER2_PRO_OEM                   //Ender 2 PRO Specific OEM Mount
 //#define ENDER2_PRO_OEM_MICRO             //Ender 2 PRO Specific OEM Mount FOR MICRO SIZE
 //#define ENDER3_MAX_OEM                   //Ender 3 MAX Specific OEM Mount
+//#define ENDER6_OEM                       //Ender 6 Specific OEM Mount
+//#define ENDER6_PETSFANG                  //Ender 6 PETSFANG Mount
 //#define SV01_OEM_MOUNT                   //Sovol SV01 OEM Mount
 //#define SV01_PRO_EZABL_OEM_MOUNT         //For our 18mm Sensors
 //#define SV01_PRO_EZABL_MICRO_OEM_MOUNT   //For our 8mm Sensors
@@ -83,6 +86,14 @@
 // If you are using the stock BL Touch with a non-stock mount enable the CUSTOM_PROBE line above and enter the offsets below for the new mount.
 //#define ENDER5_PLUS_EZABL
 //#define ENDER5_PLUS_NOABL
+
+// Ender 6 - Filament Sensor Override
+// If you have issues with your filament sensor on the Ender 6 uncomment the below option to disable it.
+//#define ENDER6_NOFILAMENT_SENSOR
+
+// Ender 6 - LDO 0.9 Motor Kit Settings
+// If you have upgraded to the 0.9 degree LDO motor kit for your Ender 6, uncomment the below line to set the XY steps needed.
+//#define ENDER6_LDO_XY
 
 // SV01 Pro EZABL Settings - If you are using the EZABL on this instead of the stock probe also uncomment the below line to set the EZABL settings
 //#define SV01_PRO_EZABL_INSTALLED
@@ -452,7 +463,7 @@
  */
  
 //EZBoard V2 based Machine Settings
-#if ANY(CR10, CR10_MINI, CR10_S4, CR10_S5, CR10S, CR10S_MINI, CR10S_S4, CR10S_S5, ENDER2, ENDER2_PRO, ENDER3, ENDER5, ENDER5_PLUS, SOVOL_SV01, SOVOL_SV01_PRO, SOVOL_SV03, CR20, ENDER3_MAX)
+#if ANY(CR10, CR10_MINI, CR10_S4, CR10_S5, CR10S, CR10S_MINI, CR10S_S4, CR10S_S5, ENDER2, ENDER2_PRO, ENDER3, ENDER5, ENDER5_PLUS, ENDER6, SOVOL_SV01, SOVOL_SV01_PRO, SOVOL_SV03, CR20, ENDER3_MAX)
 
   #define SERIAL_PORT -1
   #define BAUDRATE 115200
@@ -469,11 +480,11 @@
     #define REVERSE_ENCODER_DIRECTION
   #endif
   
-  #if ENABLED(CR10S) || ENABLED(CR10S_S4) || ENABLED(CR10S_S5) || ENABLED(SOVOL_SV01) || ENABLED(SOVOL_SV01_PRO) || ENABLED(SOVOL_SV03) || ENABLED(ENDER3_MAX)
+  #if ANY(CR10S, CR10S_S4, CR10S_S5, SOVOL_SV01, SOVOL_SV01_PRO, SOVOL_SV03, ENDER3_MAX)
     //S models + SV01 assume that you have 2x motors, filament sensor, and are using the dual adapter.
     //So lets up the VREF on Z and reverse the Z axis when using the dual motor adapter and enable the filament sensor
 	
-    #if ENABLED(CR10S) || ENABLED(CR10S_S4) || ENABLED(CR10S_S5) || ENABLED(SOVOL_SV01) || ENABLED(SOVOL_SV01_PRO) || ENABLED(SOVOL_SV03)
+    #if ANY(CR10S, CR10S_S4, CR10S_S5, SOVOL_SV01, SOVOL_SV01_PRO, SOVOL_SV03)
       #define DUAL_Z_MOTORS
     #endif
 
@@ -483,7 +494,7 @@
       #define REVERSE_Z_MOTOR
     #endif
   
-    #if ENABLED(SOVOL_SV01) || ENABLED(SOVOL_SV03) || ENABLED(ENDER3_MAX) //Have sensors that use same logic as EZOUT Sensors
+    #if ANY(SOVOL_SV01, SOVOL_SV03, ENDER3_MAX, ENDER5_PLUS) //Have sensors that use same logic as EZOUT Sensors
       #define EZOUTV2_ENABLE
     #endif
   
@@ -506,9 +517,19 @@
   #endif
   
   #if ENABLED(CUSTOM_ESTEPS)
-    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS_VALUE }
-  #elif ENABLED(SOVOL_SV01) || ENABLED(SOVOL_SV03)
+    #if ALL(ENDER6_LDO_XY, ENDER6)
+      #define DEFAULT_AXIS_STEPS_PER_UNIT   { 160, 160, 400, CUSTOM_ESTEPS_VALUE }
+    #else
+      #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS_VALUE }
+    #endif
+  #elif ANY(SOVOL_SV01, SOVOL_SV03)
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 402 }
+  #elif ENABLED(ENDER6)
+    #if ENABLED(ENDER6_LDO_XY)
+      #define DEFAULT_AXIS_STEPS_PER_UNIT   { 160, 160, 400, 140 }
+    #else
+      #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 140 }
+    #endif
   #elif ENABLED(SOVOL_SV01_PRO)
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 415 }
   #else
@@ -641,6 +662,21 @@
     #define MOUNTED_FILAMENT_SENSOR
   #endif
 
+  #if ENABLED(ENDER6)
+    #define X_BED_SIZE 250
+    #define Y_BED_SIZE 250
+    #define Z_MAX_POS 400
+    #define PRINTER_VOLTAGE_24
+    #define MOUNTED_FILAMENT_SENSOR
+    #if DISABLED(ENDER6_NOFILAMENT_SENSOR)
+      #define EZOUTV2_ENABLE
+    #endif
+    #define COREYX
+    #define X_MOTOR_CURRENT 800
+    #define Y_MOTOR_CURRENT X_MOTOR_CURRENT
+    #define Z_MOTOR_CURRENT 1000
+  #endif
+
   #if ENABLED(SOVOL_SV01_PRO)
     #define X_BED_SIZE 290
     #define Y_BED_SIZE 240
@@ -694,7 +730,7 @@
     #define Y_MIN_POS 0
   #endif
   
-  #if ENABLED(ENDER5) || ENABLED(ENDER5_PLUS)
+  #if ANY(ENDER5, ENDER5_PLUS, ENDER6)
     #define USE_XMAX_PLUG
     #define USE_YMAX_PLUG
     #define USE_ZMIN_PLUG
@@ -704,7 +740,7 @@
     #define USE_ZMIN_PLUG
   #endif
   
-  #if ENABLED(ENDER5) || ENABLED(ENDER5_PLUS)
+  #if ANY(ENDER5, ENDER5_PLUS, ENDER6)
     #define X_HOME_DIR 1
     #define Y_HOME_DIR 1
     #define Z_HOME_DIR -1
@@ -805,7 +841,7 @@
     #endif
   #endif
 
-  #if ANY(ENDER5, ENDER5_PLUS, ENDER2_PRO, SOVOL_SV01_PRO)
+  #if ANY(ENDER2_PRO, ENDER5, ENDER5_PLUS, ENDER6, SOVOL_SV01_PRO)
     #if ENABLED(REVERSE_Z_MOTOR)
       #define INVERT_Z_DIR false
     #else
@@ -884,7 +920,7 @@
 
   #define EZBOARD_V2
 
-  #if ENABLED(EZOUTV2_ENABLE) || ENABLED(CR10S_STOCKFILAMENTSENSOR)
+  #if ANY(EZOUTV2_ENABLE, CR10S_STOCKFILAMENTSENSOR)
     #define FILAMENT_RUNOUT_SENSOR
   #endif
   

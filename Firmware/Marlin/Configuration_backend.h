@@ -6,7 +6,7 @@
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-#define UNIFIED_VERSION "TH3D UFW 2.67"
+#define UNIFIED_VERSION "TH3D UFW 2.68"
 
 /**
  * ABL Probe Settings
@@ -303,6 +303,10 @@
   
   #define MULTIPLE_PROBING 2
   #define AUTO_BED_LEVELING_BILINEAR
+  
+  #ifndef EZABL_POINTS
+    #define EZABL_POINTS 3
+  #endif
   
   #define GRID_MAX_POINTS_X EZABL_POINTS
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
@@ -742,6 +746,9 @@
   #define SEGMENT_LEVELED_MOVES
   #define LEVELED_SEGMENT_LENGTH 5.0
 
+  #ifndef EZABL_POINTS
+    #define EZABL_POINTS 3
+  #endif
   #define GRID_MAX_POINTS_X EZABL_POINTS
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
   #define XY_PROBE_FEEDRATE (50*60)

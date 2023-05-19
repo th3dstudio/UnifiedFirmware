@@ -20,6 +20,10 @@
 // ***********   SOVOL PRINTERS w/V1.3.1 Board - GD32F103 CPU   *************
 //===========================================================================
 //#define SOVOL_SV06
+//#define SOVOL_SV06_PLUS                 //REQUIRES LCD KIT
+
+// NOTE: If you have a SV06 Plus and the firmware will not flash rename the bin file
+// on your SD card to SV06PLUSMB.bin for the 1st time flashing.
 
 //------------------------------ Upgrade Settings -------------------------------
 // EZOut Filament Sensor Kit
@@ -30,15 +34,19 @@
 
 // EZABL Probe Mounts - Uncomment the mount you are using for your EZABL to enable EZABL support in the firmware.
 //#define SV06_EZABL_OEM_MOUNT
+//#define SV06_PLUS_EZABL_OEM_MOUNT
 //#define CUSTOM_PROBE
 
-// SV06 EZABL Settings - If you are using the EZABL on this instead of the stock probe also uncomment the below line to set the EZABL settings
+// SV06/SV06 PLUS EZABL Settings - If you are using the EZABL on this instead of the stock probe also uncomment the below line to set the EZABL settings
 //#define SV06_EZABL_INSTALLED
 
-// EZNeo Settings
+// SV06 Plus - Filament Sensor Override
+// If you have issues with your filament sensor on the SV06 Plus uncomment the below option to disable it.
+//#define SV06_PLUS_NOFILAMENT_SENSOR
+
+// EZNeo Settings - DUE TO LIMITATIONS OF THE CLONE CPU ON THESE BOARD NO NEOPIXELS ARE SUPPORTED AT THIS TIME
 // If you are using an EZNeo strip on your printer, uncomment the line for what strip you are using.
 // Specify your IO pin below as well as this board does not have a dedicated NEOPIXEL header on it.
-// FUTURE USE - DUE TO LIMITATIONS OF THE CLONE CPU ON THESE BOARD NO NEOPIXELS ARE SUPPORTED AT THIS TIME
 //#define EZNEO_220
 
 // EZNeo Manual IO Pin Setting 
@@ -276,7 +284,11 @@
  */
  
 //SV06 V131 Board Settings
-#if ENABLED(SOVOL_SV06)
+#if ANY(SOVOL_SV06, SOVOL_SV06_PLUS)
+  #if ENABLED(SOVOL_SV06_PLUS) && DISABLED(SV06_PLUS_NOFILAMENT_SENSOR)
+    #define EZOUT_ENABLE
+  #endif
+  
   #if ENABLED(SV06_EZABL_OEM_MOUNT) && DISABLED(SV06_EZABL_INSTALLED)
     #define SV06_EZABL_INSTALLED
   #endif
@@ -298,7 +310,11 @@
 
     #ifndef CUSTOM_PRINTER_NAME
       #define CUSTOM_PRINTER_NAME
-      #define USER_PRINTER_NAME "SOVOL SV06"
+      #if ENABLED(SOVOL_SV06)
+        #define USER_PRINTER_NAME "SOVOL SV06"
+      #else
+        #define USER_PRINTER_NAME "SOVOL SV06 Plus"
+      #endif
     #endif
   #endif
 
@@ -332,9 +348,17 @@
 
   #define EXTRUDERS 1
 
-  #define X_BED_SIZE 220
-  #define Y_BED_SIZE 220
-  #define Z_MAX_POS 250
+  #if ENABLED(SOVOL_SV06)
+    #define X_BED_SIZE 220
+    #define Y_BED_SIZE 220
+    #define Z_MAX_POS 250
+  #endif
+
+  #if ENABLED(SOVOL_SV06_PLUS)
+    #define X_BED_SIZE 300
+    #define Y_BED_SIZE 300
+    #define Z_MAX_POS 340
+  #endif
   
   #if ENABLED(HOME_ADJUST)
     #define X_MIN_POS X_HOME_LOCATION

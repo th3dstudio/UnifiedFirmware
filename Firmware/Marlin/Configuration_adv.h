@@ -1690,7 +1690,7 @@
   #endif
 
   //#define SD_IGNORE_AT_STARTUP            // Don't mount the SD card when starting up
-  #if NONE(POWER_LOSS_RECOVERY, SD_WRITE_ENABLE)
+  #if NONE(POWER_LOSS_RECOVERY, SD_WRITE_ENABLE, SDCARD_EEPROM_EMULATION)
     #define SDCARD_READONLY                 // Read-only SD card (to save over 2K of flash)
   #endif
 

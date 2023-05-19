@@ -631,8 +631,9 @@
 #define EEPROM_CHITCHAT
 #define EEPROM_BOOT_SILENT
 
-#if NONE(SPACE_SAVER, SPACE_SAVER_2560)
-  #define EEPROM_AUTO_INIT
+#if DISABLED(SPACE_SAVER)
+  #define EEPROM_AUTO_INIT  // Init EEPROM automatically on any errors.
+  #define EEPROM_INIT_NOW   // Init EEPROM on first boot after a new build.
 #endif
 
 #define MIN_SOFTWARE_ENDSTOPS

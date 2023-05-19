@@ -6,7 +6,7 @@
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-#define UNIFIED_VERSION "TH3D UFW 2.68"
+#define UNIFIED_VERSION "TH3D UFW 2.69"
 
 /**
  * ABL Probe Settings
@@ -23,7 +23,7 @@
   #define ABL_ENABLE
   #define NOZZLE_TO_PROBE_OFFSET { 38, 10, 0 }
 #endif
-#if ENABLED(SV06_EZABL_OEM_MOUNT)
+#if ANY(SV06_EZABL_OEM_MOUNT, SV06_PLUS_EZABL_OEM_MOUNT)
   #define ABL_ENABLE
   #define NOZZLE_TO_PROBE_OFFSET { 30, -28, 0 }
 #endif
@@ -323,7 +323,7 @@
     #define Z_MIN_PROBE_ENDSTOP_INVERTING false
     #undef Z_MIN_ENDSTOP_INVERTING
     #define Z_MIN_ENDSTOP_INVERTING false
-  #elif (ENABLED(CR10S_PRO_STOCK_ABL) && ENABLED(CR10S_PRO)) || ANY(ENDER3_S1, ENDER3_S1_PRO, ENDER3_S1_PLUS) || (ENABLED(SOVOL_SV06) && DISABLED(SV06_EZABL_INSTALLED))
+  #elif (ENABLED(CR10S_PRO_STOCK_ABL) && ENABLED(CR10S_PRO)) || ANY(ENDER3_S1, ENDER3_S1_PRO, ENDER3_S1_PLUS) || (ANY(SOVOL_SV06, SOVOL_SV06_PLUS) && DISABLED(SV06_EZABL_INSTALLED))
     //Ender 3 S1 J713 header for Z Endstop is reverse logic via hardware for some reason. Need to invert the EZABL logic for it here.
     #undef Z_MIN_PROBE_ENDSTOP_INVERTING
     #define Z_MIN_PROBE_ENDSTOP_INVERTING false
@@ -623,17 +623,10 @@
 #endif
 
 #define EEPROM_SETTINGS
-
-#if ENABLED(SPACE_SAVER)
-  //#define DISABLE_M503
-#endif
-
 #define EEPROM_CHITCHAT
 #define EEPROM_BOOT_SILENT
-
-#if NONE(SPACE_SAVER, SPACE_SAVER_2560)
-  #define EEPROM_AUTO_INIT
-#endif
+#define EEPROM_AUTO_INIT
+#define EEPROM_INIT_NOW
 
 #define MIN_SOFTWARE_ENDSTOPS
 #if ENABLED(MIN_SOFTWARE_ENDSTOPS)

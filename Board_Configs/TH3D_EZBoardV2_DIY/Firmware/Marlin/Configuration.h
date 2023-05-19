@@ -338,6 +338,16 @@
 //*** COMMUNITY REQUESTED FEATURES ARE ALL NOT SUPPORTED BY TH3D SUPPORT ****
 //===========================================================================
 
+// EEPROM on SD Card -------------------------------
+//
+// NOTE: THIS TAKES UP EXTRA SPACE ON THE CPU SO IF YOUR COMPILE FAILS DISABLE SOME OTHER OPTIONS IN THE FIRMWARE.
+//
+// If your board has issues saving the EEPROM that could be due to a defective EEPROM chip. This will make an EEPROM.DAT file
+// You can use a SD card in the printer slot to save the EEPROM to that instead. Just uncomment the below line
+// and then leave an SD card in the printer at all times. If you have to take it out, power off the printer before removing
+// then put your GCode files on the SD card, insert the card again, and then power the printer up.
+//#define SDCARD_EEPROM_EMULATION
+
 // INPUT SHAPING -----------------------------------
 // See here on how to use Input Shaping: https://www.th3dstudio.com/marlin-input-shaping-calculator/
 //#define INPUT_SHAPING

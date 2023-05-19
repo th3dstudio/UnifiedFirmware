@@ -623,18 +623,10 @@
 #endif
 
 #define EEPROM_SETTINGS
-
-#if ENABLED(SPACE_SAVER)
-  //#define DISABLE_M503
-#endif
-
 #define EEPROM_CHITCHAT
 #define EEPROM_BOOT_SILENT
-
-#if DISABLED(SPACE_SAVER)
-  #define EEPROM_AUTO_INIT  // Init EEPROM automatically on any errors.
-  #define EEPROM_INIT_NOW   // Init EEPROM on first boot after a new build.
-#endif
+#define EEPROM_AUTO_INIT
+#define EEPROM_INIT_NOW
 
 #define MIN_SOFTWARE_ENDSTOPS
 #if ENABLED(MIN_SOFTWARE_ENDSTOPS)

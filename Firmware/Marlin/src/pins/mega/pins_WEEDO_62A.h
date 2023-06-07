@@ -40,8 +40,13 @@
 #define X_MAX_PIN                              2
 #define Y_MIN_PIN                             40
 #define Y_MAX_PIN                             41
-#define Z_MIN_PIN                             18
-#define Z_MAX_PIN                             19
+#if ENABLED(TINA2_EZABL_ZMAX)
+  #define Z_MIN_PIN                             19
+  #define Z_MAX_PIN                             18
+#else
+  #define Z_MIN_PIN                             18
+  #define Z_MAX_PIN                             19
+#endif
 
 //
 // Steppers

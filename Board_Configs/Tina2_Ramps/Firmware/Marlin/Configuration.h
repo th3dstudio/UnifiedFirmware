@@ -33,6 +33,10 @@
 // Z Homing Option - Use EZABL or stock ABL sensor to home Z instead of endstops
 //#define USE_EZABL_HOMEZ
 
+// Z Probe Alternate Wiring - If you want to use the Z MAX endstop port to connect your EZABL instead of the HALL header, uncomment the below line
+// This will also enable the USE_EZABL_HOMEZ option for homing.
+//#define TINA2_EZABL_ZMAX
+
 //===========================================================================
 // *************************  END PRINTER SECTION   *************************
 //===========================================================================
@@ -299,6 +303,11 @@
 //Cadet uses same settings, difference is the printer name shown
 #if ENABLED(CADET)
   #define TINA2
+#endif
+
+//Enabled EZABL Home Z when using ZMAX
+#if ENABLED(TINA2_EZABL_ZMAX)
+  #define USE_EZABL_HOMEZ
 #endif
 
 // Tina2 Printer Settings

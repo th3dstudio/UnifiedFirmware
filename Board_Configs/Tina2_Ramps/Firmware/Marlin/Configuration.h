@@ -356,7 +356,9 @@
   #define USE_XMAX_PLUG
   #define USE_YMIN_PLUG
   #define USE_ZMIN_PLUG
-  #define USE_ZMAX_PLUG
+  #if DISABLED(USE_EZABL_HOMEZ)
+    #define USE_ZMAX_PLUG
+  #endif
 
   #define X_HOME_DIR 1
   #define Y_HOME_DIR -1

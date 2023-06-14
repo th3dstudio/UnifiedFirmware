@@ -109,20 +109,6 @@
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Kingroon_Robin_Mini.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Kingroon_Robin_Mini.zip" "D:\Work\GitHub\UnifiedFirmware\Board_Configs\Kingroon_Robin_Mini\Firmware"
 
-"C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Anet_Melzi.zip"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Anet_Melzi.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Anet_Melzi.zip" "D:\Work\GitHub\UnifiedFirmware\Gcode Files"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Anet_Melzi.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Anet_Melzi.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Anet_Melzi.zip" "D:\Work\GitHub\UnifiedFirmware\Board_Configs\Anet_Melzi\Firmware"
-
-"C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\Unified2Zips\TH3D_Unified2_AnyCubic_Melzi.zip"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_AnyCubic_Melzi.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_AnyCubic_Melzi.zip" "D:\Work\GitHub\UnifiedFirmware\Gcode Files"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_AnyCubic_Melzi.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_AnyCubic_Melzi.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_AnyCubic_Melzi.zip" "D:\Work\GitHub\UnifiedFirmware\Board_Configs\AnyCubic_Melzi\Firmware"
-
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\Unified2Zips\TH3D_Unified2_AnyCubic_Ramps.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_AnyCubic_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_AnyCubic_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Gcode Files"
@@ -143,13 +129,6 @@
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_JGMaker_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_JGMaker_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_JGMaker_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Board_Configs\JGMaker_Ramps\Firmware"
-
-"C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Creality_Melzi.zip"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Creality_Melzi.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Creality_Melzi.zip" "D:\Work\GitHub\UnifiedFirmware\Gcode Files"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Creality_Melzi.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Creality_Melzi.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Creality_Melzi.zip" "D:\Work\GitHub\UnifiedFirmware\Board_Configs\Creality_Melzi\Firmware"
 
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\Unified2Zips\TH3D_Unified2_ADIM_Ramps.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_ADIM_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
@@ -257,13 +236,6 @@ del "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\U
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Kingroon_V1_2.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Kingroon_V1_2.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Kingroon_V1_2.zip" "D:\Work\GitHub\UnifiedFirmware\Board_Configs\Kingroon_V1_2\Firmware"
-
-"C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Wanhao_Melzi.zip"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Wanhao_Melzi.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Wanhao_Melzi.zip" "D:\Work\GitHub\UnifiedFirmware\Gcode Files"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Wanhao_Melzi.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Wanhao_Melzi.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_Wanhao_Melzi.zip" "D:\Work\GitHub\UnifiedFirmware\Board_Configs\Wanhao_Melzi\Firmware"
 
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\Unified2Zips\TH3D_Unified2_STL_Pack.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\Unified2Zips\TH3D_Unified2_STL_Pack.zip" "D:\Work\GitHub\UnifiedFirmware\STL Files"

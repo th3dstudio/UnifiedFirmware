@@ -1,6 +1,6 @@
-# Unified 2.0 Firmware
+# Unified 2 Firmware
 
-Unified Firmware 2.0 is the latest easy to use firmware for select 3D printers and boards from TH3D Studio. Both 8 bit and 32 bit based machines/boards are supported thanks to being built on **Marlin 2.1.2**.
+Unified Firmware 2 is the latest easy to use firmware for select 3D printers and boards from TH3D Studio. Both 8 bit and 32 bit based machines/boards are supported thanks to being built on **Marlin 2.1.2**.
 
 This firmware focuses on printers with their stock control boards and select aftermarket boards. If you have a 3rd party or other board installed in your machine that is not supported by this firmware it is recommended to use ["Vanilla" Marlin](https://marlinfw.org) on your machine.
 
@@ -26,13 +26,19 @@ Any version number changes indicate a new printer addition and/or core feature c
 
 ## Bug Reporting
 
-If you find bugs, report them to the TH3D Studio team here:  [Contact Us](https://www.th3dstudio.com/unified-2-firmware-bug-report-form/).
+If you find bugs, report them to the TH3D Studio team here:  [Contact Us](https://helpdesk.th3dstudio.com/tickets/create/step1?department=12).
 
 Issue queue is disabled because some people do not understand what a proper issue is. We have our own internal issue tracking system we use for our repo.
 
 ## Something missing? ##
 
 Check the txt file called `Install Guides and STL Files.txt`.
+
+## Branches ##
+
+- **Release** - This is for the officially released code
+- **2.0.x** - This is where we put our code that is currently in testing, it may or may not work
+- **melzi-archive** - A snapshot of the last version with support for Melzi Boards that are end of life
 
 ## Credits
 

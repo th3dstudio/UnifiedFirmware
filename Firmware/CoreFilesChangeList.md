@@ -23,12 +23,7 @@ This does not include machine `configuration.h` or `PlatformIO.ini` files.
 			- `boards.h`
 			- `language.h`
 		- **inc**
-			- `Warnings.cpp`
-		- **gcode**
-			- **calibrate**
-				- `M48.cpp`
-		- **inc**
-			- `Warnings.cpp`
+			- `Warnings.cpp``
 		- **lcd**
 			- **language**
 				- `language_en.h`

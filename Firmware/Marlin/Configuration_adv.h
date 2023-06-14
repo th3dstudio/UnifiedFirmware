@@ -1227,7 +1227,7 @@
   #endif
   //#define SHAPING_MIN_FREQ  20        // By default the minimum of the shaping frequencies. Override to affect SRAM usage.
   //#define SHAPING_MAX_STEPRATE 10000  // By default the maximum total step rate of the shaped axes. Override to affect SRAM usage.
-  #if NONE(SPACE_SAVER, KINGROON_KP3, SPACE_SAVER_2560)
+  #if DISABLED(SPACE_SAVER_2560)
     #define SHAPING_MENU                // Add a menu to the LCD to set shaping parameters.
   #endif
 #endif
@@ -1546,16 +1546,14 @@
   #endif
 
   // Include a page of printer information in the LCD Main Menu
-  #if DISABLED(SPACE_SAVER)
-    #define LCD_INFO_MENU
-  #endif
+  #define LCD_INFO_MENU
   
   #if ENABLED(LCD_INFO_MENU)
     //#define LCD_PRINTER_INFO_IS_BOOTSCREEN // Show bootscreen(s) instead of Printer Info pages
   #endif
 
   // BACK menu items keep the highlight at the top
-  #if DISABLED(SPACE_SAVER) && DISABLED(KINGROON_KP3) && DISABLED(SPACE_SAVER_2560)
+  #if DISABLED(SPACE_SAVER_2560)
     #define TURBO_BACK_MENU_ITEM
   #endif
 
@@ -1581,7 +1579,7 @@
   #endif
 
   // Scroll a longer status message into view
-  #if NONE(DWIN_CREALITY_LCD, SPACE_SAVER)
+  #if DISABLED(DWIN_CREALITY_LCD)
     #define STATUS_MESSAGE_SCROLLING
   #endif
 
@@ -1589,7 +1587,7 @@
   //#define STATUS_MESSAGE_TIMEOUT_SEC 30 // (seconds)
 
   // On the Info Screen, display XY with one decimal place when possible
-  #if NONE(SPACE_SAVER, SPACE_SAVER_2560)
+  #if DISABLED(SPACE_SAVER_2560)
     #define LCD_DECIMAL_SMALL_XY
   #endif
 
@@ -1604,9 +1602,7 @@
     #define LED_CONTROL_MENU
   #endif
   #if ENABLED(LED_CONTROL_MENU)
-    #if DISABLED(SPACE_SAVER)
-      #define LED_COLOR_PRESETS                 // Enable the Preset Color menu option
-    #endif
+    #define LED_COLOR_PRESETS                 // Enable the Preset Color menu option
     //#define NEO2_COLOR_PRESETS              // Enable a second NeoPixel Preset Color menu option
     #if ENABLED(LED_COLOR_PRESETS)
       #define LED_USER_PRESET_RED        130  // User defined RED value
@@ -1701,7 +1697,7 @@
   // Since the FAT gets out of order with usage, SDCARD_SORT_ALPHA is recommended.
   #define SDCARD_RATHERRECENTFIRST
 
-  #if DISABLED(SPACE_SAVER) && DISABLED(SPACE_SAVER_2560)
+  #if DISABLED(SPACE_SAVER_2560)
     #define SD_MENU_CONFIRM_START           // Confirm the selected SD file before printing
   #endif
 
@@ -1797,7 +1793,7 @@
     //#define M20_TIMESTAMP_SUPPORT         // Include timestamps by adding the 'T' flag to M20 commands
   #endif
 
-  #if NONE(SPACE_SAVER, DWIN_CREALITY_LCD, SPACE_SAVER_2560)
+  #if NONE(DWIN_CREALITY_LCD, SPACE_SAVER_2560)
     #define SCROLL_LONG_FILENAMES         // Scroll long filenames in the SD card menu
   #endif
 
@@ -2006,7 +2002,7 @@
   //#define STATUS_ALT_FAN_BITMAP     // Use the alternative fan bitmap
   //#define STATUS_FAN_FRAMES 3       // :[0,1,2,3,4] Number of fan animation frames
   //#define STATUS_HEAT_PERCENT       // Show heating in a progress bar
-  #if DISABLED(SPACE_SAVER) && DISABLED(KINGROON_KP3) && DISABLED(SPACE_SAVER_2560)
+  #if DISABLED(SPACE_SAVER_2560)
     #define BOOT_MARLIN_LOGO_ANIMATED // Animated Marlin logo. Costs ~3260 (or ~940) bytes of flash.
   #endif
 
@@ -2264,7 +2260,7 @@
   #if ENABLED(ABL_ENABLE)
     #define BABYSTEP_ZPROBE_OFFSET          // Combine M851 Z and Babystepping
     #if ENABLED(BABYSTEP_ZPROBE_OFFSET)
-      #if NONE(SPACE_SAVER, DWIN_CREALITY_LCD, DWIN_CREALITY_LCD_ENHANCED, DWIN_CREALITY_LCD_JYERSUI, DWIN_MARLINUI_PORTRAIT, DWIN_MARLINUI_LANDSCAPE)
+      #if NONE(DWIN_CREALITY_LCD, DWIN_CREALITY_LCD_ENHANCED, DWIN_CREALITY_LCD_JYERSUI, DWIN_MARLINUI_PORTRAIT, DWIN_MARLINUI_LANDSCAPE)
         //#define BABYSTEP_HOTEND_Z_OFFSET      // For multiple hotends, babystep relative Z offsets
         #if DISABLED(LCD2004)
           #define BABYSTEP_ZPROBE_GFX_OVERLAY   // Enable graphical overlay on Z-offset editor
@@ -2585,7 +2581,7 @@
 // The ASCII buffer for serial input
 #define MAX_CMD_SIZE 96
 
-#if ENABLED(SPACE_SAVER) || ENABLED(SPACE_SAVER_2560) || ENABLED(SKR_E3_MINI_BOARD) || ENABLED(KINGROON_KP3)
+#if ENABLED(SPACE_SAVER_2560)
   #define BUFSIZE 16
 #else
   #define BUFSIZE 32
@@ -2882,7 +2878,7 @@
   #define PARK_HEAD_ON_PAUSE                      // Park the nozzle during pause and filament change.
   //#define HOME_BEFORE_FILAMENT_CHANGE           // If needed, home before parking for filament change
 
-  #if NONE(SPACE_SAVER, SPACE_SAVER_2560)
+  #if DISABLED(SPACE_SAVER_2560)
     #define FILAMENT_LOAD_UNLOAD_GCODES           // Add M701/M702 Load/Unload G-codes, plus Load/Unload in the LCD Prepare menu.
   #endif
   //#define FILAMENT_UNLOAD_ALL_EXTRUDERS         // Allow M702 to unload all extruders above a minimum target temp (as set by M302)
@@ -3495,10 +3491,8 @@
    * M912 - Clear stepper driver overtemperature pre-warn condition flag.
    * M122 - Report driver parameters (Requires TMC_DEBUG)
    */
-  #if DISABLED(SPACE_SAVER)
-    #define MONITOR_DRIVER_STATUS
-  #endif
-
+  #define MONITOR_DRIVER_STATUS
+  
   #if ENABLED(MONITOR_DRIVER_STATUS)
     #define CURRENT_STEP_DOWN     50  // [mA]
     #define REPORT_CURRENT_CHANGE
@@ -3611,16 +3605,14 @@
    * Beta feature!
    * Create a 50/50 square wave step pulse optimal for stepper drivers.
    */
-  #define SQUARE_WAVE_STEPPING
+  //#define SQUARE_WAVE_STEPPING
   
   /**
    * Enable M122 debugging command for TMC stepper drivers.
    * M122 S0/1 will enable continuous reporting.
    */
-  #if DISABLED(SPACE_SAVER)
-    #define TMC_DEBUG
-  #endif
-
+  #define TMC_DEBUG
+  
   /**
    * You can set your own advanced settings by filling in predefined functions.
    * A list of available functions can be found on the library github page
@@ -4032,11 +4024,9 @@
 /**
  * Include capabilities in M115 output
  */
-#if DISABLED(SPACE_SAVER)
-  #define EXTENDED_CAPABILITIES_REPORT
-  #if ENABLED(EXTENDED_CAPABILITIES_REPORT)
-    //#define M115_GEOMETRY_REPORT
-  #endif
+#define EXTENDED_CAPABILITIES_REPORT
+#if ENABLED(EXTENDED_CAPABILITIES_REPORT)
+  //#define M115_GEOMETRY_REPORT
 #endif
 
 #if ENABLED(BTT_TOUCH_SCREEN)

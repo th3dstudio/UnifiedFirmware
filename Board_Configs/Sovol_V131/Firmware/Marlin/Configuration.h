@@ -20,7 +20,7 @@
 // ***********   SOVOL PRINTERS w/V1.3.1 Board - GD32F103 CPU   *************
 //===========================================================================
 //#define SOVOL_SV06
-//#define SOVOL_SV06_PLUS                 //REQUIRES LCD KIT
+//#define SOVOL_SV06_PLUS                 //REQUIRES LCD KIT FOUND HERE: https://www.th3dstudio.com/product/sovol-sv06-plus-12864-lcd-conversion-upgrade-kit/
 
 // NOTE: If you have a SV06 Plus and the firmware will not flash rename the bin file
 // on your SD card to SV06PLUSMB.bin for the 1st time flashing.

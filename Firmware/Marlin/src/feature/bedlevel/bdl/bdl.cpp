@@ -117,16 +117,6 @@ void BDS_Leveling::process() {
       old_buf_z = current_position.z;
       endstops.bdp_state_update(z_sensor <= 0.01f);
       //endstops.update();
-      
-      #if ALL(BD_SENSOR, BD_SENSOR_DISPLAY_MESSAGES)
-        #if 1
-      	  // enquen M117 for display BD sensor value
-          char tmp_1[50]={0};
-          sprintf_P(tmp_1,  PSTR("M117 BD sensor Z:%d.%02dmm"), (int)z_sensor,(int)((int)(z_sensor*100)%100));
-          parser.parse(tmp_1);
-          gcode.process_parsed_command();
-        #endif
-      #endif
 
     }
     else

@@ -401,18 +401,6 @@
 // Here is where you set your servo pin. For EZBoard V2 use PA2
 //#define SERVO0_PIN PA2
 
-// BD Sensor ---------------------------------------
-// If you are using the Bed Distance Sensor uncomment the below 3 lines.
-// By default we are using the DIO pin on the SWD header and the SIG pin on the SERVO header, pull 5V and GND from the server header as well.
-// Make sure to calibrate the probe per the BDSensor installation guide: https://github.com/markniu/Bed_Distance_sensor
-// You also need to uncomment #define CUSTOM_PROBE above and then enter in your offsets above in the CUSTOM PROBE section.
-//#define BD_SENSOR
-//#define I2C_BD_SDA_PIN PA13 //This is the white wire - connect to the DIO pin on the SWD header by the LCD
-//#define I2C_BD_SCL_PIN PA2  //This is the green wire - connect to the SIG pin on the SERVO header
-// If you want to have the Z height displayed all the time on the LCD status, uncomment the below line.
-// NOTE: This will make it so any M117 messages will be overrode by the display of the BDSensor height at ALL times.  This is used mainly for testing, disable for actual use after testing.
-//#define BD_SENSOR_DISPLAY_MESSAGES
-
 // MANUAL MESH LEVELING ----------------------------
 // If you want to use manual mesh leveling you can enable the below option. This is for generating a MANUAL mesh WITHOUT a probe. To change the mesh inset value change the EZABL_PROBE_EDGE setting above.
 // Mesh Bed Leveling Documentation: http://marlinfw.org/docs/gcode/G029-mbl.html 

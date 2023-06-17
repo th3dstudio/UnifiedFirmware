@@ -57,23 +57,22 @@
 #define X_STOP_PIN                          PA5
 #define Y_STOP_PIN                          PA6
 
-#ifdef BLTOUCH
-  #define Z_STOP_PIN         PB0  // BLTouch IN PIN
-  #define SERVO0_PIN         PB1  // BLTouch PWM-OUT PIN
-  #define Z_STOP_PIN_NADD    PA7  //Added z-axis limit switch  rock_20210816
+#if ENABLED(BLTOUCH)
+  #define Z_STOP_PIN                        PB1  // BLTouch OUT PIN
+  #define SERVO0_PIN                        PB0  // BLTouch PWM-IN PIN
 #else
-  #define Z_STOP_PIN         PA7 //Z-Stop
+  #define Z_STOP_PIN                        PA7  //Z-Stop
 #endif
 
 #ifndef Z_MIN_PROBE_PIN
-  #define Z_MIN_PROBE_PIN                   PB0   // BLTouch IN
+  #define Z_MIN_PROBE_PIN                   PB1  // BLTouch OUT
 #endif
 
 //
 // Filament Runout Sensor
 //
 #ifndef FIL_RUNOUT_PIN
-  #define FIL_RUNOUT_PIN                    PA4   // "Pulled-high"
+  #define FIL_RUNOUT_PIN                    PA4  // "Pulled-high"
 #endif
 
 //

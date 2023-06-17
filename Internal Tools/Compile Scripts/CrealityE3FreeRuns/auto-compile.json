@@ -1,0 +1,13 @@
+{
+    "config-file":"Configuration.h",
+    "compile-profile":
+    [
+		{
+            "profile-name": "ender3-e3freeruns",
+            "keyword": 
+            [
+                {"find":"//#define ENDER3","replace":"#define ENDER3"}
+            ]
+        }
+    ]
+}

@@ -6,7 +6,7 @@
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-#define UNIFIED_VERSION "TH3D UFW 2.71"
+#define UNIFIED_VERSION "TH3D UFW 2.72"
 
 /**
  * ABL Probe Settings
@@ -459,7 +459,7 @@
   #define PID_AUTOTUNE_MENU
 #endif
 
-#if NONE(SPACE_SAVER, DWIN_CREALITY_LCD, DWIN_CREALITY_LCD_ENHANCED)
+#if NONE(DWIN_CREALITY_LCD, DWIN_CREALITY_LCD_ENHANCED)
   #define PID_EDIT_MENU
 #endif
 
@@ -583,10 +583,7 @@
 
 #define HOST_KEEPALIVE_FEATURE
 #define DEFAULT_KEEPALIVE_INTERVAL 2
-
-#if DISABLED(SPACE_SAVER)
-  #define BUSY_WHILE_HEATING
-#endif
+#define BUSY_WHILE_HEATING
 
 #define EEPROM_SETTINGS
 #define EEPROM_CHITCHAT
@@ -654,7 +651,7 @@
   #define SHOW_CUSTOM_BOOTSCREEN
 #endif
 
-#if NONE(DWIN_CREALITY_LCD, SPACE_SAVER)
+#if DISABLED(DWIN_CREALITY_LCD)
   #define INDIVIDUAL_AXIS_HOMING_MENU
 #endif
 
@@ -708,11 +705,9 @@
   #ifndef EZABL_POINTS
     #define EZABL_POINTS 3
   #endif
+  
   #define GRID_MAX_POINTS_X EZABL_POINTS
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
   #define XY_PROBE_FEEDRATE (50*60)
-  
-  #if DISABLED(SPACE_SAVER)
-    #define MESH_EDIT_MENU
-  #endif
+  #define MESH_EDIT_MENU
 #endif

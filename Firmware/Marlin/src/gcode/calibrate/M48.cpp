@@ -89,7 +89,6 @@ void GcodeSuite::M48() {
     return;
   }
 
-  #if NONE(SPACE_SAVER, DISABLE_TH3D_MODS) //Save space for lower end boards. Disabled/added by TH3D.
   // Get the number of leg moves per test-point
   bool seen_L = parser.seen('L');
   uint8_t n_legs = seen_L ? parser.value_byte() : 0;
@@ -107,7 +106,6 @@ void GcodeSuite::M48() {
     SERIAL_ECHOLNPGM("Positioning the probe...");
 
   // Always disable Bed Level correction before probing...
-  #endif
 
   #if HAS_LEVELING
     const bool was_enabled = planner.leveling_active;
@@ -126,7 +124,6 @@ void GcodeSuite::M48() {
         max = -99999.9, // Largest value sampled so far
         sample_set[n_samples];  // Storage for sampled values
 
-  #if NONE(SPACE_SAVER, DISABLE_TH3D_MODS) //Save space for lower end boards. Disabled/added by TH3D.
   auto dev_report = [](const bool verbose, const_float_t mean, const_float_t sigma, const_float_t min, const_float_t max, const bool final=false) {
     if (verbose) {
       SERIAL_ECHOPAIR_F("Mean: ", mean, 6);
@@ -141,14 +138,6 @@ void GcodeSuite::M48() {
       SERIAL_EOL();
     }
   };
-  #else
-  auto dev_report = [](const bool verbose, const_float_t mean, const_float_t sigma, const_float_t min, const_float_t max, const bool final=false) {
-  	if (final) {
-      SERIAL_ECHOLNPAIR_F("Standard Deviation: ", sigma, 6);
-      SERIAL_EOL();
-    }
-  };
-  #endif
 
   // Move to the first point, deploy, and probe
   const float t = probe.probe_at_point(test_position, raise_after, verbose_level);
@@ -165,7 +154,6 @@ void GcodeSuite::M48() {
         ui.status_printf(0, F(S_FMT ": %d/%d"), GET_TEXT(MSG_M48_POINT), int(n + 1), int(n_samples));
       #endif
 
-      #if NONE(SPACE_SAVER, DISABLE_TH3D_MODS) //Not needed for non-delta machines. Disabled by TH3D for some boards to save space.
       // When there are "legs" of movement move around the point before probing
       if (n_legs) {
 
@@ -233,7 +221,6 @@ void GcodeSuite::M48() {
           do_blocking_move_to_xy(next_pos);
         } // n_legs loop
       } // n_legs
-      #endif
 
       // Probe a single point
       const float pz = probe.probe_at_point(test_position, raise_after, 0);

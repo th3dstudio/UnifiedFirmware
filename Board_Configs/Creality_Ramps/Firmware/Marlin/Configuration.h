@@ -60,10 +60,6 @@
 //#define SPRITE_EXTRUDER_18MM_MOUNT // Mounts to the stock CRTouch bracket
 //#define CUSTOM_PROBE
 
-// CR-10S Pro V1 ABL Setting
-// If you are still using the stock CR-10S Pro V1 ABL Sensor and want to use it with the CUSTOM_PROBE option, uncomment the below line to tell the firmware you still have the stock sensor
-//#define CR10S_PRO_STOCK_ABL_SENSOR
-
 // Filament Sensor - EZOut Kits
 // If you are using our EZOut filament sensor kit on your machine uncomment the below line.
 // This board only works with this version of our sensor kit: https://www.th3dstudio.com/product/ezout-filament-sensor-kit-standard/
@@ -426,11 +422,6 @@
     #define CUSTOM_PROBE
     #define CR10S_PRO_STOCK_ABL
     #define NOZZLE_TO_PROBE_OFFSET { -27, 0, 0 }
-  #else
-    #if ANY(CR10S_PRO_OEM, CUSTOM_PROBE) && NONE(BLTOUCH, CR10S_PRO_STOCK_ABL_SENSOR)
-      #define Z_MIN_PROBE_PIN 19
-      #define CR10S_PRO_EZABL_INSTALLED
-    #endif
   #endif
 #endif
 
@@ -746,7 +737,7 @@
   #define Y_MAX_ENDSTOP_INVERTING false
   #define Z_MAX_ENDSTOP_INVERTING false
   #define Z_MIN_PROBE_ENDSTOP_INVERTING false
-  #if ALL(CR10S_PRO_V2, BLTOUCH) || (ENABLED(CR10S_PRO_EZABL_INSTALLED) && DISABLED(CR10S_PRO_STOCK_ABL_SENSOR))
+  #if ALL(CR10S_PRO_V2, BLTOUCH)
     #define USE_PROBE_FOR_Z_HOMING
   #else
     #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN

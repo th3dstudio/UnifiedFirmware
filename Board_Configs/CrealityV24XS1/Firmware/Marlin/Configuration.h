@@ -19,7 +19,7 @@
 // by enabling EZABL or CUSTOM_PROBE + BLTOUCH options.
 
 // !!! STM32 F4 CPU Board Users !!!
-// If you have the F4 CPU uncomment the ENDER3S1_F4CPU line below and change your default_envs in platformio.ini to STM32F401RCT6_creality
+// If you have the F4 CPU uncomment the ENDER3S1_F4CPU line below and change your default_envs in platformio.ini to STM32F401RC_creality
 // The firmware BIN file MUST be placed in a folder on your SD called STM32F4_UPDATE AND a different name every time you flash.
 // To determine if you have an "F4" CPU look at the large chip on you board. If it says "STM32F4" in the part number then you have an F4 CPU
 

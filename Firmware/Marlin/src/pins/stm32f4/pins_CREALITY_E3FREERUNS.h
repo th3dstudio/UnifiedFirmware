@@ -189,7 +189,7 @@
   #define BTN_EN1                           PB10
   #define BTN_EN2                           PA6
 
-#elif ENABLED(DWIN_CREALITY_LCD)
+#elif ANY(HAS_DWIN_E3V2, IS_DWIN_MARLINUI, DWIN_VET6_CREALITY_LCD)
 
   // RET6 DWIN ENCODER LCD
   #define BTN_ENC                           PB14

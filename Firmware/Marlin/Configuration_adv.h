@@ -490,7 +490,9 @@
 
 // The number of consecutive low temperature errors that can occur
 // before a min_temp_error is triggered. (Shouldn't be more than 10.)
-//#define MAX_CONSECUTIVE_LOW_TEMPERATURE_ERROR_ALLOWED 0
+#if TEMP_SENSOR_0 == 66
+  #define MAX_CONSECUTIVE_LOW_TEMPERATURE_ERROR_ALLOWED 8
+#endif
 
 /**
  * The number of milliseconds a hotend will preheat before starting to check
@@ -499,7 +501,9 @@
  * the minimum temperature your thermistor can read. The lower the better/safer.
  * This shouldn't need to be more than 30 seconds (30000)
  */
-//#define MILLISECONDS_PREHEAT_TIME 0
+#if TEMP_SENSOR_0 == 66
+  #define MILLISECONDS_PREHEAT_TIME 15000
+#endif
 
 // @section extruder
 

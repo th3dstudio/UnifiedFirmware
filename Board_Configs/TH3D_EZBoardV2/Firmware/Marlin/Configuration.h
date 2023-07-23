@@ -73,7 +73,7 @@
 //#define SV01_OEM_MOUNT                   //Sovol SV01 OEM Mount
 //#define SV01_PRO_EZABL_OEM_MOUNT         //For our 18mm Sensors
 //#define SV01_PRO_EZABL_MICRO_OEM_MOUNT   //For our 8mm Sensors
-//#define SV06_EZABL_OEM_MOUNT             //Sovol SV06/SV06 Plus EZABL OEM Mount
+//#define SV06_EZABL_OEM_MOUNT             //Sovol SV06/SV06 Plus EZABL OEM Mount - same offsets, different file
 //#define CR10_VOLCANO                     //TH3D CR-10 Volcano Mount 
 //#define CR10_V6HEAVYDUTY                 //V6 Heavy Duty Mount
 //#define TM3DAERO                         //TM3D Aero Mount for V6
@@ -1182,7 +1182,11 @@
   
   #if Y_SH_CALIBRATION == 8
     #undef Y_SH_CALIBRATION
-    #define Y_SH_CALIBRATION 75
+    #if ENABLED(SOVOL_SV06_PLUS)
+      #define Y_SH_CALIBRATION 90
+    #else
+      #define Y_SH_CALIBRATION 75
+    #endif
   #endif
 
   #define X_ENABLE_ON 0

@@ -1177,15 +1177,19 @@
   #endif
 
   #ifndef Y_SH_CALIBRATION
-    #define Y_SH_CALIBRATION 75
+    #if ENABLED(SOVOL_SV06_PLUS)
+      #define Y_SH_CALIBRATION 100
+    #else
+      #define Y_SH_CALIBRATION 80
+    #endif
   #endif
   
   #if Y_SH_CALIBRATION == 8
     #undef Y_SH_CALIBRATION
     #if ENABLED(SOVOL_SV06_PLUS)
-      #define Y_SH_CALIBRATION 90
+      #define Y_SH_CALIBRATION 100
     #else
-      #define Y_SH_CALIBRATION 75
+      #define Y_SH_CALIBRATION 80
     #endif
   #endif
 

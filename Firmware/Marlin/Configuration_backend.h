@@ -6,7 +6,7 @@
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-#define UNIFIED_VERSION "TH3D UFW 2.73b"
+#define UNIFIED_VERSION "TH3D UFW 2.74"
 
 /**
  * ABL Probe Settings
@@ -387,7 +387,11 @@
 #define DUMMY_THERMISTOR_999_VALUE 100
 #define TEMP_SENSOR_REDUNDANT_MAX_DIFF 10
 
-#define HEATER_0_MINTEMP   0
+#if TEMP_SENSOR_0 == 66
+  #define HEATER_0_MINTEMP 21
+#else
+  #define HEATER_0_MINTEMP 0
+#endif
 #define HEATER_1_MINTEMP   HEATER_0_MINTEMP
 #define HEATER_2_MINTEMP   HEATER_0_MINTEMP
 #define HEATER_3_MINTEMP   HEATER_0_MINTEMP

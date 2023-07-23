@@ -46,9 +46,10 @@
 
 // Sovol Machines -----------------------------------------------------------
 //#define SOVOL_SV01
+//#define SOVOL_SV01_PRO     // See here for stock CRTouch sensor wiring: https://support.th3dstudio.com/helpcenter/ezboard-v2-sovol-sv01-pro-stock-abl-sensor-wiring/
 //#define SOVOL_SV03
 //#define SOVOL_SV06         // See here for stock ABL sensor wiring: https://support.th3dstudio.com/helpcenter/ezboard-v2-sovol-sv06-stock-abl-sensor-wiring/
-//#define SOVOL_SV01_PRO     // See here for stock CRTouch sensor wiring: https://support.th3dstudio.com/helpcenter/ezboard-v2-sovol-sv01-pro-stock-abl-sensor-wiring/
+//#define SOVOL_SV06_PLUS    // See here for stock ABL sensor wiring: https://support.th3dstudio.com/helpcenter/ezboard-v2-sovol-sv06-stock-abl-sensor-wiring/
 
 // Filament Sensor Options --------------------------------------------------
 // If your machine came stock with a filament sensor it will be enabled automatically. If you replaced your stock sensor with our EZOut or you added an EZOut enabling the EZOUTV2_ENABLE will override the Creality sensor if your machine had one
@@ -72,7 +73,7 @@
 //#define SV01_OEM_MOUNT                   //Sovol SV01 OEM Mount
 //#define SV01_PRO_EZABL_OEM_MOUNT         //For our 18mm Sensors
 //#define SV01_PRO_EZABL_MICRO_OEM_MOUNT   //For our 8mm Sensors
-//#define SV06_EZABL_OEM_MOUNT             //Sovol SV06 EZABL OEM Mount
+//#define SV06_EZABL_OEM_MOUNT             //Sovol SV06/SV06 Plus EZABL OEM Mount - same offsets, different file
 //#define CR10_VOLCANO                     //TH3D CR-10 Volcano Mount 
 //#define CR10_V6HEAVYDUTY                 //V6 Heavy Duty Mount
 //#define TM3DAERO                         //TM3D Aero Mount for V6
@@ -104,8 +105,12 @@
 //#define SV03_EZABL
 //#define SV03_NOABL
 
-// SV06 EZABL Settings - If you are using the EZABL on this instead of the stock probe also uncomment the below line to set the EZABL settings
+// SV06/SV06 Plus EZABL Settings - If you are using the EZABL on this instead of the stock probe also uncomment the below line to set the EZABL settings
 //#define SV06_EZABL_INSTALLED
+
+// SV06 Plus - Filament Sensor Override
+// If you have issues with your filament sensor on the SV06 Plus uncomment the below option to disable it.
+//#define SV06_PLUS_NOFILAMENT_SENSOR
 
 // EZNeo Settings -----------------------------------------------------------
 // If you are using an EZNeo strip on your printer, uncomment the line for what strip you are using.
@@ -999,7 +1004,11 @@
 //End EZBoard V2 based Machine Settings
 
 //EZBoard V2 SV06 Settings
-#if ENABLED(SOVOL_SV06)
+#if ANY(SOVOL_SV06, SOVOL_SV06_PLUS)
+  #if ENABLED(SOVOL_SV06_PLUS) && DISABLED(SV06_PLUS_NOFILAMENT_SENSOR)
+    #define EZOUT_ENABLE
+  #endif
+  
   #if ENABLED(SV06_EZABL_INSTALLED)
     #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
   #endif
@@ -1015,7 +1024,11 @@
 
     #ifndef CUSTOM_PRINTER_NAME
       #define CUSTOM_PRINTER_NAME
-      #define USER_PRINTER_NAME "EZBoard SV06"
+      #if ENABLED(SOVOL_SV06_PLUS)
+	    #define USER_PRINTER_NAME "EZBoard SV06 Plus"
+	  #else
+		#define USER_PRINTER_NAME "EZBoard SV06"
+	  #endif
     #endif
   #endif
 
@@ -1045,9 +1058,16 @@
   
   #define EXTRUDERS 1
   
-  #define X_BED_SIZE 220
-  #define Y_BED_SIZE 220
-  #define Z_MAX_POS 250
+  #if ENABLED(SOVOL_SV06_PLUS)
+    #define X_BED_SIZE 300
+    #define Y_BED_SIZE 300
+    #define Z_MAX_POS 340
+  #else
+    #define X_BED_SIZE 220
+    #define Y_BED_SIZE 220
+    #define Z_MAX_POS 250
+  #endif
+  
   #define PRINTER_VOLTAGE_24
   
   #if (CUSTOM_ZHEIGHT > Z_MAX_POS)
@@ -1162,7 +1182,11 @@
   
   #if Y_SH_CALIBRATION == 8
     #undef Y_SH_CALIBRATION
-    #define Y_SH_CALIBRATION 75
+    #if ENABLED(SOVOL_SV06_PLUS)
+      #define Y_SH_CALIBRATION 90
+    #else
+      #define Y_SH_CALIBRATION 75
+    #endif
   #endif
 
   #define X_ENABLE_ON 0

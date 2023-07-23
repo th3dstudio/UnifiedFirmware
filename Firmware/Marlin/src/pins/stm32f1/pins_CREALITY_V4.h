@@ -175,7 +175,7 @@
 #define SDIO_SUPPORT
 #define NO_SD_HOST_DRIVE                          // This board's SD is only seen by the printer
 
-#if ANY(RET6_12864_LCD, HAS_DWIN_E3V2, IS_DWIN_MARLINUI)
+#if ANY(RET6_12864_LCD, HAS_DWIN_E3V2, IS_DWIN_MARLINUI, MKS_MINI_12864)
 
   /**
    *    RET6 12864 LCD
@@ -249,6 +249,28 @@
       #define BEEPER_PIN             EXP3_01_PIN
     #endif
   #endif
+
+#elif ENABLED(MKS_MINI_12864) //added by TH3D
+  /**          ------
+   *      SCK | 1  2 | ENC
+   *      EN1 | 3  4 | --
+   *      EN2 | 5  6   A0
+   *      CS  | 7  8 | MOSI
+   *      GND | 9 10 | 5V
+   *           ------
+   */
+  #define DOGLCD_CS                  EXP3_07_PIN
+  #define DOGLCD_A0                  EXP3_06_PIN
+  #define DOGLCD_SCK                 EXP3_01_PIN
+  #define DOGLCD_MOSI                EXP3_08_PIN
+  #define BTN_EN1                    EXP3_05_PIN
+  #define BTN_EN2                    EXP3_03_PIN
+  #define BTN_ENC                    EXP3_02_PIN
+  #define LCD_CONTRAST_INIT                  160
+  #define LCD_CONTRAST_MIN                   120
+  #define LCD_CONTRAST_MAX                   180
+  #define FORCE_SOFT_SPI
+  #define LCD_BACKLIGHT_PIN                 -1
 
 #elif ANY(HAS_DWIN_E3V2, IS_DWIN_MARLINUI, DWIN_VET6_CREALITY_LCD)
 

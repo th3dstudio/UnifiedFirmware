@@ -96,8 +96,8 @@ extern "C" {
 
 // Timer Definitions
 #define TIMER_TONE              TIM2
-#define TIMER_SERVO             TIM5
-#define TIMER_SERIAL            TIM11
+#define TIMER_SERVO             TIM11
+#define TIMER_SERIAL            TIM5
 
 // UART Definitions
 //#define ENABLE_HWSERIAL1        done automatically by the #define SERIAL_UART_INSTANCE below
@@ -112,7 +112,7 @@ extern "C" {
 #define PIN_SERIAL_RX           PA10
 #define PIN_SERIAL_TX           PA9
 
-// Used when the user instantiates a hardware Serial using its peripheral name.
+// Used when user instanciate a hardware Serial using its peripheral name.
 // Example: HardwareSerial mySerial(USART3);
 // will use PIN_SERIAL3_RX and PIN_SERIAL3_TX if defined.
 #define PIN_SERIAL1_RX          PA10
@@ -123,7 +123,6 @@ extern "C" {
 #ifdef __cplusplus
 } // extern "C"
 #endif
-
 /*----------------------------------------------------------------------------
  *        Arduino objects - C++ only
  *----------------------------------------------------------------------------*/

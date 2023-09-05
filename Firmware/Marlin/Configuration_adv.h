@@ -759,7 +759,7 @@
     #else
       #define E0_AUTO_FAN_PIN PB15
     #endif
-  #elif ANY(ENDER3_S1, ENDER3_S1_PRO, ENDER3_S1_PLUS)
+  #elif ANY(ENDER3_S1, ENDER3_S1_PRO, ENDER3_S1_PLUS, ENDER5_S1)
     #define E0_AUTO_FAN_PIN PC0
   #elif ENABLED(TINA2)
     #define E0_AUTO_FAN_PIN 9

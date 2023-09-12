@@ -147,8 +147,8 @@
 #define HEATER_0_PIN                        PA15  // "HE"
 #define HEATER_BED_PIN                      PB3   // "HB"
 #define FAN_PIN                             PC9   // "FAN0"
-#define FAN1_PIN                            PA8   // "FAN1"
-#define FAN2_PIN                            PC8   // "FAN2"
+//#define FAN1_PIN                          PA8   // "FAN1" Controller Fan - TH3D Modified set in Configuration_adv.h
+//#define FAN2_PIN                          PC8   // "FAN2" Hotend Fan - TH3D Modified set in Configuration_adv.h
 
 /**
  *              SKR Mini E3 V3.0.1

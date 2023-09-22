@@ -638,7 +638,7 @@
   #if ENABLED(NEOPIXEL_LED)
     #define NEOPIXEL_TYPE   NEO_GRB // NEO_GRBW / NEO_GRB - four/three channel driver type (defined in Adafruit_NeoPixel.h)
     #ifndef NEOPIXEL_PIN
-      #define NEOPIXEL_PIN    P0_03    // LED driving pin
+      #define NEOPIXEL_PIN    PA8    // LED driving pin
     #endif
     //#define NEOPIXEL2_TYPE NEOPIXEL_TYPE
     //#define NEOPIXEL2_PIN    5

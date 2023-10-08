@@ -396,6 +396,13 @@
   #define ENDER5
 #endif
 
+//Set ZSteps for ENDER5_NEW_LEADSCREW
+#if ANY(ENDER5_NEW_LEADSCREW, ENDER5_PLUS)
+  #define CREALITY_Z_STEPS 800
+#else
+  #define CREALITY_Z_STEPS 400
+#endif
+
 /**
  * Machine Configuration Settings
  */
@@ -454,11 +461,11 @@
   #endif
   
   #if ENABLED(CUSTOM_ESTEPS)
-    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS_VALUE }
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, CREALITY_Z_STEPS, CUSTOM_ESTEPS_VALUE }
   #elif ENABLED(SOVOL_SV01) || ENABLED(SOVOL_SV03)
-    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 402 }
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, CREALITY_Z_STEPS, 402 }
   #else
-    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, CREALITY_Z_STEPS, 95 }
   #endif
   
   #define SHOW_BOOTSCREEN
@@ -581,7 +588,6 @@
     #if DISABLED(REVERSE_KNOB_DIRECTION)
       #define REVERSE_ENCODER_DIRECTION
     #endif
-    #define ENDER5_NEW_LEADSCREW
     #define EZOUTV2_ENABLE
     #define DUAL_Z_MOTORS
     #define MOUNTED_FILAMENT_SENSOR

@@ -3030,11 +3030,7 @@
       
       #define Z_CURRENT_HOME  Z_CURRENT
       
-      #if ENABLED(ENDER5_NEW_LEADSCREW) && (ENABLED(EZBOARD) || ENABLED(EZBOARD_V2))
-        #define Z_MICROSTEPS 8
-      #else
-        #define Z_MICROSTEPS 16
-      #endif
+      #define Z_MICROSTEPS 16
       
       #if ENABLED(SOVOL_SV06)
         #define Z_RSENSE         0.15

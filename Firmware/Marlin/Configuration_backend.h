@@ -260,7 +260,9 @@
   #define Z_PROBE_OFFSET_RANGE_MAX     1
   
   #define Z_MIN_PROBE_REPEATABILITY_TEST
-  #define Z_AFTER_HOMING               5
+  #if NONE(BLTOUCH)
+    #define Z_AFTER_HOMING             5
+  #endif
   #define Z_PROBE_LOW_POINT           -10
   
   #if NONE(BLTOUCH)
@@ -561,7 +563,7 @@
 #endif
 
 #if ENABLED(BLTOUCH)
-  #define Z_CLEARANCE_DEPLOY_PROBE   8
+  #define Z_CLEARANCE_DEPLOY_PROBE   5
   #define Z_CLEARANCE_BETWEEN_PROBES 5
   #define Z_CLEARANCE_MULTI_PROBE    5
   #define Z_PROBE_FEEDRATE_SLOW (Z_PROBE_FEEDRATE_FAST / 2)

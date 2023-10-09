@@ -207,12 +207,19 @@
 // EXTRUDER SETTINGS -------------------------------
 // Use to set custom esteps and/or reverse your E Motor direction if you are installing an extruder that needs the direction reversed.
 // If you reversed the wiring on your E motor already (like the Bondtech Guide says to do) then you do not need to reverse it in the firmware here.
-
+//
+// Example EStep Values For Common Extuders: 
+// TH3D Aluminum Extruder ---  95 ESteps
+// LGX/LGX Lite/NG Extruder - 400 ESteps
+// TH3D Tough Extruder V2 --- 407 ESteps
+// TH3D Tough Extruder V1 --- 410 ESteps
+// Bondtech BMG Extruder ---- 415 ESteps
+// Creality Sprite Extruder - 425 ESteps
+// LDO Orbiter/Sherpa Mini -- 690 ESteps
+//
 // If you want to change the Esteps for your printer you can uncomment the below line and set CUSTOM_ESTEPS_VALUE to what you want - USE WHOLE NUMBERS ONLY
 // This option sets the esteps from the CUSTOM_ESTEPS_VALUE line below.
 // If you need to reverse the e motor direction also enabled the REVERSE_E_MOTOR_DIRECTION option.
-// Example EStep Values: TH3D Aluminum Extruder - 95 ESteps, TH3D Tough Extruder - 410 ESteps, BMG Extruder - 415 ESteps
-// When installing a Tough Extruder or E3D Titan or Bondtech that is Geared you likely need to enable the REVERSE_E_MOTOR_DIRECTION option
 //#define CUSTOM_ESTEPS
 #define CUSTOM_ESTEPS_VALUE 410
 //#define REVERSE_E_MOTOR_DIRECTION

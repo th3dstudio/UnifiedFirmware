@@ -22,7 +22,6 @@
 /**
  * !!!Important Information!!!
  * This firmware is being put out as a courtesy for people who want to use the EZBoard in their custom printer.
- * Setup and usage of this firmware is *not* covered under the technical support included with the EZBoard.
  * Using the EZBoard in a custom printer is an advanced setup for users who know what they are doing.
  * 
  * EZFirmware Site - This firmware can be used with our EZFirmware compile site. Just edit and upload this Configuration.h file

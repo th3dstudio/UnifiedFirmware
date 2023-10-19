@@ -6,7 +6,7 @@
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-#define UNIFIED_VERSION "TH3D UFW 2.76"
+#define UNIFIED_VERSION "TH3D UFW 2.77"
 
 /**
  * ABL Probe Settings
@@ -658,6 +658,8 @@
   #define SHOW_BOOTSCREEN
   #define SHOW_CUSTOM_BOOTSCREEN
 #endif
+
+#define USE_BIG_EDIT_FONT
 
 #if DISABLED(DWIN_CREALITY_LCD)
   #define INDIVIDUAL_AXIS_HOMING_MENU

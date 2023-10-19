@@ -892,7 +892,7 @@
   #elif defined(MOTHERBOARD)
     #error "Unknown MOTHERBOARD value set in Configuration.h."
   #else
-    #error "MOTHERBOARD not defined! Use '#define MOTHERBOARD BOARD_...' in Configuration.h."
+    #error "Printer model not uncommented in Configuration.h. Uncomment a printer model and try again."
   #endif
 
   #undef BOARD_MKS_13

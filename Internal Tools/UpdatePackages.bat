@@ -6,6 +6,7 @@
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_SovolV4X.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_SovolV4X.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_SovolV4X.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\SovolV4X\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_SovolV4X.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\SovolV4X\Binaries"
 
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV4X.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV4X.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
@@ -14,6 +15,7 @@
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV4X.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV4X.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV4X.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\CrealityV4X\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV4X.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\CrealityV4X\Binaries"
 
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Sovol_V131.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Sovol_V131.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
@@ -30,6 +32,7 @@
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV427.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV427.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV427.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\CrealityV427\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV427.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\CrealityV427\Binaries"
 
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityE3FreeRuns.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityE3FreeRuns.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
@@ -38,6 +41,8 @@
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityE3FreeRuns.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityE3FreeRuns.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityE3FreeRuns.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\CrealityE3FreeRuns\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityE3FreeRuns.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\CrealityE3FreeRuns\Binaries"
+
 
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Voxelab_V1XX.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Voxelab_V1XX.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
@@ -46,6 +51,7 @@
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Voxelab_V1XX.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Voxelab_V1XX.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Voxelab_V1XX.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\Voxelab_V1XX\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Voxelab_V1XX.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\Voxelab_V1XX\Binaries"
 
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV24XS1.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV24XS1.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
@@ -54,6 +60,7 @@
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV24XS1.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV24XS1.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV24XS1.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\CrealityV24XS1\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV24XS1.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\CrealityV24XS1\Binaries"
 
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Creality_CR4NS200141C13.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Creality_CR4NS200141C13.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
@@ -61,6 +68,7 @@
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Creality_CR4NS200141C13.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Creality_CR4NS200141C13.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Creality_CR4NS200141C13.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\Creality_CR4NS200141C13\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Creality_CR4NS200141C13.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\Creality_CR4NS200141C13\Binaries"
 
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV24S1_E7.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV24S1_E7.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
@@ -68,6 +76,7 @@
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV24S1_E7.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV24S1_E7.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV24S1_E7.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\CrealityV24S1_E7\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV24S1_E7.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\CrealityV24S1_E7\Binaries"
 
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_SKR_E3_Mini.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_SKR_E3_Mini.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
@@ -75,6 +84,7 @@
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_SKR_E3_Mini.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_SKR_E3_Mini.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_SKR_E3_Mini.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\SKR_E3_Mini\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_SKR_E3_Mini.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\SKR_E3_Mini\Binaries"
 
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_SKR_E3_Mini_V3.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_SKR_E3_Mini_V3.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
@@ -82,6 +92,14 @@
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_SKR_E3_Mini_V3.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_SKR_E3_Mini_V3.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_SKR_E3_Mini_V3.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\SKR_E3_Mini_V3\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_SKR_E3_Mini_V3.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\SKR_E3_Mini_V3\Binaries"
+
+"C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_SKR_E3_Mini_V3_DIY.zip"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_SKR_E3_Mini_V3_DIY.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_SKR_E3_Mini_V3_DIY.zip" "D:\Work\GitHub\UnifiedFirmware\Gcode Files"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_SKR_E3_Mini_V3_DIY.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_SKR_E3_Mini_V3_DIY.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_SKR_E3_Mini_V3_DIY.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\SKR_E3_Mini_V3_DIY\Firmware"
 
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_TH3D_EZBoardLite.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_TH3D_EZBoardLite.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
@@ -117,6 +135,7 @@
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Zyltech_Robin_Nano.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Zyltech_Robin_Nano.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Zyltech_Robin_Nano.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\Zyltech_Robin_Nano\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Zyltech_Robin_Nano.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\Zyltech_Robin_Nano\Binaries"
 
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Kingroon_Robin_Mini.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Kingroon_Robin_Mini.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
@@ -124,6 +143,7 @@
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Kingroon_Robin_Mini.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Kingroon_Robin_Mini.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Kingroon_Robin_Mini.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\Kingroon_Robin_Mini\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Kingroon_Robin_Mini.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\Kingroon_Robin_Mini\Binaries"
 
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_AnyCubic_Ramps.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_AnyCubic_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
@@ -131,6 +151,7 @@
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_AnyCubic_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_AnyCubic_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_AnyCubic_Ramps.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\AnyCubic_Ramps\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_AnyCubic_Ramps.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\AnyCubic_Ramps\Binaries"
 
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Tina2_Ramps.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Tina2_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
@@ -138,6 +159,7 @@
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Tina2_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Tina2_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Tina2_Ramps.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\Tina2_Ramps\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Tina2_Ramps.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\Tina2_Ramps\Binaries"
 
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_JGMaker_Ramps.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_JGMaker_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
@@ -145,6 +167,7 @@
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_JGMaker_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_JGMaker_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_JGMaker_Ramps.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\JGMaker_Ramps\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_JGMaker_Ramps.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\JGMaker_Ramps\Binaries"
 
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_ADIM_Ramps.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_ADIM_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
@@ -152,6 +175,7 @@
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_ADIM_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_ADIM_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_ADIM_Ramps.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\ADIM_Ramps\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_ADIM_Ramps.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\ADIM_Ramps\Binaries"
 
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Alfawise_Ramps.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Alfawise_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
@@ -159,6 +183,7 @@
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Alfawise_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Alfawise_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Alfawise_Ramps.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\Alfawise_Ramps\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Alfawise_Ramps.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\Alfawise_Ramps\Binaries"
 
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Artillery_Ramps.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Artillery_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
@@ -166,6 +191,7 @@
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Artillery_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Artillery_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Artillery_Ramps.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\Artillery_Ramps\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Artillery_Ramps.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\Artillery_Ramps\Binaries"
 
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Creality_Ramps.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Creality_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
@@ -173,6 +199,7 @@
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Creality_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Creality_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Creality_Ramps.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\Creality_Ramps\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Creality_Ramps.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\Creality_Ramps\Binaries"
 
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Sovol_Ramps.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Sovol_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
@@ -180,6 +207,7 @@
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Sovol_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Sovol_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Sovol_Ramps.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\Sovol_Ramps\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Sovol_Ramps.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\Sovol_Ramps\Binaries"
 
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Sunlu_Ramps.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Sunlu_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
@@ -187,6 +215,7 @@
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Sunlu_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Sunlu_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Sunlu_Ramps.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\Sunlu_Ramps\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Sunlu_Ramps.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\Sunlu_Ramps\Binaries"
 
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Wanhao_Ramps.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Wanhao_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
@@ -194,6 +223,7 @@
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Wanhao_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Wanhao_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Wanhao_Ramps.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\Wanhao_Ramps\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Wanhao_Ramps.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\Wanhao_Ramps\Binaries"
 
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Tevo_Ramps.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Tevo_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
@@ -201,6 +231,7 @@
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Tevo_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Tevo_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Tevo_Ramps.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\Tevo_Ramps\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Tevo_Ramps.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\Tevo_Ramps\Binaries"
 
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Geeetech_Ramps.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Geeetech_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
@@ -208,6 +239,7 @@
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Geeetech_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Geeetech_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Geeetech_Ramps.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\Geeetech_Ramps\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Geeetech_Ramps.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\Geeetech_Ramps\Binariesw"
 
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_MKS_SGen_L_V2_DIY.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_MKS_SGen_L_V2_DIY.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
@@ -252,6 +284,7 @@ del "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\U
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Kingroon_V1_2.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Kingroon_V1_2.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Kingroon_V1_2.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\Kingroon_V1_2\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Kingroon_V1_2.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\Kingroon_V1_2\Binaries"
 
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_STL_Pack.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_STL_Pack.zip" "D:\Work\GitHub\UnifiedFirmware\STL Files"

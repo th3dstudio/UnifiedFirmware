@@ -6,7 +6,7 @@
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-#define UNIFIED_VERSION "TH3D UFW 2.76"
+#define UNIFIED_VERSION "TH3D UFW 2.77"
 
 /**
  * ABL Probe Settings
@@ -508,6 +508,8 @@
 #else
   #if ENABLED(EZBOARD_DIY)
     #define CUSTOM_MACHINE_NAME "EZBoard DIY"
+  #elif ALL(BLTOUCH, CRTOUCH_PROBE_NAMING)
+    #define CUSTOM_MACHINE_NAME "TH3D CRTouch"
   #elif ENABLED(BLTOUCH)
     #define CUSTOM_MACHINE_NAME "TH3D BLTouch"
   #elif ENABLED(ABL_ENABLE) && DISABLED(BLTOUCH)
@@ -656,6 +658,8 @@
   #define SHOW_BOOTSCREEN
   #define SHOW_CUSTOM_BOOTSCREEN
 #endif
+
+#define USE_BIG_EDIT_FONT
 
 #if DISABLED(DWIN_CREALITY_LCD)
   #define INDIVIDUAL_AXIS_HOMING_MENU

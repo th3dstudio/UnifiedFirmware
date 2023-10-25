@@ -2578,7 +2578,7 @@
 
 // The number of linear moves that can be in the planner at once.
 // The value of BLOCK_BUFFER_SIZE must be a power of 2 (e.g., 8, 16, 32)
-#if BOTH(SDSUPPORT, DIRECT_STEPPING) || ALL(SPACE_SAVER_2560, INPUT_SHAPING, CUSTOM_ESTEPS)
+#if BOTH(SDSUPPORT, DIRECT_STEPPING) || ALL(SPACE_SAVER_2560, INPUT_SHAPING)
   #define BLOCK_BUFFER_SIZE  8
 #elif ENABLED(SPACE_SAVER_2560)
   #define BLOCK_BUFFER_SIZE 16
@@ -2592,7 +2592,7 @@
 #define MAX_CMD_SIZE 96
 
 #if ENABLED(SPACE_SAVER_2560)
-  #define BUFSIZE BLOCK_BUFFER_SIZE
+  #define BUFSIZE 16
 #else
   #define BUFSIZE 32
 #endif

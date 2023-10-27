@@ -168,8 +168,8 @@
 // Probing Grid Points - If you want more or less EZABL probe points change the number below, use odd numbers. Total points is # times #.
 #define EZABL_POINTS 3
 
-// Probe Edge - How far from the edge of the bed to probe from. Use 50 if using binder clips. This also sets the edge inset value for MANUAL_MESH_LEVELING.
-#define EZABL_PROBE_EDGE 35
+// Probe Edge - How far from the edge of the bed to probe from. Use 30 if using binder clips. This also sets the edge inset value for MANUAL_MESH_LEVELING.
+#define EZABL_PROBE_EDGE 15
 
 // Fast Probing - Works with most machines and all EZABL sensors (8mm/s)
 #define EZABL_FASTPROBE
@@ -914,7 +914,7 @@
         #error "The BLTouch and PT100 cannot be used at the same time. Please choose one or the other. You can use an EZABL and PT100 at the same time as the EZABL does not use the SERVO header."
       #endif 
     #ifndef EZABL_PROBE_EDGE
-      #define EZABL_PROBE_EDGE 35
+      #define EZABL_PROBE_EDGE 15
     #endif
     #ifndef EZABL_POINTS
       #define EZABL_POINTS 5

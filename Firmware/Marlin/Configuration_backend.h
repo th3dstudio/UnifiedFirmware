@@ -7,6 +7,7 @@
 //===========================================================================
 
 #define UNIFIED_VERSION "TH3D UFW 2.78"
+#define STRING_DISTRIBUTION_DATE "10-27-2023"
 
 /**
  * ABL Probe Settings
@@ -19,7 +20,7 @@
   #define ABL_ENABLE
   #define NOZZLE_TO_PROBE_OFFSET { -54, -9, 0 }
 #endif
-#if ENABLED(SV01_PRO_EZABL_OEM_MOUNT)
+#if ANY(SV01_PRO_EZABL_OEM_MOUNT, SV05_EZABL_OEM_MOUNT)
   #define ABL_ENABLE
   #define NOZZLE_TO_PROBE_OFFSET { 43, 5, 0 }
 #endif

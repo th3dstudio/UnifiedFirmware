@@ -6,7 +6,7 @@
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-#define UNIFIED_VERSION "TH3D UFW 2.78"
+#define UNIFIED_VERSION "TH3D UFW 2.79"
 #define STRING_DISTRIBUTION_DATE "10-27-2023"
 
 /**

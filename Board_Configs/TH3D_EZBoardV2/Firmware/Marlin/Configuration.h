@@ -886,7 +886,7 @@
     #endif
   #endif
   
-  #if ANY(SOVOL_SV01, ENDER2_PRO)
+  #if ANY(SOVOL_SV01, SOVOL_SV03, ENDER2_PRO)
     #if ENABLED(REVERSE_E_MOTOR_DIRECTION)
       #define INVERT_E0_DIR true
     #else

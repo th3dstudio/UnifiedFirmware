@@ -519,12 +519,12 @@
     #endif
 
     #if DISABLED(SOVOL_SV03)
-	  #if ENABLED(REVERSE_Z_MOTOR)
+      #if ENABLED(REVERSE_Z_MOTOR)
         #undef REVERSE_Z_MOTOR
       #else
         #define REVERSE_Z_MOTOR
       #endif
-	#endif
+    #endif
   
     #if ANY(SOVOL_SV01, SOVOL_SV03, ENDER3_MAX, ENDER5_PLUS) //Have sensors that use same logic as EZOUT Sensors
       #define EZOUTV2_ENABLE

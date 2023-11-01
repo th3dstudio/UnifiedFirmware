@@ -73,6 +73,7 @@
 //#define SV01_OEM_MOUNT                   //Sovol SV01 OEM Mount
 //#define SV01_PRO_EZABL_OEM_MOUNT         //For our 18mm Sensors
 //#define SV01_PRO_EZABL_MICRO_OEM_MOUNT   //For our 8mm Sensors
+//#define SV03_OEM_MOUNT                   //Sovol SV03 OEM Mount
 //#define SV06_EZABL_OEM_MOUNT             //Sovol SV06/SV06 Plus EZABL OEM Mount - same offsets, different file
 //#define CR10_VOLCANO                     //TH3D CR-10 Volcano Mount 
 //#define CR10_V6HEAVYDUTY                 //V6 Heavy Duty Mount
@@ -517,11 +518,13 @@
       #define DUAL_Z_MOTORS
     #endif
 
-    #if ENABLED(REVERSE_Z_MOTOR)
-      #undef REVERSE_Z_MOTOR
-    #else
-      #define REVERSE_Z_MOTOR
-    #endif
+    #if DISABLED(SOVOL_SV03)
+	  #if ENABLED(REVERSE_Z_MOTOR)
+        #undef REVERSE_Z_MOTOR
+      #else
+        #define REVERSE_Z_MOTOR
+      #endif
+	#endif
   
     #if ANY(SOVOL_SV01, SOVOL_SV03, ENDER3_MAX, ENDER5_PLUS) //Have sensors that use same logic as EZOUT Sensors
       #define EZOUTV2_ENABLE

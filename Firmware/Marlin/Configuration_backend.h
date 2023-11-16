@@ -6,8 +6,8 @@
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-#define UNIFIED_VERSION "TH3D UFW 2.79"
-#define STRING_DISTRIBUTION_DATE "10-27-2023"
+#define UNIFIED_VERSION "TH3D UFW 2.80"
+#define STRING_DISTRIBUTION_DATE "11-16-2023"
 
 /**
  * ABL Probe Settings

@@ -292,3 +292,4 @@ del "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\U
 
 start "" https://www.th3dstudio.com/uf2-release-version-clear-cache/
 start "" https://support.th3dstudio.com/uf2-release-version-clear-cache/
+start "" https://www.th3dstudio.com/wp-admin/post-new.php

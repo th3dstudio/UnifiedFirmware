@@ -289,3 +289,5 @@ del "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\U
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_STL_Pack.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_STL_Pack.zip" "D:\Work\GitHub\UnifiedFirmware\STL Files"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_STL_Pack.zip" "D:\Work\GitHub\UnifiedFirmware\Gcode Files"
+
+start "" https://www.th3dstudio.com/uf2-release-version-clear-cache/

@@ -9,6 +9,8 @@ This does not include machine `configuration.h` or `PlatformIO.ini` files.
 - **buildroot**
 	- **share**
 		- **PlatformIO**
+			- **scripts**
+				- `generic_create_variant.py` - Add in our repo for `Arduino_Core_STM32`
 			- **variants**
 				- **MARLIN_G0B1RE**
 					- `variant_MARLIN_STM32G0B1RE.cpp` - USB Fix from BTT
@@ -16,7 +18,8 @@ This does not include machine `configuration.h` or `PlatformIO.ini` files.
 	- `avr.ini`
 	- `stm32f1.ini`
 	- `stm32f1-maple.ini`
-	- `stm32f4.ini`
+	- `stm32f4.ini` - Force use our `Arduino_Core_STM32` repo for BTT Boards
+	- `stm32g0.ini` - Force use our `Arduino_Core_STM32` repo for BTT Boards
 - **Marlin**
 	- **src**
 		- **core**

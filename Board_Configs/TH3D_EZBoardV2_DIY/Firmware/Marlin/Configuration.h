@@ -186,7 +186,7 @@
 
 // Filament Sensor Options --------------------------------------------------
 // If you are using our EZOut Sensor connect to the FIL SENSOR header with the RED wire lined up with the "5V" marking by the header and uncomment the below line.
-//#define EZOUTV2_ENABLE
+//#define EZOUT_ENABLE
 
 // If you are using the Creality CR-10S Sensor connect to the FIL SENSOR header with the RED wire lined up with the "5V" marking by the header and uncomment the below line.
 //#define CR10S_STOCKFILAMENTSENSOR
@@ -595,7 +595,7 @@
 
 #define EZBOARD_V2
 
-#if ENABLED(EZOUTV2_ENABLE) || ENABLED(CR10S_STOCKFILAMENTSENSOR)
+#if ENABLED(EZOUT_ENABLE) || ENABLED(CR10S_STOCKFILAMENTSENSOR)
   #define FILAMENT_RUNOUT_SENSOR
 #endif
 
@@ -604,7 +604,7 @@
   #define FIL_RUNOUT_ENABLED_DEFAULT true // Enable the sensor on startup. Override with M412 followed by M500.
   #define NUM_RUNOUT_SENSORS   1          // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
   
-  #if ENABLED(EZOUTV2_ENABLE)
+  #if ENABLED(EZOUT_ENABLE)
     #define FIL_RUNOUT_STATE LOW  // Pin state indicating that filament is NOT present.
   #else
     #define FIL_RUNOUT_STATE HIGH // Pin state indicating that filament is NOT present.

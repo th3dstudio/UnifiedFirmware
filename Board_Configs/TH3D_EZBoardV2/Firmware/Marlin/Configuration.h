@@ -52,10 +52,10 @@
 //#define SOVOL_SV06_PLUS    // See here for stock ABL sensor wiring: https://support.th3dstudio.com/helpcenter/ezboard-v2-sovol-sv06-stock-abl-sensor-wiring/
 
 // Filament Sensor Options --------------------------------------------------
-// If your machine came stock with a filament sensor it will be enabled automatically. If you replaced your stock sensor with our EZOut or you added an EZOut enabling the EZOUTV2_ENABLE will override the Creality sensor if your machine had one
+// If your machine came stock with a filament sensor it will be enabled automatically. If you replaced your stock sensor with our EZOut or you added an EZOut enabling the EZOUT_ENABLE will override the Creality sensor if your machine had one
 
 // If you are using our EZOut Sensor connect to the FIL SENSOR header with the RED wire lined up with the "5V" marking by the header and uncomment the below line.
-//#define EZOUTV2_ENABLE
+//#define EZOUT_ENABLE
 
 // If you are using the Creality CR-10S Sensor connect to the FIL SENSOR header with the RED wire lined up with the "5V" marking by the header and uncomment the below line.
 //#define CR10S_STOCKFILAMENTSENSOR
@@ -73,6 +73,7 @@
 //#define SV01_OEM_MOUNT                   //Sovol SV01 OEM Mount
 //#define SV01_PRO_EZABL_OEM_MOUNT         //For our 18mm Sensors
 //#define SV01_PRO_EZABL_MICRO_OEM_MOUNT   //For our 8mm Sensors
+//#define SV03_OEM_MOUNT                   //Sovol SV03 OEM Mount
 //#define SV06_EZABL_OEM_MOUNT             //Sovol SV06/SV06 Plus EZABL OEM Mount - same offsets, different file
 //#define CR10_VOLCANO                     //TH3D CR-10 Volcano Mount 
 //#define CR10_V6HEAVYDUTY                 //V6 Heavy Duty Mount
@@ -517,17 +518,19 @@
       #define DUAL_Z_MOTORS
     #endif
 
-    #if ENABLED(REVERSE_Z_MOTOR)
-      #undef REVERSE_Z_MOTOR
-    #else
-      #define REVERSE_Z_MOTOR
+    #if DISABLED(SOVOL_SV03)
+      #if ENABLED(REVERSE_Z_MOTOR)
+        #undef REVERSE_Z_MOTOR
+      #else
+        #define REVERSE_Z_MOTOR
+      #endif
     #endif
   
     #if ANY(SOVOL_SV01, SOVOL_SV03, ENDER3_MAX, ENDER5_PLUS) //Have sensors that use same logic as EZOUT Sensors
-      #define EZOUTV2_ENABLE
+      #define EZOUT_ENABLE
     #endif
   
-    #if DISABLED(EZOUTV2_ENABLE) 
+    #if DISABLED(EZOUT_ENABLE) 
       #define CR10S_STOCKFILAMENTSENSOR
     #endif
 
@@ -685,7 +688,7 @@
     #if DISABLED(REVERSE_KNOB_DIRECTION)
       #define REVERSE_ENCODER_DIRECTION
     #endif
-    #define EZOUTV2_ENABLE
+    #define EZOUT_ENABLE
     #define DUAL_Z_MOTORS
     #define MOUNTED_FILAMENT_SENSOR
   #endif
@@ -697,7 +700,7 @@
     #define PRINTER_VOLTAGE_24
     #define MOUNTED_FILAMENT_SENSOR
     #if DISABLED(ENDER6_NOFILAMENT_SENSOR)
-      #define EZOUTV2_ENABLE
+      #define EZOUT_ENABLE
     #endif
     #define COREYX
     #define X_MOTOR_CURRENT 800
@@ -883,7 +886,7 @@
     #endif
   #endif
   
-  #if ANY(SOVOL_SV01, ENDER2_PRO)
+  #if ANY(SOVOL_SV01, SOVOL_SV03, ENDER2_PRO)
     #if ENABLED(REVERSE_E_MOTOR_DIRECTION)
       #define INVERT_E0_DIR true
     #else
@@ -948,7 +951,7 @@
 
   #define EZBOARD_V2
 
-  #if ANY(EZOUTV2_ENABLE, CR10S_STOCKFILAMENTSENSOR)
+  #if ANY(EZOUT_ENABLE, CR10S_STOCKFILAMENTSENSOR)
     #define FILAMENT_RUNOUT_SENSOR
   #endif
   
@@ -957,7 +960,7 @@
     #define FIL_RUNOUT_ENABLED_DEFAULT true // Enable the sensor on startup. Override with M412 followed by M500.
     #define NUM_RUNOUT_SENSORS   1          // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
     
-    #if ENABLED(EZOUTV2_ENABLE)
+    #if ENABLED(EZOUT_ENABLE)
       #define FIL_RUNOUT_STATE LOW  // Pin state indicating that filament is NOT present.
     #else
       #define FIL_RUNOUT_STATE HIGH // Pin state indicating that filament is NOT present.
@@ -1263,7 +1266,7 @@
 
   #define EZBOARD_V2
 
-  #if ENABLED(EZOUTV2_ENABLE)
+  #if ENABLED(EZOUT_ENABLE)
     #define FILAMENT_RUNOUT_SENSOR
     #define DIRECT_DRIVE_PRINTER
   #endif
@@ -1273,7 +1276,7 @@
     #define FIL_RUNOUT_ENABLED_DEFAULT true // Enable the sensor on startup. Override with M412 followed by M500.
     #define NUM_RUNOUT_SENSORS   1          // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
     
-    #if ENABLED(EZOUTV2_ENABLE)
+    #if ENABLED(EZOUT_ENABLE)
       #define FIL_RUNOUT_STATE LOW  // Pin state indicating that filament is NOT present.
     #else
       #define FIL_RUNOUT_STATE HIGH // Pin state indicating that filament is NOT present.

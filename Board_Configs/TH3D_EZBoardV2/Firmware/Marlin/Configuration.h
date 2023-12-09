@@ -216,7 +216,7 @@
   *
   * Specify a Probe position as { X, Y, Z }
   * Do NOT enter an number for the Z position in here. Store your offset in EEPROM.
-  *
+  * 
   * When is the offset POSITIVE?
   * If the probe is right of the nozzle the offset on X is POSITIVE
   * If the probe is behind of the nozzle the offset on Y is POSITIVE
@@ -312,40 +312,6 @@
 // If your printer is homing to the endstops hard uncomment this to change the homing speed/divisor to make it less aggressive.
 //#define SLOWER_HOMING
 
-// Bed and Z Height Adjustments
-// If you need to make changes to your X, Y, and/or Z size on your printer for whatever reason you can uncomment the custom size/height line
-// for whatever axis you need to make changes to and then replace the XXX with the new size in millimeters.
-//#define CUSTOM_X_BED_SIZE XXX
-//#define CUSTOM_Y_BED_SIZE XXX
-//#define CUSTOM_Z_HEIGHT XXX
-
-//===========================================================================
-//****************** COMMUNITY REQUESTED FEATURES ***************************
-//*** COMMUNITY REQUESTED FEATURES ARE ALL NOT SUPPORTED BY TH3D SUPPORT ****
-//===========================================================================
-
-// EEPROM on SD Card -------------------------------
-//
-// NOTE: THIS TAKES UP EXTRA SPACE ON THE CPU SO IF YOUR COMPILE FAILS DISABLE SOME OTHER OPTIONS IN THE FIRMWARE.
-//
-// If your board has issues saving the EEPROM that could be due to a defective EEPROM chip. This will make an EEPROM.DAT file
-// You can use a SD card in the printer slot to save the EEPROM to that instead. Just uncomment the below line
-// and then leave an SD card in the printer at all times. If you have to take it out, power off the printer before removing
-// then put your GCode files on the SD card, insert the card again, and then power the printer up.
-//#define SDCARD_EEPROM_EMULATION
-
-// INPUT SHAPING -----------------------------------
-// See here on how to use Input Shaping: https://www.th3dstudio.com/marlin-input-shaping-calculator/
-//#define INPUT_SHAPING
-// Below are the frequency and damping settings for each axis.
-// Damping must have f at the end of the number and the range is 0.00-1.00.
-// X Axis Settings
-#define INPUT_SHAPING_FREQ_X 40
-#define INPUT_SHAPING_DAMPING_X 0.15f
-// Y Axis Settings
-#define INPUT_SHAPING_FREQ_Y 40
-#define INPUT_SHAPING_DAMPING_Y 0.15f
-
 // ENDER XTENDER KIT SETTINGS ----------------------
 
 // Ender Xtender Kits for Ender 3/3 Pro
@@ -377,49 +343,191 @@
 //#define Y_AXIS_SENSORLESS_HOMING
 #define Y_SH_CALIBRATION 8
 
-// HOME OFFSET ADJUSTMENT --------------------------
-// If you need to adjust your XY home offsets from defaults then you can uncomment the HOME_ADJUST line below and enter your
-// custom XY offsets. This is provided for convenience and is unsupported with included product support.
-// How to use - measure (home XY then jog using the LCD 1mm at a time) the X and Y distance the nozzle is off
-// the build plate and then put those as NEGATIVE values below, positive values will NOT work (move your endstops to fix a positive offset).
+//===========================================================================
+//*************************** Advanced Features *****************************
+//===========================================================================
+
+/**
+ * EEPROM on SD Card
+ * 
+ * NOTE: THIS TAKES UP EXTRA SPACE ON THE CPU SO IF YOUR COMPILE FAILS DISABLE SOME OTHER OPTIONS IN THE FIRMWARE.
+ * If your board has issues saving the EEPROM that could be due to a defective EEPROM chip. This will make an EEPROM.DAT file
+ * You can use a SD card in the printer slot to save the EEPROM to that instead. Just uncomment the below line
+ * and then leave an SD card in the printer at all times. If you have to take it out, power off the printer before removing
+ * then put your GCode files on the SD card, insert the card again, and then power the printer up.
+ */
+//#define SDCARD_EEPROM_EMULATION
+
+/**
+ * Input Shaping
+ * 
+ * See here on how to use Input Shaping: https://www.th3dstudio.com/marlin-input-shaping-calculator/
+ * 
+ * Below are the frequency and damping settings for each axis.
+ * Damping must have f at the end of the number and the range is 0.00-1.00.
+ */
+//#define INPUT_SHAPING
+
+// X Axis Settings
+#define INPUT_SHAPING_FREQ_X 40
+#define INPUT_SHAPING_DAMPING_X 0.15f
+// Y Axis Settings
+#define INPUT_SHAPING_FREQ_Y 40
+#define INPUT_SHAPING_DAMPING_Y 0.15f
+
+/**
+ * Bed and Z Height Adjustments
+ * 
+ * If you need to make changes to your X, Y, and/or Z size on your printer for whatever reason you can uncomment the custom size/height line
+ * for whatever axis you need to make changes to and then replace the XXX with the new size in millimeters.
+ */
+//#define CUSTOM_X_BED_SIZE XXX
+//#define CUSTOM_Y_BED_SIZE XXX
+//#define CUSTOM_Z_HEIGHT XXX
+
+/**
+ * Home Offset Adjustment
+ * 
+ * If you need to adjust your XY home offsets from defaults then you can uncomment the HOME_ADJUST line below and enter your
+ * custom XY offsets. This is provided for convenience and is unsupported with included product support.
+ * 
+ * How to use - measure (home XY then jog using the LCD 1mm at a time) the X and Y distance the nozzle is off
+ * the build plate and then put those as NEGATIVE values below on the X_HOME_LOCATION and Y_HOME_LOCATION values
+ * Positive values will NOT work (move your endstops to fix a positive offset or change your bed size above).
+ */
 //#define HOME_ADJUST
 #define X_HOME_LOCATION -10
 #define Y_HOME_LOCATION -10
 
-// PID BED TEMPERATURE CONTROL ---------------------
-// If you want PID Bed Temperature control enable the below line. You will need to tune it for your machine.
-// See the PID Bed setup guide here: https://support.th3dstudio.com/helpcenter/p-i-d-bed-calibration-guide/
+/**
+ * PID Bed Temperature Control
+ * 
+ * If you want PID Bed Temperature control enable the below line. You will need to tune it for your machine.
+ * See the PID Bed setup guide here: https://support.th3dstudio.com/helpcenter/p-i-d-bed-calibration-guide/
+ */
 //#define ENABLE_PIDBED
 
-// FINE BABYSTEPPING -------------------------------
-// Enabling the below line will set the babystep resolution from 0.025mm to 0.010mm for finer control.
+/**
+ * Fine Babystepping
+ * 
+ * Enabling the below line will set the babystep resolution from 0.025mm to 0.010mm for finer control.
+ */
 //#define FINE_BABYSTEPPING
 
-// LINEAR ADVANCE ----------------------------------
-// See here on how to use Linear Advance: http://marlinfw.org/docs/features/lin_advance.html
+/**
+ * Linear Advance
+ * 
+ * See here on how to use Linear Advance: http://marlinfw.org/docs/features/lin_advance.html
+ * 
+ * Change the K Value with the LINEAR_ADVANCE_K line below or use M900 KX.XX in your starting code (recommended).
+ */
 //#define LINEAR_ADVANCE
-// Change the K Value here or use M900 KX.XX in your starting code (recommended).
 #define LINEAR_ADVANCE_K 0
 
-// BL TOUCH ----------------------------------------
-// If you want to use the BL-Touch uncomment the 2 lines below and refer to the installation guide for the EZBoard to connect the probe.
-// You also need to uncomment #define CUSTOM_PROBE above and then enter in your offsets above in the CUSTOM PROBE section.
+/**
+ * BLTouch/CRTouch
+ * 
+ * If you want to use the BLTouch/CRTouch uncomment the BLTOUCH line below.
+ * You also need to uncomment #define CUSTOM_PROBE above and then enter in your offsets above in the CUSTOM PROBE section.
+ * 
+ * If you need to change your SERVO pin you can change that with the SERVO0_PIN Line below. Most people do NOT need to change/set this.
+ */
 //#define BLTOUCH
-// Here is where you set your servo pin. For EZBoard V2 use PA2
 //#define SERVO0_PIN PA2
 
-// MANUAL MESH LEVELING ----------------------------
-// If you want to use manual mesh leveling you can enable the below option. This is for generating a MANUAL mesh WITHOUT a probe. To change the mesh inset value change the EZABL_PROBE_EDGE setting above.
-// Mesh Bed Leveling Documentation: http://marlinfw.org/docs/gcode/G029-mbl.html 
-// NOTE: If you want to automate the leveling process our EZABL kits do this for you. Check them out here: http://EZABL.TH3DStudio.com
+/**
+ * Manual Mesh Leveling 
+ *
+ * If you want to use manual mesh leveling you can enable the below option. 
+ * This is for generating a MANUAL mesh WITHOUT a probe. To change the mesh inset value change the EZABL_PROBE_EDGE setting above.
+ * 
+ * Mesh Bed Leveling Documentation: http://marlinfw.org/docs/gcode/G029-mbl.html 
+ * 
+ * NOTE: If you want to automate the leveling process our EZABL kits do this for you. Check them out here: http://EZABL.TH3DStudio.com
+ */
 //#define MANUAL_MESH_LEVELING
 
-// POWER LOSS RECOVERY -----------------------------
-// Continue after Power-Loss feature will store the current state to the SD Card at the start of each layer
-// during SD printing. If this is found at bootup it will ask you if you want to resume the print.
-//
-// NOTE: This feature causes excessive wear on your SD card.
+/**
+ * Bed Skew Compensation
+ *
+ * This feature corrects for misalignment in the XYZ axes.
+ *
+ * Take the following steps to get the bed skew in the XY plane:
+ *  1. Print a test square (e.g., https://www.thingiverse.com/thing:2563185)
+ *  2. For XY_DIAG_AC measure the diagonal A to C
+ *  3. For XY_DIAG_BD measure the diagonal B to D
+ *  4. For XY_SIDE_AD measure the edge A to D
+ *
+ * Marlin automatically computes skew factors from these measurements.
+ * Skew factors may also be computed and set manually:
+ *
+ *  - Compute AB     : SQRT(2*AC*AC+2*BD*BD-4*AD*AD)/2
+ *  - XY_SKEW_FACTOR : TAN(PI/2-ACOS((AC*AC-AB*AB-AD*AD)/(2*AB*AD)))
+ *
+ * If desired, follow the same procedure for XZ and YZ.
+ * Use these diagrams for reference:
+ *
+ *    Y                     Z                     Z
+ *    ^     B-------C       ^     B-------C       ^     B-------C
+ *    |    /       /        |    /       /        |    /       /
+ *    |   /       /         |   /       /         |   /       /
+ *    |  A-------D          |  A-------D          |  A-------D
+ *    +-------------->X     +-------------->X     +-------------->Y
+ *     XY_SKEW_FACTOR        XZ_SKEW_FACTOR        YZ_SKEW_FACTOR
+ */
+//#define SKEW_CORRECTION
+
+#if ENABLED(SKEW_CORRECTION)
+  // Input all length measurements here:
+  #define XY_DIAG_AC 282.8427124746
+  #define XY_DIAG_BD 282.8427124746
+  #define XY_SIDE_AD 200
+
+  // Or, set the XY skew factor directly:
+  //#define XY_SKEW_FACTOR 0.0
+
+  //#define SKEW_CORRECTION_FOR_Z
+  #if ENABLED(SKEW_CORRECTION_FOR_Z)
+    #define XZ_DIAG_AC 282.8427124746
+    #define XZ_DIAG_BD 282.8427124746
+    #define YZ_DIAG_AC 282.8427124746
+    #define YZ_DIAG_BD 282.8427124746
+    #define YZ_SIDE_AD 200
+
+    // Or, set the Z skew factors directly:
+    //#define XZ_SKEW_FACTOR 0.0
+    //#define YZ_SKEW_FACTOR 0.0
+  #endif
+
+  // Enable this option for M852 to set skew at runtime
+  //#define SKEW_CORRECTION_GCODE
+#endif
+
+/**
+ * Power Loss Recovery
+ * 
+ * Continue after Power-Loss feature will store the current state to the SD Card at the start of each layer
+ * during SD printing. If this is found at bootup it will ask you if you want to resume the print.
+ * NOTE: This feature causes excessive wear on your SD card. This feature is not supported by TH3D Support.
+ */
 //#define POWER_LOSS_RECOVERY
+
+/**
+ * ARC Support Override
+ *
+ * Arc support is enabled by default on all builds but this takes up extra space.
+ * If you get compile errors due to the size being too large when enabling other options, then disable ARC_SUPPORT
+ * by uncommenting the DISABLE_ARC_SUPPORT line below.
+ */ 
+//#define DISABLE_ARC_SUPPORT
+
+/**
+ * SD Support Override
+ * 
+ * If you need to free up flash and ram space to enable more features you can disable the SD card slot on the board.
+ * Only do this if you are only printing to the printer over USB from something like Octoprint/EZPi or your PC.
+ */
+//#define NO_SDCARD
 
 //===========================================================================
 // **********************  END CONFIGURATION SETTINGS   *********************

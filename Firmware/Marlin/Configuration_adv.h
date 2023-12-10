@@ -3164,11 +3164,11 @@
   
   #if ANY(EZBOARD, EZBOARD_V2, SKR_E3_MINI_BOARD, DIY_TMCBOARD, SKR_E3_MINI_V3_0, SOVOL_SV06, SOVOL_SV06_PLUS, E3FREERUNS)
     #if ENABLED(PANCAKE_STEPPER)
-      #define E0_CURRENT    550
+      #define E0_CURRENT    500
     #elif E0_MOTOR_CURRENT > 0
       #define E0_CURRENT E0_MOTOR_CURRENT
     #else
-      #define E0_CURRENT    650
+      #define E0_CURRENT    600
     #endif
     
     #define E0_MICROSTEPS    16
@@ -3184,11 +3184,11 @@
 
   #if AXIS_IS_TMC_CONFIG(E1) || ENABLED(DIY_TMCBOARD)
     #if ENABLED(PANCAKE_STEPPER)
-      #define E1_CURRENT    600
+      #define E1_CURRENT    500
     #elif E0_MOTOR_CURRENT > 0
       #define E1_CURRENT E1_MOTOR_CURRENT
     #else
-      #define E1_CURRENT    800
+      #define E1_CURRENT    600
     #endif
     #define E1_MICROSTEPS    E0_MICROSTEPS
     #define E1_RSENSE         0.11

@@ -162,9 +162,9 @@
 // *************************  END PRINTER SECTION   *************************
 //===========================================================================
 
-//===========================================================================
-// EZABL Advanced Settings - EZABL_POINTS & EZABL_PROBE_EDGE are also used for other probes
-//===========================================================================
+/**
+ * EZABL Advanced Settings - EZABL_POINTS & EZABL_PROBE_EDGE are also used for other probes
+ */
 
 // Probing Grid Points - If you want more or less EZABL probe points change the number below, use odd numbers. Total points is # times #.
 #define EZABL_POINTS 3
@@ -190,12 +190,24 @@
 // Grid Extrapolation - This will use the mesh data to make assumptions of the bed outside the probe area. Disable if you are getting incorrect results on the edges of the bed.
 #define EXTRAPOLATE_BEYOND_GRID
 
-//================================================================================
-// CUSTOM PROBE SETTINGS - FOR EZABL OR BL TOUCH
-// If you have a probe mount that is not pre-setup in the firmware then uncomment
-// the CUSTOM_PROBE line above and enter your probe offsets below
-//================================================================================
-#if ENABLED(CUSTOM_PROBE)
+/**
+ * BLTouch/CRTouch
+ * 
+ * If you want to use the BLTouch/CRTouch uncomment the BLTOUCH line below.
+ * You also need then enter in your sensor offsets below in the CUSTOM PROBE section.
+ * 
+ * If you need to change your SERVO pin you can change that with the SERVO0_PIN Line below. Most people do NOT need to change/set this.
+ */
+//#define BLTOUCH
+//#define SERVO0_PIN PA2
+
+/**
+ * Custom ABL Probe Settings - EZABL/BLTouch/CRTouch
+ * 
+ * If you have a probe mount that is not pre-setup in the firmware then uncomment
+ * the CUSTOM_PROBE line above and enter your probe offsets below
+ */
+#if ANY(CUSTOM_PROBE, BLTOUCH)
   /**
   * Z Probe to nozzle (X,Y) offset, relative to (0, 0).
   *
@@ -230,7 +242,7 @@
 
 
 //===========================================================================
-//******************** EXTRA FEATURES AND TWEAKS ****************************
+//******************** Extra Features and Tweaks ****************************
 //===========================================================================
 
 // EXTRUDER SETTINGS -------------------------------
@@ -425,17 +437,6 @@
 #define LINEAR_ADVANCE_K 0
 
 /**
- * BLTouch/CRTouch
- * 
- * If you want to use the BLTouch/CRTouch uncomment the BLTOUCH line below.
- * You also need to uncomment #define CUSTOM_PROBE above and then enter in your offsets above in the CUSTOM PROBE section.
- * 
- * If you need to change your SERVO pin you can change that with the SERVO0_PIN Line below. Most people do NOT need to change/set this.
- */
-//#define BLTOUCH
-//#define SERVO0_PIN PA2
-
-/**
  * Manual Mesh Leveling 
  *
  * If you want to use manual mesh leveling you can enable the below option. 
@@ -539,7 +540,12 @@
  * ****************************DO NOT TOUCH ANYTHING BELOW THIS COMMENT**************************
  * Core machine settings are below. Do NOT modify these unless you understand what you are doing.
  */
- 
+
+//BLTouch/CRTouch ABL Updates
+#if ENABLED(BLTOUCH) && DISABLED(CUSTOM_PROBE)
+  #define CUSTOM_PROBE
+#endif
+
 //Set Ender 3 Pro Machine Setting
 #if ENABLED(ENDER3_PRO)
   #define ENDER3

@@ -277,10 +277,10 @@
 //#define SERVO0_PIN PA2
 
 /**
- * Custom ABL Probe Settings - EZABL/BLTouch/CRTouch
+ * Custom Probe Offset - EZABL/BLTouch/CRTouch
  * 
  * If you have a probe mount that is not pre-setup in the firmware then uncomment
- * the CUSTOM_PROBE line above and enter your probe offsets below
+ * the CUSTOM_PROBE option (or BLTOUCH if using one) above and enter your probe offsets below
  */
 #if ANY(CUSTOM_PROBE, BLTOUCH)
   /**

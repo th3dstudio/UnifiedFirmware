@@ -6,8 +6,7 @@
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-#define UNIFIED_VERSION "TH3D UFW 2.82"
-#define STRING_DISTRIBUTION_DATE "12-12-2023"
+// Version and Date information is now in the Configuration.h files at the top.
 
 /**
  * ABL Probe Settings

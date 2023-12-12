@@ -6,8 +6,8 @@
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-#define UNIFIED_VERSION "TH3D UFW 2.81b"
-#define STRING_DISTRIBUTION_DATE "12-10-2023"
+#define UNIFIED_VERSION "TH3D UFW 2.82"
+#define STRING_DISTRIBUTION_DATE "12-12-2023"
 
 /**
  * ABL Probe Settings
@@ -84,7 +84,7 @@
   #define ABL_ENABLE
   #define NOZZLE_TO_PROBE_OFFSET { -40, -14, 0 }
 #endif
-#if ENABLED(ENDER3_MAX_OEM)
+#if ANY(ENDER3_MAX_OEM,CRX_PRO_OEM)
   #define ABL_ENABLE
   #define NOZZLE_TO_PROBE_OFFSET { 57, -9, 0 }
 #endif

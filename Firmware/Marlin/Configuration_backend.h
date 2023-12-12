@@ -6,8 +6,8 @@
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-#define UNIFIED_VERSION "TH3D UFW 2.81a"
-#define STRING_DISTRIBUTION_DATE "12-9-2023"
+#define UNIFIED_VERSION "TH3D UFW 2.82"
+#define STRING_DISTRIBUTION_DATE "12-12-2023"
 
 /**
  * ABL Probe Settings
@@ -84,7 +84,7 @@
   #define ABL_ENABLE
   #define NOZZLE_TO_PROBE_OFFSET { -40, -14, 0 }
 #endif
-#if ENABLED(ENDER3_MAX_OEM)
+#if ANY(ENDER3_MAX_OEM,CRX_PRO_OEM)
   #define ABL_ENABLE
   #define NOZZLE_TO_PROBE_OFFSET { 57, -9, 0 }
 #endif
@@ -358,6 +358,10 @@
 
 #if ENABLED(BLTOUCH) && DISABLED(CUSTOM_PROBE)
   #error "You must uncomment the CUSTOM_PROBE option in the EZABL probe mount section and then enter your mount offsets into the Custom Probe section."
+#endif
+
+#if ENABLED(BLTOUCH_ON_5PIN) && DISABLED(BLTOUCH)
+  #error "You must also uncomment the #define BLTOUCH line when using the BLTOUCH_ON_5PIN option."
 #endif
 
 #if BOTH(BTT_TOUCH_SCREEN, ABL_ENABLE)

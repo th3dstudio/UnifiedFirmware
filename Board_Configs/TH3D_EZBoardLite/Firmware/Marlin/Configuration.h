@@ -133,9 +133,9 @@
 // *************************  END PRINTER SECTION   *************************
 //===========================================================================
 
-//===========================================================================
-// EZABL Advanced Settings - EZABL_POINTS & EZABL_PROBE_EDGE are also used for other probes
-//===========================================================================
+/**
+ * EZABL Advanced Settings - EZABL_POINTS & EZABL_PROBE_EDGE are also used for other probes
+ */
 
 // Probing Grid Points - If you want more or less EZABL probe points change the number below, use odd numbers. Total points is # times #.
 #define EZABL_POINTS 3
@@ -161,12 +161,21 @@
 // Grid Extrapolation - This will use the mesh data to make assumptions of the bed outside the probe area. Disable if you are getting incorrect results on the edges of the bed.
 #define EXTRAPOLATE_BEYOND_GRID
 
-//================================================================================
-// CUSTOM PROBE SETTINGS - FOR EZABL OR BL TOUCH
-// If you have a probe mount that is not pre-setup in the firmware then uncomment
-// the CUSTOM_PROBE line above and enter your probe offsets below
-//================================================================================
-#if ENABLED(CUSTOM_PROBE)
+/**
+ * BLTouch/CRTouch
+ * 
+ * If you want to use the BLTouch/CRTouch uncomment the BLTOUCH line below. You also need then enter in your sensor offsets below in the CUSTOM PROBE section.
+ * If you need to change your SERVO pin you can change that with the SERVO0_PIN Line below. Most people do NOT need to change/set this.
+ */
+//#define BLTOUCH
+//#define SERVO0_PIN P2_04
+
+/**
+ * Custom Probe Offset - EZABL/BLTouch/CRTouch
+ * 
+ * If you have a probe mount that is not pre-setup in the firmware then uncomment the CUSTOM_PROBE option (or BLTOUCH if using one) above and enter your probe offsets below
+ */
+#if ANY(CUSTOM_PROBE, BLTOUCH)
   /**
   * Z Probe to nozzle (X,Y) offset, relative to (0, 0).
   *
@@ -201,7 +210,7 @@
 
 
 //===========================================================================
-//******************** EXTRA FEATURES AND TWEAKS ****************************
+//******************** Extra Features and Tweaks ****************************
 //===========================================================================
 
 // EXTRUDER SETTINGS -------------------------------
@@ -311,11 +320,7 @@
 /**
  * EEPROM on SD Card
  * 
- * NOTE: THIS TAKES UP EXTRA SPACE ON THE CPU SO IF YOUR COMPILE FAILS DISABLE SOME OTHER OPTIONS IN THE FIRMWARE.
- * If your board has issues saving the EEPROM that could be due to a defective EEPROM chip. This will make an EEPROM.DAT file
- * You can use a SD card in the printer slot to save the EEPROM to that instead. Just uncomment the below line
- * and then leave an SD card in the printer at all times. If you have to take it out, power off the printer before removing
- * then put your GCode files on the SD card, insert the card again, and then power the printer up.
+ * If your board has issues saving the EEPROM that could be due to a defective EEPROM chip. This will make an EEPROM.DAT file. You can use a SD card in the printer slot to save the EEPROM to that instead. Just uncomment the below line and then leave an SD card in the printer at all times. If you have to take it out, power off the printer before removing then put your GCode files on the SD card, insert the card again, and then power the printer up.
  */
 //#define SDCARD_EEPROM_EMULATION
 
@@ -324,8 +329,7 @@
  * 
  * See here on how to use Input Shaping: https://www.th3dstudio.com/marlin-input-shaping-calculator/
  * 
- * Below are the frequency and damping settings for each axis.
- * Damping must have f at the end of the number and the range is 0.00-1.00.
+ * Below are the frequency and damping settings for each axis. Damping must have f at the end of the number and the range is 0.00-1.00.
  */
 //#define INPUT_SHAPING
 
@@ -352,8 +356,7 @@
  * If you need to adjust your XY home offsets from defaults then you can uncomment the HOME_ADJUST line below and enter your
  * custom XY offsets. This is provided for convenience and is unsupported with included product support.
  * 
- * How to use - measure (home XY then jog using the LCD 1mm at a time) the X and Y distance the nozzle is off
- * the build plate and then put those as NEGATIVE values below on the X_HOME_LOCATION and Y_HOME_LOCATION values
+ * How to use - measure (home XY then jog using the LCD 1mm at a time) the X and Y distance the nozzle is off the build plate and then put those as NEGATIVE values below on the X_HOME_LOCATION and Y_HOME_LOCATION values
  * Positive values will NOT work (move your endstops to fix a positive offset or change your bed size above).
  */
 //#define HOME_ADJUST
@@ -386,25 +389,11 @@
 #define LINEAR_ADVANCE_K 0
 
 /**
- * BLTouch/CRTouch
- * 
- * If you want to use the BLTouch/CRTouch uncomment the BLTOUCH line below.
- * You also need to uncomment #define CUSTOM_PROBE above and then enter in your offsets above in the CUSTOM PROBE section.
- * 
- * If you need to change your SERVO pin you can change that with the SERVO0_PIN Line below. Most people do NOT need to change/set this.
- */
-//#define BLTOUCH
-//#define SERVO0_PIN P2_04
-
-/**
  * Manual Mesh Leveling 
  *
- * If you want to use manual mesh leveling you can enable the below option. 
- * This is for generating a MANUAL mesh WITHOUT a probe. To change the mesh inset value change the EZABL_PROBE_EDGE setting above.
+ * If you want to use manual mesh leveling you can enable the below option. This is for generating a MANUAL mesh WITHOUT a probe. To change the mesh inset value change the EZABL_PROBE_EDGE setting above.
  * 
- * Mesh Bed Leveling Documentation: http://marlinfw.org/docs/gcode/G029-mbl.html 
- * 
- * NOTE: If you want to automate the leveling process our EZABL kits do this for you. Check them out here: http://EZABL.TH3DStudio.com
+ * Mesh Bed Leveling Documentation: http://marlinfw.org/docs/gcode/G029-mbl.html NOTE: If you want to automate the leveling process our EZABL kits do this for you. Check them out here: http://EZABL.TH3DStudio.com
  */
 //#define MANUAL_MESH_LEVELING
 
@@ -444,9 +433,6 @@
   #define XY_DIAG_BD 282.8427124746
   #define XY_SIDE_AD 200
 
-  // Or, set the XY skew factor directly:
-  //#define XY_SKEW_FACTOR 0.0
-
   //#define SKEW_CORRECTION_FOR_Z
   #if ENABLED(SKEW_CORRECTION_FOR_Z)
     #define XZ_DIAG_AC 282.8427124746
@@ -454,10 +440,6 @@
     #define YZ_DIAG_AC 282.8427124746
     #define YZ_DIAG_BD 282.8427124746
     #define YZ_SIDE_AD 200
-
-    // Or, set the Z skew factors directly:
-    //#define XZ_SKEW_FACTOR 0.0
-    //#define YZ_SKEW_FACTOR 0.0
   #endif
 
   // Enable this option for M852 to set skew at runtime
@@ -500,7 +482,12 @@
  * ****************************DO NOT TOUCH ANYTHING BELOW THIS COMMENT**************************
  * Core machine settings are below. Do NOT modify these unless you understand what you are doing.
  */
- 
+
+//BLTouch/CRTouch ABL Updates
+#if ENABLED(BLTOUCH) && DISABLED(CUSTOM_PROBE)
+  #define CUSTOM_PROBE
+#endif
+
 //Set Ender 3 Pro Machine Setting
 #if ENABLED(ENDER3_PRO)
   #define ENDER3
@@ -623,7 +610,7 @@
     #define Z_MAX_POS 220
     #define PRINTER_VOLTAGE_12
   #endif
-  
+
   #if ENABLED(ENDER2_PRO)
     #define X_BED_SIZE 165
     #define Y_BED_SIZE 168

@@ -15,6 +15,10 @@
 #if ENABLED(CUSTOM_PROBE)
   #define ABL_ENABLE
 #endif
+#if ENABLED(ENDER5_S1_OEM)
+  #define ABL_ENABLE
+  #define NOZZLE_TO_PROBE_OFFSET { -35, -2, 0 }
+#endif
 #if ENABLED(KP3S_PRO_OEM_MOUNT)
   #define ABL_ENABLE
   #define NOZZLE_TO_PROBE_OFFSET { -54, -9, 0 }
@@ -311,8 +315,8 @@
     #define Z_MIN_PROBE_ENDSTOP_INVERTING false
     #undef Z_MIN_ENDSTOP_INVERTING
     #define Z_MIN_ENDSTOP_INVERTING false
-  #elif (ENABLED(CR10S_PRO_STOCK_ABL) && ENABLED(CR10S_PRO)) || ANY(ENDER3_S1, ENDER3_S1_PRO, ENDER3_S1_PLUS) || (ANY(SOVOL_SV06, SOVOL_SV06_PLUS) && DISABLED(SV06_EZABL_INSTALLED))
-    //Ender 3 S1 J713 header for Z Endstop is reverse logic via hardware for some reason. Need to invert the EZABL logic for it here.
+  #elif (ENABLED(CR10S_PRO_STOCK_ABL) && ENABLED(CR10S_PRO)) || ANY(ENDER3_S1, ENDER3_S1_PRO, ENDER3_S1_PLUS, ENDER5_S1) || (ANY(SOVOL_SV06, SOVOL_SV06_PLUS) && DISABLED(SV06_EZABL_INSTALLED))
+    //Ender 3 S1 & 5 S1 J713 header for Z Endstop is reverse logic via hardware for some reason. Need to invert the EZABL logic for it here.
     #undef Z_MIN_PROBE_ENDSTOP_INVERTING
     #define Z_MIN_PROBE_ENDSTOP_INVERTING false
     #undef Z_MIN_ENDSTOP_INVERTING

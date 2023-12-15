@@ -7,6 +7,9 @@
 #pragma once
 #define CONFIGURATION_H_VERSION 02010200
 
+#define UNIFIED_VERSION "UF 2.83"
+#define STRING_DISTRIBUTION_DATE "2023-12-14"
+
 //#@CONFIGURATION_START_FLAG
 
 //===========================================================================

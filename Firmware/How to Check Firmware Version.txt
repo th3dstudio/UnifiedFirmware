@@ -1,1 +1,1 @@
-The firmware version is located in the Marlin\Configuration_backend.h file at the top of the file
+The firmware version is located at the top of each Configuration.h file.

@@ -6,7 +6,7 @@
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-// Version and Date information is now in the Configuration.h files at the top.
+#define UNIFIED_VERSION "UF 2.83"
 
 /**
  * ABL Probe Settings

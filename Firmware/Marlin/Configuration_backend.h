@@ -6,7 +6,9 @@
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-#define UNIFIED_VERSION "UF 2.83"
+#ifndef UNIFIED_VERSION
+  #define UNIFIED_VERSION "UFW 2.83"
+#endif
 
 /**
  * ABL Probe Settings

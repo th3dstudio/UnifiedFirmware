@@ -7,7 +7,7 @@ def update_version_info(file_path, new_version, new_build_date):
         content = file.read()
 
     # Update UNIFIED_VERSION
-    content = re.sub(r'#define UNIFIED_VERSION "(.*?)"', f'#define UNIFIED_VERSION "UFW {new_version}"', content)
+    content = re.sub(r'#define UNIFIED_VERSION "(.*?)"', f'#define UNIFIED_VERSION "TH3D UFW {new_version}"', content)
 
     # Update STRING_DISTRIBUTION_DATE
     content = re.sub(r'#define STRING_DISTRIBUTION_DATE "(.*?)"', f'#define STRING_DISTRIBUTION_DATE "{new_build_date}"', content)

@@ -7,7 +7,7 @@ def update_version_info(file_path, new_version, new_build_date):
         content = file.read()
 
     # Update UNIFIED_VERSION
-    content = re.sub(r'#define UNIFIED_VERSION "(.*?)"', f'#define UNIFIED_VERSION "UF {new_version}"', content)
+    content = re.sub(r'#define UNIFIED_VERSION "(.*?)"', f'#define UNIFIED_VERSION "TH3D UFW {new_version}"', content)
 
     # Update STRING_DISTRIBUTION_DATE
     content = re.sub(r'#define STRING_DISTRIBUTION_DATE "(.*?)"', f'#define STRING_DISTRIBUTION_DATE "{new_build_date}"', content)
@@ -25,6 +25,10 @@ def update_version_in_folders(root_directories, new_version, new_build_date):
                     update_version_info(file_path, new_version, new_build_date)
                     print(f"Updated {file_path}")
 
+def update_version_in_file(file_path, new_version, new_build_date):
+    update_version_info(file_path, new_version, new_build_date)
+    print(f"Updated {file_path}")
+
 def main():
     new_version = input("Enter the new version number: ")
     new_build_date = datetime.now().strftime("%Y-%m-%d")
@@ -35,7 +39,11 @@ def main():
         r'D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs'
     ]
 
+    # Additional file to update
+    additional_file_path = r'D:\Work\GitHub\UnifiedFirmware\Firmware\Marlin\Configuration_backend.h'
+
     update_version_in_folders(root_directories, new_version, new_build_date)
+    update_version_in_file(additional_file_path, new_version, new_build_date)
 
 if __name__ == "__main__":
     main()

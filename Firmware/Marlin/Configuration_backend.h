@@ -6,7 +6,9 @@
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
-// Version and Date information is now in the Configuration.h files at the top.
+#ifndef UNIFIED_VERSION
+  #define UNIFIED_VERSION "TH3D UFW 2.83a"
+#endif
 
 /**
  * ABL Probe Settings

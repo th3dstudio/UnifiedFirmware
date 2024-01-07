@@ -173,7 +173,7 @@
 
 // Printer Voltage - Uncomment your machine voltage -------------------------
 //#define PRINTER_VOLTAGE_12
-//#define PRINTER_VOLTAGE_24
+#define PRINTER_VOLTAGE_24
 
 // Motor Currents - Raise current if steps are being lost -------------------
 #define X_MOTOR_CURRENT 600
@@ -537,7 +537,7 @@
   #error "DEFAULT_ACCELERATION cannot be higher than MAX_Y_ACCEL. Set to the same number or lower.+"
 #endif
 
-#if DISABLED(PRINTER_VOLTAGE_12) && DISABLED(PRINTER_VOLTAGE_24)
+#if NONE(PRINTER_VOLTAGE_12, PRINTER_VOLTAGE_24)
   #error "Uncomment the PRINTER_VOLTAGE_## line for the DC (Power supply output) voltage that your printer runs on."
 #endif
 

@@ -74,8 +74,8 @@
 //#define ENDER6_OEM                       //Ender 6 Specific OEM Mount
 //#define ENDER6_PETSFANG                  //Ender 6 PETSFANG Mount
 //#define SV01_OEM_MOUNT                   //Sovol SV01 OEM Mount
-//#define SV01_PRO_EZABL_OEM_MOUNT         //For our 18mm Sensors
-//#define SV01_PRO_EZABL_MICRO_OEM_MOUNT   //For our 8mm Sensors
+//#define SV01_PRO_EZABL_OEM_MOUNT         //For our 18mm Sensors - SV05 Uses the same as SV01 Pro
+//#define SV01_PRO_EZABL_MICRO_OEM_MOUNT   //For our 8mm Sensors - SV05 Uses the same as SV01 Pro
 //#define SV03_OEM_MOUNT                   //Sovol SV03 OEM Mount
 //#define SV06_EZABL_OEM_MOUNT             //Sovol SV06/SV06 Plus EZABL OEM Mount - same offsets, different file
 //#define CR10_VOLCANO                     //TH3D CR-10 Volcano Mount 

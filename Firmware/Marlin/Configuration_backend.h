@@ -7,7 +7,7 @@
 //===========================================================================
 
 #ifndef UNIFIED_VERSION
-  #define UNIFIED_VERSION "TH3D UFW 2.84"
+  #define UNIFIED_VERSION "TH3D UFW 2.85"
 #endif
 
 /**
@@ -317,7 +317,7 @@
     #define Z_MIN_PROBE_ENDSTOP_INVERTING false
     #undef Z_MIN_ENDSTOP_INVERTING
     #define Z_MIN_ENDSTOP_INVERTING false
-  #elif (ENABLED(CR10S_PRO_STOCK_ABL) && ENABLED(CR10S_PRO)) || ANY(ENDER3_S1, ENDER3_S1_PRO, ENDER3_S1_PLUS, ENDER5_S1) || (ANY(SOVOL_SV06, SOVOL_SV06_PLUS) && DISABLED(SV06_EZABL_INSTALLED))
+  #elif (ENABLED(CR10S_PRO_STOCK_ABL) && ENABLED(CR10S_PRO)) || (ANY(ENDER3_S1, ENDER3_S1_PRO, ENDER3_S1_PLUS, ENDER5_S1) && DISABLED(INVERT_EZABL_LOGIC)) || (ANY(SOVOL_SV06, SOVOL_SV06_PLUS) && DISABLED(SV06_EZABL_INSTALLED)) || (NONE(ENDER3_S1, ENDER3_S1_PRO, ENDER3_S1_PLUS, ENDER5_S1) && ENABLED(INVERT_EZABL_LOGIC))
     //Ender 3 S1 & 5 S1 J713 header for Z Endstop is reverse logic via hardware for some reason. Need to invert the EZABL logic for it here.
     #undef Z_MIN_PROBE_ENDSTOP_INVERTING
     #define Z_MIN_PROBE_ENDSTOP_INVERTING false

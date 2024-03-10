@@ -7,7 +7,7 @@
 //===========================================================================
 
 #ifndef UNIFIED_VERSION
-  #define UNIFIED_VERSION "TH3D UFW 2.83a"
+  #define UNIFIED_VERSION "TH3D UFW 2.84"
 #endif
 
 /**
@@ -592,14 +592,14 @@
   #define BLTOUCH_STOW_DELAY     250
   #define BLTOUCH_RESET_DELAY    250
 #elif ENABLED(EZABL_SUPERFASTPROBE) && ENABLED(ABL_ENABLE)
-  #define Z_CLEARANCE_DEPLOY_PROBE   2
-  #define Z_CLEARANCE_BETWEEN_PROBES 2
-  #define Z_CLEARANCE_MULTI_PROBE    2
+  #define Z_CLEARANCE_DEPLOY_PROBE   3
+  #define Z_CLEARANCE_BETWEEN_PROBES 3
+  #define Z_CLEARANCE_MULTI_PROBE    3
   #define Z_PROBE_FEEDRATE_SLOW (Z_PROBE_FEEDRATE_FAST / 1.5)
 #else
   #define Z_CLEARANCE_DEPLOY_PROBE   5
-  #define Z_CLEARANCE_BETWEEN_PROBES 3
-  #define Z_CLEARANCE_MULTI_PROBE    3
+  #define Z_CLEARANCE_BETWEEN_PROBES 4
+  #define Z_CLEARANCE_MULTI_PROBE    4
   #define Z_PROBE_FEEDRATE_SLOW (Z_PROBE_FEEDRATE_FAST / 2)
 #endif
 

@@ -169,22 +169,6 @@
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_JGMaker_Ramps.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\JGMaker_Ramps\Firmware"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_JGMaker_Ramps.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\JGMaker_Ramps\Binaries"
 
-"C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_ADIM_Ramps.zip"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_ADIM_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_ADIM_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Gcode Files"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_ADIM_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_ADIM_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_ADIM_Ramps.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\ADIM_Ramps\Firmware"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_ADIM_Ramps.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\ADIM_Ramps\Binaries"
-
-"C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Alfawise_Ramps.zip"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Alfawise_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Alfawise_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Gcode Files"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Alfawise_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Alfawise_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Alfawise_Ramps.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\Alfawise_Ramps\Firmware"
-"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Alfawise_Ramps.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\Alfawise_Ramps\Binaries"
-
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Artillery_Ramps.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Artillery_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_Artillery_Ramps.zip" "D:\Work\GitHub\UnifiedFirmware\Gcode Files"

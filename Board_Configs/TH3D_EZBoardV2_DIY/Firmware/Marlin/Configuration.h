@@ -7,8 +7,8 @@
 #pragma once
 #define CONFIGURATION_H_VERSION 02010200
 
-#define UNIFIED_VERSION "TH3D UFW 2.86"
-#define STRING_DISTRIBUTION_DATE "2024-04-12"
+#define UNIFIED_VERSION "TH3D UFW 2.86a"
+#define STRING_DISTRIBUTION_DATE "2024-05-08"
 
 //#@CONFIGURATION_START_FLAG
 
@@ -34,8 +34,6 @@
  * Compatible LCDs - This firmware is setup to use the Single Cable (EXP3) Creality LCD 
  * OR the TH3D 12864 LCD with the Dual Cable LCD adapter board 
  * OR the BTT TFT35-E3 with serial+EXP3 plugs
- *
- * For the BTT TFT35-E3 wiring and warnings see our guide here: COMING SOON
  * 
  * SD Card Slot - Regardless if your LCD has an SD slot or not the onboard SD slot will always be the one used
  * 
@@ -346,6 +344,10 @@
 
 // If your printer is homing to the endstops hard uncomment this to change the homing speed/divisor to make it less aggressive.
 //#define SLOWER_HOMING
+
+// BTT TOUCH SCREEN --------------------------------
+// If you are using the BTT Touch Screen uncomment the below line to enable additional options per the BTT docs they recommend for use with their LCD
+//#define BTT_TOUCH_SCREEN
 
 // SENSORLESS HOMING SETTINGS ----------------------
 // If you want to use sensorless homing on your X or Y Axis, uncomment the X_AXIS_SENSORLESS_HOMING or Y_AXIS_SENSORLESS_HOMING to enable it.

@@ -37,6 +37,10 @@
   #define ABL_ENABLE
   #define NOZZLE_TO_PROBE_OFFSET { 30, -28, 0 }
 #endif
+#if ENABLED(SV06_EZABL_NG8_OEM_MOUNT)
+  #define ABL_ENABLE
+  #define NOZZLE_TO_PROBE_OFFSET { 25, -23, 0 }
+#endif
 #if ENABLED(SPRITE_EXTRUDER_18MM_MOUNT)
   #define ABL_ENABLE
   #define NOZZLE_TO_PROBE_OFFSET { -44, -42, 0 }

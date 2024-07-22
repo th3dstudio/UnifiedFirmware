@@ -51,7 +51,7 @@
 //#define SOVOL_SV01
 //#define SOVOL_SV01_PRO     // See here for stock CRTouch sensor wiring: https://support.th3dstudio.com/helpcenter/ezboard-v2-sovol-sv01-pro-stock-abl-sensor-wiring/
 //#define SOVOL_SV03
-//#define SOVOL_SV05         // See here for stock CRTouch sensor wiring: LINK HERE
+//#define SOVOL_SV05         // See here for stock CRTouch sensor wiring: https://support.th3dstudio.com/helpcenter/sv05-ezboard-v2-crtouch-wiring/
 //#define SOVOL_SV06         // See here for stock ABL sensor wiring: https://support.th3dstudio.com/helpcenter/ezboard-v2-sovol-sv06-stock-abl-sensor-wiring/
 //#define SOVOL_SV06_PLUS    // See here for stock ABL sensor wiring: https://support.th3dstudio.com/helpcenter/ezboard-v2-sovol-sv06-stock-abl-sensor-wiring/
 
@@ -75,8 +75,10 @@
 //#define ENDER6_OEM                       //Ender 6 Specific OEM Mount
 //#define ENDER6_PETSFANG                  //Ender 6 PETSFANG Mount
 //#define SV01_OEM_MOUNT                   //Sovol SV01 OEM Mount
-//#define SV01_PRO_EZABL_OEM_MOUNT         //For our 18mm Sensors - SV05 Uses the same as SV01 Pro
-//#define SV01_PRO_EZABL_MICRO_OEM_MOUNT   //For our 8mm Sensors - SV05 Uses the same as SV01 Pro
+//#define SV01_PRO_EZABL_OEM_MOUNT         //For our 18mm Sensors
+//#define SV01_PRO_EZABL_8MM_OEM_MOUNT     //For our 8mm Sensors
+//#define SV05_EZABL_OEM_MOUNT             //For our 18mm Sensors
+//#define SV05_EZABL_8MM_OEM_MOUNT         //For our 8mm Sensors
 //#define SV03_OEM_MOUNT                   //Sovol SV03 OEM Mount
 //#define SV06_EZABL_OEM_MOUNT             //Sovol SV06/SV06 Plus EZABL OEM Mount - same offsets, different file
 //#define CR10_VOLCANO                     //TH3D CR-10 Volcano Mount 
@@ -549,6 +551,16 @@
   #define CREALITY_Z_STEPS 800
 #else
   #define CREALITY_Z_STEPS 400
+#endif
+
+//Auto enable EZABL when EZABL spec mounts are enabled for sv01 pro
+#if ANY(SV01_PRO_EZABL_OEM_MOUNT, SV01_PRO_EZABL_8MM_OEM_MOUNT) && DISABLED(SV01_PRO_EZABL_INSTALLED)
+  #define SV01_PRO_EZABL_INSTALLED
+#endif
+
+//Auto enable EZABL when EZABL spec mounts are enabled for sv05
+#if ANY(SV05_EZABL_OEM_MOUNT, SV05_EZABL_8MM_OEM_MOUNT) && DISABLED(SV05_EZABL_INSTALLED)
+  #define SV05_EZABL_INSTALLED
 #endif
 
 /**

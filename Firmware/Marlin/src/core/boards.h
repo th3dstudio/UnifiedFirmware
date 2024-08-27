@@ -445,6 +445,7 @@
 #define BOARD_MKS_SKIPR_V1            5243  // MKS SKIPR v1.0 all-in-one board (STM32F407VE)
 #define BOARD_TRONXY_V10              5244  // TRONXY V10 (STM32F446ZE)
 #define BOARD_CREALITY_E3FREERUNS     5245  // Creality E3FreeRuns (STM32F401RE)
+#define BOARD_CREALITY_F401RE         5246  // Creality CR4NS200141C13 (STM32F401RE) as found in the Ender-5 S1
 
 //
 // ARM Cortex-M7

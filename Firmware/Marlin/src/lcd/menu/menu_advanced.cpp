@@ -703,7 +703,7 @@ void menu_advanced_settings() {
 
     // M593 - Acceleration items
     #if ENABLED(SHAPING_MENU)
-      if (!is_busy) SUBMENU(MSG_INPUT_SHAPING, menu_advanced_input_shaping);
+      SUBMENU(MSG_INPUT_SHAPING, menu_advanced_input_shaping); //From Bugfix 2.1.x 🚸 Edit IS frequency while moving (#27248)
     #endif
 
     #if HAS_CLASSIC_JERK

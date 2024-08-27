@@ -493,6 +493,12 @@ void menu_configuration() {
 
   SUBMENU(MSG_ADVANCED_SETTINGS, menu_advanced_settings);
 
+  #if DISABLED(DISABLE_TH3D_MODS)  //Modded by TH3D. Moved to the Main Config menu from Menu Advanced
+    #if ALL(X_AXIS_TWIST_COMPENSATION, ABL_ENABLE)
+      SUBMENU(MSG_XATC, xatc_wizard_continue);
+    #endif
+  #endif
+
   #if ENABLED(BABYSTEP_ZPROBE_OFFSET)
     SUBMENU(MSG_ZPROBE_ZOFFSET, lcd_babystep_zoffset);
   #elif HAS_BED_PROBE

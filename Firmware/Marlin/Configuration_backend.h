@@ -7,7 +7,7 @@
 //===========================================================================
 
 #ifndef UNIFIED_VERSION
-  #define UNIFIED_VERSION "TH3D UFW 2.90T1"
+  #define UNIFIED_VERSION "TH3D UFW 2.90T2"
 #endif
 
 /**
@@ -160,12 +160,15 @@
     #define USE_PROBE_FOR_Z_HOMING
   #endif
 
-  #define X_AXIS_TWIST_COMPENSATION
+  #define X_AXIS_TWIST_COMPENSATION //added in V2.90
 
   //#define ENABLE_LEVELING_FADE_HEIGHT // Disabling as it causes other issues
   #if ENABLED(ENABLE_LEVELING_FADE_HEIGHT)
-    #define DEFAULT_LEVELING_FADE_HEIGHT 0 // (mm) Default fade height - Disable by default to prevent user issues
+    #define DEFAULT_LEVELING_FADE_HEIGHT 10
   #endif
+
+  #define ABL_BILINEAR_SUBDIVISION //added in V2.90
+  #define BILINEAR_SUBDIVISIONS 3  //added in V2.90
   
   #define SEGMENT_LEVELED_MOVES
   #define LEVELED_SEGMENT_LENGTH 5.0
@@ -566,6 +569,8 @@
 
 #define FILAMENT_RUNOUT_THRESHOLD 100 //Prevent false sensor triggers
 
+#define DETECT_BROKEN_ENDSTOP  //Added in V2.90
+
 /**
  * LCD General Settings
  */
@@ -578,6 +583,13 @@
   #define SHOW_BOOTSCREEN
   #define SHOW_CUSTOM_BOOTSCREEN
 #endif
+
+#if ENABLED(ENCODER_NOISE_FILTER) //Added in V2.90
+  #define ENCODER_SAMPLES 10
+#endif
+
+#define LCD_FEEDBACK_FREQUENCY_DURATION_MS 40  //Added in V2.90
+#define LCD_FEEDBACK_FREQUENCY_HZ 2000         //Added in V2.90
 
 #define USE_BIG_EDIT_FONT
 

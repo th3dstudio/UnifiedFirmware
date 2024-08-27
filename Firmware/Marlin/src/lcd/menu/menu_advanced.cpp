@@ -632,8 +632,10 @@ void menu_backlash();
         SUBMENU(MSG_PROBE_WIZARD, goto_probe_offset_wizard);
       #endif
 
-      #if ENABLED(X_AXIS_TWIST_COMPENSATION)
-        SUBMENU(MSG_XATC, xatc_wizard_continue);
+      #if ENABLED(DISABLE_TH3D_MODS)  //Modded by TH3D. Moved to the Main Config menu
+        #if ENABLED(X_AXIS_TWIST_COMPENSATION)
+          SUBMENU(MSG_XATC, xatc_wizard_continue);
+        #endif
       #endif
 
       END_MENU();

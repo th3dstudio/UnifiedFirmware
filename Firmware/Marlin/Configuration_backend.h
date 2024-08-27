@@ -1,6 +1,6 @@
 #pragma once
 
-#define CONFIGURATION_BACKEND_H_VERSION 02010200
+#define CONFIGURATION_BACKEND_H_VERSION 02010204
 
 //===========================================================================
 //======================= DO NOT MODIFY THIS FILE ===========================

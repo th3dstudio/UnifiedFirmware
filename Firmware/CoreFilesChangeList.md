@@ -16,30 +16,17 @@ This does not include machine `configuration.h` or `PlatformIO.ini` files.
 - **Marlin**
 	- **src**
 		- **core**
-			- `boards.h`
-			- `language.h`
+			- `language.h` - Changed Firmware URL to Ours
 		- **inc**
-			- `Warnings.cpp``
+			- `Warnings.cpp` - Disable certain warnings that do not affect our configs
 		- **lcd**
 			- **language**
-				- `language_en.h`
-			- **menu**
-				- `menu_advanced.cpp`
-				- `menu_configuration.cpp`
-				- `menu_motion.cpp`			
+				- `language_en.h`			
 		- **pins**
 			- `pins.h`
-			- **lpc1769**
-				- `pins_MKS_SGEN_L_V2.h`
-			- **mega**
-				- `pins_WANHAO_ONEPLUS.h`
 			- **ramps**
 				- `pins_RAMPS.h`
 				- `pins_RAMPS_CREALITY.h`
-			- **sanguino**
-				- `pins_ANET_10.h`
-				- `pins_MELZI_CREALITY.h`
-				- `pins_SANGUINOLOLU_11.h`
 			- **stm32f1**
 				- `pins_BTT_SKR_MINI_E3_common.h`
 				- `pins_CREALITY_V4.h`

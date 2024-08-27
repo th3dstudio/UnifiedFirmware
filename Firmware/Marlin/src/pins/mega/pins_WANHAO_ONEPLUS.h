@@ -23,6 +23,7 @@
 
 /**
  * Wanhao 0ne+ pin assignments
+ * ATmega2560
  */
 
 #include "env_validate.h"
@@ -75,9 +76,7 @@
 //
 #define HEATER_0_PIN                           4
 #define HEATER_BED_PIN                        44
-#if DISABLED(WANHAO_I3MINI_E0_FAN)
-  #define FAN_PIN                             12  // IO pin. Buffer needed
-#endif
+#define FAN0_PIN                              12  // IO pin. Buffer needed
 
 //
 // SD Card

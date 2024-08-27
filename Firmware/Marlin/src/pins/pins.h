@@ -735,6 +735,8 @@
   #include "stm32f4/pins_CREALITY_E3FREERUNS.h"     // STM32F4                              env:STM32F401RE_creality env:STM32F401RC_creality env:STM32F401RC_creality_jlink env:STM32F401RC_creality_stlink
 #elif MB(CREALITY_F401RE)
   #include "stm32f4/pins_CREALITY_F401.h"           // STM32F4                              env:STM32F401RE_creality
+#elif MB(BTT_SKR_MINI_E3_V3_0_1)
+  #include "stm32f4/pins_BTT_SKR_MINI_E3_V3_0_1.h"  // STM32F4                              env:STM32F401RC_btt
 
 //
 // ARM Cortex-M7

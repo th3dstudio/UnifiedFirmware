@@ -30,7 +30,7 @@
 //#define V3_EZABL_ON_SERVO                       // As in TH3D Firmware Config
 
 #define BOARD_INFO_NAME   "TH3D EZBoard"
-#define BOARD_WEBSITE_URL "th3dstudio.com"
+#define BOARD_WEBSITE_URL "TH3DStudio.com"
 
 //
 // Servos

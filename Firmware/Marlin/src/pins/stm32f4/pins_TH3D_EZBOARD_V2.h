@@ -29,7 +29,7 @@
 #endif
 
 #define BOARD_INFO_NAME   "TH3D EZBoard V2"
-#define BOARD_WEBSITE_URL "th3dstudio.com"
+#define BOARD_WEBSITE_URL "TH3DStudio.com"
 
 //#define V3_EZABL_ON_SERVO                       // As in TH3D Firmware Config
 

@@ -105,7 +105,7 @@
 #define HEATER_0_PIN                       PA1   // E1_HEAT_PWM
 #define HEATER_BED_PIN                     PA7   // BED_HEAT_1 FET
 
-#define FAN_PIN                            PA0   // Part cooling fan FET
+#define FAN_PIN0                            PA0   // Part cooling fan FET
 
 //
 // SD Card
@@ -114,7 +114,7 @@
 #define SDCARD_CONNECTION                 ONBOARD
 #define ONBOARD_SPI_DEVICE                1
 #define ONBOARD_SD_CS_PIN                 PC12  // SDSS
-#define SDIO_SUPPORT
+#define ONBOARD_SDIO
 #define NO_SD_HOST_DRIVE                  // This board's SD is only seen by the printer
 
 /**
@@ -138,7 +138,7 @@
 #define EXP3_08_PIN                       PB15
 
 #define LCD_PINS_RS                EXP3_07_PIN
-#define LCD_PINS_ENABLE            EXP3_08_PIN
+#define LCD_PINS_EN                EXP3_08_PIN
 #define LCD_PINS_D4                EXP3_06_PIN
 
 #define BTN_ENC                    EXP3_02_PIN

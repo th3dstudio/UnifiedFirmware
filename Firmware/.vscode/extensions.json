@@ -5,6 +5,8 @@
         "platformio.platformio-ide"
     ],
     "unwantedRecommendations": [
+        "marlinfirmware.auto-build",
+        "ms-vscode-remote.remote-containers",
         "ms-vscode.cpptools-extension-pack"
     ]
 }

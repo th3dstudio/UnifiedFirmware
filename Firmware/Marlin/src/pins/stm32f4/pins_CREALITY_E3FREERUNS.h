@@ -144,8 +144,8 @@
 //
 #define HEATER_BED_PIN                      PB10
 #define HEATER_0_PIN                        PA1
-#ifndef FAN_PIN
-  #define FAN_PIN                           PA0
+#ifndef FAN_PIN0
+  #define FAN_PIN0                          PA0
 #endif
 #define FAN_SOFT_PWM
 
@@ -156,7 +156,7 @@
 #define SDCARD_CONNECTION                ONBOARD
 #define ONBOARD_SPI_DEVICE               1
 // #define ONBOARD_SD_CS_PIN                PA4   // SDSS
-#define SDIO_SUPPORT
+#define ONBOARD_SDIO
 #define NO_SD_HOST_DRIVE                  // This board's SD is only seen by the printer
 
 #if ENABLED(CR10_STOCKDISPLAY) && NONE(RET6_12864_LCD, VET6_12864_LCD)
@@ -167,7 +167,7 @@
 
   // RET6 12864 LCD
   #define LCD_PINS_RS                       PB12
-  #define LCD_PINS_ENABLE                   PB15
+  #define LCD_PINS_EN                       PB15
   #define LCD_PINS_D4                       PB13
 
   #define BTN_ENC                           PB2
@@ -182,7 +182,7 @@
 
   // VET6 12864 LCD
   #define LCD_PINS_RS                       PA4
-  //#define LCD_PINS_ENABLE                   PA7
+  //#define LCD_PINS_EN                     PA7
   #define LCD_PINS_D4                       PA5
 
   #define BTN_ENC                           PC5

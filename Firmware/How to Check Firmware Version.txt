@@ -1,1 +1,0 @@
-The firmware version is located at the top of each Configuration.h file.

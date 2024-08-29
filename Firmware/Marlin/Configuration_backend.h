@@ -7,7 +7,7 @@
 //===========================================================================
 
 #ifndef UNIFIED_VERSION
-  #define UNIFIED_VERSION "TH3D UFW 2.90T2"
+  #define UNIFIED_VERSION "TH3D UFW 2.90T3"
 #endif
 
 /**
@@ -539,14 +539,19 @@
 #endif
 
 #define PREHEAT_1_LABEL       "PLA"
-#define PREHEAT_1_TEMP_HOTEND 200
+#define PREHEAT_1_TEMP_HOTEND 210
 #define PREHEAT_1_TEMP_BED     60
 #define PREHEAT_1_FAN_SPEED     0
 
-#define PREHEAT_2_LABEL       "ABS"
-#define PREHEAT_2_TEMP_HOTEND 240
-#define PREHEAT_2_TEMP_BED    100
-#define PREHEAT_2_FAN_SPEED     0
+#define PREHEAT_2_LABEL       "PETG" //Added in V2.90
+#define PREHEAT_2_TEMP_HOTEND 235 //Added in V2.90
+#define PREHEAT_2_TEMP_BED     80 //Added in V2.90
+#define PREHEAT_2_FAN_SPEED     0 //Added in V2.90
+
+#define PREHEAT_3_LABEL       "ABS/ASA" //Added in V2.90
+#define PREHEAT_3_TEMP_HOTEND 245 //Added in V2.90
+#define PREHEAT_3_TEMP_BED    100 //Added in V2.90
+#define PREHEAT_3_FAN_SPEED     0 //Added in V2.90
 
 #define NOZZLE_PARK_FEATURE
 #if ENABLED(NOZZLE_PARK_FEATURE)
@@ -570,6 +575,10 @@
 #define FILAMENT_RUNOUT_THRESHOLD 100 //Prevent false sensor triggers
 
 #define DETECT_BROKEN_ENDSTOP  //Added in V2.90
+
+#define NO_CONFIGURATION_EMBEDDING_WARNING  //Added in V2.90
+
+#define ENCODER_NOISE_FILTER //Added in V2.90
 
 /**
  * LCD General Settings

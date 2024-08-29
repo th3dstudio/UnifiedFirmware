@@ -351,6 +351,12 @@ void menu_main() {
     if (!busy) SUBMENU(MSG_MMU2_MENU, menu_mmu2);
   #endif
 
+  #if DISABLED(DISABLE_TH3D_MODS)
+    #if ANY(LED_CONTROL_MENU, CASE_LIGHT_MENU)
+      SUBMENU(MSG_LEDS, menu_led);
+    #endif
+  #endif
+
   SUBMENU(MSG_CONFIGURATION, menu_configuration);
 
   #if ENABLED(CUSTOM_MENU_MAIN)
@@ -367,8 +373,10 @@ void menu_main() {
     SUBMENU(MSG_INFO_MENU, menu_info);
   #endif
 
-  #if ANY(LED_CONTROL_MENU, CASE_LIGHT_MENU)
-    SUBMENU(MSG_LEDS, menu_led);
+  #if ENABLED(DISABLE_TH3D_MODS)
+    #if ANY(LED_CONTROL_MENU, CASE_LIGHT_MENU)
+      SUBMENU(MSG_LEDS, menu_led);
+    #endif
   #endif
 
   //

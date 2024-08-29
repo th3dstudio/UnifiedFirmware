@@ -588,10 +588,24 @@ void menu_configuration() {
 
   #if ENABLED(EEPROM_SETTINGS)
     ACTION_ITEM(MSG_STORE_EEPROM, ui.store_settings);
-    if (!busy) ACTION_ITEM(MSG_LOAD_EEPROM, ui.load_settings);
+    #if ENABLED(DISABLE_TH3D_MODS)
+      if (!busy) ACTION_ITEM(MSG_LOAD_EEPROM, ui.load_settings);
+    #endif
   #endif
 
-  if (!busy) ACTION_ITEM(MSG_RESTORE_DEFAULTS, ui.reset_settings);
+  #if ENABLED(DISABLE_TH3D_MODS)
+    if (!busy) ACTION_ITEM(MSG_RESTORE_DEFAULTS, ui.reset_settings);
+  #endif
+
+  #if DISABLED(DISABLE_TH3D_MODS)
+    #if ENABLED(EEPROM_SETTINGS) && DISABLED(SLIM_LCD_MENUS)
+      CONFIRM_ITEM(MSG_INIT_EEPROM,
+        MSG_BUTTON_INIT, MSG_BUTTON_CANCEL,
+        ui.init_eeprom, nullptr,
+        GET_TEXT_F(MSG_INIT_EEPROM), (const char *)nullptr, F("?")
+      );
+    #endif
+  #endif
 
   END_MENU();
 }

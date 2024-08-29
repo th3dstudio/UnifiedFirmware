@@ -286,7 +286,7 @@ namespace Language_en {
 
   LSTR MSG_LED_CONTROL                    = _UxGT("LED Control");
   #if ENABLED(EZNEO_220)
-    LSTR MSG_LEDS                           = _UxGT("EZNeo");
+    LSTR MSG_LEDS                           = _UxGT("EZNeo Lights");
     LSTR MSG_LED_PRESETS                    = _UxGT("EZNeo Presets");
   #else
     LSTR MSG_LEDS                           = _UxGT("Lights");
@@ -733,7 +733,7 @@ namespace Language_en {
   LSTR MSG_FILAMENT_CHANGE_OPTION_RESUME  = _UxGT("Continue");
   LSTR MSG_FILAMENT_CHANGE_PURGE_CONTINUE = _UxGT("Purge or Continue?");
   LSTR MSG_FILAMENT_CHANGE_NOZZLE         = _UxGT("  Nozzle: ");
-  LSTR MSG_RUNOUT_SENSOR                  = _UxGT("Runout Sensor");
+  LSTR MSG_RUNOUT_SENSOR                  = _UxGT("Filament Sensor");
   LSTR MSG_RUNOUT_DISTANCE_MM             = _UxGT("Runout Dist mm");
   LSTR MSG_RUNOUT_ENABLE                  = _UxGT("Enable Runout");
   LSTR MSG_RUNOUT_ACTIVE                  = _UxGT("Runout Active");

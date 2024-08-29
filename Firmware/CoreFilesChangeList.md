@@ -4,6 +4,8 @@ This is for our reference to make sure to retain changes made to the core files 
 
 This does not include machine `configuration.h` or `PlatformIO.ini` files.
 
+To disable any menu customization we've made just add `#define DISABLE_TH3D_MODS` to the `Configuration.h` file.
+
 ----------
 
 - **.vscode**
@@ -21,7 +23,11 @@ This does not include machine `configuration.h` or `PlatformIO.ini` files.
 			- `Warnings.cpp` - Disable certain warnings that do not affect our configs
 		- **lcd**
 			- **language**
-				- `language_en.h`			
+				- `language_en.h`
+			- **menu**
+				- `menu_main.cpp` - Moved menus around for easier use.
+				- `menu_configuration.cpp` - Moved menus around for easier use.
+				- `menu_advanced.cpp` - Moved menus around for easier use.
 		- **pins**
 			- `pins.h`
 			- **ramps**

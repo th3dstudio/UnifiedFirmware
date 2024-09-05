@@ -30,6 +30,8 @@ To disable any menu customization we've made just add `#define DISABLE_TH3D_MODS
 				- `menu_advanced.cpp` - Moved menus around for easier use.
 		- **pins**
 			- `pins.h`
+			- **gd32f1**
+				- `pins_SOVOL_V131.h`
 			- **ramps**
 				- `pins_RAMPS.h`
 				- `pins_RAMPS_CREALITY.h`

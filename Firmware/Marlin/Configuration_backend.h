@@ -1,13 +1,13 @@
 #pragma once
 
-#define CONFIGURATION_BACKEND_H_VERSION 02010200
+#define CONFIGURATION_BACKEND_H_VERSION 02010204
 
 //===========================================================================
 //======================= DO NOT MODIFY THIS FILE ===========================
 //===========================================================================
 
 #ifndef UNIFIED_VERSION
-  #define UNIFIED_VERSION "TH3D UFW 2.87"
+  #define UNIFIED_VERSION "TH3D UFW 2.90"
 #endif
 
 /**
@@ -29,7 +29,7 @@
   #define ABL_ENABLE
   #define NOZZLE_TO_PROBE_OFFSET { 43, 5, 0 }
 #endif
-#if ENABLED(SV01_PRO_EZABL_MICRO_OEM_MOUNT)
+#if ANY(SV01_PRO_EZABL_8MM_OEM_MOUNT, SV05_EZABL_8MM_OEM_MOUNT)
   #define ABL_ENABLE
   #define NOZZLE_TO_PROBE_OFFSET { 38, 10, 0 }
 #endif
@@ -49,10 +49,6 @@
   #define ABL_ENABLE
   #define NOZZLE_TO_PROBE_OFFSET { 38.5, 23.5, 0 }
 #endif
-#if ENABLED(TINA2_OEM)
-  #define ABL_ENABLE
-  #define NOZZLE_TO_PROBE_OFFSET { 28, 0, 0 }
-#endif
 #if ENABLED(ZYLTECH_GEAR_OEM)
   #define ABL_ENABLE
   #define NOZZLE_TO_PROBE_OFFSET { 0, -42, 0 }
@@ -60,10 +56,6 @@
 #if ENABLED(ENDER6_PETSFANG)
   #define ABL_ENABLE
   #define NOZZLE_TO_PROBE_OFFSET { -45, -2, 0 }
-#endif
-#if ENABLED(JGM_MAGIC_OEM)
-  #define ABL_ENABLE
-  #define NOZZLE_TO_PROBE_OFFSET { 45, 0, 0 }
 #endif
 #if ENABLED(AQUILA_X1_OEM)
   #define ABL_ENABLE
@@ -101,46 +93,6 @@
   #define ABL_ENABLE
   #define NOZZLE_TO_PROBE_OFFSET { 37, -3, 0 }
 #endif
-#if ENABLED(ANET_A2_OEM_MOUNT)
-  #define ABL_ENABLE
-  #define NOZZLE_TO_PROBE_OFFSET { -33, -22, 0 }
-#endif
-#if ENABLED(ANET_A6_OEM_MOUNT)
-  #define ABL_ENABLE
-  #define NOZZLE_TO_PROBE_OFFSET { -1, -54, 0 }
-#endif
-#if ENABLED(ANET_A8_OEM_MOUNT)
-  #define ABL_ENABLE
-  #define NOZZLE_TO_PROBE_OFFSET { -26, -40, 0 }
-#endif
-#if ENABLED(ANET_A8_PLUS_OEM_MOUNT)
-  #define ABL_ENABLE
-  #define NOZZLE_TO_PROBE_OFFSET { -24, -45, 0 }
-#endif
-#if ENABLED(ANET_E10_OEM_MOUNT)
-  #define ABL_ENABLE
-  #define NOZZLE_TO_PROBE_OFFSET { -38, -12, 0 }
-#endif
-#if ENABLED(ANET_E12_OEM_MOUNT)
-  #define ABL_ENABLE
-  #define NOZZLE_TO_PROBE_OFFSET { -38, -12, 0 }
-#endif
-#if ENABLED(ANET_E16_OEM_MOUNT)
-  #define ABL_ENABLE
-  #define NOZZLE_TO_PROBE_OFFSET { -38, -12, 0 }
-#endif
-#if ENABLED(SUNLU_S8_5015_EZABL)
-  #define ABL_ENABLE
-  #define NOZZLE_TO_PROBE_OFFSET { -47, -11, 0 }
-#endif
-#if ENABLED(AC_MEGA_ZERO_OEM)
-  #define ABL_ENABLE
-  #define NOZZLE_TO_PROBE_OFFSET { -52, -19, 0 }
-#endif
-#if ENABLED(SUNLU_S8_OEM)
-  #define ABL_ENABLE
-  #define NOZZLE_TO_PROBE_OFFSET { -53, -12, 0 }
-#endif
 #if ENABLED(KP3_OEM_MOUNT)
   #define NOZZLE_TO_PROBE_OFFSET { -46, -15, 0 }
   #define ABL_ENABLE
@@ -157,11 +109,11 @@
   #define NOZZLE_TO_PROBE_OFFSET { 22, -50, 0 }
   #define ABL_ENABLE
 #endif
-#if ANY(CR10_VOLCANO, TORNADO_VOLCANO)
+#if ENABLED(CR10_VOLCANO)
   #define NOZZLE_TO_PROBE_OFFSET { 30, 12, 0 }
   #define ABL_ENABLE
 #endif
-#if ANY(CR10_V6HEAVYDUTY, TORNADO_V6HEAVYDUTY)
+#if ENABLED(CR10_V6HEAVYDUTY)
   #define NOZZLE_TO_PROBE_OFFSET { 63, 0, 0 }
   #define ABL_ENABLE
 #endif
@@ -189,10 +141,6 @@
   #define NOZZLE_TO_PROBE_OFFSET { 52, 5, 0 }
   #define ABL_ENABLE
 #endif
-#if ENABLED(SIDEWINDER_X1_OEM)
-  #define NOZZLE_TO_PROBE_OFFSET { 33, -39, 0 }
-  #define ABL_ENABLE
-#endif
 #if ENABLED(CR10S_PRO_OEM)
   #define NOZZLE_TO_PROBE_OFFSET { -27, 0, 0 }
   #define ABL_ENABLE
@@ -201,69 +149,26 @@
   #define NOZZLE_TO_PROBE_OFFSET { -5, -48, 0 }
   #define ABL_ENABLE
 #endif
-#if ENABLED(TARANTULA_PRO_OEM)
-  #define NOZZLE_TO_PROBE_OFFSET { -65, 0, 0 }
-  #define ABL_ENABLE
-#endif
-#if ENABLED(TORNADO_OEM)
-  #define NOZZLE_TO_PROBE_OFFSET { -37, -10, 0 }
-  #define ABL_ENABLE
-#endif
-#if ENABLED(WANHAO_I3_OEM)
-  #define NOZZLE_TO_PROBE_OFFSET { -25, -38, 0 }
-  #define ABL_ENABLE
-#endif
-#if ENABLED(WANHAO_I3_DIIICOOLER)
-  #define NOZZLE_TO_PROBE_OFFSET { -36, -37, 0 }
-  #define ABL_ENABLE
-#endif
-#if ENABLED(WANHAO_I3MINI_OEM_EZABLMINI)
-  #define NOZZLE_TO_PROBE_OFFSET { -32, 0, 0 }
-  #define ABL_ENABLE
-#endif
-#if ENABLED(WANHAO_I3MINI_OEM)
-  #define NOZZLE_TO_PROBE_OFFSET { -36, 0, 0 }
-  #define ABL_ENABLE
-#endif
-#if ENABLED(ALFAWISEU10_OEM)
-  #define NOZZLE_TO_PROBE_OFFSET { 39, -47, 0 }
-  #define ABL_ENABLE
-#endif
-#if ENABLED(ALFAWISEU10_PETSFANG)
-  #define NOZZLE_TO_PROBE_OFFSET { -48, -2, 0 }
-  #define ABL_ENABLE
-#endif
 #if ENABLED(ENDER4_OEM)
   #define NOZZLE_TO_PROBE_OFFSET { -53, -19, 0 }
-  #define ABL_ENABLE
-#endif
-#if ENABLED(ADIM_I3P_OEM)
-  #define NOZZLE_TO_PROBE_OFFSET { 33, -60, 0 }
-  #define ABL_ENABLE
-#endif
-#if ENABLED(GEE_A10_V1_OEM)
-  #define NOZZLE_TO_PROBE_OFFSET { -54, 0, 0 }
-  #define ABL_ENABLE
-#endif
-#if ANY(GEE_A10_V2_OE, GEE_A20_OEM)
-  #define NOZZLE_TO_PROBE_OFFSET { -52, 0, 0 }
-  #define ABL_ENABLE
-#endif
-#if ENABLED(EZ300_OEM_MOUNT)
-  #define NOZZLE_TO_PROBE_OFFSET { -32, -8, 0 }
   #define ABL_ENABLE
 #endif
 
 #if ENABLED(ABL_ENABLE)
 
-  #if NONE(CHIRON, TINA2)
+  #if NONE(CHIRON)
     #define USE_PROBE_FOR_Z_HOMING
   #endif
 
+  #define X_AXIS_TWIST_COMPENSATION //added in V2.90
+
   //#define ENABLE_LEVELING_FADE_HEIGHT // Disabling as it causes other issues
   #if ENABLED(ENABLE_LEVELING_FADE_HEIGHT)
-    #define DEFAULT_LEVELING_FADE_HEIGHT 0 // (mm) Default fade height - Disable by default to prevent user issues
+    #define DEFAULT_LEVELING_FADE_HEIGHT 10
   #endif
+
+  #define ABL_BILINEAR_SUBDIVISION //added in V2.90
+  #define BILINEAR_SUBDIVISIONS 3  //added in V2.90
   
   #define SEGMENT_LEVELED_MOVES
   #define LEVELED_SEGMENT_LENGTH 5.0
@@ -634,14 +539,19 @@
 #endif
 
 #define PREHEAT_1_LABEL       "PLA"
-#define PREHEAT_1_TEMP_HOTEND 200
+#define PREHEAT_1_TEMP_HOTEND 210
 #define PREHEAT_1_TEMP_BED     60
 #define PREHEAT_1_FAN_SPEED     0
 
-#define PREHEAT_2_LABEL       "ABS"
-#define PREHEAT_2_TEMP_HOTEND 240
-#define PREHEAT_2_TEMP_BED    100
-#define PREHEAT_2_FAN_SPEED     0
+#define PREHEAT_2_LABEL       "PETG" //Added in V2.90
+#define PREHEAT_2_TEMP_HOTEND 235 //Added in V2.90
+#define PREHEAT_2_TEMP_BED     80 //Added in V2.90
+#define PREHEAT_2_FAN_SPEED     0 //Added in V2.90
+
+#define PREHEAT_3_LABEL       "ABS/ASA" //Added in V2.90
+#define PREHEAT_3_TEMP_HOTEND 245 //Added in V2.90
+#define PREHEAT_3_TEMP_BED    100 //Added in V2.90
+#define PREHEAT_3_FAN_SPEED     0 //Added in V2.90
 
 #define NOZZLE_PARK_FEATURE
 #if ENABLED(NOZZLE_PARK_FEATURE)
@@ -664,6 +574,10 @@
 
 #define FILAMENT_RUNOUT_THRESHOLD 100 //Prevent false sensor triggers
 
+#define DETECT_BROKEN_ENDSTOP  //Added in V2.90
+
+#define NO_CONFIGURATION_EMBEDDING_WARNING  //Added in V2.90
+
 /**
  * LCD General Settings
  */
@@ -675,7 +589,19 @@
 #if NONE(DWIN_CREALITY_LCD, DWIN_CREALITY_LCD_ENHANCED, LCD2004, TFT_COLOR_UI, DWIN_CREALITY_LCD_ENHANCED, DWIN_CREALITY_LCD_JYERSUI, DWIN_MARLINUI_PORTRAIT, DWIN_MARLINUI_LANDSCAPE)
   #define SHOW_BOOTSCREEN
   #define SHOW_CUSTOM_BOOTSCREEN
+  
+  #if DISABLED(DISABLE_ENCODER_NOISE_FILTER)
+    #define ENCODER_NOISE_FILTER //Added in V2.90
+  #endif
+  
+  #if ENABLED(ENCODER_NOISE_FILTER) //Added in V2.90
+    #define ENCODER_SAMPLES 10
+  #endif
+
 #endif
+
+#define LCD_FEEDBACK_FREQUENCY_DURATION_MS 40  //Added in V2.90
+#define LCD_FEEDBACK_FREQUENCY_HZ 2000         //Added in V2.90
 
 #define USE_BIG_EDIT_FONT
 

@@ -4,50 +4,35 @@ This is for our reference to make sure to retain changes made to the core files 
 
 This does not include machine `configuration.h` or `PlatformIO.ini` files.
 
+To disable any menu customization we've made just add `#define DISABLE_TH3D_MODS` to the `Configuration.h` file.
+
 ----------
 
-- **buildroot**
-	- **share**
-		- **PlatformIO**
-			- **scripts**
-				- `generic_create_variant.py` - Add in our repo for `Arduino_Core_STM32`
-			- **variants**
-				- **MARLIN_G0B1RE**
-					- `variant_MARLIN_STM32G0B1RE.cpp` - USB Fix from BTT
+- **.vscode**
+	- `extensions.json` - Removed AutoBuild Marlin Recommendation - Doesn't work with our code.
 - **ini**
-	- `avr.ini`
-	- `features.ini` - Force use our repo for `SlowSoftWire`
+	- `avr.ini` - Add in Manual COM selection line
 	- `stm32f1.ini`
-	- `stm32f1-maple.ini`
-	- `stm32f4.ini` - Force use our `Arduino_Core_STM32` repo for BTT Boards
-	- `stm32g0.ini` - Force use our `Arduino_Core_STM32` repo for BTT Boards
+	- `stm32f1-maple.ini` - Add in our own Maple Envs
+	- `stm32f4.ini` - EZBoard ENV Renames
 - **Marlin**
 	- **src**
 		- **core**
-			- `boards.h`
-			- `language.h`
+			- `language.h` - Changed Firmware URL to Ours
 		- **inc**
-			- `Warnings.cpp``
+			- `Warnings.cpp` - Disable certain warnings that do not affect our configs
 		- **lcd**
 			- **language**
 				- `language_en.h`
 			- **menu**
-				- `menu_advanced.cpp`
-				- `menu_configuration.cpp`
-				- `menu_motion.cpp`			
+				- `menu_main.cpp` - Moved menus around for easier use.
+				- `menu_configuration.cpp` - Moved menus around for easier use.
+				- `menu_advanced.cpp` - Moved menus around for easier use.
 		- **pins**
 			- `pins.h`
-			- **lpc1769**
-				- `pins_MKS_SGEN_L_V2.h`
-			- **mega**
-				- `pins_WANHAO_ONEPLUS.h`
 			- **ramps**
 				- `pins_RAMPS.h`
 				- `pins_RAMPS_CREALITY.h`
-			- **sanguino**
-				- `pins_ANET_10.h`
-				- `pins_MELZI_CREALITY.h`
-				- `pins_SANGUINOLOLU_11.h`
 			- **stm32f1**
 				- `pins_BTT_SKR_MINI_E3_common.h`
 				- `pins_CREALITY_V4.h`

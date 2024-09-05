@@ -3,10 +3,10 @@
  * NO IMPLIED SUPPORT OR WARRANTY IS PROVIDED WITH THIS FIRMWARE AND IS PROVIDED AS-IS
  */
 #pragma once
-#define CONFIGURATION_H_VERSION 02010200
+#define CONFIGURATION_H_VERSION 02010204
 
-#define UNIFIED_VERSION "TH3D UFW 2.87"
-#define STRING_DISTRIBUTION_DATE "2024-05-31"
+#define UNIFIED_VERSION "TH3D UFW 2.90"
+#define STRING_DISTRIBUTION_DATE "2024-09-04"
 
 //#@CONFIGURATION_START_FLAG
 
@@ -221,13 +221,14 @@
 // If you reversed the wiring on your E motor already (like the Bondtech Guide says to do) then you do not need to reverse it in the firmware here.
 //
 // Example EStep Values For Common Extuders: 
-// TH3D Aluminum Extruder ---  95 ESteps
-// LGX/LGX Lite/NG Extruder - 400 ESteps
-// TH3D Tough Extruder V2 --- 407 ESteps
-// TH3D Tough Extruder V1 --- 410 ESteps
-// Bondtech BMG Extruder ---- 415 ESteps
-// Creality Sprite Extruder - 425 ESteps
-// LDO Orbiter/Sherpa Mini -- 690 ESteps
+// TH3D Aluminum Extruder ------  95 ESteps
+// Micro Swiss DD Extruder ----- 130 ESteps
+// LGX/LGX Lite/MS NG Extruder - 400 ESteps
+// TH3D Tough Extruder V2 ------ 407 ESteps
+// TH3D Tough Extruder V1 ------ 410 ESteps
+// Bondtech BMG Extruder ------- 415 ESteps
+// Creality Sprite Extruder ---- 425 ESteps
+// LDO Orbiter/Sherpa Mini ----- 690 ESteps
 //
 // If you want to change the Esteps for your printer you can uncomment the below line and set CUSTOM_ESTEPS_VALUE to what you want - USE WHOLE NUMBERS ONLY
 // This option sets the esteps from the CUSTOM_ESTEPS_VALUE line below.

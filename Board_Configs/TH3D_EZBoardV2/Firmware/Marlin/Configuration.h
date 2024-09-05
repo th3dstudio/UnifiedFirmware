@@ -3,10 +3,10 @@
  * NO IMPLIED SUPPORT OR WARRANTY IS PROVIDED WITH THIS FIRMWARE AND IS PROVIDED AS-IS
  */
 #pragma once
-#define CONFIGURATION_H_VERSION 02010200
+#define CONFIGURATION_H_VERSION 02010204
 
-#define UNIFIED_VERSION "TH3D UFW 2.87"
-#define STRING_DISTRIBUTION_DATE "2024-05-31"
+#define UNIFIED_VERSION "TH3D UFW 2.90"
+#define STRING_DISTRIBUTION_DATE "2024-09-04"
 
 //#@CONFIGURATION_START_FLAG
 
@@ -51,6 +51,7 @@
 //#define SOVOL_SV01
 //#define SOVOL_SV01_PRO     // See here for stock CRTouch sensor wiring: https://support.th3dstudio.com/helpcenter/ezboard-v2-sovol-sv01-pro-stock-abl-sensor-wiring/
 //#define SOVOL_SV03
+//#define SOVOL_SV05         // See here for stock CRTouch sensor wiring: https://support.th3dstudio.com/helpcenter/sv05-ezboard-v2-crtouch-wiring/
 //#define SOVOL_SV06         // See here for stock ABL sensor wiring: https://support.th3dstudio.com/helpcenter/ezboard-v2-sovol-sv06-stock-abl-sensor-wiring/
 //#define SOVOL_SV06_PLUS    // See here for stock ABL sensor wiring: https://support.th3dstudio.com/helpcenter/ezboard-v2-sovol-sv06-stock-abl-sensor-wiring/
 
@@ -74,8 +75,10 @@
 //#define ENDER6_OEM                       //Ender 6 Specific OEM Mount
 //#define ENDER6_PETSFANG                  //Ender 6 PETSFANG Mount
 //#define SV01_OEM_MOUNT                   //Sovol SV01 OEM Mount
-//#define SV01_PRO_EZABL_OEM_MOUNT         //For our 18mm Sensors - SV05 Uses the same as SV01 Pro
-//#define SV01_PRO_EZABL_MICRO_OEM_MOUNT   //For our 8mm Sensors - SV05 Uses the same as SV01 Pro
+//#define SV01_PRO_EZABL_OEM_MOUNT         //For our 18mm Sensors
+//#define SV01_PRO_EZABL_8MM_OEM_MOUNT     //For our 8mm Sensors
+//#define SV05_EZABL_OEM_MOUNT             //For our 18mm Sensors
+//#define SV05_EZABL_8MM_OEM_MOUNT         //For our 8mm Sensors
 //#define SV03_OEM_MOUNT                   //Sovol SV03 OEM Mount
 //#define SV06_EZABL_OEM_MOUNT             //Sovol SV06/SV06 Plus EZABL OEM Mount - same offsets, different file
 //#define CR10_VOLCANO                     //TH3D CR-10 Volcano Mount 
@@ -108,6 +111,9 @@
 // If you are using the stock BL Touch with a non-stock mount enable the CUSTOM_PROBE line above and enter the offsets below for the new mount.
 //#define SV03_EZABL
 //#define SV03_NOABL
+
+// SV05 EZABL Settings - If you are using the EZABL on this instead of the stock probe also uncomment the below line to set the EZABL settings
+//#define SV05_EZABL_INSTALLED
 
 // SV06/SV06 Plus EZABL Settings - If you are using the EZABL on this instead of the stock probe also uncomment the below line to set the EZABL settings
 //#define SV06_EZABL_INSTALLED
@@ -250,13 +256,14 @@
 // If you reversed the wiring on your E motor already (like the Bondtech Guide says to do) then you do not need to reverse it in the firmware here.
 //
 // Example EStep Values For Common Extuders: 
-// TH3D Aluminum Extruder ---  95 ESteps
-// LGX/LGX Lite/NG Extruder - 400 ESteps
-// TH3D Tough Extruder V2 --- 407 ESteps
-// TH3D Tough Extruder V1 --- 410 ESteps
-// Bondtech BMG Extruder ---- 415 ESteps
-// Creality Sprite Extruder - 425 ESteps
-// LDO Orbiter/Sherpa Mini -- 690 ESteps
+// TH3D Aluminum Extruder ------  95 ESteps
+// Micro Swiss DD Extruder ----- 130 ESteps
+// LGX/LGX Lite/MS NG Extruder - 400 ESteps
+// TH3D Tough Extruder V2 ------ 407 ESteps
+// TH3D Tough Extruder V1 ------ 410 ESteps
+// Bondtech BMG Extruder ------- 415 ESteps
+// Creality Sprite Extruder ---- 425 ESteps
+// LDO Orbiter/Sherpa Mini ----- 690 ESteps
 //
 // If you want to change the Esteps for your printer you can uncomment the below line and set CUSTOM_ESTEPS_VALUE to what you want - USE WHOLE NUMBERS ONLY
 // This option sets the esteps from the CUSTOM_ESTEPS_VALUE line below.
@@ -547,6 +554,16 @@
   #define CREALITY_Z_STEPS 400
 #endif
 
+//Auto enable EZABL when EZABL spec mounts are enabled for sv01 pro
+#if ANY(SV01_PRO_EZABL_OEM_MOUNT, SV01_PRO_EZABL_8MM_OEM_MOUNT) && DISABLED(SV01_PRO_EZABL_INSTALLED)
+  #define SV01_PRO_EZABL_INSTALLED
+#endif
+
+//Auto enable EZABL when EZABL spec mounts are enabled for sv05
+#if ANY(SV05_EZABL_OEM_MOUNT, SV05_EZABL_8MM_OEM_MOUNT) && DISABLED(SV05_EZABL_INSTALLED)
+  #define SV05_EZABL_INSTALLED
+#endif
+
 /**
  * TH3D EZBoard V2 Config Sanity Checks
  */
@@ -586,12 +603,29 @@
   #endif
 #endif
 
+#if ENABLED(SOVOL_SV05)
+  #if DISABLED(SV05_EZABL_INSTALLED)
+    #define BLTOUCH
+    #define SERVO0_PIN PA2
+
+    #ifndef CUSTOM_PROBE
+      #define CUSTOM_PROBE
+      #define NOZZLE_TO_PROBE_OFFSET { 38, 15, 0 }
+    #endif
+
+    #ifndef CUSTOM_PRINTER_NAME
+      #define CUSTOM_PRINTER_NAME
+      #define USER_PRINTER_NAME "SOVOL SV05"
+    #endif
+  #endif
+#endif
+
 /**
  * Machine Configuration Settings
  */
  
 //EZBoard V2 based Machine Settings
-#if ANY(CR10, CR10_MINI, CR10_S4, CR10_S5, CR10S, CR10S_MINI, CR10S_S4, CR10S_S5, ENDER2, ENDER2_PRO, ENDER3, ENDER5, ENDER5_PLUS, ENDER6, SOVOL_SV01, SOVOL_SV01_PRO, SOVOL_SV03, CR20, ENDER3_MAX)
+#if ANY(CR10, CR10_MINI, CR10_S4, CR10_S5, CR10S, CR10S_MINI, CR10S_S4, CR10S_S5, ENDER2, ENDER2_PRO, ENDER3, ENDER5, ENDER5_PLUS, ENDER6, SOVOL_SV01, SOVOL_SV01_PRO, SOVOL_SV03, SOVOL_SV05, CR20, ENDER3_MAX)
 
   #define SERIAL_PORT -1
   #define BAUDRATE 115200
@@ -660,10 +694,10 @@
     #else
       #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, CREALITY_Z_STEPS, 140 }
     #endif
-  #elif ENABLED(SOVOL_SV01_PRO)
-    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, CREALITY_Z_STEPS, 415 }
+  #elif ANY(SOVOL_SV01_PRO, SOVOL_SV05)
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 415 }
   #else
-    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, CREALITY_Z_STEPS, 95 }
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
   #endif
   
   #define SHOW_BOOTSCREEN
@@ -824,6 +858,13 @@
     #define X_BED_SIZE 350
     #define Y_BED_SIZE 350
     #define Z_MAX_POS 400
+	  #define PRINTER_VOLTAGE_24
+  #endif
+
+  #if ENABLED(SOVOL_SV05)
+    #define X_BED_SIZE 220
+    #define Y_BED_SIZE 220
+    #define Z_MAX_POS 300
 	#define PRINTER_VOLTAGE_24
   #endif
 
@@ -859,7 +900,7 @@
     #define Y_MIN_POS 0
   #endif
   
-  #if ANY(ENDER5, ENDER5_PLUS, ENDER6)
+  #if ANY(ENDER5, ENDER5_PLUS, ENDER6, SOVOL_SV05)
     #define USE_XMAX_PLUG
     #define USE_YMAX_PLUG
     #define USE_ZMIN_PLUG
@@ -869,7 +910,7 @@
     #define USE_ZMIN_PLUG
   #endif
   
-  #if ANY(ENDER5, ENDER5_PLUS, ENDER6)
+  #if ANY(ENDER5, ENDER5_PLUS, ENDER6, SOVOL_SV05)
     #define X_HOME_DIR 1
     #define Y_HOME_DIR 1
     #define Z_HOME_DIR -1
@@ -970,7 +1011,7 @@
     #endif
   #endif
 
-  #if ANY(ENDER2_PRO, ENDER5, ENDER5_PLUS, ENDER6, SOVOL_SV01_PRO)
+  #if ANY(ENDER2_PRO, ENDER5, ENDER5_PLUS, ENDER6, SOVOL_SV01_PRO, SOVOL_SV05)
     #if ENABLED(REVERSE_Z_MOTOR)
       #define INVERT_Z_DIR false
     #else

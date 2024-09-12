@@ -34,6 +34,16 @@
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV427.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\CrealityV427\Firmware"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV427.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\CrealityV427\Binaries"
 
+"C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV427_V2_Clone.zip"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV427_V2_Clone.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV427_V2_Clone.zip" "D:\Work\GitHub\UnifiedFirmware\Gcode Files"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV427_V2_Clone.zip" "D:\Work\GitHub\UnifiedFirmware\LCD Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV427_V2_Clone.zip" "D:\Work\GitHub\UnifiedFirmware\README.md"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV427_V2_Clone.zip" "D:\Work\GitHub\UnifiedFirmware\Install Guides and STL Files.txt"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV427_V2_Clone.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\CrealityV427_V2_Clone\Firmware"
+"C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityV427_V2_Clone.zip" "D:\Work\GitHub\UnifiedPaidConfigs\Board_Configs\CrealityV427_V2_Clone\Binaries"
+
+
 "C:\Program Files\7-Zip\7z.exe" d -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityE3FreeRuns.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityE3FreeRuns.zip" "D:\Work\GitHub\UnifiedFirmware\Firmware"
 "C:\Program Files\7-Zip\7z.exe" a -tZip "D:\Work\TH3D Studio LLC\TH3D Internal Site - Shared Folders\Web Downloads\Unified 2 Firmware\TH3D_Unified2_CrealityE3FreeRuns.zip" "D:\Work\GitHub\UnifiedFirmware\Gcode Files"

@@ -144,8 +144,8 @@
 //
 #define HEATER_BED_PIN                      PB10
 #define HEATER_0_PIN                        PA1
-#ifndef FAN_PIN0
-  #define FAN_PIN0                          PA0
+#ifndef FAN0_PIN
+  #define FAN0_PIN                          PA0
 #endif
 #define FAN_SOFT_PWM
 

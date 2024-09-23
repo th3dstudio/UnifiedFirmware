@@ -7,7 +7,7 @@
 //===========================================================================
 
 #ifndef UNIFIED_VERSION
-  #define UNIFIED_VERSION "TH3D UFW 2.91a"
+  #define UNIFIED_VERSION "TH3D UFW 2.91b"
 #endif
 
 /**
@@ -155,6 +155,10 @@
 #endif
 
 #if ENABLED(ABL_ENABLE)
+
+  #if ENABLED(SPACE_SAVER_2560) && (EZABL_POINTS >= 8)
+    #error "Your printer control board cannot support more than 7 points for EZABL_POINTS due to its outdated CPU. Change this to 7 or lower to compile."
+  #endif
 
   #if NONE(CHIRON)
     #define USE_PROBE_FOR_Z_HOMING

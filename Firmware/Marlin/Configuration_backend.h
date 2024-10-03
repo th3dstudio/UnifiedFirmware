@@ -7,7 +7,7 @@
 //===========================================================================
 
 #ifndef UNIFIED_VERSION
-  #define UNIFIED_VERSION "TH3D UFW 2.91b"
+  #define UNIFIED_VERSION "TH3D UFW 2.92"
 #endif
 
 /**
@@ -460,6 +460,9 @@
   #if ALL(EZABL_SUPERFASTPROBE, ABL_ENABLE) && NONE(BLTOUCH)
     #define HOMING_FEEDRATE_MM_M { (50*60), (50*60), (15*60) }
     #define Z_PROBE_FEEDRATE_FAST (15*60)
+  #elif ALL(EZABL_SUPERFASTPROBE, ABL_ENABLE, BLTOUCH)
+    #define HOMING_FEEDRATE_MM_M { (50*60), (50*60), (15*60) }
+    #define Z_PROBE_FEEDRATE_FAST (10*60)
   #elif ALL(EZABL_FASTPROBE, ABL_ENABLE)
     #define HOMING_FEEDRATE_MM_M { (50*60), (50*60), (8*60) }
     #define Z_PROBE_FEEDRATE_FAST (8*60)

@@ -7,8 +7,8 @@
 #pragma once
 #define CONFIGURATION_H_VERSION 02010204
 
-#define UNIFIED_VERSION "TH3D UFW 2.91b"
-#define STRING_DISTRIBUTION_DATE "2024-09-23"
+#define UNIFIED_VERSION "TH3D UFW 2.92"
+#define STRING_DISTRIBUTION_DATE "2024-10-03"
 
 //#@CONFIGURATION_START_FLAG
 
@@ -247,7 +247,7 @@
 // Fast Probing - Works with most machines and all EZABL sensors (8mm/s)
 #define EZABL_FASTPROBE
 
-// Superfast Probing - Only works with the EZABL Pro Sensors (15mm/s)
+// Superfast Probing - Works with Pro/NG EZABL Probes (15mm/s) & BLTouch/CRTouch (10mm/s)
 //#define EZABL_SUPERFASTPROBE
 
 // Heaters on During Probing - Heaters will stay on during probing - May reduce accuracy do not use unless told to by support

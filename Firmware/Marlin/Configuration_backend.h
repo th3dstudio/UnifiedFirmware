@@ -7,7 +7,7 @@
 //===========================================================================
 
 #ifndef UNIFIED_VERSION
-  #define UNIFIED_VERSION "TH3D UFW 2.92a"
+  #define UNIFIED_VERSION "TH3D UFW 2.92b"
 #endif
 
 /**
@@ -572,7 +572,7 @@
 #define DISABLE_Y false
 #define DISABLE_Z false
 #define DISABLE_E false
-#define DISABLE_INACTIVE_EXTRUDER
+#define DISABLE_OTHER_EXTRUDERS
 
 #if DISABLED(DISABLE_ENDSTOP_NOISE_FILTERING)
   #define ENDSTOP_NOISE_THRESHOLD 2

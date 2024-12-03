@@ -1,27 +1,25 @@
 This LCD firmware works on both the older and new version of the LCDs Found on the Ender 3 V2, Ender 3 NEO Models, Ender 3 S1, and Aquila X1 printers. Both use the same file to update and directions below. On LCDs with a landscape orientation the TH3D bootscreen will be sideways, this is normal. This works with the DACAI and DWIN versions of the LCDs. 
 
-If you have a "VIEWE" it is not supported and will need to be replaced. We carry 12864 LCD kits for these machines to convert them from the unsupported LCD to the 12864 Style Display. Here is how to determine what LCD type you have: https://support.th3dstudio.com/helpcenter/creality-printers-color-lcds/
+If you have a "VIEWE" or "TJC" it is not supported and will need to be replaced. We carry 12864 LCD kits for these machines to convert them from the unsupported LCD to the 12864 Style Display. Here is how to determine what LCD type you have: https://support.th3dstudio.com/helpcenter/creality-printers-color-lcds/
 
 Credit: Thank you to Dave at Insanity Automation for the custom LCD firmware for both LCD versions.
 
 ---------------------------------------------------------------------------------------------------
 DIRECTIONS:
 
-1. In the firmware download there is a folder called "LCD Firmware". Open that folder and then open the folder labeled "Ender 3 V2 S1"
-
-2. In there is a ZIP file called "DWIN_DACAI_LCDUpdate_TH3D_X.X". Extract the DWIN_SET folder to a blank, FAT32 formatted MicroSD card.
+1. In this folder is a ZIP file called "DWIN_DACAI_LCDUpdate_TH3D_X.X". Extract the DWIN_SET folder to a blank, FAT32 formatted MicroSD card.
 
 NOTE: The files must be in the folders as they are in the ZIP file, including the 拷贝private到SD卡根目录.txt file.
 
-3. Power the printer off and remove the LCD from its snap on bracket.
+2. Power the printer off and remove the LCD from its snap on bracket.
 
-4. On the rear of the LCD there is a SD slot that you access by removing the 4 screws on the rear of the casing.
+3. On the rear of the LCD there is a SD slot that you access by removing the 4 screws on the rear of the casing.
 
-5. Insert the MicroSD card with the files on it into the LCD.
+4. Insert the MicroSD card with the files on it into the LCD.
 NOTE - The MicroSD card MUST be formatted with FAT/FAT32 with a 4096 byte allocation size or it will NOT flash.
 
-6. With the LCD cable connected to the printer and the MicroSD card inserted into the rear of the LCD turn on the printer. You will see the LCD change from black to blue to orange. Wait 30 seconds after it turns orange and then power off the printer.
+5. With the LCD cable connected to the printer and the MicroSD card inserted into the rear of the LCD turn on the printer. You will see the LCD change from black to blue to orange. Wait 30 seconds after it turns orange and then power off the printer.
 
-7. Remove the MicroSD card and re-assemble the LCD
+6. Remove the MicroSD card and re-assemble the LCD
 
-8. Turn the printer on. You should see our logo when you power on if the firmware updated successfully
+7. Turn the printer on. You should see our logo when you power on if the firmware updated successfully

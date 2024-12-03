@@ -288,6 +288,7 @@
 
 #define NO_CREALITY_422_DRIVER_WARNING
 #define NO_AUTO_ASSIGN_WARNING
+#define DIAG_JUMPERS_REMOVED
 
 #if ENABLED(G26_MESH_VALIDATION)
   #define MESH_TEST_NOZZLE_SIZE    0.4  // (mm) Diameter of primary nozzle.

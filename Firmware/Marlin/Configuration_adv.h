@@ -1855,7 +1855,7 @@
    * Use 'M503 C' to write the settings out to the SD Card as 'mc.zip'.
    * See docs/ConfigEmbedding.md for details on how to use 'mc-apply.py'.
    */
-  #if DISABLED(SPAVE_SAVER_2560)
+  #if DISABLED(SPACE_SAVER_2560)
     #define CONFIGURATION_EMBEDDING
   #endif
 

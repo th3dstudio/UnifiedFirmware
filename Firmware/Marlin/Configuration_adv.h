@@ -1855,7 +1855,7 @@
    * Use 'M503 C' to write the settings out to the SD Card as 'mc.zip'.
    * See docs/ConfigEmbedding.md for details on how to use 'mc-apply.py'.
    */
-  #if DISABLED(SPAVE_SAVER_2560)
+  #if DISABLED(SPACE_SAVER_2560)
     #define CONFIGURATION_EMBEDDING
   #endif
 
@@ -1971,7 +1971,9 @@
   //#define STATUS_HOTEND_NUMBERLESS  // Use plain hotend icons instead of numbered ones (with 2+ hotends)
   #define STATUS_HOTEND_INVERTED      // Show solid nozzle bitmaps when heating (Requires STATUS_HOTEND_ANIM for numbered hotends)
   #define STATUS_HOTEND_ANIM          // Use a second bitmap to indicate hotend heating
-  #define STATUS_BED_ANIM             // Use a second bitmap to indicate bed heating
+  #if NONE(DWIN_MARLINUI_PORTRAIT, DWIN_MARLINUI_LANDSCAPE)
+    #define STATUS_BED_ANIM           // Use a second bitmap to indicate bed heating
+  #endif
   #define STATUS_CHAMBER_ANIM         // Use a second bitmap to indicate chamber heating
   //#define STATUS_CUTTER_ANIM        // Use a second bitmap to indicate spindle / laser active
   //#define STATUS_COOLER_ANIM        // Use a second bitmap to indicate laser cooling

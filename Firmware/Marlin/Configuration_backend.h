@@ -7,7 +7,7 @@
 //===========================================================================
 
 #ifndef UNIFIED_VERSION
-  #define UNIFIED_VERSION "TH3D UFW 2.94"
+  #define UNIFIED_VERSION "TH3D UFW 2.94a"
 #endif
 
 /**
@@ -288,6 +288,7 @@
 
 #define NO_CREALITY_422_DRIVER_WARNING
 #define NO_AUTO_ASSIGN_WARNING
+#define DIAG_JUMPERS_REMOVED
 
 #if ENABLED(G26_MESH_VALIDATION)
   #define MESH_TEST_NOZZLE_SIZE    0.4  // (mm) Diameter of primary nozzle.
@@ -672,4 +673,9 @@
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
   #define XY_PROBE_FEEDRATE (50*60)
   #define MESH_EDIT_MENU
+
+  #undef Z_PROBE_OFFSET_RANGE_MIN
+  #define Z_PROBE_OFFSET_RANGE_MIN    -10
+  #undef Z_PROBE_OFFSET_RANGE_MAX
+  #define Z_PROBE_OFFSET_RANGE_MAX     1
 #endif

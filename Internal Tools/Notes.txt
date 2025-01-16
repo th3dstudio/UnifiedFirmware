@@ -1,0 +1,5 @@
+[platformio]
+core_dir = .platformio
+workspace_dir = c:\.pio
+
+Add to PIO.ini to help with compile issues? Need to test. TDH 01.15.25

@@ -17,6 +17,7 @@
 //===========================================================================
 
 // UNCOMMENT MEANS REMOVING THE // IN FRONT OF A #define XXXXXX LINE.
+// DO NOT USE AUTO BUILD MARLIN WITH OUR FIRMWARE - UNINSTALL IT FROM VSCODE BEFORE USING IF YOU HAVE ISSUES COMPILING.
 
 //===========================================================================
 // *******************   EZBOARD LITE BOARD DIY CONFIG   ********************

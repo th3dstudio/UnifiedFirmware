@@ -5,8 +5,8 @@
 #pragma once
 #define CONFIGURATION_H_VERSION 02010204
 
-#define UNIFIED_VERSION "TH3D UFW 2.95"
-#define STRING_DISTRIBUTION_DATE "2025-02-05"
+#define UNIFIED_VERSION "TH3D UFW 2.95a"
+#define STRING_DISTRIBUTION_DATE "2025-02-26"
 
 //#@CONFIGURATION_START_FLAG
 
@@ -16,6 +16,7 @@
 
 // ONLY UNCOMMENT ONE PRINTER AT A TIME!!! IF YOU HAVE MULTIPLE MACHINES FLASH THEM ONE AT A TIME.
 // UNCOMMENT MEANS REMOVING THE // IN FRONT OF A #define XXXXXX LINE.
+// DO NOT USE AUTO BUILD MARLIN WITH OUR FIRMWARE - UNINSTALL IT FROM VSCODE BEFORE USING IF YOU HAVE ISSUES COMPILING.
 
 //===========================================================================
 // ****************    EZBOARD LITE BOARD POWERED PRINTERS   ****************
@@ -371,7 +372,7 @@
  * PID Bed Temperature Control
  * 
  * If you want PID Bed Temperature control enable the below line. You will need to tune it for your machine.
- * See the PID Bed setup guide here: https://support.th3dstudio.com/helpcenter/p-i-d-bed-calibration-guide/
+ * See the PID Bed setup guide here: https://tickets.th3dstudio.com/help-guides/article/p-i-d-bed-calibration-guide
  */
 //#define ENABLE_PIDBED
 

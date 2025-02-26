@@ -7,8 +7,8 @@
 #pragma once
 #define CONFIGURATION_H_VERSION 02010204
 
-#define UNIFIED_VERSION "TH3D UFW 2.95"
-#define STRING_DISTRIBUTION_DATE "2025-02-05"
+#define UNIFIED_VERSION "TH3D UFW 2.95a"
+#define STRING_DISTRIBUTION_DATE "2025-02-26"
 
 //#@CONFIGURATION_START_FLAG
 
@@ -35,8 +35,6 @@
  * Compatible LCDs - This firmware is setup to use the Single Cable (EXP3) Creality LCD 
  * OR the TH3D 12864 LCD with the Dual Cable LCD adapter board 
  * OR the BTT TFT35-E3 with serial+EXP3 plugs
- *
- * For the BTT TFT35-E3 wiring and warnings see our guide here: https://support.th3dstudio.com/helpcenter/ezboard-lite-v1-x-btt-tft35-e3-wiring-and-firmware-setup/
  * 
  * SD Card Slot - Regardless if your LCD has an SD slot or not the onboard SD slot will always be the one used
  * 
@@ -391,7 +389,7 @@
  * PID Bed Temperature Control
  * 
  * If you want PID Bed Temperature control enable the below line. You will need to tune it for your machine.
- * See the PID Bed setup guide here: https://support.th3dstudio.com/helpcenter/p-i-d-bed-calibration-guide/
+ * See the PID Bed setup guide here: https://tickets.th3dstudio.com/help-guides/article/p-i-d-bed-calibration-guide
  */
 //#define ENABLE_PIDBED
 

@@ -5,8 +5,8 @@
 #pragma once
 #define CONFIGURATION_H_VERSION 02010204
 
-#define UNIFIED_VERSION "TH3D UFW 2.95"
-#define STRING_DISTRIBUTION_DATE "2025-02-05"
+#define UNIFIED_VERSION "TH3D UFW 2.95a"
+#define STRING_DISTRIBUTION_DATE "2025-02-26"
 
 //#@CONFIGURATION_START_FLAG
 
@@ -372,7 +372,7 @@
  * PID Bed Temperature Control
  * 
  * If you want PID Bed Temperature control enable the below line. You will need to tune it for your machine.
- * See the PID Bed setup guide here: https://support.th3dstudio.com/helpcenter/p-i-d-bed-calibration-guide/
+ * See the PID Bed setup guide here: https://tickets.th3dstudio.com/help-guides/article/p-i-d-bed-calibration-guide
  */
 //#define ENABLE_PIDBED
 

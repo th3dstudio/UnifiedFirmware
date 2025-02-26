@@ -5,8 +5,8 @@
 #pragma once
 #define CONFIGURATION_H_VERSION 02010204
 
-#define UNIFIED_VERSION "TH3D UFW 2.95"
-#define STRING_DISTRIBUTION_DATE "2025-02-05"
+#define UNIFIED_VERSION "TH3D UFW 2.95a"
+#define STRING_DISTRIBUTION_DATE "2025-02-26"
 
 //#@CONFIGURATION_START_FLAG
 
@@ -50,11 +50,11 @@
 
 // Sovol Machines -----------------------------------------------------------
 //#define SOVOL_SV01
-//#define SOVOL_SV01_PRO     // See here for stock CRTouch sensor wiring: https://support.th3dstudio.com/helpcenter/ezboard-v2-sovol-sv01-pro-stock-abl-sensor-wiring/
+//#define SOVOL_SV01_PRO     // See here for stock CRTouch sensor wiring: https://tickets.th3dstudio.com/products/article/ezboard-v2-%E2%80%93-sovol-sv01-pro-stock-abl-sensor-wiring
 //#define SOVOL_SV03
-//#define SOVOL_SV05         // See here for stock CRTouch sensor wiring: https://support.th3dstudio.com/helpcenter/sv05-ezboard-v2-crtouch-wiring/
-//#define SOVOL_SV06         // See here for stock ABL sensor wiring: https://support.th3dstudio.com/helpcenter/ezboard-v2-sovol-sv06-stock-abl-sensor-wiring/
-//#define SOVOL_SV06_PLUS    // See here for stock ABL sensor wiring: https://support.th3dstudio.com/helpcenter/ezboard-v2-sovol-sv06-stock-abl-sensor-wiring/
+//#define SOVOL_SV05         // See here for stock CRTouch sensor wiring: https://tickets.th3dstudio.com/products/article/sv05-ezboard-v2-crtouch-wiring
+//#define SOVOL_SV06         // See here for stock ABL sensor wiring: https://tickets.th3dstudio.com/products/article/ezboard-v2-sovol-sv06-stock-abl-sensor-wiring
+//#define SOVOL_SV06_PLUS    // See here for stock ABL sensor wiring: https://tickets.th3dstudio.com/products/article/ezboard-v2-sovol-sv06-stock-abl-sensor-wiring
 
 // Filament Sensor Options --------------------------------------------------
 // If your machine came stock with a filament sensor it will be enabled automatically. If you replaced your stock sensor with our EZOut or you added an EZOut enabling the EZOUT_ENABLE will override the Creality sensor if your machine had one
@@ -417,7 +417,7 @@
  * PID Bed Temperature Control
  * 
  * If you want PID Bed Temperature control enable the below line. You will need to tune it for your machine.
- * See the PID Bed setup guide here: https://support.th3dstudio.com/helpcenter/p-i-d-bed-calibration-guide/
+ * See the PID Bed setup guide here: https://tickets.th3dstudio.com/help-guides/article/p-i-d-bed-calibration-guide
  */
 //#define ENABLE_PIDBED
 

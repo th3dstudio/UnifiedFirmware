@@ -7,13 +7,16 @@
 //===========================================================================
 
 #ifndef UNIFIED_VERSION
-  #define UNIFIED_VERSION "TH3D UFW 2.95a"
+  #define UNIFIED_VERSION "TH3D UFW 2.95b"
 #endif
 
 /**
  * ABL Probe Settings
  */
 
+#if ALL(NO_MOUNT_SELECTED, EZABL)
+  #error "You must select a probe mount for your ABL probe"
+#endif
 #if ENABLED(CUSTOM_PROBE)
   #define ABL_ENABLE
 #endif

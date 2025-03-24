@@ -7,7 +7,7 @@
 //===========================================================================
 
 #ifndef UNIFIED_VERSION
-  #define UNIFIED_VERSION "TH3D UFW 2.95b"
+  #define UNIFIED_VERSION "TH3D UFW 2.96"
 #endif
 
 /**
@@ -375,8 +375,8 @@
  * (especially before PID tuning). Setting the target temperature too close to MAXTEMP guarantees
  * a MAXTEMP shutdown! Use these values to forbid temperatures being set too close to MAXTEMP.
  */
-#define HOTEND_OVERSHOOT 15   // (°C) Forbid temperatures over MAXTEMP - OVERSHOOT
-#define BED_OVERSHOOT    10   // (°C) Forbid temperatures over MAXTEMP - OVERSHOOT
+#define HOTEND_OVERSHOOT  5   // (°C) Forbid temperatures over MAXTEMP - OVERSHOOT
+#define BED_OVERSHOOT     5   // (°C) Forbid temperatures over MAXTEMP - OVERSHOOT
 #define COOLER_OVERSHOOT  2   // (°C) Forbid temperatures closer than OVERSHOOT
 
 #define TEMP_RESIDENCY_TIME      3

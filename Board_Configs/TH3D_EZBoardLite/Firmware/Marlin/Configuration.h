@@ -169,7 +169,7 @@
  * BLTouch/CRTouch
  * 
  * If you want to use the BLTouch/CRTouch uncomment the BLTOUCH line below. You also need then enter in your sensor offsets below in the CUSTOM PROBE section.
- * If you need to change your SERVO pin you can change that with the SERVO0_PIN Line below. Most people do NOT need to change/set this.
+ * If you need to change your SERVO control pin you can change that with the SERVO0_PIN Line below. Most people do NOT need to change/set this.
  */
 //#define BLTOUCH
 //#define SERVO0_PIN P2_04

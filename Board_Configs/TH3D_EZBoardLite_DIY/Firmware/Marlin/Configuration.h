@@ -7,8 +7,8 @@
 #pragma once
 #define CONFIGURATION_H_VERSION 02010204
 
-#define UNIFIED_VERSION "TH3D UFW 2.96a"
-#define STRING_DISTRIBUTION_DATE "2025-03-26"
+#define UNIFIED_VERSION "TH3D UFW 2.97"
+#define STRING_DISTRIBUTION_DATE "2025-07-02"
 
 //#@CONFIGURATION_START_FLAG
 
@@ -362,7 +362,7 @@
  * Below are the frequency and damping settings for each axis.
  * Damping must have f at the end of the number and the range is 0.00-1.00.
  */
-//#define INPUT_SHAPING
+#define INPUT_SHAPING
 
 // X Axis Settings
 #define INPUT_SHAPING_FREQ_X 40

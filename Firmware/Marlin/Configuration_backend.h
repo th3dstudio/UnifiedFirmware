@@ -7,7 +7,7 @@
 //===========================================================================
 
 #ifndef UNIFIED_VERSION
-  #define UNIFIED_VERSION "TH3D UFW 2.96a"
+  #define UNIFIED_VERSION "TH3D UFW 2.97a"
 #endif
 
 /**

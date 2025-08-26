@@ -105,7 +105,7 @@
 #define HEATER_0_PIN                       PA1   // E1_HEAT_PWM
 #define HEATER_BED_PIN                     PA7   // BED_HEAT_1 FET
 
-#define FAN_PIN0                            PA0   // Part cooling fan FET
+#define FAN0_PIN                           PA0   // Part cooling fan FET
 
 //
 // SD Card

@@ -17,6 +17,9 @@
 #if ALL(NO_MOUNT_SELECTED, EZABL)
   #error "You must select a probe mount for your ABL probe"
 #endif
+#if ALL(NO_MOUNT_SELECTED, ZSENSE8)
+  #error "You must select a probe mount for your ABL probe"
+#endif
 #if ENABLED(CUSTOM_PROBE)
   #define ABL_ENABLE
 #endif
@@ -444,7 +447,9 @@
     #define CUSTOM_MACHINE_NAME "TH3D CRTouch"
   #elif ENABLED(BLTOUCH)
     #define CUSTOM_MACHINE_NAME "TH3D BLTouch"
-  #elif ENABLED(ABL_ENABLE) && DISABLED(BLTOUCH)
+  #elif ENABLED(ZSENSE8)
+    #define CUSTOM_MACHINE_NAME "TH3D ZSense8"
+  #elif ENABLED(ABL_ENABLE) && NONE(ZSENSE8, BLTOUCH)
     #define CUSTOM_MACHINE_NAME "TH3D EZABL"
   #elif ENABLED(EZOUT_ENABLE)
     #define CUSTOM_MACHINE_NAME "TH3D EZOut"

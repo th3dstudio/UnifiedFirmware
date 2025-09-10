@@ -31,8 +31,6 @@
 #define BOARD_INFO_NAME   "TH3D EZBoard V2"
 #define BOARD_WEBSITE_URL "TH3DStudio.com"
 
-//#define V3_EZABL_ON_SERVO                       // As in TH3D Firmware Config
-
 #define DISABLE_JTAGSWD                           // Disabling J-tag and Debug via SWD
 
 // Onboard I2C EEPROM
@@ -52,7 +50,7 @@
 //
 // Servos
 //
-#if ANY(V3_EZABL_ON_SERVO, EZBOARD_PT100)
+#if ANY(V3_EZABL_ON_SERVO, EZBOARD_PT100, ZSENSE8)
   #define SERVO0_PIN                        -1
 #else
   #define SERVO0_PIN                        PA2
@@ -84,7 +82,7 @@
   #define Y_STOP_PIN                        PC2
 #endif
 
-#if ENABLED(V3_EZABL_ON_SERVO)
+#if ANY(V3_EZABL_ON_SERVO, ZSENSE8)
   #define Z_STOP_PIN                        PA2
 #else
   #define Z_STOP_PIN                        PC3

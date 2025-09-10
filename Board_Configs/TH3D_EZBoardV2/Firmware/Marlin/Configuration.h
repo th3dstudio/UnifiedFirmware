@@ -201,6 +201,18 @@
 #define EXTRAPOLATE_BEYOND_GRID
 
 /**
+ * ZSense8
+ * 
+ * If you want to use the ZSense Probe uncomment the ZSENSE8 line below.
+ * You also need then enter in your sensor offsets below in the CUSTOM PROBE section.
+ * 
+ * Connect the 5V (Brown Wire), GND (Blue Wire), and SIGNAL (Black Wire) to the SERVO header.
+ * Brown wire -> 5V Pin, Blue wire -> G Pin, Black wire -> SIG Pin
+ */
+
+//#define ZSENSE8
+
+/**
  * BLTouch/CRTouch
  * 
  * If you want to use the BLTouch/CRTouch uncomment the BLTOUCH line below. You also need then enter in your sensor offsets below in the CUSTOM PROBE section.
@@ -972,7 +984,11 @@
   #define Y_MAX_ENDSTOP_INVERTING false
   #define Z_MAX_ENDSTOP_INVERTING false
   #define Z_MIN_PROBE_ENDSTOP_INVERTING false
-  #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+  #if ENABLED(SENSE8)
+    #define USE_PROBE_FOR_Z_HOMING
+  #else
+    #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+  #endif
 
   #define X_DRIVER_TYPE  TMC2209
   #define Y_DRIVER_TYPE  TMC2209

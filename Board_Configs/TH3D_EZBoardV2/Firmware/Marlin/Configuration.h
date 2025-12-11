@@ -5,8 +5,8 @@
 #pragma once
 #define CONFIGURATION_H_VERSION 02010204
 
-#define UNIFIED_VERSION "TH3D UFW 2.97a"
-#define STRING_DISTRIBUTION_DATE "2025-08-26"
+#define UNIFIED_VERSION "TH3D UFW 2.98"
+#define STRING_DISTRIBUTION_DATE "2025-12-11"
 
 //#@CONFIGURATION_START_FLAG
 
@@ -199,6 +199,18 @@
 
 // Grid Extrapolation - This will use the mesh data to make assumptions of the bed outside the probe area. Disable if you are getting incorrect results on the edges of the bed.
 #define EXTRAPOLATE_BEYOND_GRID
+
+/**
+ * ZSense8
+ * 
+ * If you want to use the ZSense Probe uncomment the ZSENSE8 line below.
+ * You also need then enter in your sensor offsets below in the CUSTOM PROBE section.
+ * 
+ * Connect the 5V (Brown Wire), GND (Blue Wire), and SIGNAL (Black Wire) to the SERVO header.
+ * Brown wire -> 5V Pin, Blue wire -> G Pin, Black wire -> SIG Pin
+ */
+
+//#define ZSENSE8
 
 /**
  * BLTouch/CRTouch
@@ -972,7 +984,11 @@
   #define Y_MAX_ENDSTOP_INVERTING false
   #define Z_MAX_ENDSTOP_INVERTING false
   #define Z_MIN_PROBE_ENDSTOP_INVERTING false
-  #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+  #if ENABLED(SENSE8)
+    #define USE_PROBE_FOR_Z_HOMING
+  #else
+    #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+  #endif
 
   #define X_DRIVER_TYPE  TMC2209
   #define Y_DRIVER_TYPE  TMC2209

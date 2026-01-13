@@ -550,6 +550,10 @@
   #define CUSTOM_PROBE
 #endif
 
+#if ENABLED(ZSENSE8)
+  #define V3_EZABL_ON_SERVO
+#endif
+
 //Set Ender 3 Pro Machine Setting
 #if ENABLED(ENDER3_PRO)
   #define ENDER3

@@ -296,6 +296,8 @@
 #define NO_AUTO_ASSIGN_WARNING
 #define DIAG_JUMPERS_REMOVED
 
+#define ENDSTOP_INTERRUPTS_FEATURE //ADDED 02.17.26 NEED TO TEST
+
 #if ENABLED(G26_MESH_VALIDATION)
   #define MESH_TEST_NOZZLE_SIZE    0.4  // (mm) Diameter of primary nozzle.
   #define MESH_TEST_LAYER_HEIGHT   0.2  // (mm) Default layer height for G26.

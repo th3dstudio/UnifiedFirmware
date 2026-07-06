@@ -7,7 +7,7 @@
 //===========================================================================
 
 #ifndef UNIFIED_VERSION
-  #define UNIFIED_VERSION "TH3D UFW 2.98b"
+  #define UNIFIED_VERSION "TH3D UFW 2.98c"
 #endif
 
 /**
@@ -295,6 +295,10 @@
 #define NO_CREALITY_422_DRIVER_WARNING
 #define NO_AUTO_ASSIGN_WARNING
 #define DIAG_JUMPERS_REMOVED
+
+#if DISABLED(SPACE_SAVER_2560)
+  #define ENDSTOP_INTERRUPTS_FEATURE
+#endif
 
 #if ENABLED(G26_MESH_VALIDATION)
   #define MESH_TEST_NOZZLE_SIZE    0.4  // (mm) Diameter of primary nozzle.

@@ -1,0 +1,2 @@
+// ********** STL Download Information **********
+To make the firmware packages smaller, we have moved the STL files to a separate download. You can download them here: https://tickets.th3dstudio.com/downloads/article/unified-2-stl-pack-%e2%80%93-ezabl-mounts-leveling-tests-more

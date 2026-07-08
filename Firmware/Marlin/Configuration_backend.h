@@ -7,7 +7,7 @@
 //===========================================================================
 
 #ifndef UNIFIED_VERSION
-  #define UNIFIED_VERSION "TH3D UFW 2.98c"
+  #define UNIFIED_VERSION "TH3D UFW 2.98d"
 #endif
 
 /**
@@ -297,7 +297,7 @@
 #define DIAG_JUMPERS_REMOVED
 
 #if DISABLED(SPACE_SAVER_2560)
-  #define ENDSTOP_INTERRUPTS_FEATURE
+  //#define ENDSTOP_INTERRUPTS_FEATURE //Causing issues on some boards. Disabling for now.
 #endif
 
 #if ENABLED(G26_MESH_VALIDATION)
